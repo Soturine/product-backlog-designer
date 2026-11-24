@@ -54,7 +54,9 @@
         "ref": {"type": "string"},
         "summary": {"type": "string"},
         "recorded_at": {"$ref": "#/$defs/timestamp"},
-        "digest": {"$ref": "#/$defs/digest"}
+        "digest": {"$ref": "#/$defs/digest"},
+        "run_id": {"type": "string", "pattern": "^PBD-RUN-[0-9A-HJKMNP-TV-Z]{12}$"},
+        "stage": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"}
       },
       "allOf": [
         {"if": {"properties": {"type": {"const": "source_locator"}}}, "then": {"required": ["locator"]}},

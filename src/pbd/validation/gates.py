@@ -60,6 +60,8 @@ def evaluate_result(result: dict[str, Any]) -> list[Issue]:
     if result.get("status") != "PASS":
         return []
     issues: list[Issue] = []
+    if result.get("verification") == "failed":
+        issues.append(Issue(gid, "gate cannot PASS when evidence verification failed", "gate_evidence"))
     types = {ev.get("type") for ev in result.get("evidence", [])}
     if spec.kind in ("deterministic", "mixed") and "deterministic_check" not in types:
         issues.append(
@@ -88,6 +90,31 @@ def evaluate_result(result: dict[str, Any]) -> list[Issue]:
                         "gate_denominator",
                     )
                 )
+            issues.extend(_check_breakdown(gid, den))
+    return issues
+
+
+# Dispositions that leave an obligation without adequate representation: PASS is impossible.
+_GAP_KEYS = ("not_covered", "partially_covered", "blocked", "unassessed")
+
+
+def _check_breakdown(gid: str, den: dict[str, Any]) -> list[Issue]:
+    issues: list[Issue] = []
+    if not den.get("inventory_ref") or not den.get("inventory_digest"):
+        issues.append(Issue(gid, "coverage denominator must cite a hash-bound inventory", "gate_denominator"))
+    if den.get("reading_complete") is not True:
+        issues.append(
+            Issue(gid, "incomplete or unconfirmed source reading cannot certify coverage", "gate_denominator")
+        )
+    breakdown = den.get("breakdown")
+    if not isinstance(breakdown, dict):
+        issues.append(Issue(gid, "coverage PASS requires a disposition breakdown", "gate_denominator"))
+        return issues
+    if sum(int(v) for v in breakdown.values()) != den.get("total"):
+        issues.append(Issue(gid, "disposition breakdown does not sum to the denominator", "gate_denominator"))
+    gaps = {k: breakdown.get(k, 0) for k in _GAP_KEYS if breakdown.get(k, 0)}
+    if gaps:
+        issues.append(Issue(gid, f"coverage gaps prevent PASS: {gaps}", "gate_denominator"))
     return issues
 
 

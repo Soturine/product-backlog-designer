@@ -6,4 +6,4 @@ extracting claims, designing and reviewing backlogs) belongs to the host agent.
 """
 
 __version__ = "0.1.0.dev0"
-SCHEMA_VERSION = "1.0.0"
+SCHEMA_VERSION = "1.1.0"

@@ -192,4 +192,82 @@ def check_backlog(
             if ref not in known:
                 issues.append(Issue(f["id"], f"affects unknown {ref}", "dangling_ref"))
 
+    issues.extend(_reciprocity(claims, items, criteria, decisions, doc.get("relations", [])))
+    return issues
+
+
+_INACTIVE_CLAIM = {"SUPERSEDED", "OUT_OF_SCOPE"}
+_INACTIVE_WORK = {"superseded", "out_of_scope"}
+
+
+def _reciprocity(
+    claims: dict[str, dict[str, Any]],
+    items: dict[str, dict[str, Any]],
+    criteria: dict[str, dict[str, Any]],
+    decisions: dict[str, dict[str, Any]],
+    relations: list[dict[str, Any]],
+) -> list[Issue]:
+    """Two-way consistency between claims, work, criteria, decisions and relations."""
+    issues: list[Issue] = []
+    work = {**items, **criteria}
+
+    # Forward coverage must be backed by a reverse trace link.
+    for cid, claim in claims.items():
+        for ref in claim.get("disposition", {}).get("covered_by", []):
+            target = work.get(ref)
+            if target is not None and cid not in target.get("claim_refs", []):
+                issues.append(
+                    Issue(cid, f"covered_by {ref} but {ref} does not trace back", "trace_reciprocity")
+                )
+
+    # Active work must not rely on superseded or out-of-scope obligations.
+    for wid, w in work.items():
+        active = (
+            w.get("status") not in _INACTIVE_WORK and (w.get("temporal") or {}).get("status") != "superseded"
+        )
+        for ref in w.get("claim_refs", []):
+            claim = claims.get(ref)
+            if claim is None or not active:
+                continue
+            if claim.get("disposition", {}).get("status") in _INACTIVE_CLAIM:
+                issues.append(Issue(wid, f"active work traces to inactive claim {ref}", "stale_scope"))
+
+    # A criterion's claims must be within its parent's traced scope.
+    for acid, crit in criteria.items():
+        parent = items.get(crit.get("parent", ""))
+        if parent is None:
+            continue
+        outside = set(crit.get("claim_refs", [])) - set(parent.get("claim_refs", []))
+        if outside:
+            issues.append(
+                Issue(acid, f"criterion traces claims absent from parent: {sorted(outside)}", "trace_scope")
+            )
+
+    # Supersession must be recorded on both the decision and the claim.
+    for did, dec in decisions.items():
+        for ref in dec.get("supersedes_claims", []):
+            claim = claims.get(ref)
+            if claim is None:
+                continue
+            temporal = claim.get("temporal", {})
+            if did not in temporal.get("superseded_by", []) or temporal.get("status") != "superseded":
+                issues.append(
+                    Issue(did, f"claim {ref} does not record supersession by {did}", "supersession")
+                )
+            if dec.get("status") != "approved":
+                issues.append(Issue(did, "only approved decisions may supersede claims", "supersession"))
+    for cid, claim in claims.items():
+        for ref in claim.get("temporal", {}).get("superseded_by", []):
+            dec = decisions.get(ref)
+            if dec is not None and cid not in dec.get("supersedes_claims", []):
+                issues.append(Issue(cid, f"decision {ref} does not list this claim", "supersession"))
+
+    # Relations: no duplicate typed edges.
+    seen: set[tuple[str, str, str]] = set()
+    for rel in relations:
+        target = rel.get("target")
+        key = (str(rel.get("type")), str(rel.get("source")), str(target) if isinstance(target, str) else "")
+        if isinstance(target, str) and key in seen:
+            issues.append(Issue(str(rel.get("id")), "duplicate relation edge", "duplicate_relation"))
+        seen.add(key)
     return issues
