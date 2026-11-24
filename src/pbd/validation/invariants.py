@@ -226,10 +226,10 @@ def _reciprocity(
             w.get("status") not in _INACTIVE_WORK and (w.get("temporal") or {}).get("status") != "superseded"
         )
         for ref in w.get("claim_refs", []):
-            claim = claims.get(ref)
-            if claim is None or not active:
+            traced = claims.get(ref)
+            if traced is None or not active:
                 continue
-            if claim.get("disposition", {}).get("status") in _INACTIVE_CLAIM:
+            if traced.get("disposition", {}).get("status") in _INACTIVE_CLAIM:
                 issues.append(Issue(wid, f"active work traces to inactive claim {ref}", "stale_scope"))
 
     # A criterion's claims must be within its parent's traced scope.
@@ -246,10 +246,10 @@ def _reciprocity(
     # Supersession must be recorded on both the decision and the claim.
     for did, dec in decisions.items():
         for ref in dec.get("supersedes_claims", []):
-            claim = claims.get(ref)
-            if claim is None:
+            superseded = claims.get(ref)
+            if superseded is None:
                 continue
-            temporal = claim.get("temporal", {})
+            temporal = superseded.get("temporal", {})
             if did not in temporal.get("superseded_by", []) or temporal.get("status") != "superseded":
                 issues.append(
                     Issue(did, f"claim {ref} does not record supersession by {did}", "supersession")
@@ -258,8 +258,8 @@ def _reciprocity(
                 issues.append(Issue(did, "only approved decisions may supersede claims", "supersession"))
     for cid, claim in claims.items():
         for ref in claim.get("temporal", {}).get("superseded_by", []):
-            dec = decisions.get(ref)
-            if dec is not None and cid not in dec.get("supersedes_claims", []):
+            decision = decisions.get(ref)
+            if decision is not None and cid not in decision.get("supersedes_claims", []):
                 issues.append(Issue(cid, f"decision {ref} does not list this claim", "supersession"))
 
     # Relations: no duplicate typed edges.

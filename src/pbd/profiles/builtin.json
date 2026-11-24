@@ -1,0 +1,66 @@
+{
+  "description": "Default process profiles. They are starting points, not truth: field availability must be discovered from the actual target before any publication. 'verified': false marks mappings that have not been confirmed against a live process.",
+  "profiles": [
+    {
+      "id": "generic",
+      "name": "Generic (tracker-neutral)",
+      "tracker": "none",
+      "types": {"epic": "Epic", "feature": "Feature", "story": "User Story", "enabler": "Enabler", "spike": "Spike", "bug": "Bug", "task": "Task"},
+      "fields": {"title": "title", "description": "description", "acceptance": "acceptance_criteria", "priority": "priority", "story_points": "story_points", "original_estimate": "original_estimate", "activity": "activity", "tags": "tags", "risk": "risk", "business_value": "business_value", "time_criticality": "time_criticality", "value_area": "value_area"},
+      "acceptance_types": ["feature", "story", "enabler", "spike", "bug"],
+      "estimate_field": {"story": "story_points", "enabler": "story_points", "spike": "story_points", "task": "original_estimate"},
+      "activities": ["Requirements", "Design", "Development", "Testing", "Documentation", "Deployment"],
+      "verified": true
+    },
+    {
+      "id": "azure-agile",
+      "name": "Azure DevOps — Agile process (defaults)",
+      "tracker": "azure-devops",
+      "types": {"epic": "Epic", "feature": "Feature", "story": "User Story", "enabler": "User Story", "spike": "User Story", "bug": "Bug", "task": "Task"},
+      "type_tags": {"enabler": "enabler", "spike": "spike"},
+      "fields": {"title": "System.Title", "description": "System.Description", "acceptance": "Microsoft.VSTS.Common.AcceptanceCriteria", "priority": "Microsoft.VSTS.Common.Priority", "story_points": "Microsoft.VSTS.Scheduling.StoryPoints", "original_estimate": "Microsoft.VSTS.Scheduling.OriginalEstimate", "activity": "Microsoft.VSTS.Common.Activity", "tags": "System.Tags", "risk": "Microsoft.VSTS.Common.Risk", "business_value": "Microsoft.VSTS.Common.BusinessValue", "time_criticality": "Microsoft.VSTS.Common.TimeCriticality", "value_area": "Microsoft.VSTS.Common.ValueArea"},
+      "acceptance_types": ["story", "enabler", "spike"],
+      "estimate_field": {"story": "story_points", "enabler": "story_points", "spike": "story_points", "task": "original_estimate"},
+      "activities": ["Deployment", "Design", "Development", "Documentation", "Requirements", "Testing"],
+      "verified": false
+    },
+    {
+      "id": "azure-scrum",
+      "name": "Azure DevOps — Scrum process (defaults)",
+      "tracker": "azure-devops",
+      "types": {"epic": "Epic", "feature": "Feature", "story": "Product Backlog Item", "enabler": "Product Backlog Item", "spike": "Product Backlog Item", "bug": "Bug", "task": "Task"},
+      "type_tags": {"enabler": "enabler", "spike": "spike"},
+      "fields": {"title": "System.Title", "description": "System.Description", "acceptance": "Microsoft.VSTS.Common.AcceptanceCriteria", "priority": "Microsoft.VSTS.Common.BacklogPriority", "story_points": "Microsoft.VSTS.Scheduling.Effort", "original_estimate": "Microsoft.VSTS.Scheduling.RemainingWork", "activity": "Microsoft.VSTS.Common.Activity", "tags": "System.Tags", "business_value": "Microsoft.VSTS.Common.BusinessValue", "time_criticality": "Microsoft.VSTS.Common.TimeCriticality", "value_area": "Microsoft.VSTS.Common.ValueArea"},
+      "acceptance_types": ["story", "enabler", "spike", "bug"],
+      "estimate_field": {"story": "story_points", "enabler": "story_points", "spike": "story_points", "task": "original_estimate"},
+      "activities": ["Deployment", "Design", "Development", "Documentation", "Requirements", "Testing"],
+      "verified": false
+    },
+    {
+      "id": "azure-basic",
+      "name": "Azure DevOps — Basic process (defaults)",
+      "tracker": "azure-devops",
+      "types": {"epic": "Epic", "feature": null, "story": "Issue", "enabler": "Issue", "spike": "Issue", "bug": "Issue", "task": "Task"},
+      "type_tags": {"enabler": "enabler", "spike": "spike", "bug": "bug"},
+      "fields": {"title": "System.Title", "description": "System.Description", "acceptance": null, "priority": "Microsoft.VSTS.Common.Priority", "story_points": "Microsoft.VSTS.Scheduling.Effort", "original_estimate": "Microsoft.VSTS.Scheduling.RemainingWork", "activity": "Microsoft.VSTS.Common.Activity", "tags": "System.Tags"},
+      "acceptance_types": [],
+      "estimate_field": {"story": "story_points", "enabler": "story_points", "spike": "story_points", "task": "original_estimate"},
+      "activities": ["Deployment", "Design", "Development", "Documentation", "Requirements", "Testing"],
+      "verified": false,
+      "limitations": ["Basic has no Feature level: features cannot be represented without restructuring.", "No separate acceptance field assumed: criteria are appended to the description under a heading until discovery confirms a field."]
+    },
+    {
+      "id": "azure-cmmi",
+      "name": "Azure DevOps — CMMI process (defaults)",
+      "tracker": "azure-devops",
+      "types": {"epic": "Epic", "feature": "Feature", "story": "Requirement", "enabler": "Requirement", "spike": "Requirement", "bug": "Bug", "task": "Task"},
+      "type_tags": {"enabler": "enabler", "spike": "spike"},
+      "fields": {"title": "System.Title", "description": "System.Description", "acceptance": null, "priority": "Microsoft.VSTS.Common.Priority", "story_points": "Microsoft.VSTS.Scheduling.Size", "original_estimate": "Microsoft.VSTS.Scheduling.OriginalEstimate", "activity": "Microsoft.VSTS.Common.Discipline", "tags": "System.Tags", "risk": "Microsoft.VSTS.Common.Risk", "time_criticality": "Microsoft.VSTS.Common.TimeCriticality", "value_area": "Microsoft.VSTS.Common.ValueArea"},
+      "acceptance_types": [],
+      "estimate_field": {"story": "story_points", "enabler": "story_points", "spike": "story_points", "task": "original_estimate"},
+      "activities": ["Analysis", "Development", "Test", "User Education", "User Experience"],
+      "verified": false,
+      "limitations": ["Acceptance criteria field for Requirement not assumed: criteria are appended to the description until discovery confirms a field."]
+    }
+  ]
+}

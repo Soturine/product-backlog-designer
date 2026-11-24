@@ -92,6 +92,14 @@
         "native_type": {"type": "string", "description": "Profile-specific type name, e.g. 'User Story' or 'Product Backlog Item'."},
         "title": {"$ref": "urn:pbd:schema:v1:defs#/$defs/nonEmpty"},
         "description": {"$ref": "urn:pbd:schema:v1:defs#/$defs/richText"},
+        "content": {
+          "description": "Structured parts written by the agent; the native description is rendered from them.",
+          "type": "object",
+          "required": ["kind"],
+          "properties": {"kind": {"enum": ["epic", "feature", "role_goal_benefit", "job_story", "enabler", "spike", "task", "bug"]}},
+          "additionalProperties": {"anyOf": [{"type": "string", "minLength": 1}, {"type": "array", "items": {"type": "string", "minLength": 1}}]}
+        },
+        "acceptance_style": {"enum": ["list", "table", "gherkin"]},
         "story_format": {"enum": ["role_goal_benefit", "job_story", "enabler", "spike", "other"]},
         "parent": {"oneOf": [{"type": "null"}, {"$ref": "urn:pbd:schema:v1:defs#/$defs/itemId"}]},
         "claim_refs": {"type": "array", "uniqueItems": true, "items": {"$ref": "urn:pbd:schema:v1:defs#/$defs/claimId"}},
@@ -133,6 +141,7 @@
         "visible_id": {"type": "string", "description": "Imported human-visible ID, preserved verbatim."},
         "order": {"type": "integer", "minimum": 0, "description": "Presentation order only; never identity."},
         "style": {"enum": ["list", "table", "gherkin", "ears", "prose", "decision_table", "state_transition"]},
+        "text": {"type": "string", "minLength": 1, "description": "Human-readable criterion statement (list/prose rendering)."},
         "condition": {"type": "string"},
         "trigger": {"type": "string"},
         "expected_outcomes": {"type": "array", "minItems": 1, "items": {"$ref": "urn:pbd:schema:v1:defs#/$defs/nonEmpty"}},
