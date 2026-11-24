@@ -39,13 +39,13 @@ GATES: tuple[GateSpec, ...] = (
     GateSpec("G09", "Scope Integrity", "semantic"),
     GateSpec("G10", "Planning Integrity", "mixed"),
     GateSpec("G11", "Artifact Integrity", "deterministic"),
-    GateSpec("G12", "Publication Safety", "mixed"),
-    GateSpec("G13", "Independent Review", "semantic", coverage=True),
+    GateSpec("G12", "Publication Safety", "deterministic"),
+    GateSpec("G13", "Independent Review", "semantic"),
     GateSpec("G14", "Semantic Duplication", "semantic"),
     GateSpec("G15", "Change Safety", "mixed"),
-    GateSpec("G16", "Privacy and Offline Boundary", "mixed"),
+    GateSpec("G16", "Privacy and Offline Boundary", "deterministic"),
     GateSpec("G17", "Target Compatibility", "mixed"),
-    GateSpec("G18", "Round-trip Fidelity", "mixed"),
+    GateSpec("G18", "Round-trip Fidelity", "deterministic"),
 )
 GATE_BY_ID = {g.id: g for g in GATES}
 INDEPENDENT_PROVENANCE = {"independent_inventory", "benchmark_gold"}

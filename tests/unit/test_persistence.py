@@ -72,7 +72,16 @@ def test_journal_detects_reorder_and_torn_line(tmp_path: Path) -> None:
 
 
 def _complete_chain(state: RunState) -> None:
-    for name in ["inventory", "reading", "claims", "design", "independent_review", "gates", "render"]:
+    for name in [
+        "inventory",
+        "reading",
+        "claims",
+        "design",
+        "independent_review",
+        "checks",
+        "gates",
+        "render",
+    ]:
         state.complete(name, D1, D2)
 
 
@@ -98,7 +107,7 @@ def test_changed_output_invalidates_transitive_dependents(tmp_path: Path) -> Non
     _complete_chain(state)
     assert state.complete("reading", D1, D2) == []  # same output: nothing invalidated
     invalidated = state.complete("reading", D1, D3)
-    assert set(invalidated) == {"claims", "design", "independent_review", "gates", "render"}
+    assert set(invalidated) == {"claims", "design", "independent_review", "checks", "gates", "render"}
     assert state.stage("inventory")["status"] == "complete"
     reloaded = RunState.load(tmp_path)
     assert reloaded.stage("render")["status"] == "invalidated"

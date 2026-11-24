@@ -53,7 +53,7 @@ def _setup(tmp_path: Path, stage_status: str = "complete") -> tuple[dict[str, An
         "run_id": RUN,
         "gates": [
             {"id": "G03", "status": "PASS", "evidence": [det]},
-            {"id": "G13", "status": "PASS", "evidence": [rev], "denominator": den},
+            {"id": "G02", "status": "PASS", "evidence": [rev], "denominator": den},
             {"id": "G05", "status": "PASS", "evidence": []},
             {"id": "G09", "status": "NOT_RUN", "evidence": []},
         ],
@@ -69,7 +69,7 @@ def test_bound_evidence_is_verified(tmp_path: Path) -> None:
     report, manifest = _setup(tmp_path)
     out, issues = verify_gate_report(report, manifest, tmp_path)
     assert issues == []
-    assert _status(out, "G03") == "verified" and _status(out, "G13") == "verified"
+    assert _status(out, "G03") == "verified" and _status(out, "G02") == "verified"
     assert _status(out, "G05") == "declared"  # no bound evidence: only declared, never verified
     assert _status(out, "G09") is None
     assert "verification" not in report["gates"][0]  # input not mutated
@@ -105,7 +105,7 @@ def test_evidence_from_other_run(tmp_path: Path) -> None:
 def test_evidence_from_non_complete_stage(tmp_path: Path, status: str) -> None:
     report, manifest = _setup(tmp_path, stage_status=status)
     out, issues = verify_gate_report(report, manifest, tmp_path)
-    assert _status(out, "G13") == "failed" and "stage_invalid" in {i.code for i in issues}
+    assert _status(out, "G02") == "failed" and "stage_invalid" in {i.code for i in issues}
 
 
 def test_unregistered_artifact_and_escape(tmp_path: Path) -> None:
@@ -123,4 +123,4 @@ def test_denominator_inventory_must_match(tmp_path: Path) -> None:
     report, manifest = _setup(tmp_path)
     report["gates"][1]["denominator"]["inventory_digest"] = "sha256:" + "f" * 64
     out, issues = verify_gate_report(report, manifest, tmp_path)
-    assert _status(out, "G13") == "failed" and "evidence_stale" in {i.code for i in issues}
+    assert _status(out, "G02") == "failed" and "evidence_stale" in {i.code for i in issues}

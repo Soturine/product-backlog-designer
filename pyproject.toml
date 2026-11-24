@@ -40,6 +40,7 @@ ignore = ["S101", "RUF001", "RUF002", "RUF003"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["S", "B017"]
+"src/pbd/render/report_html.py" = ["E501"]  # embedded HTML/CSS/JS template text
 
 [tool.mypy]
 python_version = "3.11"

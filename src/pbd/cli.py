@@ -171,6 +171,83 @@ def cmd_privacy(args: argparse.Namespace) -> int:
     return EXIT_OK if not findings else EXIT_INVALID
 
 
+def _out_root(args: argparse.Namespace) -> Path:
+    return Path(args.out)
+
+
+def cmd_start(args: argparse.Namespace) -> int:
+    from pbd.pipeline.run import RunError, normalize_request, start
+
+    try:
+        request = normalize_request(
+            mode="generate",
+            levels=args.levels.split(",") if args.levels else None,
+            language=args.language,
+            profile=args.profile,
+            formats=args.formats.split(",") if args.formats else None,
+            title=args.title,
+            acceptance_style=args.acceptance_style,
+            synthetic=args.synthetic,
+        )
+        run = start(_out_root(args), Path(args.workspace), args.source, request, host=doctor()["host"])
+    except (RunError, ScopeError, ValueError) as exc:
+        print(f"refused: {exc}", file=sys.stderr)
+        return EXIT_REFUSED
+    _emit({"run_id": run.run_id, "run_dir": str(run.dir), "work_order": str(run.path("work-order.json"))})
+    return EXIT_OK
+
+
+def cmd_submit(args: argparse.Namespace) -> int:
+    from pbd.pipeline.design import submit_claims, submit_design
+    from pbd.pipeline.reading import submit_ledger
+    from pbd.pipeline.review import submit_review
+    from pbd.pipeline.run import RunError, current
+
+    handlers = {
+        "reading": submit_ledger,
+        "claims": submit_claims,
+        "design": submit_design,
+        "review": submit_review,
+    }
+    try:
+        run = current(_out_root(args), args.run_id)
+        payload = load_json_file(Path(args.file))
+        result = handlers[args.stage](run, payload)
+    except RunError as exc:
+        _emit({"accepted": False, "errors": exc.errors})
+        return EXIT_INVALID
+    except (OSError, ValueError, CanonicalError) as exc:
+        _emit({"accepted": False, "errors": [f"unreadable payload: {exc}"]})
+        return EXIT_INVALID
+    _emit({"accepted": True, **result, "work_order": str(run.path("work-order.json"))})
+    return EXIT_OK
+
+
+def cmd_finalize(args: argparse.Namespace) -> int:
+    from pbd.pipeline.finalize import finalize
+    from pbd.pipeline.run import RunError, current
+
+    try:
+        result = finalize(current(_out_root(args), args.run_id))
+    except RunError as exc:
+        _emit({"finalized": False, "errors": exc.errors})
+        return EXIT_INVALID
+    _emit({"finalized": True, **result})
+    return EXIT_OK
+
+
+def cmd_work_order(args: argparse.Namespace) -> int:
+    from pbd.pipeline.run import RunError, current
+
+    try:
+        run = current(_out_root(args), args.run_id)
+    except RunError as exc:
+        print(str(exc), file=sys.stderr)
+        return EXIT_INVALID
+    _emit(run.write_work_order())
+    return EXIT_OK
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="pbd",
@@ -228,6 +305,50 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("paths", nargs="+")
     p.add_argument("--root", default=".")
     p.set_defaults(func=cmd_privacy)
+
+    p = sub.add_parser(
+        "start", help="start an agent-led generation run (inventory, extraction, reader assignments)"
+    )
+    p.add_argument("--workspace", default=".", help="authorized workspace root")
+    p.add_argument(
+        "--source",
+        action="append",
+        required=True,
+        type=_parse_selection,
+        metavar="SELECTOR[=AUTHORITY]",
+        help="one logical source per declared file/directory/archive",
+    )
+    p.add_argument("--out", default="pbd-output", help="artifact root (default pbd-output)")
+    p.add_argument(
+        "--levels", help="comma list: epics,features,stories,acceptance,tasks,dependencies (default all)"
+    )
+    p.add_argument("--language", default="pt-BR")
+    p.add_argument(
+        "--profile",
+        default="generic",
+        help="generic, azure-agile, azure-scrum, azure-basic, azure-cmmi or a custom profile JSON file",
+    )
+    p.add_argument("--formats", help="comma list: html,json,md,csv,xlsx,mermaid,azure (html,json always)")
+    p.add_argument("--acceptance-style", default="list", choices=["list", "table", "gherkin"])
+    p.add_argument("--title")
+    p.add_argument("--synthetic", action="store_true")
+    p.set_defaults(func=cmd_start)
+
+    for name, func, helptext in (
+        ("finalize", cmd_finalize, "checks, verified gates, projections, exports and report.html"),
+        ("work-order", cmd_work_order, "print the current work order (what the agent must do next)"),
+    ):
+        p = sub.add_parser(name, help=helptext)
+        p.add_argument("--out", default="pbd-output")
+        p.add_argument("--run-id")
+        p.set_defaults(func=func)
+
+    p = sub.add_parser("submit", help="submit an agent stage payload (all-or-nothing validation)")
+    p.add_argument("stage", choices=["reading", "claims", "design", "review"])
+    p.add_argument("--file", required=True)
+    p.add_argument("--out", default="pbd-output")
+    p.add_argument("--run-id")
+    p.set_defaults(func=cmd_submit)
     return parser
 
 

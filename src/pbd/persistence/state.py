@@ -25,7 +25,8 @@ DEFAULT_STAGES: tuple[tuple[str, tuple[str, ...]], ...] = (
     ("claims", ("reading",)),
     ("design", ("claims",)),
     ("independent_review", ("design", "reading")),
-    ("gates", ("independent_review", "design")),
+    ("checks", ("independent_review", "design")),
+    ("gates", ("checks", "independent_review")),
     ("render", ("gates", "design")),
 )
 

@@ -28,7 +28,8 @@ def test_documented_gate_kinds_match_registry() -> None:
     kinds = dict(re.findall(r"^\| (G\d\d) [^|]+\|[^|]+\| ([a-z/]+) \|", doc, flags=re.MULTILINE))
     for gate in GATES:
         documented = kinds[gate.id]
-        expected = "mixed" if "/" in documented else documented
+        # "deterministic/mixed": deterministic evidence is mandatory, review applies where relevant.
+        expected = "deterministic" if documented == "deterministic/mixed" else documented
         assert gate.kind == expected, gate.id
 
 
