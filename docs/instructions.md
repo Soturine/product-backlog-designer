@@ -1,6 +1,6 @@
 # User instructions template
 
-Copy this file into a private working directory and edit in natural language. Headings are not mandatory.
+Optional: copy this file into a private working directory and edit in natural language. Headings are not mandatory. The same instructions may be supplied directly in chat; do not require a file or separate commands. See [usage](usage.md).
 
 ## Sources
 - docs/PRD.pdf — functional authority

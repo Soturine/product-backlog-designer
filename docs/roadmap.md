@@ -16,3 +16,6 @@ Prioritize M0–M3 for usable workflow. No release or maturity claim without exi
 
 ## Cross-cutting acceptance
 All milestones maintain privacy, backward-compatible contracts or migration notes, documentation hyperlinks, changelog, test evidence and no fake metrics. Scope expansion requires explicit decisions. See [benchmark protocol](../benchmarks/README.md).
+
+## Reuse and user experience checkpoints
+M0: pinned upstream adoption decisions and license review, one-entrypoint intent router and canonical contract. M1: one-request end-to-end generation, default JSON + offline two-layer HTML, local Azure package contract and synthetic report tests. M2: full individual audit, not just aggregated findings; independent source review and UX tests. M3: approved CLI-friendly publication and remote read-back, manual CSV fallback with disclosed fidelity. M4–M6: incremental enhancements without increasing mandatory user interaction. See [upstream code audit](upstream-code-audit.md), [usage](usage.md), [reporting](reporting.md), [coverage crosswalk](coverage-crosswalk.md).

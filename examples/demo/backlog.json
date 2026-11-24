@@ -1,0 +1,146 @@
+{
+  "schema_version": "demo-0",
+  "kind": "synthetic_design_demo",
+  "status": "not_a_runtime_result",
+  "language": "pt-BR",
+  "sources": [
+    {
+      "id": "SRC-1",
+      "name": "Biblioteca fictícia",
+      "claims": [
+        {
+          "id": "R1",
+          "text": "Um membro pode reservar um título com cópia disponível."
+        },
+        {
+          "id": "R2",
+          "text": "Título sem cópia disponível não pode gerar reserva."
+        },
+        {
+          "id": "R3",
+          "text": "Uma reserva registrada aparece na lista do membro."
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "EP-1",
+      "type": "Epic",
+      "title": "Reserva de livros",
+      "description": "Organizar o acesso a livros por meio de reservas.",
+      "parent": null,
+      "claims": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "id": "FE-1",
+      "type": "Feature",
+      "title": "Reservar e consultar títulos",
+      "description": "Permitir reserva de títulos disponíveis e consulta das reservas.",
+      "parent": "EP-1",
+      "claims": [
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "id": "US-1",
+      "type": "User Story",
+      "title": "Reservar um livro",
+      "description": "Eu como membro, gostaria que o sistema permitisse reservar um título disponível, para retirá-lo depois.",
+      "parent": "FE-1",
+      "claims": [
+        "R1",
+        "R2"
+      ],
+      "criteria": [
+        {
+          "id": "AC-1",
+          "text": "Uma solicitação para título disponível registra uma reserva.",
+          "claim": "R1"
+        },
+        {
+          "id": "AC-2",
+          "text": "Uma solicitação para título indisponível não cria reserva.",
+          "claim": "R2"
+        }
+      ]
+    },
+    {
+      "id": "US-2",
+      "type": "User Story",
+      "title": "Consultar minhas reservas",
+      "description": "Eu como membro, gostaria que minhas reservas aparecessem em uma lista, para acompanhar os pedidos.",
+      "parent": "FE-1",
+      "claims": [
+        "R3"
+      ],
+      "criteria": [
+        {
+          "id": "AC-3",
+          "text": "Uma reserva registrada aparece na lista do membro.",
+          "claim": "R3"
+        }
+      ]
+    },
+    {
+      "id": "TK-1",
+      "type": "Task",
+      "title": "Implementar validação de disponibilidade",
+      "description": "Validar a disponibilidade antes de registrar a reserva.",
+      "parent": "US-1",
+      "claims": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "id": "TK-2",
+      "type": "Task",
+      "title": "Verificar disponibilidade e rejeição",
+      "description": "Verificar os dois resultados definidos nos critérios.",
+      "parent": "US-1",
+      "claims": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "id": "TK-3",
+      "type": "Task",
+      "title": "Implementar consulta das reservas",
+      "description": "Disponibilizar as reservas do membro para consulta.",
+      "parent": "US-2",
+      "claims": [
+        "R3"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q1",
+      "text": "Por quanto tempo uma reserva permanece válida?",
+      "status": "QUESTION_REQUIRED",
+      "reason": "A fonte fictícia não define duração."
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "classification": "hypothetical comparison",
+      "expected": "Título sem cópia disponível não cria reserva (R2).",
+      "actual": "Em um backlog alternativo fictício, só o fluxo de sucesso aparece.",
+      "impact": "Uma reserva inválida poderia não ser considerada no planejamento.",
+      "recommendation": "Adicionar critério de rejeição e trabalho correspondente."
+    }
+  ],
+  "gates": {
+    "status": "NOT_RUN",
+    "note": "Demonstração visual; nenhuma auditoria automatizada executada."
+  }
+}

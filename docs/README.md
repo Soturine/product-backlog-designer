@@ -19,3 +19,10 @@
 - [Technical tasks and planning](planning-engineering.md)
 - [Research references](research-references.md)
 - [Story-quality benchmark cases](../benchmarks/story-quality.md)
+
+## Product experience and reuse
+- [One-skill usage](usage.md)
+- [Report and artifact specification](reporting.md)
+- [Upstream implementation audit and reuse strategy](upstream-code-audit.md)
+- [Design coverage crosswalk](coverage-crosswalk.md)
+- [Synthetic dashboard](../examples/demo/report.html)
