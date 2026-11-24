@@ -21,3 +21,5 @@ Every gate records status PASS, FAIL, BLOCKED, NOT_RUN or NOT_APPLICABLE, scope,
 INVEST: Independent, Negotiable, Valuable, Estimable, Small, Testable. Record reason per dimension; no arbitrary score threshold. A source coverage denominator cannot be derived solely from generated claims; use independent inventory and benchmark gold. Report raw counts and uncertainty. Do not mark missing semantic review as passed. Critical unresolved conflicts block affected publication. Review source obligations, every work item and every acceptance criterion individually, with explicit coverage and rationale.
 
 See [benchmark protocol](../benchmarks/README.md).
+
+G05 uses [story engineering rubric](story-engineering.md); G06 uses [acceptance engineering rubric](acceptance-engineering.md); G07/G10 use [planning guidance](planning-engineering.md). Lexical warnings are not confirmed semantic violations. Include reviewer disposition and source locator for each item and criterion. See [targeted evaluation](../benchmarks/story-quality.md).

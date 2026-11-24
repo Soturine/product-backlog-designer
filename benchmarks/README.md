@@ -16,3 +16,6 @@ Remove gold obligation, drop criterion, invert rule, duplicate Story, orphan Tas
 
 ## Qualification
 Report raw outputs and hashes, per-case metrics, reviewer rationale and disagreement, failures/skips and comparison limitations. Pre-register thresholds per benchmark before running; deterministic integrity and safe publication invariants must pass. No fabricated scores or claimed superiority. Use [Assertiva](https://github.com/Soturine/Assertiva) and [Derivanta](https://github.com/Soturine/derivanta) when compatible; record real versions and results. [Roadmap](../docs/roadmap.md).
+
+## Targeted story-quality evaluations
+See [story and acceptance cases](story-quality.md) for planned hybrid-vs-rule-only-vs-agent-only evaluation and false-positive controls.

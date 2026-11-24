@@ -5,3 +5,5 @@
 - Specify native rich text, field provenance, profiles and Azure export/publication contracts.
 - Document market references, benchmarks, synthetic fixture and implementation roadmap.
 - No runtime, remote adapter, benchmark results or release claimed.
+
+- Expand story and acceptance engineering, task planning, research bibliography and evaluation scenarios; specify mode-specific agent procedures.

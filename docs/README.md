@@ -12,3 +12,10 @@
 - [Roadmap](roadmap.md): milestones and exit criteria.
 - [Benchmarks](../benchmarks/README.md): reproducible qualification.
 - [Example](../examples/order-management.md): entirely synthetic.
+
+## Detailed engineering playbooks
+- [Story engineering](story-engineering.md)
+- [Acceptance engineering](acceptance-engineering.md)
+- [Technical tasks and planning](planning-engineering.md)
+- [Research references](research-references.md)
+- [Story-quality benchmark cases](../benchmarks/story-quality.md)

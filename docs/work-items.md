@@ -32,3 +32,6 @@ Unset, unknown, inferred, proposed, confirmed, server-managed and not-applicable
 Generic; Azure Agile (Epic/Feature/User Story/Task), Scrum (PBI), CMMI (Requirement), Basic (Epic/Issue/Task), custom, GitHub and Jira (future). Discover actual types and hierarchy; profile is a default, not truth. Profile includes language, title patterns, HTML style, field mappings, allowed states/activities, estimation scale, priority, hierarchy, DoR/DoD and output formats. A profile learned from existing backlog requires approval and cannot override requirements or reproduce errors.
 
 See [synthetic example](../examples/order-management.md) and [Azure adapter](azure.md).
+
+## Detailed guidance
+Apply [story engineering](story-engineering.md), [acceptance engineering](acceptance-engineering.md) and [planning](planning-engineering.md) for quality review and generation. Formatting conformance is not semantic quality.

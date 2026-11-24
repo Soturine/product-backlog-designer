@@ -1,3 +1,7 @@
 # /pbd-azure-verify
 
-Design-stage agent entrypoint. Follow [SKILL](../SKILL.md), [command contract](../docs/commands.md) and [quality gates](../docs/quality-gates.md). Follow [Azure safety protocol](../docs/azure.md); no remote writes without exact plan approval. Do not claim an unavailable runtime command has executed.
+Design-stage agent procedure; the runtime CLI is not implemented. Follow [SKILL](../SKILL.md), [commands](../docs/commands.md) and [quality gates](../docs/quality-gates.md).
+
+Read target after approved apply; compare expected fields, normalized rich text, real IDs, parent/child and dependency links. Report mismatches and partial failures; no repair without new approved plan.
+
+Follow [Azure safety protocol](../docs/azure.md). Use only authorized inputs and disclose unexecuted checks.
