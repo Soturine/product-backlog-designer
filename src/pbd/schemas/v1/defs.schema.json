@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:pbd:schema:v1:defs",
+  "title": "PBD shared definitions v1",
+  "$defs": {
+    "schemaVersion": {"type": "string", "pattern": "^1\\.[0-9]+\\.[0-9]+$"},
+    "digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "timestamp": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$"},
+    "nonEmpty": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "pbdId": {"type": "string", "pattern": "^PBD-(AC|BUG|CLM|DEC|ENAB|EPIC|FEAT|FND|OP|PLAN|Q|RCPT|REL|RUN|SPIKE|SRC|STORY|TASK)-[0-9A-HJKMNP-TV-Z]{12}$"},
+    "sourceId": {"type": "string", "pattern": "^PBD-SRC-[0-9A-HJKMNP-TV-Z]{12}$"},
+    "claimId": {"type": "string", "pattern": "^PBD-CLM-[0-9A-HJKMNP-TV-Z]{12}$"},
+    "itemId": {"type": "string", "pattern": "^PBD-(EPIC|FEAT|STORY|ENAB|SPIKE|BUG|TASK)-[0-9A-HJKMNP-TV-Z]{12}$"},
+    "criterionId": {"type": "string", "pattern": "^PBD-AC-[0-9A-HJKMNP-TV-Z]{12}$"},
+    "questionId": {"type": "string", "pattern": "^PBD-Q-[0-9A-HJKMNP-TV-Z]{12}$"},
+    "decisionId": {"type": "string", "pattern": "^PBD-DEC-[0-9A-HJKMNP-TV-Z]{12}$"},
+    "gateId": {"type": "string", "pattern": "^G(0[1-9]|1[0-8])$"},
+    "uniqueIds": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/pbdId"}},
+
+    "locator": {
+      "description": "Precise position inside a specific source version. At least one positional field is required.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "source_version"],
+      "anyOf": [
+        {"required": ["page"]}, {"required": ["section"]}, {"required": ["path"]},
+        {"required": ["line_start"]}, {"required": ["table"]}, {"required": ["anchor"]}
+      ],
+      "properties": {
+        "source_id": {"$ref": "#/$defs/sourceId"},
+        "source_version": {"$ref": "#/$defs/nonEmpty"},
+        "member": {"type": "string", "description": "Member path inside a directory/archive source."},
+        "path": {"type": "string"},
+        "page": {"type": "integer", "minimum": 1},
+        "section": {"type": "string"},
+        "table": {"type": "string"},
+        "row": {"type": "integer", "minimum": 0},
+        "column": {"type": "string"},
+        "line_start": {"type": "integer", "minimum": 1},
+        "line_end": {"type": "integer", "minimum": 1},
+        "anchor": {"type": "string"},
+        "quote_digest": {"$ref": "#/$defs/digest"}
+      }
+    },
+
+    "evidence": {
+      "description": "Typed evidence. Different evidence types are never interchangeable (e.g. a test plan is not an executed test).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {"enum": ["source_locator", "decision", "review", "deterministic_check", "tracker_snapshot", "code_observation", "test_plan", "executed_test", "user_statement"]},
+        "locator": {"$ref": "#/$defs/locator"},
+        "ref": {"type": "string"},
+        "summary": {"type": "string"},
+        "recorded_at": {"$ref": "#/$defs/timestamp"},
+        "digest": {"$ref": "#/$defs/digest"}
+      },
+      "allOf": [
+        {"if": {"properties": {"type": {"const": "source_locator"}}}, "then": {"required": ["locator"]}},
+        {"if": {"properties": {"type": {"enum": ["decision", "review", "deterministic_check", "tracker_snapshot", "executed_test"]}}}, "then": {"required": ["ref"]}}
+      ]
+    },
+
+    "uncertainty": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level"],
+      "properties": {
+        "level": {"enum": ["confirmed", "inferred", "proposed", "ambiguous", "unknown", "conflicting"]},
+        "note": {"type": "string"}
+      }
+    },
+
+    "fieldValue": {
+      "description": "Field with provenance. 'unset', 'unknown', 'not_applicable' and zero are distinct; only states that carry a value may include one.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state"],
+      "properties": {
+        "state": {"enum": ["unset", "unknown", "inferred", "proposed", "confirmed", "server_managed", "not_applicable", "unavailable"]},
+        "value": {},
+        "unit": {"type": "string"},
+        "scale": {"type": "string"},
+        "rationale": {"type": "string"},
+        "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidence"}},
+        "review_status": {"enum": ["unreviewed", "accepted", "rejected", "changed"]}
+      },
+      "allOf": [
+        {"if": {"properties": {"state": {"enum": ["unset", "unknown", "not_applicable", "unavailable"]}}}, "then": {"not": {"required": ["value"]}}},
+        {"if": {"properties": {"state": {"enum": ["inferred", "proposed", "confirmed"]}}}, "then": {"required": ["value"]}},
+        {"if": {"properties": {"state": {"enum": ["inferred", "proposed"]}}}, "then": {"required": ["rationale"]}},
+        {"if": {"properties": {"state": {"const": "confirmed"}}}, "then": {"required": ["evidence"], "properties": {"evidence": {"minItems": 1}}}}
+      ]
+    },
+
+    "richText": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["format", "value"],
+      "properties": {
+        "format": {"enum": ["html", "markdown", "text"]},
+        "value": {"type": "string"},
+        "language": {"type": "string", "pattern": "^[a-z]{2,3}(-[A-Z]{2})?$"}
+      }
+    },
+
+    "externalRef": {
+      "description": "Native tracker identity; separate namespace from PBD IDs.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system", "namespace", "native_id"],
+      "properties": {
+        "system": {"$ref": "#/$defs/nonEmpty"},
+        "namespace": {"$ref": "#/$defs/nonEmpty"},
+        "native_id": {"type": "string", "minLength": 1, "not": {"pattern": "^PBD-"}},
+        "revision": {"type": "integer", "minimum": 0},
+        "verified": {"type": "boolean"},
+        "observed_at": {"$ref": "#/$defs/timestamp"}
+      }
+    },
+
+    "temporal": {
+      "description": "Effective version and explicit supersession edges.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": {"enum": ["effective", "superseded", "withdrawn", "historical"]},
+        "effective_version": {"type": "string"},
+        "supersedes": {"$ref": "#/$defs/uniqueIds"},
+        "superseded_by": {"$ref": "#/$defs/uniqueIds"},
+        "superseded_reason": {"type": "string"}
+      },
+      "allOf": [
+        {"if": {"properties": {"status": {"const": "superseded"}}}, "then": {"required": ["superseded_by"], "properties": {"superseded_by": {"minItems": 1}}}}
+      ]
+    }
+  }
+}

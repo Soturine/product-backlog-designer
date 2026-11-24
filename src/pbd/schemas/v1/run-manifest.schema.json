@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:pbd:schema:v1:run-manifest",
+  "title": "PBD run manifest v1",
+  "description": "Records scope, roles, stage checkpoints, artifacts and independently tracked status dimensions of one run.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "kind", "run_id", "mode", "created_at", "tool", "network", "sources", "stages", "artifacts", "status", "limitations"],
+  "properties": {
+    "schema_version": {"$ref": "urn:pbd:schema:v1:defs#/$defs/schemaVersion"},
+    "kind": {"const": "pbd.run-manifest"},
+    "run_id": {"type": "string", "pattern": "^PBD-RUN-[0-9A-HJKMNP-TV-Z]{12}$"},
+    "mode": {"enum": ["generate", "audit", "compare", "refine", "check", "clarify", "render", "plan", "adr", "diff", "profile", "azure_package", "azure_export", "azure_publish", "azure_verify", "benchmark"]},
+    "selected_levels": {"type": "array", "uniqueItems": true, "items": {"enum": ["epics", "features", "stories", "acceptance", "tasks", "hierarchy", "dependencies", "sprints"]}},
+    "created_at": {"$ref": "urn:pbd:schema:v1:defs#/$defs/timestamp"},
+    "synthetic": {"type": "boolean"},
+    "tool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version", "schema_version"],
+      "properties": {
+        "name": {"const": "pbd"},
+        "version": {"type": "string"},
+        "schema_version": {"$ref": "urn:pbd:schema:v1:defs#/$defs/schemaVersion"},
+        "python": {"type": "string"},
+        "platform": {"type": "string"},
+        "host": {"type": "string"}
+      }
+    },
+    "network": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode"],
+      "properties": {
+        "mode": {"enum": ["offline", "localhost_mock", "approved_remote"]},
+        "remote_calls": {"type": "integer", "minimum": 0}
+      },
+      "allOf": [{"if": {"properties": {"mode": {"enum": ["offline", "localhost_mock"]}}}, "then": {"properties": {"remote_calls": {"const": 0}}}}]
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_id", "selector", "authority", "digest", "reader"],
+        "properties": {
+          "source_id": {"$ref": "urn:pbd:schema:v1:defs#/$defs/sourceId"},
+          "selector": {"type": "string"},
+          "authority": {"type": "string"},
+          "version": {"type": "string"},
+          "digest": {"$ref": "urn:pbd:schema:v1:defs#/$defs/digest"},
+          "reader": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["status", "independence"],
+            "properties": {
+              "status": {"enum": ["not_started", "in_progress", "partial", "complete", "failed"]},
+              "independence": {"enum": ["separate_agent", "sequential_role", "not_recorded"]},
+              "agent": {"type": "string"},
+              "members_total": {"type": "integer", "minimum": 0},
+              "members_read": {"type": "integer", "minimum": 0}
+            }
+          }
+        }
+      }
+    },
+    "stages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "status", "depends_on"],
+        "properties": {
+          "name": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+          "status": {"enum": ["pending", "complete", "failed", "invalidated", "blocked"]},
+          "depends_on": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+          "input_digest": {"$ref": "urn:pbd:schema:v1:defs#/$defs/digest"},
+          "output_digest": {"$ref": "urn:pbd:schema:v1:defs#/$defs/digest"},
+          "completed_at": {"$ref": "urn:pbd:schema:v1:defs#/$defs/timestamp"},
+          "invalidated_reason": {"type": "string"}
+        },
+        "allOf": [
+          {"if": {"properties": {"status": {"const": "complete"}}}, "then": {"required": ["input_digest", "output_digest"]}},
+          {"if": {"properties": {"status": {"const": "invalidated"}}}, "then": {"required": ["invalidated_reason"]}}
+        ]
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "digest", "bytes"],
+        "properties": {
+          "path": {"type": "string", "pattern": "^[^/\\\\][^:]*$"},
+          "digest": {"$ref": "urn:pbd:schema:v1:defs#/$defs/digest"},
+          "bytes": {"type": "integer", "minimum": 0},
+          "media_type": {"type": "string"}
+        }
+      }
+    },
+    "status": {
+      "description": "Independent status dimensions; one never implies another.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run", "source_coverage", "semantic_review", "publication_readiness", "remote_state"],
+      "properties": {
+        "run": {"enum": ["in_progress", "complete", "failed", "blocked"]},
+        "source_coverage": {"enum": ["not_assessed", "incomplete_reading", "complete_reading", "blocked"]},
+        "semantic_review": {"enum": ["not_run", "self_review_only", "independent_complete", "blocked"]},
+        "publication_readiness": {"enum": ["not_applicable", "not_ready", "local_package_ready", "plan_prepared", "approved"]},
+        "remote_state": {"enum": ["not_contacted", "snapshot_only", "partially_applied", "verified", "unknown"]}
+      }
+    },
+    "gates_ref": {"type": "string"},
+    "limitations": {"type": "array", "items": {"type": "string"}}
+  }
+}

@@ -1,6 +1,6 @@
 # Roadmap
 
-Status: all implementation milestones pending. Initial documentation baseline does not count as runtime completion.
+Status: CP0/M0 runtime foundation exit criteria met with local evidence ([M0 evidence](evidence/M0.md)); M0 roadmap items *process profiles*, *benchmark gold fixtures* and *runtime intent router* are carried into M1. M1–M6 pending. Documentation does not count as runtime completion.
 
 | Milestone | Deliverables | Exit evidence |
 |---|---|---|

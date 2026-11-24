@@ -1,0 +1,30 @@
+{
+  "kind": "pbd.publication-receipt",
+  "plan_digest": "sha256:2d6ff107dc33920e3452a36b6e6b0a0c6ddc1a7294e5ab109918dedf11e9b01c",
+  "plan_id": "PBD-PLAN-000000000001",
+  "receipt_id": "PBD-RCPT-000000000001",
+  "results": [
+    {
+      "external_ref": {
+        "namespace": "fixture-project",
+        "native_id": "1002",
+        "revision": 1,
+        "system": "mock",
+        "verified": true
+      },
+      "op_id": "PBD-OP-000000000001",
+      "outcome": "APPLIED"
+    },
+    {
+      "detail": "timeout simulado; reconciliar antes de repetir",
+      "op_id": "PBD-OP-000000000002",
+      "outcome": "AMBIGUOUS"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "transport": "mock",
+  "verification": {
+    "deviations": [],
+    "status": "MOCK_VERIFIED"
+  }
+}

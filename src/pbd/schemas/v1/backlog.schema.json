@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:pbd:schema:v1:backlog",
+  "title": "PBD canonical backlog document v1",
+  "description": "Single source of truth for sources, claims, work items, criteria, relations, questions, decisions and findings. Each item and criterion appears exactly once in its primary array.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "kind", "run_id", "language", "sources", "claims", "items", "criteria", "relations", "questions", "decisions", "findings"],
+  "properties": {
+    "schema_version": {"$ref": "urn:pbd:schema:v1:defs#/$defs/schemaVersion"},
+    "kind": {"const": "pbd.backlog"},
+    "run_id": {"type": "string", "pattern": "^PBD-RUN-[0-9A-HJKMNP-TV-Z]{12}$"},
+    "language": {"type": "string", "pattern": "^[a-z]{2,3}(-[A-Z]{2})?$"},
+    "synthetic": {"type": "boolean", "description": "True for fixtures and demos; never true for a real run."},
+    "profile": {"type": "string"},
+    "sources": {"type": "array", "items": {"$ref": "#/$defs/source"}},
+    "claims": {"type": "array", "items": {"$ref": "#/$defs/claim"}},
+    "items": {"type": "array", "items": {"$ref": "#/$defs/item"}},
+    "criteria": {"type": "array", "items": {"$ref": "#/$defs/criterion"}},
+    "relations": {"type": "array", "items": {"$ref": "#/$defs/relation"}},
+    "questions": {"type": "array", "items": {"$ref": "#/$defs/question"}},
+    "decisions": {"type": "array", "items": {"$ref": "#/$defs/decision"}},
+    "findings": {"type": "array", "items": {"$ref": "#/$defs/finding"}}
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "selector", "kind", "authority", "version", "digest", "read_status"],
+      "properties": {
+        "id": {"$ref": "urn:pbd:schema:v1:defs#/$defs/sourceId"},
+        "selector": {"$ref": "urn:pbd:schema:v1:defs#/$defs/nonEmpty"},
+        "kind": {"enum": ["file", "directory", "archive"]},
+        "authority": {"enum": ["functional", "technical", "decision", "implementation_evidence", "existing_backlog", "corroboration", "instructions", "other"]},
+        "version": {"$ref": "urn:pbd:schema:v1:defs#/$defs/nonEmpty"},
+        "digest": {"$ref": "urn:pbd:schema:v1:defs#/$defs/digest"},
+        "read_status": {"enum": ["not_read", "partial", "complete", "unreadable"]},
+        "members": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "status"],
+            "properties": {
+              "path": {"$ref": "urn:pbd:schema:v1:defs#/$defs/nonEmpty"},
+              "digest": {"$ref": "urn:pbd:schema:v1:defs#/$defs/digest"},
+              "bytes": {"type": "integer", "minimum": 0},
+              "media_type": {"type": "string"},
+              "status": {"enum": ["pending", "read", "partial", "unreadable", "skipped", "rejected"]},
+              "reason": {"type": "string"}
+            },
+            "allOf": [{"if": {"properties": {"status": {"enum": ["pending", "read", "partial"]}}}, "then": {"required": ["digest"]}}]
+          }
+        },
+        "omissions": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "text", "category", "evidence", "uncertainty", "temporal", "disposition"],
+      "properties": {
+        "id": {"$ref": "urn:pbd:schema:v1:defs#/$defs/claimId"},
+        "text": {"$ref": "urn:pbd:schema:v1:defs#/$defs/nonEmpty"},
+        "category": {"enum": ["functional", "nonfunctional", "integration", "operational", "security", "data", "accessibility", "error", "constraint", "out_of_scope", "other"]},
+        "evidence": {"type": "array", "minItems": 1, "items": {"$ref": "urn:pbd:schema:v1:defs#/$defs/evidence"}},
+        "uncertainty": {"$ref": "urn:pbd:schema:v1:defs#/$defs/uncertainty"},
+        "temporal": {"$ref": "urn:pbd:schema:v1:defs#/$defs/temporal"},
+        "disposition": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status"],
+          "properties": {
+            "status": {"enum": ["UNASSESSED", "COVERED", "PARTIALLY_COVERED", "NOT_COVERED", "QUESTION_REQUIRED", "CONFLICTING", "OUT_OF_SCOPE", "SUPERSEDED", "DEFERRED"]},
+            "rationale": {"type": "string"},
+            "covered_by": {"$ref": "urn:pbd:schema:v1:defs#/$defs/uniqueIds"}
+          },
+          "allOf": [
+            {"if": {"properties": {"status": {"not": {"const": "UNASSESSED"}}}}, "then": {"required": ["rationale"]}},
+            {"if": {"properties": {"status": {"enum": ["COVERED", "PARTIALLY_COVERED"]}}}, "then": {"required": ["covered_by"], "properties": {"covered_by": {"minItems": 1}}}}
+          ]
+        }
+      }
+    },
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "title", "parent", "claim_refs", "origin", "status"],
+      "properties": {
+        "id": {"$ref": "urn:pbd:schema:v1:defs#/$defs/itemId"},
+        "type": {"enum": ["epic", "feature", "story", "enabler", "spike", "bug", "task"]},
+        "native_type": {"type": "string", "description": "Profile-specific type name, e.g. 'User Story' or 'Product Backlog Item'."},
+        "title": {"$ref": "urn:pbd:schema:v1:defs#/$defs/nonEmpty"},
+        "description": {"$ref": "urn:pbd:schema:v1:defs#/$defs/richText"},
+        "story_format": {"enum": ["role_goal_benefit", "job_story", "enabler", "spike", "other"]},
+        "parent": {"oneOf": [{"type": "null"}, {"$ref": "urn:pbd:schema:v1:defs#/$defs/itemId"}]},
+        "claim_refs": {"type": "array", "uniqueItems": true, "items": {"$ref": "urn:pbd:schema:v1:defs#/$defs/claimId"}},
+        "technical_rationale": {"type": "string", "description": "Required when an item has no claim refs (explicit technical proposal)."},
+        "origin": {"enum": ["generated", "imported", "proposed", "human_edited"]},
+        "status": {"enum": ["draft", "reviewed", "gated", "prepared", "approved", "applying", "verified", "partial", "conflict"]},
+        "fields": {"type": "object", "additionalProperties": {"$ref": "urn:pbd:schema:v1:defs#/$defs/fieldValue"}},
+        "external_refs": {"type": "array", "items": {"$ref": "urn:pbd:schema:v1:defs#/$defs/externalRef"}},
+        "temporal": {"$ref": "urn:pbd:schema:v1:defs#/$defs/temporal"},
+        "lineage": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "split_from": {"$ref": "urn:pbd:schema:v1:defs#/$defs/uniqueIds"},
+            "merged_from": {"$ref": "urn:pbd:schema:v1:defs#/$defs/uniqueIds"}
+          }
+        },
+        "revision": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["semantic_digest"],
+          "properties": {
+            "semantic_digest": {"$ref": "urn:pbd:schema:v1:defs#/$defs/digest"},
+            "metadata_digest": {"$ref": "urn:pbd:schema:v1:defs#/$defs/digest"}
+          }
+        }
+      },
+      "allOf": [
+        {"if": {"properties": {"claim_refs": {"maxItems": 0}}}, "then": {"required": ["technical_rationale"]}}
+      ]
+    },
+    "criterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "parent", "style", "expected_outcomes", "claim_refs", "origin", "status"],
+      "properties": {
+        "id": {"$ref": "urn:pbd:schema:v1:defs#/$defs/criterionId"},
+        "parent": {"$ref": "urn:pbd:schema:v1:defs#/$defs/itemId"},
+        "visible_id": {"type": "string", "description": "Imported human-visible ID, preserved verbatim."},
+        "order": {"type": "integer", "minimum": 0, "description": "Presentation order only; never identity."},
+        "style": {"enum": ["list", "table", "gherkin", "ears", "prose", "decision_table", "state_transition"]},
+        "condition": {"type": "string"},
+        "trigger": {"type": "string"},
+        "expected_outcomes": {"type": "array", "minItems": 1, "items": {"$ref": "urn:pbd:schema:v1:defs#/$defs/nonEmpty"}},
+        "exceptions": {"type": "array", "items": {"type": "string"}},
+        "verification_approach": {"type": "string"},
+        "claim_refs": {"type": "array", "uniqueItems": true, "items": {"$ref": "urn:pbd:schema:v1:defs#/$defs/claimId"}},
+        "evidence": {"type": "array", "items": {"$ref": "urn:pbd:schema:v1:defs#/$defs/evidence"}},
+        "origin": {"enum": ["generated", "imported", "proposed", "human_edited"]},
+        "status": {"enum": ["confirmed", "proposed", "blocked", "out_of_scope", "superseded"]},
+        "rationale": {"type": "string"},
+        "raw": {"type": "string", "description": "Original raw representation for imported criteria."}
+      },
+      "allOf": [
+        {"if": {"properties": {"status": {"const": "confirmed"}}}, "then": {"properties": {"claim_refs": {"minItems": 1}}}},
+        {"if": {"properties": {"status": {"enum": ["proposed", "blocked"]}}}, "then": {"required": ["rationale"]}}
+      ]
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "source", "target", "status", "reason"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^PBD-REL-[0-9A-HJKMNP-TV-Z]{12}$"},
+        "type": {"enum": ["predecessor", "related", "external_blocker", "duplicate_candidate", "implements", "tests"]},
+        "source": {"$ref": "urn:pbd:schema:v1:defs#/$defs/pbdId"},
+        "target": {"oneOf": [{"$ref": "urn:pbd:schema:v1:defs#/$defs/pbdId"}, {"$ref": "urn:pbd:schema:v1:defs#/$defs/externalRef"}]},
+        "status": {"enum": ["confirmed", "proposed", "rejected"]},
+        "confidence": {"enum": ["high", "medium", "low"]},
+        "reason": {"$ref": "urn:pbd:schema:v1:defs#/$defs/nonEmpty"},
+        "evidence": {"type": "array", "items": {"$ref": "urn:pbd:schema:v1:defs#/$defs/evidence"}}
+      }
+    },
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "text", "impact", "blocking", "affects", "status"],
+      "properties": {
+        "id": {"$ref": "urn:pbd:schema:v1:defs#/$defs/questionId"},
+        "text": {"$ref": "urn:pbd:schema:v1:defs#/$defs/nonEmpty"},
+        "impact": {"$ref": "urn:pbd:schema:v1:defs#/$defs/nonEmpty"},
+        "alternatives": {"type": "array", "items": {"type": "string"}},
+        "blocking": {"type": "boolean"},
+        "affects": {"$ref": "urn:pbd:schema:v1:defs#/$defs/uniqueIds"},
+        "status": {"enum": ["open", "answered", "withdrawn"]},
+        "answer_decision": {"$ref": "urn:pbd:schema:v1:defs#/$defs/decisionId"},
+        "evidence": {"type": "array", "items": {"$ref": "urn:pbd:schema:v1:defs#/$defs/evidence"}}
+      },
+      "allOf": [{"if": {"properties": {"status": {"const": "answered"}}}, "then": {"required": ["answer_decision"]}}]
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "text", "status", "evidence"],
+      "properties": {
+        "id": {"$ref": "urn:pbd:schema:v1:defs#/$defs/decisionId"},
+        "text": {"$ref": "urn:pbd:schema:v1:defs#/$defs/nonEmpty"},
+        "status": {"enum": ["approved", "proposed", "rejected"]},
+        "supersedes_claims": {"type": "array", "uniqueItems": true, "items": {"$ref": "urn:pbd:schema:v1:defs#/$defs/claimId"}},
+        "effective_version": {"type": "string"},
+        "evidence": {"type": "array", "minItems": 1, "items": {"$ref": "urn:pbd:schema:v1:defs#/$defs/evidence"}}
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "classification", "severity", "expected", "actual", "why", "impact", "recommendation", "affects", "review_status"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^PBD-FND-[0-9A-HJKMNP-TV-Z]{12}$"},
+        "gate": {"$ref": "urn:pbd:schema:v1:defs#/$defs/gateId"},
+        "classification": {"enum": ["confirmed_divergence", "confirmed_gap", "ambiguous_source", "unsupported_assumption", "planning_gap", "candidate_concern", "optional_improvement", "justified_exception", "question"]},
+        "severity": {"enum": ["critical", "high", "medium", "low", "info"]},
+        "expected": {"type": "string"},
+        "actual": {"type": "string"},
+        "why": {"type": "string"},
+        "impact": {"type": "string"},
+        "recommendation": {"type": "string"},
+        "decision_needed": {"type": "string"},
+        "affects": {"$ref": "urn:pbd:schema:v1:defs#/$defs/uniqueIds"},
+        "evidence": {"type": "array", "items": {"$ref": "urn:pbd:schema:v1:defs#/$defs/evidence"}},
+        "review_status": {"enum": ["candidate", "confirmed", "rejected_false_positive", "resolved"]}
+      }
+    }
+  }
+}

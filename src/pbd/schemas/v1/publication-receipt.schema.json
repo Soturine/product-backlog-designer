@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:pbd:schema:v1:publication-receipt",
+  "title": "PBD publication receipt v1",
+  "description": "Actual observed outcome of applying an approved plan. Mock transport receipts can never claim live verification.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "kind", "plan_id", "plan_digest", "transport", "results", "verification"],
+  "properties": {
+    "schema_version": {"$ref": "urn:pbd:schema:v1:defs#/$defs/schemaVersion"},
+    "kind": {"const": "pbd.publication-receipt"},
+    "receipt_id": {"type": "string", "pattern": "^PBD-RCPT-[0-9A-HJKMNP-TV-Z]{12}$"},
+    "plan_id": {"type": "string", "pattern": "^PBD-PLAN-[0-9A-HJKMNP-TV-Z]{12}$"},
+    "plan_digest": {"$ref": "urn:pbd:schema:v1:defs#/$defs/digest"},
+    "transport": {"enum": ["mock", "live"]},
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["op_id", "outcome"],
+        "properties": {
+          "op_id": {"type": "string", "pattern": "^PBD-OP-[0-9A-HJKMNP-TV-Z]{12}$"},
+          "outcome": {"enum": ["APPLIED", "UNCHANGED", "FAILED", "PARTIAL", "AMBIGUOUS", "SKIPPED"]},
+          "external_ref": {"$ref": "urn:pbd:schema:v1:defs#/$defs/externalRef"},
+          "detail": {"type": "string"}
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": {"enum": ["NOT_RUN", "MOCK_VERIFIED", "LIVE_VERIFIED", "MISMATCH"]},
+        "readback_digest": {"$ref": "urn:pbd:schema:v1:defs#/$defs/digest"},
+        "deviations": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  },
+  "allOf": [
+    {"if": {"properties": {"transport": {"const": "mock"}}}, "then": {"properties": {"verification": {"properties": {"status": {"not": {"const": "LIVE_VERIFIED"}}}}}}},
+    {"if": {"properties": {"transport": {"const": "live"}}}, "then": {"properties": {"verification": {"properties": {"status": {"not": {"const": "MOCK_VERIFIED"}}}}}}}
+  ]
+}

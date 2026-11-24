@@ -1,0 +1,49 @@
+{
+  "approval": {
+    "state": "unapproved"
+  },
+  "backlog_digest": "sha256:457f7667978e166155703a8b4f214693367a71794f7775a91bb2f4ee6c8e1e49",
+  "kind": "pbd.publication-plan",
+  "operations": [
+    {
+      "action": "CREATE",
+      "emitted_digest": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "fields": {
+        "System.Title": "Reservar um canteiro livre"
+      },
+      "op_id": "PBD-OP-000000000001",
+      "pbd_id": "PBD-STORY-000000000001"
+    },
+    {
+      "action": "UPDATE",
+      "emitted_digest": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+      "expected_revision": 1,
+      "external_ref": {
+        "namespace": "fixture-project",
+        "native_id": "1001",
+        "system": "mock"
+      },
+      "fields": {
+        "System.Title": "Implementar verificação de disponibilidade do canteiro"
+      },
+      "op_id": "PBD-OP-000000000002",
+      "pbd_id": "PBD-TASK-000000000001"
+    },
+    {
+      "action": "DEFERRED",
+      "op_id": "PBD-OP-000000000003",
+      "pbd_id": "PBD-ENAB-000000000001",
+      "reason": "Proposta técnica aguardando confirmação."
+    }
+  ],
+  "plan_digest": "sha256:2d6ff107dc33920e3452a36b6e6b0a0c6ddc1a7294e5ab109918dedf11e9b01c",
+  "plan_id": "PBD-PLAN-000000000001",
+  "run_id": "PBD-RUN-000000000001",
+  "schema_version": "1.0.0",
+  "target": {
+    "display": "Projeto fictício",
+    "namespace": "fixture-project",
+    "profile": "agile",
+    "system": "mock"
+  }
+}

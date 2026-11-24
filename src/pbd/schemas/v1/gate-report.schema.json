@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:pbd:schema:v1:gate-report",
+  "title": "PBD quality gate report v1",
+  "description": "G01-G13 unchanged plus stable extensions G14-G18. PASS requires evidence matching the gate kind; the runtime additionally enforces kind-specific rules (see pbd.validation.gates).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "kind", "run_id", "gates"],
+  "properties": {
+    "schema_version": {"$ref": "urn:pbd:schema:v1:defs#/$defs/schemaVersion"},
+    "kind": {"const": "pbd.gate-report"},
+    "run_id": {"type": "string", "pattern": "^PBD-RUN-[0-9A-HJKMNP-TV-Z]{12}$"},
+    "gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status", "scope", "validator_version", "reason", "evidence"],
+        "properties": {
+          "id": {"$ref": "urn:pbd:schema:v1:defs#/$defs/gateId"},
+          "status": {"enum": ["PASS", "FAIL", "BLOCKED", "NOT_RUN", "NOT_APPLICABLE"]},
+          "scope": {"type": "string"},
+          "validator_version": {"type": "string"},
+          "reason": {"$ref": "urn:pbd:schema:v1:defs#/$defs/nonEmpty"},
+          "evidence": {"type": "array", "items": {"$ref": "urn:pbd:schema:v1:defs#/$defs/evidence"}},
+          "denominator": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["examined", "total", "provenance"],
+            "properties": {
+              "examined": {"type": "integer", "minimum": 0},
+              "total": {"type": "integer", "minimum": 0},
+              "provenance": {"enum": ["independent_inventory", "benchmark_gold", "generated_set", "schema_count"]}
+            }
+          }
+        },
+        "allOf": [
+          {"if": {"properties": {"status": {"const": "PASS"}}}, "then": {"properties": {"evidence": {"minItems": 1}}}}
+        ]
+      }
+    }
+  }
+}

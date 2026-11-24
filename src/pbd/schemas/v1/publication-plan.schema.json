@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:pbd:schema:v1:publication-plan",
+  "title": "PBD publication plan v1",
+  "description": "Exact, target-bound set of operations. DELETE is not an allowed operation. A plan is never an authorization by itself.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "kind", "plan_id", "run_id", "backlog_digest", "target", "operations", "plan_digest", "approval"],
+  "properties": {
+    "schema_version": {"$ref": "urn:pbd:schema:v1:defs#/$defs/schemaVersion"},
+    "kind": {"const": "pbd.publication-plan"},
+    "plan_id": {"type": "string", "pattern": "^PBD-PLAN-[0-9A-HJKMNP-TV-Z]{12}$"},
+    "run_id": {"type": "string", "pattern": "^PBD-RUN-[0-9A-HJKMNP-TV-Z]{12}$"},
+    "backlog_digest": {"$ref": "urn:pbd:schema:v1:defs#/$defs/digest"},
+    "snapshot_digest": {"$ref": "urn:pbd:schema:v1:defs#/$defs/digest"},
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system", "namespace", "profile"],
+      "properties": {
+        "system": {"$ref": "urn:pbd:schema:v1:defs#/$defs/nonEmpty"},
+        "namespace": {"$ref": "urn:pbd:schema:v1:defs#/$defs/nonEmpty"},
+        "profile": {"type": "string"},
+        "display": {"type": "string"}
+      }
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["op_id", "action", "pbd_id"],
+        "properties": {
+          "op_id": {"type": "string", "pattern": "^PBD-OP-[0-9A-HJKMNP-TV-Z]{12}$"},
+          "action": {"enum": ["CREATE", "UPDATE", "UNCHANGED", "CONFLICT", "DEFERRED"]},
+          "pbd_id": {"$ref": "urn:pbd:schema:v1:defs#/$defs/itemId"},
+          "external_ref": {"$ref": "urn:pbd:schema:v1:defs#/$defs/externalRef"},
+          "expected_revision": {"type": "integer", "minimum": 0},
+          "fields": {"type": "object"},
+          "links": {"type": "array"},
+          "emitted_digest": {"$ref": "urn:pbd:schema:v1:defs#/$defs/digest"},
+          "reason": {"type": "string"}
+        },
+        "allOf": [
+          {"if": {"properties": {"action": {"const": "UPDATE"}}}, "then": {"required": ["external_ref", "expected_revision", "emitted_digest"]}},
+          {"if": {"properties": {"action": {"const": "CREATE"}}}, "then": {"required": ["emitted_digest"], "not": {"required": ["external_ref"]}}},
+          {"if": {"properties": {"action": {"enum": ["CONFLICT", "DEFERRED"]}}}, "then": {"required": ["reason"]}}
+        ]
+      }
+    },
+    "plan_digest": {"$ref": "urn:pbd:schema:v1:defs#/$defs/digest"},
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state"],
+      "properties": {
+        "state": {"enum": ["unapproved", "approved", "revoked", "stale"]},
+        "approved_plan_digest": {"$ref": "urn:pbd:schema:v1:defs#/$defs/digest"},
+        "approved_target_namespace": {"type": "string"},
+        "approved_by": {"type": "string"},
+        "approved_at": {"$ref": "urn:pbd:schema:v1:defs#/$defs/timestamp"}
+      },
+      "allOf": [{"if": {"properties": {"state": {"const": "approved"}}}, "then": {"required": ["approved_plan_digest", "approved_target_namespace", "approved_by", "approved_at"]}}]
+    }
+  }
+}

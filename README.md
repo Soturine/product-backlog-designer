@@ -4,7 +4,7 @@
 
 [Português (Brasil)](README.pt-BR.md) · [Documentation](docs/README.md) · [Roadmap](docs/roadmap.md) · [Example dashboard](examples/demo/report.html) · [Research and code audit](docs/upstream-code-audit.md)
 
-> **Development status:** design baseline / pre-alpha. The methodology and agent instructions are available. The runtime, automated exporters, integrations and benchmark qualification are planned, not released. The example dashboard is a static synthetic design demonstration, not a production run.
+> **Development status:** pre-alpha. The methodology and agent instructions are available. The M0 runtime foundation (`pbd` CLI: schemas, validation, identity, source inventory, run state, offline guard) exists with local test evidence; see [install](docs/install.md). Generation, reports, exporters, integrations and benchmark qualification are planned, not released. The example dashboard is a static synthetic design demonstration, not a production run.
 
 ## Why PBD?
 
@@ -109,7 +109,7 @@ Azure CLI authentication with REST/JSON Patch for lossless writes; optional CLI 
 
 | Milestone | Scope | Status |
 |---|---|---|
-| M0 | foundation, schemas, runtime contracts, reuse decisions | planned |
+| M0 | foundation, schemas, runtime contracts, reuse decisions | runtime foundation done ([evidence](docs/evidence/M0.md)); profiles and gold fixtures moved to M1 |
 | M1 | generation and default report/package workflow | planned |
 | M2 | audit, compare and profiles | planned |
 | M3 | Azure export and verified publication | planned |

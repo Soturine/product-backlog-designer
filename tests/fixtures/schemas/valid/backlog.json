@@ -1,0 +1,381 @@
+{
+  "claims": [
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-000000000001",
+          "PBD-AC-000000000001"
+        ],
+        "rationale": "Story e critério cobrem a reserva de canteiro livre.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 13,
+            "line_start": 12,
+            "section": "2.1",
+            "source_id": "PBD-SRC-000000000001",
+            "source_version": "v1"
+          },
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-000000000001",
+      "temporal": {
+        "effective_version": "v1",
+        "status": "effective"
+      },
+      "text": "Um membro pode reservar um canteiro livre para uma temporada.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "error",
+      "disposition": {
+        "covered_by": [
+          "PBD-AC-000000000002"
+        ],
+        "rationale": "Critério de rejeição explícito.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_start": 15,
+            "section": "2.2",
+            "source_id": "PBD-SRC-000000000001",
+            "source_version": "v1"
+          },
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-000000000002",
+      "temporal": {
+        "effective_version": "v1",
+        "status": "effective"
+      },
+      "text": "Um canteiro já reservado na mesma temporada não aceita nova reserva.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "rationale": "Substituída pela decisão aprovada.",
+        "status": "SUPERSEDED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_start": 18,
+            "section": "2.3",
+            "source_id": "PBD-SRC-000000000001",
+            "source_version": "v1"
+          },
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-000000000003",
+      "temporal": {
+        "effective_version": "v1",
+        "status": "superseded",
+        "superseded_by": [
+          "PBD-DEC-000000000001"
+        ],
+        "superseded_reason": "Decisão aprovada adota confirmação automática."
+      },
+      "text": "Reservas são aprovadas manualmente pela coordenação.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "nonfunctional",
+      "disposition": {
+        "rationale": "Termo vago; nenhum limiar definido.",
+        "status": "QUESTION_REQUIRED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_start": 25,
+            "section": "3",
+            "source_id": "PBD-SRC-000000000001",
+            "source_version": "v1"
+          },
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-000000000004",
+      "temporal": {
+        "effective_version": "v1",
+        "status": "effective"
+      },
+      "text": "A reserva deve ser confirmada rapidamente.",
+      "uncertainty": {
+        "level": "ambiguous",
+        "note": "Sem limite numérico na fonte."
+      }
+    }
+  ],
+  "criteria": [
+    {
+      "claim_refs": [
+        "PBD-CLM-000000000001"
+      ],
+      "condition": "canteiro livre na temporada",
+      "evidence": [
+        {
+          "locator": {
+            "line_start": 12,
+            "section": "2.1",
+            "source_id": "PBD-SRC-000000000001",
+            "source_version": "v1"
+          },
+          "type": "source_locator"
+        }
+      ],
+      "expected_outcomes": [
+        "A reserva é registrada e o canteiro fica indisponível na temporada."
+      ],
+      "id": "PBD-AC-000000000001",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-000000000001",
+      "status": "confirmed",
+      "style": "list"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-000000000002"
+      ],
+      "condition": "Dado um canteiro já reservado na temporada",
+      "expected_outcomes": [
+        "Então nenhuma nova reserva é criada"
+      ],
+      "id": "PBD-AC-000000000002",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-000000000001",
+      "status": "confirmed",
+      "style": "gherkin",
+      "trigger": "Quando um membro solicita reserva"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "A reserva aparece na lista do membro."
+      ],
+      "id": "PBD-AC-000000000003",
+      "order": 2,
+      "origin": "proposed",
+      "parent": "PBD-STORY-000000000001",
+      "rationale": "Inferência não explícita na fonte; requer confirmação.",
+      "status": "proposed",
+      "style": "list"
+    }
+  ],
+  "decisions": [
+    {
+      "effective_version": "v2",
+      "evidence": [
+        {
+          "ref": "decisoes/adr-001.md",
+          "summary": "ADR fictício aprovado.",
+          "type": "decision"
+        }
+      ],
+      "id": "PBD-DEC-000000000001",
+      "status": "approved",
+      "supersedes_claims": [
+        "PBD-CLM-000000000003"
+      ],
+      "text": "Reservas válidas são confirmadas automaticamente."
+    }
+  ],
+  "findings": [
+    {
+      "actual": "Critério proposto sem fonte.",
+      "affects": [
+        "PBD-AC-000000000003"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Critério confirmado pela fonte.",
+      "gate": "G06",
+      "id": "PBD-FND-000000000001",
+      "impact": "Pode introduzir escopo não aprovado.",
+      "recommendation": "Confirmar com o PO ou remover.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "A3 não tem claim de origem."
+    }
+  ],
+  "items": [
+    {
+      "claim_refs": [
+        "PBD-CLM-000000000001",
+        "PBD-CLM-000000000002"
+      ],
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: organizar o uso dos canteiros por temporada.</p>"
+      },
+      "id": "PBD-EPIC-000000000001",
+      "native_type": "Epic",
+      "origin": "generated",
+      "parent": null,
+      "status": "draft",
+      "title": "Reserva de canteiros",
+      "type": "epic"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-000000000001",
+        "PBD-CLM-000000000002"
+      ],
+      "id": "PBD-FEAT-000000000001",
+      "native_type": "Feature",
+      "origin": "generated",
+      "parent": "PBD-EPIC-000000000001",
+      "status": "draft",
+      "title": "Reservar canteiro por temporada",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-000000000001",
+        "PBD-CLM-000000000002"
+      ],
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> membro, <strong>gostaria que</strong> o sistema permitisse reservar um canteiro livre, <strong>para</strong> cultivar durante a temporada.</p>"
+      },
+      "fields": {
+        "completed_work": {
+          "state": "not_applicable"
+        },
+        "priority": {
+          "state": "unset"
+        },
+        "story_points": {
+          "rationale": "Proposta para discussão; estimativa pertence ao time.",
+          "review_status": "unreviewed",
+          "scale": "fibonacci-relativo",
+          "state": "proposed",
+          "value": 3
+        }
+      },
+      "id": "PBD-STORY-000000000001",
+      "native_type": "User Story",
+      "origin": "generated",
+      "parent": "PBD-FEAT-000000000001",
+      "revision": {
+        "semantic_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "status": "draft",
+      "story_format": "role_goal_benefit",
+      "title": "Reservar um canteiro livre",
+      "type": "story"
+    },
+    {
+      "claim_refs": [],
+      "id": "PBD-ENAB-000000000001",
+      "native_type": "User Story",
+      "origin": "proposed",
+      "parent": "PBD-FEAT-000000000001",
+      "status": "draft",
+      "story_format": "enabler",
+      "technical_rationale": "Proposta técnica: reservas dependem de temporadas cadastradas; sem fonte técnica, permanece proposta.",
+      "title": "Registrar temporadas de cultivo",
+      "type": "enabler"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-000000000002"
+      ],
+      "external_refs": [
+        {
+          "namespace": "fixture-project",
+          "native_id": "1001",
+          "revision": 1,
+          "system": "mock",
+          "verified": false
+        }
+      ],
+      "fields": {
+        "activity": {
+          "rationale": "Trabalho de implementação.",
+          "state": "proposed",
+          "value": "Development"
+        }
+      },
+      "id": "PBD-TASK-000000000001",
+      "native_type": "Task",
+      "origin": "generated",
+      "parent": "PBD-STORY-000000000001",
+      "status": "draft",
+      "title": "Implementar verificação de disponibilidade do canteiro",
+      "type": "task"
+    }
+  ],
+  "kind": "pbd.backlog",
+  "language": "pt-BR",
+  "profile": "generic",
+  "questions": [
+    {
+      "affects": [
+        "PBD-CLM-000000000004",
+        "PBD-STORY-000000000001"
+      ],
+      "alternatives": [
+        "definir limiar em segundos",
+        "remover requisito"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-000000000001",
+      "impact": "Sem limiar, o critério não é verificável.",
+      "status": "open",
+      "text": "Qual o prazo máximo para confirmar uma reserva?"
+    }
+  ],
+  "relations": [
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-000000000001",
+      "reason": "Temporadas precisam existir antes da reserva.",
+      "source": "PBD-ENAB-000000000001",
+      "status": "proposed",
+      "target": "PBD-STORY-000000000001",
+      "type": "predecessor"
+    }
+  ],
+  "run_id": "PBD-RUN-000000000001",
+  "schema_version": "1.0.0",
+  "sources": [
+    {
+      "authority": "functional",
+      "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "id": "PBD-SRC-000000000001",
+      "kind": "file",
+      "members": [
+        {
+          "bytes": 2048,
+          "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "media_type": "text/markdown",
+          "path": "horta-comunitaria.md",
+          "status": "read"
+        }
+      ],
+      "read_status": "complete",
+      "selector": "fontes/horta-comunitaria.md",
+      "version": "v1"
+    }
+  ],
+  "synthetic": true
+}

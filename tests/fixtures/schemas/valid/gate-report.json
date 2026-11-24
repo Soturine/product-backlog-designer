@@ -1,0 +1,45 @@
+{
+  "gates": [
+    {
+      "evidence": [
+        {
+          "ref": "pbd.validation.invariants.check_backlog",
+          "summary": "0 issues",
+          "type": "deterministic_check"
+        }
+      ],
+      "id": "G03",
+      "reason": "unique IDs, allowed parents, acyclic",
+      "scope": "hierarchy",
+      "status": "PASS",
+      "validator_version": "0.1.0.dev0"
+    },
+    {
+      "evidence": [],
+      "id": "G01",
+      "reason": "reading not independently confirmed",
+      "scope": "sources",
+      "status": "BLOCKED",
+      "validator_version": "0.1.0.dev0"
+    },
+    {
+      "evidence": [],
+      "id": "G13",
+      "reason": "no independent reviewer executed",
+      "scope": "independent review",
+      "status": "NOT_RUN",
+      "validator_version": "0.1.0.dev0"
+    },
+    {
+      "evidence": [],
+      "id": "G16",
+      "reason": "fixture only",
+      "scope": "privacy",
+      "status": "NOT_APPLICABLE",
+      "validator_version": "0.1.0.dev0"
+    }
+  ],
+  "kind": "pbd.gate-report",
+  "run_id": "PBD-RUN-000000000001",
+  "schema_version": "1.0.0"
+}

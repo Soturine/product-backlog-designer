@@ -32,3 +32,10 @@
 - [Evidence and backlog health](evidence-and-backlog-health.md)
 - [Controlled calibration](../benchmarks/calibration.md)
 - [Implementation master directive](PBD_AGENT_LED_MASTER_DIRECTIVE.md)
+
+## Runtime (M0)
+- [Install and host detection](install.md)
+- [ADR-0001 M0 foundation](decisions/ADR-0001-m0-foundation.md)
+- [Threat model](threat-model.md)
+- [Upstream pins and adoption records](upstream-pins.md)
+- [M0 evidence](evidence/M0.md)

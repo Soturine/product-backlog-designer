@@ -13,3 +13,10 @@ __pycache__/
 .venv/
 dist/
 build/
+*.egg-info/
+.hypothesis/
+.coverage
+.coverage.*
+htmlcov/
+*.pyc
+.tmp/

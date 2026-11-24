@@ -17,6 +17,7 @@ This is a planning inventory, not proof of implementation. It consolidates the a
 | ADR, stable IDs, diffs, conflict protection and incremental change | [architecture](architecture.md) | M5 |
 | Other trackers and agent hosts | [roadmap](roadmap.md) | M6 |
 | Competitive research, code reuse, license checks, benchmark baselines | [market research](market-research.md), [source audit](upstream-code-audit.md), [benchmarks](../benchmarks/README.md) | M0–M6 |
+| Canonical schemas, stable identity, source safety, run state, offline guard (runtime) | [ADR-0001](decisions/ADR-0001-m0-foundation.md), [threat model](threat-model.md), [M0 evidence](evidence/M0.md) | M0 (implemented) |
 | Privacy, no remote writes without approval, no fabricated claims | [security](security.md), [quality gates](quality-gates.md) | all |
 
 All planned capabilities remain unqualified until corresponding exit evidence exists. Scope and omissions must be visible in every run.

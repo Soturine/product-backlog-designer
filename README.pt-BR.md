@@ -65,7 +65,7 @@ Os 18 gates planejados (13 originais e cinco extensões) preservam escopo, integ
 
 A base de engenharia considera componentes da FTD, Assertiva, Derivanta, HVE Core, Azure Prototype, Spec Kit, BMAD, OpenSpec, PM Skills e outros. [Auditoria de código](docs/upstream-code-audit.md) · [Pesquisa de mercado](docs/market-research.md). Reutilização depende de licença, testes e adaptação; não há código externo incorporado nesta fase.
 
-M0 Fundação → M1 Geração → M2 Auditoria → M3 Azure → M4 Planejamento → M5 Evolução → M6 Qualificação. Todos os marcos de implementação estão pendentes. [Roadmap](docs/roadmap.md) · [Benchmarks](benchmarks/README.md) · [Segurança](docs/security.md).
+M0 Fundação → M1 Geração → M2 Auditoria → M3 Azure → M4 Planejamento → M5 Evolução → M6 Qualificação. A fundação de runtime do M0 (CLI `pbd`: schemas, validação, identidade, inventário de fontes, estado, bloqueio de rede) existe com evidência local ([evidência](docs/evidence/M0.md), [instalação](docs/install.md)); M1–M6 pendentes. [Roadmap](docs/roadmap.md) · [Benchmarks](benchmarks/README.md) · [Segurança](docs/security.md).
 
 ## Implementação
 [Contrato agent-led](docs/agent-led-execution.md) · [Evidências e saúde do backlog](docs/evidence-and-backlog-health.md) · [Calibração](benchmarks/calibration.md) · [Prompt mestre](docs/PBD_AGENT_LED_MASTER_DIRECTIVE.md). Desenvolvimento e benchmarks exclusivamente offline, com snapshots locais e mocks; nenhuma consulta ou alteração em tracker real nesta fase.
