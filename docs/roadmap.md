@@ -1,0 +1,18 @@
+# Roadmap
+
+Status: all implementation milestones pending. Initial documentation baseline does not count as runtime completion.
+
+| Milestone | Deliverables | Exit evidence |
+|---|---|---|
+| M0 Foundation | constitution, canonical schemas, source allowlist, stable identity, state, CLI scaffold, profiles, gold fixtures | schema/identity/security tests, documented install, baseline manifest |
+| M1 Generation | agent readers, claims, Epic/Feature/Story/AC/Task, dependencies, rich text, HTML/MD/JSON/CSV/XLSX, selective modes | real agent run on synthetic multi-source case, source recall and individual traceability review |
+| M2 Audit & compare | independent review, INVEST, reverse coverage, gaps, conflicts, questions, profile learning, full report | mutation detection, blind comparison, per-item and per-criterion findings |
+| M3 Azure | schema discovery, export, mapping, preview, approved apply, recovery, read-back | contract mocks plus authorized disposable Azure round-trip, idempotency and concurrent edit tests |
+| M4 Planning | estimates, priorities, risk, capacity, iteration plans | missing-capacity refusal, dependency/capacity consistency, human review |
+| M5 Evolution | ADR/diff, stable identity, lineage, reconciled updates | version-change fixture, no duplicate or destructive sync, stale approval rejected |
+| M6 Ecosystem | FTD handoff, optional GitHub/Jira, agent portability, benchmark qualification | real independent agent evaluations, supported-adapter evidence, release review |
+
+Prioritize M0–M3 for usable workflow. No release or maturity claim without exit evidence. Work in checkpoints with baseline, implementation, tests, evidence, review and explicit residual risks. Use Derivanta and Assertiva where compatible, recording actual executions; QE Engineering for strategy. CI budget policy: local qualification first, avoid unnecessary remote runs. No automatic public release or tag.
+
+## Cross-cutting acceptance
+All milestones maintain privacy, backward-compatible contracts or migration notes, documentation hyperlinks, changelog, test evidence and no fake metrics. Scope expansion requires explicit decisions. See [benchmark protocol](../benchmarks/README.md).

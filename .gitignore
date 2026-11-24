@@ -1,0 +1,15 @@
+.pbd/
+pbd-output/
+exports/
+private/
+.env
+.env.*
+!.env.example
+*.pat
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+dist/
+build/
