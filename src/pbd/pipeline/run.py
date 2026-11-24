@@ -35,8 +35,9 @@ STAGE_FILES = {
 
 class RunError(RuntimeError):
     def __init__(self, message: str, errors: list[str] | None = None) -> None:
-        super().__init__(message)
         self.errors = errors or [message]
+        detail = "" if errors is None else "".join(f"\n  - {e}" for e in self.errors)
+        super().__init__(message + detail)
 
 
 class Run:
@@ -200,7 +201,7 @@ def start(
                 continue
             rel = f"sources/text/{record['id']}/{member['path']}.txt"
             data = text.encode("utf-8")
-            line_count = len(text.split("\n")) if text else 0
+            line_count = len(text.splitlines())
             run.write_artifact(rel, data=data, media_type="text/plain")
             entry.update(
                 readable=True,

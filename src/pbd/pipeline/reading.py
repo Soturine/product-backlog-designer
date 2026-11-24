@@ -81,7 +81,7 @@ def _covered(ranges: list[list[int]]) -> set[int]:
 
 def _member_lines(run: Run, member: dict[str, Any]) -> list[str]:
     text = run.path(member["text_ref"]).read_text(encoding="utf-8")
-    return text.split("\n")
+    return text.splitlines()
 
 
 def validate_ledger(run: Run, ledger: Any) -> list[str]:

@@ -69,7 +69,7 @@ def _ledger(run: Run, selector: str) -> dict[str, Any]:
 
 def _prd_ledger(run: Run) -> dict[str, Any]:
     led = _ledger(run, "prd.md")
-    led["members"] = [{"path": "prd.md", "status": "read", "lines_read": [[1, 9]]}]
+    led["members"] = [{"path": "prd.md", "status": "read", "lines_read": [[1, 8]]}]
     led["obligations"] = [
         {
             "key": "R1",
