@@ -1,3 +1,8 @@
 # References and attribution
 
-The design is original synthesis informed by the linked resources in [market research](docs/market-research.md). No third-party skill source is vendored. Before adopting any code or content, record exact version, file-level license, notice requirements and compatibility. HVE Core components may have different licenses. Public examples are synthetic. Repository license selection remains pending owner decision.
+PBD is an original implementation informed by the resources in [market research](docs/market-research.md) and the [upstream adoption decisions](docs/upstream-adoption.md). Third-party material actually incorporated, with pinned commits and license texts, is listed in [third_party/README.md](third_party/README.md):
+
+- Assertiva report design tokens (Apache-2.0) in `src/pbd/render/report_html.py`.
+- Azure DevOps link reference-name mapping from microsoft/azure-devops-mcp (MIT) in `src/pbd/render/exports.py`.
+
+All other upstreams informed design only; no other code, prompts or text were copied. Public examples and benchmark cases are synthetic. Repository license selection remains pending owner decision.

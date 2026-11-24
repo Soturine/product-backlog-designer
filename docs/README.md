@@ -38,4 +38,7 @@
 - [ADR-0001 M0 foundation](decisions/ADR-0001-m0-foundation.md)
 - [Threat model](threat-model.md)
 - [Upstream pins and adoption records](upstream-pins.md)
+- [Upstream research and adoption decisions](upstream-adoption.md)
+- [Agent procedures](../procedures/orchestrator.md)
+- [Third-party material](../third_party/README.md)
 - [M0 evidence](evidence/M0.md)
