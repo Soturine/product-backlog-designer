@@ -1,0 +1,18 @@
+{
+  "description": "Single-point defects injected by tools/mutation_check.py. Each must be killed (test suite fails). 'old' must occur in the file; only the first occurrence is replaced.",
+  "mutants": [
+    {"id": "empty-denominator-accepted", "file": "src/pbd/validation/gates.py", "old": "if den.get(\"total\", 0) == 0:", "new": "if False:"},
+    {"id": "coverage-gaps-ignored", "file": "src/pbd/validation/gates.py", "old": "    if gaps:\n", "new": "    if False:\n"},
+    {"id": "failed-verification-ignored", "file": "src/pbd/validation/gates.py", "old": "if result.get(\"verification\") == \"failed\":", "new": "if False:"},
+    {"id": "hierarchy-cycle-ignored", "file": "src/pbd/validation/invariants.py", "old": "TopologicalSorter(graph).prepare()", "new": "pass"},
+    {"id": "trace-reciprocity-ignored", "file": "src/pbd/validation/invariants.py", "old": "if target is not None and cid not in target.get(\"claim_refs\", []):", "new": "if False:"},
+    {"id": "stale-artifact-accepted", "file": "src/pbd/validation/verify.py", "old": "if actual != digest:", "new": "if False:"},
+    {"id": "foreign-run-accepted", "file": "src/pbd/validation/verify.py", "old": "if ev.get(\"run_id\") != run_id:", "new": "if False:"},
+    {"id": "stale-approval-accepted", "file": "src/pbd/integrations/authority.py", "old": "if approval.get(\"approved_plan_digest\") != actual:", "new": "if False:"},
+    {"id": "archive-traversal-allowed", "file": "src/pbd/sources/scope.py", "old": "any(p == \"..\" for p in parts)", "new": "False"},
+    {"id": "network-guard-disabled", "file": "src/pbd/security/network.py", "old": "            ledger.blocked.append(str(host))\n", "new": "            return\n"},
+    {"id": "no-downstream-invalidation", "file": "src/pbd/persistence/state.py", "old": "dep[\"status\"] = \"invalidated\"", "new": "dep[\"status\"] = dep[\"status\"]"},
+    {"id": "journal-chain-unchecked", "file": "src/pbd/persistence/atomic.py", "old": "if entry.get(\"prev\") != prev:", "new": "if False:"},
+    {"id": "title-anchor-allowed", "file": "src/pbd/core/identity.py", "old": "    if bad:\n", "new": "    if False:\n"}
+  ]
+}

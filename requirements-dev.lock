@@ -1,0 +1,23 @@
+# Pinned qualification environment (CPython 3.11.18). Install: python -m pip install -r requirements-dev.lock -e .
+ast_serialize==0.13.1
+attrs==26.1.0
+colorama==0.4.6
+coverage==7.17.5
+hypothesis==6.170.17
+iniconfig==2.3.1
+jsonschema==4.26.0
+jsonschema-specifications==2025.9.1
+librt==0.17.0
+mypy==2.4.1
+mypy_extensions==1.2.0
+packaging==26.4
+pathspec==1.1.1
+pluggy==1.7.0
+Pygments==2.21.0
+pytest==9.1.1
+referencing==0.37.0
+rpds-py==2026.9.1
+ruff==0.17.6
+sortedcontainers==2.4.0
+types-jsonschema==4.26.0.20261006
+typing_extensions==4.16.0

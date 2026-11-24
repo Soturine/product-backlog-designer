@@ -134,6 +134,16 @@ def _approved_plan() -> dict[str, Any]:
     return plan
 
 
+def assert_denied(
+    plan: dict[str, Any], authority: RemoteAuthority, target: str, match: str | None = None
+) -> None:
+    """Denial must raise AND leave the plan (including its approval) untouched."""
+    before = copy.deepcopy(plan)
+    with pytest.raises(AuthorizationDenied, match=match):
+        authorize_apply(plan, authority, target)
+    assert plan == before
+
+
 MOCK = RemoteAuthority(opted_in=True, transport="mock")
 
 
@@ -152,34 +162,29 @@ def test_valid_mock_authorization_passes() -> None:
     ],
 )
 def test_denied_without_authority_or_live_transport(authority: RemoteAuthority) -> None:
-    with pytest.raises(AuthorizationDenied):
-        authorize_apply(_approved_plan(), authority, "fixture-project")
+    assert_denied(_approved_plan(), authority, "fixture-project")
 
 
 def test_denied_when_unapproved() -> None:
     plan = _approved_plan()
     plan["approval"] = {"state": "unapproved"}
-    with pytest.raises(AuthorizationDenied, match="not approved"):
-        authorize_apply(plan, MOCK, "fixture-project")
+    assert_denied(plan, MOCK, "fixture-project", match="not approved")
 
 
 def test_denied_when_plan_edited_after_approval() -> None:
     plan = _approved_plan()
     plan["operations"][0]["fields"]["System.Title"] = "alterado depois da aprovação"
-    with pytest.raises(AuthorizationDenied, match="stale plan"):
-        authorize_apply(plan, MOCK, "fixture-project")
+    assert_denied(plan, MOCK, "fixture-project", match="stale plan")
 
 
 def test_denied_when_approval_is_for_other_digest() -> None:
     plan = _approved_plan()
     plan["approval"]["approved_plan_digest"] = digest("older plan")
-    with pytest.raises(AuthorizationDenied, match="stale approval"):
-        authorize_apply(plan, MOCK, "fixture-project")
+    assert_denied(plan, MOCK, "fixture-project", match="stale approval")
 
 
 def test_denied_for_wrong_target() -> None:
-    with pytest.raises(AuthorizationDenied, match="target"):
-        authorize_apply(_approved_plan(), MOCK, "another-project")
+    assert_denied(_approved_plan(), MOCK, "another-project", match="target")
 
 
 def test_denied_with_unresolved_conflict() -> None:
@@ -194,8 +199,7 @@ def test_denied_with_unresolved_conflict() -> None:
     )
     plan["plan_digest"] = plan_content_digest(plan)
     plan["approval"]["approved_plan_digest"] = plan["plan_digest"]
-    with pytest.raises(AuthorizationDenied, match="conflict"):
-        authorize_apply(plan, MOCK, "fixture-project")
+    assert_denied(plan, MOCK, "fixture-project", match="conflict")
 
 
 def test_no_live_transport_module_exists() -> None:

@@ -27,12 +27,12 @@ pbd = ["schemas/v1/*.json"]
 testpaths = ["tests"]
 pythonpath = ["src", "."]
 addopts = "-ra --strict-markers"
-markers = ["property: hypothesis property tests", "security: security and privacy tests", "contract: schema/contract tests"]
+markers = ["property: hypothesis property tests", "playwright: browser tests (offline, system Edge/Chrome)", "security: security and privacy tests", "contract: schema/contract tests"]
 
 [tool.ruff]
 line-length = 110
 target-version = "py311"
-src = ["src", "tests"]
+src = ["src", "tests", "tools"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "B", "UP", "S", "SIM", "RUF"]

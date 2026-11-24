@@ -28,6 +28,14 @@ def ws(tmp_path: Path) -> Path:
     return root
 
 
+def tree(root: Path) -> list[tuple[str, int]]:
+    """Snapshot of the workspace parent (paths and sizes) to prove a refusal wrote nothing."""
+    base = root.parent
+    return sorted(
+        (p.relative_to(base).as_posix(), p.stat().st_size if p.is_file() else -1) for p in base.rglob("*")
+    )
+
+
 def _symlink(link: Path, target: Path, is_dir: bool = False) -> None:
     try:
         os.symlink(target, link, target_is_directory=is_dir)
@@ -47,24 +55,32 @@ def test_file_and_directory_inventory_with_member_ledger(ws: Path) -> None:
 
 @pytest.mark.parametrize("selector", ["../outside.md", "docs/../../outside.md"])
 def test_traversal_escape_rejected(ws: Path, selector: str) -> None:
+    before = tree(ws)
     with pytest.raises(ScopeError):
         Scope(ws).resolve(selector)
+    assert tree(ws) == before
 
 
 def test_absolute_path_outside_rejected(ws: Path) -> None:
+    before = tree(ws)
     with pytest.raises(ScopeError):
         Scope(ws).resolve(str(ws.parent / "outside.md"))
+    assert tree(ws) == before
 
 
 def test_missing_selector_reported_not_substituted(ws: Path) -> None:
+    before = tree(ws)
     with pytest.raises(ScopeError, match="does not exist"):
         Scope(ws).resolve("docs/tdd.md")
+    assert tree(ws) == before and not (ws / "docs" / "tdd.md").exists()
 
 
 def test_null_byte_and_empty_selector_rejected(ws: Path) -> None:
+    before = tree(ws)
     for bad in ["", "docs/\x00prd.md"]:
         with pytest.raises(ScopeError):
             Scope(ws).resolve(bad)
+    assert tree(ws) == before
 
 
 def test_selected_symlink_rejected(ws: Path) -> None:
@@ -180,10 +196,12 @@ def test_source_records_are_schema_valid_and_never_marked_read(ws: Path) -> None
 
 
 def test_duplicate_selection_and_unknown_authority_rejected(ws: Path) -> None:
+    before = tree(ws)
     with pytest.raises(ValueError):
         build_sources(Scope(ws), [("docs", "functional"), ("docs/", "functional")])
     with pytest.raises(ValueError):
         build_sources(Scope(ws), [("docs", "boss-said-so")])
+    assert tree(ws) == before
 
 
 def test_ledger_digest_changes_when_member_changes(ws: Path) -> None:

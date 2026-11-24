@@ -50,6 +50,10 @@ def test_journal_chain_and_tamper_detection(tmp_path: Path) -> None:
     journal.path.write_bytes(b"\n".join([tampered, lines[1]]) + b"\n")
     with pytest.raises(JournalError):
         journal.verify()
+    tampered_bytes = journal.path.read_bytes()
+    with pytest.raises(JournalError):
+        journal.append("c", {"n": 3})  # refuses to extend a broken chain
+    assert journal.path.read_bytes() == tampered_bytes
 
 
 def test_journal_detects_reorder_and_torn_line(tmp_path: Path) -> None:
