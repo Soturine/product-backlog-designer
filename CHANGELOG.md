@@ -11,3 +11,5 @@
 - Expand bilingual README, single-entrypoint interaction contract, output/report design, Azure CLI bundle, targeted upstream implementation and license audit, reuse decisions and synthetic dashboard example. No upstream code vendored or runtime qualified.
 
 - Specify source-only default, agent-led execution boundaries, evidence/temporal health, native table acceptance, offline calibration and implementation directive; extend quality gates without renumbering. No runtime or live integration executed.
+
+- Require per-checkpoint commits, pushes, remote verification and authorized Git identity; prohibit AI authorship trailers and unnecessary CI, preserve required attribution and branch protections.

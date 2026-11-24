@@ -22,3 +22,6 @@ M0: pinned upstream adoption decisions and license review, one-entrypoint intent
 
 ## Implementation directive
 Execute [master directive](PBD_AGENT_LED_MASTER_DIRECTIVE.md) by checkpoint, starting at M0. See [agent-led execution](agent-led-execution.md) and [calibration](../benchmarks/calibration.md). No live tracker access during this implementation round. Generation without existing backlog is a mandatory M1 acceptance case. The original 13 gate IDs remain stable; extensions G14–G18 cover duplication, change safety, privacy, compatibility and round-trip.
+
+## Git checkpoint policy
+Every qualified checkpoint CP0–CP6 requires its own commit, push and remote verification under the owner's authorized Git identity, without AI co-author trailers or contributor entries. Use main only when permitted and consistent with CI budget; otherwise push development checkpoints and integrate into main through required checks. See [mandatory Git policy](PBD_AGENT_LED_MASTER_DIRECTIVE.md#git-checkpoint-and-authorship-policy-mandatory). No force pushes or tags/releases.
