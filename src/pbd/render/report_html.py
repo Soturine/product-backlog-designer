@@ -193,7 +193,7 @@ section{margin:0 0 28px}h2{font-size:1.25rem;margin:0 0 12px}h3{font-size:1rem;m
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:14px 0}
 .kpi .v{font-size:1.6rem;font-weight:700}.kpi .l{color:var(--muted);font-size:.82rem}
 .kpi .d{color:var(--faint);font-size:.78rem}
-.layer1{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.layer1{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px}
 .layer1 ul{margin:6px 0 0;padding-left:18px}.layer1 li{margin:3px 0}
 .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 12px;position:sticky;top:96px;z-index:10;
 background:var(--bg);padding:8px 0}
@@ -208,11 +208,12 @@ details.wi>summary::before{content:"\\25B8";color:var(--muted);transition:transf
 details.wi[open]>summary::before{transform:rotate(90deg)}
 .wi .body{padding:0 16px 14px 34px}.wi .children{margin-left:14px}
 .t-epic{--tone:#7b4dff}.t-feature{--tone:var(--info)}.t-story,.t-enabler,.t-spike,.t-bug{--tone:var(--pass)}
-.t-task{--tone:var(--warn)}.title{font-weight:600}.mono{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.t-task{--tone:var(--warn)}.title{font-weight:600;overflow-wrap:anywhere}.mono{font-family:var(--mono);font-size:.78rem;color:var(--muted);overflow-wrap:anywhere}
+.card,.grid2>*,.layer1>*{min-width:0}
 .rich p{margin:4px 0}.rich ul{margin:4px 0;padding-left:20px}
 table{border-collapse:collapse;width:100%;font-size:.88rem}th,td{border:1px solid var(--rule);padding:6px 8px;
 text-align:left;vertical-align:top}th{background:var(--surface-2)}
-.tablewrap{overflow-x:auto}.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px}
+.tablewrap{overflow-x:auto}.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:12px}
 .finding{border-left:4px solid var(--tone)}.sev-critical,.sev-high{--tone:var(--fail)}.sev-medium{--tone:var(--warn)}
 .sev-low,.sev-info{--tone:var(--info)}dl.kv{display:grid;grid-template-columns:max-content 1fr;gap:4px 12px;margin:6px 0}
 dl.kv dt{color:var(--muted)}dl.kv dd{margin:0}.quote{color:var(--ink-2);font-style:italic}

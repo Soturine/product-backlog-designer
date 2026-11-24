@@ -3,6 +3,7 @@ ast_serialize==0.13.1
 attrs==26.1.0
 colorama==0.4.6
 coverage==7.17.5
+greenlet==3.5.6
 hypothesis==6.170.17
 iniconfig==2.3.1
 jsonschema==4.26.0
@@ -12,6 +13,7 @@ mypy==2.4.1
 mypy_extensions==1.2.0
 packaging==26.4
 pathspec==1.1.1
+playwright==1.65.2
 pluggy==1.7.0
 Pygments==2.21.0
 pytest==9.1.1
