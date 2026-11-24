@@ -1,0 +1,95 @@
+{
+ "kind": "pbd.benchmark-gold",
+ "synthetic": true,
+ "case": "c06-adr-supersession",
+ "title": "Clube de Leitura",
+ "language": "pt-BR",
+ "levels": [
+  "epics",
+  "features",
+  "stories",
+  "acceptance",
+  "tasks",
+  "dependencies"
+ ],
+ "sources": [
+  {
+   "selector": "prd.md",
+   "authority": "functional"
+  },
+  {
+   "selector": "decisoes",
+   "authority": "decision"
+  }
+ ],
+ "obligations": [
+  {
+   "id": "G01",
+   "source": "prd.md",
+   "quote": "se inscreve em um encontro publicado",
+   "kind": "functional",
+   "summary": "enroll in published meeting",
+   "critical": true
+  },
+  {
+   "id": "G02",
+   "source": "prd.md",
+   "quote": "exigem aprovação do moderador",
+   "kind": "functional",
+   "summary": "moderator approval (SUPERSEDED by ADR-002)",
+   "critical": true
+  },
+  {
+   "id": "G03",
+   "source": "prd.md",
+   "quote": "aceita até 20 participantes",
+   "kind": "constraint",
+   "summary": "max 20 (ADR-003 is only a proposal)",
+   "critical": true
+  },
+  {
+   "id": "G04",
+   "source": "prd.md",
+   "quote": "pode entrar na lista de espera",
+   "kind": "functional",
+   "summary": "waitlist when full",
+   "critical": true
+  },
+  {
+   "id": "G05",
+   "source": "prd.md",
+   "quote": "a primeira pessoa da lista de espera é inscrita e avisada",
+   "kind": "functional",
+   "summary": "promote first in waitlist + notify",
+   "critical": true
+  },
+  {
+   "id": "G06",
+   "source": "decisoes/adr-002-confirmacao-automatica.md",
+   "quote": "confirmadas automaticamente enquanto houver vagas",
+   "kind": "functional",
+   "summary": "auto-confirm while seats",
+   "critical": true
+  },
+  {
+   "id": "G07",
+   "source": "decisoes/adr-003-limite.md",
+   "quote": "aumentar o limite de participantes por encontro para 30",
+   "kind": "decision",
+   "summary": "PROPOSED only; must not supersede 20",
+   "critical": false
+  }
+ ],
+ "traps": [
+  "Manual moderator approval must not appear as active work.",
+  "Limit must remain 20; ADR-003 is a proposal (question or informative), not an approved decision."
+ ],
+ "expectations": {
+  "superseded": [
+   "moderator approval"
+  ],
+  "not_superseded": [
+   "limit 20"
+  ]
+ }
+}

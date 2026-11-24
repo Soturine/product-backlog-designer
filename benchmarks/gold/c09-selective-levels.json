@@ -1,0 +1,69 @@
+{
+ "kind": "pbd.benchmark-gold",
+ "synthetic": true,
+ "case": "c09-selective-levels",
+ "title": "Horta Escolar",
+ "language": "pt-BR",
+ "levels": [
+  "stories",
+  "acceptance"
+ ],
+ "sources": [
+  {
+   "selector": "prd.md",
+   "authority": "functional"
+  }
+ ],
+ "obligations": [
+  {
+   "id": "G01",
+   "source": "prd.md",
+   "quote": "cria a escala semanal de rega atribuindo turmas aos dias da semana",
+   "kind": "functional",
+   "summary": "teacher creates schedule",
+   "critical": true
+  },
+  {
+   "id": "G02",
+   "source": "prd.md",
+   "quote": "no máximo uma turma responsável",
+   "kind": "constraint",
+   "summary": "one class per day",
+   "critical": true
+  },
+  {
+   "id": "G03",
+   "source": "prd.md",
+   "quote": "vê, no painel da sala, se a rega do dia foi registrada",
+   "kind": "functional",
+   "summary": "class sees status",
+   "critical": true
+  },
+  {
+   "id": "G04",
+   "source": "prd.md",
+   "quote": "registra a rega do dia informando o horário",
+   "kind": "functional",
+   "summary": "monitor registers watering time",
+   "critical": true
+  },
+  {
+   "id": "G05",
+   "source": "prd.md",
+   "quote": "não for registrada até as 16h, o professor recebe um aviso",
+   "kind": "error",
+   "summary": "16h alert to teacher",
+   "critical": true
+  }
+ ],
+ "traps": [
+  "Only stories and acceptance criteria: no epics, features or tasks."
+ ],
+ "expectations": {
+  "absent_levels": [
+   "epics",
+   "features",
+   "tasks"
+  ]
+ }
+}

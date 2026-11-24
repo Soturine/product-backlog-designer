@@ -1,0 +1,120 @@
+{
+ "kind": "pbd.benchmark-gold",
+ "synthetic": true,
+ "case": "c02-multi-source",
+ "title": "Reserva de Quadras",
+ "language": "pt-BR",
+ "levels": [
+  "epics",
+  "features",
+  "stories",
+  "acceptance",
+  "tasks",
+  "dependencies"
+ ],
+ "sources": [
+  {
+   "selector": "prd.md",
+   "authority": "functional"
+  },
+  {
+   "selector": "regras",
+   "authority": "functional"
+  },
+  {
+   "selector": "glossario.md",
+   "authority": "other"
+  }
+ ],
+ "obligations": [
+  {
+   "id": "G01",
+   "source": "prd.md",
+   "quote": "reserva uma quadra em blocos de 1 hora",
+   "kind": "functional",
+   "summary": "reserve in 1h blocks",
+   "critical": true
+  },
+  {
+   "id": "G02",
+   "source": "prd.md",
+   "quote": "com até 14 dias de antecedência",
+   "kind": "constraint",
+   "summary": "up to 14 days ahead",
+   "critical": true
+  },
+  {
+   "id": "G03",
+   "source": "prd.md",
+   "quote": "cancelar a própria reserva até 2 horas antes do início",
+   "kind": "constraint",
+   "summary": "cancel until 2h before",
+   "critical": true
+  },
+  {
+   "id": "G04",
+   "source": "prd.md",
+   "quote": "bloqueia uma quadra para manutenção em um intervalo de datas",
+   "kind": "functional",
+   "summary": "admin blocks court",
+   "critical": true
+  },
+  {
+   "id": "G05",
+   "source": "prd.md",
+   "quote": "Não é permitido reservar uma quadra bloqueada",
+   "kind": "error",
+   "summary": "no reservation on blocked court",
+   "critical": true
+  },
+  {
+   "id": "G06",
+   "source": "prd.md",
+   "quote": "vê suas reservas futuras e passadas",
+   "kind": "functional",
+   "summary": "member sees own reservations",
+   "critical": true
+  },
+  {
+   "id": "G07",
+   "source": "regras/regras-de-uso.md",
+   "quote": "no máximo 3 reservas futuras",
+   "kind": "constraint",
+   "summary": "max 3 future reservations",
+   "critical": true
+  },
+  {
+   "id": "G08",
+   "source": "regras/regras-de-uso.md",
+   "quote": "não utilizada e não cancelada conta como falta",
+   "kind": "functional",
+   "summary": "no-show counts as absence",
+   "critical": true
+  },
+  {
+   "id": "G09",
+   "source": "regras/regras-de-uso.md",
+   "quote": "3 faltas em 30 dias",
+   "kind": "constraint",
+   "summary": "3 absences in 30 days -> 15-day suspension",
+   "critical": true
+  },
+  {
+   "id": "G10",
+   "source": "regras/regras-de-uso.md",
+   "quote": "remover uma falta registrada indevidamente, informando o motivo",
+   "kind": "functional",
+   "summary": "admin removes wrong absence with reason",
+   "critical": true
+  }
+ ],
+ "traps": [
+  "Glossary definitions are informative, not obligations; no story should exist only for a definition.",
+  "Rules from regras/ must be represented although they are not in the PRD."
+ ],
+ "expectations": {
+  "informative_sources": [
+   "glossario.md"
+  ]
+ }
+}

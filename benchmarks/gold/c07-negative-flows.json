@@ -1,0 +1,100 @@
+{
+ "kind": "pbd.benchmark-gold",
+ "synthetic": true,
+ "case": "c07-negative-flows",
+ "title": "Community Fridge Kiosk",
+ "language": "en",
+ "levels": [
+  "epics",
+  "features",
+  "stories",
+  "acceptance",
+  "tasks",
+  "dependencies"
+ ],
+ "sources": [
+  {
+   "selector": "prd.md",
+   "authority": "functional"
+  }
+ ],
+ "obligations": [
+  {
+   "id": "G01",
+   "source": "prd.md",
+   "quote": "scans their badge to unlock the fridge door",
+   "kind": "functional",
+   "summary": "badge unlocks door",
+   "critical": true
+  },
+  {
+   "id": "G02",
+   "source": "prd.md",
+   "quote": "does not unlock the door, and the screen shows \"Badge not recognized\"",
+   "kind": "error",
+   "summary": "unknown/deactivated badge rejected with message",
+   "critical": true
+  },
+  {
+   "id": "G03",
+   "source": "prd.md",
+   "quote": "at most 3 items per day",
+   "kind": "constraint",
+   "summary": "3 items/day",
+   "critical": true
+  },
+  {
+   "id": "G04",
+   "source": "prd.md",
+   "quote": "the member is not locked out",
+   "kind": "error",
+   "summary": "4th item recorded + warning, NOT blocked",
+   "critical": true
+  },
+  {
+   "id": "G05",
+   "source": "prd.md",
+   "quote": "more than 60 seconds, an audible alert sounds until the door is closed",
+   "kind": "error",
+   "summary": "door-open alert",
+   "critical": true
+  },
+  {
+   "id": "G06",
+   "source": "prd.md",
+   "quote": "use the last synchronized member list",
+   "kind": "error",
+   "summary": "offline badge checks with cached list",
+   "critical": true
+  },
+  {
+   "id": "G07",
+   "source": "prd.md",
+   "quote": "events are uploaded when connectivity returns",
+   "kind": "error",
+   "summary": "offline events uploaded later",
+   "critical": true
+  },
+  {
+   "id": "G08",
+   "source": "prd.md",
+   "quote": "expired items are removed from the available inventory count",
+   "kind": "functional",
+   "summary": "volunteer marks expired",
+   "critical": true
+  },
+  {
+   "id": "G09",
+   "source": "prd.md",
+   "quote": "Payments and donations tracking",
+   "kind": "exclusion",
+   "summary": "out of scope",
+   "critical": false
+  }
+ ],
+ "traps": [
+  "Must not turn the 4th-item rule into a rejection/lockout.",
+  "Must not invent an alert volume, sync interval or retry policy."
+ ],
+ "expectations": {}
+}

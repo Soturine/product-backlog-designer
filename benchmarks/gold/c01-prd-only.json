@@ -1,0 +1,121 @@
+{
+ "kind": "pbd.benchmark-gold",
+ "synthetic": true,
+ "case": "c01-prd-only",
+ "title": "Biblioteca de Ferramentas",
+ "language": "pt-BR",
+ "levels": [
+  "epics",
+  "features",
+  "stories",
+  "acceptance",
+  "tasks",
+  "dependencies"
+ ],
+ "sources": [
+  {
+   "selector": "prd.md",
+   "authority": "functional"
+  }
+ ],
+ "obligations": [
+  {
+   "id": "G01",
+   "source": "prd.md",
+   "quote": "consulta o catálogo de ferramentas com nome, categoria e disponibilidade",
+   "kind": "functional",
+   "summary": "catalog with name, category, availability",
+   "critical": true
+  },
+  {
+   "id": "G02",
+   "source": "prd.md",
+   "quote": "solicita o empréstimo de uma ferramenta disponível por até 7 dias",
+   "kind": "functional",
+   "summary": "loan available tool up to 7 days",
+   "critical": true
+  },
+  {
+   "id": "G03",
+   "source": "prd.md",
+   "quote": "no máximo 2 empréstimos ativos ao mesmo tempo",
+   "kind": "constraint",
+   "summary": "max 2 active loans",
+   "critical": true
+  },
+  {
+   "id": "G04",
+   "source": "prd.md",
+   "quote": "é recusada com a mensagem \"Limite de empréstimos atingido\"",
+   "kind": "error",
+   "summary": "reject over-limit with exact message",
+   "critical": true
+  },
+  {
+   "id": "G05",
+   "source": "prd.md",
+   "quote": "registra a devolução e informa se a ferramenta voltou danificada",
+   "kind": "functional",
+   "summary": "volunteer records return + damage",
+   "critical": true
+  },
+  {
+   "id": "G06",
+   "source": "prd.md",
+   "quote": "fica indisponível até o voluntário marcá-la como reparada",
+   "kind": "functional",
+   "summary": "damaged tool unavailable until repaired",
+   "critical": true
+  },
+  {
+   "id": "G07",
+   "source": "prd.md",
+   "quote": "lembrete por e-mail 1 dia antes do vencimento",
+   "kind": "functional",
+   "summary": "email reminder 1 day before due",
+   "critical": true
+  },
+  {
+   "id": "G08",
+   "source": "prd.md",
+   "quote": "Empréstimos em atraso impedem novas solicitações",
+   "kind": "constraint",
+   "summary": "overdue blocks new requests",
+   "critical": true
+  },
+  {
+   "id": "G09",
+   "source": "prd.md",
+   "quote": "O catálogo deve ser utilizável em celulares",
+   "kind": "nonfunctional",
+   "summary": "mobile usable catalog",
+   "critical": false
+  },
+  {
+   "id": "G10",
+   "source": "prd.md",
+   "quote": "Cobrança de multas e pagamentos",
+   "kind": "exclusion",
+   "summary": "fines/payments out of scope",
+   "critical": false
+  },
+  {
+   "id": "G11",
+   "source": "prd.md",
+   "quote": "Entrega de ferramentas em domicílio",
+   "kind": "exclusion",
+   "summary": "home delivery out of scope",
+   "critical": false
+  }
+ ],
+ "traps": [
+  "Must not invent fine amounts, payments or a reservation queue.",
+  "Must not invent a numeric performance threshold or device list for RNF01.",
+  "Two real actors only: morador and voluntário (no invented admin persona)."
+ ],
+ "expectations": {
+  "questions_expected_on": [
+   "RNF01 'utilizável em celulares' has no measurable criterion"
+  ]
+ }
+}

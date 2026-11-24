@@ -1,0 +1,74 @@
+{
+ "kind": "pbd.benchmark-gold",
+ "synthetic": true,
+ "case": "c08-insufficient-tech",
+ "title": "Mutirões de Limpeza",
+ "language": "pt-BR",
+ "levels": [
+  "epics",
+  "features",
+  "stories",
+  "acceptance",
+  "tasks",
+  "dependencies"
+ ],
+ "sources": [
+  {
+   "selector": "prd.md",
+   "authority": "functional"
+  }
+ ],
+ "obligations": [
+  {
+   "id": "G01",
+   "source": "prd.md",
+   "quote": "informando nome e tamanho de camiseta",
+   "kind": "functional",
+   "summary": "enroll with name + shirt size",
+   "critical": true
+  },
+  {
+   "id": "G02",
+   "source": "prd.md",
+   "quote": "paga pelo gateway de pagamentos parceiro",
+   "kind": "integration",
+   "summary": "fee via partner gateway (contract unknown)",
+   "critical": true
+  },
+  {
+   "id": "G03",
+   "source": "prd.md",
+   "quote": "só é confirmada após a confirmação do pagamento",
+   "kind": "constraint",
+   "summary": "confirm only after payment",
+   "critical": true
+  },
+  {
+   "id": "G04",
+   "source": "prd.md",
+   "quote": "vê a lista de inscritos confirmados por mutirão",
+   "kind": "functional",
+   "summary": "organizer list",
+   "critical": true
+  },
+  {
+   "id": "G05",
+   "source": "prd.md",
+   "quote": "O sistema deve ser rápido",
+   "kind": "nonfunctional",
+   "summary": "vague performance -> question",
+   "critical": false
+  }
+ ],
+ "traps": [
+  "Must not invent a gateway name, API, webhook or fee amount: spike/question instead.",
+  "Must not invent a response-time threshold for 'rápido'."
+ ],
+ "expectations": {
+  "questions_expected_on": [
+   "gateway contract",
+   "meaning of 'rápido'"
+  ],
+  "spike_expected": true
+ }
+}

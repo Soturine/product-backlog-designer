@@ -1,0 +1,105 @@
+{
+ "kind": "pbd.benchmark-gold",
+ "synthetic": true,
+ "case": "c03-tables-annexes",
+ "title": "Cadastro de Voluntários",
+ "language": "pt-BR",
+ "levels": [
+  "epics",
+  "features",
+  "stories",
+  "acceptance",
+  "tasks",
+  "dependencies"
+ ],
+ "sources": [
+  {
+   "selector": "prd.md",
+   "authority": "functional"
+  },
+  {
+   "selector": "anexos",
+   "authority": "functional"
+  }
+ ],
+ "obligations": [
+  {
+   "id": "G01",
+   "source": "prd.md",
+   "quote": "O voluntário se cadastra informando nome, e-mail e telefone.",
+   "kind": "functional",
+   "summary": "volunteer self-registration",
+   "critical": true
+  },
+  {
+   "id": "G02",
+   "source": "prd.md",
+   "quote": "O coordenador aprova ou recusa cadastros pendentes.",
+   "kind": "functional",
+   "summary": "coordinator approves/refuses",
+   "critical": true
+  },
+  {
+   "id": "G03",
+   "source": "prd.md",
+   "quote": "Voluntário recusado recebe e-mail com o motivo da recusa.",
+   "kind": "functional",
+   "summary": "refusal email with reason",
+   "critical": true
+  },
+  {
+   "id": "G04",
+   "source": "prd.md",
+   "quote": "escolhe áreas de interesse entre as áreas cadastradas pelo coordenador",
+   "kind": "functional",
+   "summary": "choose interest areas",
+   "critical": true
+  },
+  {
+   "id": "G05",
+   "source": "prd.md",
+   "quote": "exporta a lista de voluntários aprovados em CSV",
+   "kind": "functional",
+   "summary": "CSV export of approved",
+   "critical": false
+  },
+  {
+   "id": "G06",
+   "source": "anexos/validacoes.docx",
+   "quote": "Obrigatório; entre 3 e 80 caracteres.",
+   "kind": "data",
+   "summary": "name required 3-80",
+   "critical": true
+  },
+  {
+   "id": "G07",
+   "source": "anexos/validacoes.docx",
+   "quote": "não pode repetir um e-mail já cadastrado",
+   "kind": "data",
+   "summary": "email required, valid, unique",
+   "critical": true
+  },
+  {
+   "id": "G08",
+   "source": "anexos/validacoes.docx",
+   "quote": "Opcional; somente dígitos; 10 ou 11 dígitos quando informado.",
+   "kind": "data",
+   "summary": "phone optional digits 10-11",
+   "critical": true
+  },
+  {
+   "id": "G09",
+   "source": "anexos/validacoes.docx",
+   "quote": "pendentes há mais de 30 dias são arquivados automaticamente",
+   "kind": "functional",
+   "summary": "auto-archive pending > 30 days",
+   "critical": true
+  }
+ ],
+ "traps": [
+  "Table header row ('ID | Requisito | Prioridade') is not a requirement.",
+  "Telefone is optional: must not be made mandatory.",
+  "Priorities Alta/Média/Baixa are sourced and may be confirmed fields; no other invented priority."
+ ],
+ "expectations": {}
+}

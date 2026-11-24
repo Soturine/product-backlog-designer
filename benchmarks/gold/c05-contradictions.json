@@ -1,0 +1,101 @@
+{
+ "kind": "pbd.benchmark-gold",
+ "synthetic": true,
+ "case": "c05-contradictions",
+ "title": "Bazar Beneficente",
+ "language": "pt-BR",
+ "levels": [
+  "epics",
+  "features",
+  "stories",
+  "acceptance",
+  "tasks",
+  "dependencies"
+ ],
+ "sources": [
+  {
+   "selector": "prd.md",
+   "authority": "functional"
+  },
+  {
+   "selector": "manual-operacao.md",
+   "authority": "functional"
+  }
+ ],
+ "obligations": [
+  {
+   "id": "G01",
+   "source": "prd.md",
+   "quote": "agenda a entrega de doações escolhendo data e turno",
+   "kind": "functional",
+   "summary": "schedule delivery date+shift",
+   "critical": true
+  },
+  {
+   "id": "G02",
+   "source": "prd.md",
+   "quote": "no máximo 3 entregas por mês",
+   "kind": "constraint",
+   "summary": "max 3/month (conflicts with manual 5)",
+   "critical": true
+  },
+  {
+   "id": "G03",
+   "source": "prd.md",
+   "quote": "Itens eletrônicos não são aceitos",
+   "kind": "constraint",
+   "summary": "no electronics (conflicts with manual)",
+   "critical": true
+  },
+  {
+   "id": "G04",
+   "source": "prd.md",
+   "quote": "confirma o recebimento e o sistema gera um recibo",
+   "kind": "functional",
+   "summary": "confirm receipt + receipt",
+   "critical": true
+  },
+  {
+   "id": "G05",
+   "source": "prd.md",
+   "quote": "remarcar uma entrega até 1 dia antes",
+   "kind": "constraint",
+   "summary": "reschedule until 1 day before",
+   "critical": true
+  },
+  {
+   "id": "G06",
+   "source": "manual-operacao.md",
+   "quote": "até 5 entregas por mês",
+   "kind": "constraint",
+   "summary": "manual says 5/month",
+   "critical": true
+  },
+  {
+   "id": "G07",
+   "source": "manual-operacao.md",
+   "quote": "Eletrônicos em funcionamento são aceitos mediante teste",
+   "kind": "constraint",
+   "summary": "manual accepts working electronics",
+   "critical": true
+  },
+  {
+   "id": "G08",
+   "source": "manual-operacao.md",
+   "quote": "recibo é enviado por e-mail",
+   "kind": "functional",
+   "summary": "receipt by email",
+   "critical": false
+  }
+ ],
+ "traps": [
+  "Must not silently pick 3 or 5 deliveries: conflict must be CONFLICTING/QUESTION with both locators.",
+  "Must not silently accept or reject electronics."
+ ],
+ "expectations": {
+  "conflicts": [
+   "monthly limit 3 vs 5",
+   "electronics rejected vs accepted after test"
+  ]
+ }
+}

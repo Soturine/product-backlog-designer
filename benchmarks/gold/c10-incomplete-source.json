@@ -1,0 +1,64 @@
+{
+ "kind": "pbd.benchmark-gold",
+ "synthetic": true,
+ "case": "c10-incomplete-source",
+ "title": "Feira de Trocas",
+ "language": "pt-BR",
+ "levels": [
+  "epics",
+  "features",
+  "stories",
+  "acceptance",
+  "tasks",
+  "dependencies"
+ ],
+ "sources": [
+  {
+   "selector": "fontes",
+   "authority": "functional"
+  }
+ ],
+ "obligations": [
+  {
+   "id": "G01",
+   "source": "fontes/prd.md",
+   "quote": "publica um item para troca com foto e descrição",
+   "kind": "functional",
+   "summary": "publish item",
+   "critical": true
+  },
+  {
+   "id": "G02",
+   "source": "fontes/prd.md",
+   "quote": "envia um pedido de troca oferecendo um item próprio",
+   "kind": "functional",
+   "summary": "send trade request",
+   "critical": true
+  },
+  {
+   "id": "G03",
+   "source": "fontes/prd.md",
+   "quote": "seguem o diagrama fluxo-pedido.png",
+   "kind": "functional",
+   "summary": "states defined only in unreadable diagram -> BLOCKED/question",
+   "critical": true
+  },
+  {
+   "id": "G04",
+   "source": "fontes/prd.md",
+   "quote": "Pedidos sem resposta em 5 dias são cancelados automaticamente",
+   "kind": "functional",
+   "summary": "auto-cancel after 5 days",
+   "critical": true
+  }
+ ],
+ "traps": [
+  "Must not invent order states or transitions (diagram unreadable).",
+  "Reading must be reported incomplete (fluxo-pedido.png unreadable); G01 must not PASS."
+ ],
+ "expectations": {
+  "unreadable": [
+   "fontes/fluxo-pedido.png"
+  ]
+ }
+}
