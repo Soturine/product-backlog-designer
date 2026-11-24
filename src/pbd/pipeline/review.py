@@ -157,6 +157,8 @@ def validate_review(run: Run, review: Any) -> list[str]:
         bad = [k for k in f.get("affects") or [] if k not in design_keys | claim_keys]
         if bad or not f.get("affects"):
             errors.append(f"{label}: affects must list design or claim keys (unknown {bad})")
+        if f.get("review_status", "confirmed") not in ("candidate", "confirmed"):
+            errors.append(f"{label}: review_status must be candidate or confirmed")
         if f.get("gate") and f["gate"] not in GATES_REVIEWED:
             errors.append(f"{label}: gate must be one of {sorted(GATES_REVIEWED)}")
     for i, d in enumerate(review.get("duplicates") or []):

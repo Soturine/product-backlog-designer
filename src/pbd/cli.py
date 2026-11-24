@@ -248,6 +248,29 @@ def cmd_work_order(args: argparse.Namespace) -> int:
     return EXIT_OK
 
 
+def cmd_skill(args: argparse.Namespace) -> int:
+    from pbd.core.install import InstallError, install, target_dir
+
+    try:
+        target = (
+            Path(args.target)
+            if args.target
+            else target_dir(args.scope, Path(args.project) if args.project else None)
+        )
+        copied = install(target, force=args.force)
+    except InstallError as exc:
+        print(f"refused: {exc}", file=sys.stderr)
+        return EXIT_REFUSED
+    _emit(
+        {
+            "installed": str(target),
+            "copied": copied,
+            "note": "restart the agent host session to discover the skill; pbd still needs Python",
+        }
+    )
+    return EXIT_OK
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="pbd",
@@ -342,6 +365,14 @@ def build_parser() -> argparse.ArgumentParser:
         p.add_argument("--out", default="pbd-output")
         p.add_argument("--run-id")
         p.set_defaults(func=func)
+
+    p = sub.add_parser("skill", help="install the skill folder for an agent host (project or user scope)")
+    p.add_argument("action", choices=["install"])
+    p.add_argument("--scope", choices=["project", "user"], default="project")
+    p.add_argument("--project", help="project root for project scope (default: current directory)")
+    p.add_argument("--target", help="explicit destination folder (overrides scope)")
+    p.add_argument("--force", action="store_true", help="replace an existing installed skill folder")
+    p.set_defaults(func=cmd_skill)
 
     p = sub.add_parser("submit", help="submit an agent stage payload (all-or-nothing validation)")
     p.add_argument("stage", choices=["reading", "claims", "design", "review"])

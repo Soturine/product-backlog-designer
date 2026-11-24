@@ -1,7 +1,3 @@
 # /pbd-gen
 
-Design-stage agent procedure; the runtime CLI is not implemented. Follow [SKILL](../SKILL.md), [commands](../docs/commands.md) and [quality gates](../docs/quality-gates.md).
-
-Inputs: authorized sources, goal, profile, requested levels. Inventory and read all sources, extract atomic claims independently, build hierarchy and criteria, decompose tasks and dependencies, then independent review. Produce backlog, traceability, findings, questions and requested reports. Selective mode preserves context and reports omitted levels.
-
-Follow [methodology](../docs/methodology.md) and [story/criteria guidance](../docs/story-engineering.md). Use only authorized inputs and disclose unexecuted checks.
+Optional expert control for generation; `/pbd` or natural language does the same. Follow [orchestrator procedure](../procedures/orchestrator.md). Selected levels map to `pbd start --levels` (epics, features, stories, acceptance, tasks, dependencies); omitted levels are disclosed in the request and report. Outputs and gates as in [reporting](../docs/reporting.md) and [quality gates](../docs/quality-gates.md).
