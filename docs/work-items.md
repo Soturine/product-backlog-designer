@@ -4,7 +4,7 @@
 - Epic: **Objective**, **Context**, **In scope**, **Out of scope**, **Expected outcome**; only supported scope.
 - Feature: capability, value, expected outcome, related rules; concise.
 - Functional Story: **Eu como** [actor], **gostaria que** [capability], **para** [benefit]. English: **As a** … **I want** … **so that** …. Support Job Stories, Enablers and other approved formats; no invented actor.
-- Acceptance criteria: separate native field, one observable obligation per criterion where practical; positive/negative/edge cases when supported. Bullet lists or Gherkin, no fixed count.
+- Acceptance criteria: separate native field, one observable obligation per criterion where practical; positive/negative/edge cases when supported. Bullet lists, native HTML tables (ID / criterion / expected result), or Gherkin, no fixed count; stable canonical IDs and explicit outcomes.
 - Task: action-oriented title, concise description, activities, expected output, validation and dependencies where necessary. Scale detail to complexity. Distinguish Development, Design, Testing, Requirements, Deployment, Documentation or destination-supported activities. Test Tasks are not Test Cases.
 - Preserve Unicode, paragraphs, bold, lists, links and tables where supported; render native HTML, not raw Markdown in HTML fields.
 
@@ -35,3 +35,5 @@ See [synthetic example](../examples/order-management.md) and [Azure adapter](azu
 
 ## Detailed guidance
 Apply [story engineering](story-engineering.md), [acceptance engineering](acceptance-engineering.md) and [planning](planning-engineering.md) for quality review and generation. Formatting conformance is not semantic quality.
+
+See [evidence and backlog health](evidence-and-backlog-health.md) for import counting, optional fields and temporal provenance.

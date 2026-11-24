@@ -23,3 +23,14 @@ INVEST: Independent, Negotiable, Valuable, Estimable, Small, Testable. Record re
 See [benchmark protocol](../benchmarks/README.md).
 
 G05 uses [story engineering rubric](story-engineering.md); G06 uses [acceptance engineering rubric](acceptance-engineering.md); G07/G10 use [planning guidance](planning-engineering.md). Lexical warnings are not confirmed semantic violations. Include reviewer disposition and source locator for each item and criterion. See [targeted evaluation](../benchmarks/story-quality.md).
+
+## Extended gates (stable IDs; original G01–G13 unchanged)
+| Gate | Required evidence | Kind |
+|---|---|---|
+| G14 Semantic duplication | candidate pairs, independent rationale, justified exceptions | semantic |
+| G15 Change safety | source version/supersession, preserved identity and human edits, revision preconditions | mixed |
+| G16 Privacy and offline boundary | allowlist, no sensitive artifacts, no network during qualification | deterministic/mixed |
+| G17 Target compatibility | discovered or mock schema, permitted types/fields/relations, explicit unavailable metadata | mixed |
+| G18 Round-trip fidelity | compare exact expected/observed IDs, fields, HTML semantics and links; mock vs live separate | deterministic/mixed |
+
+G12 remains authorization safety; G18 never passes for live publication from a mock. G11 covers local report fidelity. G13 remains independent review and must not be removed. See [evidence and health](evidence-and-backlog-health.md). Gate applicability depends on intent; a local generation run does not require tracker access. All live qualification is NOT_RUN until separately authorized.

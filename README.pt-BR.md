@@ -8,7 +8,7 @@
 
 ## Para que serve?
 
-Uma única skill para interpretar PRDs, BRDs, TDDs, ADRs, atas, manuais, regras, código-fonte e backlogs existentes. Gera e audita a organização do trabalho, sem confundir planejamento com execução ou testes funcionais.
+Uma única skill para interpretar PRDs, BRDs, TDDs, ADRs, atas, manuais, regras, código-fonte e backlogs existentes. A geração do zero é o modo principal; nenhum backlog existente, credencial ou TDD é obrigatório. Gera e audita a organização do trabalho, sem confundir planejamento com execução ou testes funcionais.
 
 A [FTD](https://github.com/Soturine/functional-test-designer) continua independente: ela lê a autoridade funcional e elabora Test Cases. A PBD organiza o que precisa ser desenvolvido.
 
@@ -44,7 +44,7 @@ Depois diga **"Use a Product Backlog Designer para gerar e validar meu backlog"*
 **Epic:** objetivo, contexto, dentro e fora do escopo e resultado esperado.  
 **Feature:** capacidade do produto e valor esperado.  
 **User Story:** **Eu como** membro da biblioteca, **gostaria que** o sistema permitisse reservar um livro disponível, **para** retirá-lo posteriormente.  
-**Critérios de aceite:** lista separada de comportamentos observáveis, com condições e resultados.  
+**Critérios de aceite:** lista, tabela nativa HTML (ID, condição, resultado esperado) ou Gherkin, em campo separado, com condições e resultados.  
 **Tasks:** atividades acionáveis, resultado, verificação e dependências conforme a complexidade.
 
 Negritos, listas, parágrafos, acentos e links são preservados nos campos nativos. Perfis Agile, Scrum, Basic, CMMI e personalizados respeitam a configuração real do destino. Campos não conhecidos permanecem em branco ou como propostas locais. [Padrões de Work Items](docs/work-items.md) · [Stories](docs/story-engineering.md) · [Aceite](docs/acceptance-engineering.md).
@@ -59,10 +59,13 @@ O arquivo principal será `report.html`, um dashboard offline responsivo, em dua
 
 Agentes leem as fontes autorizadas e fazem o raciocínio. Python valida contratos, grafos, identificadores, hashes, campos e publicação. Uma revisão independente confere o PRD original e cada item gerado. A PBD é local-first, sem servidor ou banco obrigatório, e não exige um provedor de IA próprio.
 
-Os 13 gates preservam escopo, integridade, cobertura, qualidade de Stories/aceites/Tasks, dependências e publicação segura. INVEST, 3Cs, QUS, Example Mapping, EARS, Gherkin e outras técnicas são aplicadas de acordo com o contexto. Sem regras de negócio inventadas, falsa cobertura, metas artificiais de volume ou estimativas oficiais atribuídas à IA.
+Os 18 gates planejados (13 originais e cinco extensões) preservam escopo, integridade, cobertura, qualidade de Stories/aceites/Tasks, dependências e publicação segura. INVEST, 3Cs, QUS, Example Mapping, EARS, Gherkin e outras técnicas são aplicadas de acordo com o contexto. Sem regras de negócio inventadas, falsa cobertura, metas artificiais de volume ou estimativas oficiais atribuídas à IA.
 
 ## Pesquisa e desenvolvimento
 
 A base de engenharia considera componentes da FTD, Assertiva, Derivanta, HVE Core, Azure Prototype, Spec Kit, BMAD, OpenSpec, PM Skills e outros. [Auditoria de código](docs/upstream-code-audit.md) · [Pesquisa de mercado](docs/market-research.md). Reutilização depende de licença, testes e adaptação; não há código externo incorporado nesta fase.
 
 M0 Fundação → M1 Geração → M2 Auditoria → M3 Azure → M4 Planejamento → M5 Evolução → M6 Qualificação. Todos os marcos de implementação estão pendentes. [Roadmap](docs/roadmap.md) · [Benchmarks](benchmarks/README.md) · [Segurança](docs/security.md).
+
+## Implementação
+[Contrato agent-led](docs/agent-led-execution.md) · [Evidências e saúde do backlog](docs/evidence-and-backlog-health.md) · [Calibração](benchmarks/calibration.md) · [Prompt mestre](docs/PBD_AGENT_LED_MASTER_DIRECTIVE.md). Desenvolvimento e benchmarks exclusivamente offline, com snapshots locais e mocks; nenhuma consulta ou alteração em tracker real nesta fase.

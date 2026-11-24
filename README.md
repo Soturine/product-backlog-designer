@@ -33,7 +33,7 @@ Output: HTML, JSON and local Azure import package.
 Do not publish remotely.
 ```
 
-Sources, language and scope can be supplied directly in chat instead. Technical sources and tracker credentials are optional for local generation. The skill must not invent their contents.
+Generation from scratch is the primary mode: an existing backlog is optional, never a prerequisite. Sources, language and scope can be supplied directly in chat instead. Technical sources and tracker credentials are optional for local generation. The skill must not invent their contents.
 
 ## Capabilities (planned)
 
@@ -57,7 +57,7 @@ Support Agile, Scrum, Basic, CMMI and custom process profiles; discover actual d
 **Acceptance criteria:** an available title can be reserved; a title without available copies cannot be reserved.  
 **Tasks:** implement reservation validation; implement persistence; verify both outcomes.
 
-The example assumes the behavior is in the fictional source. Unknown reservation duration becomes a question, not a fabricated rule. Portuguese stories use **Eu como**, **gostaria que**, **para**; native HTML preserves bold and lists. Alternative formats and enablers are supported when suitable. See [work items](docs/work-items.md), [story engineering](docs/story-engineering.md), [acceptance engineering](docs/acceptance-engineering.md).
+The example assumes the behavior is in the fictional source. Unknown reservation duration becomes a question, not a fabricated rule. Portuguese stories use **Eu como**, **gostaria que**, **para**; native HTML preserves bold and lists. Acceptance can be rendered as a native HTML table (ID, criterion, expected outcome), list or Gherkin. Alternative formats and enablers are supported when suitable. See [work items](docs/work-items.md), [story engineering](docs/story-engineering.md), [acceptance engineering](docs/acceptance-engineering.md).
 
 ## Output
 
@@ -99,7 +99,7 @@ Agent-first: agents interpret actual source content. Deterministic Python owns i
 
 ## Assurance
 
-Thirteen quality gates distinguish structural validity from semantic coverage. Each claim gets a disposition; each work item and criterion is checked in reverse against evidence. INVEST, QUS-inspired review, Example Mapping, EARS and Gherkin are tools, not rigid templates or scores. No fixed number of items or acceptance criteria. Unknowns remain visible. Benchmark comparisons with HVE Core, BMAD, Spec Kit, Task Master and bare agents require independent gold, equal conditions where feasible, holdouts, mutations and honest metrics. [Gates](docs/quality-gates.md) · [Benchmarks](benchmarks/README.md).
+Eighteen planned quality gates (original thirteen plus five extensions) distinguish structural validity from semantic coverage. Each claim gets a disposition; each work item and criterion is checked in reverse against evidence. INVEST, QUS-inspired review, Example Mapping, EARS and Gherkin are tools, not rigid templates or scores. No fixed number of items or acceptance criteria. Unknowns remain visible. Benchmark comparisons with HVE Core, BMAD, Spec Kit, Task Master and bare agents require independent gold, equal conditions where feasible, holdouts, mutations and honest metrics. [Gates](docs/quality-gates.md) · [Benchmarks](benchmarks/README.md).
 
 ## Integration and safety
 
@@ -118,3 +118,6 @@ Azure CLI authentication with REST/JSON Patch for lossless writes; optional CLI 
 | M6 | ecosystem and benchmark qualification | planned |
 
 See [roadmap](docs/roadmap.md), [skill](SKILL.md), [changelog](CHANGELOG.md), [attribution](ATTRIBUTION.md). Public examples must be synthetic; never commit private sources or credentials. Repository license selection is pending; no third-party implementation has been vendored. Contributions and runtime installation instructions will be qualified before release.
+
+## Implementation directive
+[Agent-led execution](docs/agent-led-execution.md) · [Evidence and backlog health](docs/evidence-and-backlog-health.md) · [Calibration protocol](benchmarks/calibration.md) · [Master directive](docs/PBD_AGENT_LED_MASTER_DIRECTIVE.md). All implementation and qualification work is offline; live tracker access remains unqualified and requires separate authorization.

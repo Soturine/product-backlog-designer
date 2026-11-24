@@ -26,3 +26,9 @@
 - [Upstream implementation audit and reuse strategy](upstream-code-audit.md)
 - [Design coverage crosswalk](coverage-crosswalk.md)
 - [Synthetic dashboard](../examples/demo/report.html)
+
+## Execution and implementation
+- [Agent-led execution contract](agent-led-execution.md)
+- [Evidence and backlog health](evidence-and-backlog-health.md)
+- [Controlled calibration](../benchmarks/calibration.md)
+- [Implementation master directive](PBD_AGENT_LED_MASTER_DIRECTIVE.md)

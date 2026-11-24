@@ -7,7 +7,7 @@ Status: all implementation milestones pending. Initial documentation baseline do
 | M0 Foundation | constitution, canonical schemas, source allowlist, stable identity, state, CLI scaffold, profiles, gold fixtures | schema/identity/security tests, documented install, baseline manifest |
 | M1 Generation | agent readers, claims, Epic/Feature/Story/AC/Task, dependencies, rich text, HTML/MD/JSON/CSV/XLSX, selective modes | real agent run on synthetic multi-source case, source recall and individual traceability review |
 | M2 Audit & compare | independent review, INVEST, reverse coverage, gaps, conflicts, questions, profile learning, full report | mutation detection, blind comparison, per-item and per-criterion findings |
-| M3 Azure | schema discovery, export, mapping, preview, approved apply, recovery, read-back | contract mocks plus authorized disposable Azure round-trip, idempotency and concurrent edit tests |
+| M3 Azure | schema discovery, export, mapping, preview, approved apply, recovery, read-back | offline contract mocks, mock round-trip, idempotency and concurrent edit tests; separately authorized disposable live qualification remains NOT_RUN |
 | M4 Planning | estimates, priorities, risk, capacity, iteration plans | missing-capacity refusal, dependency/capacity consistency, human review |
 | M5 Evolution | ADR/diff, stable identity, lineage, reconciled updates | version-change fixture, no duplicate or destructive sync, stale approval rejected |
 | M6 Ecosystem | FTD handoff, optional GitHub/Jira, agent portability, benchmark qualification | real independent agent evaluations, supported-adapter evidence, release review |
@@ -19,3 +19,6 @@ All milestones maintain privacy, backward-compatible contracts or migration note
 
 ## Reuse and user experience checkpoints
 M0: pinned upstream adoption decisions and license review, one-entrypoint intent router and canonical contract. M1: one-request end-to-end generation, default JSON + offline two-layer HTML, local Azure package contract and synthetic report tests. M2: full individual audit, not just aggregated findings; independent source review and UX tests. M3: approved CLI-friendly publication and remote read-back, manual CSV fallback with disclosed fidelity. M4–M6: incremental enhancements without increasing mandatory user interaction. See [upstream code audit](upstream-code-audit.md), [usage](usage.md), [reporting](reporting.md), [coverage crosswalk](coverage-crosswalk.md).
+
+## Implementation directive
+Execute [master directive](PBD_AGENT_LED_MASTER_DIRECTIVE.md) by checkpoint, starting at M0. See [agent-led execution](agent-led-execution.md) and [calibration](../benchmarks/calibration.md). No live tracker access during this implementation round. Generation without existing backlog is a mandatory M1 acceptance case. The original 13 gate IDs remain stable; extensions G14–G18 cover duplication, change safety, privacy, compatibility and round-trip.

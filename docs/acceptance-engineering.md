@@ -8,7 +8,7 @@ A criterion states an externally observable behavior or evidence-based quality c
 ## Generation workflow
 - Review each atomic obligation, actor, precondition, event, business rule, state, data and expected effect.
 - Use Example Mapping to separate story, rules, concrete examples and unresolved questions. For each rule identify representative outcomes and exceptions when supported.
-- Choose simple bullet criteria for straightforward behavior, Given/When/Then for context-sensitive behavior, decision tables for meaningful combinations, state transitions for lifecycle rules, and EARS for structured requirements. These are not mandatory interchangeable formats.
+- Choose simple bullet criteria for straightforward behavior, native HTML tables with stable ID, acceptance condition and expected result for structured review, Given/When/Then for context-sensitive behavior, decision tables for meaningful combinations, state transitions for lifecycle rules, and EARS for structured requirements. These are not mandatory interchangeable formats.
 - Assess relevant partitions: valid/invalid inputs, required/optional values, min/max/equality, permission, state, integration failure/retry, persistence, consistency, concurrency, recovery, accessibility, security and performance. Consider applicability, evidence and risk; mark unsupported cases as proposed or questions. Do not generate all combinations mechanically.
 - Check independent reviewer coverage against authority, not just generated criteria. Trace missing, partial, conflicting, unsupported and covered behavior. Retain criterion IDs across wording changes.
 - Write clear expected outcome, including forbidden side effects where warranted; avoid vague terms, subjective adjectives, ambiguous pronouns, undefined units, hidden conjunctions, unbounded 'etc.' or unexplained thresholds. Flag ambiguous language for review, not automatic rejection.
@@ -31,3 +31,5 @@ Poor criterion: “Reservation works quickly with no bugs.” Missing measurable
 Task: implement availability check. Test Case: concrete inputs, preconditions, steps, expected results. DoD: team-wide quality policy. Different artifacts.
 
 See [story engineering](story-engineering.md), [gates](quality-gates.md), [sources](research-references.md).
+
+See [criteria fidelity and counting](evidence-and-backlog-health.md#criteria-fidelity). Render the same canonical meaning across tables, lists and Gherkin, without inventing conditions or treating a header as a criterion.
