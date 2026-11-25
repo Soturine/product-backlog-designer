@@ -182,6 +182,7 @@ def _checks(
         if native_type(profile, i["type"]) is None
     ]
     g13 = _independence_evidence(run)
+    signals = {"claims_only_in_containers": _container_only_claims(backlog, request)}
     return {
         "run_id": run.run_id,
         "validator_version": __version__,
@@ -199,10 +200,33 @@ def _checks(
         "G11": integrity,
         "G15": change,
         "G13": g13,
+        "signals": signals,
         "G16": privacy,
         "G17": compat,
         "artifact_digests": {k: bytes_digest(v) for k, v in sorted(rendered.items())},
     }
+
+
+def _container_only_claims(backlog: dict[str, Any], request: dict[str, Any]) -> list[str]:
+    """Effective claims represented only by epics/features (regression: dogfood c04, critical recall miss).
+
+    A deterministic signal for the reviewer and the report, never a semantic verdict or gate outcome.
+    """
+    if "acceptance" not in request["levels"]:
+        return []
+    types = {i["id"]: i["type"] for i in backlog["items"]}
+    out = []
+    for claim in backlog["claims"]:
+        disp = claim["disposition"]
+        if claim["temporal"]["status"] != "effective" or disp["status"] not in (
+            "COVERED",
+            "PARTIALLY_COVERED",
+        ):
+            continue
+        covering = [types.get(x, "criterion") for x in disp.get("covered_by", [])]
+        if covering and all(t in ("epic", "feature") for t in covering):
+            out.append(claim["id"])
+    return out
 
 
 def _independence_evidence(run: Run) -> list[str]:

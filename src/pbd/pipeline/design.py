@@ -302,6 +302,26 @@ def submit_design(run: Run, payload: Any) -> dict[str, Any]:
     }
 
 
+UNRESOLVED_LEVELS = frozenset({"ambiguous", "conflicting", "unknown"})
+_VISIBLE_ID = re.compile(r"\b(?:CA|AC)-\d{1,3}\b")
+
+
+def _only_unresolved(ctx: Any, refs: Any) -> bool:
+    """True when every cited claim is unresolved (regression: dogfood c02/c04/c05/c06 inventions)."""
+    levels = [ctx.claim_by_key[r]["uncertainty"]["level"] for r in refs or [] if r in ctx.claim_by_key]
+    return bool(levels) and all(level in UNRESOLVED_LEVELS for level in levels)
+
+
+def _visible_id_refs(texts: list[tuple[str, str]]) -> list[str]:
+    """Visible criterion IDs restart per story; text must reference criteria by key (regression: c08/c10)."""
+    return [
+        f"{key}: references visible criterion ID {m.group(0)}; reference criteria by their design key"
+        for key, text in texts
+        for m in [_VISIBLE_ID.search(text)]
+        if m
+    ]
+
+
 def _templated(texts: list[tuple[str, str]], label: str) -> list[str]:
     """Reject >= 3 entries whose text is identical once digits and identifiers are masked (FTD idea)."""
     masked: dict[str, list[str]] = {}
@@ -375,6 +395,11 @@ def _compile_fields(ctx: _Ctx, key: str, fields: dict[str, Any]) -> dict[str, An
             continue
         fv = {k: v for k, v in value.items() if k in ("state", "value", "unit", "scale", "rationale")}
         fv.setdefault("review_status", "unreviewed")
+        if fv.get("state") == "confirmed" and _only_unresolved(ctx, value.get("claims")):
+            ctx.errors.append(
+                f"{key}: field {name} is confirmed but its claims are all ambiguous, conflicting or unknown; "
+                "keep it proposed with a rationale or raise a question"
+            )
         if value.get("claims"):
             fv["evidence"] = [
                 ev
@@ -462,6 +487,11 @@ def _compile_criteria(ctx: _Ctx, crits_in: list[Any], item_ids: set[str]) -> lis
                 crit[opt] = str(entry[opt])
         if entry.get("exceptions"):
             crit["exceptions"] = [str(x) for x in entry["exceptions"]]
+        if crit["status"] == "confirmed" and _only_unresolved(ctx, entry.get("claims")):
+            ctx.errors.append(
+                f"{key}: confirmed criterion traces only ambiguous, conflicting or unknown claims; "
+                "mark it proposed with a rationale and an alternative or question"
+            )
         if crit["status"] == "proposed" and crit["origin"] == "generated":
             crit["origin"] = "proposed"
         criteria.append(crit)
@@ -588,6 +618,20 @@ def compile_design(run: Run, payload: Any) -> tuple[list[str], dict[str, Any]]:
     all_keys = {**ctx.keys, **{k: v["id"] for k, v in ctx.claim_by_key.items()}, **claims_doc.get("keys", {})}
     questions = _compile_questions(ctx, payload.get("questions") or [], all_keys)
     _apply_dispositions(ctx, payload.get("dispositions") or [])
+    texts = [
+        (i["key"], " ".join(v if isinstance(v, str) else " ".join(v) for v in i["content"].values()))
+        for i in items
+    ]
+    texts += [
+        (
+            c["key"],
+            " ".join(
+                [c.get("text", ""), c.get("condition", ""), c.get("trigger", ""), *c["expected_outcomes"]]
+            ),
+        )
+        for c in criteria
+    ]
+    ctx.errors += _visible_id_refs(texts)
     ctx.errors += _templated(
         [(i["key"], i["description"]["value"]) for i in items if i["type"] != "epic"], "items"
     )

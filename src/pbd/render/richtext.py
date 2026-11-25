@@ -196,7 +196,15 @@ def _section(label: str, value: Any) -> str:
 def _strip_label(text: str, label: str) -> str:
     """Drop a leading prefix the agent already wrote (regression: 'Quando Quando', 'quero quero')."""
     stripped = text.strip().rstrip(".").rstrip(",")
-    for candidate in (label, label.split()[0]):
+    words = label.split()
+    # Any prefix or suffix of the label repeated by the agent ("gostaria que", "que", "Quando") is dropped.
+    candidates = sorted(
+        {" ".join(words[:n]) for n in range(1, len(words) + 1)}
+        | {" ".join(words[n:]) for n in range(1, len(words))},
+        key=len,
+        reverse=True,
+    )
+    for candidate in candidates:
         if stripped.casefold().startswith(candidate.casefold() + " "):
             return stripped[len(candidate) + 1 :].lstrip(" ,")
     return stripped

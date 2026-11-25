@@ -10,6 +10,12 @@ You did not reconcile claims or design this backlog. Your review is the independ
 ## Detection passes (adapted from Spec Kit analyze; semantic, not keyword-based)
 Duplication · ambiguity (vague adjectives, missing thresholds) · underspecification (missing outcome, actor, error behavior) · alignment with sources and approved decisions · coverage gaps (both directions) · inconsistency (terminology, contradicting criteria, wrong state transitions). Sizing signals (adapted from HVE Core story quality) are *candidates*: a feature whose only child restates it, an epic without children, a task with beneficiary framing, a story whose criteria cannot be verified without splitting.
 
+## Mandatory checks
+- Confirmed behavior that resolves an ambiguity the sources leave open is an `unsupported_assumption` finding, even if plausible.
+- An effective obligation represented only in an Epic/Feature (see `signals.claims_only_in_containers` in `output/checks.json` after finalize, or check it yourself) is PARTIALLY_COVERED unless a criterion, verifiable rule or task carries it.
+- Work on a superseded mechanism without implementation evidence of that mechanism is a finding.
+- Values stated by the sources (priorities, estimates) missing from the fields are a gap.
+
 ## False-positive controls
 A conjunction is not automatically two stories; a valid nonstandard format need not be rewritten; an enabler without persona is legitimate; an optional field left empty is not a defect; unknown is not wrong. Distinguish confirmed divergence from candidate concern and optional improvement.
 
