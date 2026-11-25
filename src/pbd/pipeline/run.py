@@ -26,6 +26,12 @@ LEVELS = ("epics", "features", "stories", "acceptance", "tasks", "dependencies")
 FORMATS = ("html", "json", "md", "csv", "xlsx", "mermaid", "azure")
 DEFAULT_FORMATS = ("html", "json")
 CHUNK_LINES = 300
+BASELINES_PER_MODE = {"generate": 0, "audit": 1, "compare": 2}
+BASELINE_FILES = {
+    "baseline": "stages/baseline.json",
+    "left": "stages/baseline-left.json",
+    "right": "stages/baseline-right.json",
+}
 STAGE_FILES = {
     "claims": "stages/claims.json",
     "design": "stages/design.json",
@@ -163,27 +169,35 @@ def start(
     selections: list[tuple[str, str]],
     request: dict[str, Any],
     host: str = "unknown",
-    baseline: str | None = None,
+    baselines: list[str] | None = None,
     type_map: dict[str, str] | None = None,
 ) -> Run:
     """Create a run: inventory, extraction, reader assignments and the first work order.
 
-    ``baseline`` (audit mode) is a workspace-relative backlog file imported before the run exists,
-    so an unsupported or unmapped baseline refuses the run instead of leaving it half-built.
+    ``baselines`` are workspace-relative backlog files (one for audit, two for compare) imported
+    before the run exists, so an unsupported or unmapped baseline refuses the run instead of
+    leaving it half-built.
     """
     if not selections:
         raise RunError("at least one explicitly selected source is required")
-    if (request["mode"] == "audit") != (baseline is not None):
-        raise RunError("audit mode requires --baseline, and --baseline is only valid in audit mode")
+    baselines = list(baselines or [])
+    wanted = BASELINES_PER_MODE.get(request["mode"], 0)
+    if len(baselines) != wanted:
+        raise RunError(
+            f"{request['mode']} mode takes {wanted} --baseline file(s); got {len(baselines)} "
+            "(audit requires --baseline, compare requires two)"
+        )
     scope = Scope(workspace)
-    imported = None
-    if baseline is not None:
+    imported: dict[str, dict[str, Any]] = {}
+    if baselines:
         from pbd.pipeline.importer import ImportError_, load_backlog
 
-        try:
-            imported = load_backlog(scope.resolve(baseline), type_map)
-        except ImportError_ as exc:
-            raise RunError(f"baseline refused: {exc}") from exc
+        labels = ["baseline"] if len(baselines) == 1 else ["left", "right"]
+        for label, sel in zip(labels, baselines, strict=True):
+            try:
+                imported[label] = load_backlog(scope.resolve(sel), type_map, label=label)
+            except ImportError_ as exc:
+                raise RunError(f"baseline {sel} refused: {exc}") from exc
     records = build_sources(scope, selections)
     root = Path(root)
     state = RunState.create(root, request["mode"], synthetic=bool(request.get("synthetic")), host=host)
@@ -290,9 +304,9 @@ def start(
     state.manifest["status"]["source_coverage"] = (
         "incomplete_reading" if unreadable or gapped else "not_assessed"
     )
-    if imported is not None:
-        run.write_artifact("stages/baseline.json", imported)
-        state.manifest["limitations"] += [f"baseline: {n}" for n in imported["notes"]]
+    for label, base in imported.items():
+        run.write_artifact(BASELINE_FILES[label], base)
+        state.manifest["limitations"] += [f"{label}: {n}" for n in base["notes"]]
     state.save()
     state.complete("inventory", digest([selections, request]), inv_digest)
     run.write_work_order()
@@ -391,7 +405,19 @@ def build_work_order(run: Run) -> dict[str, Any]:
             ),
             review_targets=_review_targets(run),
         )
-        if run.request()["mode"] == "audit":
+        if run.request()["mode"] == "compare":
+            order.update(
+                procedure="procedures/reviewer.md#compare-mode",
+                instruction=(
+                    "COMPARE: re-read the ORIGINAL sources first and build your own obligation inventory; "
+                    "for every obligation record the disposition of the left AND the right baseline; review "
+                    "every item and criterion of both; map them many-to-many (equivalent, split, merge, "
+                    "overlap, divergent, conflicting) with rationale; neither backlog is gold. Submit with: "
+                    "pbd submit comparison --file <comparison.json>"
+                ),
+                sides={s: v["baseline"] for s, v in run.read("stages/design.json")["sides"].items()},
+            )
+        elif run.request()["mode"] == "audit":
             order["instruction"] += (
                 ". AUDIT: the backlog under review is the imported baseline (origin imported, no "
                 "claim references); judge it against the sources, never against what you would have "

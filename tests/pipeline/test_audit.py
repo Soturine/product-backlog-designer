@@ -39,7 +39,7 @@ def _audit_run(tmp_path: Path) -> Run:
     ws = make_workspace(tmp_path)
     (ws / "baseline.json").write_text(json.dumps(BASELINE), encoding="utf-8")
     req = normalize_request(mode="audit", synthetic=True)
-    run = start(tmp_path / "out", ws, SOURCES, req, baseline="baseline.json")
+    run = start(tmp_path / "out", ws, SOURCES, req, baselines=["baseline.json"])
     read_all(run)
     result = submit_claims(run, claims_payload(run))
     assert result["baseline_compiled"]["items"] == 3
@@ -131,14 +131,14 @@ def _audit_review(run: Run) -> dict[str, Any]:
 
 def test_audit_requires_baseline_and_rejects_unmapped_types(tmp_path: Path) -> None:
     ws = make_workspace(tmp_path)
-    with pytest.raises(RunError, match="requires --baseline"):
+    with pytest.raises(RunError, match="audit requires --baseline"):
         start(tmp_path / "out", ws, SOURCES, normalize_request(mode="audit"))
     (ws / "b.json").write_text(
         json.dumps({"kind": "pbd.import", "items": [{"id": "1", "type": "Initiative", "title": "x"}]}),
         encoding="utf-8",
     )
     with pytest.raises(RunError, match="unmapped"):
-        start(tmp_path / "out", ws, SOURCES, normalize_request(mode="audit"), baseline="b.json")
+        start(tmp_path / "out", ws, SOURCES, normalize_request(mode="audit"), baselines=["b.json"])
     assert not (tmp_path / "out").exists() or not list((tmp_path / "out").rglob("manifest.json"))
 
 

@@ -19,6 +19,20 @@ Duplication · ambiguity (vague adjectives, missing thresholds) · underspecific
 ## Audit mode
 When the work order says AUDIT, the backlog is an imported baseline: it has no claim references by design. Judge it only against the sources: map each of your obligations to the baseline items/criteria that carry it (`covered_by`), set `source_support` per item and criterion, and record every divergence, gap, superseded requirement still demanded and out-of-scope item as a finding. Imported wording and formats are not defects by themselves.
 
+## Compare mode
+When the work order says COMPARE, two imported baselines (keys `L-...` and `R-...`) are judged against the same sources; neither is gold and item counts are not quality. Re-read the sources first and build one inventory. For each obligation give `left` and `right` objects (`disposition`, `covered_by` with that side's keys, `rationale`). Review every item and criterion of both sides once. Map them in `mappings` (`left`: [...], `right`: [...], `relation`: equivalent | split | merge | overlap | divergent | conflicting, `rationale`, optional `differences`): legitimate differences of decomposition are not defects. Findings carry `side`: left | right | both. Never declare a winner.
+```json
+{"reviewer": {...}, "sources_reread": [...],
+ "independent_obligations": [{"key": "O1", "text": "...", "quote": "...", "locator": {...}, "matched_claims": ["C1"],
+   "left": {"disposition": "COVERED", "covered_by": ["L-12.AC1"], "rationale": "..."},
+   "right": {"disposition": "PARTIALLY_COVERED", "covered_by": ["R-7"], "rationale": "..."}}],
+ "items": [{"key": "L-12", "verdict": "pass", "source_support": "supported"}], "criteria": [...],
+ "mappings": [{"left": ["L-12"], "right": ["R-7", "R-8"], "relation": "split", "rationale": "..."}],
+ "findings": [{"side": "left", "classification": "confirmed_gap", "severity": "high", "expected": "...", "actual": "...",
+   "why": "...", "impact": "...", "recommendation": "...", "affects": ["L-12"]}]}
+```
+Submit with `pbd submit comparison --file comparison.json`, then `pbd finalize`.
+
 ## False-positive controls
 A conjunction is not automatically two stories; a valid nonstandard format need not be rewritten; an enabler without persona is legitimate; an optional field left empty is not a defect; unknown is not wrong. Distinguish confirmed divergence from candidate concern and optional improvement.
 

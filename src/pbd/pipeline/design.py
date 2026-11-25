@@ -127,7 +127,7 @@ def submit_claims(run: Run, payload: Any) -> dict[str, Any]:
         str(run.artifact_digest("stages/claims.json")),
     )
     baseline = None
-    if run.request()["mode"] == "audit":
+    if run.request()["mode"] in ("audit", "compare"):
         from pbd.pipeline.audit import compile_baseline
 
         baseline = compile_baseline(run)

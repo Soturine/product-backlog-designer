@@ -318,6 +318,10 @@ def _metrics(
 
 
 def finalize(run: Run) -> dict[str, Any]:
+    if run.request()["mode"] == "compare":
+        from pbd.pipeline.compare import finalize_comparison
+
+        return finalize_comparison(run)
     require_stage(run, "independent_review")
     if run.stage_status("render") == "complete":
         raise RunError("run already finalized; use pbd render to re-render")
@@ -368,6 +372,7 @@ def finalize(run: Run) -> dict[str, Any]:
         "limitations": run.state.manifest["limitations"],
         "azure": azure,
         "version": __version__,
+        "mode": request["mode"],
     }
     html_bytes = render_report(ctx).encode("utf-8")
     if html_bytes != render_report(ctx).encode("utf-8"):

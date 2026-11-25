@@ -161,8 +161,10 @@ def _canonical_type(native: str, type_map: dict[str, str]) -> str | None:
     return TYPE_ALIASES.get(key)
 
 
-def _key(prefix: str, native_id: str) -> str:
+def _key(prefix: str, native_id: str, always: bool = False) -> str:
     safe = _KEY_SAFE.sub("_", str(native_id))[:36] or "x"
+    if always:
+        return f"{prefix}-{safe}"
     return f"{prefix}{safe}" if not safe[0].isalpha() else safe
 
 
@@ -245,7 +247,7 @@ def load_backlog(
     if any(not i for i in ids) or len(set(ids)) != len(ids):
         raise ImportError_("every imported item needs a unique, non-empty id")
     prefix = "L" if label == "left" else "R" if label == "right" else "I"
-    keys = {i: _key(prefix, i) for i in ids}
+    keys = {i: _key(prefix, i, always=label in ("left", "right")) for i in ids}
     if len(set(keys.values())) != len(keys):
         raise ImportError_("imported ids collide after key normalization")
     items, criteria, notes = [], [], []

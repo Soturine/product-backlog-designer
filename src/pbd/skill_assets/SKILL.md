@@ -15,7 +15,7 @@ The deterministic runtime is the `pbd` command (Python 3.11+, dependency `jsonsc
 ```text
 pbd start --workspace <root> --source "<file|dir>=<authority>" ... --out <artifact-root> [--levels ...] [--formats ...] [--profile ...]
 pbd start --mode audit --baseline <backlog.json|.csv> [--type-map <map.json>] --source ... # audit an existing backlog
-pbd submit reading|claims|design|review --file <payload.json> --out <artifact-root>
+pbd submit reading|claims|design|review|comparison --file <payload.json> --out <artifact-root>
 pbd finalize --out <artifact-root>          # → <run>/output/report.html + JSON/exports
 pbd work-order --out <artifact-root>        # what the next stage must account for
 ```
@@ -26,6 +26,6 @@ Every submission is validated all-or-nothing and returns every problem at once. 
 - Semantic work (reading, claims, design, review) is done by agents reading the actual content — never by a generated script, regex or keyword counter.
 - Never invent actors, thresholds, estimates, assignees, dates or technical facts. Unknowns become questions; unsupported ideas become `proposed` with rationale.
 - Report the model that actually ran for each role. If you cannot use separate agents, say so (`sequential_role`); G13 will be BLOCKED.
-- Development and qualification are offline. Never contact Azure DevOps or any tracker; a local package is not a publication. Audit of a local backlog file is implemented ([entrypoint](entrypoints/audit.md)); compare, refine, planning, ADR updates and publication are not implemented yet — say so instead of simulating them.
+- Development and qualification are offline. Never contact Azure DevOps or any tracker; a local package is not a publication. Audit ([entrypoint](entrypoints/audit.md)) and comparison ([entrypoint](entrypoints/compare.md)) of local backlog files are implemented; refine, planning, ADR updates and publication are not implemented yet — say so instead of simulating them.
 
 Details: [usage](docs/usage.md), [install](docs/install.md), [quality gates](docs/quality-gates.md), [reporting](docs/reporting.md), [work items](docs/work-items.md).

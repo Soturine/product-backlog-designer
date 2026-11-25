@@ -196,7 +196,7 @@ def cmd_start(args: argparse.Namespace) -> int:
             args.source,
             request,
             host=doctor()["host"],
-            baseline=args.baseline,
+            baselines=args.baseline,
             type_map=type_map,
         )
     except (RunError, ScopeError, ValueError, OSError, CanonicalError) as exc:
@@ -207,6 +207,7 @@ def cmd_start(args: argparse.Namespace) -> int:
 
 
 def cmd_submit(args: argparse.Namespace) -> int:
+    from pbd.pipeline.compare import submit_comparison
     from pbd.pipeline.design import submit_claims, submit_design
     from pbd.pipeline.reading import submit_ledger
     from pbd.pipeline.review import submit_review
@@ -217,6 +218,7 @@ def cmd_submit(args: argparse.Namespace) -> int:
         "claims": submit_claims,
         "design": submit_design,
         "review": submit_review,
+        "comparison": submit_comparison,
     }
     try:
         run = current(_out_root(args), args.run_id)
@@ -233,11 +235,13 @@ def cmd_submit(args: argparse.Namespace) -> int:
 
 
 def cmd_finalize(args: argparse.Namespace) -> int:
+    from pbd.pipeline.compare import finalize_comparison
     from pbd.pipeline.finalize import finalize
     from pbd.pipeline.run import RunError, current
 
     try:
-        result = finalize(current(_out_root(args), args.run_id))
+        run = current(_out_root(args), args.run_id)
+        result = (finalize_comparison if run.request()["mode"] == "compare" else finalize)(run)
     except RunError as exc:
         _emit({"finalized": False, "errors": exc.errors})
         return EXIT_INVALID
@@ -364,8 +368,17 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--acceptance-style", default="list", choices=["list", "table", "gherkin"])
     p.add_argument("--title")
     p.add_argument("--synthetic", action="store_true")
-    p.add_argument("--mode", default="generate", choices=["generate", "audit"], help="audit needs --baseline")
-    p.add_argument("--baseline", help="audit: existing backlog (.json pbd.backlog/pbd.import or .csv)")
+    p.add_argument(
+        "--mode",
+        default="generate",
+        choices=["generate", "audit", "compare"],
+        help="audit needs one --baseline, compare needs two",
+    )
+    p.add_argument(
+        "--baseline",
+        action="append",
+        help="existing backlog file (.json pbd.backlog/pbd.import or .csv); repeat for compare",
+    )
     p.add_argument("--type-map", help="audit: JSON object mapping native work-item types to PBD types")
     p.set_defaults(func=cmd_start)
 
@@ -387,7 +400,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.set_defaults(func=cmd_skill)
 
     p = sub.add_parser("submit", help="submit an agent stage payload (all-or-nothing validation)")
-    p.add_argument("stage", choices=["reading", "claims", "design", "review"])
+    p.add_argument("stage", choices=["reading", "claims", "design", "review", "comparison"])
     p.add_argument("--file", required=True)
     p.add_argument("--out", default="pbd-output")
     p.add_argument("--run-id")
