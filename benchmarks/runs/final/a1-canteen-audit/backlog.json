@@ -1,0 +1,651 @@
+{
+  "claims": [
+    {
+      "category": "functional",
+      "disposition": {
+        "status": "UNASSESSED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "prd.md",
+            "quote_digest": "sha256:42342e3b9dfecb5502bfcfdb743c834d56f0cdbffe391404494610eef5929808",
+            "section": "1.1",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "d97ad66d76267003"
+          },
+          "summary": "O responsável cadastra o aluno",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-4TJMBSTZGZA7",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O responsável cadastra o aluno",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "status": "UNASSESSED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "prd.md",
+            "quote_digest": "sha256:aac2ecb466a9666341761683729fc819fb53c32286c586dfec3f543ed098a6f9",
+            "section": "1.1",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "d97ad66d76267003"
+          },
+          "summary": "faz pedidos de lanche para o dia seguinte",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-QHHGACC5KPVK",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O responsável faz pedidos de lanche para o dia seguinte",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "status": "UNASSESSED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "prd.md",
+            "quote_digest": "sha256:75983fb34a93ca2c0c69352d7da7536b582d8e9078f598c7d74d49207474de1d",
+            "section": "1.2",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "d97ad66d76267003"
+          },
+          "summary": "são aceitos até as 20h do dia anterior",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-XVRFSRJGHP15",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Pedidos para o dia seguinte são aceitos até as 20h do dia anterior",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "status": "UNASSESSED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 6,
+            "line_start": 6,
+            "member": "prd.md",
+            "quote_digest": "sha256:6b18b7d999bbf87387b172855e74482a6d99613c9b60d6b01d0355a775f3e44e",
+            "section": "1.3",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "d97ad66d76267003"
+          },
+          "summary": "no máximo 2 pedidos por dia",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-Q6EFZZAQBS3W",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Cada aluno pode ter no máximo 2 pedidos por dia",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "status": "UNASSESSED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 7,
+            "line_start": 7,
+            "member": "prd.md",
+            "quote_digest": "sha256:1fed5edcd9ad0821ecdcb70f60bcbb4a0c2197f8852f26446bdbc572487ad664",
+            "section": "1.4",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "d97ad66d76267003"
+          },
+          "summary": "não podem ser pedidos para ele",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-GDER3QKE5X09",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Itens com alergênicos marcados no cadastro do aluno não podem ser pedidos para ele",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "status": "UNASSESSED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 10,
+            "line_start": 10,
+            "member": "prd.md",
+            "quote_digest": "sha256:234dbf1ab314a1be327bf5ff18b6d3ae020f3063d530a59960fe0540d0c296d9",
+            "section": "2.1",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "d97ad66d76267003"
+          },
+          "summary": "pagos com o saldo pré-carregado da conta do responsável",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-7B8QZ6HBMTQA",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Os pedidos são pagos com o saldo pré-carregado da conta do responsável",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "error",
+      "disposition": {
+        "status": "UNASSESSED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 11,
+            "line_start": 11,
+            "member": "prd.md",
+            "quote_digest": "sha256:3ba5d1afc144da233f48b9b39db82a7b7600b28c8a90e684103b04096249ba34",
+            "section": "2.2",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "d97ad66d76267003"
+          },
+          "summary": "recusado quando o saldo é insuficiente",
+          "type": "source_locator",
+          "verification": "mechanical"
+        },
+        {
+          "locator": {
+            "line_end": 11,
+            "line_start": 11,
+            "member": "prd.md",
+            "quote_digest": "sha256:f18a99667daae7c2850b91f1ae04d3bae749e3d1ef8a6ef2ef8ba08971759010",
+            "section": "2.2",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "d97ad66d76267003"
+          },
+          "summary": "\"Saldo insuficiente\"",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-0DD0XQ1XBQ98",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Um pedido é recusado quando o saldo é insuficiente, com a mensagem \"Saldo insuficiente\"",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "status": "UNASSESSED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 14,
+            "line_start": 14,
+            "member": "prd.md",
+            "quote_digest": "sha256:d4111a76c01cc9f6e740aeb12df4d617f8e149a4b861ccc9a627eee932ad3348",
+            "section": "3.1",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "d97ad66d76267003"
+          },
+          "summary": "lista de pedidos do dia agrupada por turma",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-6RT16A89FF1Z",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "A cantina vê a lista de pedidos do dia agrupada por turma",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    }
+  ],
+  "criteria": [
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "Pedido aceito até as 22h do dia anterior"
+      ],
+      "id": "PBD-AC-5635RQQZS5VH",
+      "order": 0,
+      "origin": "imported",
+      "parent": "PBD-STORY-ZVXSWDCW8R0W",
+      "rationale": "Imported from the baseline as written; correctness is assessed by the independent audit.",
+      "raw": "Pedido aceito até as 22h do dia anterior",
+      "status": "proposed",
+      "style": "list",
+      "text": "Pedido aceito até as 22h do dia anterior",
+      "visible_id": "AC1"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "Cada aluno pode ter no máximo 2 pedidos por dia"
+      ],
+      "id": "PBD-AC-EGYT22KWNCF0",
+      "order": 1,
+      "origin": "imported",
+      "parent": "PBD-STORY-ZVXSWDCW8R0W",
+      "rationale": "Imported from the baseline as written; correctness is assessed by the independent audit.",
+      "raw": "Cada aluno pode ter no máximo 2 pedidos por dia",
+      "status": "proposed",
+      "style": "list",
+      "text": "Cada aluno pode ter no máximo 2 pedidos por dia",
+      "visible_id": "AC2"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "Pedido debitado do saldo pré-carregado"
+      ],
+      "id": "PBD-AC-8X52B10Z0YW9",
+      "order": 2,
+      "origin": "imported",
+      "parent": "PBD-STORY-MW05G10ERJRG",
+      "rationale": "Imported from the baseline as written; correctness is assessed by the independent audit.",
+      "raw": "Pedido debitado do saldo pré-carregado",
+      "status": "proposed",
+      "style": "list",
+      "text": "Pedido debitado do saldo pré-carregado",
+      "visible_id": "AC1"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "Pedido recusado com a mensagem Saldo insuficiente quando não há saldo"
+      ],
+      "id": "PBD-AC-YA2QMGZN90N4",
+      "order": 3,
+      "origin": "imported",
+      "parent": "PBD-STORY-MW05G10ERJRG",
+      "rationale": "Imported from the baseline as written; correctness is assessed by the independent audit.",
+      "raw": "Pedido recusado com a mensagem Saldo insuficiente quando não há saldo",
+      "status": "proposed",
+      "style": "list",
+      "text": "Pedido recusado com a mensagem Saldo insuficiente quando não há saldo",
+      "visible_id": "AC2"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "Lista do dia agrupada por turma"
+      ],
+      "id": "PBD-AC-Z5EA36TV7VAD",
+      "order": 4,
+      "origin": "imported",
+      "parent": "PBD-STORY-TE947AWJR7Q3",
+      "rationale": "Imported from the baseline as written; correctness is assessed by the independent audit.",
+      "raw": "Lista do dia agrupada por turma",
+      "status": "proposed",
+      "style": "list",
+      "text": "Lista do dia agrupada por turma",
+      "visible_id": "AC1"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "Lanche entregue na sala até o intervalo"
+      ],
+      "id": "PBD-AC-F2KPQ2GW0BHH",
+      "order": 5,
+      "origin": "imported",
+      "parent": "PBD-STORY-8Q90M4T1AJPS",
+      "rationale": "Imported from the baseline as written; correctness is assessed by the independent audit.",
+      "raw": "Lanche entregue na sala até o intervalo",
+      "status": "proposed",
+      "style": "list",
+      "text": "Lanche entregue na sala até o intervalo",
+      "visible_id": "AC1"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "Aluno cadastrado com nome e turma"
+      ],
+      "id": "PBD-AC-EBQA3G8AWXVH",
+      "order": 6,
+      "origin": "imported",
+      "parent": "PBD-STORY-EPBK0C1MP86J",
+      "rationale": "Imported from the baseline as written; correctness is assessed by the independent audit.",
+      "raw": "Aluno cadastrado com nome e turma",
+      "status": "proposed",
+      "style": "list",
+      "text": "Aluno cadastrado com nome e turma",
+      "visible_id": "AC1"
+    }
+  ],
+  "decisions": [],
+  "findings": [
+    {
+      "actual": "I101.AC1 states 22h.",
+      "affects": [
+        "PBD-AC-5635RQQZS5VH",
+        "PBD-STORY-ZVXSWDCW8R0W"
+      ],
+      "classification": "confirmed_divergence",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Orders accepted until 20h of the previous day (PRD 1.2).",
+      "gate": "G04",
+      "id": "PBD-FND-SEYF1B39YFD7",
+      "impact": "Orders accepted after the real cutoff.",
+      "recommendation": "Change to 20h.",
+      "review_status": "confirmed",
+      "severity": "high",
+      "why": "Direct contradiction of the source threshold."
+    },
+    {
+      "actual": "No item or criterion covers it; registration (I105) has no allergen marking.",
+      "affects": [
+        "PBD-STORY-EPBK0C1MP86J",
+        "PBD-STORY-ZVXSWDCW8R0W"
+      ],
+      "classification": "confirmed_gap",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Items with allergens marked in the student record cannot be ordered for that student (PRD 1.4).",
+      "gate": "G02",
+      "id": "PBD-FND-4RKYZY9KF215",
+      "impact": "Safety-relevant rule untested/unimplemented.",
+      "recommendation": "Add a story/criteria for allergen blocking and allergen marking at registration.",
+      "review_status": "confirmed",
+      "severity": "high",
+      "why": "Source requirement is unrepresented."
+    },
+    {
+      "actual": "I104 requires delivery to the classroom by the break.",
+      "affects": [
+        "PBD-AC-F2KPQ2GW0BHH",
+        "PBD-STORY-8Q90M4T1AJPS"
+      ],
+      "classification": "unsupported_assumption",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Classroom delivery is not part of this version (PRD section 4).",
+      "gate": "G09",
+      "id": "PBD-FND-J4J8AR9X4CB4",
+      "impact": "Out-of-scope work gets built.",
+      "recommendation": "Remove I104 or defer it.",
+      "review_status": "confirmed",
+      "severity": "high",
+      "why": "Excluded scope; the 'até o intervalo' deadline is also invented."
+    }
+  ],
+  "items": [
+    {
+      "claim_refs": [],
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "Permitir pedidos de lanche pelos responsáveis."
+      },
+      "external_refs": [
+        {
+          "namespace": "backlog.csv",
+          "native_id": "100",
+          "system": "baseline"
+        }
+      ],
+      "id": "PBD-EPIC-GG4STD1SBA4S",
+      "native_type": "Epic",
+      "origin": "imported",
+      "parent": null,
+      "status": "reviewed",
+      "title": "Pedidos da cantina",
+      "type": "epic"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [],
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "Como responsável quero pedir o lanche do dia seguinte para meu filho."
+      },
+      "external_refs": [
+        {
+          "namespace": "backlog.csv",
+          "native_id": "101",
+          "system": "baseline"
+        }
+      ],
+      "fields": {
+        "priority": {
+          "rationale": "imported baseline value",
+          "review_status": "unreviewed",
+          "state": "proposed",
+          "value": "1"
+        }
+      },
+      "id": "PBD-STORY-ZVXSWDCW8R0W",
+      "native_type": "User Story",
+      "origin": "imported",
+      "parent": "PBD-EPIC-GG4STD1SBA4S",
+      "status": "reviewed",
+      "title": "Fazer pedido para o dia seguinte",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [],
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "Como responsável quero pagar com o saldo da conta."
+      },
+      "external_refs": [
+        {
+          "namespace": "backlog.csv",
+          "native_id": "102",
+          "system": "baseline"
+        }
+      ],
+      "fields": {
+        "priority": {
+          "rationale": "imported baseline value",
+          "review_status": "unreviewed",
+          "state": "proposed",
+          "value": "1"
+        }
+      },
+      "id": "PBD-STORY-MW05G10ERJRG",
+      "native_type": "User Story",
+      "origin": "imported",
+      "parent": "PBD-EPIC-GG4STD1SBA4S",
+      "status": "reviewed",
+      "title": "Pagar pedido com saldo",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [],
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "Como cantina quero ver os pedidos do dia agrupados por turma."
+      },
+      "external_refs": [
+        {
+          "namespace": "backlog.csv",
+          "native_id": "103",
+          "system": "baseline"
+        }
+      ],
+      "fields": {
+        "priority": {
+          "rationale": "imported baseline value",
+          "review_status": "unreviewed",
+          "state": "proposed",
+          "value": "2"
+        }
+      },
+      "id": "PBD-STORY-TE947AWJR7Q3",
+      "native_type": "User Story",
+      "origin": "imported",
+      "parent": "PBD-EPIC-GG4STD1SBA4S",
+      "status": "reviewed",
+      "title": "Ver pedidos do dia por turma",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [],
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "Como responsável quero que o lanche seja entregue na sala."
+      },
+      "external_refs": [
+        {
+          "namespace": "backlog.csv",
+          "native_id": "104",
+          "system": "baseline"
+        }
+      ],
+      "fields": {
+        "priority": {
+          "rationale": "imported baseline value",
+          "review_status": "unreviewed",
+          "state": "proposed",
+          "value": "3"
+        }
+      },
+      "id": "PBD-STORY-8Q90M4T1AJPS",
+      "native_type": "User Story",
+      "origin": "imported",
+      "parent": "PBD-EPIC-GG4STD1SBA4S",
+      "status": "reviewed",
+      "title": "Entregar lanche na sala de aula",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [],
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "Como responsável quero cadastrar meu filho."
+      },
+      "external_refs": [
+        {
+          "namespace": "backlog.csv",
+          "native_id": "105",
+          "system": "baseline"
+        }
+      ],
+      "fields": {
+        "priority": {
+          "rationale": "imported baseline value",
+          "review_status": "unreviewed",
+          "state": "proposed",
+          "value": "2"
+        }
+      },
+      "id": "PBD-STORY-EPBK0C1MP86J",
+      "native_type": "User Story",
+      "origin": "imported",
+      "parent": "PBD-EPIC-GG4STD1SBA4S",
+      "status": "reviewed",
+      "title": "Cadastrar aluno",
+      "type": "story"
+    }
+  ],
+  "kind": "pbd.backlog",
+  "language": "pt-BR",
+  "profile": "generic",
+  "questions": [],
+  "relations": [],
+  "run_id": "PBD-RUN-GRSNW1TW281V",
+  "schema_version": "1.1.0",
+  "sources": [
+    {
+      "authority": "functional",
+      "digest": "sha256:d97ad66d7626700352d51ae0c4c43860a7a61d54631d093e2ebc2ace2b9bd0d3",
+      "id": "PBD-SRC-0AW4Q3WGMK5A",
+      "kind": "file",
+      "members": [
+        {
+          "bytes": 724,
+          "digest": "sha256:0121408a621f6073b3f22d0249e046db9a04a60e40794448e9e56373fe0cee8d",
+          "media_type": "application/octet-stream",
+          "path": "prd.md",
+          "status": "read"
+        }
+      ],
+      "read_status": "complete",
+      "selector": "sources/prd.md",
+      "version": "d97ad66d76267003"
+    }
+  ],
+  "synthetic": true
+}

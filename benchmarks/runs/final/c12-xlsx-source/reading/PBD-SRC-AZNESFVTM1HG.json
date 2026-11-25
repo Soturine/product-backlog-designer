@@ -1,0 +1,231 @@
+{
+  "ambiguities": [
+    {
+      "locator": {
+        "line_start": 14,
+        "member": "requisitos.xlsx",
+        "row": 1,
+        "section": "Rascunho"
+      },
+      "quote": "A1=Duração máxima (horas) | B1=8",
+      "text": "A aba oculta 'Rascunho' traz duração máxima de 8 horas, conflitando com as 4 horas de Regras; a própria aba diz 'rascunho descartado', mas a planilha não declara qual valor prevalece formalmente"
+    },
+    {
+      "locator": {
+        "line_start": 15,
+        "member": "requisitos.xlsx",
+        "row": 2,
+        "section": "Rascunho"
+      },
+      "quote": "rascunho descartado",
+      "text": "Indicação de que a aba Rascunho é descartada"
+    },
+    {
+      "locator": {
+        "line_start": 12,
+        "member": "requisitos.xlsx",
+        "row": 4,
+        "section": "Regras"
+      },
+      "quote": "=COUNTA(Salas!A:A)",
+      "text": "O número de salas (3) vem de fórmula que referencia aba 'Salas' ausente; não há lista das salas nem confirmação do valor"
+    },
+    {
+      "locator": {
+        "line_start": 4,
+        "member": "requisitos.xlsx",
+        "row": 3,
+        "section": "Requisitos"
+      },
+      "quote": "informando data, horário e finalidade",
+      "text": "Formato de data, horário e 'finalidade' (livre ou lista) não definido"
+    }
+  ],
+  "exclusions": [],
+  "members": [
+    {
+      "lines_read": [
+        [
+          1,
+          15
+        ]
+      ],
+      "path": "requisitos.xlsx",
+      "reading": {
+        "limitations": [
+          "no charts, colours or shapes",
+          "formulas shown with cached values only; the formula in Regras!B4 references a sheet 'Salas' that is not in the workbook",
+          "hidden sheet 'Rascunho' included in extraction; whether it is a discarded draft rests on its own text",
+          "merged range Requisitos!A1:C1 has value only in first cell",
+          "cell comments, data validation and number formats not verified"
+        ],
+        "method": "extracted_text",
+        "tool": "runtime cell extraction (text_ref) read with the file Read tool; host cannot open .xlsx natively (Read tool rejects binary xlsx)"
+      },
+      "status": "read"
+    }
+  ],
+  "obligations": [
+    {
+      "category": "functional",
+      "key": "R1",
+      "locator": {
+        "line_start": 4,
+        "member": "requisitos.xlsx",
+        "row": 3,
+        "section": "Requisitos"
+      },
+      "modality": "must",
+      "quote": "O morador reserva uma sala informando data, horário e finalidade.",
+      "text": "O morador reserva uma sala informando data, horário e finalidade.",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "data",
+      "key": "R2",
+      "locator": {
+        "line_start": 4,
+        "member": "requisitos.xlsx",
+        "row": 3,
+        "section": "Requisitos"
+      },
+      "modality": "informative",
+      "quote": "C3=Alta",
+      "text": "Prioridade do requisito R1 informada pela planilha: Alta",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "constraint",
+      "key": "R3",
+      "locator": {
+        "line_start": 5,
+        "member": "requisitos.xlsx",
+        "row": 4,
+        "section": "Requisitos"
+      },
+      "modality": "must",
+      "quote": "Uma reserva dura no máximo o limite da aba Regras.",
+      "text": "Uma reserva dura no máximo o limite de duração da aba Regras.",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "data",
+      "key": "R4",
+      "locator": {
+        "line_start": 5,
+        "member": "requisitos.xlsx",
+        "row": 4,
+        "section": "Requisitos"
+      },
+      "modality": "informative",
+      "quote": "C4=Alta",
+      "text": "Prioridade do requisito R2 informada pela planilha: Alta",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "constraint",
+      "key": "R5",
+      "locator": {
+        "line_start": 6,
+        "member": "requisitos.xlsx",
+        "row": 5,
+        "section": "Requisitos"
+      },
+      "modality": "must",
+      "quote": "Reservas exigem a antecedência mínima da aba Regras.",
+      "text": "Reservas exigem a antecedência mínima da aba Regras.",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "data",
+      "key": "R6",
+      "locator": {
+        "line_start": 6,
+        "member": "requisitos.xlsx",
+        "row": 5,
+        "section": "Requisitos"
+      },
+      "modality": "informative",
+      "quote": "C5=Média",
+      "text": "Prioridade do requisito R3 informada pela planilha: Média",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R7",
+      "locator": {
+        "line_start": 7,
+        "member": "requisitos.xlsx",
+        "row": 6,
+        "section": "Requisitos"
+      },
+      "modality": "must",
+      "quote": "O zelador vê as reservas do dia por sala.",
+      "text": "O zelador vê as reservas do dia por sala.",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "data",
+      "key": "R8",
+      "locator": {
+        "line_start": 7,
+        "member": "requisitos.xlsx",
+        "row": 6,
+        "section": "Requisitos"
+      },
+      "modality": "informative",
+      "quote": "C6=Média",
+      "text": "Prioridade do requisito R4 informada pela planilha: Média",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "data",
+      "key": "R9",
+      "locator": {
+        "line_start": 10,
+        "member": "requisitos.xlsx",
+        "row": 2,
+        "section": "Regras"
+      },
+      "modality": "must",
+      "quote": "A2=Duração máxima (horas) | B2=4",
+      "text": "Regra: duração máxima de uma reserva = 4 horas",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "data",
+      "key": "R10",
+      "locator": {
+        "line_start": 11,
+        "member": "requisitos.xlsx",
+        "row": 3,
+        "section": "Regras"
+      },
+      "modality": "must",
+      "quote": "A3=Antecedência mínima (dias) | B3=1",
+      "text": "Regra: antecedência mínima de uma reserva = 1 dia",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "data",
+      "key": "R11",
+      "locator": {
+        "line_start": 12,
+        "member": "requisitos.xlsx",
+        "row": 4,
+        "section": "Regras"
+      },
+      "modality": "informative",
+      "quote": "B4=3 (fórmula: =COUNTA(Salas!A:A))",
+      "text": "Regra: salas disponíveis = 3, valor calculado por fórmula COUNTA(Salas!A:A) sobre uma aba 'Salas' que não existe na planilha",
+      "uncertainty": "ambiguous"
+    }
+  ],
+  "reader": {
+    "agent": "reader-requisitos-c12",
+    "independence": "sequential_role",
+    "model": "claude-sonnet-5-5"
+  },
+  "source_digest": "sha256:7b6f9f5e5181ef6b7b00a009393246f0120f0a81d05e7afd1f490b21016c1c85",
+  "source_id": "PBD-SRC-AZNESFVTM1HG"
+}

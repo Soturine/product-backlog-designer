@@ -1,0 +1,204 @@
+{
+  "kind": "pbd.publication-receipt",
+  "plan_digest": "sha256:15335f4d934f15cf077378b697bae5f360fe735375528fc904e702c1d4a2053b",
+  "plan_id": "PBD-PLAN-5TATDB7FYVTV",
+  "receipt_id": "PBD-RCPT-4V060EE5TZP6",
+  "results": [
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1000",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-RE35R8ZWXEDJ",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1001",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-DD59S7SBX0AW",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1002",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-J7JMS1729GGW",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1003",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-MYM3RDD7EG1X",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1004",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-Z11ZKPCXC6TC",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1005",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-EKWM7V03XHEK",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1006",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-22VNANADTXT3",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1007",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-S9P08MEFYJSM",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1008",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-P1ADQKTHBBTV",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1009",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-S5A2M4382XQJ",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1010",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-5Q4NQVHJCC8N",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1011",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-CQPGPTB65NTY",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1012",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-JZ6T7WJGEV69",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1013",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-P2A5T9159K1E",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1014",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-E0E78HM77YN0",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1015",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-V4VDQRPVAR2X",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1016",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-8ABXR5DHE6FE",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1017",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-1CYEDRPVKDZV",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1018",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-D907XWNSVCGD",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1019",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-BD2PAHZF0BS9",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "fabrikam-mock/vet-mock",
+        "native_id": "1020",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-PKSRY6G13VRQ",
+      "outcome": "APPLIED"
+    }
+  ],
+  "schema_version": "1.1.0",
+  "transport": "mock",
+  "verification": {
+    "deviations": [],
+    "readback_digest": "sha256:09f9434d1cfa77cb50f6af3aa36d5bc08d50e2d083fa06bc3317d657f8185e35",
+    "status": "MOCK_VERIFIED"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "case": "c12-xlsx-source",
+  "evaluator_model": "claude-haiku-5-5",
+  "obligations": [
+    {
+      "id": "G01",
+      "verdict": "covered",
+      "evidence": "Story PBD-STORY-42ED9B4C09TC 'Reservar uma sala informando data, horário e finalidade'; criterion PBD-AC-KAN42JSDJ99Z (CA-01, status confirmed); task PBD-TASK-M78WRBSC9MDR; claim PBD-CLM-P82JX6TXY95P confirmed, evidence Requisitos!4.",
+      "note": "Critical. Full coverage."
+    },
+    {
+      "id": "G02",
+      "verdict": "covered",
+      "evidence": "Claim PBD-CLM-4R1HGMDJD9NQ 'no máximo 4 horas (limite da aba Regras: Duração máxima = 4)', confirmed, evidence Requisitos!5 and Regras!2 (A2=Duração máxima (horas) | B2=4). Criteria PBD-AC-ZQR6GXEEXR9G (up to 4 h accepted, confirmed) and PBD-AC-K93K8ZH1G3F9 (over 4 h refused, confirmed); story PBD-STORY-28SV8GDPYYJD; task PBD-TASK-G9599D3H6GQB.",
+      "note": "Critical. 4 h value is used. The 8 h Rascunho value is raised only as open non-blocking question PBD-Q-3AM67QTPZS0P."
+    },
+    {
+      "id": "G03",
+      "verdict": "covered",
+      "evidence": "Claim PBD-CLM-AX23KS9ZGS7T 'antecedência mínima de 1 dia (limite da aba Regras: Antecedência mínima = 1)', confirmed, evidence Regras!3; story PBD-STORY-R1BPFVGRS576 (priority Média confirmed); task PBD-TASK-2QRDTX7K8TWA.",
+      "note": "Critical. The two criteria PBD-AC-X4GCVF7389SC and PBD-AC-5M1WGJ50N56S are status proposed because day counting is open (PBD-Q-J4AWGSWYXECF). The 1-day rule itself is confirmed, so this is a justified caveat rather than a miss."
+    },
+    {
+      "id": "G04",
+      "verdict": "covered",
+      "evidence": "Story PBD-STORY-JPM8DM9P0G7T 'Ver as reservas do dia por sala' (priority Média confirmed); criterion PBD-AC-BF8DZG43KDVM (confirmed); task PBD-TASK-77HEP97H9MZR; claim PBD-CLM-JKR7PQS32FM3 confirmed, evidence Requisitos!7.",
+      "note": "Critical. Full coverage."
+    },
+    {
+      "id": "G05",
+      "verdict": "covered",
+      "evidence": "Claim PBD-CLM-4R1HGMDJD9NQ text names the value 4; evidence line Regras!2 'A2=Duração máxima (horas) | B2=4'; feature PBD-FEAT-0YZRP3J3ZQF4 rule 'Duração máxima de 4 horas por reserva'.",
+      "note": "Data value 4 h is present as a confirmed claim."
+    },
+    {
+      "id": "G06",
+      "verdict": "covered",
+      "evidence": "Claim PBD-CLM-AX23KS9ZGS7T text names the value 1 day; evidence line Regras!3 'A3=Antecedência mínima (dias) | B3=1'; feature PBD-FEAT-0YZRP3J3ZQF4 rule 'Antecedência mínima de 1 dia'.",
+      "note": "Data value 1 day is present as a confirmed claim."
+    }
+  ],
+  "traps": [
+    {
+      "id": "T1",
+      "verdict": "not_violated",
+      "evidence": "Backlog uses 4 h (claim PBD-CLM-4R1HGMDJD9NQ, confirmed). The Rascunho 8 h row is dispositioned SUPERSEDED in stages/review.json obligation O12. Open question PBD-Q-3AM67QTPZS0P (4 h vs 8 h) is non-blocking and does not change the limit. Reviewer finding PBD-FND-P0KYCZDHNSE1 calls the question unnecessary noise."
+    },
+    {
+      "id": "T2",
+      "verdict": "not_violated",
+      "evidence": "Priorities are confirmed fields with source locators: R1 Alta (PBD-STORY-42ED9B4C09TC), R2 Alta (PBD-STORY-28SV8GDPYYJD), R3 Média (PBD-STORY-R1BPFVGRS576), R4 Média (PBD-STORY-JPM8DM9P0G7T). Cross-sheet references are resolved to Regras values 4 h and 1 day, not invented."
+    },
+    {
+      "id": "T3",
+      "verdict": "not_violated",
+      "evidence": "Claim PBD-CLM-E82QG7FNV7G3 ('Há 3 salas disponíveis...') has uncertainty level ambiguous and disposition QUESTION_REQUIRED. Question PBD-Q-W7WMQYTKES93 asks for the real room list. No confirmed room count appears in the backlog."
+    }
+  ],
+  "invented": [
+    {
+      "text": "Criterion PBD-AC-K93K8ZH1G3F9 asserts that the morador is informed of the 4-hour limit. It is confirmed, not proposed, and the source only states the limit. Reviewer finding PBD-FND-P398TN071E3X says the same.",
+      "severity": "low"
+    },
+    {
+      "text": "Task PBD-TASK-G9599D3H6GQB includes the activity 'Rejeitar reservas acima do limite com mensagem ao morador'. The message behavior is not in the source, and the task carries no proposed flag.",
+      "severity": "low"
+    },
+    {
+      "text": "Story benefit clauses (for example 'garantir o uso da sala no dia e horário que preciso', 'para que as salas fiquem disponíveis para outros moradores', 'que as reservas sejam feitas com tempo de organização') are rationale not stated in the source and are not marked proposed.",
+      "severity": "low"
+    }
+  ],
+  "levels_ok": true,
+  "native_first_ok": true,
+  "notes": "Recall: 6 of 6 gold obligations covered; critical recall 6/6 (100%). No missed or partial obligations. Trap summary: 3 of 3 not_violated; the Rascunho handling is correct in outcome but over-questioned (Q-3AM6). Invented: 0 high, 0 medium, 3 low. Levels present: epics, features, stories, acceptance criteria, tasks, and dependencies (3 proposed predecessor relations); review and gates are consistent with this content. Reader (stages/reading/PBD-SRC-AZNESFVTM1HG.json) declared method extracted_text, with the tool reason (host cannot read .xlsx natively) and five explicit limitations (no charts or formats, formula with absent sheet, hidden sheet included, merged range, comments and validation not verified). That is an honest fallback, so native_first_ok is true. Priorities Alta/Alta/Média/Média appear as confirmed fields on the four stories. The reader's ambiguities on the data/finalidade format and the Rascunho status were carried into the backlog as questions or proposed criteria, not as confirmed claims."
+}

@@ -1,0 +1,102 @@
+{
+  "ambiguities": [],
+  "exclusions": [],
+  "members": [
+    {
+      "lines_read": [
+        [
+          1,
+          7
+        ]
+      ],
+      "path": "prd.md",
+      "reading": {
+        "limitations": [],
+        "method": "native",
+        "tool": "host file reader"
+      },
+      "status": "read"
+    }
+  ],
+  "obligations": [
+    {
+      "category": "functional",
+      "key": "R1",
+      "locator": {
+        "line_start": 3,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "O participante se inscreve em um encontro publicado",
+      "text": "O participante se inscreve em um encontro publicado",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R2",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "exigem aprovação do moderador",
+      "text": "Inscrições em encontros exigem aprovação do moderador",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "constraint",
+      "key": "R3",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "aceita até 20 participantes",
+      "text": "Cada encontro aceita até 20 participantes",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R4",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md"
+      },
+      "modality": "may",
+      "quote": "pode entrar na lista de espera",
+      "text": "Quando o encontro está lotado, o participante pode entrar na lista de espera",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R5",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "a primeira pessoa da lista de espera é inscrita",
+      "text": "Se um inscrito cancelar, a primeira pessoa da lista de espera é inscrita",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R6",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "e avisada",
+      "text": "Ao ser inscrita a partir da lista de espera, a pessoa é avisada",
+      "uncertainty": "confirmed"
+    }
+  ],
+  "reader": {
+    "agent": "reader-prd.md-c06",
+    "independence": "sequential_role",
+    "model": "claude-sonnet-5-5"
+  },
+  "source_digest": "sha256:27fc74c761f5d3c6a1e49b9a0496c4c73419cc5b3348e93c74f0d8b74249b0e0",
+  "source_id": "PBD-SRC-78385WMH95P7"
+}

@@ -1,0 +1,393 @@
+{
+  "criteria": [
+    {
+      "key": "I101.AC1",
+      "notes": "22h contradicts source 20h.",
+      "source_support": "unsupported",
+      "verdict": "fail"
+    },
+    {
+      "key": "I101.AC2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "I102.AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "I102.AC2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "I103.AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "I104.AC1",
+      "notes": "Delivery out of scope.",
+      "source_support": "unsupported",
+      "verdict": "fail"
+    },
+    {
+      "key": "I105.AC1",
+      "notes": "Name and turma fields are not stated by the source; allergen marking at registration (1.4) is not included.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [],
+  "findings": [
+    {
+      "actual": "I101.AC1 states 22h.",
+      "affects": [
+        "I101",
+        "I101.AC1"
+      ],
+      "classification": "confirmed_divergence",
+      "expected": "Orders accepted until 20h of the previous day (PRD 1.2).",
+      "gate": "G04",
+      "impact": "Orders accepted after the real cutoff.",
+      "recommendation": "Change to 20h.",
+      "review_status": "confirmed",
+      "severity": "high",
+      "why": "Direct contradiction of the source threshold."
+    },
+    {
+      "actual": "No item or criterion covers it; registration (I105) has no allergen marking.",
+      "affects": [
+        "I101",
+        "I105"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "Items with allergens marked in the student record cannot be ordered for that student (PRD 1.4).",
+      "gate": "G02",
+      "impact": "Safety-relevant rule untested/unimplemented.",
+      "recommendation": "Add a story/criteria for allergen blocking and allergen marking at registration.",
+      "review_status": "confirmed",
+      "severity": "high",
+      "why": "Source requirement is unrepresented."
+    },
+    {
+      "actual": "I104 requires delivery to the classroom by the break.",
+      "affects": [
+        "I104",
+        "I104.AC1"
+      ],
+      "classification": "unsupported_assumption",
+      "expected": "Classroom delivery is not part of this version (PRD section 4).",
+      "gate": "G09",
+      "impact": "Out-of-scope work gets built.",
+      "recommendation": "Remove I104 or defer it.",
+      "review_status": "confirmed",
+      "severity": "high",
+      "why": "Excluded scope; the 'até o intervalo' deadline is also invented."
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "I101",
+        "I105"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [],
+      "quote": "O responsável cadastra o aluno e faz pedidos de lanche para o dia seguinte.",
+      "rationale": "Registration in I105, ordering in I101.",
+      "text": "Responsável cadastra o aluno e faz pedidos para o dia seguinte"
+    },
+    {
+      "covered_by": [
+        "I101.AC1"
+      ],
+      "disposition": "CONFLICTING",
+      "key": "O2",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [],
+      "quote": "Pedidos para o dia seguinte são aceitos até as 20h do dia anterior.",
+      "rationale": "Baseline says 22h.",
+      "text": "Cutoff 20h do dia anterior"
+    },
+    {
+      "covered_by": [
+        "I101.AC2"
+      ],
+      "disposition": "COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [],
+      "quote": "Cada aluno pode ter no máximo 2 pedidos por dia.",
+      "rationale": "Exact.",
+      "text": "Max 2 pedidos por aluno/dia"
+    },
+    {
+      "covered_by": [],
+      "disposition": "NOT_COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [],
+      "quote": "Itens que contêm alergênicos marcados no cadastro do aluno não podem ser pedidos para ele.",
+      "rationale": "No item or criterion carries the allergen rule.",
+      "text": "Alergênicos bloqueiam pedido"
+    },
+    {
+      "covered_by": [
+        "I102.AC1"
+      ],
+      "disposition": "COVERED",
+      "key": "O5",
+      "locator": {
+        "line_start": 10,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [],
+      "quote": "Os pedidos são pagos com o saldo pré-carregado da conta do responsável.",
+      "rationale": "Covered.",
+      "text": "Pagamento com saldo pré-carregado"
+    },
+    {
+      "covered_by": [
+        "I102.AC2"
+      ],
+      "disposition": "COVERED",
+      "key": "O6",
+      "locator": {
+        "line_start": 11,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [],
+      "quote": "Um pedido é recusado quando o saldo é insuficiente, com a mensagem \"Saldo insuficiente\".",
+      "rationale": "Covered.",
+      "text": "Recusa por saldo insuficiente"
+    },
+    {
+      "covered_by": [
+        "I103.AC1"
+      ],
+      "disposition": "COVERED",
+      "key": "O7",
+      "locator": {
+        "line_start": 14,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [],
+      "quote": "A cantina vê a lista de pedidos do dia agrupada por turma.",
+      "rationale": "Covered.",
+      "text": "Lista do dia por turma"
+    },
+    {
+      "covered_by": [],
+      "disposition": "OUT_OF_SCOPE",
+      "key": "O8",
+      "locator": {
+        "line_start": 17,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [],
+      "quote": "Entrega na sala de aula não faz parte desta versão.",
+      "rationale": "Baseline I104 delivers in classroom; contradicts exclusion.",
+      "text": "Entrega na sala fora do escopo"
+    }
+  ],
+  "items": [
+    {
+      "key": "I100",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "I101",
+      "notes": "Cutoff 22h contradicts 20h; allergen rule absent.",
+      "source_support": "supported",
+      "verdict": "fail"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "I102",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "I103",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "I104",
+      "notes": "Classroom delivery is explicitly out of scope.",
+      "source_support": "unsupported",
+      "verdict": "fail"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "I105",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "auditor-a1-final",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+    }
+  ]
+}

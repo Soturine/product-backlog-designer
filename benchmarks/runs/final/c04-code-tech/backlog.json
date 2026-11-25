@@ -1,0 +1,1191 @@
+{
+  "claims": [
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-9QNZ1PZFW83D",
+          "PBD-AC-XHS7FC6FFXN5"
+        ],
+        "rationale": "Critério AC1 verifica o código de 6 dígitos.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 3,
+            "line_start": 3,
+            "member": "prd.md",
+            "quote_digest": "sha256:95334d3b8c08a712dd279779b238135e13cf029e9a6fafc5fad8c35cbc6286f8",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "8ee0d6b250c9f2ad"
+          },
+          "summary": "o morador recebe um código de retirada de 6 dígitos",
+          "type": "source_locator",
+          "verification": "mechanical"
+        },
+        {
+          "locator": {
+            "line_end": 8,
+            "line_start": 8,
+            "member": "codes.py",
+            "quote_digest": "sha256:54e2d641f09c7cc41fa7ba4f14ba8664663836b6260cb26d521a57f640846287",
+            "source_id": "PBD-SRC-N4W88QSZKKPP",
+            "source_version": "d1458ea801d177d2"
+          },
+          "summary": "secrets.randbelow(10**6):06d",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-GW6DT6VDY3QD",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Quando uma encomenda é depositada, o morador recebe um código de retirada de 6 dígitos",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-PAC3S420E4EN",
+          "PBD-AC-NXVY0ZWAX55P",
+          "PBD-AC-GSAPA8V20XQ4"
+        ],
+        "rationale": "Cobertos pelos critérios; prazo sujeito à Q1.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "prd.md",
+            "quote_digest": "sha256:955353ca9a7660b883d462ea857b0d0ad2ffa0994d8c52e5a904e0be4e2435eb",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "8ee0d6b250c9f2ad"
+          },
+          "summary": "expira 72 horas após o depósito",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-YFCAN5R2B1X1",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O código de retirada expira 72 horas após o depósito",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "rationale": "Código usa 48 horas e o PRD 72 horas; implementação não é autoridade funcional; ver Q1.",
+        "status": "CONFLICTING"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "codes.py",
+            "quote_digest": "sha256:a4bd08636c7a68a991f20ca4be33bf70b5796c898c2a716f624e7108e2d6a912",
+            "source_id": "PBD-SRC-N4W88QSZKKPP",
+            "source_version": "d1458ea801d177d2"
+          },
+          "summary": "EXPIRY_HOURS = 48",
+          "type": "source_locator",
+          "verification": "mechanical"
+        },
+        {
+          "locator": {
+            "line_end": 12,
+            "line_start": 12,
+            "member": "codes.py",
+            "quote_digest": "sha256:d82968c895651216d9ff8e67923337ad3ec406497f4cb1e1ab51bd40b4e31f61",
+            "source_id": "PBD-SRC-N4W88QSZKKPP",
+            "source_version": "d1458ea801d177d2"
+          },
+          "summary": "age_hours >= EXPIRY_HOURS",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-NRDYY0X16NS6",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "A implementação existente expira o código em 48 horas, divergindo das 72 horas do PRD",
+      "uncertainty": {
+        "level": "conflicting"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-XMRC4V7HCQXV",
+          "PBD-AC-YM4S8NFP08CC"
+        ],
+        "rationale": "AC5 verifica o bloqueio de 10 minutos após 3 tentativas.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "prd.md",
+            "quote_digest": "sha256:ebd4e7c233f4e1fe5690b9e611275928d37f2fe76e89146475be80d6f5e7611b",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "8ee0d6b250c9f2ad"
+          },
+          "summary": "o armário fica bloqueado por 10 minutos",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-0TV2818QH2T6",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Após 3 tentativas com código incorreto, o armário fica bloqueado por 10 minutos",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-XMRC4V7HCQXV",
+          "PBD-AC-6QA840D9QVYE",
+          "PBD-TASK-W39R3X1EFEH6"
+        ],
+        "rationale": "AC6 e T2 tratam o bloqueio pelo firmware.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "tdd.md",
+            "quote_digest": "sha256:e8d8ff8dfb60b0e210883bf7a063dc3baaa2f6c1920eca7ed4b581bbae0cf177",
+            "source_id": "PBD-SRC-Y0MFZXA3AMBG",
+            "source_version": "b4eddd2ab28815e9"
+          },
+          "summary": "executado pelo firmware do armário",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-FF9HWBAW6B31",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O bloqueio por tentativas incorretas é executado pelo firmware do armário",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-AC-6QA840D9QVYE",
+          "PBD-TASK-W39R3X1EFEH6"
+        ],
+        "rationale": "Registro do evento verificado em AC6.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "tdd.md",
+            "quote_digest": "sha256:a346b2498b903c652d6067657cd82d11d789affc20f3b1afb9b2c8346f25bfa4",
+            "source_id": "PBD-SRC-Y0MFZXA3AMBG",
+            "source_version": "b4eddd2ab28815e9"
+          },
+          "summary": "o software apenas registra o evento de bloqueio",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-CNKJBEWAY1QP",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O software apenas registra o evento de bloqueio",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-W9RJQ75S4PQS",
+          "PBD-AC-BP7HNB7KVR15"
+        ],
+        "rationale": "AC8 cobre a devolução à portaria.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 6,
+            "line_start": 6,
+            "member": "prd.md",
+            "quote_digest": "sha256:679a80fbe96fd4547923598a1449723d76569c3c3981afa7778f6a87ecbb0d46",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "8ee0d6b250c9f2ad"
+          },
+          "summary": "é devolvida à portaria",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-3T99B264MKP7",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Encomenda não retirada até a expiração do código é devolvida à portaria",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "integration",
+      "disposition": {
+        "covered_by": [
+          "PBD-AC-BP7HNB7KVR15",
+          "PBD-TASK-CTRAQW8ACEAJ"
+        ],
+        "rationale": "AC8 cobre o aviso via fila notificacoes.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 6,
+            "line_start": 6,
+            "member": "prd.md",
+            "quote_digest": "sha256:5e607331cdeff71cff771d125f6e423839351befc0f9416944130c1736f0394b",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "8ee0d6b250c9f2ad"
+          },
+          "summary": "o morador é avisado",
+          "type": "source_locator",
+          "verification": "mechanical"
+        },
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "tdd.md",
+            "quote_digest": "sha256:61d0e1e210a443353273e17ce0045367085c1ebbcd49547bf6c16bcbc0ff6c6f",
+            "source_id": "PBD-SRC-Y0MFZXA3AMBG",
+            "source_version": "b4eddd2ab28815e9"
+          },
+          "summary": "fila de mensagens \"notificacoes\"",
+          "type": "source_locator",
+          "verification": "mechanical"
+        },
+        {
+          "locator": {
+            "line_end": 6,
+            "line_start": 6,
+            "member": "notify.py",
+            "quote_digest": "sha256:d839e5f82596665762892bfe960de0662a89fd1060535d6309472e443b62e1be",
+            "source_id": "PBD-SRC-N4W88QSZKKPP",
+            "source_version": "d1458ea801d177d2"
+          },
+          "summary": "Seu código de retirada é",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-TZBDAHY76ZSX",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O morador é avisado da devolução da encomenda, usando a fila de mensagens notificacoes existente",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-XVCJHC47HX3A",
+          "PBD-AC-KJ7V6GXXNFTG",
+          "PBD-TASK-M8M0NHF4191H"
+        ],
+        "rationale": "AC10 verifica a consulta de ocupação.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 7,
+            "line_start": 7,
+            "member": "prd.md",
+            "quote_digest": "sha256:4f7b5f8ec0c0d4b26178909a9f3c135d0e1e5be32f7fa41b21827616b65a2ddc",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "8ee0d6b250c9f2ad"
+          },
+          "summary": "O porteiro consulta quais armários estão ocupados",
+          "type": "source_locator",
+          "verification": "mechanical"
+        },
+        {
+          "locator": {
+            "line_end": 6,
+            "line_start": 6,
+            "member": "tdd.md",
+            "quote_digest": "sha256:6605a93b33251d2eb2efd6fff7186bf6761764f2dbf530befae1b6cca44a98be",
+            "source_id": "PBD-SRC-Y0MFZXA3AMBG",
+            "source_version": "b4eddd2ab28815e9"
+          },
+          "summary": "GET /lockers?status=occupied",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-F0CV0CCG5S72",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O porteiro consulta quais armários estão ocupados, via GET /lockers?status=occupied",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "integration",
+      "disposition": {
+        "covered_by": [
+          "PBD-AC-0VSWK6H4VG68",
+          "PBD-TASK-QCAEN00CZRMF"
+        ],
+        "rationale": "AC2 verifica a geração pelo locker-api.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 3,
+            "line_start": 3,
+            "member": "tdd.md",
+            "quote_digest": "sha256:d779bab50f70db41743e5adde6c9a0bb01c50f1882211337f8febee8b11aeb8c",
+            "source_id": "PBD-SRC-Y0MFZXA3AMBG",
+            "source_version": "b4eddd2ab28815e9"
+          },
+          "summary": "POST /lockers/{id}/codes",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-AZV3E6KTHGFD",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Os códigos são gerados pelo serviço locker-api por meio de POST /lockers/{id}/codes",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    }
+  ],
+  "criteria": [
+    {
+      "claim_refs": [
+        "PBD-CLM-GW6DT6VDY3QD"
+      ],
+      "condition": "Uma encomenda é depositada em um armário",
+      "expected_outcomes": [
+        "O morador recebe um código de retirada de 6 dígitos"
+      ],
+      "id": "PBD-AC-XHS7FC6FFXN5",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-9QNZ1PZFW83D",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "O depósito é concluído",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-AZV3E6KTHGFD"
+      ],
+      "expected_outcomes": [
+        "O código recebido foi criado por esse serviço"
+      ],
+      "id": "PBD-AC-0VSWK6H4VG68",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-9QNZ1PZFW83D",
+      "status": "confirmed",
+      "style": "list",
+      "text": "O código é gerado pelo serviço locker-api por POST /lockers/{id}/codes",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-YFCAN5R2B1X1"
+      ],
+      "condition": "Passaram 72 horas desde o depósito",
+      "expected_outcomes": [
+        "O código é considerado expirado"
+      ],
+      "id": "PBD-AC-NXVY0ZWAX55P",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-PAC3S420E4EN",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "O morador informa o código",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-YFCAN5R2B1X1"
+      ],
+      "expected_outcomes": [
+        "O morador consegue retirar a encomenda com o código"
+      ],
+      "id": "PBD-AC-GSAPA8V20XQ4",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-PAC3S420E4EN",
+      "status": "confirmed",
+      "style": "list",
+      "text": "Antes de 72 horas do depósito o código ainda é válido",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-0TV2818QH2T6"
+      ],
+      "condition": "O morador errou o código 3 vezes",
+      "expected_outcomes": [
+        "O armário fica bloqueado por 10 minutos"
+      ],
+      "id": "PBD-AC-YM4S8NFP08CC",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-XMRC4V7HCQXV",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "A 3ª tentativa incorreta ocorre",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-FF9HWBAW6B31",
+        "PBD-CLM-CNKJBEWAY1QP"
+      ],
+      "expected_outcomes": [
+        "Existe registro do evento de bloqueio",
+        "O software não executa o bloqueio"
+      ],
+      "id": "PBD-AC-6QA840D9QVYE",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-XMRC4V7HCQXV",
+      "status": "confirmed",
+      "style": "list",
+      "text": "O bloqueio é executado pelo firmware e o software registra o evento de bloqueio",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "A definir conforme resposta à pergunta Q2"
+      ],
+      "id": "PBD-AC-S5AZTCR7N5J1",
+      "order": 2,
+      "origin": "proposed",
+      "parent": "PBD-STORY-XMRC4V7HCQXV",
+      "rationale": "As fontes não dizem se o contador reinicia nem o que ocorre ao fim do bloqueio.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Comportamento após o fim dos 10 minutos de bloqueio e contagem de tentativas ao acertar o código",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-3T99B264MKP7",
+        "PBD-CLM-TZBDAHY76ZSX"
+      ],
+      "condition": "O código expirou e a encomenda não foi retirada",
+      "expected_outcomes": [
+        "A encomenda é devolvida à portaria",
+        "O morador é avisado pela fila notificacoes"
+      ],
+      "id": "PBD-AC-BP7HNB7KVR15",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-W9RJQ75S4PQS",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "A expiração ocorre",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "Comportamento de reenvio ou alerta a definir"
+      ],
+      "id": "PBD-AC-49WSKTFCMNBW",
+      "order": 1,
+      "origin": "proposed",
+      "parent": "PBD-STORY-W9RJQ75S4PQS",
+      "rationale": "Fontes não descrevem tratamento de falha do aviso.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Falha ao publicar o aviso na fila notificacoes",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-F0CV0CCG5S72"
+      ],
+      "condition": "Existem armários ocupados e livres",
+      "expected_outcomes": [
+        "A consulta (GET /lockers?status=occupied) lista apenas os armários ocupados"
+      ],
+      "id": "PBD-AC-KJ7V6GXXNFTG",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-XVCJHC47HX3A",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "O porteiro consulta a ocupação",
+      "visible_id": "CA-01"
+    }
+  ],
+  "decisions": [],
+  "findings": [
+    {
+      "actual": "US4 has only T3 (notice); US2 has no task; AC8/AC3 verify behavior no task builds.",
+      "affects": [
+        "PBD-AC-BP7HNB7KVR15",
+        "PBD-AC-NXVY0ZWAX55P",
+        "PBD-STORY-PAC3S420E4EN",
+        "PBD-STORY-W9RJQ75S4PQS"
+      ],
+      "classification": "confirmed_gap",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Tasks that carry RF4 return to the portaria and RF2 expiry enforcement.",
+      "gate": "G06",
+      "id": "PBD-FND-QSG4S154JWBA",
+      "impact": "Return/expiry behavior could ship unplanned.",
+      "recommendation": "Add tasks for expiry handling and return-to-portaria registration (after Q1/Q3).",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "RF4 is a two-part obligation; only the notice has implementation work."
+    },
+    {
+      "actual": "Blocking Q1 keeps the conflict open; AC3/AC4 assert 72h as PRD says.",
+      "affects": [
+        "PBD-AC-GSAPA8V20XQ4",
+        "PBD-AC-NXVY0ZWAX55P",
+        "PBD-CLM-NRDYY0X16NS6",
+        "PBD-STORY-PAC3S420E4EN"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Conflict 72h vs 48h resolved by a decision.",
+      "gate": "G05",
+      "id": "PBD-FND-NXHQPA064MHM",
+      "impact": "Implementation keeps expiring at 48h; no work item corrects EXPIRY_HOURS.",
+      "recommendation": "Keep Q1 blocking; once answered add a task to align codes.py or the PRD.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "Functional PRD is authority, but the existing code differs and the backlog does not demand a code change task."
+    },
+    {
+      "actual": "AC7 and AC9 outcomes are 'a definir'.",
+      "affects": [
+        "PBD-AC-49WSKTFCMNBW",
+        "PBD-AC-S5AZTCR7N5J1"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Verifiable outcomes for criteria.",
+      "gate": "G08",
+      "id": "PBD-FND-SS344QFTJ5R6",
+      "impact": "Not testable until Q2/Q3 are answered.",
+      "recommendation": "Keep as proposed/open questions; resolve before refinement.",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "Proposed placeholders cannot be tested."
+    },
+    {
+      "actual": "US1->US2 and US2->US4 are proposed, not source stated.",
+      "affects": [
+        "PBD-STORY-PAC3S420E4EN",
+        "PBD-STORY-W9RJQ75S4PQS"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Dependencies justified by sources.",
+      "gate": "G09",
+      "id": "PBD-FND-1J1DBERDPMZ5",
+      "impact": "Minor ordering assumption.",
+      "recommendation": "Keep marked proposed.",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "Sequencing is plausible but inferred."
+    }
+  ],
+  "items": [
+    {
+      "claim_refs": [
+        "PBD-CLM-GW6DT6VDY3QD",
+        "PBD-CLM-YFCAN5R2B1X1",
+        "PBD-CLM-0TV2818QH2T6",
+        "PBD-CLM-3T99B264MKP7",
+        "PBD-CLM-F0CV0CCG5S72"
+      ],
+      "content": {
+        "context": "PRD fictício dos armários de retirada de encomendas do condomínio.",
+        "in_scope": [
+          "Código de retirada e sua expiração",
+          "Bloqueio por tentativas incorretas",
+          "Devolução à portaria e aviso ao morador",
+          "Consulta de armários ocupados pelo porteiro"
+        ],
+        "kind": "epic",
+        "objective": "Permitir que moradores retirem encomendas dos armários com um código temporário e que a portaria acompanhe a ocupação.",
+        "out_scope": [
+          "Qualquer funcionalidade não descrita no PRD e no TDD"
+        ],
+        "outcome": "Moradores retiram encomendas com segurança e a portaria sabe quais armários estão ocupados."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir que moradores retirem encomendas dos armários com um código temporário e que a portaria acompanhe a ocupação.</p><p><strong>Contexto</strong>: PRD fictício dos armários de retirada de encomendas do condomínio.</p><p><strong>No escopo</strong></p><ul><li>Código de retirada e sua expiração</li><li>Bloqueio por tentativas incorretas</li><li>Devolução à portaria e aviso ao morador</li><li>Consulta de armários ocupados pelo porteiro</li></ul><p><strong>Fora do escopo</strong></p><ul><li>Qualquer funcionalidade não descrita no PRD e no TDD</li></ul><p><strong>Resultado esperado</strong>: Moradores retiram encomendas com segurança e a portaria sabe quais armários estão ocupados.</p>"
+      },
+      "id": "PBD-EPIC-3EZ83Z1ZF80V",
+      "origin": "generated",
+      "parent": null,
+      "status": "reviewed",
+      "title": "Retirada de encomendas por código nos armários",
+      "type": "epic"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-GW6DT6VDY3QD",
+        "PBD-CLM-YFCAN5R2B1X1",
+        "PBD-CLM-AZV3E6KTHGFD"
+      ],
+      "content": {
+        "capability": "Gerar e entregar ao morador um código de retirada de 6 dígitos que expira após o depósito.",
+        "kind": "feature",
+        "rules": [
+          "Código de 6 dígitos",
+          "Validade de 72 horas após o depósito",
+          "Geração pelo serviço locker-api via POST /lockers/{id}/codes"
+        ],
+        "value": "O morador retira a encomenda sem depender da portaria."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Gerar e entregar ao morador um código de retirada de 6 dígitos que expira após o depósito.</p><p><strong>Valor</strong>: O morador retira a encomenda sem depender da portaria.</p><p><strong>Regras relacionadas</strong></p><ul><li>Código de 6 dígitos</li><li>Validade de 72 horas após o depósito</li><li>Geração pelo serviço locker-api via POST /lockers/{id}/codes</li></ul>"
+      },
+      "id": "PBD-FEAT-Q5WZ35M7KA8Q",
+      "origin": "generated",
+      "parent": "PBD-EPIC-3EZ83Z1ZF80V",
+      "status": "reviewed",
+      "title": "Código de retirada com validade",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-0TV2818QH2T6",
+        "PBD-CLM-FF9HWBAW6B31",
+        "PBD-CLM-CNKJBEWAY1QP"
+      ],
+      "content": {
+        "capability": "Bloquear o armário após tentativas incorretas de código.",
+        "kind": "feature",
+        "rules": [
+          "3 tentativas incorretas",
+          "Bloqueio de 10 minutos",
+          "Execução pelo firmware; o software só registra o evento"
+        ],
+        "value": "Protege a encomenda contra tentativas de adivinhar o código."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Bloquear o armário após tentativas incorretas de código.</p><p><strong>Valor</strong>: Protege a encomenda contra tentativas de adivinhar o código.</p><p><strong>Regras relacionadas</strong></p><ul><li>3 tentativas incorretas</li><li>Bloqueio de 10 minutos</li><li>Execução pelo firmware; o software só registra o evento</li></ul>"
+      },
+      "id": "PBD-FEAT-Z5V8AYRE3NR2",
+      "origin": "generated",
+      "parent": "PBD-EPIC-3EZ83Z1ZF80V",
+      "status": "reviewed",
+      "title": "Bloqueio por tentativas incorretas",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-3T99B264MKP7",
+        "PBD-CLM-TZBDAHY76ZSX"
+      ],
+      "content": {
+        "capability": "Devolver à portaria a encomenda não retirada e avisar o morador.",
+        "kind": "feature",
+        "rules": [
+          "Devolução após a expiração do código",
+          "Aviso pela fila notificacoes"
+        ],
+        "value": "Encomendas não ficam presas nos armários e o morador sabe onde buscá-las."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Devolver à portaria a encomenda não retirada e avisar o morador.</p><p><strong>Valor</strong>: Encomendas não ficam presas nos armários e o morador sabe onde buscá-las.</p><p><strong>Regras relacionadas</strong></p><ul><li>Devolução após a expiração do código</li><li>Aviso pela fila notificacoes</li></ul>"
+      },
+      "id": "PBD-FEAT-N97QQK1GK976",
+      "origin": "generated",
+      "parent": "PBD-EPIC-3EZ83Z1ZF80V",
+      "status": "reviewed",
+      "title": "Devolução à portaria e aviso",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-F0CV0CCG5S72"
+      ],
+      "content": {
+        "capability": "Consultar quais armários estão ocupados.",
+        "kind": "feature",
+        "rules": [
+          "Consulta via GET /lockers?status=occupied"
+        ],
+        "value": "O porteiro enxerga a ocupação sem verificar fisicamente."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Consultar quais armários estão ocupados.</p><p><strong>Valor</strong>: O porteiro enxerga a ocupação sem verificar fisicamente.</p><p><strong>Regras relacionadas</strong></p><ul><li>Consulta via GET /lockers?status=occupied</li></ul>"
+      },
+      "id": "PBD-FEAT-BXDDNR03XQ2S",
+      "origin": "generated",
+      "parent": "PBD-EPIC-3EZ83Z1ZF80V",
+      "status": "reviewed",
+      "title": "Consulta de ocupação dos armários",
+      "type": "feature"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-GW6DT6VDY3QD",
+        "PBD-CLM-AZV3E6KTHGFD"
+      ],
+      "content": {
+        "actor": "morador",
+        "benefit": "retirar a encomenda no armário",
+        "kind": "role_goal_benefit",
+        "want": "recebesse um código de retirada de 6 dígitos quando minha encomenda for depositada"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> morador, <strong>gostaria que</strong> recebesse um código de retirada de 6 dígitos quando minha encomenda for depositada, <strong>para</strong> retirar a encomenda no armário.</p>"
+      },
+      "id": "PBD-STORY-9QNZ1PZFW83D",
+      "origin": "generated",
+      "parent": "PBD-FEAT-Q5WZ35M7KA8Q",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Receber código de retirada ao depositar encomenda",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-YFCAN5R2B1X1"
+      ],
+      "content": {
+        "actor": "morador",
+        "benefit": "saber até quando posso retirar a encomenda",
+        "kind": "role_goal_benefit",
+        "want": "o código de retirada deixasse de valer 72 horas após o depósito"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> morador, <strong>gostaria que</strong> o código de retirada deixasse de valer 72 horas após o depósito, <strong>para</strong> saber até quando posso retirar a encomenda.</p>"
+      },
+      "id": "PBD-STORY-PAC3S420E4EN",
+      "origin": "generated",
+      "parent": "PBD-FEAT-Q5WZ35M7KA8Q",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Código de retirada expira após 72 horas",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-0TV2818QH2T6",
+        "PBD-CLM-FF9HWBAW6B31",
+        "PBD-CLM-CNKJBEWAY1QP"
+      ],
+      "content": {
+        "actor": "morador",
+        "benefit": "proteger minha encomenda contra tentativas de adivinhação",
+        "kind": "role_goal_benefit",
+        "want": "o armário ficasse bloqueado por 10 minutos após 3 tentativas com código incorreto"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> morador, <strong>gostaria que</strong> o armário ficasse bloqueado por 10 minutos após 3 tentativas com código incorreto, <strong>para</strong> proteger minha encomenda contra tentativas de adivinhação.</p>"
+      },
+      "id": "PBD-STORY-XMRC4V7HCQXV",
+      "origin": "generated",
+      "parent": "PBD-FEAT-Z5V8AYRE3NR2",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Armário bloqueia após 3 tentativas incorretas",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-3T99B264MKP7",
+        "PBD-CLM-TZBDAHY76ZSX"
+      ],
+      "content": {
+        "actor": "morador",
+        "benefit": "saber onde buscar minha encomenda",
+        "kind": "role_goal_benefit",
+        "want": "a encomenda não retirada fosse devolvida à portaria e eu fosse avisado"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> morador, <strong>gostaria que</strong> a encomenda não retirada fosse devolvida à portaria e eu fosse avisado, <strong>para</strong> saber onde buscar minha encomenda.</p>"
+      },
+      "id": "PBD-STORY-W9RJQ75S4PQS",
+      "origin": "generated",
+      "parent": "PBD-FEAT-N97QQK1GK976",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Encomenda não retirada volta à portaria e morador é avisado",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-F0CV0CCG5S72"
+      ],
+      "content": {
+        "actor": "porteiro",
+        "benefit": "acompanhar a ocupação dos armários",
+        "kind": "role_goal_benefit",
+        "want": "consultar quais armários estão ocupados"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> porteiro, <strong>gostaria que</strong> consultar quais armários estão ocupados, <strong>para</strong> acompanhar a ocupação dos armários.</p>"
+      },
+      "id": "PBD-STORY-XVCJHC47HX3A",
+      "origin": "generated",
+      "parent": "PBD-FEAT-BXDDNR03XQ2S",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Porteiro consulta armários ocupados",
+      "type": "story"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-GW6DT6VDY3QD",
+        "PBD-CLM-AZV3E6KTHGFD"
+      ],
+      "content": {
+        "activities": [
+          "Chamar POST /lockers/{id}/codes no depósito",
+          "Garantir código numérico de 6 dígitos"
+        ],
+        "kind": "task",
+        "outcome": "Cada depósito resulta em um código de 6 dígitos associado ao armário.",
+        "summary": "Chamar o serviço locker-api ao registrar o depósito e entregar o código ao morador.",
+        "verification": "Depositar uma encomenda de teste e conferir o código de 6 dígitos (AC1)."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Chamar o serviço locker-api ao registrar o depósito e entregar o código ao morador.</p><p><strong>Atividades</strong></p><ul><li>Chamar POST /lockers/{id}/codes no depósito</li><li>Garantir código numérico de 6 dígitos</li></ul><p><strong>Resultado esperado</strong>: Cada depósito resulta em um código de 6 dígitos associado ao armário.</p><p><strong>Verificação</strong>: Depositar uma encomenda de teste e conferir o código de 6 dígitos (AC1).</p>"
+      },
+      "id": "PBD-TASK-QCAEN00CZRMF",
+      "origin": "generated",
+      "parent": "PBD-STORY-9QNZ1PZFW83D",
+      "status": "reviewed",
+      "title": "Integrar geração de código com POST /lockers/{id}/codes",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-FF9HWBAW6B31",
+        "PBD-CLM-CNKJBEWAY1QP"
+      ],
+      "content": {
+        "activities": [
+          "Receber o evento de bloqueio",
+          "Persistir o registro do evento"
+        ],
+        "kind": "task",
+        "outcome": "Todo bloqueio do armário fica registrado.",
+        "summary": "Registrar no software o evento de bloqueio emitido pelo firmware, sem reimplementar o bloqueio.",
+        "verification": "Simular bloqueio e conferir o registro (AC6)."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Registrar no software o evento de bloqueio emitido pelo firmware, sem reimplementar o bloqueio.</p><p><strong>Atividades</strong></p><ul><li>Receber o evento de bloqueio</li><li>Persistir o registro do evento</li></ul><p><strong>Resultado esperado</strong>: Todo bloqueio do armário fica registrado.</p><p><strong>Verificação</strong>: Simular bloqueio e conferir o registro (AC6).</p>"
+      },
+      "id": "PBD-TASK-W39R3X1EFEH6",
+      "origin": "generated",
+      "parent": "PBD-STORY-XMRC4V7HCQXV",
+      "status": "reviewed",
+      "title": "Registrar o evento de bloqueio do firmware",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-TZBDAHY76ZSX"
+      ],
+      "content": {
+        "activities": [
+          "Montar mensagem de aviso",
+          "Publicar na fila notificacoes"
+        ],
+        "kind": "task",
+        "outcome": "O morador recebe o aviso de devolução.",
+        "summary": "Publicar na fila existente notificacoes o aviso ao morador sobre a devolução à portaria.",
+        "verification": "Expirar um código de teste e conferir a mensagem na fila (AC8)."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Publicar na fila existente notificacoes o aviso ao morador sobre a devolução à portaria.</p><p><strong>Atividades</strong></p><ul><li>Montar mensagem de aviso</li><li>Publicar na fila notificacoes</li></ul><p><strong>Resultado esperado</strong>: O morador recebe o aviso de devolução.</p><p><strong>Verificação</strong>: Expirar um código de teste e conferir a mensagem na fila (AC8).</p>"
+      },
+      "id": "PBD-TASK-CTRAQW8ACEAJ",
+      "origin": "generated",
+      "parent": "PBD-STORY-W9RJQ75S4PQS",
+      "status": "reviewed",
+      "title": "Enviar aviso de devolução pela fila notificacoes",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-F0CV0CCG5S72"
+      ],
+      "content": {
+        "activities": [
+          "Consumir GET /lockers?status=occupied",
+          "Apresentar a lista ao porteiro"
+        ],
+        "kind": "task",
+        "outcome": "O porteiro vê somente armários ocupados.",
+        "summary": "Usar GET /lockers?status=occupied para listar armários ocupados ao porteiro.",
+        "verification": "Conferir a lista contra armários de teste ocupados e livres (AC10)."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Usar GET /lockers?status=occupied para listar armários ocupados ao porteiro.</p><p><strong>Atividades</strong></p><ul><li>Consumir GET /lockers?status=occupied</li><li>Apresentar a lista ao porteiro</li></ul><p><strong>Resultado esperado</strong>: O porteiro vê somente armários ocupados.</p><p><strong>Verificação</strong>: Conferir a lista contra armários de teste ocupados e livres (AC10).</p>"
+      },
+      "id": "PBD-TASK-M8M0NHF4191H",
+      "origin": "generated",
+      "parent": "PBD-STORY-XVCJHC47HX3A",
+      "status": "reviewed",
+      "title": "Expor consulta de ocupação ao porteiro",
+      "type": "task"
+    }
+  ],
+  "kind": "pbd.backlog",
+  "language": "pt-BR",
+  "profile": "generic",
+  "questions": [
+    {
+      "affects": [
+        "PBD-AC-GSAPA8V20XQ4",
+        "PBD-AC-NXVY0ZWAX55P",
+        "PBD-CLM-NRDYY0X16NS6",
+        "PBD-CLM-YFCAN5R2B1X1",
+        "PBD-STORY-PAC3S420E4EN"
+      ],
+      "alternatives": [
+        "72 horas conforme o PRD; ajustar EXPIRY_HOURS",
+        "48 horas conforme o código; corrigir o PRD"
+      ],
+      "blocking": true,
+      "id": "PBD-Q-5SKJX6E2BJKF",
+      "impact": "Define o prazo de validade, a devolução à portaria e os testes de AC3/AC4.",
+      "status": "open",
+      "text": "O código expira em 72 horas (PRD) ou 48 horas (implementação existente)?"
+    },
+    {
+      "affects": [
+        "PBD-AC-S5AZTCR7N5J1",
+        "PBD-CLM-0TV2818QH2T6",
+        "PBD-STORY-XMRC4V7HCQXV"
+      ],
+      "alternatives": [
+        "Contador reinicia ao fim do bloqueio",
+        "Contador reinicia só após acerto"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-06V935NVM75Z",
+      "impact": "Necessário para critérios do bloqueio e para o registro do evento.",
+      "status": "open",
+      "text": "O que ocorre ao fim dos 10 minutos de bloqueio e o contador de tentativas reinicia?"
+    },
+    {
+      "affects": [
+        "PBD-AC-49WSKTFCMNBW",
+        "PBD-CLM-3T99B264MKP7",
+        "PBD-CLM-TZBDAHY76ZSX",
+        "PBD-STORY-W9RJQ75S4PQS"
+      ],
+      "alternatives": [
+        "Registro manual pelo porteiro",
+        "Registro automático pelo sistema"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-BXJ9Z87TYPTY",
+      "impact": "Afeta US4 e a tarefa de aviso.",
+      "status": "open",
+      "text": "Como a devolução à portaria é registrada e o que acontece se o aviso falhar?"
+    }
+  ],
+  "relations": [
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-ZH8SPSACEEJ3",
+      "reason": "A expiração depende de existir o código gerado.",
+      "source": "PBD-STORY-9QNZ1PZFW83D",
+      "status": "proposed",
+      "target": "PBD-STORY-PAC3S420E4EN",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-F5K77NX31C1V",
+      "reason": "A devolução ocorre após a expiração do código.",
+      "source": "PBD-STORY-PAC3S420E4EN",
+      "status": "proposed",
+      "target": "PBD-STORY-W9RJQ75S4PQS",
+      "type": "predecessor"
+    }
+  ],
+  "run_id": "PBD-RUN-AXFRRJZTMVHN",
+  "schema_version": "1.1.0",
+  "sources": [
+    {
+      "authority": "functional",
+      "digest": "sha256:8ee0d6b250c9f2adad0736cf299efe59178cfc734f8b5a48881269f9c0268ab1",
+      "id": "PBD-SRC-78385WMH95P7",
+      "kind": "file",
+      "members": [
+        {
+          "bytes": 482,
+          "digest": "sha256:5c5e40e22699f28d01e97c5e4d3b7e01dc238df5ad785adf9b6fcc782e78f51e",
+          "media_type": "application/octet-stream",
+          "path": "prd.md",
+          "status": "read"
+        }
+      ],
+      "read_status": "complete",
+      "selector": "prd.md",
+      "version": "8ee0d6b250c9f2ad"
+    },
+    {
+      "authority": "technical",
+      "digest": "sha256:b4eddd2ab28815e9074e2fadb26b0a08aa8c3ee861a21058e8f123eb3884b6d2",
+      "id": "PBD-SRC-Y0MFZXA3AMBG",
+      "kind": "file",
+      "members": [
+        {
+          "bytes": 414,
+          "digest": "sha256:384ea18183e810762e79e5bea57456fc5c5ff28aa4f5dfd3addf80e0630ff388",
+          "media_type": "application/octet-stream",
+          "path": "tdd.md",
+          "status": "read"
+        }
+      ],
+      "read_status": "complete",
+      "selector": "tdd.md",
+      "version": "b4eddd2ab28815e9"
+    },
+    {
+      "authority": "implementation_evidence",
+      "digest": "sha256:d1458ea801d177d245e2363c5676c7e7bac92e647f2d8831f0639ea0e820e0cc",
+      "id": "PBD-SRC-N4W88QSZKKPP",
+      "kind": "directory",
+      "members": [
+        {
+          "bytes": 263,
+          "digest": "sha256:b0e3660e9d98c261b27d4375d6ba344fe2b8f3e4962b8602ffa3862e2d5b97a9",
+          "media_type": "text/x-python",
+          "path": "codes.py",
+          "status": "read"
+        },
+        {
+          "bytes": 247,
+          "digest": "sha256:f1ad58bd3345c78f20076a9141eb3c76fa8407410a744c5df8eee0a79394ad58",
+          "media_type": "text/x-python",
+          "path": "notify.py",
+          "status": "read"
+        }
+      ],
+      "read_status": "complete",
+      "selector": "src",
+      "version": "d1458ea801d177d2"
+    }
+  ],
+  "synthetic": true
+}

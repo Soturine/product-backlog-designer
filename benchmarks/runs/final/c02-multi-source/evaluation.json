@@ -1,0 +1,103 @@
+{
+  "case": "c02-multi-source",
+  "evaluator_model": "claude-haiku-5-5",
+  "obligations": [
+    {
+      "id": "G01",
+      "verdict": "covered",
+      "evidence": "Story PBD-STORY-NBVJ2K0F6YSP 'Reservar quadra em bloco de 1 hora' (feature PBD-FEAT-DV4SYQ6MH71Y); CA-01 PBD-AC-EH691Y2F3QY5 expects a 1-hour reservation; task PBD-TASK-XQ4CYETGDS6P. Claim PBD-CLM-4NPSCCWWH6A8 is confirmed.",
+      "note": ""
+    },
+    {
+      "id": "G02",
+      "verdict": "covered",
+      "evidence": "US1 CA-02 PBD-AC-ARA6TE5AXSE3 (at 14-day limit accepted) and CA-03 PBD-AC-S31JB4YSP8TV (beyond 14 days refused); task PBD-TASK-XQ4CYETGDS6P 'Validar a data limite de 14 dias'.",
+      "note": ""
+    },
+    {
+      "id": "G03",
+      "verdict": "covered",
+      "evidence": "Story PBD-STORY-N32RQEX0NNTZ 'Cancelar a propria reserva ate 2 horas antes'; CA-01 PBD-AC-X139Q1S8BVAW (2h or more, cancelled) and CA-02 PBD-AC-ZRGST0DKHS25 (under 2h, refused); task PBD-TASK-KY6N67W3XXVM.",
+      "note": "CA-03 (other member's reservation refused) is proposed, not in the source; acceptable as a marked proposal."
+    },
+    {
+      "id": "G04",
+      "verdict": "covered",
+      "evidence": "Story PBD-STORY-SF8VV6MKC0SP 'Bloquear quadra para manutencao'; CA-01 PBD-AC-NS8RAEJ4V121 (block over date interval); feature PBD-FEAT-0YRXX80NYJ4N; task PBD-TASK-G59D6TPS84VJ.",
+      "note": "Effect on existing reservations is correctly left open as CA-03 PBD-AC-50DZ9Q9W0K07 (proposed) and question PBD-Q-6YEB00VFYF7E."
+    },
+    {
+      "id": "G05",
+      "verdict": "covered",
+      "evidence": "Story PBD-STORY-0AXWS3H4KBGW 'Impedir reserva em quadra bloqueada'; CA-01 PBD-AC-SNFN8C5JAJ2Y (blocked court, reservation refused); task PBD-TASK-G59D6TPS84VJ verifies US6 AC15.",
+      "note": "US6 has no task of its own (review finding PBD-FND-FAN1GRS2W63B), but the obligation is represented."
+    },
+    {
+      "id": "G06",
+      "verdict": "covered",
+      "evidence": "Story PBD-STORY-FMP32MPQAEH9 'Ver reservas futuras e passadas'; CA-01 PBD-AC-MAB45B3447XA (future and past reservations shown); task PBD-TASK-XRS5GHD2YYCN; feature PBD-FEAT-9T59E4XRQ4NP.",
+      "note": ""
+    },
+    {
+      "id": "G07",
+      "verdict": "covered",
+      "evidence": "Story PBD-STORY-4DC77H86AZM4 'Respeitar o limite de 3 reservas futuras'; CA-01 PBD-AC-T84GMCM5WA6R (2 future reservations, 3rd created) and CA-02 PBD-AC-Y1XJJFVTAB5H (3 future reservations, 4th refused); task PBD-TASK-9G2VVTG5W286 from regras-de-uso.md.",
+      "note": ""
+    },
+    {
+      "id": "G08",
+      "verdict": "handled_as_question",
+      "evidence": "Question PBD-Q-C7YZTC9WBKKB asks how 'nao utilizada' and 'dentro do prazo' are determined and whether late cancellation counts as absence. Claim PBD-CLM-AFDF1M18RQPW is marked ambiguous. CA-03 PBD-AC-M6WZ26CY1ZX6 is proposed with the outcome 'conforme criterio a definir'. Story PBD-STORY-PRRQKTDDTRS6 covers it.",
+      "note": "The rule is represented and its ambiguity is raised as a question, not silently resolved. No criterion is testable yet (gate G07 FAIL-level gap, review PBD-FND-07DCFZVAJ06T). Correct handling for an ambiguous rule."
+    },
+    {
+      "id": "G09",
+      "verdict": "covered",
+      "evidence": "Story PBD-STORY-PRRQKTDDTRS6 'Impedir novas reservas apos 3 faltas em 30 dias'; CA-01 PBD-AC-Q2669H9AB5Q1 (3 absences, new reservation refused with impedimento) and CA-02 PBD-AC-FTTJ0K00AKPN (15 days passed, reservation allowed); task PBD-TASK-FN1A2YDZVDZ1; claim PBD-CLM-H86W6QVSK77N confirmed.",
+      "note": "The 30-day window boundary and the start of the 15-day count are not tested (review PBD-FND-NQS1C8VRKEF5). Not raised as a question. The obligation itself is represented."
+    },
+    {
+      "id": "G10",
+      "verdict": "covered",
+      "evidence": "Story PBD-STORY-2WK07XSSD4VJ 'Remover falta registrada indevidamente'; CA-01 PBD-AC-39Z4EST95KHE (removal with reason, absence stops counting) and CA-02 PBD-AC-8T8NTE9C7ZN7 (reason missing, refused); task PBD-TASK-NW7DQ39FW3KX.",
+      "note": ""
+    }
+  ],
+  "traps": [
+    {
+      "id": "glossary_informative",
+      "verdict": "not_violated",
+      "evidence": "No story exists only for a glossary definition. Glossary claims (PBD-CLM-5N62DCR5DDKS 'sócio', Bloco, Falta) are attached to stories or features whose primary source is prd.md or regras-de-uso.md. The glossary-based criterion PBD-AC-97MXTA341TE9 (inactive member refused) is marked proposed and linked to question PBD-Q-G60FAHN4D8VA. The 'Falta' definition is treated as ambiguous and raised as a question."
+    },
+    {
+      "id": "regras_represented",
+      "verdict": "not_violated",
+      "evidence": "All four regras-de-uso.md obligations are represented: max 3 future reservations (US2, CA-01/CA-02), no-show counts as absence (Q1, CA-03 proposed), 3 absences in 30 days leading to a 15-day block (US7, CA-01/CA-02, task PBD-TASK-FN1A2YDZVDZ1), and admin removal of an absence with reason (US8, CA-01/CA-02)."
+    }
+  ],
+  "invented": [
+    {
+      "text": "Task PBD-TASK-G59D6TPS84VJ activity 'Restringir a operacao ao administrador' is asserted as a confirmed activity. The source only says 'O administrador bloqueia'; the restriction is an inference that appears only as the proposed criterion PBD-AC-87EDFJX4NKBR and is not marked proposed in the task.",
+      "severity": "medium"
+    },
+    {
+      "text": "Story PBD-STORY-PRRQKTDDTRS6 names the administrador as actor and 'reduzir o desperdicio de horarios reservados e nao utilizados' as benefit. Neither appears in the sources (review PBD-FND-T69XDZ26ZY64). The story is confirmed status and is not marked proposed.",
+      "severity": "low"
+    },
+    {
+      "text": "Task PBD-TASK-NW7DQ39FW3KX activity 'Recalcular o impedimento' is not in the sources. The sources do not say that removing a falta changes an existing impedimento.",
+      "severity": "low"
+    },
+    {
+      "text": "Task PBD-TASK-XRS5GHD2YYCN outcome 'nenhuma de outros sócios' adds an access restriction beyond 'suas reservas'. It is an inference presented as confirmed.",
+      "severity": "low"
+    },
+    {
+      "text": "Value and benefit statements presented as confirmed, such as 'Sócios garantem o horário de jogo sem conflito', 'Desestimula o não comparecimento', 'dividir de forma justa a disponibilidade' and 'acompanhar meus compromissos'. The sources do not state these. They are generator rationale, not requirements.",
+      "severity": "low"
+    }
+  ],
+  "levels_ok": true,
+  "native_first_ok": true,
+  "notes": "Obligations: 9 covered, 1 handled_as_question (G08), 0 partial, 0 missed. Critical recall: 10/10 represented (9/10 fully covered by criteria and tasks, 1/10 correctly handled as a question). Traps: 0 violated, 2 not_violated. Invented: 0 high, 1 medium, 4 low. Levels: epics (2), features (5), stories (8), acceptance criteria (20), tasks (7) and predecessor relations (4, proposed) all present; hierarchy valid per gate G03. Native-first: all three source members were read with method native (reading stages PBD-SRC-78385WMH95P7, PBD-SRC-4RHX3A209VQS, PBD-SRC-Z59MJ51KN19Q). Gate context from output/gates.json: G02 FAIL (coverage gaps, 2 question_required, 2 partially_covered), G09 FAIL (unsupported scope AC4, US1, US7). Not scored as my verdicts. Open questions: Q1 (falta determination and prazo), Q2 (existing reservations on block), Q3 (inactive member and future reservations of an impeded member). Possible implicit ambiguity: US7 CA-02 (confirmed) assumes the 15-day block runs from the third absence, which the regras reading flagged as unstated and which is not in the questions. Not recorded as a trap violation because the criterion does not explicitly state a start date."
+}

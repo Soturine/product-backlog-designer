@@ -1,0 +1,503 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC3",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC4",
+      "notes": "Refusal is supported by 'no máximo', but the user message about the limit is an unflagged behavioral addition; not marked proposed.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC5",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC6",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC7",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC8",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "distinct",
+      "items": [
+        "US2",
+        "US3"
+      ],
+      "rationale": "Different rules (duration vs lead time)."
+    }
+  ],
+  "findings": [
+    {
+      "actual": "AC4 states the morador is informed of the 4 h limit without a proposed status",
+      "affects": [
+        "AC4"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Error behavior beyond the source marked as proposed",
+      "gate": "G06",
+      "impact": "Minor: unflagged assumption could be read as confirmed",
+      "recommendation": "Mark AC4 proposed or drop the message clause",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "The sheet says only the limit, not user messaging"
+    },
+    {
+      "actual": "Q2 asks whether 8 h applies though Rascunho says 'rascunho descartado'",
+      "affects": [
+        "US2"
+      ],
+      "classification": "optional_improvement",
+      "expected": "Discarded draft sheet needs no question",
+      "gate": "G06",
+      "impact": "Extra question noise only",
+      "recommendation": "Record as note, keep Q2 non-blocking",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Source already resolves it as superseded"
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 4,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "O morador reserva uma sala informando data, horário e finalidade.",
+      "rationale": "Story, criterion and task carry it.",
+      "text": "R1: morador reserva sala informando data, horário e finalidade"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC3",
+        "AC4",
+        "T2"
+      ],
+      "disposition": "COVERED",
+      "key": "O2",
+      "locator": {
+        "line_start": 5,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "Uma reserva dura no máximo o limite da aba Regras.",
+      "rationale": "Limit 4 h verified in boundary criteria.",
+      "text": "R2: duração máxima conforme aba Regras"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC5",
+        "AC6",
+        "T3"
+      ],
+      "disposition": "COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 6,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "Reservas exigem a antecedência mínima da aba Regras.",
+      "rationale": "Covered; criteria marked proposed only because day counting is open (Q3). Acceptable.",
+      "text": "R3: antecedência mínima conforme aba Regras"
+    },
+    {
+      "covered_by": [
+        "US4",
+        "AC7",
+        "T4"
+      ],
+      "disposition": "COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 7,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "O zelador vê as reservas do dia por sala.",
+      "rationale": "Covered.",
+      "text": "R4: zelador vê reservas do dia por sala"
+    },
+    {
+      "covered_by": [
+        "US1"
+      ],
+      "disposition": "COVERED",
+      "key": "O5",
+      "locator": {
+        "line_start": 4,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [
+        "C5"
+      ],
+      "quote": "C3=Alta",
+      "rationale": "Field priority Alta on US1.",
+      "text": "Prioridade R1 = Alta"
+    },
+    {
+      "covered_by": [
+        "US2"
+      ],
+      "disposition": "COVERED",
+      "key": "O6",
+      "locator": {
+        "line_start": 5,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [
+        "C6"
+      ],
+      "quote": "C4=Alta",
+      "rationale": "Field priority Alta on US2.",
+      "text": "Prioridade R2 = Alta"
+    },
+    {
+      "covered_by": [
+        "US3"
+      ],
+      "disposition": "COVERED",
+      "key": "O7",
+      "locator": {
+        "line_start": 6,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [
+        "C7"
+      ],
+      "quote": "C5=Média",
+      "rationale": "Field priority Média on US3.",
+      "text": "Prioridade R3 = Média"
+    },
+    {
+      "covered_by": [
+        "US4"
+      ],
+      "disposition": "COVERED",
+      "key": "O8",
+      "locator": {
+        "line_start": 7,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [
+        "C8"
+      ],
+      "quote": "C6=Média",
+      "rationale": "Field priority Média on US4.",
+      "text": "Prioridade R4 = Média"
+    },
+    {
+      "covered_by": [
+        "AC3",
+        "AC4",
+        "T2"
+      ],
+      "disposition": "COVERED",
+      "key": "O9",
+      "locator": {
+        "line_start": 10,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "A2=Duração máxima (horas) | B2=4",
+      "rationale": "Value 4 stated in criteria and task.",
+      "text": "Duração máxima = 4 horas (Regras)"
+    },
+    {
+      "covered_by": [
+        "AC5",
+        "AC6",
+        "T3"
+      ],
+      "disposition": "COVERED",
+      "key": "O10",
+      "locator": {
+        "line_start": 11,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "A3=Antecedência mínima (dias) | B3=1",
+      "rationale": "Value 1 day stated; counting ambiguity raised as Q3.",
+      "text": "Antecedência mínima = 1 dia (Regras)"
+    },
+    {
+      "covered_by": [
+        "AC8"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O11",
+      "locator": {
+        "line_start": 12,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [
+        "C9"
+      ],
+      "quote": "B4=3 (fórmula: =COUNTA(Salas!A:A))",
+      "rationale": "Number not turned into a requirement; Q1 asks for the room list. Correct handling.",
+      "text": "Salas disponíveis = 3 via fórmula sobre aba Salas inexistente"
+    },
+    {
+      "covered_by": [
+        "AC3"
+      ],
+      "disposition": "SUPERSEDED",
+      "key": "O12",
+      "locator": {
+        "line_start": 15,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [],
+      "quote": "A2=Observação | B2=rascunho descartado",
+      "rationale": "Discarded draft not used; 4 h used. Q2 asks anyway, which is harmless though the sheet already says discarded.",
+      "text": "Aba oculta Rascunho: duração 8 h, 'rascunho descartado' (não vigente)"
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "No predecessor",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Behavior described, not implementation",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "One rule/view",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Criteria verifiable",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Benefit stated",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "US2-US4 depend on US1 reservation (proposed relation, acceptable)",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "Behavior described, not implementation",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "One rule/view",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Criteria verifiable",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Benefit stated",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "US2-US4 depend on US1 reservation (proposed relation, acceptable)",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "Behavior described, not implementation",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "One rule/view",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Criteria verifiable",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Benefit stated",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "US2-US4 depend on US1 reservation (proposed relation, acceptable)",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "Behavior described, not implementation",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "One rule/view",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Criteria verifiable",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Benefit stated",
+          "rating": "supported"
+        }
+      },
+      "key": "US4",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "T1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "reviewer-c12-final",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-AZNESFVTM1HG"
+    }
+  ]
+}

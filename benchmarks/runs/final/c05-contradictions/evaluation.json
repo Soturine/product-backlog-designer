@@ -1,0 +1,79 @@
+{
+  "case": "c05-contradictions",
+  "evaluator_model": "claude-haiku-5-5",
+  "obligations": [
+    {
+      "id": "G01",
+      "verdict": "covered",
+      "evidence": "backlog.json: PBD-STORY-TYTX8Z2TRT7Z 'Agendar entrega com data e turno' (claim PBD-CLM-512MG84MDW6K, prd.md line 3); PBD-AC-FTEVVV5MM4EK (CA-01: entrega agendada para a data e o turno escolhidos); PBD-TASK-VFD7TNBYZP8W.",
+      "note": "Critical obligation fully represented with story, acceptance criterion and task."
+    },
+    {
+      "id": "G02",
+      "verdict": "handled_as_conflict",
+      "evidence": "backlog.json: PBD-CLM-CPZ6395FWEF4 (prd.md line 4, 'no máximo 3', uncertainty conflicting, disposition CONFLICTING) and PBD-CLM-1SQDM94Q7HW3 (manual-operacao.md line 3, 'até 5', uncertainty conflicting, disposition CONFLICTING); PBD-Q-96CBGMQJGR7E blocking question 'Qual é o limite mensal... 3 (PRD) ou 5 (manual)?' with alternatives 3 and 5; PBD-AC-HKMTP9QWZK8S status proposed, text 'conforme o valor a ser definido'.",
+      "note": "Both locators present and no value chosen. Also handled_as_question via the blocking open question. The formal conflicts list the review asked for (claims.conflicts) is absent, recorded as low-severity finding PBD-FND-4QVD9DDCAWGD; this does not change the verdict."
+    },
+    {
+      "id": "G03",
+      "verdict": "handled_as_conflict",
+      "evidence": "backlog.json: PBD-CLM-AQDMAEFD2BTX (prd.md line 5, 'itens eletrônicos não são aceitos', CONFLICTING via PBD-STORY-1CQBFK398JWK); PBD-Q-KAZN1JNM4BVE blocking question listing 'Nenhum eletrônico aceito' vs 'Eletrônicos em funcionamento aceitos após teste'; PBD-AC-PBH68BWXS0Z8 proposed.",
+      "note": "Conflict and question recorded; PRD side stated as the PRD's position, not as the decided rule."
+    },
+    {
+      "id": "G04",
+      "verdict": "covered",
+      "evidence": "backlog.json: PBD-STORY-PWB9VGRRCVSF (voluntário confirma recebimento; prd.md line 6, PBD-CLM-TV8N6AZKH7WF) with PBD-AC-2F2HJEHXGW59 and PBD-TASK-90EPHWT2JJKR; PBD-STORY-3JRQ0NV0726S (recibo) with PBD-AC-B2XYFYRNQCVV ('O sistema gera um recibo para o doador') and PBD-TASK-FRCEZYVP8FC1.",
+      "note": ""
+    },
+    {
+      "id": "G05",
+      "verdict": "covered",
+      "evidence": "backlog.json: PBD-STORY-KPJ89GRM2C73 'Remarcar entrega agendada' (claim PBD-CLM-8249BBW4482V, prd.md line 7, confirmed); PBD-AC-TBB1H3Z4MSP0 (confirmed, 'falta pelo menos 1 dia'); PBD-TASK-0KJK66C6A4MC 'antecedência mínima de 1 dia'.",
+      "note": "Out-of-window behaviour is correctly left as proposed AC-XFKQ2FK5M2QB and open question PBD-Q-7SBPKYC1Q7EF."
+    },
+    {
+      "id": "G06",
+      "verdict": "handled_as_conflict",
+      "evidence": "backlog.json: PBD-CLM-1SQDM94Q7HW3 (manual-operacao.md line 3, 'Doadores podem agendar até 5 entregas por mês', CONFLICTING) with PBD-CLM-CPZ6395FWEF4 (prd.md line 4) on the same story PBD-STORY-3HJKCVZDBRXJ; PBD-Q-96CBGMQJGR7E blocking.",
+      "note": "Same conflict as G02, handled symmetrically; the 5 value is not confirmed."
+    },
+    {
+      "id": "G07",
+      "verdict": "handled_as_conflict",
+      "evidence": "backlog.json: PBD-CLM-RC920SP14G78 (manual-operacao.md line 4, 'eletrônicos em funcionamento são aceitos mediante teste', CONFLICTING) with PBD-CLM-AQDMAEFD2BTX (prd.md line 5); PBD-Q-KAZN1JNM4BVE blocking; PBD-AC-PBH68BWXS0Z8 proposed ('segue a política a ser definida: recusa total (PRD) ou aceitação... (manual)').",
+      "note": ""
+    },
+    {
+      "id": "G08",
+      "verdict": "covered",
+      "evidence": "backlog.json: PBD-CLM-0XVS897N6RRQ (manual-operacao.md line 5, confirmed); PBD-AC-QNGFT3P0TEED (CA-02, confirmed, 'O recibo é enviado por e-mail ao doador'); PBD-TASK-FRCEZYVP8FC1; review PBD-FND-0W6CEEXA27TG notes missing failure criterion (low).",
+      "note": "Non-critical; covered."
+    }
+  ],
+  "traps": [
+    {
+      "id": "T1",
+      "verdict": "not_violated",
+      "evidence": "Trap: must not silently pick 3 or 5 deliveries. backlog.json keeps both CONFLICTING claims with locators (prd.md line 4, manual-operacao.md line 3), blocking question PBD-Q-96CBGMQJGR7E, and proposed AC PBD-AC-HKMTP9QWZK8S 'conforme o valor a ser definido'. The feature PBD-FEAT-NJ7TXDYTKX2J is titled '(em aberto)' and no item asserts 3 or 5 as confirmed."
+    },
+    {
+      "id": "T2",
+      "verdict": "not_violated",
+      "evidence": "Trap: must not silently accept or reject electronics. backlog.json keeps PBD-CLM-AQDMAEFD2BTX and PBD-CLM-RC920SP14G78 CONFLICTING, blocking question PBD-Q-KAZN1JNM4BVE, and proposed AC PBD-AC-PBH68BWXS0Z8. Story PBD-STORY-1CQBFK398JWK ('Saber se doação eletrônica é aceita') asserts no outcome. Epic out_scope excludes the electronics rules until resolution."
+    }
+  ],
+  "invented": [
+    {
+      "text": "Story PBD-STORY-TYTX8Z2TRT7Z benefit 'levar as doações ao bazar em um horário combinado' (the 'horário combinado' framing is not in the sources).",
+      "severity": "low"
+    },
+    {
+      "text": "Feature PBD-FEAT-CTTNXQF92CEC value 'Organiza o fluxo de recebimento no bazar' and feature PBD-FEAT-NJ7TXDYTKX2J value 'Evita agendamentos e recebimentos fora da política do bazar' are generic benefit statements not in the sources and not marked proposed.",
+      "severity": "low"
+    }
+  ],
+  "levels_ok": true,
+  "native_first_ok": true,
+  "notes": "Counts: covered 4 (G01, G04, G05, G08), handled_as_conflict 4 (G02, G03, G06, G07), partial 0, missed 0. Critical recall 8/8 counting conflict handling (G02, G03, G05, G06, G07 and G01, G04 covered; G02/G03/G06/G07 conflict-handled). Both traps not_violated. Both sources read natively (gates G01 reason 'reading methods: native: 2'). Levels present: epics, features, stories, acceptance criteria, tasks, dependencies (relations). Review finding PBD-FND-4QVD9DDCAWGD notes that conflicts are not registered in a formal conflicts list; the conflicts are still represented as CONFLICTING dispositions and uncertainty with both locators, so this is a traceability gap rather than a gold-level miss. Evaluation based only on the gold file, the two source files, output/backlog.json, output/gates.json, stages/review.json and the two stages/reading members."
+}

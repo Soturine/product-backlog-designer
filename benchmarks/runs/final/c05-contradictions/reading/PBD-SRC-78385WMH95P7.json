@@ -1,0 +1,102 @@
+{
+  "ambiguities": [],
+  "exclusions": [],
+  "members": [
+    {
+      "lines_read": [
+        [
+          1,
+          7
+        ]
+      ],
+      "path": "prd.md",
+      "reading": {
+        "limitations": [],
+        "method": "native",
+        "tool": "host file reader"
+      },
+      "status": "read"
+    }
+  ],
+  "obligations": [
+    {
+      "category": "functional",
+      "key": "R1",
+      "locator": {
+        "line_start": 3,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "O doador agenda a entrega de doações escolhendo data e turno",
+      "text": "O doador agenda a entrega de doações escolhendo data e turno",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "constraint",
+      "key": "R2",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "no máximo 3 entregas por mês",
+      "text": "Cada doador pode agendar no máximo 3 entregas por mês",
+      "uncertainty": "conflicting"
+    },
+    {
+      "category": "constraint",
+      "key": "R3",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md"
+      },
+      "modality": "must_not",
+      "quote": "Itens eletrônicos não são aceitos",
+      "text": "Itens eletrônicos não são aceitos",
+      "uncertainty": "conflicting"
+    },
+    {
+      "category": "functional",
+      "key": "R4",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "O voluntário confirma o recebimento",
+      "text": "O voluntário confirma o recebimento",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R5",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "o sistema gera um recibo para o doador",
+      "text": "O sistema gera um recibo para o doador",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R6",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md"
+      },
+      "modality": "may",
+      "quote": "remarcar uma entrega até 1 dia antes da data agendada",
+      "text": "O doador pode remarcar uma entrega até 1 dia antes da data agendada",
+      "uncertainty": "confirmed"
+    }
+  ],
+  "reader": {
+    "agent": "reader-prd.md-c05",
+    "independence": "sequential_role",
+    "model": "claude-sonnet-5-5"
+  },
+  "source_digest": "sha256:0d9d736cf448fcb3cd5212e8adae5fac9256787d141c820d1164d0554c178cff",
+  "source_id": "PBD-SRC-78385WMH95P7"
+}

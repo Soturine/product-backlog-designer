@@ -1,0 +1,106 @@
+{
+  "case": "h1-vet-vaccines",
+  "evaluator_model": "claude-haiku-5-5",
+  "obligations": [
+    {
+      "id": "G01",
+      "verdict": "covered",
+      "evidence": "Story PBD-STORY-AD4T7BW7A26S 'Agendar vacina escolhendo animal, vacina e horário livre'; CA-01 PBD-AC-97AQN990C54D (animal, vacina do catálogo e horário escolhidos -> agendamento criado); task PBD-TASK-6BD8H1GKP8EC.",
+      "note": "Critical. Fully covered."
+    },
+    {
+      "id": "G02",
+      "verdict": "covered",
+      "evidence": "CA-02 PBD-AC-NYS1W10A1WJW ('Um horário já agendado' -> sistema não permite); feature PBD-FEAT-V5EJN1T283JT rule 'Cada horário atende um único animal'; task PBD-TASK-W1P0AYWXFKV9.",
+      "note": "Critical. Covered."
+    },
+    {
+      "id": "G03",
+      "verdict": "covered",
+      "evidence": "CA-03 PBD-AC-VM319ZZC261G (menos de 24 h -> não realizado); CA-04 PBD-AC-WZ4PY1EM8BNH (exatamente 24 h -> aceito); task PBD-TASK-W1P0AYWXFKV9 verifica o limite.",
+      "note": "Critical. Covered, including the boundary."
+    },
+    {
+      "id": "G04",
+      "verdict": "covered",
+      "evidence": "Story PBD-STORY-5W6F6CDR4JSG 'Receber confirmação do agendamento por e-mail'; CA-01 PBD-AC-W3WZEDN059ZV; task PBD-TASK-CHTBVXCMPGQP.",
+      "note": "Non-critical. Covered."
+    },
+    {
+      "id": "G05",
+      "verdict": "covered",
+      "evidence": "Story PBD-STORY-9RVQXD2HADM4 'Cancelar agendamento até 12 horas antes'; CA-01 PBD-AC-BRGKPA4FP909 (12 h ou mais -> cancelado); task PBD-TASK-ZDQVA6VBJDP5.",
+      "note": "Critical. Covered."
+    },
+    {
+      "id": "G06",
+      "verdict": "covered",
+      "evidence": "CA-02 PBD-AC-AMB3VR5EAWMP (menos de 12 h -> cancelamento pelo tutor não permitido; só recepção); story PBD-STORY-MJAKADJYR3VH 'Cancelar agendamento após o limite do tutor'; CA-01 PBD-AC-4SVP9CJX78JR (recepção cancela); task PBD-TASK-B8YA54WKE8WV.",
+      "note": "Critical. Covered."
+    },
+    {
+      "id": "G07",
+      "verdict": "handled_as_question",
+      "evidence": "Blocking question PBD-Q-5X90W9S0E5E4: 'Quais são os critérios da avaliação do veterinário para animais com reação adversa e como ela é solicitada e registrada no sistema?'. Story PBD-STORY-1MMGZ1X3JX2N and feature PBD-FEAT-0ZQDFSJFRC2M state the requirement with the rule 'Os critérios da avaliação ainda não foram definidos pela clínica'. CA-01 PBD-AC-7ZGDWQJRKWX9 has origin 'proposed', status 'proposed', and text 'depende de critérios ainda não definidos'. No task (US5 insufficient, intentionally).",
+      "note": "Critical. The gold expects this question (expectations.questions). The criterion is marked proposed, not confirmed. The review finding PBD-FND-HZ4EGWXPMSD1 also flags it."
+    },
+    {
+      "id": "G08",
+      "verdict": "covered",
+      "evidence": "Story PBD-STORY-BCX903ZN6VZD 'Ver a agenda do dia em ordem de horário'; CA-01 PBD-AC-1PGTD7NHHTTW (ordem de horário; animal, vacina e tutor); task PBD-TASK-DCY71EAWT30N.",
+      "note": "Non-critical. Covered."
+    },
+    {
+      "id": "G09",
+      "verdict": "covered",
+      "evidence": "Story PBD-STORY-JBS7PR295QB5 'Registrar a aplicação da vacina com data e lote'; CA-01 PBD-AC-N80RB60YMWTG (registro guarda data e lote); task PBD-TASK-F78RS0Z9AYA8.",
+      "note": "Critical. Covered."
+    },
+    {
+      "id": "G10",
+      "verdict": "covered",
+      "evidence": "CA-02 PBD-AC-NND4W6M8RTRB (lote não informado -> aplicação não é registrada); task PBD-TASK-F78RS0Z9AYA8 'Recusar o registro quando o lote não for informado'.",
+      "note": "Critical. Covered."
+    },
+    {
+      "id": "G11",
+      "verdict": "handled_as_out_of_scope",
+      "evidence": "Epics PBD-EPIC-DR4TF1PF4AYR and PBD-EPIC-A14N9KQNDT49 list 'Pagamento on-line' and 'Emissão de nota fiscal' in out_scope. Claim O11 disposition OUT_OF_SCOPE. No work items for payment or invoices.",
+      "note": "Non-critical. Handled as out of scope."
+    }
+  ],
+  "traps": [
+    {
+      "id": "T1",
+      "verdict": "not_violated",
+      "evidence": "The vet evaluation criteria are not invented. PBD-AC-7ZGDWQJRKWX9 is marked proposed with a rationale that the criteria are undefined. Feature PBD-FEAT-0ZQDFSJFRC2M lists 'Os critérios da avaliação ainda não foram definidos'. Q PBD-Q-5X90W9S0E5E4 asks for them. No weight, age or time-since-reaction rule appears."
+    },
+    {
+      "id": "T2",
+      "verdict": "not_violated",
+      "evidence": "Payment and invoices appear only in epic out_scope lists. No story, criterion or task covers them. Item titles contain no payment or invoice work."
+    },
+    {
+      "id": "T3",
+      "verdict": "not_violated",
+      "evidence": "No cancellation fee, refund, reminder SMS or similar behavior appears in any item or criterion. The only added question is Q PBD-Q-RGXDTHTYQ293 (whether a cancelled slot becomes free again), which is correctly asked, not asserted."
+    }
+  ],
+  "invented": [
+    {
+      "text": "Feature PBD-FEAT-0ZQDFSJFRC2M value 'Proteger a saúde do animal antes de vaciná-lo.' is a rationale the PRD does not state.",
+      "severity": "low"
+    },
+    {
+      "text": "Feature PBD-FEAT-V5EJN1T283JT value 'Agendar sem contato com a clínica, evitando conflito de horários' and epic PBD-EPIC-DR4TF1PF4AYR outcome 'sem depender de contato direto com a recepção' are paraphrased benefit statements, not source text.",
+      "severity": "low"
+    },
+    {
+      "text": "Story PBD-STORY-JBS7PR295QB5 benefit 'manter o histórico de aplicações com rastreio do lote' and feature PBD-FEAT-N88C6JRSSKNH value 'Conduzir o atendimento diário com visibilidade' are added rationale, not requirements.",
+      "severity": "low"
+    }
+  ],
+  "levels_ok": true,
+  "native_first_ok": true,
+  "notes": "Levels present: 2 epics, 5 features, 7 stories, 12 criteria (acceptance), 7 tasks, 4 relations (dependencies). Native-first: the reading of prd.md has method 'native' (host shell file read of the original), so no extraction declaration is needed. Critical recall: 8/8 critical obligations covered or correctly handled (G01, G02, G03, G05, G06, G07, G09, G10). Counts: covered 9, handled_as_question 1, handled_as_out_of_scope 1, partial 0, missed 0. No trap violations. Invented items are all low-severity rationale text, none confirmed behavior. Gate context: G07 FAIL (US5 has insufficient tasks, by design pending Q1), G13 BLOCKED (sequential-role reviewer, reduced independence). Neither changes the verdicts above."
+}

@@ -1,0 +1,728 @@
+{
+  "claims": [
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-NVM2SJX51EKK",
+          "PBD-AC-V1Q5PADVHYWB",
+          "PBD-TASK-S5KMBRK7VVN8"
+        ],
+        "rationale": "Inscrição com nome e camiseta coberta pela história US1.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 3,
+            "line_start": 3,
+            "member": "prd.md",
+            "quote_digest": "sha256:a13423c4611d755cd041c0590a6b791354824b94c3448fc24ea68d64e0dc2002",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "9a1c84f0e173a058"
+          },
+          "summary": "O participante se inscreve em um mutirão informando nome e tamanho de camiseta",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-P92WPWF8EN87",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O participante se inscreve em um mutirão informando nome e tamanho de camiseta",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "integration",
+      "disposition": {
+        "covered_by": [
+          "PBD-SPIKE-0GQ77Z1YBTV3"
+        ],
+        "rationale": "Gateway, taxa e tratamento de falha não especificados; spike e questão Q1 registrados.",
+        "status": "QUESTION_REQUIRED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "prd.md",
+            "quote_digest": "sha256:e70b8e4d72be4d57a915a7d09cbe820f8097e73bb88dcb640719ecc73d1f2b96",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "9a1c84f0e173a058"
+          },
+          "summary": "A taxa simbólica de inscrição é paga pelo gateway de pagamentos parceiro",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-J7EZYA18FNFY",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "A taxa simbólica de inscrição é paga pelo gateway de pagamentos parceiro (valor, gateway, meios e integração não especificados)",
+      "uncertainty": {
+        "level": "ambiguous"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-KKVQD2MMVP63",
+          "PBD-AC-5JYXTP2SF9RN",
+          "PBD-AC-JXD9CQ6X6126",
+          "PBD-TASK-2X00C1HNXWJX"
+        ],
+        "rationale": "Confirmação condicionada ao pagamento verificada em AC3 e AC4.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "prd.md",
+            "quote_digest": "sha256:40f46d38ebce486df3a249962ac2c0d53b72755b7d8e49b922b9f2da410b8a1c",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "9a1c84f0e173a058"
+          },
+          "summary": "A inscrição só é confirmada após a confirmação do pagamento",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-ND4B97G09NFW",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "A inscrição só é confirmada após a confirmação do pagamento",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-KR8Z1C7NP8AX",
+          "PBD-AC-1GT5MNZGJRQV",
+          "PBD-TASK-YG1KFKJNY5ZN"
+        ],
+        "rationale": "Lista de confirmados por mutirão verificada em AC6.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 6,
+            "line_start": 6,
+            "member": "prd.md",
+            "quote_digest": "sha256:6fbf4677d05db6e8b96787a681d86b0960124a818f3a3a6e90935bba36ab67bb",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "9a1c84f0e173a058"
+          },
+          "summary": "O organizador vê a lista de inscritos confirmados por mutirão",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-60J9RHGC9FGM",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O organizador vê a lista de inscritos confirmados por mutirão",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "nonfunctional",
+      "disposition": {
+        "rationale": "'Rápido' não tem limite mensurável; sem critério ou tarefa até Q2 ser respondida.",
+        "status": "QUESTION_REQUIRED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 7,
+            "line_start": 7,
+            "member": "prd.md",
+            "quote_digest": "sha256:31ed6cf31d8ca8897c2b46e8b3cb38211cb5b8bff7fbeb0101111f0bcc806b05",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "9a1c84f0e173a058"
+          },
+          "summary": "O sistema deve ser rápido",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-GR8Y5VWFEYJS",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O sistema deve ser rápido (sem limite mensurável)",
+      "uncertainty": {
+        "level": "ambiguous"
+      }
+    }
+  ],
+  "criteria": [
+    {
+      "claim_refs": [
+        "PBD-CLM-P92WPWF8EN87"
+      ],
+      "condition": "Participante informa nome e tamanho de camiseta",
+      "expected_outcomes": [
+        "A inscrição é registrada para o mutirão com o nome e o tamanho de camiseta informados"
+      ],
+      "id": "PBD-AC-V1Q5PADVHYWB",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-NVM2SJX51EKK",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "Ele envia a inscrição em um mutirão",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "Inscrição sem nome ou sem tamanho não é registrada"
+      ],
+      "id": "PBD-AC-7GCXV2FAWBC0",
+      "order": 1,
+      "origin": "proposed",
+      "parent": "PBD-STORY-NVM2SJX51EKK",
+      "rationale": "O PRD diz que a inscrição informa nome e tamanho, mas não trata dados ausentes ou inválidos; tratado como proposta.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Se nome ou tamanho de camiseta não forem informados, a inscrição não deve ser registrada e o participante deve ser informado do dado faltante.",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-ND4B97G09NFW"
+      ],
+      "condition": "Inscrição cuja taxa ainda não teve o pagamento confirmado",
+      "expected_outcomes": [
+        "A inscrição não está confirmada"
+      ],
+      "id": "PBD-AC-5JYXTP2SF9RN",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-KKVQD2MMVP63",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "O participante consulta ou o sistema avalia a inscrição",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-ND4B97G09NFW"
+      ],
+      "condition": "O pagamento da inscrição foi confirmado",
+      "expected_outcomes": [
+        "A inscrição passa a confirmada"
+      ],
+      "id": "PBD-AC-JXD9CQ6X6126",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-KKVQD2MMVP63",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "A confirmação do pagamento é recebida",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-J7EZYA18FNFY"
+      ],
+      "expected_outcomes": [
+        "Inscrição permanece não confirmada após falha de pagamento"
+      ],
+      "id": "PBD-AC-7RE4FGY7641P",
+      "order": 2,
+      "origin": "proposed",
+      "parent": "PBD-STORY-KKVQD2MMVP63",
+      "rationale": "O PRD não define valor da taxa, meios de pagamento, recusa, falha ou estorno; alternativas (nova tentativa, cancelamento, prazo) dependem da questão Q1.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Se o pagamento for recusado, falhar ou expirar, a inscrição permanece não confirmada e o participante é informado.",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-60J9RHGC9FGM"
+      ],
+      "condition": "Mutirão com inscritos confirmados e não confirmados",
+      "expected_outcomes": [
+        "A lista exibe apenas os inscritos confirmados desse mutirão"
+      ],
+      "id": "PBD-AC-1GT5MNZGJRQV",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-KR8Z1C7NP8AX",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "O organizador abre a lista do mutirão",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [],
+      "condition": "Mutirão sem inscritos confirmados",
+      "expected_outcomes": [
+        "A lista é exibida vazia, sem inscritos não confirmados"
+      ],
+      "id": "PBD-AC-G9FBN4Z98NY9",
+      "order": 1,
+      "origin": "proposed",
+      "parent": "PBD-STORY-KR8Z1C7NP8AX",
+      "rationale": "Caso de lista vazia não é afirmado pelo PRD.",
+      "status": "proposed",
+      "style": "list",
+      "trigger": "O organizador abre a lista do mutirão",
+      "visible_id": "CA-02"
+    }
+  ],
+  "decisions": [],
+  "findings": [
+    {
+      "actual": "Trigger reads 'o participante consulta ou o sistema avalia a inscrição'",
+      "affects": [
+        "PBD-AC-5JYXTP2SF9RN"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "AC3 with a clear, verifiable trigger",
+      "gate": "G06",
+      "id": "PBD-FND-0HQAPRWRTW0Z",
+      "impact": "Testers may verify it inconsistently",
+      "recommendation": "State a single observable point, e.g. status shown after submission before payment confirmation",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Two alternative actors/moments make the check ambiguous"
+    },
+    {
+      "actual": "O2 (payment via gateway) is covered only by spike SP1; US2 has no criterion or task for performing the payment",
+      "affects": [
+        "PBD-SPIKE-0GQ77Z1YBTV3",
+        "PBD-STORY-KKVQD2MMVP63",
+        "PBD-TASK-2X00C1HNXWJX"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Payment handling traceable to a deliverable",
+      "gate": "G05",
+      "id": "PBD-FND-VFA1FZFHMQS2",
+      "impact": "US2 not estimable until Q1 answered",
+      "recommendation": "Keep Q1 blocking; add criteria/tasks after answer",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Source is insufficient, so this is deliberate"
+    }
+  ],
+  "items": [
+    {
+      "claim_refs": [
+        "PBD-CLM-P92WPWF8EN87",
+        "PBD-CLM-ND4B97G09NFW",
+        "PBD-CLM-60J9RHGC9FGM"
+      ],
+      "content": {
+        "context": "O PRD descreve apenas o fluxo de inscrição, a confirmação condicionada ao pagamento e a lista de confirmados; detalhes do pagamento e de desempenho não estão definidos.",
+        "in_scope": [
+          "Inscrição com nome e tamanho de camiseta",
+          "Confirmação da inscrição somente após confirmação do pagamento",
+          "Lista de inscritos confirmados por mutirão"
+        ],
+        "kind": "epic",
+        "objective": "Permitir que participantes se inscrevam em mutirões e que organizadores acompanhem os inscritos confirmados.",
+        "out_scope": [
+          "Definição técnica da integração com o gateway de pagamentos (depende de decisão)",
+          "Metas de desempenho (não quantificadas no PRD)"
+        ],
+        "outcome": "Participantes inscritos e confirmados, visíveis ao organizador por mutirão."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir que participantes se inscrevam em mutirões e que organizadores acompanhem os inscritos confirmados.</p><p><strong>Contexto</strong>: O PRD descreve apenas o fluxo de inscrição, a confirmação condicionada ao pagamento e a lista de confirmados; detalhes do pagamento e de desempenho não estão definidos.</p><p><strong>No escopo</strong></p><ul><li>Inscrição com nome e tamanho de camiseta</li><li>Confirmação da inscrição somente após confirmação do pagamento</li><li>Lista de inscritos confirmados por mutirão</li></ul><p><strong>Fora do escopo</strong></p><ul><li>Definição técnica da integração com o gateway de pagamentos (depende de decisão)</li><li>Metas de desempenho (não quantificadas no PRD)</li></ul><p><strong>Resultado esperado</strong>: Participantes inscritos e confirmados, visíveis ao organizador por mutirão.</p>"
+      },
+      "id": "PBD-EPIC-0DF08W7RMCX8",
+      "origin": "generated",
+      "parent": null,
+      "status": "reviewed",
+      "title": "Inscrição em mutirões de limpeza",
+      "type": "epic"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-P92WPWF8EN87"
+      ],
+      "content": {
+        "capability": "Registrar a inscrição de um participante em um mutirão.",
+        "kind": "feature",
+        "rules": [
+          "A inscrição informa nome e tamanho de camiseta."
+        ],
+        "value": "Base para organizar o evento com a camiseta correta."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Registrar a inscrição de um participante em um mutirão.</p><p><strong>Valor</strong>: Base para organizar o evento com a camiseta correta.</p><p><strong>Regras relacionadas</strong></p><ul><li>A inscrição informa nome e tamanho de camiseta.</li></ul>"
+      },
+      "id": "PBD-FEAT-SK5RE342N44M",
+      "origin": "generated",
+      "parent": "PBD-EPIC-0DF08W7RMCX8",
+      "status": "reviewed",
+      "title": "Inscrição do participante",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-J7EZYA18FNFY",
+        "PBD-CLM-ND4B97G09NFW"
+      ],
+      "content": {
+        "capability": "Cobrar a taxa simbólica via gateway parceiro e confirmar a inscrição apenas após o pagamento confirmado.",
+        "kind": "feature",
+        "rules": [
+          "A inscrição só é confirmada após a confirmação do pagamento.",
+          "Detalhes do gateway e da taxa dependem de esclarecimento."
+        ],
+        "value": "Garantir que só inscrições pagas sejam confirmadas."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Cobrar a taxa simbólica via gateway parceiro e confirmar a inscrição apenas após o pagamento confirmado.</p><p><strong>Valor</strong>: Garantir que só inscrições pagas sejam confirmadas.</p><p><strong>Regras relacionadas</strong></p><ul><li>A inscrição só é confirmada após a confirmação do pagamento.</li><li>Detalhes do gateway e da taxa dependem de esclarecimento.</li></ul>"
+      },
+      "id": "PBD-FEAT-Y5Q3E2AADD51",
+      "origin": "generated",
+      "parent": "PBD-EPIC-0DF08W7RMCX8",
+      "status": "reviewed",
+      "title": "Pagamento e confirmação da inscrição",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-60J9RHGC9FGM"
+      ],
+      "content": {
+        "capability": "Exibir ao organizador os inscritos confirmados de cada mutirão.",
+        "kind": "feature",
+        "rules": [
+          "Somente inscritos confirmados aparecem na lista, por mutirão."
+        ],
+        "value": "Permitir ao organizador acompanhar quem participará."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Exibir ao organizador os inscritos confirmados de cada mutirão.</p><p><strong>Valor</strong>: Permitir ao organizador acompanhar quem participará.</p><p><strong>Regras relacionadas</strong></p><ul><li>Somente inscritos confirmados aparecem na lista, por mutirão.</li></ul>"
+      },
+      "id": "PBD-FEAT-DT9K0XNB2B14",
+      "origin": "generated",
+      "parent": "PBD-EPIC-0DF08W7RMCX8",
+      "status": "reviewed",
+      "title": "Lista de inscritos confirmados",
+      "type": "feature"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-P92WPWF8EN87"
+      ],
+      "content": {
+        "actor": "participante",
+        "benefit": "participar do mutirão",
+        "kind": "role_goal_benefit",
+        "want": "me inscrevesse em um mutirão informando meu nome e o tamanho da camiseta"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> participante, <strong>gostaria que</strong> me inscrevesse em um mutirão informando meu nome e o tamanho da camiseta, <strong>para</strong> participar do mutirão.</p>"
+      },
+      "id": "PBD-STORY-NVM2SJX51EKK",
+      "origin": "generated",
+      "parent": "PBD-FEAT-SK5RE342N44M",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Inscrever-se em um mutirão",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-J7EZYA18FNFY",
+        "PBD-CLM-ND4B97G09NFW"
+      ],
+      "content": {
+        "actor": "participante",
+        "benefit": "garantir minha vaga no mutirão",
+        "kind": "role_goal_benefit",
+        "want": "pagasse a taxa simbólica de inscrição e tivesse a inscrição confirmada após a confirmação do pagamento"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> participante, <strong>gostaria que</strong> pagasse a taxa simbólica de inscrição e tivesse a inscrição confirmada após a confirmação do pagamento, <strong>para</strong> garantir minha vaga no mutirão.</p>"
+      },
+      "id": "PBD-STORY-KKVQD2MMVP63",
+      "origin": "generated",
+      "parent": "PBD-FEAT-Y5Q3E2AADD51",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Ter a inscrição confirmada somente após o pagamento",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-60J9RHGC9FGM"
+      ],
+      "content": {
+        "actor": "organizador",
+        "benefit": "acompanhar os participantes de cada mutirão",
+        "kind": "role_goal_benefit",
+        "want": "visse a lista de inscritos confirmados de cada mutirão"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> organizador, <strong>gostaria que</strong> visse a lista de inscritos confirmados de cada mutirão, <strong>para</strong> acompanhar os participantes de cada mutirão.</p>"
+      },
+      "id": "PBD-STORY-KR8Z1C7NP8AX",
+      "origin": "generated",
+      "parent": "PBD-FEAT-DT9K0XNB2B14",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Ver inscritos confirmados por mutirão",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-J7EZYA18FNFY"
+      ],
+      "content": {
+        "decision": "Definir o contrato de integração e os cenários de falha antes de detalhar US2.",
+        "kind": "spike",
+        "question": "Qual é o gateway parceiro, o valor da taxa simbólica, os meios de pagamento aceitos e como o pagamento é confirmado e tratado em recusa ou falha?"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Pergunta a responder</strong>: Qual é o gateway parceiro, o valor da taxa simbólica, os meios de pagamento aceitos e como o pagamento é confirmado e tratado em recusa ou falha?</p><p><strong>Decisão esperada</strong>: Definir o contrato de integração e os cenários de falha antes de detalhar US2.</p>"
+      },
+      "id": "PBD-SPIKE-0GQ77Z1YBTV3",
+      "origin": "generated",
+      "parent": "PBD-FEAT-Y5Q3E2AADD51",
+      "status": "reviewed",
+      "story_format": "spike",
+      "title": "Esclarecer a integração com o gateway de pagamentos parceiro",
+      "type": "spike"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-P92WPWF8EN87"
+      ],
+      "content": {
+        "activities": [
+          "Coletar nome e tamanho de camiseta",
+          "Registrar a inscrição associada ao mutirão"
+        ],
+        "kind": "task",
+        "outcome": "Inscrição registrada com nome e tamanho de camiseta.",
+        "summary": "Permitir ao participante registrar a inscrição em um mutirão.",
+        "verification": "Verificar AC1 e AC2."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir ao participante registrar a inscrição em um mutirão.</p><p><strong>Atividades</strong></p><ul><li>Coletar nome e tamanho de camiseta</li><li>Registrar a inscrição associada ao mutirão</li></ul><p><strong>Resultado esperado</strong>: Inscrição registrada com nome e tamanho de camiseta.</p><p><strong>Verificação</strong>: Verificar AC1 e AC2.</p>"
+      },
+      "id": "PBD-TASK-S5KMBRK7VVN8",
+      "origin": "generated",
+      "parent": "PBD-STORY-NVM2SJX51EKK",
+      "status": "reviewed",
+      "title": "Implementar o registro de inscrição com nome e tamanho de camiseta",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-ND4B97G09NFW"
+      ],
+      "content": {
+        "activities": [
+          "Manter a inscrição sem confirmação até receber a confirmação do pagamento",
+          "Confirmar a inscrição ao receber a confirmação do pagamento"
+        ],
+        "kind": "task",
+        "outcome": "Inscrição só é confirmada após pagamento confirmado.",
+        "summary": "Condicionar o estado confirmado da inscrição à confirmação do pagamento.",
+        "verification": "Verificar AC3 e AC4."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Condicionar o estado confirmado da inscrição à confirmação do pagamento.</p><p><strong>Atividades</strong></p><ul><li>Manter a inscrição sem confirmação até receber a confirmação do pagamento</li><li>Confirmar a inscrição ao receber a confirmação do pagamento</li></ul><p><strong>Resultado esperado</strong>: Inscrição só é confirmada após pagamento confirmado.</p><p><strong>Verificação</strong>: Verificar AC3 e AC4.</p>"
+      },
+      "id": "PBD-TASK-2X00C1HNXWJX",
+      "origin": "generated",
+      "parent": "PBD-STORY-KKVQD2MMVP63",
+      "status": "reviewed",
+      "title": "Impedir a confirmação da inscrição sem pagamento confirmado",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-60J9RHGC9FGM"
+      ],
+      "content": {
+        "activities": [
+          "Consultar inscritos confirmados por mutirão",
+          "Apresentar a lista ao organizador"
+        ],
+        "kind": "task",
+        "outcome": "Lista de confirmados por mutirão visível ao organizador.",
+        "summary": "Listar ao organizador apenas inscritos confirmados do mutirão selecionado.",
+        "verification": "Verificar AC6 e AC7."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Listar ao organizador apenas inscritos confirmados do mutirão selecionado.</p><p><strong>Atividades</strong></p><ul><li>Consultar inscritos confirmados por mutirão</li><li>Apresentar a lista ao organizador</li></ul><p><strong>Resultado esperado</strong>: Lista de confirmados por mutirão visível ao organizador.</p><p><strong>Verificação</strong>: Verificar AC6 e AC7.</p>"
+      },
+      "id": "PBD-TASK-YG1KFKJNY5ZN",
+      "origin": "generated",
+      "parent": "PBD-STORY-KR8Z1C7NP8AX",
+      "status": "reviewed",
+      "title": "Exibir a lista de inscritos confirmados por mutirão",
+      "type": "task"
+    }
+  ],
+  "kind": "pbd.backlog",
+  "language": "pt-BR",
+  "profile": "generic",
+  "questions": [
+    {
+      "affects": [
+        "PBD-AC-7RE4FGY7641P",
+        "PBD-CLM-J7EZYA18FNFY",
+        "PBD-SPIKE-0GQ77Z1YBTV3",
+        "PBD-STORY-KKVQD2MMVP63"
+      ],
+      "alternatives": [
+        "Pagamento único sem nova tentativa",
+        "Permitir nova tentativa dentro de um prazo",
+        "Cancelar a inscrição após falha"
+      ],
+      "blocking": true,
+      "id": "PBD-Q-Q7DBMYE9K137",
+      "impact": "Sem isso não é possível confirmar critérios nem estimar a integração de pagamento (US2, SP1).",
+      "status": "open",
+      "text": "Qual é o gateway parceiro, o valor da taxa simbólica, os meios de pagamento, e como tratar recusa, falha, expiração e estorno do pagamento?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-GR8Y5VWFEYJS"
+      ],
+      "alternatives": [
+        "Tempo de resposta por operação",
+        "Capacidade de inscrições simultâneas por mutirão"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-RB6RRDTS0CNT",
+      "impact": "Sem limite mensurável não há critério verificável nem tarefa de desempenho.",
+      "status": "open",
+      "text": "O que significa 'rápido': qual operação (inscrição, confirmação, lista) e qual limite de tempo ou carga?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-ND4B97G09NFW",
+        "PBD-STORY-KKVQD2MMVP63",
+        "PBD-STORY-KR8Z1C7NP8AX"
+      ],
+      "alternatives": [
+        "Estado 'pendente' visível ao participante apenas",
+        "Sem estado intermediário"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-4C0393DMECEV",
+      "impact": "Afeta o estado da inscrição em US2 e a lista em US3.",
+      "status": "open",
+      "text": "O que o participante e o organizador veem quando a inscrição está pendente de pagamento, e é possível reinscrever-se no mesmo mutirão?"
+    }
+  ],
+  "relations": [
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-CD2Y1JZ1Q0JP",
+      "reason": "A integração com o gateway precisa ser esclarecida antes de detalhar e implementar o pagamento.",
+      "source": "PBD-SPIKE-0GQ77Z1YBTV3",
+      "status": "proposed",
+      "target": "PBD-STORY-KKVQD2MMVP63",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-FJWX2R0BFRS7",
+      "reason": "A inscrição precisa existir para ser paga e confirmada.",
+      "source": "PBD-STORY-NVM2SJX51EKK",
+      "status": "proposed",
+      "target": "PBD-STORY-KKVQD2MMVP63",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-XMD6B7SN28D1",
+      "reason": "A lista exibe inscritos confirmados, estado produzido pela confirmação do pagamento.",
+      "source": "PBD-STORY-KKVQD2MMVP63",
+      "status": "proposed",
+      "target": "PBD-STORY-KR8Z1C7NP8AX",
+      "type": "predecessor"
+    }
+  ],
+  "run_id": "PBD-RUN-P07GPH67ZBKR",
+  "schema_version": "1.1.0",
+  "sources": [
+    {
+      "authority": "functional",
+      "digest": "sha256:9a1c84f0e173a0586f698b28a712fdcbb7c87d481ba4ff3079da96fdb9f9e7c8",
+      "id": "PBD-SRC-78385WMH95P7",
+      "kind": "file",
+      "members": [
+        {
+          "bytes": 393,
+          "digest": "sha256:1f2b0ae20434a0f0581e988c73e8eda3697b10c95ef63e3162876cc266c84791",
+          "media_type": "application/octet-stream",
+          "path": "prd.md",
+          "status": "read"
+        }
+      ],
+      "read_status": "complete",
+      "selector": "prd.md",
+      "version": "9a1c84f0e173a058"
+    }
+  ],
+  "synthetic": true
+}

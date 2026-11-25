@@ -1,0 +1,341 @@
+{
+  "gates": [
+    {
+      "denominator": {
+        "breakdown": {
+          "blocked": 0,
+          "covered": 1,
+          "partially_covered": 0
+        },
+        "examined": 1,
+        "inventory_digest": "sha256:d44e485d5f883d9ea199aec8e43013b6a9d67833a43d422aafb9d925c4014757",
+        "inventory_ref": "sources/inventory.json",
+        "provenance": "independent_inventory",
+        "reading_complete": true,
+        "total": 1
+      },
+      "evidence": [
+        {
+          "digest": "sha256:33e0560837a95d9c883168eda40148d571576d7c171b3c0179de429d963b8edd",
+          "ref": "output/checks.json",
+          "run_id": "PBD-RUN-GRSNW1TW281V",
+          "stage": "checks",
+          "summary": "runtime deterministic checks",
+          "type": "deterministic_check"
+        },
+        {
+          "digest": "sha256:fdbd793d0cba5cbffd962049319b7b22ee46e9160966a3e79b8cd61b87e1ee71",
+          "ref": "stages/review.json",
+          "run_id": "PBD-RUN-GRSNW1TW281V",
+          "stage": "independent_review",
+          "summary": "independent source-first review",
+          "type": "review"
+        }
+      ],
+      "id": "G01",
+      "reason": "every inventoried member was read and re-read by the reviewer (reading methods: native: 1)",
+      "scope": "Source Integrity",
+      "status": "PASS",
+      "validator_version": "0.1.0.dev0",
+      "verification": "verified"
+    },
+    {
+      "denominator": {
+        "breakdown": {
+          "conflicting": 1,
+          "covered": 5,
+          "not_covered": 1,
+          "out_of_scope": 1
+        },
+        "examined": 8,
+        "inventory_digest": "sha256:fdbd793d0cba5cbffd962049319b7b22ee46e9160966a3e79b8cd61b87e1ee71",
+        "inventory_ref": "stages/review.json",
+        "provenance": "independent_inventory",
+        "reading_complete": true,
+        "total": 8
+      },
+      "evidence": [
+        {
+          "digest": "sha256:33e0560837a95d9c883168eda40148d571576d7c171b3c0179de429d963b8edd",
+          "ref": "output/checks.json",
+          "run_id": "PBD-RUN-GRSNW1TW281V",
+          "stage": "checks",
+          "summary": "runtime deterministic checks",
+          "type": "deterministic_check"
+        },
+        {
+          "digest": "sha256:fdbd793d0cba5cbffd962049319b7b22ee46e9160966a3e79b8cd61b87e1ee71",
+          "ref": "stages/review.json",
+          "run_id": "PBD-RUN-GRSNW1TW281V",
+          "stage": "independent_review",
+          "summary": "independent source-first review",
+          "type": "review"
+        }
+      ],
+      "id": "G02",
+      "reason": "coverage gaps in independent inventory: {'covered': 5, 'conflicting': 1, 'not_covered': 1, 'out_of_scope': 1}",
+      "scope": "Requirements Coverage",
+      "status": "FAIL",
+      "validator_version": "0.1.0.dev0"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:33e0560837a95d9c883168eda40148d571576d7c171b3c0179de429d963b8edd",
+          "ref": "output/checks.json",
+          "run_id": "PBD-RUN-GRSNW1TW281V",
+          "stage": "checks",
+          "summary": "runtime deterministic checks",
+          "type": "deterministic_check"
+        }
+      ],
+      "id": "G03",
+      "reason": "hierarchy invariants hold",
+      "scope": "Hierarchy Integrity",
+      "status": "PASS",
+      "validator_version": "0.1.0.dev0",
+      "verification": "verified"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:33e0560837a95d9c883168eda40148d571576d7c171b3c0179de429d963b8edd",
+          "ref": "output/checks.json",
+          "run_id": "PBD-RUN-GRSNW1TW281V",
+          "stage": "checks",
+          "summary": "runtime deterministic checks",
+          "type": "deterministic_check"
+        },
+        {
+          "digest": "sha256:fdbd793d0cba5cbffd962049319b7b22ee46e9160966a3e79b8cd61b87e1ee71",
+          "ref": "stages/review.json",
+          "run_id": "PBD-RUN-GRSNW1TW281V",
+          "stage": "independent_review",
+          "summary": "independent source-first review",
+          "type": "review"
+        }
+      ],
+      "id": "G04",
+      "reason": "unsupported by sources: ['I104', 'I101.AC1', 'I104.AC1']",
+      "scope": "Traceability",
+      "status": "FAIL",
+      "validator_version": "0.1.0.dev0"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:fdbd793d0cba5cbffd962049319b7b22ee46e9160966a3e79b8cd61b87e1ee71",
+          "ref": "stages/review.json",
+          "run_id": "PBD-RUN-GRSNW1TW281V",
+          "stage": "independent_review",
+          "summary": "independent source-first review",
+          "type": "review"
+        }
+      ],
+      "id": "G05",
+      "reason": "stories failing review: ['I101', 'I104']",
+      "scope": "Story Quality",
+      "status": "FAIL",
+      "validator_version": "0.1.0.dev0"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:33e0560837a95d9c883168eda40148d571576d7c171b3c0179de429d963b8edd",
+          "ref": "output/checks.json",
+          "run_id": "PBD-RUN-GRSNW1TW281V",
+          "stage": "checks",
+          "summary": "runtime deterministic checks",
+          "type": "deterministic_check"
+        },
+        {
+          "digest": "sha256:fdbd793d0cba5cbffd962049319b7b22ee46e9160966a3e79b8cd61b87e1ee71",
+          "ref": "stages/review.json",
+          "run_id": "PBD-RUN-GRSNW1TW281V",
+          "stage": "independent_review",
+          "summary": "independent source-first review",
+          "type": "review"
+        }
+      ],
+      "id": "G06",
+      "reason": "criteria failing review: ['I101.AC1', 'I104.AC1']; functional stories without criteria: []",
+      "scope": "Acceptance Quality",
+      "status": "FAIL",
+      "validator_version": "0.1.0.dev0"
+    },
+    {
+      "evidence": [],
+      "id": "G07",
+      "reason": "task sufficiency not reviewed for ['I101', 'I102', 'I103', 'I104', 'I105']",
+      "scope": "Task Coverage",
+      "status": "NOT_RUN",
+      "validator_version": "0.1.0.dev0"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:33e0560837a95d9c883168eda40148d571576d7c171b3c0179de429d963b8edd",
+          "ref": "output/checks.json",
+          "run_id": "PBD-RUN-GRSNW1TW281V",
+          "stage": "checks",
+          "summary": "runtime deterministic checks",
+          "type": "deterministic_check"
+        },
+        {
+          "digest": "sha256:fdbd793d0cba5cbffd962049319b7b22ee46e9160966a3e79b8cd61b87e1ee71",
+          "ref": "stages/review.json",
+          "run_id": "PBD-RUN-GRSNW1TW281V",
+          "stage": "independent_review",
+          "summary": "independent source-first review",
+          "type": "review"
+        }
+      ],
+      "id": "G08",
+      "reason": "0 relations valid and reviewed",
+      "scope": "Dependency Integrity",
+      "status": "PASS",
+      "validator_version": "0.1.0.dev0",
+      "verification": "verified"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:fdbd793d0cba5cbffd962049319b7b22ee46e9160966a3e79b8cd61b87e1ee71",
+          "ref": "stages/review.json",
+          "run_id": "PBD-RUN-GRSNW1TW281V",
+          "stage": "independent_review",
+          "summary": "independent source-first review",
+          "type": "review"
+        }
+      ],
+      "id": "G09",
+      "reason": "unsupported scope: ['I104', 'I101.AC1', 'I104.AC1', 'I104', 'I104.AC1']",
+      "scope": "Scope Integrity",
+      "status": "FAIL",
+      "validator_version": "0.1.0.dev0"
+    },
+    {
+      "evidence": [],
+      "id": "G10",
+      "reason": "no sprint planning requested; generated fields contain no assignments, dates or completed work (enforced at design submission)",
+      "scope": "Planning Integrity",
+      "status": "NOT_APPLICABLE",
+      "validator_version": "0.1.0.dev0"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:33e0560837a95d9c883168eda40148d571576d7c171b3c0179de429d963b8edd",
+          "ref": "output/checks.json",
+          "run_id": "PBD-RUN-GRSNW1TW281V",
+          "stage": "checks",
+          "summary": "runtime deterministic checks",
+          "type": "deterministic_check"
+        }
+      ],
+      "id": "G11",
+      "reason": "exports deterministic and consistent across formats",
+      "scope": "Artifact Integrity",
+      "status": "PASS",
+      "validator_version": "0.1.0.dev0",
+      "verification": "verified"
+    },
+    {
+      "evidence": [],
+      "id": "G12",
+      "reason": "no publication requested; a local package is not an authorization to publish",
+      "scope": "Publication Safety",
+      "status": "NOT_APPLICABLE",
+      "validator_version": "0.1.0.dev0"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:33e0560837a95d9c883168eda40148d571576d7c171b3c0179de429d963b8edd",
+          "ref": "output/checks.json",
+          "run_id": "PBD-RUN-GRSNW1TW281V",
+          "stage": "checks",
+          "summary": "runtime deterministic checks",
+          "type": "deterministic_check"
+        },
+        {
+          "digest": "sha256:fdbd793d0cba5cbffd962049319b7b22ee46e9160966a3e79b8cd61b87e1ee71",
+          "ref": "stages/review.json",
+          "run_id": "PBD-RUN-GRSNW1TW281V",
+          "stage": "independent_review",
+          "summary": "independent source-first review",
+          "type": "review"
+        }
+      ],
+      "id": "G13",
+      "reason": "reviewer distinct from every reader, orchestrator and designer; own verified-quote inventory (8 obligations) cites every source that yielded obligations; judged 13 items/criteria. Agent identities are self-reported by the host.",
+      "scope": "Independent Review",
+      "status": "PASS",
+      "validator_version": "0.1.0.dev0",
+      "verification": "verified"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:fdbd793d0cba5cbffd962049319b7b22ee46e9160966a3e79b8cd61b87e1ee71",
+          "ref": "stages/review.json",
+          "run_id": "PBD-RUN-GRSNW1TW281V",
+          "stage": "independent_review",
+          "summary": "independent source-first review",
+          "type": "review"
+        }
+      ],
+      "id": "G14",
+      "reason": "duplicate candidates assessed",
+      "scope": "Semantic Duplication",
+      "status": "PASS",
+      "validator_version": "0.1.0.dev0",
+      "verification": "verified"
+    },
+    {
+      "evidence": [],
+      "id": "G15",
+      "reason": "no decisions or prior versions in this run",
+      "scope": "Change Safety",
+      "status": "NOT_APPLICABLE",
+      "validator_version": "0.1.0.dev0"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:33e0560837a95d9c883168eda40148d571576d7c171b3c0179de429d963b8edd",
+          "ref": "output/checks.json",
+          "run_id": "PBD-RUN-GRSNW1TW281V",
+          "stage": "checks",
+          "summary": "runtime deterministic checks",
+          "type": "deterministic_check"
+        }
+      ],
+      "id": "G16",
+      "reason": "outputs privacy-clean; run made zero remote calls",
+      "scope": "Privacy and Offline Boundary",
+      "status": "PASS",
+      "validator_version": "0.1.0.dev0",
+      "verification": "verified"
+    },
+    {
+      "evidence": [],
+      "id": "G17",
+      "reason": "no target package requested",
+      "scope": "Target Compatibility",
+      "status": "NOT_APPLICABLE",
+      "validator_version": "0.1.0.dev0"
+    },
+    {
+      "evidence": [],
+      "id": "G18",
+      "reason": "round-trip against a tracker (mock or live) belongs to M3; live qualification requires separate authorization",
+      "scope": "Round-trip Fidelity",
+      "status": "NOT_RUN",
+      "validator_version": "0.1.0.dev0"
+    }
+  ],
+  "kind": "pbd.gate-report",
+  "run_id": "PBD-RUN-GRSNW1TW281V",
+  "schema_version": "1.1.0"
+}

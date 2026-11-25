@@ -5,12 +5,12 @@ Status per milestone (owner policy for M2–M6: main agent only, deterministic q
 | Milestone | implementation_status | deterministic_qualification | semantic_qualification | Evidence |
 |---|---|---|---|---|
 | M0 Foundation | implemented | pass | not_applicable | [M0](evidence/M0.md) |
-| M1 Generation | implemented | pass | partial: 2 pre-registered thresholds missed (c04, c06) | [M1](evidence/M1.md) |
-| M2 Audit, compare, report | implemented | pass | deferred (final qualification) | [M2](evidence/M2.md) |
+| M1 Generation | implemented | pass | M1: 2 thresholds missed; final qualification: c04 and c06 met | [M1](evidence/M1.md), [final](evidence/final-qualification.md) |
+| M2 Audit, compare, report | implemented | pass | audit: pass (F3); compare/refine: not run agent-led | [M2](evidence/M2.md) |
 | M3 Azure (mock only) | implemented (mock) | pass | not_applicable; live NOT_RUN | [M3–M6](evidence/M3-M6.md) |
-| M4 Planning | implemented | pass | deferred (final qualification) | [M3–M6](evidence/M3-M6.md) |
-| M5 Evolution | implemented | pass | deferred (final qualification) | [M3–M6](evidence/M3-M6.md) |
-| M6 Ecosystem | implemented (FTD handoff, packaging, docs); GitHub/Jira not implemented | pass | deferred (final qualification) | [M3–M6](evidence/M3-M6.md) |
+| M4 Planning | implemented | pass | deterministic on agent output only (QL-016) | [M3–M6](evidence/M3-M6.md) |
+| M5 Evolution | implemented | pass | not run agent-led (QL-016) | [M3–M6](evidence/M3-M6.md) |
+| M6 Ecosystem | implemented (FTD handoff, packaging, docs); GitHub/Jira not implemented | pass | new-session run from one request: pass (F1); other hosts unverified | [M3–M6](evidence/M3-M6.md) |
 
 Open items live in one [qualification ledger](../benchmarks/qualification-ledger.json).
 

@@ -1,0 +1,614 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC3",
+      "notes": "Exact-72h boundary unspecified (code uses >=); depends on Q1.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC4",
+      "notes": "Implied complement of RF2; 'consegue retirar' adds a checkable outcome not literally stated; depends on Q1.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC5",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC6",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC7",
+      "notes": "Placeholder; 'A definir' outcome not verifiable; correctly proposed and tied to Q2.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC8",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC9",
+      "notes": "Placeholder; 'a definir' outcome not verifiable; correctly proposed and tied to Q3.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC10",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "distinct",
+      "items": [
+        "US1",
+        "US2"
+      ],
+      "rationale": "Issuance vs expiry rules."
+    },
+    {
+      "assessment": "distinct",
+      "items": [
+        "AC1",
+        "AC2"
+      ],
+      "rationale": "Outcome vs generating service."
+    }
+  ],
+  "findings": [
+    {
+      "actual": "US4 has only T3 (notice); US2 has no task; AC8/AC3 verify behavior no task builds.",
+      "affects": [
+        "US2",
+        "US4",
+        "AC3",
+        "AC8"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "Tasks that carry RF4 return to the portaria and RF2 expiry enforcement.",
+      "gate": "G06",
+      "impact": "Return/expiry behavior could ship unplanned.",
+      "recommendation": "Add tasks for expiry handling and return-to-portaria registration (after Q1/Q3).",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "RF4 is a two-part obligation; only the notice has implementation work."
+    },
+    {
+      "actual": "Blocking Q1 keeps the conflict open; AC3/AC4 assert 72h as PRD says.",
+      "affects": [
+        "US2",
+        "AC3",
+        "AC4",
+        "C3"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Conflict 72h vs 48h resolved by a decision.",
+      "gate": "G05",
+      "impact": "Implementation keeps expiring at 48h; no work item corrects EXPIRY_HOURS.",
+      "recommendation": "Keep Q1 blocking; once answered add a task to align codes.py or the PRD.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "Functional PRD is authority, but the existing code differs and the backlog does not demand a code change task."
+    },
+    {
+      "actual": "AC7 and AC9 outcomes are 'a definir'.",
+      "affects": [
+        "AC7",
+        "AC9"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Verifiable outcomes for criteria.",
+      "gate": "G08",
+      "impact": "Not testable until Q2/Q3 are answered.",
+      "recommendation": "Keep as proposed/open questions; resolve before refinement.",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "Proposed placeholders cannot be tested."
+    },
+    {
+      "actual": "US1->US2 and US2->US4 are proposed, not source stated.",
+      "affects": [
+        "US2",
+        "US4"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Dependencies justified by sources.",
+      "gate": "G09",
+      "impact": "Minor ordering assumption.",
+      "recommendation": "Keep marked proposed.",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "Sequencing is plausible but inferred."
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 3,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "RF1 Quando uma encomenda é depositada, o morador recebe um código de retirada de 6 dígitos.",
+      "rationale": "AC1 carries it.",
+      "text": "Código de 6 dígitos ao depositar"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC3",
+        "AC4"
+      ],
+      "disposition": "PARTIALLY_COVERED",
+      "key": "O2",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "RF2 O código de retirada expira 72 horas após o depósito.",
+      "rationale": "Covered by AC3/AC4 but gated by blocking Q1 against the 48h code; boundary at exactly 72h not stated.",
+      "text": "Expiração em 72h"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC5"
+      ],
+      "disposition": "COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "RF3 Após 3 tentativas com código incorreto, o armário fica bloqueado por 10 minutos.",
+      "rationale": "AC5.",
+      "text": "Bloqueio 10 min após 3 tentativas"
+    },
+    {
+      "covered_by": [
+        "US4",
+        "AC8",
+        "T3"
+      ],
+      "disposition": "PARTIALLY_COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C7",
+        "C8"
+      ],
+      "quote": "RF4 Encomenda não retirada até a expiração do código é devolvida à portaria e o morador é avisado.",
+      "rationale": "AC8 covers it, but no task implements the return to the portaria/expiry handling; only the notice (T3).",
+      "text": "Devolução à portaria e aviso"
+    },
+    {
+      "covered_by": [
+        "US5",
+        "AC10",
+        "T4"
+      ],
+      "disposition": "COVERED",
+      "key": "O5",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C9"
+      ],
+      "quote": "RF5 O porteiro consulta quais armários estão ocupados.",
+      "rationale": "AC10.",
+      "text": "Porteiro consulta armários ocupados"
+    },
+    {
+      "covered_by": [
+        "AC2",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O6",
+      "locator": {
+        "line_start": 3,
+        "member": "tdd.md",
+        "source_id": "PBD-SRC-Y0MFZXA3AMBG"
+      },
+      "matched_claims": [
+        "C10"
+      ],
+      "quote": "Os códigos são gerados pelo serviço locker-api por meio de POST /lockers/{id}/codes.",
+      "rationale": "AC2, T1.",
+      "text": "Códigos gerados pelo locker-api"
+    },
+    {
+      "covered_by": [
+        "AC8",
+        "T3"
+      ],
+      "disposition": "COVERED",
+      "key": "O7",
+      "locator": {
+        "line_start": 4,
+        "member": "tdd.md",
+        "source_id": "PBD-SRC-Y0MFZXA3AMBG"
+      },
+      "matched_claims": [
+        "C8"
+      ],
+      "quote": "Avisos ao morador usam a fila de mensagens \"notificacoes\" já existente no condomínio.",
+      "rationale": "AC8, T3.",
+      "text": "Avisos pela fila notificacoes"
+    },
+    {
+      "covered_by": [
+        "AC6",
+        "T2"
+      ],
+      "disposition": "COVERED",
+      "key": "O8",
+      "locator": {
+        "line_start": 5,
+        "member": "tdd.md",
+        "source_id": "PBD-SRC-Y0MFZXA3AMBG"
+      },
+      "matched_claims": [
+        "C5",
+        "C6"
+      ],
+      "quote": "O bloqueio por tentativas incorretas é executado pelo firmware do armário; o software apenas registra o evento de bloqueio.",
+      "rationale": "AC6, T2.",
+      "text": "Bloqueio executado pelo firmware; software só registra"
+    },
+    {
+      "covered_by": [
+        "AC10",
+        "T4"
+      ],
+      "disposition": "COVERED",
+      "key": "O9",
+      "locator": {
+        "line_start": 6,
+        "member": "tdd.md",
+        "source_id": "PBD-SRC-Y0MFZXA3AMBG"
+      },
+      "matched_claims": [
+        "C9"
+      ],
+      "quote": "A consulta de ocupação usa GET /lockers?status=occupied.",
+      "rationale": "AC10, T4.",
+      "text": "Consulta de ocupação via GET"
+    },
+    {
+      "covered_by": [],
+      "disposition": "CONFLICTING",
+      "key": "O10",
+      "locator": {
+        "line_start": 4,
+        "member": "codes.py",
+        "source_id": "PBD-SRC-N4W88QSZKKPP"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "EXPIRY_HOURS = 48",
+      "rationale": "Implementation evidence is not functional authority; conflict surfaced as blocking Q1 and not turned into a requirement.",
+      "text": "Implementação expira em 48h (divergência com PRD)"
+    },
+    {
+      "covered_by": [
+        "AC1"
+      ],
+      "disposition": "COVERED",
+      "key": "O11",
+      "locator": {
+        "line_start": 8,
+        "member": "codes.py",
+        "source_id": "PBD-SRC-N4W88QSZKKPP"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "return f\"{secrets.randbelow(10**6):06d}\"",
+      "rationale": "Consistent with RF1; no divergence.",
+      "text": "Evidência: código de 6 dígitos gerado"
+    },
+    {
+      "covered_by": [
+        "AC8",
+        "T3"
+      ],
+      "disposition": "COVERED",
+      "key": "O12",
+      "locator": {
+        "line_start": 2,
+        "member": "notify.py",
+        "source_id": "PBD-SRC-N4W88QSZKKPP"
+      },
+      "matched_claims": [
+        "C8"
+      ],
+      "quote": "QUEUE = \"notificacoes\"",
+      "rationale": "Consistent with TDD.",
+      "text": "Evidência: fila notificacoes"
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "depends on US1/proposed; blocked by Q1",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "No task implements expiry enforcement; blocked by Q1.",
+      "source_support": "supported",
+      "task_sufficiency": "insufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "depends on US2 expiry",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "bundles return and notification",
+          "rating": "concern"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US4",
+      "notes": "Only the notice has a task; return to portaria has none; depends on Q1/Q3.",
+      "source_support": "supported",
+      "task_sufficiency": "insufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US5",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "T1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "reviewer-c04-final",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-78385WMH95P7"
+    },
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-Y0MFZXA3AMBG"
+    },
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-N4W88QSZKKPP"
+    }
+  ]
+}

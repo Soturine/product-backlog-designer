@@ -1,0 +1,210 @@
+{
+  "ambiguities": [
+    {
+      "locator": {
+        "line_start": 12,
+        "member": "prd.md"
+      },
+      "quote": "Os critérios dessa avaliação ainda não foram definidos pela clínica",
+      "text": "Critérios da avaliação veterinária não foram definidos pela clínica"
+    },
+    {
+      "locator": {
+        "line_start": 12,
+        "member": "prd.md"
+      },
+      "quote": "exigem avaliação do veterinário antes do agendamento",
+      "text": "Não está definido como a avaliação veterinária é solicitada/registrada nem quem a aciona"
+    }
+  ],
+  "exclusions": [
+    {
+      "locator": {
+        "line_start": 20,
+        "member": "prd.md"
+      },
+      "quote": "Pagamento on-line e emissão de nota fiscal não fazem parte desta versão",
+      "text": "Pagamento on-line e emissão de nota fiscal fora do escopo"
+    }
+  ],
+  "members": [
+    {
+      "lines_read": [
+        [
+          1,
+          20
+        ]
+      ],
+      "path": "prd.md",
+      "reading": {
+        "limitations": [],
+        "method": "native",
+        "tool": "host shell file read of original"
+      },
+      "status": "read"
+    }
+  ],
+  "obligations": [
+    {
+      "category": "functional",
+      "key": "R1",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "Permitir que tutores agendem a vacinação dos seus animais pela internet",
+      "text": "Tutores agendam a vacinação dos seus animais pela internet",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R2",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "a recepção acompanhe a agenda do dia",
+      "text": "A recepção acompanha a agenda do dia",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R3",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "section": "2.1"
+      },
+      "modality": "must",
+      "quote": "O tutor cadastrado escolhe um animal, uma vacina do catálogo e um horário livre da agenda",
+      "text": "O tutor cadastrado escolhe um animal, uma vacina do catálogo e um horário livre da agenda",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "constraint",
+      "key": "R4",
+      "locator": {
+        "line_start": 8,
+        "member": "prd.md",
+        "section": "2.2"
+      },
+      "modality": "must",
+      "quote": "Cada horário atende um único animal",
+      "text": "Cada horário atende um único animal",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "constraint",
+      "key": "R5",
+      "locator": {
+        "line_start": 9,
+        "member": "prd.md",
+        "section": "2.3"
+      },
+      "modality": "must",
+      "quote": "pelo menos 24 horas de antecedência",
+      "text": "Agendamento só pode ser feito com pelo menos 24 horas de antecedência",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R6",
+      "locator": {
+        "line_start": 10,
+        "member": "prd.md",
+        "section": "2.4"
+      },
+      "modality": "must",
+      "quote": "O tutor recebe uma confirmação por e-mail após agendar",
+      "text": "O tutor recebe confirmação por e-mail após agendar",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R7",
+      "locator": {
+        "line_start": 11,
+        "member": "prd.md",
+        "section": "2.5"
+      },
+      "modality": "may",
+      "quote": "O tutor pode cancelar um agendamento até 12 horas antes do horário",
+      "text": "O tutor pode cancelar um agendamento até 12 horas antes do horário",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "constraint",
+      "key": "R8",
+      "locator": {
+        "line_start": 11,
+        "member": "prd.md",
+        "section": "2.5"
+      },
+      "modality": "must",
+      "quote": "o cancelamento só pode ser feito pela recepção",
+      "text": "Depois do limite de 12 horas, o cancelamento só pode ser feito pela recepção",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R9",
+      "locator": {
+        "line_start": 12,
+        "member": "prd.md",
+        "section": "2.6"
+      },
+      "modality": "must",
+      "quote": "Animais com reação adversa registrada exigem avaliação do veterinário antes do agendamento",
+      "text": "Animais com reação adversa registrada exigem avaliação do veterinário antes do agendamento",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R10",
+      "locator": {
+        "line_start": 15,
+        "member": "prd.md",
+        "section": "3.1"
+      },
+      "modality": "must",
+      "quote": "A recepção vê a agenda do dia em ordem de horário, com nome do animal, vacina e tutor",
+      "text": "A recepção vê a agenda do dia em ordem de horário, com nome do animal, vacina e tutor",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R11",
+      "locator": {
+        "line_start": 16,
+        "member": "prd.md",
+        "section": "3.2"
+      },
+      "modality": "must",
+      "quote": "A recepção registra a aplicação da vacina; o registro guarda a data e o lote informado",
+      "text": "A recepção registra a aplicação da vacina, guardando data e lote informado",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "error",
+      "key": "R12",
+      "locator": {
+        "line_start": 17,
+        "member": "prd.md",
+        "section": "3.3"
+      },
+      "modality": "must_not",
+      "quote": "Quando o lote não é informado, a aplicação não pode ser registrada",
+      "text": "Sem lote informado, a aplicação não pode ser registrada",
+      "uncertainty": "confirmed"
+    }
+  ],
+  "reader": {
+    "agent": "reader-seq",
+    "independence": "sequential_role",
+    "model": "claude-sonnet-5-5"
+  },
+  "source_digest": "sha256:8067f0792a55d241f63bbea1e37da6f821ca7c15a049417c9eefdee9bd8558aa",
+  "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+}

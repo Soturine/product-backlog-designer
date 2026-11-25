@@ -1,0 +1,73 @@
+{
+  "case": "c06-adr-supersession",
+  "evaluator_model": "claude-haiku-5-5",
+  "obligations": [
+    {
+      "id": "G01",
+      "verdict": "covered",
+      "evidence": "Claim PBD-CLM-G5XEJXPDNP0X (confirmed, prd.md L3); story PBD-STORY-EDMFFAKC0GY1 'Inscrever-se em encontro com confirmação automática'; CA-01 PBD-AC-M9RCBT3MQK58 condition 'O encontro está publicado e há vagas'; task PBD-TASK-50P3P2ZAKJMT activity 'Validar que o encontro está publicado'.",
+      "note": "Critical; fully covered at story, criterion and task level."
+    },
+    {
+      "id": "G02",
+      "verdict": "handled_as_superseded",
+      "evidence": "Claim PBD-CLM-YHTPV20JV552 status SUPERSEDED, temporal.status 'superseded', superseded_by PBD-DEC-QTF6SWWK3TYP (ADR-002 status approved). Epic PBD-EPIC-ZMZKWH18NBZ7 out_scope 'Aprovação manual pelo moderador (extinta pelo ADR-002)'. Feature PBD-FEAT-WQS8X1EE41M9 rule 'Não há aprovação do moderador.' Open question PBD-Q-CE6VVQH685BM asks whether legacy implementation exists; no removal task created.",
+      "note": "Critical; handled as superseded, not as active work. Matches expectation 'superseded: moderator approval'."
+    },
+    {
+      "id": "G03",
+      "verdict": "covered",
+      "evidence": "Claim PBD-CLM-EBDX5VT6F5PJ (confirmed, limit 20); CA-02 PBD-AC-ZZFB3SP81FW0 condition 'O encontro já tem 20 inscritos'; feature rule 'Cada encontro aceita até 20 participantes.'; epic in_scope 'Limite de 20 participantes por encontro'; task PBD-TASK-50P3P2ZAKJMT summary.",
+      "note": "Critical; limit 20 preserved. Review flagged task wording 'recusando acima de 20' vs waitlist option (finding PBD-FND-1G0ZW9P48HEA, low)."
+    },
+    {
+      "id": "G04",
+      "verdict": "covered",
+      "evidence": "Claim PBD-CLM-VE2KZVBN0VVK (confirmed); story PBD-STORY-74E9EG5HKEQS; CA-01 PBD-AC-GAAW44F31H6Z condition 'O encontro está lotado' -> participant on waitlist; task PBD-TASK-0QBGAXS9NMB0 'Implementar entrada na lista de espera'.",
+      "note": "Critical; covered."
+    },
+    {
+      "id": "G05",
+      "verdict": "covered",
+      "evidence": "Claim PBD-CLM-XYGFG0S0RRZH (confirmed); story PBD-STORY-CN46FHGSFMHK; CA-01 PBD-AC-MRMQZPXWSFV6 (cancellation -> first on waitlist enrolled); task PBD-TASK-195SSP8D9P84 'Implementar promoção da lista de espera após cancelamento'.",
+      "note": "Critical; covered. The FIFO ordering added in CA-02 PBD-AC-HGFMG0A2HQ6J is marked proposed, not part of this obligation's coverage."
+    },
+    {
+      "id": "G06",
+      "verdict": "covered",
+      "evidence": "Claim PBD-CLM-EAQ8MPRM3PNC (ADR-002 approved, confirmed); CA-01 PBD-AC-M9RCBT3MQK58 expected outcome 'a inscrição é confirmada automaticamente, sem aprovação do moderador'; feature PBD-FEAT-WQS8X1EE41M9 rule 'A inscrição é confirmada automaticamente enquanto houver vagas.'; task PBD-TASK-50P3P2ZAKJMT.",
+      "note": "Critical; covered."
+    },
+    {
+      "id": "G07",
+      "verdict": "handled_as_question",
+      "evidence": "Claim PBD-CLM-6W357C74908R uncertainty 'ambiguous' and disposition QUESTION_REQUIRED ('ADR-003 é só proposta'); open question PBD-Q-HXZFVYBBQZ84 'O ADR-003 (limite de 30) será aprovado? Até lá o limite permanece 20?' with alternatives 'Manter 20' / 'Adotar 30 após aprovação'; epic out_scope 'Limite de 30 participantes (ADR-003 ainda não aprovado)'.",
+      "note": "Non-critical; ADR-003 correctly treated as a proposal and routed to a non-blocking question. No criterion or task adopts 30."
+    }
+  ],
+  "traps": [
+    {
+      "id": "T1",
+      "verdict": "not_violated",
+      "evidence": "No task implements or removes moderator approval. The only active references are negative: CA-01 PBD-AC-M9RCBT3MQK58 expects 'sem aprovação do moderador' and TASK-50P3 activity 'Confirmar a inscrição sem etapa de aprovação'. Both describe the ADR-002 replacement behaviour, not an approval mechanism to build or remove. Review notes 'no task for moderator approval' (O8). Removal task not created because no implementation evidence exists (Q-CE6VVQH685BM)."
+    },
+    {
+      "id": "T2",
+      "verdict": "not_violated",
+      "evidence": "Limit 20 remains the only active limit (claim PBD-CLM-EBDX5VT6F5PJ, CA-02, feature and epic in_scope). ADR-003 appears only as claim PBD-CLM-6W357C74908R (ambiguous, QUESTION_REQUIRED), question PBD-Q-HXZFVYBBQZ84 and epic out_scope. Minor oddity: that claim carries temporal.status 'effective' while its text says not approved; it is not used by any criterion or task."
+    }
+  ],
+  "invented": [
+    {
+      "text": "Task PBD-TASK-0QBGAXS9NMB0 (status reviewed, not proposed) requires keeping entry order ('mantendo a ordem de entrada', activity 'Registrar participante na lista em ordem'). The sources do not define waitlist order; the review classifies this as an unsupported assumption (PBD-FND-85M2ZQ9GZGCK, gate G09 FAIL 'unsupported scope: AC5, T2'). AC5 is correctly marked proposed, but the task asserts the FIFO rule as a requirement.",
+      "severity": "medium"
+    },
+    {
+      "text": "Task PBD-TASK-50P3P2ZAKJMT summary 'recusando acima de 20' (status reviewed) implies a hard refusal when full, while PRD item 4 offers the waitlist for a full meeting. The review flags it (PBD-FND-1G0ZW9P48HEA). It is a wording conflict rather than a fabricated rule.",
+      "severity": "low"
+    }
+  ],
+  "levels_ok": true,
+  "native_first_ok": true,
+  "notes": "Counts: covered 5 (G01, G03, G04, G05, G06), handled_as_superseded 1 (G02), handled_as_question 1 (G07), partial 0, missed 0. Critical recall 6/6 (G01-G06). Traps: 0 violated, 2 not_violated. Invented: 1 medium, 1 low. levels_ok: backlog has epic, feature, story, acceptance criteria, task and relations, matching the gold levels. native_first_ok: all reading members in stages/reading/*.json use method 'native'. Other observations: gates.json reports G09 FAIL (unsupported scope AC5/T2), which matches the invented FIFO item. AC3 (PBD-AC-8FG99Q1ZFXVF) is a proposed placeholder whose outcome is 'comportamento a definir', so it is not verifiable. Not a gold item, and it is correctly marked proposed. Only the sources listed in the task and the run output files named in the task were read."
+}

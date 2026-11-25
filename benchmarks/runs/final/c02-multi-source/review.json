@@ -1,0 +1,875 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC4",
+      "notes": "Afirma recusa para cadastro inativo; fontes não dizem (Q3).",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC5",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC6",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC7",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC8",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC9",
+      "notes": "",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC10",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC11",
+      "notes": "",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC12",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC13",
+      "notes": "",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC14",
+      "notes": "Resultado esperado 'a definir' não é verificável; depende de Q2.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC15",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC16",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC17",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC18",
+      "notes": "Resultado depende de critério 'a definir'; não verificável; Q1.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC19",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC20",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "overlap",
+      "items": [
+        "AC1",
+        "AC15"
+      ],
+      "rationale": "AC1 inclui quadra não bloqueada como condição; AC15 testa a recusa. Complementares."
+    },
+    {
+      "assessment": "distinct",
+      "items": [
+        "US5",
+        "US6"
+      ],
+      "rationale": "Bloquear (admin) versus recusar reserva (sócio); regras distintas."
+    }
+  ],
+  "findings": [
+    {
+      "actual": "AC4 define recusa de reserva para sócio sem cadastro ativo.",
+      "affects": [
+        "AC4",
+        "US1"
+      ],
+      "classification": "unsupported_assumption",
+      "expected": "Resultado de AC4 apoiado pelas fontes ou pendente de Q3.",
+      "gate": "G06",
+      "impact": "Comportamento plausível tratado como definido.",
+      "recommendation": "Manter proposed com resultado condicionado à resposta de Q3 ou remover.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "O glossário define sócio, mas nenhuma fonte diz que cadastro inativo bloqueia reserva."
+    },
+    {
+      "actual": "Só T1 cita rejeitar horário fora do bloco; nenhum critério de US1 testa início fora da hora cheia.",
+      "affects": [
+        "US1",
+        "T1"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "Critério verificando que bloco precisa ser hora cheia (glossário linha 4).",
+      "gate": "G06",
+      "impact": "Regra pode não ser testada.",
+      "recommendation": "Adicionar critério de recusa para horário fora da hora cheia.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "Obrigação do glossário carregada apenas por tarefa."
+    },
+    {
+      "actual": "AC18 tem resultado a definir e nenhuma tarefa o implementa; T6 só trata o impedimento.",
+      "affects": [
+        "AC18",
+        "US7"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "Critérios verificáveis para registro de falta e tarefa que o cubra.",
+      "gate": "G07",
+      "impact": "US7 não é totalmente testável.",
+      "recommendation": "Manter pendente de Q1 e marcar critério/tarefa como bloqueados.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "C8 depende de Q1 mas o critério não pode ser testado."
+    },
+    {
+      "actual": "AC14 diz comportamento a definir.",
+      "affects": [
+        "AC14",
+        "US5"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "Resultado verificável em AC14.",
+      "gate": "G07",
+      "impact": "Não verificável.",
+      "recommendation": "Manter apenas como questão Q2 ou definir após resposta.",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "Critério sem resultado esperado concreto."
+    },
+    {
+      "actual": "US6 não possui tarefa; T5 está sob US5.",
+      "affects": [
+        "US6",
+        "T5"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "Cada story com tarefa suficiente.",
+      "gate": "G09",
+      "impact": "US6 sem tarefa própria.",
+      "recommendation": "Vincular T5 também a US6 ou criar tarefa.",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "Rastreabilidade tarefa-story incompleta."
+    },
+    {
+      "actual": "AC16/AC17 só cobrem 3 faltas e o fim do impedimento.",
+      "affects": [
+        "AC16",
+        "AC17",
+        "US7"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "Fronteiras da regra de faltas (menos de 3 faltas, janela de 30 dias, início dos 15 dias).",
+      "gate": "G06",
+      "impact": "Ambiguidade não registrada.",
+      "recommendation": "Adicionar critério para menos de 3 faltas e perguntar o início do impedimento.",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "Início da contagem dos 15 dias não está nas fontes nem em pergunta."
+    },
+    {
+      "actual": "US7 atribui ao administrador o benefício de reduzir desperdício.",
+      "affects": [
+        "US7"
+      ],
+      "classification": "unsupported_assumption",
+      "expected": "Persona e benefício de US7 amparados pelas fontes.",
+      "gate": "G06",
+      "impact": "Framing inferido.",
+      "recommendation": "Reescrever com o sócio como afetado ou marcar benefício como proposto.",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "As fontes não descrevem esse benefício nem o ator."
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "O sócio reserva uma quadra em blocos de 1 hora.",
+      "rationale": "AC1 cria reserva de 1 hora.",
+      "text": "Sócio reserva quadra em blocos de 1 hora"
+    },
+    {
+      "covered_by": [
+        "AC2",
+        "AC3"
+      ],
+      "disposition": "COVERED",
+      "key": "O2",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "Reservas podem ser feitas com até 14 dias de antecedência.",
+      "rationale": "Limite e excesso cobertos.",
+      "text": "Antecedência máxima de 14 dias"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC7",
+        "AC8"
+      ],
+      "disposition": "COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "O sócio pode cancelar a própria reserva até 2 horas antes do início.",
+      "rationale": "Corte coberto nos dois lados.",
+      "text": "Cancelamento até 2h antes"
+    },
+    {
+      "covered_by": [
+        "US5",
+        "AC12"
+      ],
+      "disposition": "COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "O administrador bloqueia uma quadra para manutenção em um intervalo de datas.",
+      "rationale": "AC12 cobre; efeito sobre reservas existentes em Q2/AC14.",
+      "text": "Admin bloqueia quadra por intervalo"
+    },
+    {
+      "covered_by": [
+        "US6",
+        "AC15"
+      ],
+      "disposition": "COVERED",
+      "key": "O5",
+      "locator": {
+        "line_start": 8,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C5"
+      ],
+      "quote": "Não é permitido reservar uma quadra bloqueada.",
+      "rationale": "AC15.",
+      "text": "Proibido reservar quadra bloqueada"
+    },
+    {
+      "covered_by": [
+        "US4",
+        "AC10"
+      ],
+      "disposition": "COVERED",
+      "key": "O6",
+      "locator": {
+        "line_start": 9,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C6"
+      ],
+      "quote": "O sócio vê suas reservas futuras e passadas.",
+      "rationale": "AC10.",
+      "text": "Sócio vê reservas futuras e passadas"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC5",
+        "AC6"
+      ],
+      "disposition": "COVERED",
+      "key": "O7",
+      "locator": {
+        "line_start": 3,
+        "member": "regras-de-uso.md",
+        "source_id": "PBD-SRC-4RHX3A209VQS"
+      },
+      "matched_claims": [
+        "C7"
+      ],
+      "quote": "Cada sócio pode manter no máximo 3 reservas futuras.",
+      "rationale": "Limite e excesso cobertos.",
+      "text": "Máximo de 3 reservas futuras"
+    },
+    {
+      "covered_by": [
+        "US7",
+        "AC18"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O8",
+      "locator": {
+        "line_start": 4,
+        "member": "regras-de-uso.md",
+        "source_id": "PBD-SRC-4RHX3A209VQS"
+      },
+      "matched_claims": [
+        "C8"
+      ],
+      "quote": "Uma reserva não utilizada e não cancelada conta como falta.",
+      "rationale": "Critério de utilização e de prazo indefinidos; AC18 proposto e não verificável, mas a pergunta Q1 é legítima.",
+      "text": "Reserva não utilizada e não cancelada é falta"
+    },
+    {
+      "covered_by": [
+        "US7",
+        "AC16",
+        "AC17",
+        "T6"
+      ],
+      "disposition": "COVERED",
+      "key": "O9",
+      "locator": {
+        "line_start": 5,
+        "member": "regras-de-uso.md",
+        "source_id": "PBD-SRC-4RHX3A209VQS"
+      },
+      "matched_claims": [
+        "C9"
+      ],
+      "quote": "Com 3 faltas em 30 dias, o sócio fica impedido de fazer novas reservas por 15 dias.",
+      "rationale": "Coberto; faltam critérios de fronteira (2 faltas, janela de 30 dias) e início dos 15 dias.",
+      "text": "3 faltas em 30 dias impedem reservar por 15 dias"
+    },
+    {
+      "covered_by": [
+        "US8",
+        "AC19",
+        "AC20"
+      ],
+      "disposition": "COVERED",
+      "key": "O10",
+      "locator": {
+        "line_start": 6,
+        "member": "regras-de-uso.md",
+        "source_id": "PBD-SRC-4RHX3A209VQS"
+      },
+      "matched_claims": [
+        "C10"
+      ],
+      "quote": "O administrador pode remover uma falta registrada indevidamente, informando o motivo.",
+      "rationale": "AC19/AC20.",
+      "text": "Admin remove falta indevida informando motivo"
+    },
+    {
+      "covered_by": [
+        "US1",
+        "AC4"
+      ],
+      "disposition": "PARTIALLY_COVERED",
+      "key": "O11",
+      "locator": {
+        "line_start": 3,
+        "member": "glossario.md",
+        "source_id": "PBD-SRC-Z59MJ51KN19Q"
+      },
+      "matched_claims": [
+        "C11"
+      ],
+      "quote": "Sócio: pessoa associada ao clube com cadastro ativo.",
+      "rationale": "Efeito do cadastro inativo não afirmado; AC4 é inferência proposta (Q3).",
+      "text": "Sócio é pessoa com cadastro ativo"
+    },
+    {
+      "covered_by": [
+        "AC1",
+        "T1"
+      ],
+      "disposition": "PARTIALLY_COVERED",
+      "key": "O12",
+      "locator": {
+        "line_start": 4,
+        "member": "glossario.md",
+        "source_id": "PBD-SRC-Z59MJ51KN19Q"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "Bloco: período de reserva de uma hora cheia.",
+      "rationale": "Nenhum critério verifica recusa de início fora da hora cheia; só a atividade de T1 menciona.",
+      "text": "Bloco é período de uma hora cheia"
+    },
+    {
+      "covered_by": [
+        "AC18"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O13",
+      "locator": {
+        "line_start": 5,
+        "member": "glossario.md",
+        "source_id": "PBD-SRC-Z59MJ51KN19Q"
+      },
+      "matched_claims": [
+        "C8"
+      ],
+      "quote": "Falta: reserva não utilizada e não cancelada dentro do prazo.",
+      "rationale": "'Dentro do prazo' ambíguo; Q1.",
+      "text": "Falta definida como não utilizada e não cancelada dentro do prazo"
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "E2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F5",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T7",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T6",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T1",
+      "notes": "Atividade 'Rejeitar horário fora do bloco' sem critério de aceite correspondente em US1.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "T3",
+      "notes": "Implementa titularidade (AC9, proposto) sem sinalizar que não é exigência explícita das fontes.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "T5",
+      "notes": "Implementa restrição a administrador (AC13, proposto) sem sinalizar que não é exigência explícita das fontes.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Sem dependência obrigatória além das relações propostas.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Escopo descrito como capacidade.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo estreito.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Critérios verificáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Benefício declarado.",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Sem dependência obrigatória além das relações propostas.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Escopo descrito como capacidade.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo estreito.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Critérios verificáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Benefício declarado.",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Sem dependência obrigatória além das relações propostas.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Escopo descrito como capacidade.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo estreito.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Critérios verificáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Benefício declarado.",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Sem dependência obrigatória além das relações propostas.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Escopo descrito como capacidade.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo estreito.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Critérios verificáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Benefício declarado.",
+          "rating": "supported"
+        }
+      },
+      "key": "US4",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Sem dependência obrigatória além das relações propostas.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Escopo descrito como capacidade.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "AC14 sem resultado definido depende de Q2.",
+          "rating": "concern"
+        },
+        "testable": {
+          "note": "Critérios verificáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Benefício declarado.",
+          "rating": "supported"
+        }
+      },
+      "key": "US5",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depende de US5 e não possui tarefa própria; coberta por T5 sob US5.",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "Escopo descrito como capacidade.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo estreito.",
+          "rating": "supported"
+        },
+        "task_sufficiency": "insufficient",
+        "testable": {
+          "note": "Critérios verificáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Benefício declarado.",
+          "rating": "supported"
+        }
+      },
+      "key": "US6",
+      "notes": "Sem tarefa própria (T5 pertence a US5).",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Sem dependência obrigatória além das relações propostas.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Escopo descrito como capacidade.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Combina registro de falta (indefinido) e impedimento; nenhuma tarefa cobre AC18.",
+          "rating": "concern"
+        },
+        "task_sufficiency": "insufficient",
+        "testable": {
+          "note": "AC18 não verificável até Q1.",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "Persona 'administrador' para regra automática; o afetado é o sócio e o benefício é inferência.",
+          "rating": "concern"
+        }
+      },
+      "key": "US7",
+      "notes": "Persona e benefício inferidos; AC18 não verificável e sem tarefa.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Sem dependência obrigatória além das relações propostas.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Escopo descrito como capacidade.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo estreito.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Critérios verificáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Benefício declarado.",
+          "rating": "supported"
+        }
+      },
+      "key": "US8",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "reviewer-c02-final",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-78385WMH95P7"
+    },
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-Z59MJ51KN19Q"
+    },
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-4RHX3A209VQS"
+    }
+  ]
+}

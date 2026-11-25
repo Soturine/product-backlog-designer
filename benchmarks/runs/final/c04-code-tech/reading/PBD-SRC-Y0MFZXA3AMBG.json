@@ -1,0 +1,95 @@
+{
+  "ambiguities": [],
+  "exclusions": [],
+  "members": [
+    {
+      "lines_read": [
+        [
+          1,
+          6
+        ]
+      ],
+      "path": "tdd.md",
+      "reading": {
+        "limitations": [],
+        "method": "native",
+        "tool": "host file reader"
+      },
+      "status": "read"
+    }
+  ],
+  "obligations": [
+    {
+      "category": "integration",
+      "key": "R1",
+      "locator": {
+        "line_end": 3,
+        "line_start": 3,
+        "member": "tdd.md"
+      },
+      "modality": "must",
+      "quote": "POST /lockers/{id}/codes",
+      "text": "Os códigos são gerados pelo serviço locker-api por meio de POST /lockers/{id}/codes",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "integration",
+      "key": "R2",
+      "locator": {
+        "line_end": 4,
+        "line_start": 4,
+        "member": "tdd.md"
+      },
+      "modality": "must",
+      "quote": "fila de mensagens \"notificacoes\"",
+      "text": "Avisos ao morador usam a fila de mensagens \"notificacoes\" já existente no condomínio",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "constraint",
+      "key": "R3",
+      "locator": {
+        "line_end": 5,
+        "line_start": 5,
+        "member": "tdd.md"
+      },
+      "modality": "must",
+      "quote": "executado pelo firmware do armário",
+      "text": "O bloqueio por tentativas incorretas é executado pelo firmware do armário",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R4",
+      "locator": {
+        "line_end": 5,
+        "line_start": 5,
+        "member": "tdd.md"
+      },
+      "modality": "must",
+      "quote": "o software apenas registra o evento de bloqueio",
+      "text": "O software apenas registra o evento de bloqueio",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "integration",
+      "key": "R5",
+      "locator": {
+        "line_end": 6,
+        "line_start": 6,
+        "member": "tdd.md"
+      },
+      "modality": "must",
+      "quote": "GET /lockers?status=occupied",
+      "text": "A consulta de ocupação usa GET /lockers?status=occupied",
+      "uncertainty": "confirmed"
+    }
+  ],
+  "reader": {
+    "agent": "reader-tdd.md-c04",
+    "independence": "sequential_role",
+    "model": "claude-sonnet-5-5"
+  },
+  "source_digest": "sha256:b4eddd2ab28815e9074e2fadb26b0a08aa8c3ee861a21058e8f123eb3884b6d2",
+  "source_id": "PBD-SRC-Y0MFZXA3AMBG"
+}

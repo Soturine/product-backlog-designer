@@ -1,0 +1,95 @@
+{
+  "ambiguities": [
+    {
+      "locator": {
+        "line_start": 4,
+        "member": "regras-de-uso.md"
+      },
+      "quote": "não utilizada e não cancelada",
+      "text": "Não define como se determina que a reserva foi 'não utilizada' (check-in? presença?) nem se o cancelamento tardio (após o prazo de 2 horas) conta como falta; glossário fala em 'dentro do prazo'"
+    },
+    {
+      "locator": {
+        "line_start": 5,
+        "member": "regras-de-uso.md"
+      },
+      "quote": "impedido de fazer novas reservas por 15 dias",
+      "text": "Não está dito se o impedimento de 15 dias conta a partir da 3ª falta nem o que ocorre com reservas futuras já existentes do sócio impedido"
+    }
+  ],
+  "exclusions": [],
+  "members": [
+    {
+      "lines_read": [
+        [
+          1,
+          6
+        ]
+      ],
+      "path": "regras-de-uso.md",
+      "reading": {
+        "limitations": [],
+        "method": "native",
+        "tool": "host file reader (Bash cat)"
+      },
+      "status": "read"
+    }
+  ],
+  "obligations": [
+    {
+      "category": "constraint",
+      "key": "R1",
+      "locator": {
+        "line_start": 3,
+        "member": "regras-de-uso.md"
+      },
+      "modality": "must",
+      "quote": "Cada sócio pode manter no máximo 3 reservas futuras",
+      "text": "Cada sócio pode manter no máximo 3 reservas futuras",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R2",
+      "locator": {
+        "line_start": 4,
+        "member": "regras-de-uso.md"
+      },
+      "modality": "must",
+      "quote": "Uma reserva não utilizada e não cancelada conta como falta",
+      "text": "Uma reserva não utilizada e não cancelada conta como falta",
+      "uncertainty": "ambiguous"
+    },
+    {
+      "category": "functional",
+      "key": "R3",
+      "locator": {
+        "line_start": 5,
+        "member": "regras-de-uso.md"
+      },
+      "modality": "must",
+      "quote": "Com 3 faltas em 30 dias, o sócio fica impedido de fazer novas reservas por 15 dias",
+      "text": "Com 3 faltas em 30 dias, o sócio fica impedido de fazer novas reservas por 15 dias",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R4",
+      "locator": {
+        "line_start": 6,
+        "member": "regras-de-uso.md"
+      },
+      "modality": "may",
+      "quote": "O administrador pode remover uma falta registrada indevidamente, informando o motivo",
+      "text": "O administrador pode remover uma falta registrada indevidamente, informando o motivo",
+      "uncertainty": "confirmed"
+    }
+  ],
+  "reader": {
+    "agent": "reader-regras-c02",
+    "independence": "sequential_role",
+    "model": "claude-sonnet-5-5"
+  },
+  "source_digest": "sha256:8dc4fa43ab68c26f33b41f7b1ae5a98f47f96c32e4b671de7b3431247b7904ae",
+  "source_id": "PBD-SRC-4RHX3A209VQS"
+}

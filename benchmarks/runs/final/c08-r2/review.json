@@ -1,0 +1,407 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "notes": "Proposto; 'trata como incompleta' e 'depende de definição' não é verificável, mas está rotulado como proposta com questão Q3.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC5",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC6",
+      "notes": "Proposto; 'o participante é informado' é comportamento não previsto no PRD; prazo e nova tentativa em aberto (Q2).",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC7",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC8",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC9",
+      "notes": "Texto vago ('aceitável', 'tempo a definir'), sem limite; mantido como proposta ligada à Q1.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "distinct",
+      "items": [
+        "US2",
+        "US3"
+      ],
+      "rationale": "CA-03 da história de pagamento (confirmação) e CA-02 da lista (exclusão de não confirmados) tocam a mesma regra, mas por ângulos e atores diferentes."
+    }
+  ],
+  "findings": [
+    {
+      "actual": "CA-02 de 'Inscrever-se em um mutirão' e a regra de F1 afirmam que a inscrição exige nome e tamanho e é tratada como incompleta.",
+      "affects": [
+        "US1",
+        "AC2",
+        "F1"
+      ],
+      "classification": "unsupported_assumption",
+      "expected": "Tratamento de campos ausentes só como obrigação do PRD ou questão aberta.",
+      "impact": "Time pode implementar bloqueio não decidido pelo negócio.",
+      "recommendation": "Manter CA-02 como proposta e resolver Q3; reformular a regra de F1 como pendente.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "O PRD (linha 3) diz apenas que o participante informa os dois dados; obrigatoriedade é inferência."
+    },
+    {
+      "actual": "CA-04 de 'Pagar a taxa e ter a inscrição confirmada' define que o participante é informado de recusa ou falha.",
+      "affects": [
+        "US2",
+        "AC6"
+      ],
+      "classification": "unsupported_assumption",
+      "expected": "Fluxo de pagamento recusado apenas se decidido pelo negócio.",
+      "impact": "Escopo adicional não validado.",
+      "recommendation": "Manter como proposta vinculada à Q2 e não aprovar até resposta.",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "O PRD não descreve falha de pagamento nem notificação."
+    },
+    {
+      "actual": "CA-03 de 'Ver os inscritos confirmados de um mutirão' restringe o desempenho à exibição da lista e usa texto não verificável ('aceitável').",
+      "affects": [
+        "US3",
+        "AC9"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Requisito 'rápido' (linha 7) tratado como NFR sem métrica, rastreado como questão, sem escopo presumido.",
+      "impact": "Critério não testável pode ser lido como cumprido; outras operações ficam sem cobertura.",
+      "recommendation": "Resolver Q1 antes de aprovar; depois definir limite e operações em critérios mensuráveis.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "O PRD não delimita operação alvo nem limite; a restrição à lista é presunção."
+    },
+    {
+      "actual": "Relações propostas com confiança média; dependências são inferidas, não declaradas no PRD.",
+      "affects": [
+        "US1",
+        "US2",
+        "US3"
+      ],
+      "classification": "optional_improvement",
+      "expected": "Dependência US1 para US2 e US2 para US3 explicitadas.",
+      "impact": "Baixo; pode condicionar ordenação.",
+      "recommendation": "Validar com o time ao priorizar.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "São razoáveis pelo fluxo, mas não estão na fonte."
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 3,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "O participante se inscreve em um mutirão informando nome e tamanho de camiseta.",
+      "rationale": "US1 e CA-01 cobrem a inscrição em um mutirão.",
+      "text": "O participante se inscreve em um mutirão"
+    },
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "AC2",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O2",
+      "locator": {
+        "line_start": 3,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "informando nome e tamanho de camiseta",
+      "rationale": "CA-01 carrega os dois campos; CA-02 (proposto) trata ausência, que o PRD não define.",
+      "text": "Na inscrição são informados nome e tamanho de camiseta"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC3",
+        "T2"
+      ],
+      "disposition": "COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "A taxa simbólica de inscrição é paga pelo gateway de pagamentos parceiro.",
+      "rationale": "CA-01 da história de pagamento e a tarefa de integração cobrem o pagamento pelo gateway.",
+      "text": "A taxa simbólica é paga pelo gateway de pagamentos parceiro"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC4",
+        "AC5",
+        "AC6",
+        "T2"
+      ],
+      "disposition": "COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "A inscrição só é confirmada após a confirmação do pagamento.",
+      "rationale": "Critérios negativo e positivo de confirmação; CA-04 (proposto) cobre pagamento recusado.",
+      "text": "Inscrição só é confirmada após a confirmação do pagamento"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC7",
+        "AC8",
+        "T3"
+      ],
+      "disposition": "COVERED",
+      "key": "O5",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C5"
+      ],
+      "quote": "O organizador vê a lista de inscritos confirmados por mutirão.",
+      "rationale": "CA-01 e CA-02 da história da lista cobrem inclusão e exclusão por mutirão.",
+      "text": "Organizador vê a lista de inscritos confirmados por mutirão"
+    },
+    {
+      "covered_by": [
+        "AC9"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O6",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C6"
+      ],
+      "quote": "O sistema deve ser rápido.",
+      "rationale": "Sem métrica nem operação-alvo; corretamente mantido como questão aberta Q1 e critério proposto não verificável.",
+      "text": "Requisito de desempenho sem limite mensurável"
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "A regra 'A inscrição exige nome e tamanho' afirma obrigatoriedade que o PRD não declara (apenas diz que são informados).",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "F2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Primeira da cadeia.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Detalhes de validação em aberto.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo pequeno.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "CA-01 verificável; CA-02 depende de definição.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Registra participação.",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe; gateway não identificado.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depende da inscrição criada (US1).",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "Falhas em aberto em Q2.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Cabe em uma história.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "CA-02 e CA-03 verificáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Garante confirmação paga.",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depende de confirmações geradas por US2.",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "Formato da lista aberto.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Pequena.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "CA-03 não é verificável.",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "Dá visão ao organizador.",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "Carrega C6 (desempenho) por escopo assumido apenas na lista.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "key": "T1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "reviewer-c08-r2",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-78385WMH95P7"
+    }
+  ]
+}

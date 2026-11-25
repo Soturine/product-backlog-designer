@@ -1,0 +1,66 @@
+{
+  "ambiguities": [],
+  "exclusions": [],
+  "members": [
+    {
+      "lines_read": [
+        [
+          1,
+          5
+        ]
+      ],
+      "path": "manual-operacao.md",
+      "reading": {
+        "limitations": [],
+        "method": "native",
+        "tool": "host file reader"
+      },
+      "status": "read"
+    }
+  ],
+  "obligations": [
+    {
+      "category": "constraint",
+      "key": "R1",
+      "locator": {
+        "line_start": 3,
+        "member": "manual-operacao.md"
+      },
+      "modality": "may",
+      "quote": "Doadores podem agendar até 5 entregas por mês",
+      "text": "Doadores podem agendar até 5 entregas por mês",
+      "uncertainty": "conflicting"
+    },
+    {
+      "category": "constraint",
+      "key": "R2",
+      "locator": {
+        "line_start": 4,
+        "member": "manual-operacao.md"
+      },
+      "modality": "must",
+      "quote": "Eletrônicos em funcionamento são aceitos mediante teste do voluntário",
+      "text": "Eletrônicos em funcionamento são aceitos mediante teste do voluntário",
+      "uncertainty": "conflicting"
+    },
+    {
+      "category": "functional",
+      "key": "R3",
+      "locator": {
+        "line_start": 5,
+        "member": "manual-operacao.md"
+      },
+      "modality": "must",
+      "quote": "O recibo é enviado por e-mail ao doador após a confirmação do recebimento",
+      "text": "O recibo é enviado por e-mail ao doador após a confirmação do recebimento",
+      "uncertainty": "confirmed"
+    }
+  ],
+  "reader": {
+    "agent": "reader-manual-operacao.md-c05",
+    "independence": "sequential_role",
+    "model": "claude-sonnet-5-5"
+  },
+  "source_digest": "sha256:1f3cdd8b978041060c4c38a2097fb8fdbed8565b0aecff3fd164e6fbf9797305",
+  "source_id": "PBD-SRC-2CR6BC30M4NM"
+}

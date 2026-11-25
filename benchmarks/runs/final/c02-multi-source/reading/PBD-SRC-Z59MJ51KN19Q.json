@@ -1,0 +1,75 @@
+{
+  "ambiguities": [
+    {
+      "locator": {
+        "line_start": 5,
+        "member": "glossario.md"
+      },
+      "quote": "dentro do prazo",
+      "text": "'dentro do prazo' não é especificado no glossário (presume-se o prazo de cancelamento, mas não está dito)"
+    }
+  ],
+  "exclusions": [],
+  "members": [
+    {
+      "lines_read": [
+        [
+          1,
+          5
+        ]
+      ],
+      "path": "glossario.md",
+      "reading": {
+        "limitations": [],
+        "method": "native",
+        "tool": "host file reader (Bash cat)"
+      },
+      "status": "read"
+    }
+  ],
+  "obligations": [
+    {
+      "category": "data",
+      "key": "R1",
+      "locator": {
+        "line_start": 3,
+        "member": "glossario.md"
+      },
+      "modality": "informative",
+      "quote": "Sócio: pessoa associada ao clube com cadastro ativo",
+      "text": "Sócio é a pessoa associada ao clube com cadastro ativo",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "data",
+      "key": "R2",
+      "locator": {
+        "line_start": 4,
+        "member": "glossario.md"
+      },
+      "modality": "informative",
+      "quote": "Bloco: período de reserva de uma hora cheia",
+      "text": "Bloco é o período de reserva de uma hora cheia",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "data",
+      "key": "R3",
+      "locator": {
+        "line_start": 5,
+        "member": "glossario.md"
+      },
+      "modality": "informative",
+      "quote": "Falta: reserva não utilizada e não cancelada dentro do prazo",
+      "text": "Falta é reserva não utilizada e não cancelada dentro do prazo",
+      "uncertainty": "confirmed"
+    }
+  ],
+  "reader": {
+    "agent": "reader-glossario.md-c02",
+    "independence": "sequential_role",
+    "model": "claude-sonnet-5-5"
+  },
+  "source_digest": "sha256:ff48c653ec5f92c68bd92567d68647e513b785095674466faeca787d43e42c64",
+  "source_id": "PBD-SRC-Z59MJ51KN19Q"
+}

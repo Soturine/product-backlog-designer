@@ -1,0 +1,552 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC5",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC6",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC3",
+      "notes": "",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC7",
+      "notes": "Critério não verificável até a resolução da pergunta; aceitável como proposto.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC8",
+      "notes": "Critério não verificável até a resolução da pergunta; aceitável como proposto.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "distinct",
+      "items": [
+        "US5",
+        "US6"
+      ],
+      "rationale": "limite mensal vs eletrônicos"
+    }
+  ],
+  "findings": [
+    {
+      "actual": "claims.conflicts está vazio; conflitos só aparecem em uncertainty e dispositions",
+      "affects": [
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Conflitos entre fontes registrados em claims.conflicts",
+      "gate": "G06",
+      "impact": "Baixo; perguntas Q1/Q2 existem",
+      "recommendation": "Registrar os dois conflitos em conflicts",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "Rastreabilidade formal dos conflitos 3 vs 5 e eletrônicos"
+    },
+    {
+      "actual": "AC7 afirma que agendamento além do limite é recusado; fontes só dão o limite",
+      "affects": [
+        "AC7"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Comportamento de recusa de AC7 sustentado pelas fontes",
+      "gate": "G06",
+      "impact": "Baixo",
+      "recommendation": "Manter proposed e cobrir na Q1",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "Recusa é inferência razoável, já marcada proposed"
+    },
+    {
+      "actual": "Sem critério para falha de envio",
+      "affects": [
+        "AC6"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Falha de envio do e-mail do recibo tratada",
+      "gate": "G06",
+      "impact": "Baixo",
+      "recommendation": "Considerar pergunta opcional",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "Comportamento de erro não especificado nas fontes"
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 3,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "O doador agenda a entrega de doações escolhendo data e turno",
+      "rationale": "US1/AC1/T1",
+      "text": "Doador agenda entrega escolhendo data e turno"
+    },
+    {
+      "covered_by": [
+        "US5",
+        "AC7"
+      ],
+      "disposition": "CONFLICTING",
+      "key": "O2",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "Cada doador pode agendar no máximo 3 entregas por mês",
+      "rationale": "Conflita com manual (5); ambas fontes funcionais sem precedência; Q1 bloqueante.",
+      "text": "PRD: no máximo 3 entregas por mês"
+    },
+    {
+      "covered_by": [
+        "US5",
+        "AC7"
+      ],
+      "disposition": "CONFLICTING",
+      "key": "O3",
+      "locator": {
+        "line_start": 3,
+        "member": "manual-operacao.md",
+        "source_id": "PBD-SRC-2CR6BC30M4NM"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "Doadores podem agendar até 5 entregas por mês",
+      "rationale": "Conflito com O2 tratado como pergunta, sem escolher valor.",
+      "text": "Manual: até 5 entregas por mês"
+    },
+    {
+      "covered_by": [
+        "US6",
+        "AC8"
+      ],
+      "disposition": "CONFLICTING",
+      "key": "O4",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "Itens eletrônicos não são aceitos",
+      "rationale": "Conflita com manual; Q2 bloqueante.",
+      "text": "PRD: eletrônicos não aceitos"
+    },
+    {
+      "covered_by": [
+        "US6",
+        "AC8"
+      ],
+      "disposition": "CONFLICTING",
+      "key": "O5",
+      "locator": {
+        "line_start": 4,
+        "member": "manual-operacao.md",
+        "source_id": "PBD-SRC-2CR6BC30M4NM"
+      },
+      "matched_claims": [
+        "C5"
+      ],
+      "quote": "Eletrônicos em funcionamento são aceitos mediante teste do voluntário",
+      "rationale": "Conflito com O4 mantido em aberto.",
+      "text": "Manual: eletrônicos em funcionamento aceitos após teste"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC4",
+        "T3"
+      ],
+      "disposition": "COVERED",
+      "key": "O6",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C6"
+      ],
+      "quote": "O voluntário confirma o recebimento",
+      "rationale": "US3/AC4/T3",
+      "text": "Voluntário confirma recebimento"
+    },
+    {
+      "covered_by": [
+        "US4",
+        "AC5",
+        "T4"
+      ],
+      "disposition": "COVERED",
+      "key": "O7",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C7"
+      ],
+      "quote": "o sistema gera um recibo para o doador",
+      "rationale": "US4/AC5/T4",
+      "text": "Sistema gera recibo ao doador"
+    },
+    {
+      "covered_by": [
+        "US4",
+        "AC6",
+        "T4"
+      ],
+      "disposition": "COVERED",
+      "key": "O8",
+      "locator": {
+        "line_start": 5,
+        "member": "manual-operacao.md",
+        "source_id": "PBD-SRC-2CR6BC30M4NM"
+      },
+      "matched_claims": [
+        "C8"
+      ],
+      "quote": "O recibo é enviado por e-mail ao doador após a confirmação do recebimento",
+      "rationale": "Complementa o PRD (canal), sem conflito; AC6/T4.",
+      "text": "Recibo enviado por e-mail após confirmação"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC2",
+        "AC3",
+        "T2"
+      ],
+      "disposition": "COVERED",
+      "key": "O9",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C9"
+      ],
+      "quote": "O doador pode remarcar uma entrega até 1 dia antes da data agendada",
+      "rationale": "US2/AC2; AC3 proposto para fora do prazo.",
+      "text": "Remarcar até 1 dia antes"
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F3",
+      "notes": "Feature de regras em aberto; depende de Q1/Q2, sem tarefas ainda.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados de equipe",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados de equipe",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados de equipe",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados de equipe",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US4",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados de equipe",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "valor/política indefinidos",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US5",
+      "notes": "Bloqueada por pergunta aberta; sem critério verificável até resolução.",
+      "source_support": "supported",
+      "task_sufficiency": "not_applicable",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados de equipe",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "valor/política indefinidos",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US6",
+      "notes": "Bloqueada por pergunta aberta; sem critério verificável até resolução.",
+      "source_support": "supported",
+      "task_sufficiency": "not_applicable",
+      "verdict": "concern"
+    }
+  ],
+  "reviewer": {
+    "agent": "reviewer-c05-final",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-78385WMH95P7"
+    },
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-2CR6BC30M4NM"
+    }
+  ]
+}

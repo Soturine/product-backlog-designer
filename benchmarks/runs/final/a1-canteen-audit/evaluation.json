@@ -1,0 +1,44 @@
+{
+  "case": "a1-canteen-audit",
+  "evaluator_model": "claude-haiku-5-5",
+  "defects": [
+    {
+      "id": "D1",
+      "verdict": "detected",
+      "evidence": "Finding classified confirmed_divergence (gate G04) affects I101 and I101.AC1: baseline states a 22h cutoff, PRD 1.2 says 20h. Obligation O2 is CONFLICTING with covered_by I101.AC1. Item I101 verdict fail; criterion I101.AC1 fail."
+    },
+    {
+      "id": "D2",
+      "verdict": "detected",
+      "evidence": "Finding classified confirmed_gap (gate G02) states no item or criterion covers the allergen rule of PRD 1.4 and that registration (I105) lacks allergen marking. Obligation O4 (Alergênicos bloqueiam pedido) is NOT_COVERED with covered_by empty. The finding's affects list (I101, I105) differs from gold's empty affects, but the gap itself is identified correctly."
+    },
+    {
+      "id": "D3",
+      "verdict": "detected",
+      "evidence": "Finding classified unsupported_assumption (gate G09) affects I104 and I104.AC1: classroom delivery is excluded by PRD section 4 (obligation O8, OUT_OF_SCOPE). Item I104 verdict fail; source_support unsupported."
+    },
+    {
+      "id": "D4",
+      "verdict": "detected",
+      "evidence": "Finding classified confirmed_gap affects I105 (and I101): registration lacks the allergen data PRD 1.4 relies on. I105.AC1 is also marked concern with the note that allergen marking at registration is not included. Non-critical defect, detected with the right item."
+    }
+  ],
+  "correct_items": [
+    {
+      "id": "OK1",
+      "verdict": "none",
+      "evidence": "No finding of classification confirmed_divergence, confirmed_gap or unsupported_assumption targets I102 or I102.AC1/AC2. Item I102 verdict pass; both criteria pass; obligations O5 and O6 COVERED. Not a false positive."
+    },
+    {
+      "id": "OK2",
+      "verdict": "none",
+      "evidence": "No finding of those classifications targets I103 or I103.AC1. Item I103 verdict pass; obligation O7 COVERED. Not a false positive."
+    }
+  ],
+  "thresholds_met": {
+    "critical_defects_detected_3_of_3": true,
+    "all_defects_detected_min_3": true,
+    "false_positive_findings_on_correct_items_max_0": true
+  },
+  "notes": "All 4 planted defects detected (3/3 critical, 4/4 total). Zero false positives on OK1 (I102) and OK2 (I103). Detection of D2 is via the NOT_COVERED obligation O4 and a confirmed_gap finding; the finding's affects list includes I101 and I105 where gold lists none, which does not affect the verdict. Review was produced by a separate agent (claude-sonnet-5-5 per review.json). Gate report shows G02, G04, G05, G06, G09 as FAIL, consistent with the findings. G07 and G18 are NOT_RUN and were not part of this evaluation."
+}

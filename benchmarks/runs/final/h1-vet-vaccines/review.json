@@ -1,0 +1,641 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC12",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC5",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC6",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC7",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC9",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC10",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC11",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC8",
+      "notes": "Proposto corretamente; aguarda resposta da clínica (Q1).",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "distinct",
+      "items": [
+        "US3",
+        "US4"
+      ],
+      "rationale": "Atores e permissões diferentes."
+    }
+  ],
+  "findings": [
+    {
+      "actual": "Critérios indefinidos no PRD",
+      "affects": [
+        "US5",
+        "AC8"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Fluxo da avaliação veterinária definido",
+      "gate": "G06",
+      "impact": "US5 não pode ser implementada",
+      "recommendation": "Resolver Q1 com a clínica",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "PRD declara a lacuna"
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "O tutor cadastrado escolhe um animal, uma vacina do catálogo e um horário livre da agenda",
+      "rationale": "Fluxo principal.",
+      "text": "Tutor cadastrado escolhe animal, vacina do catálogo e horário livre"
+    },
+    {
+      "covered_by": [
+        "AC2",
+        "T2"
+      ],
+      "disposition": "COVERED",
+      "key": "O2",
+      "locator": {
+        "line_start": 8,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "Cada horário atende um único animal",
+      "rationale": "Critério de conflito de horário.",
+      "text": "Cada horário atende um único animal"
+    },
+    {
+      "covered_by": [
+        "AC3",
+        "AC12"
+      ],
+      "disposition": "COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 9,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "Um agendamento só pode ser feito com pelo menos 24 horas de antecedência",
+      "rationale": "Negativo e limite.",
+      "text": "Antecedência mínima de 24 horas"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC4"
+      ],
+      "disposition": "COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 10,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "O tutor recebe uma confirmação por e-mail após agendar",
+      "rationale": "Coberto.",
+      "text": "Confirmação por e-mail após agendar"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC5"
+      ],
+      "disposition": "COVERED",
+      "key": "O5",
+      "locator": {
+        "line_start": 11,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C5"
+      ],
+      "quote": "O tutor pode cancelar um agendamento até 12 horas antes do horário",
+      "rationale": "Coberto.",
+      "text": "Tutor cancela até 12 horas antes"
+    },
+    {
+      "covered_by": [
+        "AC6",
+        "AC7",
+        "US4"
+      ],
+      "disposition": "COVERED",
+      "key": "O6",
+      "locator": {
+        "line_start": 11,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C6"
+      ],
+      "quote": "o cancelamento só pode ser feito pela recepção",
+      "rationale": "Negativo para o tutor e positivo para a recepção.",
+      "text": "Após o limite só a recepção cancela"
+    },
+    {
+      "covered_by": [
+        "US5",
+        "AC8"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O7",
+      "locator": {
+        "line_start": 12,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C7"
+      ],
+      "quote": "Os critérios dessa avaliação ainda não foram definidos pela clínica",
+      "rationale": "Critério proposto e pergunta bloqueante; nada confirmado.",
+      "text": "Animal com reação adversa exige avaliação veterinária; critérios indefinidos"
+    },
+    {
+      "covered_by": [
+        "US6",
+        "AC9"
+      ],
+      "disposition": "COVERED",
+      "key": "O8",
+      "locator": {
+        "line_start": 15,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C8"
+      ],
+      "quote": "A recepção vê a agenda do dia em ordem de horário, com nome do animal, vacina e tutor",
+      "rationale": "Coberto.",
+      "text": "Agenda do dia em ordem de horário com animal, vacina e tutor"
+    },
+    {
+      "covered_by": [
+        "US7",
+        "AC10"
+      ],
+      "disposition": "COVERED",
+      "key": "O9",
+      "locator": {
+        "line_start": 16,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C9"
+      ],
+      "quote": "o registro guarda a data e o lote informado",
+      "rationale": "Coberto.",
+      "text": "Registro da aplicação guarda data e lote"
+    },
+    {
+      "covered_by": [
+        "AC11"
+      ],
+      "disposition": "COVERED",
+      "key": "O10",
+      "locator": {
+        "line_start": 17,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C10"
+      ],
+      "quote": "Quando o lote não é informado, a aplicação não pode ser registrada",
+      "rationale": "Coberto.",
+      "text": "Sem lote a aplicação não é registrada"
+    },
+    {
+      "covered_by": [
+        "E1",
+        "E2"
+      ],
+      "disposition": "OUT_OF_SCOPE",
+      "key": "O11",
+      "locator": {
+        "line_start": 20,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [],
+      "quote": "Pagamento on-line e emissão de nota fiscal não fazem parte desta versão",
+      "rationale": "Registrado nos limites de escopo dos épicos; nenhum item de trabalho.",
+      "text": "Pagamento on-line e nota fiscal fora do escopo"
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "E2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F5",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados de equipe",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depende de US1 apenas por precedência natural.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Detalhes de UI abertos.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Fatia pequena.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Critérios verificáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Valor claro para o ator.",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados de equipe",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depende de US1 apenas por precedência natural.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Detalhes de UI abertos.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Fatia pequena.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Critérios verificáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Valor claro para o ator.",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados de equipe",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depende de US1 apenas por precedência natural.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Detalhes de UI abertos.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Fatia pequena.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Critérios verificáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Valor claro para o ator.",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados de equipe",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depende de US1 apenas por precedência natural.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Detalhes de UI abertos.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Fatia pequena.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Critérios verificáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Valor claro para o ator.",
+          "rating": "supported"
+        }
+      },
+      "key": "US4",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados de equipe",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depende de US1 apenas por precedência natural.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Detalhes de UI abertos.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Fatia pequena.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Critérios verificáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Valor claro para o ator.",
+          "rating": "supported"
+        }
+      },
+      "key": "US6",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados de equipe",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depende de US1 apenas por precedência natural.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Detalhes de UI abertos.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Fatia pequena.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Critérios verificáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Valor claro para o ator.",
+          "rating": "supported"
+        }
+      },
+      "key": "US7",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados de equipe",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depende de US1 apenas por precedência natural.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Detalhes de UI abertos.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Fatia pequena.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Sem critérios definidos, não verificável.",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "Valor claro para o ator.",
+          "rating": "supported"
+        }
+      },
+      "key": "US5",
+      "notes": "Comportamento depende de critérios indefinidos (Q1); mantido como proposta, sem tarefa.",
+      "source_support": "supported",
+      "task_sufficiency": "insufficient",
+      "verdict": "concern"
+    },
+    {
+      "key": "T1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T5",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T6",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T7",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "reviewer-seq",
+    "independence": "sequential_role",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+    }
+  ]
+}

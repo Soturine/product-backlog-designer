@@ -1,0 +1,90 @@
+{
+  "ambiguities": [
+    {
+      "locator": {
+        "line_start": 3,
+        "member": "adr-003-limite.md"
+      },
+      "quote": "proposta (em discussão)",
+      "text": "ADR-003 é apenas proposta em discussão; o limite de 30 não está aprovado"
+    }
+  ],
+  "exclusions": [],
+  "members": [
+    {
+      "lines_read": [
+        [
+          1,
+          5
+        ]
+      ],
+      "path": "adr-002-confirmacao-automatica.md",
+      "reading": {
+        "limitations": [],
+        "method": "native",
+        "tool": "host file reader"
+      },
+      "status": "read"
+    },
+    {
+      "lines_read": [
+        [
+          1,
+          4
+        ]
+      ],
+      "path": "adr-003-limite.md",
+      "reading": {
+        "limitations": [],
+        "method": "native",
+        "tool": "host file reader"
+      },
+      "status": "read"
+    }
+  ],
+  "obligations": [
+    {
+      "category": "functional",
+      "key": "R1",
+      "locator": {
+        "line_start": 5,
+        "member": "adr-002-confirmacao-automatica.md"
+      },
+      "modality": "must",
+      "quote": "inscrições passam a ser confirmadas automaticamente enquanto houver vagas",
+      "text": "ADR-002 (status aprovado): inscrições passam a ser confirmadas automaticamente enquanto houver vagas",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R2",
+      "locator": {
+        "line_start": 5,
+        "member": "adr-002-confirmacao-automatica.md"
+      },
+      "modality": "must",
+      "quote": "a aprovação do moderador deixa de existir",
+      "text": "ADR-002 (status aprovado): a aprovação do moderador deixa de existir",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "constraint",
+      "key": "R3",
+      "locator": {
+        "line_start": 4,
+        "member": "adr-003-limite.md"
+      },
+      "modality": "should",
+      "quote": "aumentar o limite de participantes por encontro para 30",
+      "text": "ADR-003 (status proposta, em discussão): aumentar o limite de participantes por encontro para 30",
+      "uncertainty": "ambiguous"
+    }
+  ],
+  "reader": {
+    "agent": "reader-decisoes-c06",
+    "independence": "sequential_role",
+    "model": "claude-sonnet-5-5"
+  },
+  "source_digest": "sha256:00311df4501e0cecbf558270e4ab4b71b7b020c5f66f47c0131817278b77ab54",
+  "source_id": "PBD-SRC-3Q116GNGMAKT"
+}

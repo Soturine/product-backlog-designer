@@ -1,0 +1,236 @@
+{
+  "backlog_digest": "sha256:3ffc6b88c07121db5d5573f884e0d910af0f67eed83105fa23622e9422ed6510",
+  "checks": {
+    "cross_team_dependencies": [],
+    "cycles": [],
+    "external_blockers": [],
+    "invalid_relations": [],
+    "unknown_estimates": [
+      "PBD-STORY-AD4T7BW7A26S",
+      "PBD-TASK-6BD8H1GKP8EC",
+      "PBD-TASK-W1P0AYWXFKV9",
+      "PBD-STORY-5W6F6CDR4JSG",
+      "PBD-TASK-CHTBVXCMPGQP",
+      "PBD-STORY-9RVQXD2HADM4",
+      "PBD-TASK-ZDQVA6VBJDP5",
+      "PBD-STORY-MJAKADJYR3VH",
+      "PBD-TASK-B8YA54WKE8WV",
+      "PBD-STORY-1MMGZ1X3JX2N",
+      "PBD-STORY-BCX903ZN6VZD",
+      "PBD-TASK-DCY71EAWT30N",
+      "PBD-STORY-JBS7PR295QB5",
+      "PBD-TASK-F78RS0Z9AYA8"
+    ],
+    "zero_estimates": []
+  },
+  "committed": false,
+  "input_digest": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "inputs": {
+    "calendar": null,
+    "capacity": null,
+    "technique": "none",
+    "unit": "story_points",
+    "use_proposed_estimates": false
+  },
+  "kind": "pbd.sprint-plan",
+  "notes": [
+    "capacity unknown: this is a dependency-safe sequence, not a sprint plan; give capacity per sprint to allocate"
+  ],
+  "scenarios": [],
+  "score_missing_inputs": {},
+  "sequence": [
+    {
+      "effort": null,
+      "item": "PBD-STORY-AD4T7BW7A26S",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "score": null,
+      "title": "Agendar vacina escolhendo animal, vacina e horário livre",
+      "type": "story",
+      "waits_for": []
+    },
+    {
+      "effort": null,
+      "item": "PBD-TASK-6BD8H1GKP8EC",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "score": null,
+      "title": "Disponibilizar escolha de animal, vacina do catálogo e horário livre",
+      "type": "task",
+      "waits_for": []
+    },
+    {
+      "effort": null,
+      "item": "PBD-TASK-W1P0AYWXFKV9",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "score": null,
+      "title": "Garantir um único animal por horário e antecedência de 24 horas",
+      "type": "task",
+      "waits_for": []
+    },
+    {
+      "effort": null,
+      "item": "PBD-STORY-5W6F6CDR4JSG",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "score": null,
+      "title": "Receber confirmação do agendamento por e-mail",
+      "type": "story",
+      "waits_for": [
+        "PBD-STORY-AD4T7BW7A26S"
+      ]
+    },
+    {
+      "effort": null,
+      "item": "PBD-TASK-CHTBVXCMPGQP",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "score": null,
+      "title": "Enviar confirmação por e-mail após agendar",
+      "type": "task",
+      "waits_for": []
+    },
+    {
+      "effort": null,
+      "item": "PBD-STORY-9RVQXD2HADM4",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "score": null,
+      "title": "Cancelar agendamento até 12 horas antes",
+      "type": "story",
+      "waits_for": [
+        "PBD-STORY-AD4T7BW7A26S"
+      ]
+    },
+    {
+      "effort": null,
+      "item": "PBD-TASK-ZDQVA6VBJDP5",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "score": null,
+      "title": "Implementar cancelamento pelo tutor com limite de 12 horas",
+      "type": "task",
+      "waits_for": []
+    },
+    {
+      "effort": null,
+      "item": "PBD-STORY-MJAKADJYR3VH",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "score": null,
+      "title": "Cancelar agendamento após o limite do tutor",
+      "type": "story",
+      "waits_for": []
+    },
+    {
+      "effort": null,
+      "item": "PBD-TASK-B8YA54WKE8WV",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "score": null,
+      "title": "Permitir cancelamento pela recepção após o limite",
+      "type": "task",
+      "waits_for": []
+    },
+    {
+      "effort": null,
+      "item": "PBD-STORY-1MMGZ1X3JX2N",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "score": null,
+      "title": "Agendar animal com reação adversa após avaliação veterinária",
+      "type": "story",
+      "waits_for": []
+    },
+    {
+      "effort": null,
+      "item": "PBD-STORY-BCX903ZN6VZD",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "score": null,
+      "title": "Ver a agenda do dia em ordem de horário",
+      "type": "story",
+      "waits_for": [
+        "PBD-STORY-AD4T7BW7A26S"
+      ]
+    },
+    {
+      "effort": null,
+      "item": "PBD-TASK-DCY71EAWT30N",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "score": null,
+      "title": "Montar a agenda do dia ordenada por horário",
+      "type": "task",
+      "waits_for": []
+    },
+    {
+      "effort": null,
+      "item": "PBD-STORY-JBS7PR295QB5",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "score": null,
+      "title": "Registrar a aplicação da vacina com data e lote",
+      "type": "story",
+      "waits_for": [
+        "PBD-STORY-BCX903ZN6VZD"
+      ]
+    },
+    {
+      "effort": null,
+      "item": "PBD-TASK-F78RS0Z9AYA8",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "score": null,
+      "title": "Registrar aplicação com data e lote e recusar sem lote",
+      "type": "task",
+      "waits_for": []
+    }
+  ],
+  "sprints": null,
+  "status": "proposal",
+  "unplanned": []
+}

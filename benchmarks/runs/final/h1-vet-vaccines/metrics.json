@@ -1,0 +1,76 @@
+{
+  "backlog_digest": "sha256:3ffc6b88c07121db5d5573f884e0d910af0f67eed83105fa23622e9422ed6510",
+  "claims": {
+    "by_disposition": {
+      "COVERED": 9,
+      "QUESTION_REQUIRED": 1
+    },
+    "total": 10
+  },
+  "coverage": {
+    "breakdown": {
+      "COVERED": 9,
+      "OUT_OF_SCOPE": 1,
+      "QUESTION_REQUIRED": 1
+    },
+    "covered": 9,
+    "note": "denominator = obligations the independent reviewer extracted from the sources",
+    "provenance": "independent reviewer inventory",
+    "total": 11
+  },
+  "criteria": {
+    "by_style": {
+      "list": 12
+    },
+    "proposed": 1,
+    "total": 12
+  },
+  "findings": {
+    "by_classification": {
+      "candidate_concern": 1
+    },
+    "by_severity": {
+      "medium": 1
+    },
+    "total": 1
+  },
+  "gates": {
+    "BLOCKED": 1,
+    "FAIL": 1,
+    "NOT_APPLICABLE": 4,
+    "NOT_RUN": 1,
+    "PASS": 11
+  },
+  "items": {
+    "by_type": {
+      "epic": 2,
+      "feature": 5,
+      "story": 7,
+      "task": 7
+    },
+    "total": 21
+  },
+  "kind": "pbd.metrics",
+  "questions": {
+    "blocking": 1,
+    "open": 2
+  },
+  "review": {
+    "independence": "sequential_role",
+    "model": "claude-sonnet-5-5",
+    "verdicts": {
+      "concern": 2,
+      "pass": 31
+    }
+  },
+  "sources": {
+    "members_read": 1,
+    "members_total": 1,
+    "sources": 1
+  },
+  "tasks_per_story": {
+    "max": 2,
+    "min": 0,
+    "stories": 7
+  }
+}

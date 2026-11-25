@@ -1,0 +1,353 @@
+{
+  "gates": [
+    {
+      "denominator": {
+        "breakdown": {
+          "blocked": 0,
+          "covered": 1,
+          "partially_covered": 0
+        },
+        "examined": 1,
+        "inventory_digest": "sha256:8c1d82c2bbd85def3299f701e8f0f8238d8e18b36c63c4e00b8a40490d9993d0",
+        "inventory_ref": "sources/inventory.json",
+        "provenance": "independent_inventory",
+        "reading_complete": true,
+        "total": 1
+      },
+      "evidence": [
+        {
+          "digest": "sha256:c82f90f14d5baa981158499d31c48674f42334fc84547d36ab1f947943439d5b",
+          "ref": "output/checks.json",
+          "run_id": "PBD-RUN-P07GPH67ZBKR",
+          "stage": "checks",
+          "summary": "runtime deterministic checks",
+          "type": "deterministic_check"
+        },
+        {
+          "digest": "sha256:79a9177a2ceea881a59ff6c776333843a9c604db79bc7f2667ed2e335a20b563",
+          "ref": "stages/review.json",
+          "run_id": "PBD-RUN-P07GPH67ZBKR",
+          "stage": "independent_review",
+          "summary": "independent source-first review",
+          "type": "review"
+        }
+      ],
+      "id": "G01",
+      "reason": "every inventoried member was read and re-read by the reviewer (reading methods: native: 1)",
+      "scope": "Source Integrity",
+      "status": "PASS",
+      "validator_version": "0.1.0.dev0",
+      "verification": "verified"
+    },
+    {
+      "denominator": {
+        "breakdown": {
+          "covered": 3,
+          "question_required": 2
+        },
+        "examined": 5,
+        "inventory_digest": "sha256:79a9177a2ceea881a59ff6c776333843a9c604db79bc7f2667ed2e335a20b563",
+        "inventory_ref": "stages/review.json",
+        "provenance": "independent_inventory",
+        "reading_complete": true,
+        "total": 5
+      },
+      "evidence": [
+        {
+          "digest": "sha256:c82f90f14d5baa981158499d31c48674f42334fc84547d36ab1f947943439d5b",
+          "ref": "output/checks.json",
+          "run_id": "PBD-RUN-P07GPH67ZBKR",
+          "stage": "checks",
+          "summary": "runtime deterministic checks",
+          "type": "deterministic_check"
+        },
+        {
+          "digest": "sha256:79a9177a2ceea881a59ff6c776333843a9c604db79bc7f2667ed2e335a20b563",
+          "ref": "stages/review.json",
+          "run_id": "PBD-RUN-P07GPH67ZBKR",
+          "stage": "independent_review",
+          "summary": "independent source-first review",
+          "type": "review"
+        }
+      ],
+      "id": "G02",
+      "reason": "5 independent obligations dispositioned without gaps",
+      "scope": "Requirements Coverage",
+      "status": "PASS",
+      "validator_version": "0.1.0.dev0",
+      "verification": "verified"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:c82f90f14d5baa981158499d31c48674f42334fc84547d36ab1f947943439d5b",
+          "ref": "output/checks.json",
+          "run_id": "PBD-RUN-P07GPH67ZBKR",
+          "stage": "checks",
+          "summary": "runtime deterministic checks",
+          "type": "deterministic_check"
+        }
+      ],
+      "id": "G03",
+      "reason": "hierarchy invariants hold",
+      "scope": "Hierarchy Integrity",
+      "status": "PASS",
+      "validator_version": "0.1.0.dev0",
+      "verification": "verified"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:c82f90f14d5baa981158499d31c48674f42334fc84547d36ab1f947943439d5b",
+          "ref": "output/checks.json",
+          "run_id": "PBD-RUN-P07GPH67ZBKR",
+          "stage": "checks",
+          "summary": "runtime deterministic checks",
+          "type": "deterministic_check"
+        },
+        {
+          "digest": "sha256:79a9177a2ceea881a59ff6c776333843a9c604db79bc7f2667ed2e335a20b563",
+          "ref": "stages/review.json",
+          "run_id": "PBD-RUN-P07GPH67ZBKR",
+          "stage": "independent_review",
+          "summary": "independent source-first review",
+          "type": "review"
+        }
+      ],
+      "id": "G04",
+      "reason": "every item and criterion traces to claims or a justified proposal",
+      "scope": "Traceability",
+      "status": "PASS",
+      "validator_version": "0.1.0.dev0",
+      "verification": "verified"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:79a9177a2ceea881a59ff6c776333843a9c604db79bc7f2667ed2e335a20b563",
+          "ref": "stages/review.json",
+          "run_id": "PBD-RUN-P07GPH67ZBKR",
+          "stage": "independent_review",
+          "summary": "independent source-first review",
+          "type": "review"
+        }
+      ],
+      "id": "G05",
+      "reason": "3 stories reviewed with INVEST",
+      "scope": "Story Quality",
+      "status": "PASS",
+      "validator_version": "0.1.0.dev0",
+      "verification": "verified"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:c82f90f14d5baa981158499d31c48674f42334fc84547d36ab1f947943439d5b",
+          "ref": "output/checks.json",
+          "run_id": "PBD-RUN-P07GPH67ZBKR",
+          "stage": "checks",
+          "summary": "runtime deterministic checks",
+          "type": "deterministic_check"
+        },
+        {
+          "digest": "sha256:79a9177a2ceea881a59ff6c776333843a9c604db79bc7f2667ed2e335a20b563",
+          "ref": "stages/review.json",
+          "run_id": "PBD-RUN-P07GPH67ZBKR",
+          "stage": "independent_review",
+          "summary": "independent source-first review",
+          "type": "review"
+        }
+      ],
+      "id": "G06",
+      "reason": "7 criteria reviewed individually",
+      "scope": "Acceptance Quality",
+      "status": "PASS",
+      "validator_version": "0.1.0.dev0",
+      "verification": "verified"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:79a9177a2ceea881a59ff6c776333843a9c604db79bc7f2667ed2e335a20b563",
+          "ref": "stages/review.json",
+          "run_id": "PBD-RUN-P07GPH67ZBKR",
+          "stage": "independent_review",
+          "summary": "independent source-first review",
+          "type": "review"
+        }
+      ],
+      "id": "G07",
+      "reason": "stories with insufficient tasks: ['US2']",
+      "scope": "Task Coverage",
+      "status": "FAIL",
+      "validator_version": "0.1.0.dev0"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:c82f90f14d5baa981158499d31c48674f42334fc84547d36ab1f947943439d5b",
+          "ref": "output/checks.json",
+          "run_id": "PBD-RUN-P07GPH67ZBKR",
+          "stage": "checks",
+          "summary": "runtime deterministic checks",
+          "type": "deterministic_check"
+        },
+        {
+          "digest": "sha256:79a9177a2ceea881a59ff6c776333843a9c604db79bc7f2667ed2e335a20b563",
+          "ref": "stages/review.json",
+          "run_id": "PBD-RUN-P07GPH67ZBKR",
+          "stage": "independent_review",
+          "summary": "independent source-first review",
+          "type": "review"
+        }
+      ],
+      "id": "G08",
+      "reason": "3 relations valid and reviewed",
+      "scope": "Dependency Integrity",
+      "status": "PASS",
+      "validator_version": "0.1.0.dev0",
+      "verification": "verified"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:79a9177a2ceea881a59ff6c776333843a9c604db79bc7f2667ed2e335a20b563",
+          "ref": "stages/review.json",
+          "run_id": "PBD-RUN-P07GPH67ZBKR",
+          "stage": "independent_review",
+          "summary": "independent source-first review",
+          "type": "review"
+        }
+      ],
+      "id": "G09",
+      "reason": "no unsupported scope; exclusions and conflicts recorded",
+      "scope": "Scope Integrity",
+      "status": "PASS",
+      "validator_version": "0.1.0.dev0",
+      "verification": "verified"
+    },
+    {
+      "evidence": [],
+      "id": "G10",
+      "reason": "no sprint planning requested; generated fields contain no assignments, dates or completed work (enforced at design submission)",
+      "scope": "Planning Integrity",
+      "status": "NOT_APPLICABLE",
+      "validator_version": "0.1.0.dev0"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:c82f90f14d5baa981158499d31c48674f42334fc84547d36ab1f947943439d5b",
+          "ref": "output/checks.json",
+          "run_id": "PBD-RUN-P07GPH67ZBKR",
+          "stage": "checks",
+          "summary": "runtime deterministic checks",
+          "type": "deterministic_check"
+        }
+      ],
+      "id": "G11",
+      "reason": "exports deterministic and consistent across formats",
+      "scope": "Artifact Integrity",
+      "status": "PASS",
+      "validator_version": "0.1.0.dev0",
+      "verification": "verified"
+    },
+    {
+      "evidence": [],
+      "id": "G12",
+      "reason": "no publication requested; a local package is not an authorization to publish",
+      "scope": "Publication Safety",
+      "status": "NOT_APPLICABLE",
+      "validator_version": "0.1.0.dev0"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:c82f90f14d5baa981158499d31c48674f42334fc84547d36ab1f947943439d5b",
+          "ref": "output/checks.json",
+          "run_id": "PBD-RUN-P07GPH67ZBKR",
+          "stage": "checks",
+          "summary": "runtime deterministic checks",
+          "type": "deterministic_check"
+        },
+        {
+          "digest": "sha256:79a9177a2ceea881a59ff6c776333843a9c604db79bc7f2667ed2e335a20b563",
+          "ref": "stages/review.json",
+          "run_id": "PBD-RUN-P07GPH67ZBKR",
+          "stage": "independent_review",
+          "summary": "independent source-first review",
+          "type": "review"
+        }
+      ],
+      "id": "G13",
+      "reason": "reviewer distinct from every reader, orchestrator and designer; own verified-quote inventory (5 obligations) cites every source that yielded obligations; judged 18 items/criteria. Agent identities are self-reported by the host.",
+      "scope": "Independent Review",
+      "status": "PASS",
+      "validator_version": "0.1.0.dev0",
+      "verification": "verified"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:79a9177a2ceea881a59ff6c776333843a9c604db79bc7f2667ed2e335a20b563",
+          "ref": "stages/review.json",
+          "run_id": "PBD-RUN-P07GPH67ZBKR",
+          "stage": "independent_review",
+          "summary": "independent source-first review",
+          "type": "review"
+        }
+      ],
+      "id": "G14",
+      "reason": "duplicate candidates assessed",
+      "scope": "Semantic Duplication",
+      "status": "PASS",
+      "validator_version": "0.1.0.dev0",
+      "verification": "verified"
+    },
+    {
+      "evidence": [],
+      "id": "G15",
+      "reason": "no decisions or prior versions in this run",
+      "scope": "Change Safety",
+      "status": "NOT_APPLICABLE",
+      "validator_version": "0.1.0.dev0"
+    },
+    {
+      "evidence": [
+        {
+          "digest": "sha256:c82f90f14d5baa981158499d31c48674f42334fc84547d36ab1f947943439d5b",
+          "ref": "output/checks.json",
+          "run_id": "PBD-RUN-P07GPH67ZBKR",
+          "stage": "checks",
+          "summary": "runtime deterministic checks",
+          "type": "deterministic_check"
+        }
+      ],
+      "id": "G16",
+      "reason": "outputs privacy-clean; run made zero remote calls",
+      "scope": "Privacy and Offline Boundary",
+      "status": "PASS",
+      "validator_version": "0.1.0.dev0",
+      "verification": "verified"
+    },
+    {
+      "evidence": [],
+      "id": "G17",
+      "reason": "no target package requested",
+      "scope": "Target Compatibility",
+      "status": "NOT_APPLICABLE",
+      "validator_version": "0.1.0.dev0"
+    },
+    {
+      "evidence": [],
+      "id": "G18",
+      "reason": "round-trip against a tracker (mock or live) belongs to M3; live qualification requires separate authorization",
+      "scope": "Round-trip Fidelity",
+      "status": "NOT_RUN",
+      "validator_version": "0.1.0.dev0"
+    }
+  ],
+  "kind": "pbd.gate-report",
+  "run_id": "PBD-RUN-P07GPH67ZBKR",
+  "schema_version": "1.1.0"
+}

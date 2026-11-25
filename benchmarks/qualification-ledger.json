@@ -9,12 +9,13 @@
    "milestone": "M2",
    "severity": "high",
    "issue": "Generators confirmed one reading of an ambiguous rule (4 medium inventions).",
-   "evidence": "docs/evidence/M1.md#gold-evaluation-results",
+   "evidence": "docs/evidence/final-qualification.md",
    "resolution": "Design contract rejects confirmed criteria/fields that trace only ambiguous, conflicting or unknown claims; designer and reviewer procedures require alternatives or questions.",
    "tests": [
     "tests/pipeline/test_m1_fixes.py"
    ],
-   "state": "fixed_pending_requalification"
+   "state": "closed",
+   "closed_by": "Final qualification: 0 trap violations in c02, c05, c06 and F1; residual medium inventions (c02 1, c06 1 caught by G09) recorded."
   },
   {
    "id": "QL-002",
@@ -22,12 +23,13 @@
    "milestone": "M2",
    "severity": "high",
    "issue": "Critical obligation represented only in a Feature rule, not verifiable (critical recall 7/8).",
-   "evidence": "benchmarks/runs/m1/c04-code-tech/evaluation.json",
+   "evidence": "docs/evidence/final-qualification.md",
    "resolution": "Deterministic signal for effective claims covered only by epics/features when acceptance is requested, surfaced in checks, report and to the reviewer; reviewer procedure checks verifiable representation.",
    "tests": [
     "tests/pipeline/test_m1_fixes.py"
    ],
-   "state": "fixed_pending_requalification"
+   "state": "closed",
+   "closed_by": "c04 critical recall 8/8 under the candidate (M1 7/8)."
   },
   {
    "id": "QL-003",
@@ -35,12 +37,13 @@
    "milestone": "M2",
    "severity": "medium",
    "issue": "Task to remove a superseded mechanism without evidence that it exists (borderline trap). Original result preserved; adjudication separate.",
-   "evidence": "benchmarks/runs/m1/c06-adr-supersession/evaluation.json",
+   "evidence": "docs/evidence/final-qualification.md",
    "resolution": "Designer procedure: removal/migration work for superseded behavior requires implementation evidence of that behavior, otherwise a question; reviewer checks it.",
    "tests": [
     "tests/unit/test_procedures.py"
    ],
-   "state": "fixed_pending_requalification"
+   "state": "closed",
+   "closed_by": "c06: no task on the superseded mechanism; 0 trap violations."
   },
   {
    "id": "QL-004",
@@ -48,13 +51,14 @@
    "milestone": "M2",
    "severity": "medium",
    "issue": "Criterion references by visible IDs that do not resolve; duplicated connector words ('que que').",
-   "evidence": "benchmarks/runs/m1/c08-insufficient-tech/review.json",
+   "evidence": "docs/evidence/final-qualification.md",
    "resolution": "Final qualification c08 showed tasks citing criterion design keys (AC1..AC7) that readers cannot resolve; the design contract now rejects criterion keys as well as visible IDs in free text, and the designer procedure says to describe the behavior instead. c08 is re-run in the correction round.",
    "tests": [
     "tests/pipeline/test_m1_fixes.py",
     "tests/unit/test_profiles_richtext.py"
    ],
-   "state": "fixed_pending_requalification"
+   "state": "closed",
+   "closed_by": "c08 re-run (e8938d0): 0 unresolvable criterion references in item/criterion texts; reviewer-prose references remain a residual noted in the evidence."
   },
   {
    "id": "QL-005",
@@ -62,12 +66,13 @@
    "milestone": "M2",
    "severity": "medium",
    "issue": "Sourced priority column not carried as a confirmed field.",
-   "evidence": "benchmarks/runs/m1/c12-xlsx-source/review.json",
+   "evidence": "docs/evidence/final-qualification.md",
    "resolution": "Reader procedure catalogs field values stated by sources (priority, estimates) as data obligations; designer records them as confirmed fields citing claims.",
    "tests": [
     "tests/unit/test_procedures.py"
    ],
-   "state": "fixed_pending_requalification"
+   "state": "closed",
+   "closed_by": "c12: sheet priorities recorded as confirmed fields; 6/6 critical."
   },
   {
    "id": "QL-006",
@@ -89,10 +94,11 @@
    "milestone": "final",
    "severity": "high",
    "issue": "No end-to-end run of the installed skill in a new host session driven only by natural language.",
-   "evidence": "docs/evidence/M1.md#m1-exit-assessment",
+   "evidence": "docs/evidence/final-qualification.md",
    "resolution": "Final integrated qualification.",
    "tests": [],
-   "state": "deferred_final_qualification"
+   "state": "closed",
+   "closed_by": "F1: fresh agent, installed skill, one natural-language request, report produced; critical 8/8, 0 traps; G13 BLOCKED as expected (sequential roles)."
   },
   {
    "id": "QL-008",
@@ -126,10 +132,11 @@
    "milestone": "final",
    "severity": "high",
    "issue": "Pre-registered thresholds missed: c04 critical recall, c06 trap.",
-   "evidence": "docs/evidence/M1.md#gold-evaluation-results",
+   "evidence": "docs/evidence/final-qualification.md",
    "resolution": "Re-run affected cases under the frozen final candidate; original results stay as recorded.",
    "tests": [],
-   "state": "deferred_final_qualification"
+   "state": "closed",
+   "closed_by": "c04 8/8 and c06 0 trap violations under the candidate; M1 results unchanged. c08 re-run missed recall (0.75) and is reported as a new open item QL-019."
   },
   {
    "id": "QL-011",
@@ -162,14 +169,14 @@
    "milestone": "final",
    "severity": "high",
    "issue": "Audit, compare and refine contracts are qualified by deterministic fixtures only; no agent-led run of these modes yet.",
-   "evidence": "docs/evidence/M2.md",
-   "resolution": "Final integrated qualification exercises audit, comparison and refinement from natural-language requests with separate agents.",
+   "evidence": "docs/evidence/final-qualification.md",
+   "resolution": "Audit qualified agent-led (F3: 4/4 defects, 0 false positives); compare and refine not yet run agent-led.",
    "tests": [
     "tests/pipeline/test_audit.py",
     "tests/pipeline/test_compare.py",
     "tests/pipeline/test_modes.py"
    ],
-   "state": "deferred_final_qualification"
+   "state": "open"
   },
   {
    "id": "QL-014",
@@ -204,12 +211,12 @@
    "milestone": "final",
    "severity": "high",
    "issue": "Planning, evolution and the publication workflow are qualified by deterministic fixtures and mocks only; no agent-led run proposes plans, evolutions or packages from a natural-language request yet.",
-   "evidence": "docs/evidence/M3-M6.md",
-   "resolution": "Final integrated qualification exercises them in a new session from one request.",
+   "evidence": "docs/evidence/final-qualification.md",
+   "resolution": "Downstream modes exercised deterministically on F1's agent output (plan, handoff, mock publication MOCK_VERIFIED); no agent-led planning/evolution run.",
    "tests": [
     "tests/integration/test_integrated_flow.py"
    ],
-   "state": "deferred_final_qualification"
+   "state": "open"
   },
   {
    "id": "QL-017",
@@ -217,12 +224,12 @@
    "milestone": "final",
    "severity": "high",
    "issue": "Native-first reading (originals primary, declared methods, transcription evidence) is enforced by contract and tests, but no agent has yet read real PDF/DOCX/XLSX/image members natively under it.",
-   "evidence": "docs/agent-runtime-boundaries.md",
-   "resolution": "Final integrated qualification: readers on c12 (XLSX) and the new-session run declare their reading methods; evaluators check that no member is certified read from a text layer alone.",
+   "evidence": "docs/evidence/final-qualification.md",
+   "resolution": "Native-first exercised on text (native) and XLSX (honest declared fallback); agent-native PDF/image reading not exercised (c10/c11 not run).",
    "tests": [
     "tests/pipeline/test_native_first.py"
    ],
-   "state": "deferred_final_qualification"
+   "state": "open"
   },
   {
    "id": "QL-018",
@@ -236,6 +243,17 @@
     "tests/unit/test_canonical_utf8.py"
    ],
    "state": "fixed_pending_requalification"
+  },
+  {
+   "id": "QL-019",
+   "origin": "final qualification c08 re-run",
+   "milestone": "next round",
+   "severity": "medium",
+   "issue": "c08 re-run missed critical recall (3/4): the gateway question was raised but an integration task was still presented as ready to build; 2 medium inventions.",
+   "evidence": "docs/evidence/final-qualification.md",
+   "resolution": "Designer procedure: work that depends on an open blocking question is proposed or deferred, never ready to build; re-measure c08 with several runs to report variance.",
+   "tests": [],
+   "state": "open"
   }
  ]
 }

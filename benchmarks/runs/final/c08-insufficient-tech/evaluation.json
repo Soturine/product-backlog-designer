@@ -1,0 +1,65 @@
+{
+  "case": "c08-insufficient-tech",
+  "evaluator_model": "claude-haiku-5-5",
+  "obligations": [
+    {
+      "id": "G01",
+      "verdict": "covered",
+      "evidence": "PRD line 3 'informando nome e tamanho de camiseta' -> CLM PBD-CLM-P92WPWF8EN87 (confirmed) -> US1 PBD-STORY-NVM2SJX51EKK, criterion CA-01 PBD-AC-V1Q5PADVHYWB, TASK PBD-TASK-S5KMBRK7VVN8; FEAT PBD-FEAT-SK5RE342N44M rule 'A inscrição informa nome e tamanho de camiseta.'",
+      "note": "Critical. Fully traced from source to story, criterion and task."
+    },
+    {
+      "id": "G02",
+      "verdict": "handled_as_question",
+      "evidence": "PRD line 4 -> CLM PBD-CLM-J7EZYA18FNFY (ambiguous) -> SPIKE PBD-SPIKE-0GQ77Z1YBTV3 'Esclarecer a integração com o gateway de pagamentos parceiro' -> blocking question PBD-Q-Q7DBMYE9K137 asks for gateway, fee, payment methods and failure/refund handling. Feature PBD-FEAT-Y5Q3E2AADD51 rule 'Detalhes do gateway e da taxa dependem de esclarecimento.'",
+      "note": "Critical. Gateway name, fee and contract are not invented; the question is blocking and the spike is present. The payment-call criterion and task are deliberately absent (reviewer finding PBD-FND-VFA1FZFHMQS2, gate G05 candidate). Proposed failure criterion PBD-AC-7RE4FGY7641P is marked proposed."
+    },
+    {
+      "id": "G03",
+      "verdict": "covered",
+      "evidence": "PRD line 5 -> CLM PBD-CLM-ND4B97G09NFW (confirmed) -> criteria CA-01 PBD-AC-5JYXTP2SF9RN (not confirmed before payment) and CA-02 PBD-AC-JXD9CQ6X6126 (confirmed after payment); TASK PBD-TASK-2X00C1HNXWJX 'Impedir a confirmação da inscrição sem pagamento confirmado'.",
+      "note": "Critical. Constraint is stated as a testable criterion pair."
+    },
+    {
+      "id": "G04",
+      "verdict": "covered",
+      "evidence": "PRD line 6 -> CLM PBD-CLM-60J9RHGC9FGM (confirmed) -> STORY PBD-STORY-KR8Z1C7NP8AX, criterion CA-01 PBD-AC-1GT5MNZGJRQV (list shows only confirmed registrants per mutirão), TASK PBD-TASK-YG1KFKJNY5ZN; FEAT PBD-FEAT-DT9K0XNB2B14.",
+      "note": "Critical. Covered with per-mutirão scope."
+    },
+    {
+      "id": "G05",
+      "verdict": "handled_as_question",
+      "evidence": "PRD line 7 'O sistema deve ser rápido' -> CLM PBD-CLM-GR8Y5VWFEYJS (ambiguous, 'sem limite mensurável') -> question PBD-Q-RB6RRDTS0CNT asks which operation and which time or load limit. Epic out_scope lists 'Metas de desempenho (não quantificadas no PRD)'. No criterion or task created.",
+      "note": "Non-critical. Matches the expected question on the meaning of 'rápido'. The question is non-blocking, which is appropriate."
+    }
+  ],
+  "traps": [
+    {
+      "id": "T1",
+      "verdict": "not_violated",
+      "evidence": "Trap: must not invent gateway name, API, webhook or fee amount. The backlog never names a gateway, API, webhook or fee value. Gateway is only 'gateway parceiro' and the fee is 'valor, gateway, meios e integração não especificados' (CLM PBD-CLM-J7EZYA18FNFY). The word 'webhook' does not appear."
+    },
+    {
+      "id": "T2",
+      "verdict": "not_violated",
+      "evidence": "Trap: must not invent a response-time threshold for 'rápido'. No numeric time, load or SLA appears in any criterion, task or feature. The only performance text is the out-of-scope 'Metas de desempenho (não quantificadas no PRD)' and question PBD-Q-RB6RRDTS0CNT."
+    }
+  ],
+  "invented": [
+    {
+      "text": "FEAT PBD-FEAT-SK5RE342N44M 'value': 'Base para organizar o evento com a camiseta correta.' Business rationale is asserted, not in PRD, and not marked proposed.",
+      "severity": "low"
+    },
+    {
+      "text": "FEAT PBD-FEAT-DT9K0XNB2B14 'value': 'Permitir ao organizador acompanhar quem participará.' Business rationale is asserted, not in PRD, and not marked proposed.",
+      "severity": "low"
+    },
+    {
+      "text": "STORY PBD-STORY-KKVQD2MMVP63 benefit 'garantir minha vaga no mutirão'. Benefit is inferred from the payment-confirmation rule, not stated in PRD, and not marked proposed.",
+      "severity": "low"
+    }
+  ],
+  "levels_ok": true,
+  "native_first_ok": true,
+  "notes": "Source is a single 7-line prd.md, read natively (reading method 'native', reading_complete true; gate G01 PASS). All gold levels are present in backlog.json: epics, features, stories, acceptance criteria, tasks, and dependencies (3 predecessor relations, all 'proposed'). Critical obligations: 3 covered and 1 handled_as_question, so critical recall is 3/4 strict and 4/4 counting question handling. No gold obligation is missed and both traps are clean. Broken references (QL-004): the task texts cite 'AC1', 'AC2', 'AC3', 'AC4', 'AC6', 'AC7' ('Verificar AC1 e AC2' in PBD-TASK-S5KMBRK7VVN8, 'Verificar AC3 e AC4' in PBD-TASK-2X00C1HNXWJX, 'Verificar AC6 e AC7' in PBD-TASK-YG1KFKJNY5ZN). These do not match any visible_id, which uses the 'CA-0N' form, and they resolve only through an unpublished global numbering. Finding PBD-FND-0HQAPRWRTW0Z also cites 'AC3' and fails the same way. Total broken criterion references: 7. Additional problem: visible_id 'CA-01' and 'CA-02' are reused across US1, US2 and US3, so references by visible ID are ambiguous. Finding PBD-FND-VFA1FZFHMQS2 uses shorthand 'US2' and 'SP1' that is not an ID in backlog.json. Reviewer concerns (AC3 trigger ambiguity, US2 missing payment-call task) are candidate-level and do not change the verdicts above."
+}

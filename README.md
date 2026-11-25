@@ -4,7 +4,7 @@
 
 [Português (Brasil)](README.pt-BR.md) · [Documentation](docs/README.md) · [Roadmap](docs/roadmap.md) · [Example reports](examples/reports/README.md) · [Research and code audit](docs/upstream-code-audit.md)
 
-> **Development status:** pre-alpha. Agent-led generation from zero was dogfooded on 12 synthetic cases ([M1 evidence](docs/evidence/M1.md)). Audit, comparison, refinement, check, clarify and profile modes work on local files and are covered by deterministic tests; their agent-led semantic qualification is deferred to the final integrated qualification ([ledger](benchmarks/qualification-ledger.json)). Planning, incremental evolution, a mock-only Azure publication flow and the FTD handoff are implemented with deterministic tests; their semantic qualification and the new-session dogfood belong to the final integrated qualification. Nothing contacts a tracker.
+> **Development status:** pre-alpha. Agent-led generation from zero was dogfooded on 12 synthetic cases ([M1 evidence](docs/evidence/M1.md)). Audit, comparison, refinement, check, clarify and profile modes work on local files and are covered by deterministic tests; their agent-led semantic qualification is deferred to the final integrated qualification ([ledger](benchmarks/qualification-ledger.json)). Planning, incremental evolution, a mock-only Azure publication flow and the FTD handoff are implemented with deterministic tests; the final integrated qualification ([results](docs/evidence/final-qualification.md)) ran a new-session dogfood from one request, re-ran the affected M1 cases and an audit holdout; one correction re-run missed its threshold and is reported. Nothing contacts a tracker.
 
 ## Why PBD?
 
@@ -131,7 +131,7 @@ Azure CLI authentication with REST/JSON Patch for lossless writes; optional CLI 
 | M3 | Azure local snapshots and mock-only publication workflow | implemented (mock); live NOT_RUN |
 | M4 | planning without invented capacity or dates | implemented; deterministic tests pass |
 | M5 | source diffs, decisions, lineage, staleness | implemented; deterministic tests pass |
-| M6 | FTD handoff, packaging, integrated flow, docs | implemented; final integrated qualification pending |
+| M6 | FTD handoff, packaging, integrated flow, docs | implemented; final qualification run ([results](docs/evidence/final-qualification.md)) |
 
 See [roadmap](docs/roadmap.md), [skill](SKILL.md), [changelog](CHANGELOG.md), [attribution](ATTRIBUTION.md). Public examples must be synthetic; never commit private sources or credentials. Repository license selection is pending; no third-party implementation has been vendored. Contributions and runtime installation instructions will be qualified before release.
 

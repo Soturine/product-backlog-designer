@@ -1,0 +1,97 @@
+{
+  "ambiguities": [],
+  "exclusions": [],
+  "members": [
+    {
+      "lines_read": [
+        [
+          1,
+          12
+        ]
+      ],
+      "path": "codes.py",
+      "reading": {
+        "limitations": [],
+        "method": "native",
+        "tool": "host file reader"
+      },
+      "status": "read"
+    },
+    {
+      "lines_read": [
+        [
+          1,
+          6
+        ]
+      ],
+      "path": "notify.py",
+      "reading": {
+        "limitations": [],
+        "method": "native",
+        "tool": "host file reader"
+      },
+      "status": "read"
+    }
+  ],
+  "obligations": [
+    {
+      "category": "constraint",
+      "key": "R1",
+      "locator": {
+        "line_end": 4,
+        "line_start": 4,
+        "member": "codes.py"
+      },
+      "modality": "informative",
+      "quote": "EXPIRY_HOURS = 48",
+      "text": "Implementação define expiração do código em 48 horas (EXPIRY_HOURS = 48)",
+      "uncertainty": "conflicting"
+    },
+    {
+      "category": "functional",
+      "key": "R2",
+      "locator": {
+        "line_end": 8,
+        "line_start": 8,
+        "member": "codes.py"
+      },
+      "modality": "informative",
+      "quote": "secrets.randbelow(10**6):06d",
+      "text": "Implementação gera código de 6 dígitos numéricos com secrets.randbelow",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R3",
+      "locator": {
+        "line_end": 12,
+        "line_start": 12,
+        "member": "codes.py"
+      },
+      "modality": "informative",
+      "quote": "age_hours >= EXPIRY_HOURS",
+      "text": "Implementação considera o código expirado quando a idade em horas é maior ou igual ao limite",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "integration",
+      "key": "R4",
+      "locator": {
+        "line_end": 6,
+        "line_start": 6,
+        "member": "notify.py"
+      },
+      "modality": "informative",
+      "quote": "Seu código de retirada é",
+      "text": "Implementação monta mensagem na fila notificacoes com o texto do código de retirada ao morador",
+      "uncertainty": "confirmed"
+    }
+  ],
+  "reader": {
+    "agent": "reader-src-c04",
+    "independence": "sequential_role",
+    "model": "claude-sonnet-5-5"
+  },
+  "source_digest": "sha256:d1458ea801d177d245e2363c5676c7e7bac92e647f2d8831f0639ea0e820e0cc",
+  "source_id": "PBD-SRC-N4W88QSZKKPP"
+}

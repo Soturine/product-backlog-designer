@@ -1,0 +1,157 @@
+{
+  "ambiguities": [],
+  "exclusions": [
+    {
+      "locator": {
+        "line_start": 17,
+        "member": "prd.md",
+        "section": "4"
+      },
+      "quote": "Entrega na sala de aula não faz parte desta versão",
+      "text": "Entrega na sala de aula não faz parte desta versão"
+    }
+  ],
+  "members": [
+    {
+      "lines_read": [
+        [
+          1,
+          17
+        ]
+      ],
+      "path": "prd.md",
+      "reading": {
+        "limitations": [],
+        "method": "native",
+        "tool": "host file reader"
+      },
+      "status": "read"
+    }
+  ],
+  "obligations": [
+    {
+      "category": "functional",
+      "key": "R1",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "section": "1.1"
+      },
+      "modality": "must",
+      "quote": "O responsável cadastra o aluno",
+      "text": "O responsável cadastra o aluno",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R2",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "section": "1.1"
+      },
+      "modality": "must",
+      "quote": "faz pedidos de lanche para o dia seguinte",
+      "text": "O responsável faz pedidos de lanche para o dia seguinte",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "constraint",
+      "key": "R3",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "section": "1.2"
+      },
+      "modality": "must",
+      "quote": "são aceitos até as 20h do dia anterior",
+      "text": "Pedidos para o dia seguinte são aceitos até as 20h do dia anterior",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "constraint",
+      "key": "R4",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "section": "1.3"
+      },
+      "modality": "must",
+      "quote": "no máximo 2 pedidos por dia",
+      "text": "Cada aluno pode ter no máximo 2 pedidos por dia",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "constraint",
+      "key": "R5",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "section": "1.4"
+      },
+      "modality": "must_not",
+      "quote": "não podem ser pedidos para ele",
+      "text": "Itens que contêm alergênicos marcados no cadastro do aluno não podem ser pedidos para ele",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R6",
+      "locator": {
+        "line_start": 10,
+        "member": "prd.md",
+        "section": "2.1"
+      },
+      "modality": "must",
+      "quote": "pagos com o saldo pré-carregado da conta do responsável",
+      "text": "Os pedidos são pagos com o saldo pré-carregado da conta do responsável",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "error",
+      "key": "R7",
+      "locator": {
+        "line_start": 11,
+        "member": "prd.md",
+        "section": "2.2"
+      },
+      "modality": "must",
+      "quote": "recusado quando o saldo é insuficiente",
+      "text": "Um pedido é recusado quando o saldo é insuficiente",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "error",
+      "key": "R8",
+      "locator": {
+        "line_start": 11,
+        "member": "prd.md",
+        "section": "2.2"
+      },
+      "modality": "must",
+      "quote": "\"Saldo insuficiente\"",
+      "text": "A recusa por saldo insuficiente exibe a mensagem \"Saldo insuficiente\"",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R9",
+      "locator": {
+        "line_start": 14,
+        "member": "prd.md",
+        "section": "3.1"
+      },
+      "modality": "must",
+      "quote": "lista de pedidos do dia agrupada por turma",
+      "text": "A cantina vê a lista de pedidos do dia agrupada por turma",
+      "uncertainty": "confirmed"
+    }
+  ],
+  "reader": {
+    "agent": "reader-prd-a1",
+    "independence": "sequential_role",
+    "model": "claude-sonnet-5-5"
+  },
+  "source_digest": "sha256:d97ad66d7626700352d51ae0c4c43860a7a61d54631d093e2ebc2ace2b9bd0d3",
+  "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+}

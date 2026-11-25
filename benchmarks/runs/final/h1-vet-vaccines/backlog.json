@@ -1,0 +1,1282 @@
+{
+  "claims": [
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-AD4T7BW7A26S",
+          "PBD-AC-97AQN990C54D",
+          "PBD-TASK-6BD8H1GKP8EC"
+        ],
+        "rationale": "Fluxo principal de agendamento.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "prd.md",
+            "quote_digest": "sha256:170677c417edb08eae7fe615c8fbc1577a19078cfc23c7582accc9f601531ed3",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "8067f0792a55d241"
+          },
+          "summary": "Permitir que tutores agendem a vacinação dos seus animais pela internet",
+          "type": "source_locator",
+          "verification": "mechanical"
+        },
+        {
+          "locator": {
+            "line_end": 7,
+            "line_start": 7,
+            "member": "prd.md",
+            "quote_digest": "sha256:9f0b637c093433adeefaa277e8f65d098f2feab22219d12b85f9cba4949e68ec",
+            "section": "2.1",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "8067f0792a55d241"
+          },
+          "summary": "O tutor cadastrado escolhe um animal, uma vacina do catálogo e um horário livre da agenda",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-C3R7SYDMTBXT",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O tutor cadastrado agenda pela internet a vacinação de um animal escolhendo o animal, uma vacina do catálogo e um horário livre da agenda",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-AD4T7BW7A26S",
+          "PBD-AC-NYS1W10A1WJW",
+          "PBD-TASK-W1P0AYWXFKV9"
+        ],
+        "rationale": "Ocupação única do horário.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 8,
+            "line_start": 8,
+            "member": "prd.md",
+            "quote_digest": "sha256:e7efdcd4a6ea2f60197f1e565be6726de55ea9e51934d2a94b4353dcfeb002b2",
+            "section": "2.2",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "8067f0792a55d241"
+          },
+          "summary": "Cada horário atende um único animal",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-B8FHVVTF5JZZ",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Cada horário da agenda atende um único animal",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-AD4T7BW7A26S",
+          "PBD-AC-VM319ZZC261G",
+          "PBD-AC-WZ4PY1EM8BNH",
+          "PBD-TASK-W1P0AYWXFKV9"
+        ],
+        "rationale": "Antecedência mínima de 24h com limite.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 9,
+            "line_start": 9,
+            "member": "prd.md",
+            "quote_digest": "sha256:a0949384fa75a9f6d23e6159bd9f2cfac29b197273ae93fdbb89ef58f374e6dd",
+            "section": "2.3",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "8067f0792a55d241"
+          },
+          "summary": "pelo menos 24 horas de antecedência",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-YEEHCKRPWHBJ",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Um agendamento só pode ser feito com pelo menos 24 horas de antecedência",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-5W6F6CDR4JSG",
+          "PBD-AC-W3WZEDN059ZV",
+          "PBD-TASK-CHTBVXCMPGQP"
+        ],
+        "rationale": "Confirmação por e-mail.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 10,
+            "line_start": 10,
+            "member": "prd.md",
+            "quote_digest": "sha256:6339a1e8a1552a54b47c10780bccd572b3659cf446a093fca8b19e761937f3ed",
+            "section": "2.4",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "8067f0792a55d241"
+          },
+          "summary": "O tutor recebe uma confirmação por e-mail após agendar",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-4R79V0QF6NMP",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O tutor recebe uma confirmação por e-mail após agendar",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-9RVQXD2HADM4",
+          "PBD-AC-BRGKPA4FP909",
+          "PBD-TASK-ZDQVA6VBJDP5"
+        ],
+        "rationale": "Cancelamento pelo tutor.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 11,
+            "line_start": 11,
+            "member": "prd.md",
+            "quote_digest": "sha256:2e533ec6a94c09a5c26b425ad59df536f5987baa58e37cc6caa1227edb7c81ed",
+            "section": "2.5",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "8067f0792a55d241"
+          },
+          "summary": "O tutor pode cancelar um agendamento até 12 horas antes do horário",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-YFMYCQGJMD81",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O tutor pode cancelar um agendamento até 12 horas antes do horário",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-9RVQXD2HADM4",
+          "PBD-STORY-MJAKADJYR3VH",
+          "PBD-AC-AMB3VR5EAWMP",
+          "PBD-AC-4SVP9CJX78JR",
+          "PBD-TASK-ZDQVA6VBJDP5",
+          "PBD-TASK-B8YA54WKE8WV"
+        ],
+        "rationale": "Cancelamento tardio só pela recepção.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 11,
+            "line_start": 11,
+            "member": "prd.md",
+            "quote_digest": "sha256:faebcc28e6cbf1c819614b6e3af7891e94b4e6c604e48e3dc0c0765c2d2e75ea",
+            "section": "2.5",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "8067f0792a55d241"
+          },
+          "summary": "o cancelamento só pode ser feito pela recepção",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-ET7THJAKJCJJ",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Depois do limite de 12 horas antes do horário, o cancelamento só pode ser feito pela recepção",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-1MMGZ1X3JX2N",
+          "PBD-AC-7ZGDWQJRKWX9"
+        ],
+        "rationale": "Critérios indefinidos pela clínica; ver Q1. Sem tarefa de implementação até a resposta.",
+        "status": "QUESTION_REQUIRED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 12,
+            "line_start": 12,
+            "member": "prd.md",
+            "quote_digest": "sha256:c853f365010352826d1b09c7b4a6badedadd8fb5646aa059b1edaa570981d62d",
+            "section": "2.6",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "8067f0792a55d241"
+          },
+          "summary": "Animais com reação adversa registrada exigem avaliação do veterinário antes do agendamento",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-6BNEPGFNA8EX",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Animais com reação adversa registrada exigem avaliação do veterinário antes do agendamento; os critérios da avaliação ainda não foram definidos pela clínica",
+      "uncertainty": {
+        "level": "ambiguous"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-BCX903ZN6VZD",
+          "PBD-AC-1PGTD7NHHTTW",
+          "PBD-TASK-DCY71EAWT30N"
+        ],
+        "rationale": "Agenda do dia.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "prd.md",
+            "quote_digest": "sha256:520a9e262a4dcbdcd49cff9782dbcfb3cedec989144c19cf5dd50273bba24939",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "8067f0792a55d241"
+          },
+          "summary": "a recepção acompanhe a agenda do dia",
+          "type": "source_locator",
+          "verification": "mechanical"
+        },
+        {
+          "locator": {
+            "line_end": 15,
+            "line_start": 15,
+            "member": "prd.md",
+            "quote_digest": "sha256:d08fbac5f3d2d7907803ab0ae91e4dcad46eb802d7a31e02458efe7e590db599",
+            "section": "3.1",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "8067f0792a55d241"
+          },
+          "summary": "A recepção vê a agenda do dia em ordem de horário, com nome do animal, vacina e tutor",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-GZ9E9B7Y3F2A",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "A recepção acompanha a agenda do dia, vista em ordem de horário, com nome do animal, vacina e tutor",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-JBS7PR295QB5",
+          "PBD-AC-N80RB60YMWTG",
+          "PBD-TASK-F78RS0Z9AYA8"
+        ],
+        "rationale": "Registro com data e lote.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 16,
+            "line_start": 16,
+            "member": "prd.md",
+            "quote_digest": "sha256:8ff96382d5396785e683ff3ff090de498b4a0ba52c16244c294acf78484fcb69",
+            "section": "3.2",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "8067f0792a55d241"
+          },
+          "summary": "A recepção registra a aplicação da vacina; o registro guarda a data e o lote informado",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-RXDKRFMP20SB",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "A recepção registra a aplicação da vacina; o registro guarda a data e o lote informado",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "error",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-JBS7PR295QB5",
+          "PBD-AC-NND4W6M8RTRB",
+          "PBD-TASK-F78RS0Z9AYA8"
+        ],
+        "rationale": "Bloqueio sem lote.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 17,
+            "line_start": 17,
+            "member": "prd.md",
+            "quote_digest": "sha256:12f2bdc1125fdea57897dfb95b33b56131d7e16df87f56a3acd4f3c00a9cdcc4",
+            "section": "3.3",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "8067f0792a55d241"
+          },
+          "summary": "Quando o lote não é informado, a aplicação não pode ser registrada",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-6KE5A89WMWS5",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Quando o lote não é informado, a aplicação não pode ser registrada",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    }
+  ],
+  "criteria": [
+    {
+      "claim_refs": [
+        "PBD-CLM-C3R7SYDMTBXT"
+      ],
+      "condition": "Um tutor cadastrado com animal, vacina do catálogo e horário livre à escolha",
+      "expected_outcomes": [
+        "O agendamento é criado com o animal, a vacina e o horário escolhidos"
+      ],
+      "id": "PBD-AC-97AQN990C54D",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-AD4T7BW7A26S",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o tutor confirma o agendamento com pelo menos 24 horas de antecedência",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-B8FHVVTF5JZZ"
+      ],
+      "condition": "Um horário já agendado para um animal",
+      "expected_outcomes": [
+        "O sistema não permite o agendamento, pois cada horário atende um único animal"
+      ],
+      "id": "PBD-AC-NYS1W10A1WJW",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-AD4T7BW7A26S",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "outro tutor tenta agendar o mesmo horário",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-YEEHCKRPWHBJ"
+      ],
+      "condition": "Um horário com menos de 24 horas de antecedência",
+      "expected_outcomes": [
+        "O agendamento não é realizado"
+      ],
+      "id": "PBD-AC-VM319ZZC261G",
+      "order": 2,
+      "origin": "generated",
+      "parent": "PBD-STORY-AD4T7BW7A26S",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o tutor tenta agendar",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-YEEHCKRPWHBJ"
+      ],
+      "condition": "Um horário com exatamente 24 horas de antecedência",
+      "expected_outcomes": [
+        "O agendamento é aceito, pois a regra exige pelo menos 24 horas"
+      ],
+      "id": "PBD-AC-WZ4PY1EM8BNH",
+      "order": 3,
+      "origin": "generated",
+      "parent": "PBD-STORY-AD4T7BW7A26S",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o tutor agenda",
+      "visible_id": "CA-04"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-4R79V0QF6NMP"
+      ],
+      "condition": "Um agendamento concluído pelo tutor",
+      "expected_outcomes": [
+        "O tutor recebe uma confirmação por e-mail"
+      ],
+      "id": "PBD-AC-W3WZEDN059ZV",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-5W6F6CDR4JSG",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o agendamento é criado",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-YFMYCQGJMD81"
+      ],
+      "condition": "Um agendamento cujo horário está a 12 horas ou mais",
+      "expected_outcomes": [
+        "O agendamento é cancelado"
+      ],
+      "id": "PBD-AC-BRGKPA4FP909",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-9RVQXD2HADM4",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o tutor cancela",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-ET7THJAKJCJJ"
+      ],
+      "condition": "Um agendamento cujo horário está a menos de 12 horas",
+      "expected_outcomes": [
+        "O cancelamento pelo tutor não é permitido",
+        "O cancelamento só pode ser feito pela recepção"
+      ],
+      "id": "PBD-AC-AMB3VR5EAWMP",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-9RVQXD2HADM4",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o tutor tenta cancelar",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-ET7THJAKJCJJ"
+      ],
+      "condition": "Um agendamento cujo horário está a menos de 12 horas",
+      "expected_outcomes": [
+        "O agendamento é cancelado pela recepção"
+      ],
+      "id": "PBD-AC-4SVP9CJX78JR",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-MJAKADJYR3VH",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "a recepção cancela o agendamento",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-6BNEPGFNA8EX"
+      ],
+      "expected_outcomes": [
+        "O agendamento não é concluído sem a avaliação do veterinário (forma de verificação a definir)"
+      ],
+      "id": "PBD-AC-7ZGDWQJRKWX9",
+      "order": 0,
+      "origin": "proposed",
+      "parent": "PBD-STORY-1MMGZ1X3JX2N",
+      "rationale": "O PRD afirma a exigência mas diz que os critérios da avaliação não foram definidos; o fluxo exato é proposta pendente de resposta da clínica.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Animal com reação adversa registrada exige avaliação do veterinário antes do agendamento; o comportamento do sistema (bloqueio, solicitação, registro do resultado) depende de critérios ainda não definidos.",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-GZ9E9B7Y3F2A"
+      ],
+      "condition": "Agendamentos existentes no dia",
+      "expected_outcomes": [
+        "Os agendamentos aparecem em ordem de horário",
+        "Cada linha mostra nome do animal, vacina e tutor"
+      ],
+      "id": "PBD-AC-1PGTD7NHHTTW",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-BCX903ZN6VZD",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "a recepção abre a agenda do dia",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-RXDKRFMP20SB"
+      ],
+      "condition": "Uma aplicação de vacina com lote informado",
+      "expected_outcomes": [
+        "O registro guarda a data e o lote informado"
+      ],
+      "id": "PBD-AC-N80RB60YMWTG",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-JBS7PR295QB5",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "a recepção registra a aplicação",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-6KE5A89WMWS5"
+      ],
+      "condition": "Uma aplicação de vacina sem lote informado",
+      "expected_outcomes": [
+        "A aplicação não é registrada"
+      ],
+      "id": "PBD-AC-NND4W6M8RTRB",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-JBS7PR295QB5",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "a recepção tenta registrar a aplicação",
+      "visible_id": "CA-02"
+    }
+  ],
+  "decisions": [],
+  "findings": [
+    {
+      "actual": "Critérios indefinidos no PRD",
+      "affects": [
+        "PBD-AC-7ZGDWQJRKWX9",
+        "PBD-STORY-1MMGZ1X3JX2N"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Fluxo da avaliação veterinária definido",
+      "gate": "G06",
+      "id": "PBD-FND-HZ4EGWXPMSD1",
+      "impact": "US5 não pode ser implementada",
+      "recommendation": "Resolver Q1 com a clínica",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "PRD declara a lacuna"
+    }
+  ],
+  "items": [
+    {
+      "claim_refs": [
+        "PBD-CLM-C3R7SYDMTBXT",
+        "PBD-CLM-B8FHVVTF5JZZ",
+        "PBD-CLM-YEEHCKRPWHBJ",
+        "PBD-CLM-4R79V0QF6NMP",
+        "PBD-CLM-YFMYCQGJMD81",
+        "PBD-CLM-ET7THJAKJCJJ",
+        "PBD-CLM-6BNEPGFNA8EX"
+      ],
+      "content": {
+        "context": "A Clínica Patas quer receber agendamentos de vacina pela internet, com regras de antecedência, confirmação, cancelamento e avaliação veterinária para animais com reação adversa.",
+        "in_scope": [
+          "Agendar animal, vacina e horário livre",
+          "Confirmação por e-mail",
+          "Cancelamento pelo tutor e pela recepção",
+          "Avaliação veterinária prévia para animais com reação adversa"
+        ],
+        "kind": "epic",
+        "objective": "Permitir que tutores agendem a vacinação dos seus animais pela internet.",
+        "out_scope": [
+          "Pagamento on-line",
+          "Emissão de nota fiscal"
+        ],
+        "outcome": "Tutores cadastrados agendam e cancelam vacinações sem depender de contato direto com a recepção, dentro das regras de antecedência da clínica."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir que tutores agendem a vacinação dos seus animais pela internet.</p><p><strong>Contexto</strong>: A Clínica Patas quer receber agendamentos de vacina pela internet, com regras de antecedência, confirmação, cancelamento e avaliação veterinária para animais com reação adversa.</p><p><strong>No escopo</strong></p><ul><li>Agendar animal, vacina e horário livre</li><li>Confirmação por e-mail</li><li>Cancelamento pelo tutor e pela recepção</li><li>Avaliação veterinária prévia para animais com reação adversa</li></ul><p><strong>Fora do escopo</strong></p><ul><li>Pagamento on-line</li><li>Emissão de nota fiscal</li></ul><p><strong>Resultado esperado</strong>: Tutores cadastrados agendam e cancelam vacinações sem depender de contato direto com a recepção, dentro das regras de antecedência da clínica.</p>"
+      },
+      "id": "PBD-EPIC-DR4TF1PF4AYR",
+      "origin": "generated",
+      "parent": null,
+      "status": "reviewed",
+      "title": "Agendamento online de vacinação pelo tutor",
+      "type": "epic"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-GZ9E9B7Y3F2A",
+        "PBD-CLM-RXDKRFMP20SB",
+        "PBD-CLM-6KE5A89WMWS5"
+      ],
+      "content": {
+        "context": "A recepção precisa de uma visão ordenada do dia e de um registro confiável da aplicação, com data e lote.",
+        "in_scope": [
+          "Agenda do dia em ordem de horário",
+          "Registro da aplicação com data e lote"
+        ],
+        "kind": "epic",
+        "objective": "Permitir que a recepção acompanhe a agenda do dia e registre as vacinas aplicadas.",
+        "out_scope": [
+          "Pagamento on-line",
+          "Emissão de nota fiscal"
+        ],
+        "outcome": "A recepção conduz o atendimento do dia a partir da agenda e mantém o registro das aplicações com lote."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir que a recepção acompanhe a agenda do dia e registre as vacinas aplicadas.</p><p><strong>Contexto</strong>: A recepção precisa de uma visão ordenada do dia e de um registro confiável da aplicação, com data e lote.</p><p><strong>No escopo</strong></p><ul><li>Agenda do dia em ordem de horário</li><li>Registro da aplicação com data e lote</li></ul><p><strong>Fora do escopo</strong></p><ul><li>Pagamento on-line</li><li>Emissão de nota fiscal</li></ul><p><strong>Resultado esperado</strong>: A recepção conduz o atendimento do dia a partir da agenda e mantém o registro das aplicações com lote.</p>"
+      },
+      "id": "PBD-EPIC-A14N9KQNDT49",
+      "origin": "generated",
+      "parent": null,
+      "status": "reviewed",
+      "title": "Acompanhamento da agenda e registro de aplicações pela recepção",
+      "type": "epic"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-C3R7SYDMTBXT",
+        "PBD-CLM-B8FHVVTF5JZZ",
+        "PBD-CLM-YEEHCKRPWHBJ",
+        "PBD-CLM-4R79V0QF6NMP"
+      ],
+      "content": {
+        "capability": "O tutor cadastrado escolhe animal, vacina do catálogo e horário livre e recebe confirmação por e-mail.",
+        "kind": "feature",
+        "rules": [
+          "Cada horário atende um único animal",
+          "Agendamento exige antecedência mínima de 24 horas"
+        ],
+        "value": "Agendar sem contato com a clínica, evitando conflito de horários."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: O tutor cadastrado escolhe animal, vacina do catálogo e horário livre e recebe confirmação por e-mail.</p><p><strong>Valor</strong>: Agendar sem contato com a clínica, evitando conflito de horários.</p><p><strong>Regras relacionadas</strong></p><ul><li>Cada horário atende um único animal</li><li>Agendamento exige antecedência mínima de 24 horas</li></ul>"
+      },
+      "id": "PBD-FEAT-V5EJN1T283JT",
+      "origin": "generated",
+      "parent": "PBD-EPIC-DR4TF1PF4AYR",
+      "status": "reviewed",
+      "title": "Agendar vacinação",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-YFMYCQGJMD81",
+        "PBD-CLM-ET7THJAKJCJJ"
+      ],
+      "content": {
+        "capability": "O tutor cancela até 12 horas antes do horário; depois disso, somente a recepção cancela.",
+        "kind": "feature",
+        "rules": [
+          "Cancelamento pelo tutor até 12 horas antes do horário",
+          "Após esse limite, apenas a recepção cancela"
+        ],
+        "value": "Liberar horários com antecedência e manter controle sobre cancelamentos tardios."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: O tutor cancela até 12 horas antes do horário; depois disso, somente a recepção cancela.</p><p><strong>Valor</strong>: Liberar horários com antecedência e manter controle sobre cancelamentos tardios.</p><p><strong>Regras relacionadas</strong></p><ul><li>Cancelamento pelo tutor até 12 horas antes do horário</li><li>Após esse limite, apenas a recepção cancela</li></ul>"
+      },
+      "id": "PBD-FEAT-PZB78HY1YCNY",
+      "origin": "generated",
+      "parent": "PBD-EPIC-DR4TF1PF4AYR",
+      "status": "reviewed",
+      "title": "Cancelar agendamento",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-6BNEPGFNA8EX"
+      ],
+      "content": {
+        "capability": "Animais com reação adversa registrada exigem avaliação do veterinário antes do agendamento.",
+        "kind": "feature",
+        "rules": [
+          "Os critérios da avaliação ainda não foram definidos pela clínica"
+        ],
+        "value": "Proteger a saúde do animal antes de vaciná-lo."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Animais com reação adversa registrada exigem avaliação do veterinário antes do agendamento.</p><p><strong>Valor</strong>: Proteger a saúde do animal antes de vaciná-lo.</p><p><strong>Regras relacionadas</strong></p><ul><li>Os critérios da avaliação ainda não foram definidos pela clínica</li></ul>"
+      },
+      "id": "PBD-FEAT-0ZQDFSJFRC2M",
+      "origin": "generated",
+      "parent": "PBD-EPIC-DR4TF1PF4AYR",
+      "status": "reviewed",
+      "title": "Avaliação veterinária prévia para animais com reação adversa",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-GZ9E9B7Y3F2A"
+      ],
+      "content": {
+        "capability": "A recepção vê a agenda do dia em ordem de horário, com nome do animal, vacina e tutor.",
+        "kind": "feature",
+        "rules": [
+          "Ordenação por horário",
+          "Exibe animal, vacina e tutor"
+        ],
+        "value": "Conduzir o atendimento diário com visibilidade."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: A recepção vê a agenda do dia em ordem de horário, com nome do animal, vacina e tutor.</p><p><strong>Valor</strong>: Conduzir o atendimento diário com visibilidade.</p><p><strong>Regras relacionadas</strong></p><ul><li>Ordenação por horário</li><li>Exibe animal, vacina e tutor</li></ul>"
+      },
+      "id": "PBD-FEAT-N88C6JRSSKNH",
+      "origin": "generated",
+      "parent": "PBD-EPIC-A14N9KQNDT49",
+      "status": "reviewed",
+      "title": "Agenda do dia da recepção",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-RXDKRFMP20SB",
+        "PBD-CLM-6KE5A89WMWS5"
+      ],
+      "content": {
+        "capability": "A recepção registra a aplicação com data e lote; sem lote não há registro.",
+        "kind": "feature",
+        "rules": [
+          "O registro guarda data e lote informado",
+          "Sem lote, a aplicação não é registrada"
+        ],
+        "value": "Manter rastreabilidade do lote aplicado."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: A recepção registra a aplicação com data e lote; sem lote não há registro.</p><p><strong>Valor</strong>: Manter rastreabilidade do lote aplicado.</p><p><strong>Regras relacionadas</strong></p><ul><li>O registro guarda data e lote informado</li><li>Sem lote, a aplicação não é registrada</li></ul>"
+      },
+      "id": "PBD-FEAT-FAWWR5571VVD",
+      "origin": "generated",
+      "parent": "PBD-EPIC-A14N9KQNDT49",
+      "status": "reviewed",
+      "title": "Registro da aplicação da vacina",
+      "type": "feature"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-C3R7SYDMTBXT",
+        "PBD-CLM-B8FHVVTF5JZZ",
+        "PBD-CLM-YEEHCKRPWHBJ"
+      ],
+      "content": {
+        "actor": "tutor cadastrado",
+        "benefit": "agendar a vacinação do meu animal pela internet",
+        "kind": "role_goal_benefit",
+        "want": "o sistema me permitisse escolher um animal, uma vacina do catálogo e um horário livre da agenda"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> tutor cadastrado, <strong>gostaria que</strong> o sistema me permitisse escolher um animal, uma vacina do catálogo e um horário livre da agenda, <strong>para</strong> agendar a vacinação do meu animal pela internet.</p>"
+      },
+      "id": "PBD-STORY-AD4T7BW7A26S",
+      "origin": "generated",
+      "parent": "PBD-FEAT-V5EJN1T283JT",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Agendar vacina escolhendo animal, vacina e horário livre",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-4R79V0QF6NMP"
+      ],
+      "content": {
+        "actor": "tutor cadastrado",
+        "benefit": "ter o registro do horário marcado",
+        "kind": "role_goal_benefit",
+        "want": "o sistema me enviasse uma confirmação por e-mail após o agendamento"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> tutor cadastrado, <strong>gostaria que</strong> o sistema me enviasse uma confirmação por e-mail após o agendamento, <strong>para</strong> ter o registro do horário marcado.</p>"
+      },
+      "id": "PBD-STORY-5W6F6CDR4JSG",
+      "origin": "generated",
+      "parent": "PBD-FEAT-V5EJN1T283JT",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Receber confirmação do agendamento por e-mail",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-YFMYCQGJMD81",
+        "PBD-CLM-ET7THJAKJCJJ"
+      ],
+      "content": {
+        "actor": "tutor cadastrado",
+        "benefit": "liberar o horário quando não puder comparecer",
+        "kind": "role_goal_benefit",
+        "want": "o sistema me permitisse cancelar um agendamento até 12 horas antes do horário"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> tutor cadastrado, <strong>gostaria que</strong> o sistema me permitisse cancelar um agendamento até 12 horas antes do horário, <strong>para</strong> liberar o horário quando não puder comparecer.</p>"
+      },
+      "id": "PBD-STORY-9RVQXD2HADM4",
+      "origin": "generated",
+      "parent": "PBD-FEAT-PZB78HY1YCNY",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Cancelar agendamento até 12 horas antes",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-ET7THJAKJCJJ"
+      ],
+      "content": {
+        "actor": "recepção",
+        "benefit": "tratar cancelamentos tardios sob controle da clínica",
+        "kind": "role_goal_benefit",
+        "want": "o sistema me permitisse cancelar agendamentos cujo prazo de cancelamento do tutor já passou"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> recepção, <strong>gostaria que</strong> o sistema me permitisse cancelar agendamentos cujo prazo de cancelamento do tutor já passou, <strong>para</strong> tratar cancelamentos tardios sob controle da clínica.</p>"
+      },
+      "id": "PBD-STORY-MJAKADJYR3VH",
+      "origin": "generated",
+      "parent": "PBD-FEAT-PZB78HY1YCNY",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Cancelar agendamento após o limite do tutor",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-6BNEPGFNA8EX"
+      ],
+      "content": {
+        "actor": "tutor cadastrado",
+        "benefit": "vacinar meu animal com segurança",
+        "kind": "role_goal_benefit",
+        "want": "o sistema exigisse a avaliação do veterinário antes de agendar um animal com reação adversa registrada"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> tutor cadastrado, <strong>gostaria que</strong> o sistema exigisse a avaliação do veterinário antes de agendar um animal com reação adversa registrada, <strong>para</strong> vacinar meu animal com segurança.</p>"
+      },
+      "id": "PBD-STORY-1MMGZ1X3JX2N",
+      "origin": "generated",
+      "parent": "PBD-FEAT-0ZQDFSJFRC2M",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Agendar animal com reação adversa após avaliação veterinária",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-GZ9E9B7Y3F2A"
+      ],
+      "content": {
+        "actor": "recepção",
+        "benefit": "acompanhar os atendimentos do dia",
+        "kind": "role_goal_benefit",
+        "want": "o sistema exibisse a agenda do dia em ordem de horário, com nome do animal, vacina e tutor"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> recepção, <strong>gostaria que</strong> o sistema exibisse a agenda do dia em ordem de horário, com nome do animal, vacina e tutor, <strong>para</strong> acompanhar os atendimentos do dia.</p>"
+      },
+      "id": "PBD-STORY-BCX903ZN6VZD",
+      "origin": "generated",
+      "parent": "PBD-FEAT-N88C6JRSSKNH",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Ver a agenda do dia em ordem de horário",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-RXDKRFMP20SB",
+        "PBD-CLM-6KE5A89WMWS5"
+      ],
+      "content": {
+        "actor": "recepção",
+        "benefit": "manter o histórico de aplicações com rastreio do lote",
+        "kind": "role_goal_benefit",
+        "want": "o sistema registrasse a aplicação da vacina com a data e o lote informado"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> recepção, <strong>gostaria que</strong> o sistema registrasse a aplicação da vacina com a data e o lote informado, <strong>para</strong> manter o histórico de aplicações com rastreio do lote.</p>"
+      },
+      "id": "PBD-STORY-JBS7PR295QB5",
+      "origin": "generated",
+      "parent": "PBD-FEAT-FAWWR5571VVD",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Registrar a aplicação da vacina com data e lote",
+      "type": "story"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-C3R7SYDMTBXT"
+      ],
+      "content": {
+        "activities": [
+          "Listar animais do tutor, vacinas do catálogo e horários livres",
+          "Criar o agendamento com os três dados escolhidos"
+        ],
+        "kind": "task",
+        "outcome": "Agendamento criado com animal, vacina e horário.",
+        "summary": "Fluxo de agendamento do tutor cadastrado.",
+        "verification": "Cobre o fluxo principal de US1 (AC1)."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Fluxo de agendamento do tutor cadastrado.</p><p><strong>Atividades</strong></p><ul><li>Listar animais do tutor, vacinas do catálogo e horários livres</li><li>Criar o agendamento com os três dados escolhidos</li></ul><p><strong>Resultado esperado</strong>: Agendamento criado com animal, vacina e horário.</p><p><strong>Verificação</strong>: Cobre o fluxo principal de US1 (AC1).</p>"
+      },
+      "id": "PBD-TASK-6BD8H1GKP8EC",
+      "origin": "generated",
+      "parent": "PBD-STORY-AD4T7BW7A26S",
+      "status": "reviewed",
+      "title": "Disponibilizar escolha de animal, vacina do catálogo e horário livre",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-B8FHVVTF5JZZ",
+        "PBD-CLM-YEEHCKRPWHBJ"
+      ],
+      "content": {
+        "activities": [
+          "Impedir segunda reserva do mesmo horário",
+          "Rejeitar agendamento com menos de 24 horas de antecedência"
+        ],
+        "kind": "task",
+        "outcome": "Reservas respeitam ocupação única e antecedência mínima.",
+        "summary": "Regras de bloqueio no agendamento.",
+        "verification": "Verificar AC2, AC3 e AC12 de US1, incluindo o limite de exatamente 24 horas."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Regras de bloqueio no agendamento.</p><p><strong>Atividades</strong></p><ul><li>Impedir segunda reserva do mesmo horário</li><li>Rejeitar agendamento com menos de 24 horas de antecedência</li></ul><p><strong>Resultado esperado</strong>: Reservas respeitam ocupação única e antecedência mínima.</p><p><strong>Verificação</strong>: Verificar AC2, AC3 e AC12 de US1, incluindo o limite de exatamente 24 horas.</p>"
+      },
+      "id": "PBD-TASK-W1P0AYWXFKV9",
+      "origin": "generated",
+      "parent": "PBD-STORY-AD4T7BW7A26S",
+      "status": "reviewed",
+      "title": "Garantir um único animal por horário e antecedência de 24 horas",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-4R79V0QF6NMP"
+      ],
+      "content": {
+        "activities": [
+          "Disparar e-mail ao tutor quando o agendamento for criado"
+        ],
+        "kind": "task",
+        "outcome": "Tutor recebe a confirmação.",
+        "summary": "Notificação por e-mail.",
+        "verification": "Verificar AC4 de US2."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Notificação por e-mail.</p><p><strong>Atividades</strong></p><ul><li>Disparar e-mail ao tutor quando o agendamento for criado</li></ul><p><strong>Resultado esperado</strong>: Tutor recebe a confirmação.</p><p><strong>Verificação</strong>: Verificar AC4 de US2.</p>"
+      },
+      "id": "PBD-TASK-CHTBVXCMPGQP",
+      "origin": "generated",
+      "parent": "PBD-STORY-5W6F6CDR4JSG",
+      "status": "reviewed",
+      "title": "Enviar confirmação por e-mail após agendar",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-YFMYCQGJMD81",
+        "PBD-CLM-ET7THJAKJCJJ"
+      ],
+      "content": {
+        "activities": [
+          "Permitir cancelar até 12 horas antes do horário",
+          "Bloquear o cancelamento do tutor após o limite"
+        ],
+        "kind": "task",
+        "outcome": "Tutor cancela somente dentro do prazo.",
+        "summary": "Cancelamento do tutor.",
+        "verification": "Verificar AC5 e AC6 de US3."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Cancelamento do tutor.</p><p><strong>Atividades</strong></p><ul><li>Permitir cancelar até 12 horas antes do horário</li><li>Bloquear o cancelamento do tutor após o limite</li></ul><p><strong>Resultado esperado</strong>: Tutor cancela somente dentro do prazo.</p><p><strong>Verificação</strong>: Verificar AC5 e AC6 de US3.</p>"
+      },
+      "id": "PBD-TASK-ZDQVA6VBJDP5",
+      "origin": "generated",
+      "parent": "PBD-STORY-9RVQXD2HADM4",
+      "status": "reviewed",
+      "title": "Implementar cancelamento pelo tutor com limite de 12 horas",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-ET7THJAKJCJJ"
+      ],
+      "content": {
+        "activities": [
+          "Habilitar cancelamento por perfil da recepção independentemente do prazo"
+        ],
+        "kind": "task",
+        "outcome": "Recepção cancela agendamentos após o limite.",
+        "summary": "Cancelamento tardio pela recepção.",
+        "verification": "Verificar AC7 de US4."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Cancelamento tardio pela recepção.</p><p><strong>Atividades</strong></p><ul><li>Habilitar cancelamento por perfil da recepção independentemente do prazo</li></ul><p><strong>Resultado esperado</strong>: Recepção cancela agendamentos após o limite.</p><p><strong>Verificação</strong>: Verificar AC7 de US4.</p>"
+      },
+      "id": "PBD-TASK-B8YA54WKE8WV",
+      "origin": "generated",
+      "parent": "PBD-STORY-MJAKADJYR3VH",
+      "status": "reviewed",
+      "title": "Permitir cancelamento pela recepção após o limite",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-GZ9E9B7Y3F2A"
+      ],
+      "content": {
+        "activities": [
+          "Consultar os agendamentos do dia",
+          "Ordenar por horário",
+          "Exibir animal, vacina e tutor"
+        ],
+        "kind": "task",
+        "outcome": "Agenda do dia exibida conforme o PRD.",
+        "summary": "Consulta e exibição da agenda diária.",
+        "verification": "Verificar AC9 de US6."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Consulta e exibição da agenda diária.</p><p><strong>Atividades</strong></p><ul><li>Consultar os agendamentos do dia</li><li>Ordenar por horário</li><li>Exibir animal, vacina e tutor</li></ul><p><strong>Resultado esperado</strong>: Agenda do dia exibida conforme o PRD.</p><p><strong>Verificação</strong>: Verificar AC9 de US6.</p>"
+      },
+      "id": "PBD-TASK-DCY71EAWT30N",
+      "origin": "generated",
+      "parent": "PBD-STORY-BCX903ZN6VZD",
+      "status": "reviewed",
+      "title": "Montar a agenda do dia ordenada por horário",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-RXDKRFMP20SB",
+        "PBD-CLM-6KE5A89WMWS5"
+      ],
+      "content": {
+        "activities": [
+          "Gravar data e lote informado",
+          "Recusar o registro quando o lote não for informado"
+        ],
+        "kind": "task",
+        "outcome": "Aplicação registrada somente com lote.",
+        "summary": "Registro de aplicação.",
+        "verification": "Verificar AC10 e AC11 de US7."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Registro de aplicação.</p><p><strong>Atividades</strong></p><ul><li>Gravar data e lote informado</li><li>Recusar o registro quando o lote não for informado</li></ul><p><strong>Resultado esperado</strong>: Aplicação registrada somente com lote.</p><p><strong>Verificação</strong>: Verificar AC10 e AC11 de US7.</p>"
+      },
+      "id": "PBD-TASK-F78RS0Z9AYA8",
+      "origin": "generated",
+      "parent": "PBD-STORY-JBS7PR295QB5",
+      "status": "reviewed",
+      "title": "Registrar aplicação com data e lote e recusar sem lote",
+      "type": "task"
+    }
+  ],
+  "kind": "pbd.backlog",
+  "language": "pt-BR",
+  "profile": "generic",
+  "questions": [
+    {
+      "affects": [
+        "PBD-AC-7ZGDWQJRKWX9",
+        "PBD-CLM-6BNEPGFNA8EX",
+        "PBD-STORY-1MMGZ1X3JX2N"
+      ],
+      "alternatives": [
+        "Veterinário libera o animal no sistema antes do agendamento",
+        "Tutor contata a clínica e a recepção registra a liberação"
+      ],
+      "blocking": true,
+      "id": "PBD-Q-5X90W9S0E5E4",
+      "impact": "Impede confirmar o comportamento de US5/AC8 e a tarefa correspondente.",
+      "status": "open",
+      "text": "Quais são os critérios da avaliação do veterinário para animais com reação adversa e como ela é solicitada e registrada no sistema?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-ET7THJAKJCJJ",
+        "PBD-CLM-YFMYCQGJMD81",
+        "PBD-STORY-9RVQXD2HADM4"
+      ],
+      "alternatives": [
+        "Volta a ficar livre",
+        "Fica indisponível"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-RGXDTHTYQ293",
+      "impact": "O PRD não diz; afeta a regra de disponibilidade.",
+      "status": "open",
+      "text": "O que acontece com o horário liberado após o cancelamento: volta a ficar livre para novos agendamentos?"
+    }
+  ],
+  "relations": [
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-N3VEETV4B2WD",
+      "reason": "A confirmação por e-mail só existe após um agendamento criado.",
+      "source": "PBD-STORY-AD4T7BW7A26S",
+      "status": "proposed",
+      "target": "PBD-STORY-5W6F6CDR4JSG",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-9F5CECABG69K",
+      "reason": "Só se cancela um agendamento existente.",
+      "source": "PBD-STORY-AD4T7BW7A26S",
+      "status": "proposed",
+      "target": "PBD-STORY-9RVQXD2HADM4",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-KY8E1P9JG5WB",
+      "reason": "A agenda do dia lista agendamentos criados.",
+      "source": "PBD-STORY-AD4T7BW7A26S",
+      "status": "proposed",
+      "target": "PBD-STORY-BCX903ZN6VZD",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-XP2HA1D5F4PD",
+      "reason": "O registro da aplicação parte de um atendimento da agenda.",
+      "source": "PBD-STORY-BCX903ZN6VZD",
+      "status": "proposed",
+      "target": "PBD-STORY-JBS7PR295QB5",
+      "type": "predecessor"
+    }
+  ],
+  "run_id": "PBD-RUN-VMEPQEJYNFKV",
+  "schema_version": "1.1.0",
+  "sources": [
+    {
+      "authority": "functional",
+      "digest": "sha256:8067f0792a55d241f63bbea1e37da6f821ca7c15a049417c9eefdee9bd8558aa",
+      "id": "PBD-SRC-0AW4Q3WGMK5A",
+      "kind": "file",
+      "members": [
+        {
+          "bytes": 1209,
+          "digest": "sha256:04c98cfb260b903912bb81befbae287dece56b0ddbfeb2bf43d050d605e356f3",
+          "media_type": "application/octet-stream",
+          "path": "prd.md",
+          "status": "read"
+        }
+      ],
+      "read_status": "complete",
+      "selector": "sources/prd.md",
+      "version": "8067f0792a55d241"
+    }
+  ],
+  "synthetic": false
+}

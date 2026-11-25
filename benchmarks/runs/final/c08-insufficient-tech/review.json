@@ -1,0 +1,332 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC3",
+      "notes": "Trigger 'consulta ou avalia' is vague about who/when.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC4",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC5",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC6",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC7",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "distinct",
+      "items": [
+        "US1",
+        "US2"
+      ],
+      "rationale": "Different rules: registration vs payment-conditioned confirmation"
+    }
+  ],
+  "findings": [
+    {
+      "actual": "Trigger reads 'o participante consulta ou o sistema avalia a inscrição'",
+      "affects": [
+        "AC3"
+      ],
+      "classification": "candidate_concern",
+      "expected": "AC3 with a clear, verifiable trigger",
+      "gate": "G06",
+      "impact": "Testers may verify it inconsistently",
+      "recommendation": "State a single observable point, e.g. status shown after submission before payment confirmation",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Two alternative actors/moments make the check ambiguous"
+    },
+    {
+      "actual": "O2 (payment via gateway) is covered only by spike SP1; US2 has no criterion or task for performing the payment",
+      "affects": [
+        "US2",
+        "SP1",
+        "T2"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Payment handling traceable to a deliverable",
+      "gate": "G05",
+      "impact": "US2 not estimable until Q1 answered",
+      "recommendation": "Keep Q1 blocking; add criteria/tasks after answer",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Source is insufficient, so this is deliberate"
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 3,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "O participante se inscreve em um mutirão informando nome e tamanho de camiseta.",
+      "rationale": "US1/AC1 carry it; AC2 is a justified proposal for missing data.",
+      "text": "O participante se inscreve em um mutirão informando nome e tamanho de camiseta."
+    },
+    {
+      "covered_by": [
+        "SP1",
+        "US2"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O2",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "A taxa simbólica de inscrição é paga pelo gateway de pagamentos parceiro.",
+      "rationale": "Gateway, fee, methods and failure unspecified; Q1 and spike SP1 record it; no behavior invented beyond proposed AC5.",
+      "text": "A taxa simbólica de inscrição é paga pelo gateway de pagamentos parceiro."
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC3",
+        "AC4",
+        "T2"
+      ],
+      "disposition": "COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "A inscrição só é confirmada após a confirmação do pagamento.",
+      "rationale": "AC3/AC4 verify the rule.",
+      "text": "A inscrição só é confirmada após a confirmação do pagamento."
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC6",
+        "T3"
+      ],
+      "disposition": "COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "O organizador vê a lista de inscritos confirmados por mutirão.",
+      "rationale": "AC6 verifies it.",
+      "text": "O organizador vê a lista de inscritos confirmados por mutirão."
+    },
+    {
+      "covered_by": [],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O5",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C5"
+      ],
+      "quote": "O sistema deve ser rápido.",
+      "rationale": "No measurable limit; Q2 raised, correctly no criterion or task.",
+      "text": "O sistema deve ser rápido."
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F3",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "blocked by Q1",
+          "rating": "concern"
+        },
+        "independent": {
+          "note": "depends on SP1 and US1",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "Payment-via-gateway part (O2) has no criterion; depends on SP1/Q1. Acceptable given insufficiency of source.",
+      "source_support": "supported",
+      "task_sufficiency": "insufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "SP1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "notes": "Task covers only the confirmation state rule; no task for the payment call, which is blocked by Q1.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "T3",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "reviewer-c08-final",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-78385WMH95P7"
+    }
+  ]
+}

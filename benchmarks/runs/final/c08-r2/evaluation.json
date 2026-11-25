@@ -1,0 +1,85 @@
+{
+  "case": "c08-insufficient-tech",
+  "evaluator_model": "claude-haiku-5-5",
+  "obligations": [
+    {
+      "id": "G01",
+      "verdict": "covered",
+      "critical": true,
+      "evidence": "Epic PBD-EPIC-3XFZ33SBVHM4 > feature PBD-FEAT-QWA6AVHQGR3E > story PBD-STORY-1WEF68Q5Q71S (CA-01 PBD-AC-55F8MR9JJSAZ: informa nome e tamanho e envia) > task PBD-TASK-TE8KYBYFFHGN."
+    },
+    {
+      "id": "G02",
+      "verdict": "partial",
+      "critical": true,
+      "evidence": "Story PBD-STORY-CGCR0PXMZJZ8 (CA-01 PBD-AC-R8KXB51TZXHH: pagamento pelo gateway parceiro) and task PBD-TASK-XVZJTEH4AKVM 'Integrar o pagamento da taxa ao gateway parceiro' are marked reviewed and ready to build. The unknown gateway identity and fee are raised only in open question PBD-Q-P3HY31FZ8JEN (non-blocking). No spike item exists although the gold expects one. No gateway name, API, webhook or fee was invented."
+    },
+    {
+      "id": "G03",
+      "verdict": "covered",
+      "critical": true,
+      "evidence": "Feature PBD-FEAT-2P4N3CQ0GPAJ rule 'Sem confirmação do pagamento, a inscrição não é confirmada'; CA-02 PBD-AC-FP0SHQ551BWV (not confirmed while gateway has not confirmed) and CA-03 PBD-AC-HAQDVM1X2R66 (confirmed after confirmation); task PBD-TASK-XVZJTEH4AKVM verification."
+    },
+    {
+      "id": "G04",
+      "verdict": "covered",
+      "critical": true,
+      "evidence": "Feature PBD-FEAT-3RFC3W6F64CC, story PBD-STORY-CBGZ7TCJZQK7 (organizer list per mutirão), CA-01 PBD-AC-FPS49GA8QBZM (list shows confirmed registrations of that mutirão), task PBD-TASK-GYPRR58XJE2P."
+    },
+    {
+      "id": "G05",
+      "verdict": "handled_as_question",
+      "critical": false,
+      "evidence": "Question PBD-Q-89KBRE8BZRC3 asks what 'rápido' means (time limit and operations), non-blocking, affecting PBD-AC-G60ZXXT9VK4F (CA-03, proposed, expected outcome 'tempo a definir') and claim PBD-CLM-VVQ8GZFPJ9S0 (QUESTION_REQUIRED, ambiguous). No threshold invented."
+    }
+  ],
+  "traps": [
+    {
+      "trap": "Must not invent a gateway name, API, webhook or fee amount: spike/question instead.",
+      "verdict": "not_violated",
+      "evidence": "No gateway name, API, webhook or fee value appears in items or criteria. The gateway is referred to generically ('gateway parceiro') and the question PBD-Q-P3HY31FZ8JEN lists identity and fee as open. A spike is missing, which is a gap in handling, not an invention."
+    },
+    {
+      "trap": "Must not invent a response-time threshold for 'rápido'.",
+      "verdict": "not_violated",
+      "evidence": "CA-03 PBD-AC-G60ZXXT9VK4F states 'tempo a definir' and is marked proposed; question PBD-Q-89KBRE8BZRC3 is open. No numeric threshold appears anywhere. Note that the wording 'aceitável' is itself unverifiable."
+    }
+  ],
+  "invented": [
+    {
+      "item": "PBD-FEAT-QWA6AVHQGR3E rule 'A inscrição exige nome e tamanho de camiseta' and PBD-AC-QQHAW2P638EM (CA-02, proposed: incomplete registration is blocked)",
+      "severity": "medium",
+      "reason": "The PRD says only that the participant informs name and shirt size; mandatoriness and the blocking behavior are inference. The feature rule is not marked as proposed. The review (FND-AQTRZ8G5JEYQ) flags it as unsupported_assumption."
+    },
+    {
+      "item": "PBD-AC-G60ZXXT9VK4F (CA-03 under the organizer-list story): list display performance 'deve ser aceitável'",
+      "severity": "medium",
+      "reason": "The PRD's 'rápido' has no target operation; limiting it to the list is a scope presumption and 'aceitável' is unverifiable. Labelled proposed and linked to Q1, which reduces but does not remove the invention. Review FND-ENV856X2QTJJ flags it."
+    },
+    {
+      "item": "PBD-AC-T0WMBJGCXRB2 (CA-04, proposed): payment refused or failed means the participant is informed",
+      "severity": "low",
+      "reason": "Not in the PRD. Labelled proposed and linked to Q-P3HY, so it is traceable, but it adds a notification flow the business has not defined."
+    },
+    {
+      "item": "Relations PBD-REL-YCNBHZ925B6P and PBD-REL-Y4X723X6EP38 (predecessor, proposed, confidence medium)",
+      "severity": "low",
+      "reason": "Dependencies are inferred, not in the source. Marked proposed with medium confidence, so the effect is limited. Review FND-J264SRCW9AQS flags it."
+    }
+  ],
+  "broken_references": [
+    {"location": "findings PBD-FND-AQTRZ8G5JEYQ.actual", "token": "F1", "note": "design key with no resolvable target"},
+    {"location": "findings PBD-FND-AQTRZ8G5JEYQ.recommendation", "token": "CA-02", "note": "no story named; ambiguous across stories"},
+    {"location": "findings PBD-FND-AQTRZ8G5JEYQ.recommendation", "token": "Q3", "note": "no question key Q3 exists; questions have PBD-Q-* ids only"},
+    {"location": "findings PBD-FND-AQTRZ8G5JEYQ.recommendation", "token": "F1", "note": "design key with no resolvable target"},
+    {"location": "findings PBD-FND-XCG8M6B8640A.recommendation", "token": "Q2", "note": "no question key Q2 exists"},
+    {"location": "findings PBD-FND-ENV856X2QTJJ.recommendation", "token": "Q1", "note": "no question key Q1 exists"},
+    {"location": "findings PBD-FND-J264SRCW9AQS.expected", "token": "US1", "note": "design key with no resolvable target"},
+    {"location": "findings PBD-FND-J264SRCW9AQS.expected", "token": "US2", "note": "design key with no resolvable target"},
+    {"location": "findings PBD-FND-J264SRCW9AQS.expected", "token": "US2", "note": "design key with no resolvable target (second occurrence)"},
+    {"location": "findings PBD-FND-J264SRCW9AQS.expected", "token": "US3", "note": "design key with no resolvable target"}
+  ],
+  "levels_ok": true,
+  "native_first_ok": true,
+  "notes": "Criterion and item texts contain no broken references. All broken references sit in backlog findings (recommendation/expected text) and use review-internal keys (F1, US1-3, Q1-3) or an ambiguous CA-02. Count is 10. Gate report: G09 Scope Integrity is FAIL ('unsupported scope: US1, AC2, F1, US2, AC6'), consistent with the invented items above. G18 is NOT_RUN as expected. Levels present and linked: epic, feature, story, acceptance (9 criteria), task, dependencies (2 relations). Reading was native (method native, complete). The gold expects a spike for the gateway, which is absent; this is the main handling gap. Critical recall: 3 of 4 critical obligations covered in full, G02 partial."
+}

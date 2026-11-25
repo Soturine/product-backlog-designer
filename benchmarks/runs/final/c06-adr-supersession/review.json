@@ -1,0 +1,422 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC3",
+      "notes": "Placeholder outcome 'comportamento a definir' is not verifiable; proposed, depends on Q3.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC5",
+      "notes": "FIFO ordering is an assumption resolving ambiguity; correctly marked proposed with rationale.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC6",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC7",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "distinct",
+      "items": [
+        "US2",
+        "US3"
+      ],
+      "rationale": "entry vs promotion"
+    }
+  ],
+  "findings": [
+    {
+      "actual": "AC3 outcome is 'comportamento a definir'",
+      "affects": [
+        "AC3"
+      ],
+      "classification": "candidate_concern",
+      "expected": "AC with a verifiable outcome",
+      "gate": "G06",
+      "impact": "Weak acceptance until Q3 answered",
+      "recommendation": "Keep as proposed; convert to question-only or drop from criteria until Q3 answered",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "Cannot be tested"
+    },
+    {
+      "actual": "AC5 and T2 assert order of entry",
+      "affects": [
+        "AC5",
+        "T2"
+      ],
+      "classification": "unsupported_assumption",
+      "expected": "Sources do not define waitlist order",
+      "gate": "G06",
+      "impact": "Task T2 treats assumption as requirement",
+      "recommendation": "Keep AC5 proposed; word T2 as dependent on it",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "FIFO is plausible but unconfirmed"
+    },
+    {
+      "actual": "T1 'recusando acima de 20' vs PRD waiting list option",
+      "affects": [
+        "T1",
+        "AC2"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Consistent full-meeting behavior",
+      "gate": "G06",
+      "impact": "Possible misimplementation",
+      "recommendation": "Reword T1 to 'não confirmar e oferecer lista de espera (US2)'",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "Wording could imply hard refusal"
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 3,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "O participante se inscreve em um encontro publicado.",
+      "rationale": "AC1 and US1.",
+      "text": "Participante se inscreve em encontro publicado"
+    },
+    {
+      "covered_by": [],
+      "disposition": "SUPERSEDED",
+      "key": "O2",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "Inscrições em encontros exigem aprovação do moderador.",
+      "rationale": "ADR-002 approved removes it; no work item demands it; Q2 asks about legacy implementation.",
+      "text": "PRD: inscrições exigem aprovação do moderador (superseded by ADR-002 approved)"
+    },
+    {
+      "covered_by": [
+        "US1",
+        "AC2"
+      ],
+      "disposition": "COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "Cada encontro aceita até 20 participantes.",
+      "rationale": "AC2; ADR-003 only proposed.",
+      "text": "Limite de 20 participantes"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC4"
+      ],
+      "disposition": "COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "Quando o encontro está lotado, o participante pode entrar na lista de espera.",
+      "rationale": "AC4.",
+      "text": "Lista de espera quando lotado"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC6"
+      ],
+      "disposition": "COVERED",
+      "key": "O5",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C5"
+      ],
+      "quote": "Se um inscrito cancelar, a primeira pessoa da lista de espera é inscrita e avisada.",
+      "rationale": "AC6.",
+      "text": "Cancelamento promove primeiro da lista"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC7"
+      ],
+      "disposition": "COVERED",
+      "key": "O6",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C6"
+      ],
+      "quote": "a primeira pessoa da lista de espera é inscrita e avisada.",
+      "rationale": "AC7; channel in Q3.",
+      "text": "Pessoa promovida é avisada"
+    },
+    {
+      "covered_by": [
+        "US1",
+        "AC1"
+      ],
+      "disposition": "COVERED",
+      "key": "O7",
+      "locator": {
+        "line_start": 5,
+        "member": "adr-002-confirmacao-automatica.md",
+        "source_id": "PBD-SRC-3Q116GNGMAKT"
+      },
+      "matched_claims": [
+        "C7"
+      ],
+      "quote": "inscrições passam a ser confirmadas automaticamente enquanto houver vagas",
+      "rationale": "AC1.",
+      "text": "ADR-002 aprovado: confirmação automática enquanto houver vagas"
+    },
+    {
+      "covered_by": [
+        "US1",
+        "AC1"
+      ],
+      "disposition": "COVERED",
+      "key": "O8",
+      "locator": {
+        "line_start": 5,
+        "member": "adr-002-confirmacao-automatica.md",
+        "source_id": "PBD-SRC-3Q116GNGMAKT"
+      },
+      "matched_claims": [
+        "C9"
+      ],
+      "quote": "a aprovação do moderador deixa de existir.",
+      "rationale": "AC1 outcome 'sem aprovação do moderador'; no task for moderator approval.",
+      "text": "ADR-002: aprovação do moderador deixa de existir"
+    },
+    {
+      "covered_by": [],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O9",
+      "locator": {
+        "line_start": 3,
+        "member": "adr-003-limite.md",
+        "source_id": "PBD-SRC-3Q116GNGMAKT"
+      },
+      "matched_claims": [
+        "C8"
+      ],
+      "quote": "Status: proposta (em discussão)",
+      "rationale": "Not implemented; limit stays 20; Q1 raised; epic out_scope states it.",
+      "text": "ADR-003 só proposta: limite 30 (não vigente)"
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "depends on prior story rules",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "depends on prior story rules",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "T1",
+      "notes": "Says 'recusando acima de 20' while AC2 only says 'not confirmed'; PRD says a full meeting offers the waiting list. Wording should align with US2.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "T2",
+      "notes": "'mantendo a ordem de entrada' implements proposed AC5, an assumption not in sources.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "T3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "reviewer-c06-final",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-78385WMH95P7"
+    },
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-3Q116GNGMAKT"
+    }
+  ]
+}

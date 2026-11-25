@@ -1,0 +1,117 @@
+{
+  "ambiguities": [
+    {
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md"
+      },
+      "quote": "bloqueia uma quadra para manutenção",
+      "text": "Não está dito o que acontece com reservas já existentes no intervalo de uma quadra bloqueada para manutenção"
+    }
+  ],
+  "exclusions": [],
+  "members": [
+    {
+      "lines_read": [
+        [
+          1,
+          9
+        ]
+      ],
+      "path": "prd.md",
+      "reading": {
+        "limitations": [],
+        "method": "native",
+        "tool": "host file reader (Bash cat)"
+      },
+      "status": "read"
+    }
+  ],
+  "obligations": [
+    {
+      "category": "functional",
+      "key": "R1",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "section": "Requisitos"
+      },
+      "modality": "must",
+      "quote": "O sócio reserva uma quadra em blocos de 1 hora",
+      "text": "O sócio reserva uma quadra em blocos de 1 hora",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "constraint",
+      "key": "R2",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "section": "Requisitos"
+      },
+      "modality": "must",
+      "quote": "Reservas podem ser feitas com até 14 dias de antecedência",
+      "text": "Reservas podem ser feitas com até 14 dias de antecedência",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R3",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "section": "Requisitos"
+      },
+      "modality": "may",
+      "quote": "O sócio pode cancelar a própria reserva até 2 horas antes do início",
+      "text": "O sócio pode cancelar a própria reserva até 2 horas antes do início",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R4",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "section": "Requisitos"
+      },
+      "modality": "must",
+      "quote": "O administrador bloqueia uma quadra para manutenção em um intervalo de datas",
+      "text": "O administrador bloqueia uma quadra para manutenção em um intervalo de datas",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "constraint",
+      "key": "R5",
+      "locator": {
+        "line_start": 8,
+        "member": "prd.md",
+        "section": "Requisitos"
+      },
+      "modality": "must_not",
+      "quote": "Não é permitido reservar uma quadra bloqueada",
+      "text": "Não é permitido reservar uma quadra bloqueada",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R6",
+      "locator": {
+        "line_start": 9,
+        "member": "prd.md",
+        "section": "Requisitos"
+      },
+      "modality": "must",
+      "quote": "O sócio vê suas reservas futuras e passadas",
+      "text": "O sócio vê suas reservas futuras e passadas",
+      "uncertainty": "confirmed"
+    }
+  ],
+  "reader": {
+    "agent": "reader-prd.md-c02",
+    "independence": "sequential_role",
+    "model": "claude-sonnet-5-5"
+  },
+  "source_digest": "sha256:5446f5e5ae0efee9489301160bc2ed489a68161b8dd9c8985da26668b9925740",
+  "source_id": "PBD-SRC-78385WMH95P7"
+}

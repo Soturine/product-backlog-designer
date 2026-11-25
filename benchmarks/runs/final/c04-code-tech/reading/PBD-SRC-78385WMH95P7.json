@@ -1,0 +1,108 @@
+{
+  "ambiguities": [],
+  "exclusions": [],
+  "members": [
+    {
+      "lines_read": [
+        [
+          1,
+          7
+        ]
+      ],
+      "path": "prd.md",
+      "reading": {
+        "limitations": [],
+        "method": "native",
+        "tool": "host file reader"
+      },
+      "status": "read"
+    }
+  ],
+  "obligations": [
+    {
+      "category": "functional",
+      "key": "R1",
+      "locator": {
+        "line_end": 3,
+        "line_start": 3,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "o morador recebe um código de retirada de 6 dígitos",
+      "text": "Quando uma encomenda é depositada, o morador recebe um código de retirada de 6 dígitos",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R2",
+      "locator": {
+        "line_end": 4,
+        "line_start": 4,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "expira 72 horas após o depósito",
+      "text": "O código de retirada expira 72 horas após o depósito",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R3",
+      "locator": {
+        "line_end": 5,
+        "line_start": 5,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "o armário fica bloqueado por 10 minutos",
+      "text": "Após 3 tentativas com código incorreto, o armário fica bloqueado por 10 minutos",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R4",
+      "locator": {
+        "line_end": 6,
+        "line_start": 6,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "é devolvida à portaria",
+      "text": "Encomenda não retirada até a expiração do código é devolvida à portaria",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R5",
+      "locator": {
+        "line_end": 6,
+        "line_start": 6,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "o morador é avisado",
+      "text": "O morador é avisado quando a encomenda não retirada é devolvida à portaria",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R6",
+      "locator": {
+        "line_end": 7,
+        "line_start": 7,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "O porteiro consulta quais armários estão ocupados",
+      "text": "O porteiro consulta quais armários estão ocupados",
+      "uncertainty": "confirmed"
+    }
+  ],
+  "reader": {
+    "agent": "reader-prd.md-c04",
+    "independence": "sequential_role",
+    "model": "claude-sonnet-5-5"
+  },
+  "source_digest": "sha256:8ee0d6b250c9f2adad0736cf299efe59178cfc734f8b5a48881269f9c0268ab1",
+  "source_id": "PBD-SRC-78385WMH95P7"
+}
