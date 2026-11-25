@@ -1,0 +1,88 @@
+{
+ "kind": "pbd.benchmark-gold",
+ "synthetic": true,
+ "case": "c11-pdf-source",
+ "title": "Mutirão de Vacinação",
+ "language": "pt-BR",
+ "levels": [
+  "epics",
+  "features",
+  "stories",
+  "acceptance",
+  "tasks",
+  "dependencies"
+ ],
+ "sources": [
+  {
+   "selector": "prd.pdf",
+   "authority": "functional"
+  }
+ ],
+ "obligations": [
+  {
+   "id": "G01",
+   "source": "prd.pdf",
+   "quote": "agenda a vacinação informando espécie e idade do animal",
+   "kind": "functional",
+   "summary": "schedule with species and age",
+   "critical": true
+  },
+  {
+   "id": "G02",
+   "source": "prd.pdf",
+   "quote": "Cada horário atende no máximo 10 animais",
+   "kind": "constraint",
+   "summary": "max 10 animals per slot",
+   "critical": true
+  },
+  {
+   "id": "G03",
+   "source": "prd.pdf",
+   "quote": "registra a vacina aplicada e o lote",
+   "kind": "functional",
+   "summary": "volunteer records vaccine + batch",
+   "critical": true
+  },
+  {
+   "id": "G04",
+   "source": "prd.pdf",
+   "quote": "recebe o comprovante de vacinação",
+   "kind": "functional",
+   "summary": "owner receives certificate",
+   "critical": true
+  },
+  {
+   "id": "G05",
+   "source": "prd.pdf",
+   "quote": "Cão        3 meses         Antirrábica",
+   "kind": "data",
+   "summary": "table: dog min age 3 months, rabies",
+   "critical": true
+  },
+  {
+   "id": "G06",
+   "source": "prd.pdf",
+   "quote": "Gato       3 meses         Antirrábica",
+   "kind": "data",
+   "summary": "table: cat min age 3 months, rabies",
+   "critical": true
+  },
+  {
+   "id": "G07",
+   "source": "prd.pdf",
+   "quote": "abaixo da idade mínima não podem ser agendados",
+   "kind": "error",
+   "summary": "below minimum age cannot be scheduled",
+   "critical": true
+  }
+ ],
+ "traps": [
+  "Page 3 has no text layer: its content must not be invented; reading must be partial unless transcribed by vision.",
+  "Table rows must be represented with their values (species, minimum age, vaccine), not dropped."
+ ],
+ "expectations": {
+  "unreadable": [
+   "prd.pdf page 3"
+  ]
+ }
+}

@@ -1,0 +1,77 @@
+{
+ "kind": "pbd.benchmark-gold",
+ "synthetic": true,
+ "case": "c12-xlsx-source",
+ "title": "Empréstimo de Salas",
+ "language": "pt-BR",
+ "levels": [
+  "epics",
+  "features",
+  "stories",
+  "acceptance",
+  "tasks",
+  "dependencies"
+ ],
+ "sources": [
+  {
+   "selector": "requisitos.xlsx",
+   "authority": "functional"
+  }
+ ],
+ "obligations": [
+  {
+   "id": "G01",
+   "source": "requisitos.xlsx",
+   "quote": "O morador reserva uma sala informando data, horário e finalidade.",
+   "kind": "functional",
+   "summary": "R1 reserve room",
+   "critical": true
+  },
+  {
+   "id": "G02",
+   "source": "requisitos.xlsx",
+   "quote": "Uma reserva dura no máximo o limite da aba Regras.",
+   "kind": "constraint",
+   "summary": "R2 max duration -> 4 h (Regras)",
+   "critical": true
+  },
+  {
+   "id": "G03",
+   "source": "requisitos.xlsx",
+   "quote": "Reservas exigem a antecedência mínima da aba Regras.",
+   "kind": "constraint",
+   "summary": "R3 min advance -> 1 day (Regras)",
+   "critical": true
+  },
+  {
+   "id": "G04",
+   "source": "requisitos.xlsx",
+   "quote": "O zelador vê as reservas do dia por sala.",
+   "kind": "functional",
+   "summary": "R4 caretaker daily view",
+   "critical": true
+  },
+  {
+   "id": "G05",
+   "source": "requisitos.xlsx",
+   "quote": "A2=Duração máxima (horas) | B2=4",
+   "kind": "data",
+   "summary": "rule value 4 hours",
+   "critical": true
+  },
+  {
+   "id": "G06",
+   "source": "requisitos.xlsx",
+   "quote": "A3=Antecedência mínima (dias) | B3=1",
+   "kind": "data",
+   "summary": "rule value 1 day",
+   "critical": true
+  }
+ ],
+ "traps": [
+  "Hidden sheet 'Rascunho' (8 hours, 'rascunho descartado') must not override the 4-hour rule.",
+  "Priorities Alta/Média are sourced; cross-sheet references must be resolved to the Regras values, not invented.",
+  "'Salas disponíveis' is a formula whose source sheet is absent: must not be treated as a confirmed room count."
+ ],
+ "expectations": {}
+}

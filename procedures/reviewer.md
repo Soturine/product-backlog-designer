@@ -31,3 +31,5 @@ A conjunction is not automatically two stories; a valid nonstandard format need 
  "findings": [{"gate": "G06", "classification": "confirmed_gap", "severity": "high", "expected": "...", "actual": "...",
                "why": "...", "impact": "...", "recommendation": "...", "affects": ["US1"], "review_status": "confirmed"}]}
 ```
+
+Allowed values: `verdict` pass/concern/fail (concern and fail need `notes`); `source_support` supported/proposal_justified/unsupported; INVEST `rating` supported/concern/unknown/not_applicable; `task_sufficiency` sufficient/insufficient/not_applicable; `duplicates[].assessment` duplicate/distinct/overlap; finding `review_status` candidate/confirmed; `covered_by` lists only design item/criterion keys and `matched_claims` only claim keys.

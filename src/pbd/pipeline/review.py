@@ -44,12 +44,18 @@ SEVERITIES = {"critical", "high", "medium", "low", "info"}
 GATES_REVIEWED = {"G02", "G04", "G05", "G06", "G07", "G08", "G09", "G13", "G14"}
 
 
-def _source_lines(run: Run) -> dict[tuple[str, str], list[str]]:
+def _source_lines(run: Run, review: dict[str, Any] | None = None) -> dict[tuple[str, str], list[str]]:
+    """Extracted lines per member; visual members only through the REVIEWER'S own transcription."""
     out = {}
+    own = (review or {}).get("visual_transcriptions") or {}
     for src in run.inventory()["sources"]:
         for m in src["members_text"]:
             if m.get("readable"):
                 out[(src["id"], m["path"])] = run.path(m["text_ref"]).read_text(encoding="utf-8").splitlines()
+            elif m.get("visual"):
+                text = own.get(f"{src['id']}/{m['path']}") if isinstance(own, dict) else None
+                if isinstance(text, str) and text.strip():
+                    out[(src["id"], m["path"])] = text.splitlines()
     return out
 
 
@@ -78,7 +84,7 @@ def validate_review(run: Run, review: Any) -> list[str]:
     if reread != sources:
         errors.append(f"sources_reread must list every source of the run; missing {sorted(sources - reread)}")
 
-    lines = _source_lines(run)
+    lines = _source_lines(run, review)
     design_keys = {i["key"] for i in design.get("items", [])} | {c["key"] for c in design.get("criteria", [])}
     claim_keys = {c["key"] for c in claims["claims"]}
     obligations = review.get("independent_obligations") or []
@@ -137,6 +143,11 @@ def validate_review(run: Run, review: Any) -> list[str]:
                 errors.append(f"{kind} {e.get('key')}: source_support must be one of {sorted(SUPPORT)}")
             if e.get("verdict") in ("concern", "fail") and not str(e.get("notes", "")).strip():
                 errors.append(f"{kind} {e.get('key')}: a concern or fail needs notes")
+            if e.get("task_sufficiency") not in (None, "sufficient", "insufficient", "not_applicable"):
+                errors.append(
+                    f"{kind} {e.get('key')}: task_sufficiency must be sufficient, insufficient"
+                    " or not_applicable"
+                )
             if kind == "items" and types.get(e.get("key")) == "story":
                 invest = e.get("invest") or {}
                 for dim in INVEST:
@@ -163,7 +174,9 @@ def validate_review(run: Run, review: Any) -> list[str]:
             errors.append(f"{label}: gate must be one of {sorted(GATES_REVIEWED)}")
     for i, d in enumerate(review.get("duplicates") or []):
         if d.get("assessment") not in ("duplicate", "distinct", "overlap") or not d.get("rationale"):
-            errors.append(f"duplicates[{i}]: assessment and rationale required")
+            errors.append(
+                f"duplicates[{i}]: assessment (duplicate, distinct or overlap) and rationale required"
+            )
     return errors
 
 

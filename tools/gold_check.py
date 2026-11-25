@@ -18,7 +18,7 @@ from pbd.pipeline.reading import normalize_for_match  # noqa: E402
 
 def resolve(case_dir: Path, source: str, quote: str) -> int | None:
     path = case_dir / "sources" / source
-    text = extract(path.name, path.read_bytes())
+    text = extract(path.name, path.read_bytes()).text
     needle = normalize_for_match(quote)
     for number, line in enumerate(text.splitlines(), start=1):
         if needle in normalize_for_match(line):

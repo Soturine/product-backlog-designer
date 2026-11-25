@@ -126,9 +126,34 @@ def validate_ledger(run: Run, ledger: Any) -> list[str]:
         if status not in MEMBER_STATUS:
             errors.append(f"member {path}: status must be one of {sorted(MEMBER_STATUS)}")
             continue
+        vt = entry.get("visual_transcription")
+        if vt is not None and not (
+            isinstance(vt, dict)
+            and vt.get("method") == "agent_vision"
+            and str(vt.get("text", "")).strip()
+            and str(vt.get("model", "")).strip()
+        ):
+            errors.append(f"member {path}: visual_transcription needs method agent_vision, model and text")
+            continue
+        if meta.get("visual"):
+            if status in ("read", "partial") and vt is None:
+                errors.append(
+                    f"member {path} is visual ({meta.get('reason')}); read it with agent vision and add "
+                    "visual_transcription, or report it unreadable"
+                )
+                continue
+            if status != "read" and not str(entry.get("reason", "")).strip():
+                errors.append(f"member {path}: status {status} requires a reason")
+            continue
         if not meta["readable"] and status in ("read", "partial"):
             errors.append(
                 f"member {path} has no extractable text ({meta.get('reason')}); report it unreadable"
+            )
+            continue
+        if status == "read" and meta.get("gaps") and vt is None:
+            errors.append(
+                f"member {path} has extraction gaps {meta['gaps']}; it can only be read with a "
+                "visual_transcription of those parts, otherwise report it partial with a reason"
             )
             continue
         if status != "read" and not str(entry.get("reason", "")).strip():
@@ -196,11 +221,24 @@ def _check_locator(
     if not isinstance(loc, dict):
         return [f"{label}: locator with member and line_start is required"]
     member = members.get(str(loc.get("member")))
+    if member is not None and member.get("visual"):
+        vt = (reported.get(member["path"]) or {}).get("visual_transcription") or {}
+        vquote = str(entry.get("quote", ""))
+        if len(vquote.strip()) < 3 or normalize_for_match(vquote) not in normalize_for_match(
+            str(vt.get("text", ""))
+        ):
+            return [f"{label}: quote must occur in the member's visual_transcription"]
+        return []
     if member is None or not member["readable"]:
         return [f"{label}: locator member {loc.get('member')!r} is not a readable member of this source"]
     start, end = loc.get("line_start"), loc.get("line_end", loc.get("line_start"))
     if not (isinstance(start, int) and isinstance(end, int) and 1 <= start <= end <= member["lines"]):
         return [f"{label}: lines {start}-{end} are outside {member['path']} (1..{member['lines']})"]
+    page = loc.get("page")
+    if page is not None and member.get("pages"):
+        span = next((p for p in member["pages"] if p[0] == page), None)
+        if span is None or not (span[1] <= start and end <= span[2]):
+            return [f"{label}: page {page} does not contain lines {start}-{end}"]
     read_ranges = reported[member["path"]].get("lines_read") or []
     if not set(range(start, end + 1)) <= _covered(read_ranges):
         return [f"{label}: cites lines {start}-{end} that the reader did not report as read"]
@@ -225,6 +263,12 @@ def submit_ledger(run: Run, ledger: dict[str, Any]) -> dict[str, Any]:
         raise RunError("reader ledger rejected (nothing recorded)", errors)
     rel = f"stages/reading/{ledger['source_id']}.json"
     run.write_artifact(rel, ledger)
+    for m in ledger["members"]:
+        if m.get("visual_transcription"):
+            run.state.manifest["limitations"].append(
+                f"member {m['path']} read by agent vision ({m['visual_transcription']['model']}); quotes are "
+                "checked against the agent's transcription, not deterministically against the original"
+            )
     for entry in run.state.manifest["sources"]:
         if entry["source_id"] == ledger["source_id"]:
             entry["reader"].update(

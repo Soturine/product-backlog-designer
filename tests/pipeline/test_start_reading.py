@@ -181,7 +181,7 @@ def test_unreadable_member_cannot_be_claimed_read(run: Run) -> None:
         {"path": "regras.docx", "status": "read", "lines_read": [[1, 3]]},
         {"path": "diagrama.png", "status": "read", "lines_read": [[1, 1]]},
     ]
-    assert any("no extractable text" in e for e in validate_ledger(run, led))
+    assert any("agent vision" in e for e in validate_ledger(run, led))  # visual member
 
 
 def test_reading_closed_after_completion(run: Run) -> None:

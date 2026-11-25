@@ -194,23 +194,49 @@ def start(
                 continue
             try:
                 raw = extract.read_member_bytes(src_path, record["kind"], member["path"])
-                text = extract.extract(member["path"], raw)
+                result = extract.extract(member["path"], raw)
             except (extract.ExtractionError, OSError, KeyError, ValueError) as exc:
                 entry.update(readable=False, reason=str(exc) or type(exc).__name__)
                 members.append(entry)
                 continue
+            if result.visual:
+                # Only an agent with native vision can read this member; keep the original for it.
+                rel = f"sources/visual/{record['id']}/{member['path']}"
+                run.write_artifact(rel, data=raw, media_type="application/octet-stream")
+                entry.update(
+                    readable=False,
+                    visual=True,
+                    original_ref=rel,
+                    extractor="image",
+                    reason="visual content: requires agent vision (visual_transcription) or a transcription",
+                    gaps=result.gaps,
+                )
+                members.append(entry)
+                continue
             rel = f"sources/text/{record['id']}/{member['path']}.txt"
-            data = text.encode("utf-8")
-            line_count = len(text.splitlines())
-            run.write_artifact(rel, data=data, media_type="text/plain")
+            line_count = len(result.text.splitlines())
+            run.write_artifact(rel, data=result.text.encode("utf-8"), media_type="text/plain")
             entry.update(
                 readable=True,
                 text_ref=rel,
                 lines=line_count,
                 text_digest=file_digest(run.path(rel)),
                 chunks=extract.chunks(line_count, CHUNK_LINES),
-                extractor=extract.extractor_for(member["path"]),
+                extractor=result.extractor,
+                encoding=result.encoding,
             )
+            if result.gaps:
+                entry["gaps"] = result.gaps
+            if result.notes:
+                entry["notes"] = result.notes
+            if result.pages:
+                entry["pages"] = result.pages
+            if result.sheets:
+                entry["sheets"] = result.sheets
+            if result.extractor in ("pdf", "docx", "xlsx"):
+                orig = f"sources/visual/{record['id']}/{member['path']}"
+                run.write_artifact(orig, data=raw, media_type="application/octet-stream")
+                entry["original_ref"] = orig  # lets a vision-capable reader inspect gaps
             members.append(entry)
         record["members_text"] = members
         inventory["sources"].append(record)
@@ -236,8 +262,18 @@ def start(
         for m in s["members_text"]
         if not m["readable"]
     ]
-    state.manifest["limitations"] = [f"unreadable member: {u}" for u in unreadable]
-    state.manifest["status"]["source_coverage"] = "incomplete_reading" if unreadable else "not_assessed"
+    gapped = [
+        f"{s['selector']}: {m['path']} ({'; '.join(m['gaps'])})"
+        for s in inventory["sources"]
+        for m in s["members_text"]
+        if m.get("readable") and m.get("gaps")
+    ]
+    state.manifest["limitations"] = [f"unreadable member: {u}" for u in unreadable] + [
+        f"extraction gaps: {g}" for g in gapped
+    ]
+    state.manifest["status"]["source_coverage"] = (
+        "incomplete_reading" if unreadable or gapped else "not_assessed"
+    )
     state.save()
     state.complete("inventory", digest([selections, request]), inv_digest)
     run.write_work_order()
@@ -259,7 +295,25 @@ def _assignments(run: Run) -> list[dict[str, Any]]:
                 "status": "SUBMITTED" if submitted else "PENDING",
                 "result_file": f"stages/reading/{src['id']}.json",
                 "members": [
-                    {k: m[k] for k in ("path", "readable", "text_ref", "lines", "chunks", "reason") if k in m}
+                    {
+                        k: m[k]
+                        for k in (
+                            "path",
+                            "readable",
+                            "visual",
+                            "text_ref",
+                            "original_ref",
+                            "lines",
+                            "chunks",
+                            "pages",
+                            "sheets",
+                            "gaps",
+                            "notes",
+                            "encoding",
+                            "reason",
+                        )
+                        if k in m
+                    }
                     for m in src["members_text"]
                 ],
             }
