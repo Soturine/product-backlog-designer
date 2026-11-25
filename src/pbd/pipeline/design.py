@@ -15,7 +15,7 @@ from typing import Any
 from pbd import SCHEMA_VERSION, vocab
 from pbd.core.canonical import digest
 from pbd.core.identity import derive
-from pbd.pipeline.reading import normalize_for_match
+from pbd.pipeline.reading import normalize_for_match, quote_verification
 from pbd.pipeline.run import Run, RunError, require_stage
 from pbd.render.richtext import CONTENT_KINDS, RichTextError, description_html, validate_content
 from pbd.validation.invariants import check_backlog
@@ -84,11 +84,18 @@ def _obligation_index(run: Run) -> dict[str, dict[str, Any]]:
         if not run.path(rel).exists():
             continue
         ledger = run.read(rel)
+        members = {m["path"]: m for m in ledger.get("members") or []}
+        reading = {path: (m.get("reading") or {}).get("method") for path, m in members.items()}
         for ob in ledger.get("obligations") or []:
+            loc = ob.get("locator") or {}
             index[f"{src['id']}:{ob['key']}"] = {
                 **ob,
                 "source_id": src["id"],
                 "source_version": src["version"],
+                "verification": quote_verification(
+                    run, src["id"], members.get(loc.get("member")), loc, str(ob.get("quote", ""))
+                ),
+                "reading_method": reading.get(loc.get("member")),
             }
     return index
 
@@ -99,16 +106,20 @@ def _evidence_from(ob: dict[str, Any]) -> dict[str, Any]:
         "source_id": ob["source_id"],
         "source_version": ob["source_version"],
         "member": loc["member"],
-        "line_start": loc["line_start"],
-        "line_end": loc.get("line_end", loc["line_start"]),
         "quote_digest": digest(normalize_for_match(ob["quote"])),
     }
+    if isinstance(loc.get("line_start"), int):
+        locator["line_start"] = loc["line_start"]
+        locator["line_end"] = loc.get("line_end", loc["line_start"])
     for extra in ("section", "table", "anchor"):
         if loc.get(extra):
             locator[extra] = str(loc[extra])
     if isinstance(loc.get("page"), int):
         locator["page"] = loc["page"]
-    return {"type": "source_locator", "locator": locator, "summary": ob["quote"][:500]}
+    evidence = {"type": "source_locator", "locator": locator, "summary": ob["quote"][:500]}
+    if ob.get("verification"):
+        evidence["verification"] = ob["verification"]
+    return evidence
 
 
 # ---------------------------------------------------------------------------- claims

@@ -19,6 +19,7 @@ from typing import Any
 
 from pbd import vocab
 from pbd.core.canonical import digest
+from pbd.pipeline.extract import NATIVE_METHODS, READING_METHODS, READING_POLICY
 from pbd.pipeline.run import Run, RunError, require_stage
 
 READER_FIELDS = {
@@ -73,6 +74,62 @@ def _member_lines(run: Run, member: dict[str, Any]) -> list[str]:
     return text.splitlines()
 
 
+def _check_reading(path: str, entry: dict[str, Any], meta: dict[str, Any], vt: Any) -> list[str]:
+    """Native-first reading declaration of one member (method, tool, limitations)."""
+    status = entry.get("status")
+    if status not in ("read", "partial"):
+        return []
+    reading = entry.get("reading")
+    if not isinstance(reading, dict):
+        return [
+            f"member {path}: declare how it was read in reading {{method: native|native_vision|"
+            "extracted_text, tool, limitations}"
+        ]
+    method = reading.get("method")
+    errors = []
+    if method not in READING_METHODS:
+        errors.append(f"member {path}: reading.method must be one of {sorted(READING_METHODS)}")
+    if not str(reading.get("tool", "")).strip():
+        errors.append(f"member {path}: reading.tool (the host capability actually used) is required")
+    limitations = reading.get("limitations")
+    if not isinstance(limitations, list):
+        errors.append(f"member {path}: reading.limitations must be a list (empty when there are none)")
+        limitations = []
+    fmt = meta.get("format", "text")
+    policy = READING_POLICY.get(fmt, READING_POLICY["text"])
+    if status == "read" and method not in NATIVE_METHODS:
+        if not policy["fallback_complete"]:
+            errors.append(
+                f"member {path}: a {fmt} member is not completely read from its extracted text "
+                f"({policy['extracted_layer']}); open the original natively or report it partial"
+            )
+        elif fmt != "text" and not limitations:
+            errors.append(
+                f"member {path}: read from the {fmt} extraction fallback; declare its limitations "
+                f"({policy['extracted_layer']})"
+            )
+    if meta.get("visual") and method != "native_vision":
+        errors.append(f"member {path}: visual members are read with native_vision only")
+    if vt is not None and method not in NATIVE_METHODS:
+        errors.append(f"member {path}: a visual_transcription requires a native reading method")
+    return errors
+
+
+def quote_verification(
+    run: Run, source_id: str, member_entry: dict[str, Any] | None, loc: dict[str, Any], quote: str
+) -> str:
+    """'mechanical' when the quote is in the cited extracted lines, else 'agent_transcription'."""
+    src = next((s for s in run.inventory()["sources"] if s["id"] == source_id), None)
+    meta = next((m for m in (src or {}).get("members_text", []) if m["path"] == loc.get("member")), None)
+    start = loc.get("line_start")
+    if meta and meta.get("readable") and isinstance(start, int):
+        end = loc.get("line_end", start)
+        lines = _member_lines(run, meta)
+        if normalize_for_match(quote) in normalize_for_match(" ".join(lines[start - 1 : end])):
+            return "mechanical"
+    return "agent_transcription"
+
+
 def validate_ledger(run: Run, ledger: Any) -> list[str]:
     if not isinstance(ledger, dict):
         return ["ledger must be a JSON object"]
@@ -123,6 +180,10 @@ def validate_ledger(run: Run, ledger: Any) -> list[str]:
             and str(vt.get("model", "")).strip()
         ):
             errors.append(f"member {path}: visual_transcription needs method agent_vision, model and text")
+            continue
+        reading_errors = _check_reading(str(path), entry, meta, vt)
+        if reading_errors:
+            errors.extend(reading_errors)
             continue
         if meta.get("visual"):
             if status in ("read", "partial") and vt is None:
@@ -220,6 +281,18 @@ def _check_locator(
         return []
     if member is None or not member["readable"]:
         return [f"{label}: locator member {loc.get('member')!r} is not a readable member of this source"]
+    vt_text = str(((reported.get(member["path"]) or {}).get("visual_transcription") or {}).get("text", ""))
+    quote_any = str(entry.get("quote", ""))
+    if loc.get("line_start") is None:
+        # a citation of content the text layer does not carry (figure, drawn diagram, scanned page):
+        # only valid from the reader's own native transcription, and classified as such
+        if not (loc.get("page") or loc.get("section") or loc.get("table")):
+            return [f"{label}: locator needs line_start, or page/section/table for transcribed content"]
+        if len(quote_any.strip()) < 3 or normalize_for_match(quote_any) not in normalize_for_match(vt_text):
+            return [
+                f"{label}: without line numbers the quote must occur in the member's visual_transcription"
+            ]
+        return []
     start, end = loc.get("line_start"), loc.get("line_end", loc.get("line_start"))
     if not (isinstance(start, int) and isinstance(end, int) and 1 <= start <= end <= member["lines"]):
         return [f"{label}: lines {start}-{end} are outside {member['path']} (1..{member['lines']})"]

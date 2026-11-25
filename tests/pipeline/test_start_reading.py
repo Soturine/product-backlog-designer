@@ -11,6 +11,7 @@ import pytest
 from pbd.pipeline.reading import submit_ledger, validate_ledger
 from pbd.pipeline.run import Run, RunError, normalize_request, start
 from pbd.validation.schema import validate
+from tests.pipeline.helpers import rd
 
 PRD = """# PRD fictício — Horta comunitária
 
@@ -69,7 +70,7 @@ def _ledger(run: Run, selector: str) -> dict[str, Any]:
 
 def _prd_ledger(run: Run) -> dict[str, Any]:
     led = _ledger(run, "prd.md")
-    led["members"] = [{"path": "prd.md", "status": "read", "lines_read": [[1, 8]]}]
+    led["members"] = [{**rd("prd.md"), "path": "prd.md", "status": "read", "lines_read": [[1, 8]]}]
     led["obligations"] = [
         {
             "key": "R1",
@@ -117,7 +118,7 @@ def test_valid_ledgers_complete_reading(run: Run) -> None:
     assert out["pending_sources"] and run.stage_status("reading") == "pending"
     led = _ledger(run, "anexos")
     led["members"] = [
-        {"path": "regras.docx", "status": "read", "lines_read": [[1, 3]]},
+        {**rd("regras.docx"), "path": "regras.docx", "status": "read", "lines_read": [[1, 3]]},
         {"path": "diagrama.png", "status": "unreadable", "reason": "image without transcription"},
     ]
     led["obligations"] = [
@@ -169,7 +170,13 @@ def test_invalid_ledgers_rejected_atomically(run: Run, mutate: Any, message: str
 def test_partial_read_cannot_cite_unread_lines(run: Run) -> None:
     led = _prd_ledger(run)
     led["members"] = [
-        {"path": "prd.md", "status": "partial", "lines_read": [[1, 4]], "reason": "context limit"}
+        {
+            **rd("prd.md"),
+            "path": "prd.md",
+            "status": "partial",
+            "lines_read": [[1, 4]],
+            "reason": "context limit",
+        }
     ]
     errors = validate_ledger(run, led)
     assert any("did not report as read" in e for e in errors)
@@ -178,8 +185,8 @@ def test_partial_read_cannot_cite_unread_lines(run: Run) -> None:
 def test_unreadable_member_cannot_be_claimed_read(run: Run) -> None:
     led = _ledger(run, "anexos")
     led["members"] = [
-        {"path": "regras.docx", "status": "read", "lines_read": [[1, 3]]},
-        {"path": "diagrama.png", "status": "read", "lines_read": [[1, 1]]},
+        {**rd("regras.docx"), "path": "regras.docx", "status": "read", "lines_read": [[1, 3]]},
+        {**rd("diagrama.png"), "path": "diagrama.png", "status": "read", "lines_read": [[1, 1]]},
     ]
     assert any("agent vision" in e for e in validate_ledger(run, led))  # visual member
 
@@ -188,7 +195,7 @@ def test_reading_closed_after_completion(run: Run) -> None:
     submit_ledger(run, _prd_ledger(run))
     led = _ledger(run, "anexos")
     led["members"] = [
-        {"path": "regras.docx", "status": "read", "lines_read": [[1, 3]]},
+        {**rd("regras.docx"), "path": "regras.docx", "status": "read", "lines_read": [[1, 3]]},
         {"path": "diagrama.png", "status": "unreadable", "reason": "image"},
     ]
     submit_ledger(run, led)

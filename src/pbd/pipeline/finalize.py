@@ -116,9 +116,17 @@ def _checks(
     inv = run.inventory()
     total = read = partial = 0
     unread = []
+    methods: Counter[str] = Counter()
+    fallbacks = []
     for src in inv["sources"]:
         ledger = run.read(f"stages/reading/{src['id']}.json")
         for m in ledger["members"]:
+            method = (m.get("reading") or {}).get("method")
+            if m["status"] in ("read", "partial"):
+                methods[method or "undeclared"] += 1
+                if method == "extracted_text":
+                    limits = "; ".join((m.get("reading") or {}).get("limitations") or [])
+                    fallbacks.append(f"{src['selector']}/{m['path']}" + (f" ({limits})" if limits else ""))
             total += 1
             read += m["status"] == "read"
             partial += m["status"] == "partial"
@@ -192,6 +200,8 @@ def _checks(
             "members_partial": partial,
             "reading_complete": total > 0 and read == total,
             "unread": unread,
+            "reading_methods": dict(sorted(methods.items())),
+            "fallback_members": fallbacks,
         },
         "G03": hierarchy,
         "G04": trace,

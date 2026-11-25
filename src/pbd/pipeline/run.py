@@ -236,14 +236,21 @@ def start(
                 entry.update(readable=False, reason=str(exc) or type(exc).__name__)
                 members.append(entry)
                 continue
+            # Native-first: the original is the primary reading input for every member; extracted
+            # text is a verification layer and the fallback when the host cannot open the format.
+            orig = f"sources/original/{record['id']}/{member['path']}"
+            run.write_artifact(orig, data=raw, media_type="application/octet-stream")
+            policy = extract.READING_POLICY[result.extractor]
+            entry.update(
+                original_ref=orig,
+                format=result.extractor,
+                native_reading=policy["native"],
+                extracted_layer=policy["extracted_layer"],
+            )
             if result.visual:
-                # Only an agent with native vision can read this member; keep the original for it.
-                rel = f"sources/visual/{record['id']}/{member['path']}"
-                run.write_artifact(rel, data=raw, media_type="application/octet-stream")
                 entry.update(
                     readable=False,
                     visual=True,
-                    original_ref=rel,
                     extractor="image",
                     reason="visual content: requires agent vision (visual_transcription) or a transcription",
                     gaps=result.gaps,
@@ -270,10 +277,6 @@ def start(
                 entry["pages"] = result.pages
             if result.sheets:
                 entry["sheets"] = result.sheets
-            if result.extractor in ("pdf", "docx", "xlsx"):
-                orig = f"sources/visual/{record['id']}/{member['path']}"
-                run.write_artifact(orig, data=raw, media_type="application/octet-stream")
-                entry["original_ref"] = orig  # lets a vision-capable reader inspect gaps
             members.append(entry)
         record["members_text"] = members
         inventory["sources"].append(record)
@@ -341,6 +344,9 @@ def _assignments(run: Run) -> list[dict[str, Any]]:
                             "path",
                             "readable",
                             "visual",
+                            "format",
+                            "native_reading",
+                            "extracted_layer",
                             "text_ref",
                             "original_ref",
                             "lines",
@@ -375,9 +381,12 @@ def build_work_order(run: Run) -> dict[str, Any]:
             next_stage="reading",
             procedure="procedures/reader.md",
             instruction=(
-                "Assign one logical reader per source below. Each reader reads its members "
-                "(text_ref files, with line numbers) chunk by chunk and writes one ledger; submit "
-                "with: pbd submit reading --file <ledger.json>"
+                "Assign one logical reader per source below. Native-first: each reader opens every "
+                "member's ORIGINAL (original_ref) with the host's native tools (file reader, PDF/vision "
+                "reader), uses the text_ref lines to cite and verify quotes, and falls back to the "
+                "extracted text only when the host cannot open the format, declaring it in "
+                "members[].reading. One ledger per source; submit with: "
+                "pbd submit reading --file <ledger.json>"
             ),
             reader_assignments=_assignments(run),
         )

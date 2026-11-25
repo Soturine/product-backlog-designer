@@ -42,6 +42,7 @@ def ledger(
     agent: str = "reader",
 ) -> dict[str, Any]:
     src = next(s for s in run.inventory()["sources"] if s["selector"] == selector)
+    members = [with_reading(m) for m in members]
     return {
         "source_id": src["id"],
         "source_digest": src["digest"],
@@ -49,6 +50,25 @@ def ledger(
         "members": members,
         "obligations": obligations,
     }
+
+
+def with_reading(member: dict[str, Any]) -> dict[str, Any]:
+    """Default native-first reading declaration (tests that probe the rules set their own)."""
+    if "reading" in member or member.get("status") not in ("read", "partial"):
+        return member
+    path = str(member["path"]).lower()
+    if path.endswith((".png", ".jpg", ".jpeg", ".gif", ".webp")):
+        reading = {"method": "native_vision", "tool": "host image viewer", "limitations": []}
+    elif path.endswith(".pdf"):
+        reading = {"method": "native", "tool": "host PDF reader", "limitations": []}
+    else:
+        reading = {"method": "native", "tool": "host file reader", "limitations": []}
+    return {**member, "reading": reading}
+
+
+def rd(path: str) -> dict[str, Any]:
+    """The default reading declaration for a member path (spread into hand-written member dicts)."""
+    return {"reading": with_reading({"path": path, "status": "read"})["reading"]}
 
 
 def src_id(run: Run, selector: str) -> str:

@@ -20,6 +20,7 @@ import re
 import zipfile
 from dataclasses import dataclass, field
 from pathlib import Path, PurePosixPath
+from typing import Any
 from xml.etree import ElementTree
 
 TEXT_SUFFIXES = {
@@ -360,3 +361,41 @@ def chunks(line_count: int, size: int) -> list[list[int]]:
     if line_count <= 0:
         return []
     return [[start, min(start + size - 1, line_count)] for start in range(1, line_count + 1, size)]
+
+
+# ---------------------------------------------------------------------------- native-first policy
+#: How each format should be read. The agent reads the ORIGINAL with the host's native tools; the
+#: extracted text is a verification layer (quote checks, line locators) and the fallback when the
+#: host cannot open the format. ``fallback_complete``: may a member be certified ``read`` from the
+#: extracted layer alone? Never for PDF (a text layer drops layout, figures and drawn diagrams) or
+#: images; for DOCX/XLSX only when the structural parse reported no gaps, with limitations declared.
+READING_POLICY: dict[str, dict[str, Any]] = {
+    "text": {
+        "native": "open the original file; it is identical to the verification text",
+        "extracted_layer": "decoded text, identical to the original",
+        "fallback_complete": True,
+    },
+    "pdf": {
+        "native": "open the original PDF with the host's native PDF/vision reader, page by page",
+        "extracted_layer": "PDF text layer only: no layout, figures, drawn diagrams or scanned pages",
+        "fallback_complete": False,
+    },
+    "docx": {
+        "native": "open the original .docx natively if the host can; otherwise use the structural extraction",
+        "extracted_layer": "structural parse of body, tables, headers, footers, notes and comments; "
+        "no drawings, images or text boxes",
+        "fallback_complete": True,
+    },
+    "xlsx": {
+        "native": "open the original .xlsx natively if the host can; otherwise use the cell extraction",
+        "extracted_layer": "cell values and formulas with cached values; no charts, colours or shapes",
+        "fallback_complete": True,
+    },
+    "image": {
+        "native": "look at the original image with the host's native vision and transcribe what you see",
+        "extracted_layer": "none",
+        "fallback_complete": False,
+    },
+}
+READING_METHODS = frozenset({"native", "native_vision", "extracted_text"})
+NATIVE_METHODS = frozenset({"native", "native_vision"})

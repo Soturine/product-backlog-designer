@@ -11,6 +11,7 @@ from tools.make_binary_fixtures import C11_PAGES, C12_SHEETS, make_pdf, make_png
 from pbd.pipeline.extract import ExtractionError, decode_text, extract
 from pbd.pipeline.reading import validate_ledger
 from pbd.pipeline.run import Run, normalize_request, start
+from tests.pipeline.helpers import rd
 
 pytest.importorskip("pypdf")
 
@@ -127,12 +128,13 @@ def test_start_records_pages_gaps_visual_and_limitations(mixed_run: Run) -> None
 def test_gapped_pdf_cannot_be_read_without_transcription(mixed_run: Run) -> None:
     n = _meta(mixed_run, "prd.pdf")["lines"]
     members = [
-        {"path": "prd.pdf", "status": "read", "lines_read": [[1, n]]},
+        {**rd("prd.pdf"), "path": "prd.pdf", "status": "read", "lines_read": [[1, n]]},
         {"path": "fluxo.png", "status": "unreadable", "reason": "no vision available"},
     ]
     errors = validate_ledger(mixed_run, _ledger(mixed_run, members, []))
     assert any("extraction gaps" in e for e in errors)
     members[0] = {
+        **rd("prd.pdf"),
         "path": "prd.pdf",
         "status": "partial",
         "lines_read": [[1, n]],
@@ -145,7 +147,13 @@ def test_page_locator_must_contain_cited_lines(mixed_run: Run) -> None:
     pdf = _meta(mixed_run, "prd.pdf")
     n = pdf["lines"]
     members = [
-        {"path": "prd.pdf", "status": "partial", "lines_read": [[1, n]], "reason": "page 3 gap"},
+        {
+            **rd("prd.pdf"),
+            "path": "prd.pdf",
+            "status": "partial",
+            "lines_read": [[1, n]],
+            "reason": "page 3 gap",
+        },
         {"path": "fluxo.png", "status": "unreadable", "reason": "no vision"},
     ]
     text = mixed_run.path(pdf["text_ref"]).read_text(encoding="utf-8").splitlines()
@@ -166,11 +174,17 @@ def test_page_locator_must_contain_cited_lines(mixed_run: Run) -> None:
 
 def test_visual_member_needs_agent_vision_transcription(mixed_run: Run) -> None:
     n = _meta(mixed_run, "prd.pdf")["lines"]
-    pdf = {"path": "prd.pdf", "status": "partial", "lines_read": [[1, n]], "reason": "page 3 gap"}
-    no_vt = [pdf, {"path": "fluxo.png", "status": "read"}]
+    pdf = {
+        **rd("prd.pdf"),
+        "path": "prd.pdf",
+        "status": "partial",
+        "lines_read": [[1, n]],
+        "reason": "page 3 gap",
+    }
+    no_vt = [pdf, {**rd("fluxo.png"), "path": "fluxo.png", "status": "read"}]
     assert any("agent vision" in e for e in validate_ledger(mixed_run, _ledger(mixed_run, no_vt, [])))
     vt = {"method": "agent_vision", "model": "test-vision-model", "text": "Caixa A seta para Caixa B"}
-    with_vt = [pdf, {"path": "fluxo.png", "status": "read", "visual_transcription": vt}]
+    with_vt = [pdf, {**rd("fluxo.png"), "path": "fluxo.png", "status": "read", "visual_transcription": vt}]
     ob = {
         "key": "V1",
         "text": "fluxo A para B",
@@ -183,5 +197,8 @@ def test_visual_member_needs_agent_vision_transcription(mixed_run: Run) -> None:
     assert any(
         "visual_transcription" in e for e in validate_ledger(mixed_run, _ledger(mixed_run, with_vt, [fake]))
     )
-    bad_vt = [pdf, {"path": "fluxo.png", "status": "read", "visual_transcription": {"text": "x"}}]
+    bad_vt = [
+        pdf,
+        {**rd("fluxo.png"), "path": "fluxo.png", "status": "read", "visual_transcription": {"text": "x"}},
+    ]
     assert any("agent_vision" in e for e in validate_ledger(mixed_run, _ledger(mixed_run, bad_vt, [])))

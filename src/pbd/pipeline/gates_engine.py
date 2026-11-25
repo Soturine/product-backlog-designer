@@ -82,7 +82,15 @@ def compute_gates(
         },
     }
     if g01["reading_complete"]:
-        put("G01", "PASS", "every inventoried member was read and re-read by the reviewer", [det, rev], den01)
+        how = ", ".join(f"{k}: {v}" for k, v in g01.get("reading_methods", {}).items())
+        put(
+            "G01",
+            "PASS",
+            "every inventoried member was read and re-read by the reviewer"
+            + (f" (reading methods: {how})" if how else ""),
+            [det, rev],
+            den01,
+        )
     else:
         put("G01", "BLOCKED", "incomplete reading: " + "; ".join(g01["unread"]), [det, rev], den01)
 

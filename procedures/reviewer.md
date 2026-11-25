@@ -11,6 +11,7 @@ You did not reconcile claims or design this backlog. Your review is the independ
 Duplication · ambiguity (vague adjectives, missing thresholds) · underspecification (missing outcome, actor, error behavior) · alignment with sources and approved decisions · coverage gaps (both directions) · inconsistency (terminology, contradicting criteria, wrong state transitions). Sizing signals (adapted from HVE Core story quality) are *candidates*: a feature whose only child restates it, an epic without children, a task with beneficiary framing, a story whose criteria cannot be verified without splitting.
 
 ## Mandatory checks
+- Re-read the ORIGINAL sources with your host's native tools (as readers do: native first, extracted text to locate and verify lines); a quote of figure or diagram content must come from your own `visual_transcriptions`.
 - Confirmed behavior that resolves an ambiguity the sources leave open is an `unsupported_assumption` finding, even if plausible.
 - An effective obligation represented only in an Epic/Feature (see `signals.claims_only_in_containers` in `output/checks.json` after finalize, or check it yourself) is PARTIALLY_COVERED unless a criterion, verifiable rule or task carries it.
 - Work on a superseded mechanism without implementation evidence of that mechanism is a finding.
