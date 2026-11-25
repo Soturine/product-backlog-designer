@@ -34,7 +34,7 @@ def check(
         gold = json.loads(gold_path.read_text(encoding="utf-8"))
         case_dir = cases_dir / gold["case"]
         selectors = {s["selector"] for s in gold["sources"]}
-        for ob in gold["obligations"]:
+        for ob in gold.get("obligations", []):
             if not any(ob["source"] == s or ob["source"].startswith(s + "/") for s in selectors):
                 problems.append(
                     f"{gold['case']} {ob['id']}: source {ob['source']} is not a declared selector"

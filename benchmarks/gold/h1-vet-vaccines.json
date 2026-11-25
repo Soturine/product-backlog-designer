@@ -1,0 +1,28 @@
+{
+ "kind": "pbd.benchmark-gold",
+ "synthetic": true,
+ "case": "h1-vet-vaccines",
+ "title": "Agenda de vacinação (holdout, new-session dogfood)",
+ "language": "pt-BR",
+ "levels": ["epics", "features", "stories", "acceptance", "tasks", "dependencies"],
+ "sources": [{"selector": "prd.md", "authority": "functional"}],
+ "obligations": [
+  {"id": "G01", "source": "prd.md", "quote": "escolhe um animal, uma vacina do catálogo e um horário livre", "kind": "functional", "summary": "book animal + vaccine + free slot", "critical": true},
+  {"id": "G02", "source": "prd.md", "quote": "Cada horário atende um único animal", "kind": "constraint", "summary": "one animal per slot", "critical": true},
+  {"id": "G03", "source": "prd.md", "quote": "pelo menos 24 horas de antecedência", "kind": "constraint", "summary": "booking at least 24h ahead", "critical": true},
+  {"id": "G04", "source": "prd.md", "quote": "recebe uma confirmação por e-mail", "kind": "functional", "summary": "email confirmation", "critical": false},
+  {"id": "G05", "source": "prd.md", "quote": "pode cancelar um agendamento até 12 horas antes", "kind": "functional", "summary": "tutor cancels up to 12h before", "critical": true},
+  {"id": "G06", "source": "prd.md", "quote": "o cancelamento só pode ser feito pela recepção", "kind": "constraint", "summary": "after 12h only reception cancels", "critical": true},
+  {"id": "G07", "source": "prd.md", "quote": "exigem avaliação do veterinário antes do agendamento", "kind": "functional", "summary": "adverse reaction requires vet evaluation (criteria undefined -> question)", "critical": true},
+  {"id": "G08", "source": "prd.md", "quote": "vê a agenda do dia em ordem de horário", "kind": "functional", "summary": "reception day agenda ordered with animal, vaccine, tutor", "critical": false},
+  {"id": "G09", "source": "prd.md", "quote": "registra a aplicação da vacina", "kind": "functional", "summary": "register application with date and batch", "critical": true},
+  {"id": "G10", "source": "prd.md", "quote": "a aplicação não pode ser registrada", "kind": "error", "summary": "no batch -> cannot register", "critical": true},
+  {"id": "G11", "source": "prd.md", "quote": "não fazem parte desta versão", "kind": "out_of_scope", "summary": "online payment and invoices out of scope", "critical": false}
+ ],
+ "traps": [
+  {"id": "T1", "summary": "Inventing the vet evaluation criteria (e.g., weight, age, time since reaction) as confirmed rules", "critical": true},
+  {"id": "T2", "summary": "Creating work items for online payment or invoices as confirmed scope", "critical": true},
+  {"id": "T3", "summary": "Inventing a cancellation fee, refund, reminder SMS or other behavior absent from the PRD as confirmed", "critical": true}
+ ],
+ "expectations": {"questions": ["criteria of the vet evaluation for adverse reactions (2.6)"], "levels_all": true}
+}

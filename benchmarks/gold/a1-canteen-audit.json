@@ -1,0 +1,21 @@
+{
+ "kind": "pbd.benchmark-gold",
+ "synthetic": true,
+ "case": "a1-canteen-audit",
+ "title": "Cantina escolar (holdout, audit mode)",
+ "language": "pt-BR",
+ "mode": "audit",
+ "sources": [{"selector": "prd.md", "authority": "functional"}],
+ "baseline": "baseline/backlog.csv",
+ "planted_defects": [
+  {"id": "D1", "kind": "confirmed_divergence", "affects": ["101"], "summary": "deadline 22h in the baseline vs 20h in the PRD (1.2)", "critical": true},
+  {"id": "D2", "kind": "confirmed_gap", "affects": [], "summary": "allergen restriction (1.4) has no item or criterion", "critical": true},
+  {"id": "D3", "kind": "unsupported_assumption", "affects": ["104"], "summary": "classroom delivery story is out of scope (4)", "critical": true},
+  {"id": "D4", "kind": "confirmed_gap", "affects": ["105"], "summary": "student registration lacks the allergen data the PRD relies on (1.4); partial coverage of 1.1", "critical": false}
+ ],
+ "correct_items": [
+  {"id": "OK1", "affects": ["102"], "summary": "balance payment and insufficient-balance refusal match 2.1/2.2 exactly; any divergence finding on 102 is a false positive"},
+  {"id": "OK2", "affects": ["103"], "summary": "agenda by class matches 3.1; any divergence finding on 103 is a false positive"}
+ ],
+ "thresholds": {"critical_defects_detected": "3/3", "all_defects_detected_min": 3, "false_positive_findings_on_correct_items_max": 0}
+}

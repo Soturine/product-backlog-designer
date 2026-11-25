@@ -1,0 +1,9 @@
+id,type,title,parent,description,acceptance_criteria,priority
+100,Epic,Pedidos da cantina,,Permitir pedidos de lanche pelos responsáveis.,,
+101,User Story,Fazer pedido para o dia seguinte,100,Como responsável quero pedir o lanche do dia seguinte para meu filho.,"- Pedido aceito até as 22h do dia anterior
+- Cada aluno pode ter no máximo 2 pedidos por dia",1
+102,User Story,Pagar pedido com saldo,100,Como responsável quero pagar com o saldo da conta.,"- Pedido debitado do saldo pré-carregado
+- Pedido recusado com a mensagem Saldo insuficiente quando não há saldo",1
+103,User Story,Ver pedidos do dia por turma,100,Como cantina quero ver os pedidos do dia agrupados por turma.,"- Lista do dia agrupada por turma",2
+104,User Story,Entregar lanche na sala de aula,100,Como responsável quero que o lanche seja entregue na sala.,"- Lanche entregue na sala até o intervalo",3
+105,User Story,Cadastrar aluno,100,Como responsável quero cadastrar meu filho.,"- Aluno cadastrado com nome e turma",2
