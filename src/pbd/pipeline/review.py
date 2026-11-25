@@ -10,37 +10,18 @@ from __future__ import annotations
 
 from typing import Any
 
+from pbd import vocab
 from pbd.core.canonical import digest
 from pbd.pipeline.reading import normalize_for_match
 from pbd.pipeline.run import Run, RunError, require_stage
 
-VERDICTS = {"pass", "concern", "fail"}
-SUPPORT = {"supported", "proposal_justified", "unsupported"}
-INVEST = ("independent", "negotiable", "valuable", "estimable", "small", "testable")
-RATINGS = {"supported", "concern", "unknown", "not_applicable"}
-OB_DISPOSITIONS = {
-    "COVERED",
-    "PARTIALLY_COVERED",
-    "NOT_COVERED",
-    "QUESTION_REQUIRED",
-    "CONFLICTING",
-    "OUT_OF_SCOPE",
-    "SUPERSEDED",
-    "DEFERRED",
-    "BLOCKED",
-}
-CLASSIFICATIONS = {
-    "confirmed_divergence",
-    "confirmed_gap",
-    "ambiguous_source",
-    "unsupported_assumption",
-    "planning_gap",
-    "candidate_concern",
-    "optional_improvement",
-    "justified_exception",
-    "question",
-}
-SEVERITIES = {"critical", "high", "medium", "low", "info"}
+VERDICTS = vocab.VERDICTS
+SUPPORT = vocab.SOURCE_SUPPORT
+INVEST = vocab.INVEST_DIMENSIONS
+RATINGS = vocab.INVEST_RATINGS
+OB_DISPOSITIONS = vocab.review_dispositions()
+CLASSIFICATIONS = vocab.finding_classifications()
+SEVERITIES = vocab.finding_severities()
 GATES_REVIEWED = {"G02", "G04", "G05", "G06", "G07", "G08", "G09", "G13", "G14"}
 
 
@@ -143,7 +124,10 @@ def validate_review(run: Run, review: Any) -> list[str]:
                 errors.append(f"{kind} {e.get('key')}: source_support must be one of {sorted(SUPPORT)}")
             if e.get("verdict") in ("concern", "fail") and not str(e.get("notes", "")).strip():
                 errors.append(f"{kind} {e.get('key')}: a concern or fail needs notes")
-            if e.get("task_sufficiency") not in (None, "sufficient", "insufficient", "not_applicable"):
+            if (
+                e.get("task_sufficiency") is not None
+                and e.get("task_sufficiency") not in vocab.TASK_SUFFICIENCY
+            ):
                 errors.append(
                     f"{kind} {e.get('key')}: task_sufficiency must be sufficient, insufficient"
                     " or not_applicable"
@@ -168,12 +152,12 @@ def validate_review(run: Run, review: Any) -> list[str]:
         bad = [k for k in f.get("affects") or [] if k not in design_keys | claim_keys]
         if bad or not f.get("affects"):
             errors.append(f"{label}: affects must list design or claim keys (unknown {bad})")
-        if f.get("review_status", "confirmed") not in ("candidate", "confirmed"):
+        if f.get("review_status", "confirmed") not in vocab.REVIEW_FINDING_STATUS:
             errors.append(f"{label}: review_status must be candidate or confirmed")
         if f.get("gate") and f["gate"] not in GATES_REVIEWED:
             errors.append(f"{label}: gate must be one of {sorted(GATES_REVIEWED)}")
     for i, d in enumerate(review.get("duplicates") or []):
-        if d.get("assessment") not in ("duplicate", "distinct", "overlap") or not d.get("rationale"):
+        if d.get("assessment") not in vocab.DUPLICATE_ASSESSMENTS or not d.get("rationale"):
             errors.append(
                 f"duplicates[{i}]: assessment (duplicate, distinct or overlap) and rationale required"
             )

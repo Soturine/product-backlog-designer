@@ -17,6 +17,7 @@ import re
 import unicodedata
 from typing import Any
 
+from pbd import vocab
 from pbd.core.canonical import digest
 from pbd.pipeline.run import Run, RunError, require_stage
 
@@ -45,23 +46,11 @@ FORBIDDEN = {
     "claims",
     "findings",
 }
-CATEGORIES = {
-    "functional",
-    "nonfunctional",
-    "integration",
-    "operational",
-    "security",
-    "data",
-    "accessibility",
-    "error",
-    "constraint",
-    "out_of_scope",
-    "other",
-}
-MODALITIES = {"must", "should", "may", "must_not", "informative"}
-UNCERTAINTY = {"confirmed", "ambiguous", "conflicting", "unknown"}
-MEMBER_STATUS = {"read", "partial", "unreadable", "skipped"}
-INDEPENDENCE = {"separate_agent", "sequential_role"}
+CATEGORIES = vocab.claim_categories()
+MODALITIES = vocab.READER_MODALITIES
+UNCERTAINTY = vocab.READER_UNCERTAINTY
+MEMBER_STATUS = vocab.MEMBER_STATUS
+INDEPENDENCE = vocab.INDEPENDENCE
 _KEY = re.compile(r"^[A-Za-z][A-Za-z0-9_.-]{0,40}$")
 
 

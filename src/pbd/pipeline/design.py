@@ -11,7 +11,7 @@ import re
 from collections import Counter
 from typing import Any
 
-from pbd import SCHEMA_VERSION
+from pbd import SCHEMA_VERSION, vocab
 from pbd.core.canonical import digest
 from pbd.core.identity import derive
 from pbd.pipeline.reading import normalize_for_match
@@ -68,35 +68,11 @@ FORBIDDEN_FIELDS = {
     "finish_date",
     "time_logged",
 }
-DISPOSITIONS = {
-    "COVERED",
-    "PARTIALLY_COVERED",
-    "NOT_COVERED",
-    "QUESTION_REQUIRED",
-    "CONFLICTING",
-    "OUT_OF_SCOPE",
-    "DEFERRED",
-}
-UNCERTAINTY_LEVELS = {"confirmed", "inferred", "proposed", "ambiguous", "unknown", "conflicting"}
-CLAIM_CATEGORIES = {
-    "functional",
-    "nonfunctional",
-    "integration",
-    "operational",
-    "security",
-    "data",
-    "accessibility",
-    "error",
-    "constraint",
-    "out_of_scope",
-    "other",
-}
+DISPOSITIONS = vocab.design_dispositions()
+UNCERTAINTY_LEVELS = vocab.uncertainty_levels()
+CLAIM_CATEGORIES = vocab.claim_categories()
 _KEY = re.compile(r"^[A-Za-z][A-Za-z0-9_.-]{0,40}$")
 AC_PREFIX = {"pt": "CA", "es": "CA", "en": "AC"}
-
-
-def _kind_for_type(item_type: str) -> str:
-    return item_type  # identity kinds share the canonical type names
 
 
 def _obligation_index(run: Run) -> dict[str, dict[str, Any]]:
@@ -365,7 +341,7 @@ def compile_design(run: Run, payload: Any) -> tuple[list[str], dict[str, Any]]:
             if kind not in TYPE_LEVEL and kind != "criterion":
                 errors.append(f"{key}: unknown type {entry.get('type')!r}")
                 continue
-            keys[key] = derive(_kind_for_type(str(kind)), {"run": run.run_id, "key": key})
+            keys[key] = derive(str(kind), {"run": run.run_id, "key": key})
     if errors:
         return errors, {}
 
