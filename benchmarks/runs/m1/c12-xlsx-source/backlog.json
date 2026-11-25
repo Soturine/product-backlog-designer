@@ -1,0 +1,895 @@
+{
+  "claims": [
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-Q20JGVA1SZ6T",
+          "PBD-AC-47GY8SQNCXQC",
+          "PBD-TASK-Z1XX8757S132",
+          "PBD-FEAT-X9WHCV7JCP8H"
+        ],
+        "rationale": "Reserva com data, horário e finalidade coberta por US1, AC1 e T1.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "requisitos.xlsx",
+            "quote_digest": "sha256:3c14f166d70ade453c2acd13fe543a3ad0577d41585c0ab444c751ece1c350a0",
+            "source_id": "PBD-SRC-AZNESFVTM1HG",
+            "source_version": "7b6f9f5e5181ef6b",
+            "table": "Requisitos"
+          },
+          "summary": "O morador reserva uma sala informando data, horário e finalidade.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-BJ699MGJG0BJ",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O morador reserva uma sala informando data, horário e finalidade.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-7DM16A3VWNM4",
+          "PBD-AC-B0Q1KBYVGQVZ",
+          "PBD-AC-PC31ZZ1HM2ZT",
+          "PBD-TASK-9V70RS0K4THH"
+        ],
+        "rationale": "Limite de duração coberto por US2, AC2, AC3 e T2.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "requisitos.xlsx",
+            "quote_digest": "sha256:82033925606a2dbcfcc8493bf4516265b85729388036b79d5aa070426f707f7b",
+            "source_id": "PBD-SRC-AZNESFVTM1HG",
+            "source_version": "7b6f9f5e5181ef6b",
+            "table": "Requisitos"
+          },
+          "summary": "Uma reserva dura no máximo o limite da aba Regras.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-E8PRXWJA7EJ3",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Uma reserva dura no máximo o limite de duração máxima definido na aba Regras.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "data",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-7DM16A3VWNM4",
+          "PBD-AC-B0Q1KBYVGQVZ",
+          "PBD-AC-PC31ZZ1HM2ZT",
+          "PBD-TASK-9V70RS0K4THH"
+        ],
+        "rationale": "Valor de 4 horas coberto pela aba Regras; o valor conflitante da aba oculta depende da Q2.",
+        "status": "PARTIALLY_COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 10,
+            "line_start": 10,
+            "member": "requisitos.xlsx",
+            "quote_digest": "sha256:0b534a4d03fceda963abdfecf35b2b42823cbb1a411ca21dda7f02963cb84d56",
+            "source_id": "PBD-SRC-AZNESFVTM1HG",
+            "source_version": "7b6f9f5e5181ef6b",
+            "table": "Regras"
+          },
+          "summary": "A2=Duração máxima (horas) | B2=4",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-4CAV124AFGBX",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Duração máxima de uma reserva: 4 horas (aba Regras).",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-6QZVZCR20YSQ",
+          "PBD-AC-C1PE24B0344Z",
+          "PBD-TASK-4S66248CA4T2"
+        ],
+        "rationale": "Exigência de antecedência mínima coberta por US3, AC4 e T3.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 6,
+            "line_start": 6,
+            "member": "requisitos.xlsx",
+            "quote_digest": "sha256:a0b8ef92c88952aae6759e832bde0c422520ff95449324de6cd08faa0e7763a8",
+            "source_id": "PBD-SRC-AZNESFVTM1HG",
+            "source_version": "7b6f9f5e5181ef6b",
+            "table": "Requisitos"
+          },
+          "summary": "Reservas exigem a antecedência mínima da aba Regras.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-A3Z5ECDXVY33",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Reservas exigem a antecedência mínima definida na aba Regras.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "data",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-6QZVZCR20YSQ",
+          "PBD-AC-C1PE24B0344Z",
+          "PBD-TASK-4S66248CA4T2"
+        ],
+        "rationale": "Valor de 1 dia coberto; a unidade (dias corridos ou úteis) depende da Q1.",
+        "status": "PARTIALLY_COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 11,
+            "line_start": 11,
+            "member": "requisitos.xlsx",
+            "quote_digest": "sha256:55e1969a55c4055900808eeafab01a843c5eb4b763af91b109f0165bf99d2e69",
+            "source_id": "PBD-SRC-AZNESFVTM1HG",
+            "source_version": "7b6f9f5e5181ef6b",
+            "table": "Regras"
+          },
+          "summary": "A3=Antecedência mínima (dias) | B3=1",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-S84Q659N4PWJ",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Antecedência mínima de reserva: 1 dia (aba Regras).",
+      "uncertainty": {
+        "level": "confirmed",
+        "note": "Unidade e forma de contagem (dias corridos ou úteis) não definidas na fonte."
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-557VG9Z0A8PM",
+          "PBD-AC-KM24D02M95PC",
+          "PBD-TASK-HW2KARGF57C7",
+          "PBD-FEAT-NSGN8D2RCEDX"
+        ],
+        "rationale": "Visão diária por sala coberta por US4, AC6 e T4.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 7,
+            "line_start": 7,
+            "member": "requisitos.xlsx",
+            "quote_digest": "sha256:49200540f8b04a0077106ebbf6b47a764b7d7783a96586ae7cdcf6fda73d21e6",
+            "source_id": "PBD-SRC-AZNESFVTM1HG",
+            "source_version": "7b6f9f5e5181ef6b",
+            "table": "Requisitos"
+          },
+          "summary": "O zelador vê as reservas do dia por sala.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-1JP9JS26PES0",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O zelador vê as reservas do dia por sala.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    }
+  ],
+  "criteria": [
+    {
+      "claim_refs": [
+        "PBD-CLM-BJ699MGJG0BJ"
+      ],
+      "condition": "o morador quer reservar uma sala",
+      "expected_outcomes": [
+        "a reserva fica registrada com data, horário e finalidade"
+      ],
+      "id": "PBD-AC-47GY8SQNCXQC",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-Q20JGVA1SZ6T",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "informa data, horário e finalidade",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-E8PRXWJA7EJ3",
+        "PBD-CLM-4CAV124AFGBX"
+      ],
+      "condition": "a reserva pedida tem duração maior que 4 horas",
+      "expected_outcomes": [
+        "a reserva não é aceita"
+      ],
+      "id": "PBD-AC-B0Q1KBYVGQVZ",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-7DM16A3VWNM4",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o morador confirma a reserva",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-E8PRXWJA7EJ3",
+        "PBD-CLM-4CAV124AFGBX"
+      ],
+      "condition": "a reserva pedida tem duração de exatamente 4 horas",
+      "expected_outcomes": [
+        "a reserva é aceita"
+      ],
+      "id": "PBD-AC-PC31ZZ1HM2ZT",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-7DM16A3VWNM4",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o morador confirma a reserva",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-A3Z5ECDXVY33",
+        "PBD-CLM-S84Q659N4PWJ"
+      ],
+      "condition": "a reserva pedida começa com menos de 1 dia de antecedência",
+      "expected_outcomes": [
+        "a reserva não é aceita"
+      ],
+      "id": "PBD-AC-C1PE24B0344Z",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-6QZVZCR20YSQ",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o morador confirma a reserva",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "a reserva é aceita"
+      ],
+      "id": "PBD-AC-VA76JH3VC3VW",
+      "order": 1,
+      "origin": "proposed",
+      "parent": "PBD-STORY-6QZVZCR20YSQ",
+      "rationale": "A fonte não define se a contagem é em dias corridos ou úteis (ver Q1).",
+      "status": "proposed",
+      "style": "list",
+      "text": "A reserva feita com exatamente 1 dia de antecedência é aceita",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-1JP9JS26PES0"
+      ],
+      "condition": "há reservas marcadas para o dia",
+      "expected_outcomes": [
+        "as reservas aparecem agrupadas por sala"
+      ],
+      "id": "PBD-AC-KM24D02M95PC",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-557VG9Z0A8PM",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o zelador abre as reservas do dia",
+      "visible_id": "CA-01"
+    }
+  ],
+  "decisions": [],
+  "findings": [
+    {
+      "actual": "F2, US2, US3, AC2, AC3 and AC4 hard-code 4 horas and 1 dia in their wording, while T2 and T3 read them from Regras.",
+      "affects": [
+        "PBD-AC-B0Q1KBYVGQVZ",
+        "PBD-AC-C1PE24B0344Z",
+        "PBD-AC-PC31ZZ1HM2ZT",
+        "PBD-FEAT-0GNQRNM44W13",
+        "PBD-STORY-6QZVZCR20YSQ",
+        "PBD-STORY-7DM16A3VWNM4"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Source R2 and R3 define the limits by reference to the Regras tab, so they are configurable values.",
+      "gate": "G04",
+      "id": "PBD-FND-CM1WTJZTRQKG",
+      "impact": "A change in Regras leaves the stories and criteria describing an outdated rule.",
+      "recommendation": "Refer to the Regras value in the want and rule text, keeping the concrete values only as examples in the criteria, with the source of the value stated.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "The stories and criteria can contradict the configured value the tasks use."
+    },
+    {
+      "actual": "AC5 accepts a booking exactly 1 day ahead while Q1 (calendar versus business days) is open.",
+      "affects": [
+        "PBD-AC-VA76JH3VC3VW",
+        "PBD-STORY-6QZVZCR20YSQ"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "A proposed boundary criterion should not assume an answer to an open question.",
+      "gate": "G06",
+      "id": "PBD-FND-RA44Q1ZR2TCW",
+      "impact": "The accepted booking window may differ from the owner's intent by a day.",
+      "recommendation": "Keep AC5 explicitly conditional on Q1, or present both calendar and business-day variants.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "The inclusive boundary and day count are unresolved."
+    },
+    {
+      "actual": "AC4 measures 'antecedência' from an undefined point. Q1 addresses the unit but not the anchor.",
+      "affects": [
+        "PBD-AC-C1PE24B0344Z",
+        "PBD-STORY-6QZVZCR20YSQ",
+        "PBD-TASK-4S66248CA4T2"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "A rule that measures advance time should state the reference point.",
+      "gate": "G06",
+      "id": "PBD-FND-4X90HG8QCS1J",
+      "impact": "Different implementers may measure from booking time or from submission and disagree on the boundary.",
+      "recommendation": "Add the reference point to Q1 or to a new question and to AC4's condition.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "Underspecified measurement."
+    },
+    {
+      "actual": "No epic, feature, story or task records the Prioridade column, and no open question mentions it.",
+      "affects": [
+        "PBD-EPIC-PC6SGWXRFMZH",
+        "PBD-FEAT-NSGN8D2RCEDX",
+        "PBD-FEAT-X9WHCV7JCP8H",
+        "PBD-STORY-557VG9Z0A8PM",
+        "PBD-STORY-Q20JGVA1SZ6T"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Source priority values (Alta, Alta, Média, Média for R1 to R4) are either carried or deliberately dropped.",
+      "gate": "G02",
+      "id": "PBD-FND-9DYYQ0TC76CS",
+      "impact": "The owner cannot see the priority the source assigns to each requirement.",
+      "recommendation": "Carry the priority as metadata where the format allows, or record an explicit decision to drop it.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Source metadata is silently lost."
+    },
+    {
+      "actual": "The design excludes the 8-hour draft value but Q2 still offers 'Usar 8 horas se o rascunho for válido', which the source says is discarded.",
+      "affects": [
+        "PBD-FEAT-0GNQRNM44W13",
+        "PBD-STORY-7DM16A3VWNM4"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "The hidden draft marked 'rascunho descartado' should be settled once.",
+      "gate": "G02",
+      "id": "PBD-FND-KMF4E9255933",
+      "impact": "Minor: the owner may be asked to reconsider a discarded value.",
+      "recommendation": "Close Q2 with a note that the draft is discarded, or keep the question only if the owner must confirm it.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "The question offers an option the source already rejects."
+    },
+    {
+      "actual": "F1 and US1, and F3 and US4, restate the same capability with a single child.",
+      "affects": [
+        "PBD-FEAT-NSGN8D2RCEDX",
+        "PBD-FEAT-X9WHCV7JCP8H",
+        "PBD-STORY-557VG9Z0A8PM",
+        "PBD-STORY-Q20JGVA1SZ6T"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Each feature should add content beyond its only child story.",
+      "gate": "G09",
+      "id": "PBD-FND-RJK2B5S58P6F",
+      "impact": "Duplicate entries increase review load.",
+      "recommendation": "Collapse F1 into US1 or F3 into US4, or give each feature a distinct capability statement.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Sizing signal: feature whose only child restates it."
+    }
+  ],
+  "items": [
+    {
+      "claim_refs": [
+        "PBD-CLM-BJ699MGJG0BJ",
+        "PBD-CLM-E8PRXWJA7EJ3",
+        "PBD-CLM-4CAV124AFGBX",
+        "PBD-CLM-A3Z5ECDXVY33",
+        "PBD-CLM-S84Q659N4PWJ",
+        "PBD-CLM-1JP9JS26PES0"
+      ],
+      "content": {
+        "context": "Planilha requisitos.xlsx: abas Requisitos e Regras; a aba oculta Rascunho está marcada como descartada.",
+        "in_scope": [
+          "Reserva pelo morador com data, horário e finalidade",
+          "Duração máxima da reserva conforme a aba Regras",
+          "Antecedência mínima conforme a aba Regras",
+          "Visão diária de reservas por sala para o zelador"
+        ],
+        "kind": "epic",
+        "objective": "Permitir que moradores reservem salas comunitárias dentro das regras de duração e antecedência, e que o zelador acompanhe as reservas do dia.",
+        "out_scope": [
+          "Conflitos de horário e cancelamento (não descritos na fonte)",
+          "Quantidade real de salas (ver Q3)"
+        ],
+        "outcome": "Reservas válidas ficam registradas e o zelador vê as reservas do dia por sala."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir que moradores reservem salas comunitárias dentro das regras de duração e antecedência, e que o zelador acompanhe as reservas do dia.</p><p><strong>Contexto</strong>: Planilha requisitos.xlsx: abas Requisitos e Regras; a aba oculta Rascunho está marcada como descartada.</p><p><strong>No escopo</strong></p><ul><li>Reserva pelo morador com data, horário e finalidade</li><li>Duração máxima da reserva conforme a aba Regras</li><li>Antecedência mínima conforme a aba Regras</li><li>Visão diária de reservas por sala para o zelador</li></ul><p><strong>Fora do escopo</strong></p><ul><li>Conflitos de horário e cancelamento (não descritos na fonte)</li><li>Quantidade real de salas (ver Q3)</li></ul><p><strong>Resultado esperado</strong>: Reservas válidas ficam registradas e o zelador vê as reservas do dia por sala.</p>"
+      },
+      "id": "PBD-EPIC-PC6SGWXRFMZH",
+      "origin": "generated",
+      "parent": null,
+      "status": "reviewed",
+      "title": "Reserva de salas comunitárias",
+      "type": "epic"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-BJ699MGJG0BJ"
+      ],
+      "content": {
+        "capability": "Registrar uma reserva de sala com data, horário e finalidade.",
+        "kind": "feature",
+        "rules": [
+          "O morador informa data, horário e finalidade"
+        ],
+        "value": "O morador garante o uso da sala no horário desejado."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Registrar uma reserva de sala com data, horário e finalidade.</p><p><strong>Valor</strong>: O morador garante o uso da sala no horário desejado.</p><p><strong>Regras relacionadas</strong></p><ul><li>O morador informa data, horário e finalidade</li></ul>"
+      },
+      "id": "PBD-FEAT-X9WHCV7JCP8H",
+      "origin": "generated",
+      "parent": "PBD-EPIC-PC6SGWXRFMZH",
+      "status": "reviewed",
+      "title": "Reserva de sala pelo morador",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-E8PRXWJA7EJ3",
+        "PBD-CLM-4CAV124AFGBX",
+        "PBD-CLM-A3Z5ECDXVY33",
+        "PBD-CLM-S84Q659N4PWJ"
+      ],
+      "content": {
+        "capability": "Aplicar os limites de duração máxima e antecedência mínima definidos na aba Regras.",
+        "kind": "feature",
+        "rules": [
+          "Duração máxima = 4 horas (aba Regras)",
+          "Antecedência mínima = 1 dia (aba Regras)"
+        ],
+        "value": "As reservas seguem regras únicas e configuradas na planilha."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Aplicar os limites de duração máxima e antecedência mínima definidos na aba Regras.</p><p><strong>Valor</strong>: As reservas seguem regras únicas e configuradas na planilha.</p><p><strong>Regras relacionadas</strong></p><ul><li>Duração máxima = 4 horas (aba Regras)</li><li>Antecedência mínima = 1 dia (aba Regras)</li></ul>"
+      },
+      "id": "PBD-FEAT-0GNQRNM44W13",
+      "origin": "generated",
+      "parent": "PBD-EPIC-PC6SGWXRFMZH",
+      "status": "reviewed",
+      "title": "Regras de duração e antecedência",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-1JP9JS26PES0"
+      ],
+      "content": {
+        "capability": "Mostrar ao zelador as reservas do dia, separadas por sala.",
+        "kind": "feature",
+        "rules": [
+          "As reservas do dia são agrupadas por sala"
+        ],
+        "value": "O zelador acompanha o uso das salas no dia."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Mostrar ao zelador as reservas do dia, separadas por sala.</p><p><strong>Valor</strong>: O zelador acompanha o uso das salas no dia.</p><p><strong>Regras relacionadas</strong></p><ul><li>As reservas do dia são agrupadas por sala</li></ul>"
+      },
+      "id": "PBD-FEAT-NSGN8D2RCEDX",
+      "origin": "generated",
+      "parent": "PBD-EPIC-PC6SGWXRFMZH",
+      "status": "reviewed",
+      "title": "Visão diária de reservas para o zelador",
+      "type": "feature"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-BJ699MGJG0BJ"
+      ],
+      "content": {
+        "actor": "morador",
+        "benefit": "usar a sala no horário desejado",
+        "kind": "role_goal_benefit",
+        "want": "o sistema registrasse a reserva de uma sala com data, horário e finalidade"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> morador, <strong>gostaria que</strong> o sistema registrasse a reserva de uma sala com data, horário e finalidade, <strong>para</strong> usar a sala no horário desejado.</p>"
+      },
+      "id": "PBD-STORY-Q20JGVA1SZ6T",
+      "origin": "generated",
+      "parent": "PBD-FEAT-X9WHCV7JCP8H",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Reservar sala informando data, horário e finalidade",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-E8PRXWJA7EJ3",
+        "PBD-CLM-4CAV124AFGBX"
+      ],
+      "content": {
+        "actor": "morador",
+        "benefit": "manter o uso das salas dentro da duração máxima",
+        "kind": "role_goal_benefit",
+        "want": "o sistema recusasse reservas com duração acima de 4 horas"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> morador, <strong>gostaria que</strong> o sistema recusasse reservas com duração acima de 4 horas, <strong>para</strong> manter o uso das salas dentro da duração máxima.</p>"
+      },
+      "id": "PBD-STORY-7DM16A3VWNM4",
+      "origin": "generated",
+      "parent": "PBD-FEAT-0GNQRNM44W13",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Limitar a reserva à duração máxima",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-A3Z5ECDXVY33",
+        "PBD-CLM-S84Q659N4PWJ"
+      ],
+      "content": {
+        "actor": "morador",
+        "benefit": "garantir a antecedência mínima da reserva",
+        "kind": "role_goal_benefit",
+        "want": "o sistema recusasse reservas feitas com menos de 1 dia de antecedência"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> morador, <strong>gostaria que</strong> o sistema recusasse reservas feitas com menos de 1 dia de antecedência, <strong>para</strong> garantir a antecedência mínima da reserva.</p>"
+      },
+      "id": "PBD-STORY-6QZVZCR20YSQ",
+      "origin": "generated",
+      "parent": "PBD-FEAT-0GNQRNM44W13",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Exigir antecedência mínima da reserva",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-1JP9JS26PES0"
+      ],
+      "content": {
+        "actor": "zelador",
+        "benefit": "acompanhar o uso das salas no dia",
+        "kind": "role_goal_benefit",
+        "want": "o sistema mostrasse as reservas do dia separadas por sala"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> zelador, <strong>gostaria que</strong> o sistema mostrasse as reservas do dia separadas por sala, <strong>para</strong> acompanhar o uso das salas no dia.</p>"
+      },
+      "id": "PBD-STORY-557VG9Z0A8PM",
+      "origin": "generated",
+      "parent": "PBD-FEAT-NSGN8D2RCEDX",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Ver reservas do dia por sala",
+      "type": "story"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-BJ699MGJG0BJ"
+      ],
+      "content": {
+        "activities": [
+          "Incluir campos de data, horário e finalidade no formulário de reserva",
+          "Salvar a reserva com os três valores"
+        ],
+        "kind": "task",
+        "outcome": "Reserva guardada com data, horário e finalidade.",
+        "summary": "Incluir na reserva os campos de data, horário e finalidade.",
+        "verification": "Executar AC1 e confirmar que a reserva guarda os três valores."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Incluir na reserva os campos de data, horário e finalidade.</p><p><strong>Atividades</strong></p><ul><li>Incluir campos de data, horário e finalidade no formulário de reserva</li><li>Salvar a reserva com os três valores</li></ul><p><strong>Resultado esperado</strong>: Reserva guardada com data, horário e finalidade.</p><p><strong>Verificação</strong>: Executar AC1 e confirmar que a reserva guarda os três valores.</p>"
+      },
+      "id": "PBD-TASK-Z1XX8757S132",
+      "origin": "generated",
+      "parent": "PBD-STORY-Q20JGVA1SZ6T",
+      "status": "reviewed",
+      "title": "Implementar formulário de reserva com data, horário e finalidade",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-E8PRXWJA7EJ3",
+        "PBD-CLM-4CAV124AFGBX"
+      ],
+      "content": {
+        "activities": [
+          "Ler o valor de duração máxima da aba Regras",
+          "Recusar reserva com duração acima do limite"
+        ],
+        "kind": "task",
+        "outcome": "Nenhuma reserva passa do limite configurado.",
+        "summary": "Ler o limite de duração máxima da aba Regras e recusar reservas acima dele.",
+        "verification": "Executar AC2 e AC3; o valor de 4 horas depende da resposta à Q2."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Ler o limite de duração máxima da aba Regras e recusar reservas acima dele.</p><p><strong>Atividades</strong></p><ul><li>Ler o valor de duração máxima da aba Regras</li><li>Recusar reserva com duração acima do limite</li></ul><p><strong>Resultado esperado</strong>: Nenhuma reserva passa do limite configurado.</p><p><strong>Verificação</strong>: Executar AC2 e AC3; o valor de 4 horas depende da resposta à Q2.</p>"
+      },
+      "id": "PBD-TASK-9V70RS0K4THH",
+      "origin": "generated",
+      "parent": "PBD-STORY-7DM16A3VWNM4",
+      "status": "reviewed",
+      "title": "Aplicar duração máxima da aba Regras",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-A3Z5ECDXVY33",
+        "PBD-CLM-S84Q659N4PWJ"
+      ],
+      "content": {
+        "activities": [
+          "Ler o valor de antecedência mínima da aba Regras",
+          "Recusar reserva feita com antecedência menor que o mínimo"
+        ],
+        "kind": "task",
+        "outcome": "Nenhuma reserva é aceita fora da antecedência mínima.",
+        "summary": "Ler a antecedência mínima da aba Regras e recusar reservas feitas com antecedência menor.",
+        "verification": "Executar AC4; AC5 depende da resposta à Q1."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Ler a antecedência mínima da aba Regras e recusar reservas feitas com antecedência menor.</p><p><strong>Atividades</strong></p><ul><li>Ler o valor de antecedência mínima da aba Regras</li><li>Recusar reserva feita com antecedência menor que o mínimo</li></ul><p><strong>Resultado esperado</strong>: Nenhuma reserva é aceita fora da antecedência mínima.</p><p><strong>Verificação</strong>: Executar AC4; AC5 depende da resposta à Q1.</p>"
+      },
+      "id": "PBD-TASK-4S66248CA4T2",
+      "origin": "generated",
+      "parent": "PBD-STORY-6QZVZCR20YSQ",
+      "status": "reviewed",
+      "title": "Aplicar antecedência mínima da aba Regras",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-1JP9JS26PES0"
+      ],
+      "content": {
+        "activities": [
+          "Filtrar as reservas do dia",
+          "Agrupar as reservas por sala"
+        ],
+        "kind": "task",
+        "outcome": "Zelador vê as reservas do dia por sala.",
+        "summary": "Listar as reservas do dia agrupadas por sala para o zelador.",
+        "verification": "Executar AC6."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Listar as reservas do dia agrupadas por sala para o zelador.</p><p><strong>Atividades</strong></p><ul><li>Filtrar as reservas do dia</li><li>Agrupar as reservas por sala</li></ul><p><strong>Resultado esperado</strong>: Zelador vê as reservas do dia por sala.</p><p><strong>Verificação</strong>: Executar AC6.</p>"
+      },
+      "id": "PBD-TASK-HW2KARGF57C7",
+      "origin": "generated",
+      "parent": "PBD-STORY-557VG9Z0A8PM",
+      "status": "reviewed",
+      "title": "Montar visão diária de reservas por sala",
+      "type": "task"
+    }
+  ],
+  "kind": "pbd.backlog",
+  "language": "pt-BR",
+  "profile": "azure-scrum",
+  "questions": [
+    {
+      "affects": [
+        "PBD-CLM-S84Q659N4PWJ",
+        "PBD-STORY-6QZVZCR20YSQ"
+      ],
+      "alternatives": [
+        "Dias corridos",
+        "Dias úteis"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-Y0TRRGD1KSZH",
+      "impact": "Define a contagem da regra de antecedência e o critério AC5.",
+      "status": "open",
+      "text": "A antecedência mínima de 1 dia é contada em dias corridos ou em dias úteis?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-4CAV124AFGBX",
+        "PBD-STORY-7DM16A3VWNM4"
+      ],
+      "alternatives": [
+        "Manter 4 horas (aba Regras)",
+        "Usar 8 horas se o rascunho for válido"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-ZR0RD9Y79G2H",
+      "impact": "Evita usar um valor descartado na regra de duração máxima.",
+      "status": "open",
+      "text": "A aba oculta Rascunho indica duração máxima de 8 horas e está marcada como descartada. Confirmar que o valor vigente é 4 horas da aba Regras."
+    },
+    {
+      "affects": [
+        "PBD-EPIC-PC6SGWXRFMZH"
+      ],
+      "alternatives": [
+        "Informar o número real de salas",
+        "Manter fora do escopo"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-NRR7ZMXJ0A2C",
+      "impact": "A quantidade de salas não é verificável no arquivo e não foi usada como regra.",
+      "status": "open",
+      "text": "O número de salas disponíveis (3) vem de uma fórmula que referencia a aba Salas, inexistente no arquivo. Qual é o número real de salas?"
+    }
+  ],
+  "relations": [
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-2ZF60G5VYGSC",
+      "reason": "As regras de duração se aplicam às reservas criadas pela história de reserva.",
+      "source": "PBD-STORY-Q20JGVA1SZ6T",
+      "status": "proposed",
+      "target": "PBD-STORY-7DM16A3VWNM4",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-DTCDMFPNF1TQ",
+      "reason": "As regras de antecedência se aplicam às reservas criadas pela história de reserva.",
+      "source": "PBD-STORY-Q20JGVA1SZ6T",
+      "status": "proposed",
+      "target": "PBD-STORY-6QZVZCR20YSQ",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-C83ZFJ5WHC5W",
+      "reason": "A visão do zelador mostra reservas criadas pela história de reserva.",
+      "source": "PBD-STORY-Q20JGVA1SZ6T",
+      "status": "proposed",
+      "target": "PBD-STORY-557VG9Z0A8PM",
+      "type": "predecessor"
+    }
+  ],
+  "run_id": "PBD-RUN-2FRWTSFW2T8Z",
+  "schema_version": "1.1.0",
+  "sources": [
+    {
+      "authority": "functional",
+      "digest": "sha256:7b6f9f5e5181ef6b7b00a009393246f0120f0a81d05e7afd1f490b21016c1c85",
+      "id": "PBD-SRC-AZNESFVTM1HG",
+      "kind": "file",
+      "members": [
+        {
+          "bytes": 2886,
+          "digest": "sha256:f456fa3442e4c6ea3910bdbfe3e4ab94e82325abcf1017a623e8f6d900ca8f56",
+          "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "path": "requisitos.xlsx",
+          "status": "read"
+        }
+      ],
+      "read_status": "complete",
+      "selector": "requisitos.xlsx",
+      "version": "7b6f9f5e5181ef6b"
+    }
+  ],
+  "synthetic": true
+}

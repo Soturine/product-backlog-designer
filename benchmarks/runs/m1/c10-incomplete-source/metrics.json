@@ -1,0 +1,82 @@
+{
+  "backlog_digest": "sha256:83608ec47667edca2b410ecf0c6cb23a2771ea70829e9368d5d14686bdad98fb",
+  "claims": {
+    "by_disposition": {
+      "COVERED": 2,
+      "PARTIALLY_COVERED": 1,
+      "QUESTION_REQUIRED": 1
+    },
+    "total": 4
+  },
+  "coverage": {
+    "breakdown": {
+      "BLOCKED": 1,
+      "COVERED": 2,
+      "PARTIALLY_COVERED": 1
+    },
+    "covered": 2,
+    "note": "denominator = obligations the independent reviewer extracted from the sources",
+    "provenance": "independent reviewer inventory",
+    "total": 4
+  },
+  "criteria": {
+    "by_style": {
+      "list": 7
+    },
+    "proposed": 3,
+    "total": 7
+  },
+  "findings": {
+    "by_classification": {
+      "candidate_concern": 1,
+      "confirmed_divergence": 2,
+      "confirmed_gap": 1
+    },
+    "by_severity": {
+      "high": 1,
+      "low": 1,
+      "medium": 2
+    },
+    "total": 4
+  },
+  "gates": {
+    "BLOCKED": 1,
+    "FAIL": 2,
+    "NOT_APPLICABLE": 4,
+    "NOT_RUN": 1,
+    "PASS": 10
+  },
+  "items": {
+    "by_type": {
+      "epic": 1,
+      "feature": 2,
+      "spike": 1,
+      "story": 3,
+      "task": 4
+    },
+    "total": 11
+  },
+  "kind": "pbd.metrics",
+  "questions": {
+    "blocking": 2,
+    "open": 4
+  },
+  "review": {
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5",
+    "verdicts": {
+      "concern": 8,
+      "pass": 10
+    }
+  },
+  "sources": {
+    "members_read": 1,
+    "members_total": 2,
+    "sources": 1
+  },
+  "tasks_per_story": {
+    "max": 2,
+    "min": 1,
+    "stories": 3
+  }
+}

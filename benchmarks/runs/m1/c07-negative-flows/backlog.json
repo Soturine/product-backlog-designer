@@ -1,0 +1,1527 @@
+{
+  "claims": [
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-3Z1VNJPW3X7S",
+          "PBD-AC-5PTFXFV1EWVZ",
+          "PBD-TASK-RZ8K5QBJAWJ5"
+        ],
+        "rationale": "Successful badge unlock for a registered member is covered by US1/AC1.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "prd.md",
+            "quote_digest": "sha256:fd60e9212b1942a588c6e581e753497303a98226fa728c9bec55adaa35ea8494",
+            "section": "Requirements",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "3a750badfae0b8e6"
+          },
+          "summary": "A registered member scans their badge to unlock the fridge door",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-RA8191YK9XX3",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "A registered member scans their badge to unlock the fridge door.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "error",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-3Z1VNJPW3X7S",
+          "PBD-AC-9FBV4RM49SQY",
+          "PBD-AC-0JP8QNPQKSK8",
+          "PBD-AC-EG9WEEGWNNBZ",
+          "PBD-TASK-RZ8K5QBJAWJ5"
+        ],
+        "rationale": "Unknown and deactivated badges each have a negative criterion online and offline.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "prd.md",
+            "quote_digest": "sha256:9d8b97eab8579350285a40777b06d5c3d166c4be780874a4b47f4c6c2208f124",
+            "section": "Requirements",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "3a750badfae0b8e6"
+          },
+          "summary": "An unknown or deactivated badge does not unlock the door",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-SQCKDED5K1HE",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "An unknown or deactivated badge does not unlock the fridge door.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "error",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-3Z1VNJPW3X7S",
+          "PBD-AC-9FBV4RM49SQY",
+          "PBD-AC-0JP8QNPQKSK8",
+          "PBD-AC-EG9WEEGWNNBZ",
+          "PBD-TASK-13C6XNP8N9XN"
+        ],
+        "rationale": "The exact message is asserted for each rejection path.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "prd.md",
+            "quote_digest": "sha256:d4e908f4b5b7bfa4be87ed2a2d319bd1663ca179cfe19485e741080c589fded0",
+            "section": "Requirements",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "3a750badfae0b8e6"
+          },
+          "summary": "the screen shows \"Badge not recognized\"",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-RXS4QK7K758V",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "When an unknown or deactivated badge is scanned, the screen shows \"Badge not recognized\".",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-ZG6PMTD4YRYW",
+          "PBD-TASK-YNKJY36Z7RH6"
+        ],
+        "rationale": "The limit is reflected through recording and warning on the fourth item; the day boundary and the item counting mechanism are open (Q1, Q2) and the within-limit partition is only proposed (AC7).",
+        "status": "PARTIALLY_COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 6,
+            "line_start": 6,
+            "member": "prd.md",
+            "quote_digest": "sha256:f7adf5278b159038db925fbc8f2a7e16730281e326146a3c6b5d052124a1ae6f",
+            "section": "Requirements",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "3a750badfae0b8e6"
+          },
+          "summary": "A member may take at most 3 items per day",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-RJBJWEEEDX27",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "A member may take at most 3 items per day.",
+      "uncertainty": {
+        "level": "ambiguous",
+        "note": "R4 states a fourth item is recorded with a warning and no lockout, so the limit reads as advisory rather than blocking; the 'day' boundary (timezone/reset time) and how items taken are detected are not defined."
+      }
+    },
+    {
+      "category": "data",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-ZG6PMTD4YRYW",
+          "PBD-AC-R7DC4PVP3DC0",
+          "PBD-TASK-YNKJY36Z7RH6"
+        ],
+        "rationale": "Recording of the fourth item is an explicit criterion.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 7,
+            "line_start": 7,
+            "member": "prd.md",
+            "quote_digest": "sha256:8f23663f881fdec629e7ae0cd63316ddb98e27377cedc60e9f1d10fc2af6da90",
+            "section": "Requirements",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "3a750badfae0b8e6"
+          },
+          "summary": "Taking a fourth item on the same day is recorded",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-KFAQ717SCXN5",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Taking a fourth item on the same day is recorded.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "error",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-ZG6PMTD4YRYW",
+          "PBD-AC-X03YPAXPDWCG",
+          "PBD-TASK-NGPT156R9W9W"
+        ],
+        "rationale": "Warning on the fourth item is an explicit criterion; content is open in Q3.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 7,
+            "line_start": 7,
+            "member": "prd.md",
+            "quote_digest": "sha256:ec79817eb9d48c9c264e625c63dc6006ce4e9b0edf5d3f2d46a1e7f2a39564cd",
+            "section": "Requirements",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "3a750badfae0b8e6"
+          },
+          "summary": "the member sees a warning",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-85J9HBMJBKSM",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "When a member takes a fourth item on the same day, the member sees a warning.",
+      "uncertainty": {
+        "level": "confirmed",
+        "note": "Warning content and form are not specified."
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-ZG6PMTD4YRYW",
+          "PBD-AC-YFGSPF68X7V4",
+          "PBD-TASK-NGPT156R9W9W"
+        ],
+        "rationale": "No lockout is verified by a subsequent successful unlock.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 7,
+            "line_start": 7,
+            "member": "prd.md",
+            "quote_digest": "sha256:a6680f3e8028769388e7b0010735bc6af971b5274f8d48f2ba987c33fe34b9ee",
+            "section": "Requirements",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "3a750badfae0b8e6"
+          },
+          "summary": "the member is not locked out",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-30T22R34FXSB",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "A member who takes a fourth item on the same day is not locked out.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-HR31FCR2BYSM",
+          "PBD-AC-4BE8VB1CB0XQ",
+          "PBD-AC-PKNG8TBXCBFY",
+          "PBD-AC-Z7XVFFV612HS",
+          "PBD-TASK-PWRPAQHNVM9X"
+        ],
+        "rationale": "Alert start after more than 60 seconds, continuation until close and the no-alert boundary are covered.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 8,
+            "line_start": 8,
+            "member": "prd.md",
+            "quote_digest": "sha256:98201d869ed9c73cec7fc8af5f6ae04576c5837624ed70da1c961968d9ef60c6",
+            "section": "Requirements",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "3a750badfae0b8e6"
+          },
+          "summary": "If the door stays open for more than 60 seconds, an audible alert sounds until the door is closed",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-3P5ABH632SVA",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "If the fridge door stays open for more than 60 seconds, an audible alert sounds until the door is closed.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "operational",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-JH35KHV89PVC",
+          "PBD-AC-REG9XENQBWTA",
+          "PBD-AC-EG9WEEGWNNBZ",
+          "PBD-TASK-XSMZXWC57P1R"
+        ],
+        "rationale": "Offline accept and reject paths use the last synchronized list; new-member and staleness handling are open in Q6.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 9,
+            "line_start": 9,
+            "member": "prd.md",
+            "quote_digest": "sha256:90e11e48e1cbc9496c62d3aec69daf5f9b22539fe49f372f2f1ef5b07312ab2b",
+            "section": "Requirements",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "3a750badfae0b8e6"
+          },
+          "summary": "badge checks use the last synchronized member list",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-PZ504BRP355A",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "If the kiosk loses connectivity, badge checks use the last synchronized member list.",
+      "uncertainty": {
+        "level": "confirmed",
+        "note": "Maximum staleness of the list is not specified."
+      }
+    },
+    {
+      "category": "integration",
+      "disposition": {
+        "covered_by": [
+          "PBD-ENAB-961THYDQNX12",
+          "PBD-AC-S1SJQ9YXE4VH",
+          "PBD-TASK-YGJV5KSQ9MD4"
+        ],
+        "rationale": "Upload on reconnection is covered; event scope and destination are open in Q7.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 9,
+            "line_start": 9,
+            "member": "prd.md",
+            "quote_digest": "sha256:6a5002b3fb58c0ac2c105a2d2decd88eb2fec350b0c50be2b724d94988360f8e",
+            "section": "Requirements",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "3a750badfae0b8e6"
+          },
+          "summary": "events are uploaded when connectivity returns",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-CJ0WD9DHR6VX",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Events recorded while the kiosk has no connectivity are uploaded when connectivity returns.",
+      "uncertainty": {
+        "level": "confirmed",
+        "note": "Upload destination and which event types are included are not specified."
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-ZT0BAH0PW3FM",
+          "PBD-AC-D2266VTVSH8X",
+          "PBD-TASK-90DVCQKNHFWE"
+        ],
+        "rationale": "Volunteer marking an item as expired is covered; volunteer identification is open in Q5.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 10,
+            "line_start": 10,
+            "member": "prd.md",
+            "quote_digest": "sha256:28d6f61390f9c7c2b966300d90927c30235aabfa4e3af03889f0246206dd6dcd",
+            "section": "Requirements",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "3a750badfae0b8e6"
+          },
+          "summary": "Volunteers can mark an item as expired",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-ZM689XYJSB4P",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Volunteers can mark an item as expired.",
+      "uncertainty": {
+        "level": "confirmed",
+        "note": "How volunteers are identified/authenticated is not specified."
+      }
+    },
+    {
+      "category": "data",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-ZT0BAH0PW3FM",
+          "PBD-AC-QPBVPNDY6YX4",
+          "PBD-TASK-90DVCQKNHFWE"
+        ],
+        "rationale": "Exclusion of expired items from the available count is covered.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 10,
+            "line_start": 10,
+            "member": "prd.md",
+            "quote_digest": "sha256:1c54c04207ea7775d30281c0a1276a09f485321531eb85ea2ab5c52b1dfa703e",
+            "section": "Requirements",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "3a750badfae0b8e6"
+          },
+          "summary": "expired items are removed from the available inventory count",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-YM2SEPK7ZPX1",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Items marked as expired are removed from the available inventory count.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    }
+  ],
+  "criteria": [
+    {
+      "claim_refs": [
+        "PBD-CLM-RA8191YK9XX3"
+      ],
+      "condition": "A registered member with an active badge is at the kiosk",
+      "expected_outcomes": [
+        "The fridge door unlocks."
+      ],
+      "id": "PBD-AC-5PTFXFV1EWVZ",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-3Z1VNJPW3X7S",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "the member scans the badge",
+      "visible_id": "AC-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-SQCKDED5K1HE",
+        "PBD-CLM-RXS4QK7K758V"
+      ],
+      "condition": "A badge that is not known to the kiosk is presented",
+      "expected_outcomes": [
+        "The unknown badge does not unlock the door.",
+        "The kiosk screen displays \"Badge not recognized\" for the unknown badge."
+      ],
+      "id": "PBD-AC-9FBV4RM49SQY",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-3Z1VNJPW3X7S",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "the badge is scanned",
+      "visible_id": "AC-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-SQCKDED5K1HE",
+        "PBD-CLM-RXS4QK7K758V"
+      ],
+      "condition": "A badge that belongs to a deactivated member is presented",
+      "expected_outcomes": [
+        "The deactivated badge is refused and the door remains locked even though the member was once registered.",
+        "\"Badge not recognized\" appears on the screen, the same message as for an unknown badge."
+      ],
+      "id": "PBD-AC-0JP8QNPQKSK8",
+      "order": 2,
+      "origin": "generated",
+      "parent": "PBD-STORY-3Z1VNJPW3X7S",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "the badge is scanned",
+      "visible_id": "AC-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-KFAQ717SCXN5"
+      ],
+      "condition": "A member has already taken 3 items today",
+      "expected_outcomes": [
+        "The fourth item is recorded against the member."
+      ],
+      "id": "PBD-AC-R7DC4PVP3DC0",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-ZG6PMTD4YRYW",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "the member takes a fourth item the same day",
+      "visible_id": "AC-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-85J9HBMJBKSM"
+      ],
+      "condition": "A member has already taken 3 items today",
+      "expected_outcomes": [
+        "The member sees a warning."
+      ],
+      "id": "PBD-AC-X03YPAXPDWCG",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-ZG6PMTD4YRYW",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "the member takes a fourth item the same day",
+      "visible_id": "AC-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-30T22R34FXSB"
+      ],
+      "condition": "A member took a fourth item earlier the same day",
+      "expected_outcomes": [
+        "The door unlocks; the member is not locked out."
+      ],
+      "id": "PBD-AC-YFGSPF68X7V4",
+      "order": 2,
+      "origin": "generated",
+      "parent": "PBD-STORY-ZG6PMTD4YRYW",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "the member scans the badge again",
+      "visible_id": "AC-03"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "No warning is shown for items within the 3-per-day limit.",
+        "No over-limit record is created for items within the limit."
+      ],
+      "id": "PBD-AC-GZHZKHYHVSBH",
+      "order": 3,
+      "origin": "proposed",
+      "parent": "PBD-STORY-ZG6PMTD4YRYW",
+      "rationale": "Boundary partition inferred from 'at most 3 items per day' (C4); the source only describes the fourth item explicitly.",
+      "status": "proposed",
+      "style": "list",
+      "text": "When a member takes a first, second or third item on the same day, no over-limit warning is shown and no over-limit record is created.",
+      "visible_id": "AC-04"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-3P5ABH632SVA"
+      ],
+      "condition": "The door has been open for more than 60 seconds",
+      "expected_outcomes": [
+        "An audible alert sounds."
+      ],
+      "id": "PBD-AC-4BE8VB1CB0XQ",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-HR31FCR2BYSM",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "the 60-second limit is exceeded",
+      "visible_id": "AC-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-3P5ABH632SVA"
+      ],
+      "condition": "The audible alert is sounding because the door stayed open for more than 60 seconds",
+      "expected_outcomes": [
+        "The alert keeps sounding until the door is closed and stops once it is closed."
+      ],
+      "id": "PBD-AC-PKNG8TBXCBFY",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-HR31FCR2BYSM",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "the door is closed",
+      "visible_id": "AC-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-3P5ABH632SVA"
+      ],
+      "condition": "The door is opened",
+      "expected_outcomes": [
+        "No audible alert sounds."
+      ],
+      "id": "PBD-AC-Z7XVFFV612HS",
+      "order": 2,
+      "origin": "generated",
+      "parent": "PBD-STORY-HR31FCR2BYSM",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "the door is closed after 60 seconds or less",
+      "visible_id": "AC-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-PZ504BRP355A"
+      ],
+      "condition": "The kiosk has lost connectivity and the badge belongs to a registered, active member in the last synchronized member list",
+      "expected_outcomes": [
+        "The door unlocks based on the last synchronized member list."
+      ],
+      "id": "PBD-AC-REG9XENQBWTA",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-JH35KHV89PVC",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "the member scans the badge",
+      "visible_id": "AC-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-PZ504BRP355A",
+        "PBD-CLM-SQCKDED5K1HE",
+        "PBD-CLM-RXS4QK7K758V"
+      ],
+      "condition": "The kiosk has lost connectivity and the badge is unknown or deactivated in the last synchronized member list",
+      "expected_outcomes": [
+        "Offline, the stored list check refuses the badge and the door is not unlocked.",
+        "The offline rejection still displays \"Badge not recognized\"."
+      ],
+      "id": "PBD-AC-EG9WEEGWNNBZ",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-JH35KHV89PVC",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "the badge is scanned",
+      "visible_id": "AC-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-CJ0WD9DHR6VX"
+      ],
+      "condition": "Events were produced while the kiosk had no connectivity",
+      "expected_outcomes": [
+        "The events produced during the outage are uploaded."
+      ],
+      "id": "PBD-AC-S1SJQ9YXE4VH",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-ENAB-961THYDQNX12",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "connectivity returns",
+      "visible_id": "AC-01"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "No queued event is lost when an upload is interrupted."
+      ],
+      "id": "PBD-AC-2HXG2TSPRVJZ",
+      "order": 1,
+      "origin": "proposed",
+      "parent": "PBD-ENAB-961THYDQNX12",
+      "rationale": "Recovery lens; the source only states that events are uploaded when connectivity returns and does not describe interrupted uploads.",
+      "status": "proposed",
+      "style": "list",
+      "text": "If connectivity is lost again before the upload completes, events not yet uploaded are kept and uploaded on the next reconnection.",
+      "visible_id": "AC-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-ZM689XYJSB4P"
+      ],
+      "condition": "An item is counted in the available inventory",
+      "expected_outcomes": [
+        "The item is marked as expired."
+      ],
+      "id": "PBD-AC-D2266VTVSH8X",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-ZT0BAH0PW3FM",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "a volunteer marks the item as expired",
+      "visible_id": "AC-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-YM2SEPK7ZPX1"
+      ],
+      "condition": "A volunteer has marked an item as expired",
+      "expected_outcomes": [
+        "The expired item is not included in the available inventory count."
+      ],
+      "id": "PBD-AC-QPBVPNDY6YX4",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-ZT0BAH0PW3FM",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "the available inventory count is displayed or queried",
+      "visible_id": "AC-02"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "The item is not marked as expired and the available inventory count is unchanged."
+      ],
+      "id": "PBD-AC-WHSS7JP7Z97D",
+      "order": 2,
+      "origin": "proposed",
+      "parent": "PBD-STORY-ZT0BAH0PW3FM",
+      "rationale": "Permission lens; the source grants the action to volunteers but does not state that other users are denied or how volunteers are identified (see Q5).",
+      "status": "proposed",
+      "style": "list",
+      "text": "A member who is not a volunteer cannot mark an item as expired.",
+      "visible_id": "AC-03"
+    }
+  ],
+  "decisions": [],
+  "findings": [
+    {
+      "actual": "Relation EN1 to US2 is proposed, but no criterion states that a fourth-item record made offline is retained and uploaded.",
+      "affects": [
+        "PBD-ENAB-961THYDQNX12",
+        "PBD-STORY-ZG6PMTD4YRYW"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Offline behaviour: what happens to the fourth-item recording and warning when the kiosk is offline, since events are queued.",
+      "gate": "G06",
+      "id": "PBD-FND-QEAY0T3V40DQ",
+      "impact": "Offline over-limit records could be dropped unnoticed.",
+      "recommendation": "Add a question or a proposed criterion on offline fourth-item recording.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "R6 and R4 interact; the source does not state it, so this is a candidate rather than a confirmed gap."
+    },
+    {
+      "actual": "Criteria for US2 and US5 are written as testable although day boundary, item detection and volunteer identity are unknown.",
+      "affects": [
+        "PBD-STORY-ZG6PMTD4YRYW",
+        "PBD-STORY-ZT0BAH0PW3FM",
+        "PBD-TASK-YNKJY36Z7RH6"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Open blocking questions Q1, Q2 and Q5 should block readiness of US2 and US5.",
+      "gate": "G06",
+      "id": "PBD-FND-236RJZDVW285",
+      "impact": "Stories cannot be built or verified until answered.",
+      "recommendation": "Mark US2 and US5 not ready until Q1, Q2 and Q5 are resolved.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "Criteria hold only under assumptions not in the source."
+    },
+    {
+      "actual": "AC12 merges unknown and deactivated badges; AC10 has inverted condition and trigger.",
+      "affects": [
+        "PBD-AC-EG9WEEGWNNBZ",
+        "PBD-AC-Z7XVFFV612HS"
+      ],
+      "classification": "optional_improvement",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Symmetric criteria for offline rejection paths.",
+      "gate": "G06",
+      "id": "PBD-FND-06YDCSV4Q29Y",
+      "impact": "Minor testing ambiguity.",
+      "recommendation": "Split AC12 into two criteria and reword AC10 as when the door is closed within 60 seconds, no alert sounds.",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "Reduces clarity and traceability of each partition."
+    }
+  ],
+  "items": [
+    {
+      "claim_refs": [
+        "PBD-CLM-RA8191YK9XX3",
+        "PBD-CLM-SQCKDED5K1HE",
+        "PBD-CLM-RXS4QK7K758V",
+        "PBD-CLM-RJBJWEEEDX27",
+        "PBD-CLM-KFAQ717SCXN5",
+        "PBD-CLM-85J9HBMJBKSM",
+        "PBD-CLM-30T22R34FXSB",
+        "PBD-CLM-3P5ABH632SVA",
+        "PBD-CLM-PZ504BRP355A",
+        "PBD-CLM-CJ0WD9DHR6VX",
+        "PBD-CLM-ZM689XYJSB4P",
+        "PBD-CLM-YM2SEPK7ZPX1"
+      ],
+      "content": {
+        "context": "The kiosk sits on the fridge door, validates badges, must keep working when connectivity is lost, and relies on volunteers to flag expired food.",
+        "in_scope": [
+          "Badge unlock for registered members and rejection of unknown or deactivated badges",
+          "Daily take limit of 3 items with recording and warning on a fourth item, without lockout",
+          "Audible alert when the door stays open for more than 60 seconds",
+          "Offline badge checks against the last synchronized member list and upload of events when connectivity returns",
+          "Volunteers marking items as expired and removing them from the available inventory count"
+        ],
+        "kind": "epic",
+        "objective": "Let registered members open the community fridge with their badge while the kiosk keeps the daily take guideline, door state and available inventory under control.",
+        "out_scope": [
+          "Payments and donations tracking"
+        ],
+        "outcome": "Members get food through a badge-controlled door, over-limit takes are visible without denying access, the door is not silently left open, and the available inventory count excludes expired items."
+      },
+      "description": {
+        "format": "html",
+        "language": "en",
+        "value": "<p><strong>Objective</strong>: Let registered members open the community fridge with their badge while the kiosk keeps the daily take guideline, door state and available inventory under control.</p><p><strong>Context</strong>: The kiosk sits on the fridge door, validates badges, must keep working when connectivity is lost, and relies on volunteers to flag expired food.</p><p><strong>In scope</strong></p><ul><li>Badge unlock for registered members and rejection of unknown or deactivated badges</li><li>Daily take limit of 3 items with recording and warning on a fourth item, without lockout</li><li>Audible alert when the door stays open for more than 60 seconds</li><li>Offline badge checks against the last synchronized member list and upload of events when connectivity returns</li><li>Volunteers marking items as expired and removing them from the available inventory count</li></ul><p><strong>Out of scope</strong></p><ul><li>Payments and donations tracking</li></ul><p><strong>Expected outcome</strong>: Members get food through a badge-controlled door, over-limit takes are visible without denying access, the door is not silently left open, and the available inventory count excludes expired items.</p>"
+      },
+      "id": "PBD-EPIC-W89H2AM1MSXV",
+      "origin": "generated",
+      "parent": null,
+      "status": "reviewed",
+      "title": "Badge-controlled community fridge with fair-use and inventory upkeep",
+      "type": "epic"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-RA8191YK9XX3",
+        "PBD-CLM-SQCKDED5K1HE",
+        "PBD-CLM-RXS4QK7K758V"
+      ],
+      "content": {
+        "capability": "Validate a scanned badge and unlock the door only for registered members.",
+        "kind": "feature",
+        "rules": [
+          "A registered member's badge unlocks the door.",
+          "An unknown or deactivated badge does not unlock the door.",
+          "A rejected badge shows \"Badge not recognized\" on the screen."
+        ],
+        "value": "Only registered members can open the fridge, and people with rejected badges get explicit feedback."
+      },
+      "description": {
+        "format": "html",
+        "language": "en",
+        "value": "<p><strong>Capability</strong>: Validate a scanned badge and unlock the door only for registered members.</p><p><strong>Value</strong>: Only registered members can open the fridge, and people with rejected badges get explicit feedback.</p><p><strong>Related rules</strong></p><ul><li>A registered member&#x27;s badge unlocks the door.</li><li>An unknown or deactivated badge does not unlock the door.</li><li>A rejected badge shows &quot;Badge not recognized&quot; on the screen.</li></ul>"
+      },
+      "id": "PBD-FEAT-KAPKPS10T1G1",
+      "origin": "generated",
+      "parent": "PBD-EPIC-W89H2AM1MSXV",
+      "status": "reviewed",
+      "title": "Badge access to the fridge door",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-RJBJWEEEDX27",
+        "PBD-CLM-KFAQ717SCXN5",
+        "PBD-CLM-85J9HBMJBKSM",
+        "PBD-CLM-30T22R34FXSB"
+      ],
+      "content": {
+        "capability": "Track items taken per member per day and react to a fourth item.",
+        "kind": "feature",
+        "rules": [
+          "A member may take at most 3 items per day.",
+          "A fourth item on the same day is recorded.",
+          "The member sees a warning on the fourth item.",
+          "The member is not locked out."
+        ],
+        "value": "Keeps the 3-items-per-day guideline visible and auditable without denying food to a member."
+      },
+      "description": {
+        "format": "html",
+        "language": "en",
+        "value": "<p><strong>Capability</strong>: Track items taken per member per day and react to a fourth item.</p><p><strong>Value</strong>: Keeps the 3-items-per-day guideline visible and auditable without denying food to a member.</p><p><strong>Related rules</strong></p><ul><li>A member may take at most 3 items per day.</li><li>A fourth item on the same day is recorded.</li><li>The member sees a warning on the fourth item.</li><li>The member is not locked out.</li></ul>"
+      },
+      "id": "PBD-FEAT-E4ZY3PCFN1RG",
+      "origin": "generated",
+      "parent": "PBD-EPIC-W89H2AM1MSXV",
+      "status": "reviewed",
+      "title": "Daily take limit with warning, not lockout",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-3P5ABH632SVA"
+      ],
+      "content": {
+        "capability": "Monitor how long the door stays open and sound an audible alert past 60 seconds.",
+        "kind": "feature",
+        "rules": [
+          "After the door has been open for more than 60 seconds an audible alert sounds.",
+          "The alert keeps sounding until the door is closed."
+        ],
+        "value": "Reduces the chance of the fridge being left open."
+      },
+      "description": {
+        "format": "html",
+        "language": "en",
+        "value": "<p><strong>Capability</strong>: Monitor how long the door stays open and sound an audible alert past 60 seconds.</p><p><strong>Value</strong>: Reduces the chance of the fridge being left open.</p><p><strong>Related rules</strong></p><ul><li>After the door has been open for more than 60 seconds an audible alert sounds.</li><li>The alert keeps sounding until the door is closed.</li></ul>"
+      },
+      "id": "PBD-FEAT-FPTQ9HBNWG6X",
+      "origin": "generated",
+      "parent": "PBD-EPIC-W89H2AM1MSXV",
+      "status": "reviewed",
+      "title": "Door-open alert",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-PZ504BRP355A",
+        "PBD-CLM-CJ0WD9DHR6VX"
+      ],
+      "content": {
+        "capability": "Keep validating badges during a connectivity loss and synchronize events afterwards.",
+        "kind": "feature",
+        "rules": [
+          "Without connectivity, badge checks use the last synchronized member list.",
+          "Events are uploaded when connectivity returns."
+        ],
+        "value": "Members keep access during outages and no kiosk events are lost."
+      },
+      "description": {
+        "format": "html",
+        "language": "en",
+        "value": "<p><strong>Capability</strong>: Keep validating badges during a connectivity loss and synchronize events afterwards.</p><p><strong>Value</strong>: Members keep access during outages and no kiosk events are lost.</p><p><strong>Related rules</strong></p><ul><li>Without connectivity, badge checks use the last synchronized member list.</li><li>Events are uploaded when connectivity returns.</li></ul>"
+      },
+      "id": "PBD-FEAT-ZTSZZJQ8CTWA",
+      "origin": "generated",
+      "parent": "PBD-EPIC-W89H2AM1MSXV",
+      "status": "reviewed",
+      "title": "Offline operation of the kiosk",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-ZM689XYJSB4P",
+        "PBD-CLM-YM2SEPK7ZPX1"
+      ],
+      "content": {
+        "capability": "Let volunteers mark items as expired and keep the available inventory count accurate.",
+        "kind": "feature",
+        "rules": [
+          "Volunteers can mark an item as expired.",
+          "Expired items are removed from the available inventory count."
+        ],
+        "value": "The available inventory count reflects only items that are still fit to take."
+      },
+      "description": {
+        "format": "html",
+        "language": "en",
+        "value": "<p><strong>Capability</strong>: Let volunteers mark items as expired and keep the available inventory count accurate.</p><p><strong>Value</strong>: The available inventory count reflects only items that are still fit to take.</p><p><strong>Related rules</strong></p><ul><li>Volunteers can mark an item as expired.</li><li>Expired items are removed from the available inventory count.</li></ul>"
+      },
+      "id": "PBD-FEAT-FJCV8XNA2Q5Z",
+      "origin": "generated",
+      "parent": "PBD-EPIC-W89H2AM1MSXV",
+      "status": "reviewed",
+      "title": "Expired item handling",
+      "type": "feature"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-RA8191YK9XX3",
+        "PBD-CLM-SQCKDED5K1HE",
+        "PBD-CLM-RXS4QK7K758V"
+      ],
+      "content": {
+        "actor": "registered member",
+        "benefit": "I can get food myself while the fridge stays closed to anyone who is not a registered member",
+        "kind": "role_goal_benefit",
+        "want": "the fridge door to unlock when I scan my badge, and badges that are unknown or deactivated to be refused with a clear message"
+      },
+      "description": {
+        "format": "html",
+        "language": "en",
+        "value": "<p><strong>As a</strong> registered member, <strong>I want</strong> the fridge door to unlock when I scan my badge, and badges that are unknown or deactivated to be refused with a clear message, <strong>so that</strong> I can get food myself while the fridge stays closed to anyone who is not a registered member.</p>"
+      },
+      "id": "PBD-STORY-3Z1VNJPW3X7S",
+      "origin": "generated",
+      "parent": "PBD-FEAT-KAPKPS10T1G1",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Unlock the fridge door by scanning my badge",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-RJBJWEEEDX27",
+        "PBD-CLM-KFAQ717SCXN5",
+        "PBD-CLM-85J9HBMJBKSM",
+        "PBD-CLM-30T22R34FXSB"
+      ],
+      "content": {
+        "actor": "member",
+        "benefit": "I know I went past the 3-items-per-day guideline without being denied access to the fridge",
+        "kind": "role_goal_benefit",
+        "want": "to see a warning when I take a fourth item on the same day, while the kiosk records it and still lets me in"
+      },
+      "description": {
+        "format": "html",
+        "language": "en",
+        "value": "<p><strong>As a</strong> member, <strong>I want</strong> to see a warning when I take a fourth item on the same day, while the kiosk records it and still lets me in, <strong>so that</strong> I know I went past the 3-items-per-day guideline without being denied access to the fridge.</p>"
+      },
+      "id": "PBD-STORY-ZG6PMTD4YRYW",
+      "origin": "generated",
+      "parent": "PBD-FEAT-E4ZY3PCFN1RG",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Get warned, not blocked, when I take a fourth item in a day",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-3P5ABH632SVA"
+      ],
+      "content": {
+        "actor": "registered member",
+        "benefit": "I notice the door is still open and close it before the food is affected",
+        "kind": "role_goal_benefit",
+        "want": "an audible alert to sound once the door has been open for more than 60 seconds and to keep sounding until the door is closed"
+      },
+      "description": {
+        "format": "html",
+        "language": "en",
+        "value": "<p><strong>As a</strong> registered member, <strong>I want</strong> an audible alert to sound once the door has been open for more than 60 seconds and to keep sounding until the door is closed, <strong>so that</strong> I notice the door is still open and close it before the food is affected.</p>"
+      },
+      "id": "PBD-STORY-HR31FCR2BYSM",
+      "origin": "generated",
+      "parent": "PBD-FEAT-FPTQ9HBNWG6X",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Hear an alert when the door is left open too long",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-PZ504BRP355A",
+        "PBD-CLM-SQCKDED5K1HE",
+        "PBD-CLM-RXS4QK7K758V"
+      ],
+      "content": {
+        "actor": "registered member",
+        "benefit": "I can still get food during a network outage",
+        "kind": "role_goal_benefit",
+        "want": "my badge to be checked against the last synchronized member list when the kiosk has no connectivity"
+      },
+      "description": {
+        "format": "html",
+        "language": "en",
+        "value": "<p><strong>As a</strong> registered member, <strong>I want</strong> my badge to be checked against the last synchronized member list when the kiosk has no connectivity, <strong>so that</strong> I can still get food during a network outage.</p>"
+      },
+      "id": "PBD-STORY-JH35KHV89PVC",
+      "origin": "generated",
+      "parent": "PBD-FEAT-ZTSZZJQ8CTWA",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Open the fridge with my badge while the kiosk is offline",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-CJ0WD9DHR6VX"
+      ],
+      "content": {
+        "capability": "Keep the events produced while the kiosk has no connectivity and upload them when connectivity returns.",
+        "kind": "enabler",
+        "outcome": "No event recorded during an outage, such as a fourth-item take, is lost."
+      },
+      "description": {
+        "format": "html",
+        "language": "en",
+        "value": "<p><strong>Technical capability</strong>: Keep the events produced while the kiosk has no connectivity and upload them when connectivity returns.</p><p><strong>Expected outcome</strong>: No event recorded during an outage, such as a fourth-item take, is lost.</p>"
+      },
+      "id": "PBD-ENAB-961THYDQNX12",
+      "origin": "generated",
+      "parent": "PBD-FEAT-ZTSZZJQ8CTWA",
+      "status": "reviewed",
+      "story_format": "enabler",
+      "title": "Buffer kiosk events offline and upload them on reconnect",
+      "type": "enabler"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-ZM689XYJSB4P",
+        "PBD-CLM-YM2SEPK7ZPX1"
+      ],
+      "content": {
+        "actor": "volunteer",
+        "benefit": "the available inventory count shows only items members can still take",
+        "kind": "role_goal_benefit",
+        "want": "to mark an item as expired so that it is removed from the available inventory count"
+      },
+      "description": {
+        "format": "html",
+        "language": "en",
+        "value": "<p><strong>As a</strong> volunteer, <strong>I want</strong> to mark an item as expired so that it is removed from the available inventory count, <strong>so that</strong> the available inventory count shows only items members can still take.</p>"
+      },
+      "id": "PBD-STORY-ZT0BAH0PW3FM",
+      "origin": "generated",
+      "parent": "PBD-FEAT-FJCV8XNA2Q5Z",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Mark an item as expired",
+      "type": "story"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-RA8191YK9XX3",
+        "PBD-CLM-SQCKDED5K1HE"
+      ],
+      "content": {
+        "activities": [
+          "Resolve a scanned badge to a member record",
+          "Unlock the door for a registered active member",
+          "Keep the door locked for an unknown badge",
+          "Keep the door locked for a deactivated badge"
+        ],
+        "kind": "task",
+        "outcome": "Door unlock decision follows the registered/unknown/deactivated status of the badge.",
+        "summary": "On badge scan, look up the badge in the member list and unlock the door only for a registered, active member.",
+        "verification": "Scanning a registered, an unknown and a deactivated badge yields unlock, no unlock and no unlock respectively."
+      },
+      "description": {
+        "format": "html",
+        "language": "en",
+        "value": "<p><strong>Objective</strong>: On badge scan, look up the badge in the member list and unlock the door only for a registered, active member.</p><p><strong>Activities</strong></p><ul><li>Resolve a scanned badge to a member record</li><li>Unlock the door for a registered active member</li><li>Keep the door locked for an unknown badge</li><li>Keep the door locked for a deactivated badge</li></ul><p><strong>Expected outcome</strong>: Door unlock decision follows the registered/unknown/deactivated status of the badge.</p><p><strong>Verification</strong>: Scanning a registered, an unknown and a deactivated badge yields unlock, no unlock and no unlock respectively.</p>"
+      },
+      "id": "PBD-TASK-RZ8K5QBJAWJ5",
+      "origin": "generated",
+      "parent": "PBD-STORY-3Z1VNJPW3X7S",
+      "status": "reviewed",
+      "title": "Implement badge validation and door unlock decision",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-RXS4QK7K758V"
+      ],
+      "content": {
+        "activities": [
+          "Add the rejection message to the kiosk screen flow",
+          "Trigger it for both unknown and deactivated badges"
+        ],
+        "kind": "task",
+        "outcome": "Rejected scans show \"Badge not recognized\".",
+        "summary": "Display the exact text \"Badge not recognized\" on the kiosk screen whenever a scan is rejected.",
+        "verification": "Screen text after scanning an unknown badge and a deactivated badge matches \"Badge not recognized\" exactly."
+      },
+      "description": {
+        "format": "html",
+        "language": "en",
+        "value": "<p><strong>Objective</strong>: Display the exact text &quot;Badge not recognized&quot; on the kiosk screen whenever a scan is rejected.</p><p><strong>Activities</strong></p><ul><li>Add the rejection message to the kiosk screen flow</li><li>Trigger it for both unknown and deactivated badges</li></ul><p><strong>Expected outcome</strong>: Rejected scans show &quot;Badge not recognized&quot;.</p><p><strong>Verification</strong>: Screen text after scanning an unknown badge and a deactivated badge matches &quot;Badge not recognized&quot; exactly.</p>"
+      },
+      "id": "PBD-TASK-13C6XNP8N9XN",
+      "origin": "generated",
+      "parent": "PBD-STORY-3Z1VNJPW3X7S",
+      "status": "reviewed",
+      "title": "Show \"Badge not recognized\" on rejected scans",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-RJBJWEEEDX27",
+        "PBD-CLM-KFAQ717SCXN5"
+      ],
+      "content": {
+        "activities": [
+          "Associate each item taken with the member whose badge opened the door",
+          "Keep the daily count per member",
+          "Persist a record when a member takes a fourth item on the same day"
+        ],
+        "kind": "task",
+        "outcome": "Each fourth item taken by a member on one day leaves a stored record.",
+        "summary": "Maintain a per-member, per-day count of items taken and store a record when the count reaches four.",
+        "verification": "After a member takes four items on the same day, exactly the fourth take appears as a recorded over-limit event."
+      },
+      "description": {
+        "format": "html",
+        "language": "en",
+        "value": "<p><strong>Objective</strong>: Maintain a per-member, per-day count of items taken and store a record when the count reaches four.</p><p><strong>Activities</strong></p><ul><li>Associate each item taken with the member whose badge opened the door</li><li>Keep the daily count per member</li><li>Persist a record when a member takes a fourth item on the same day</li></ul><p><strong>Expected outcome</strong>: Each fourth item taken by a member on one day leaves a stored record.</p><p><strong>Verification</strong>: After a member takes four items on the same day, exactly the fourth take appears as a recorded over-limit event.</p>"
+      },
+      "id": "PBD-TASK-YNKJY36Z7RH6",
+      "origin": "generated",
+      "parent": "PBD-STORY-ZG6PMTD4YRYW",
+      "status": "reviewed",
+      "title": "Count items taken per member per day and record the fourth",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-85J9HBMJBKSM",
+        "PBD-CLM-30T22R34FXSB"
+      ],
+      "content": {
+        "activities": [
+          "Show the warning to the member when the fourth item is taken",
+          "Ensure the over-limit condition does not deactivate or block the badge"
+        ],
+        "kind": "task",
+        "outcome": "The member is warned and can still unlock the door afterwards.",
+        "summary": "Show the member a warning on the fourth item of the day and leave the member's badge access unchanged.",
+        "verification": "After a fourth item, the warning is shown and a subsequent scan of the same badge still unlocks the door."
+      },
+      "description": {
+        "format": "html",
+        "language": "en",
+        "value": "<p><strong>Objective</strong>: Show the member a warning on the fourth item of the day and leave the member&#x27;s badge access unchanged.</p><p><strong>Activities</strong></p><ul><li>Show the warning to the member when the fourth item is taken</li><li>Ensure the over-limit condition does not deactivate or block the badge</li></ul><p><strong>Expected outcome</strong>: The member is warned and can still unlock the door afterwards.</p><p><strong>Verification</strong>: After a fourth item, the warning is shown and a subsequent scan of the same badge still unlocks the door.</p>"
+      },
+      "id": "PBD-TASK-NGPT156R9W9W",
+      "origin": "generated",
+      "parent": "PBD-STORY-ZG6PMTD4YRYW",
+      "status": "reviewed",
+      "title": "Display the fourth-item warning without blocking access",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-3P5ABH632SVA"
+      ],
+      "content": {
+        "activities": [
+          "Start timing when the door opens",
+          "Start the audible alert once open time exceeds 60 seconds",
+          "Stop the alert and reset the timer when the door closes"
+        ],
+        "kind": "task",
+        "outcome": "The alert sounds only while the door has been open longer than 60 seconds.",
+        "summary": "Measure how long the door has been open, start the audible alert after more than 60 seconds and stop it when the door closes.",
+        "verification": "Holding the door open past 60 seconds starts the alert; closing the door stops it; closing within 60 seconds produces no alert."
+      },
+      "description": {
+        "format": "html",
+        "language": "en",
+        "value": "<p><strong>Objective</strong>: Measure how long the door has been open, start the audible alert after more than 60 seconds and stop it when the door closes.</p><p><strong>Activities</strong></p><ul><li>Start timing when the door opens</li><li>Start the audible alert once open time exceeds 60 seconds</li><li>Stop the alert and reset the timer when the door closes</li></ul><p><strong>Expected outcome</strong>: The alert sounds only while the door has been open longer than 60 seconds.</p><p><strong>Verification</strong>: Holding the door open past 60 seconds starts the alert; closing the door stops it; closing within 60 seconds produces no alert.</p>"
+      },
+      "id": "PBD-TASK-PWRPAQHNVM9X",
+      "origin": "generated",
+      "parent": "PBD-STORY-HR31FCR2BYSM",
+      "status": "reviewed",
+      "title": "Implement door-open timer and audible alert control",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-PZ504BRP355A"
+      ],
+      "content": {
+        "activities": [
+          "Persist the member list on each successful synchronization",
+          "Detect loss of connectivity",
+          "Route badge checks to the stored list while offline"
+        ],
+        "kind": "task",
+        "outcome": "Badge checks continue offline using the last synchronized list.",
+        "summary": "Store the most recently synchronized member list on the kiosk and use it for badge checks when connectivity is lost.",
+        "verification": "With connectivity cut, a badge that was registered and active at the last sync unlocks the door and a badge deactivated at the last sync does not."
+      },
+      "description": {
+        "format": "html",
+        "language": "en",
+        "value": "<p><strong>Objective</strong>: Store the most recently synchronized member list on the kiosk and use it for badge checks when connectivity is lost.</p><p><strong>Activities</strong></p><ul><li>Persist the member list on each successful synchronization</li><li>Detect loss of connectivity</li><li>Route badge checks to the stored list while offline</li></ul><p><strong>Expected outcome</strong>: Badge checks continue offline using the last synchronized list.</p><p><strong>Verification</strong>: With connectivity cut, a badge that was registered and active at the last sync unlocks the door and a badge deactivated at the last sync does not.</p>"
+      },
+      "id": "PBD-TASK-XSMZXWC57P1R",
+      "origin": "generated",
+      "parent": "PBD-STORY-JH35KHV89PVC",
+      "status": "reviewed",
+      "title": "Keep a local copy of the synchronized member list for offline badge checks",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-CJ0WD9DHR6VX"
+      ],
+      "content": {
+        "activities": [
+          "Persist events locally while offline",
+          "Detect restoration of connectivity",
+          "Upload queued events and clear them only after the upload succeeds"
+        ],
+        "kind": "task",
+        "outcome": "Events produced offline reach the upstream system after reconnection.",
+        "summary": "Persist events produced while offline in a local queue and upload them once connectivity is restored.",
+        "verification": "Events generated during a simulated outage are present upstream after connectivity is restored and the local queue is empty."
+      },
+      "description": {
+        "format": "html",
+        "language": "en",
+        "value": "<p><strong>Objective</strong>: Persist events produced while offline in a local queue and upload them once connectivity is restored.</p><p><strong>Activities</strong></p><ul><li>Persist events locally while offline</li><li>Detect restoration of connectivity</li><li>Upload queued events and clear them only after the upload succeeds</li></ul><p><strong>Expected outcome</strong>: Events produced offline reach the upstream system after reconnection.</p><p><strong>Verification</strong>: Events generated during a simulated outage are present upstream after connectivity is restored and the local queue is empty.</p>"
+      },
+      "id": "PBD-TASK-YGJV5KSQ9MD4",
+      "origin": "generated",
+      "parent": "PBD-ENAB-961THYDQNX12",
+      "status": "reviewed",
+      "title": "Queue offline events and upload them when connectivity returns",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-ZM689XYJSB4P",
+        "PBD-CLM-YM2SEPK7ZPX1"
+      ],
+      "content": {
+        "activities": [
+          "Add the expired state to items",
+          "Expose the mark-as-expired action to volunteers",
+          "Exclude expired items from the available inventory count"
+        ],
+        "kind": "task",
+        "outcome": "An item marked as expired no longer counts as available.",
+        "summary": "Give volunteers an action to mark an item as expired and exclude expired items from the available inventory count.",
+        "verification": "The available inventory count decreases by one after a volunteer marks one available item as expired."
+      },
+      "description": {
+        "format": "html",
+        "language": "en",
+        "value": "<p><strong>Objective</strong>: Give volunteers an action to mark an item as expired and exclude expired items from the available inventory count.</p><p><strong>Activities</strong></p><ul><li>Add the expired state to items</li><li>Expose the mark-as-expired action to volunteers</li><li>Exclude expired items from the available inventory count</li></ul><p><strong>Expected outcome</strong>: An item marked as expired no longer counts as available.</p><p><strong>Verification</strong>: The available inventory count decreases by one after a volunteer marks one available item as expired.</p>"
+      },
+      "id": "PBD-TASK-90DVCQKNHFWE",
+      "origin": "generated",
+      "parent": "PBD-STORY-ZT0BAH0PW3FM",
+      "status": "reviewed",
+      "title": "Add the mark-as-expired action and update the available inventory count",
+      "type": "task"
+    }
+  ],
+  "kind": "pbd.backlog",
+  "language": "en",
+  "profile": "generic",
+  "questions": [
+    {
+      "affects": [
+        "PBD-CLM-KFAQ717SCXN5",
+        "PBD-CLM-RJBJWEEEDX27",
+        "PBD-STORY-ZG6PMTD4YRYW",
+        "PBD-TASK-YNKJY36Z7RH6"
+      ],
+      "alternatives": [
+        "Calendar day in the kiosk's local timezone, reset at midnight",
+        "Rolling 24 hours from the first item taken",
+        "Another reset time defined by the operators"
+      ],
+      "blocking": true,
+      "id": "PBD-Q-HFP8EYQ8VXPG",
+      "impact": "Determines when a member's count resets and therefore when a take is the fourth of the same day.",
+      "status": "open",
+      "text": "What defines a 'day' for the 3-items limit (timezone and reset time)?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-KFAQ717SCXN5",
+        "PBD-CLM-RJBJWEEEDX27",
+        "PBD-STORY-ZG6PMTD4YRYW",
+        "PBD-TASK-YNKJY36Z7RH6"
+      ],
+      "alternatives": [
+        "Member declares items on the kiosk screen",
+        "Items are scanned on the way out",
+        "Sensor-based detection in the fridge"
+      ],
+      "blocking": true,
+      "id": "PBD-Q-DCJE4DYS89C7",
+      "impact": "Without a detection or declaration mechanism the per-member daily count cannot be implemented.",
+      "status": "open",
+      "text": "How does the kiosk know which items, and how many, a member has taken?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-85J9HBMJBKSM",
+        "PBD-STORY-ZG6PMTD4YRYW",
+        "PBD-TASK-NGPT156R9W9W"
+      ],
+      "alternatives": [
+        "On-screen message with operator-approved text",
+        "On-screen message plus a sound"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-160CH6H8T7WC",
+      "impact": "The warning text and form are not specified, so the criterion can only verify that a warning appears.",
+      "status": "open",
+      "text": "What does the fourth-item warning say and how is it shown?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-85J9HBMJBKSM",
+        "PBD-CLM-KFAQ717SCXN5",
+        "PBD-CLM-RJBJWEEEDX27",
+        "PBD-STORY-ZG6PMTD4YRYW"
+      ],
+      "alternatives": [
+        "Record and warn on every item beyond the third",
+        "Record and warn only on the fourth item"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-HJR559NGB8QR",
+      "impact": "The source only describes the fourth item; recording and warning behavior beyond it is undefined.",
+      "status": "open",
+      "text": "What should happen for a fifth and later item on the same day?"
+    },
+    {
+      "affects": [
+        "PBD-AC-WHSS7JP7Z97D",
+        "PBD-CLM-ZM689XYJSB4P",
+        "PBD-STORY-ZT0BAH0PW3FM",
+        "PBD-TASK-90DVCQKNHFWE"
+      ],
+      "alternatives": [
+        "Volunteer role on the member badge",
+        "Separate volunteer credentials",
+        "Action available outside the kiosk to volunteers only"
+      ],
+      "blocking": true,
+      "id": "PBD-Q-88A268ECQ9T5",
+      "impact": "Needed to restrict the mark-as-expired action and to confirm proposed criterion AC17.",
+      "status": "open",
+      "text": "Who counts as a volunteer and how does the kiosk identify one before allowing an item to be marked as expired?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-PZ504BRP355A",
+        "PBD-STORY-JH35KHV89PVC",
+        "PBD-TASK-XSMZXWC57P1R"
+      ],
+      "alternatives": [
+        "Reject badges not on the last synchronized list",
+        "Define a maximum list age after which offline checks change behavior"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-ZAR68V2XS2W1",
+      "impact": "Defines access during outages for new members and the risk of using a stale list (for example, recently deactivated badges).",
+      "status": "open",
+      "text": "While offline, how should a badge registered after the last synchronization be treated, and how old may the synchronized member list be?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-CJ0WD9DHR6VX",
+        "PBD-ENAB-961THYDQNX12",
+        "PBD-TASK-YGJV5KSQ9MD4"
+      ],
+      "alternatives": [
+        "All kiosk events (door unlocks, rejected scans, item takes, door alerts, expirations)",
+        "Only a defined subset of events"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-ZX3VFNXSVY1R",
+      "impact": "Defines the scope and destination of the offline event queue.",
+      "status": "open",
+      "text": "Which events must be uploaded when connectivity returns, and to which system?"
+    }
+  ],
+  "relations": [
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-7R2K2FAM5YE0",
+      "reason": "Counting items per member per day requires the member to be identified by the badge scan delivered in US1.",
+      "source": "PBD-STORY-3Z1VNJPW3X7S",
+      "status": "proposed",
+      "target": "PBD-STORY-ZG6PMTD4YRYW",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-4CMYTCX428A6",
+      "reason": "Offline checks reuse the badge validation and rejection behavior of US1 against a local member list.",
+      "source": "PBD-STORY-3Z1VNJPW3X7S",
+      "status": "proposed",
+      "target": "PBD-STORY-JH35KHV89PVC",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-3WBTWFVXY664",
+      "reason": "Fourth-item records created while offline must reach the upstream system through the offline event upload.",
+      "source": "PBD-ENAB-961THYDQNX12",
+      "status": "proposed",
+      "target": "PBD-STORY-ZG6PMTD4YRYW",
+      "type": "related"
+    }
+  ],
+  "run_id": "PBD-RUN-SG1ZJ6H724RE",
+  "schema_version": "1.1.0",
+  "sources": [
+    {
+      "authority": "functional",
+      "digest": "sha256:3a750badfae0b8e64d254bd6cc5f2b5cffab508e2a9d9a30db2232410eef74b2",
+      "id": "PBD-SRC-78385WMH95P7",
+      "kind": "file",
+      "members": [
+        {
+          "bytes": 792,
+          "digest": "sha256:b34944c50fdc00ebdb2d9b821f5cb36144703972c2379e3ca1d9225dcbd46cec",
+          "media_type": "application/octet-stream",
+          "path": "prd.md",
+          "status": "read"
+        }
+      ],
+      "read_status": "complete",
+      "selector": "prd.md",
+      "version": "3a750badfae0b8e6"
+    }
+  ],
+  "synthetic": true
+}

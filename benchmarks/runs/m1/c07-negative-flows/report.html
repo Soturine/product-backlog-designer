@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src &#x27;none&#x27;; style-src &#x27;unsafe-inline&#x27;; script-src &#x27;sha256-fXA6PQIafqslndojZsQDPkTXc2iNdIswVX15OelmO7w=&#x27;; img-src data:; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;">
+<meta name="generator" content="pbd 0.1.0.dev0">
+<title>Community Fridge Kiosk — PBD</title><style>:root{color-scheme:light;
+--bg:#f3f5fa;--side:#ffffff;--surface:#ffffff;--surface-2:#f7f8fc;--sunk:#eef1f7;--rule:#e2e6ef;--rule-strong:#ccd3e0;
+--ink:#0f172a;--ink-2:#334155;--muted:#5b6578;--faint:#8a93a6;
+--accent:#3b5bdb;--accent-2:#6d4aff;--accent-soft:#e9edff;--on-tone:#ffffff;--logo-a:#4f6bff;--logo-b:#7b4dff;
+--pass:#15803d;--fail:#c02626;--warn:#b45309;--unknown:#5f6b7f;--info:#1d63c9;
+--glow:rgba(59,91,219,.07);--shadow:0 1px 2px rgba(15,23,42,.05);--lift:0 10px 30px -18px rgba(15,23,42,.35);
+--r-sm:7px;--r:12px;--r-lg:16px;
+--sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI Variable Text","Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,SFMono-Regular,"SF Mono","Cascadia Mono",Menlo,Consolas,"Liberation Mono",monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;
+--bg:#080d1a;--side:#0a1020;--surface:#0e1628;--surface-2:#111b31;--sunk:#0b1324;--rule:rgba(148,163,184,.13);--rule-strong:rgba(148,163,184,.24);
+--ink:#e9eef8;--ink-2:#c4ccdc;--muted:#8f9ab0;--faint:#68738a;
+--accent:#7b93ff;--accent-2:#9b7bff;--accent-soft:rgba(91,124,250,.16);--on-tone:#08101f;--logo-a:#4f6bff;--logo-b:#8a5cff;
+--pass:#3ddc97;--fail:#ff7b7b;--warn:#f6b44b;--unknown:#a3adbf;--info:#6cb2ff;
+--glow:rgba(91,124,250,.20);--shadow:0 1px 2px rgba(0,0,0,.4);--lift:0 18px 40px -22px rgba(0,0,0,.9)}}
+:root[data-theme="dark"]{color-scheme:dark;
+--bg:#080d1a;--side:#0a1020;--surface:#0e1628;--surface-2:#111b31;--sunk:#0b1324;--rule:rgba(148,163,184,.13);--rule-strong:rgba(148,163,184,.24);
+--ink:#e9eef8;--ink-2:#c4ccdc;--muted:#8f9ab0;--faint:#68738a;
+--accent:#7b93ff;--accent-2:#9b7bff;--accent-soft:rgba(91,124,250,.16);--on-tone:#08101f;--logo-a:#4f6bff;--logo-b:#8a5cff;
+--pass:#3ddc97;--fail:#ff7b7b;--warn:#f6b44b;--unknown:#a3adbf;--info:#6cb2ff;
+--glow:rgba(91,124,250,.20);--shadow:0 1px 2px rgba(0,0,0,.4);--lift:0 18px 40px -22px rgba(0,0,0,.9)}
+.tone-pass{--tone:var(--pass)}.tone-fail{--tone:var(--fail)}.tone-warn{--tone:var(--warn)}.tone-blocked{--tone:var(--warn)}
+.tone-unknown{--tone:var(--unknown)}.tone-not_run{--tone:var(--faint)}.tone-neutral{--tone:var(--muted)}.tone-accent{--tone:var(--accent)}
+.tone-info{--tone:var(--info)}.tone-muted{--tone:var(--faint)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:120px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}code,pre{font-family:var(--mono);font-size:.84em}
+code{overflow-wrap:anywhere}:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:5px}
+.skip{position:absolute;left:16px;top:-60px;background:var(--surface);padding:8px 14px;border-radius:var(--r-sm);z-index:40}
+.skip:focus{top:10px}[hidden]{display:none!important}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--surface) 92%,transparent);
+backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.bar{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.logo{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--logo-a),var(--logo-b));flex:none}
+.brand h1{font-size:1.05rem;margin:0}.brand p{margin:0;color:var(--muted);font-size:.8rem}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:2px 9px;border-radius:999px;font-size:.75rem;
+font-weight:600;border:1px solid color-mix(in srgb,var(--tone,var(--muted)) 40%,var(--rule));
+color:var(--tone,var(--muted));background:color-mix(in srgb,var(--tone,var(--muted)) 9%,transparent)}
+.spacer{flex:1}button,select,input{font:inherit;color:inherit}
+.btn{border:1px solid var(--rule-strong);background:var(--surface);border-radius:var(--r-sm);padding:6px 12px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+nav.tabs{max-width:1240px;margin:0 auto;padding:0 20px 8px;display:flex;gap:4px;overflow-x:auto}
+nav.tabs a{padding:6px 12px;border-radius:999px;color:var(--ink-2);text-decoration:none;white-space:nowrap;font-size:.88rem}
+nav.tabs a:hover{background:var(--accent-soft);color:var(--accent)}
+main{max-width:1240px;margin:0 auto;padding:20px}
+section{margin:0 0 28px}h2{font-size:1.25rem;margin:0 0 12px}h3{font-size:1rem;margin:14px 0 8px}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}
+.verdict{border-left:4px solid var(--tone);display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:14px 0}
+.kpi .v{font-size:1.6rem;font-weight:700}.kpi .l{color:var(--muted);font-size:.82rem}
+.kpi .d{color:var(--faint);font-size:.78rem}
+.layer1{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px}
+.layer1 ul{margin:6px 0 0;padding-left:18px}.layer1 li{margin:3px 0}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 12px;position:sticky;top:96px;z-index:10;
+background:var(--bg);padding:8px 0}
+.toolbar input[type=search]{flex:1 1 280px;min-width:200px;padding:8px 12px;border:1px solid var(--rule-strong);
+border-radius:var(--r-sm);background:var(--surface)}
+.toolbar select{padding:7px 10px;border:1px solid var(--rule-strong);border-radius:var(--r-sm);background:var(--surface)}
+details.wi{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r);margin:8px 0;
+border-left:4px solid var(--tone,var(--rule-strong))}
+details.wi>summary{list-style:none;cursor:pointer;padding:10px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+details.wi>summary::-webkit-details-marker{display:none}
+details.wi>summary::before{content:"\25B8";color:var(--muted);transition:transform .15s}
+details.wi[open]>summary::before{transform:rotate(90deg)}
+.wi .body{padding:0 16px 14px 34px}.wi .children{margin-left:14px}
+.t-epic{--tone:#7b4dff}.t-feature{--tone:var(--info)}.t-story,.t-enabler,.t-spike,.t-bug{--tone:var(--pass)}
+.t-task{--tone:var(--warn)}.title{font-weight:600;overflow-wrap:anywhere}.mono{font-family:var(--mono);font-size:.78rem;color:var(--muted);overflow-wrap:anywhere}
+.card,.grid2>*,.layer1>*{min-width:0}
+.rich p{margin:4px 0}.rich ul{margin:4px 0;padding-left:20px}
+table{border-collapse:collapse;width:100%;font-size:.88rem}th,td{border:1px solid var(--rule);padding:6px 8px;
+text-align:left;vertical-align:top}th{background:var(--surface-2)}
+.tablewrap{overflow-x:auto}.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:12px}
+.finding{border-left:4px solid var(--tone)}.sev-critical,.sev-high{--tone:var(--fail)}.sev-medium{--tone:var(--warn)}
+.sev-low,.sev-info{--tone:var(--info)}dl.kv{display:grid;grid-template-columns:max-content 1fr;gap:4px 12px;margin:6px 0}
+dl.kv dt{color:var(--muted)}dl.kv dd{margin:0}.quote{color:var(--ink-2);font-style:italic}
+pre.json{max-height:480px;overflow:auto;background:var(--sunk);padding:12px;border-radius:var(--r-sm)}
+.notice{color:var(--muted);font-size:.85rem}
+@media (max-width:640px){.bar{padding:10px 12px}main{padding:12px}.wi .body{padding-left:14px}
+.toolbar{top:86px}dl.kv{grid-template-columns:1fr}}
+@media print{header.top,.toolbar,nav.tabs{position:static}details.wi{break-inside:avoid}.btn{display:none}}
+</style></head>
+<body><a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="bar"><div class="logo" aria-hidden="true"></div><div class="brand"><h1>Community Fridge Kiosk</h1>
+<p>Run <code>PBD-RUN-SG1ZJ6H724RE</code> · en · profile generic</p></div>
+<span class="badge tone-warn">SYNTHETIC</span><span class="badge tone-info">Not published: package and plan are local only.</span><span class="spacer"></span>
+<button class="btn" id="theme" type="button" aria-label="Toggle theme">◐</button></div>
+<nav class="tabs" aria-label="sections"><a href='#summary'>Executive summary</a><a href='#backlog'>Backlog</a><a href='#requirements'>Requirements</a><a href='#findings'>Findings</a><a href='#questions'>Questions</a><a href='#gates'>Quality gates</a><a href='#sources'>Sources</a><a href='#data'>Data</a></nav></header>
+<main id="main">
+<section id="summary" aria-labelledby="h-summary"><h2 id="h-summary">Executive summary</h2>
+<div class="card verdict tone-fail"><span class="badge tone-fail">FAIL</span><div><strong>1 gate(s) FAIL · 0 BLOCKED · 1 NOT_RUN</strong>
+<p class="notice">Potentially sensitive content: share only with people allowed to see the sources.</p></div></div>
+<div class="kpis"><div class="card kpi"><div class="v">20</div><div class="l">Work items</div><div class="d">enabler: 1, epic: 1, feature: 5, story: 5, task: 8</div></div><div class="card kpi"><div class="v">17</div><div class="l">Acceptance criteria</div><div class="d">3 proposed</div></div><div class="card kpi"><div class="v">11/13</div><div class="l">Independent coverage</div><div class="d">provenance: independent reviewer inventory</div></div><div class="card kpi"><div class="v">1/1</div><div class="l">Members read</div><div class="d">1 source(s)</div></div><div class="card kpi"><div class="v">3</div><div class="l">Findings</div><div class="d">medium: 2, low: 1</div></div><div class="card kpi"><div class="v">7</div><div class="l">Open questions</div><div class="d">3 blocking</div></div></div><div class="layer1"><div class="card"><h3>What was reviewed</h3><ul><li>prd.md — functional (complete)</li></ul></div><div class="card"><h3>What is sound</h3><ul><li>G01 Source Integrity</li><li>G03 Hierarchy Integrity</li><li>G04 Traceability</li><li>G05 Story Quality</li><li>G06 Acceptance Quality</li><li>G07 Task Coverage</li><li>G08 Dependency Integrity</li><li>G09 Scope Integrity</li><li>G11 Artifact Integrity</li><li>G13 Independent Review</li><li>G14 Semantic Duplication</li><li>G16 Privacy and Offline Boundary</li></ul></div><div class="card"><h3>What differs</h3><ul><li><span class="badge tone-warn">medium</span> Relation EN1 to US2 is proposed, but no criterion states that a fourth-item record made offline is retained and uploaded.</li><li><span class="badge tone-warn">medium</span> Criteria for US2 and US5 are written as testable although day boundary, item detection and volunteer identity are unknown.</li><li><span class="badge tone-info">low</span> AC12 merges unknown and deactivated badges; AC10 has inverted condition and trigger.</li><li>G02: coverage gaps in independent inventory: {&#x27;covered&#x27;: 11, &#x27;partially_covered&#x27;: 1, &#x27;out_of_scope&#x27;: 1}</li></ul></div><div class="card"><h3>What needs a decision</h3><ul><li>What defines a &#x27;day&#x27; for the 3-items limit (timezone and reset time)?</li><li>How does the kiosk know which items, and how many, a member has taken?</li><li>What does the fourth-item warning say and how is it shown?</li><li>What should happen for a fifth and later item on the same day?</li><li>Who counts as a volunteer and how does the kiosk identify one before allowing an item to be marked as expired?</li><li>While offline, how should a badge registered after the last synchronization be treated, and how old may the synchronized member list be?</li><li>Which events must be uploaded when connectivity returns, and to which system?</li></ul></div><div class="card"><h3>What is not proven</h3><ul><li>G18 NOT_RUN: round-trip against a tracker (mock or live) belongs to M3; live qualification requires separate authorization</li></ul></div></div></section>
+<section id="backlog" aria-labelledby="h-backlog"><h2 id="h-backlog">Backlog</h2>
+<div class="toolbar" role="search"><label class="sr-only" for="q">Search by ID, title, criterion or text</label>
+<input id="q" type="search" placeholder="Search by ID, title, criterion or text" autocomplete="off">
+<label class="sr-only" for="ftype">type</label><select id="ftype"><option value="">All types</option><option value='enabler'>enabler</option><option value='epic'>epic</option><option value='feature'>feature</option><option value='story'>story</option><option value='task'>task</option></select>
+<label class="sr-only" for="fverdict">verdict</label><select id="fverdict"><option value="">All verdicts</option>
+<option value="pass">pass</option><option value="concern">concern</option><option value="fail">fail</option></select>
+<button class="btn" id="expand" type="button">Expand all</button><button class="btn" id="collapse" type="button">Collapse all</button>
+<span aria-live="polite"><strong id="count">20</strong> items shown</span></div>
+<p id="noresults" class="notice" hidden>No item matches the search.</p>
+<div id="tree"><details class='wi t-epic' id='PBD-EPIC-W89H2AM1MSXV' data-type='epic' data-verdict='pass' data-text='PBD-EPIC-W89H2AM1MSXV E1 Badge-controlled community fridge with fair-use and inventory upkeep Objective: Let registered members open the community fridge with their badge while the kiosk keeps the daily take guideline, door state and available inventory under control.
+Context: The kiosk sits on the fridge door, validates badges, must keep working when connectivity is lost, and relies on volunteers to flag expired food.
+In scope
+Badge unlock for registered members and rejection of unknown or deactivated badges
+Daily take limit of 3 items with recording and warning on a fourth item, without lockout
+Audible alert when the door stays open for more than 60 seconds
+Offline badge checks against the last synchronized member list and upload of events when connectivity returns
+Volunteers marking items as expired and removing them from the available inventory count
+Out of scope
+Payments and donations tracking
+Expected outcome: Members get food through a badge-controlled door, over-limit takes are visible without denying access, the door is not silently left open, and the available inventory count excludes expired items.'><summary><span class="badge tone-accent">epic</span><span class='mono'>E1</span><span class='title'>Badge-controlled community fridge with fair-use and inventory upkeep</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-EPIC-W89H2AM1MSXV</p><h3>Description</h3><div class='rich'><p><strong>Objective</strong>: Let registered members open the community fridge with their badge while the kiosk keeps the daily take guideline, door state and available inventory under control.</p><p><strong>Context</strong>: The kiosk sits on the fridge door, validates badges, must keep working when connectivity is lost, and relies on volunteers to flag expired food.</p><p><strong>In scope</strong></p><ul><li>Badge unlock for registered members and rejection of unknown or deactivated badges</li><li>Daily take limit of 3 items with recording and warning on a fourth item, without lockout</li><li>Audible alert when the door stays open for more than 60 seconds</li><li>Offline badge checks against the last synchronized member list and upload of events when connectivity returns</li><li>Volunteers marking items as expired and removing them from the available inventory count</li></ul><p><strong>Out of scope</strong></p><ul><li>Payments and donations tracking</li></ul><p><strong>Expected outcome</strong>: Members get food through a badge-controlled door, over-limit takes are visible without denying access, the door is not silently left open, and the available inventory count excludes expired items.</p></div><h3>Traceability</h3><ul><li><code>C1</code> A registered member scans their badge to unlock the fridge door. — <span class='mono'>prd.md:4</span> <span class='quote'>“A registered member scans their badge to unlock the fridge door”</span></li><li><code>C2</code> An unknown or deactivated badge does not unlock the fridge door. — <span class='mono'>prd.md:5</span> <span class='quote'>“An unknown or deactivated badge does not unlock the door”</span></li><li><code>C3</code> When an unknown or deactivated badge is scanned, the screen shows &quot;Badge not recognized&quot;. — <span class='mono'>prd.md:5</span> <span class='quote'>“the screen shows &quot;Badge not recognized&quot;”</span></li><li><code>C4</code> A member may take at most 3 items per day. — <span class='mono'>prd.md:6</span> <span class='quote'>“A member may take at most 3 items per day”</span></li><li><code>C5</code> Taking a fourth item on the same day is recorded. — <span class='mono'>prd.md:7</span> <span class='quote'>“Taking a fourth item on the same day is recorded”</span></li><li><code>C6</code> When a member takes a fourth item on the same day, the member sees a warning. — <span class='mono'>prd.md:7</span> <span class='quote'>“the member sees a warning”</span></li><li><code>C7</code> A member who takes a fourth item on the same day is not locked out. — <span class='mono'>prd.md:7</span> <span class='quote'>“the member is not locked out”</span></li><li><code>C8</code> If the fridge door stays open for more than 60 seconds, an audible alert sounds until the door is closed. — <span class='mono'>prd.md:8</span> <span class='quote'>“If the door stays open for more than 60 seconds, an audible alert sounds until the door is closed”</span></li><li><code>C9</code> If the kiosk loses connectivity, badge checks use the last synchronized member list. — <span class='mono'>prd.md:9</span> <span class='quote'>“badge checks use the last synchronized member list”</span></li><li><code>C10</code> Events recorded while the kiosk has no connectivity are uploaded when connectivity returns. — <span class='mono'>prd.md:9</span> <span class='quote'>“events are uploaded when connectivity returns”</span></li><li><code>C11</code> Volunteers can mark an item as expired. — <span class='mono'>prd.md:10</span> <span class='quote'>“Volunteers can mark an item as expired”</span></li><li><code>C12</code> Items marked as expired are removed from the available inventory count. — <span class='mono'>prd.md:10</span> <span class='quote'>“expired items are removed from the available inventory count”</span></li></ul><h3>Independent review</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd></dd></dl><div class='children'><details class='wi t-feature' id='PBD-FEAT-KAPKPS10T1G1' data-type='feature' data-verdict='pass' data-text='PBD-FEAT-KAPKPS10T1G1 F1 Badge access to the fridge door Capability: Validate a scanned badge and unlock the door only for registered members.
+Value: Only registered members can open the fridge, and people with rejected badges get explicit feedback.
+Related rules
+A registered member&#x27;s badge unlocks the door.
+An unknown or deactivated badge does not unlock the door.
+A rejected badge shows &quot;Badge not recognized&quot; on the screen.'><summary><span class="badge tone-accent">feature</span><span class='mono'>F1</span><span class='title'>Badge access to the fridge door</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-FEAT-KAPKPS10T1G1</p><h3>Description</h3><div class='rich'><p><strong>Capability</strong>: Validate a scanned badge and unlock the door only for registered members.</p><p><strong>Value</strong>: Only registered members can open the fridge, and people with rejected badges get explicit feedback.</p><p><strong>Related rules</strong></p><ul><li>A registered member's badge unlocks the door.</li><li>An unknown or deactivated badge does not unlock the door.</li><li>A rejected badge shows "Badge not recognized" on the screen.</li></ul></div><h3>Traceability</h3><ul><li><code>C1</code> A registered member scans their badge to unlock the fridge door. — <span class='mono'>prd.md:4</span> <span class='quote'>“A registered member scans their badge to unlock the fridge door”</span></li><li><code>C2</code> An unknown or deactivated badge does not unlock the fridge door. — <span class='mono'>prd.md:5</span> <span class='quote'>“An unknown or deactivated badge does not unlock the door”</span></li><li><code>C3</code> When an unknown or deactivated badge is scanned, the screen shows &quot;Badge not recognized&quot;. — <span class='mono'>prd.md:5</span> <span class='quote'>“the screen shows &quot;Badge not recognized&quot;”</span></li></ul><h3>Independent review</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd></dd></dl><div class='children'><details class='wi t-story' id='PBD-STORY-3Z1VNJPW3X7S' data-type='story' data-verdict='pass' data-text='PBD-STORY-3Z1VNJPW3X7S US1 Unlock the fridge door by scanning my badge As a registered member, I want the fridge door to unlock when I scan my badge, and badges that are unknown or deactivated to be refused with a clear message, so that I can get food myself while the fridge stays closed to anyone who is not a registered member. AC-01 A registered member with an active badge is at the kiosk, the member scans the badge: The fridge door unlocks. AC-02 A badge that is not known to the kiosk is presented, the badge is scanned: The unknown badge does not unlock the door.; The kiosk screen displays &quot;Badge not recognized&quot; for the unknown badge. AC-03 A badge that belongs to a deactivated member is presented, the badge is scanned: The deactivated badge is refused and the door remains locked even though the member was once registered.; &quot;Badge not recognized&quot; appears on the screen, the same message as for an unknown badge.'><summary><span class="badge tone-accent">story</span><span class='mono'>US1</span><span class='title'>Unlock the fridge door by scanning my badge</span><span class="badge tone-pass">pass</span><span class='mono'>3 AC</span></summary><div class='body'><p class='mono'>PBD-STORY-3Z1VNJPW3X7S</p><h3>Description</h3><div class='rich'><p><strong>As a</strong> registered member, <strong>I want</strong> the fridge door to unlock when I scan my badge, and badges that are unknown or deactivated to be refused with a clear message, <strong>so that</strong> I can get food myself while the fridge stays closed to anyone who is not a registered member.</p></div><h3>Acceptance criteria</h3><div class='rich tablewrap'><ul><li><strong>AC-01</strong> A registered member with an active badge is at the kiosk, the member scans the badge: The fridge door unlocks.</li><li><strong>AC-02</strong> A badge that is not known to the kiosk is presented, the badge is scanned: The unknown badge does not unlock the door.; The kiosk screen displays "Badge not recognized" for the unknown badge.</li><li><strong>AC-03</strong> A badge that belongs to a deactivated member is presented, the badge is scanned: The deactivated badge is refused and the door remains locked even though the member was once registered.; "Badge not recognized" appears on the screen, the same message as for an unknown badge.</li></ul></div><div class='tablewrap'><table><thead><tr><th>ID</th><th>status</th><th>review</th><th>notes</th><th>claims</th></tr></thead><tbody><tr><td>AC-01</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C1</td></tr><tr><td>AC-02</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C2, C3</td></tr><tr><td>AC-03</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C2, C3</td></tr></tbody></table></div><h3>Traceability</h3><ul><li><code>C1</code> A registered member scans their badge to unlock the fridge door. — <span class='mono'>prd.md:4</span> <span class='quote'>“A registered member scans their badge to unlock the fridge door”</span></li><li><code>C2</code> An unknown or deactivated badge does not unlock the fridge door. — <span class='mono'>prd.md:5</span> <span class='quote'>“An unknown or deactivated badge does not unlock the door”</span></li><li><code>C3</code> When an unknown or deactivated badge is scanned, the screen shows &quot;Badge not recognized&quot;. — <span class='mono'>prd.md:5</span> <span class='quote'>“the screen shows &quot;Badge not recognized&quot;”</span></li></ul><h3>Independent review</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>tasks</dt><dd>sufficient</dd><dt>notes</dt><dd>Success and rejection share one decision; coherent slice, conjunction is not a split signal.</dd></dl><div class='tablewrap'><table><tbody><tr><td>estimable</td><td><span class="badge tone-neutral">unknown</span></td><td>No team data.</td></tr><tr><td>independent</td><td><span class="badge tone-neutral">supported</span></td><td>Foundation for US2 and US4.</td></tr><tr><td>negotiable</td><td><span class="badge tone-neutral">supported</span></td><td>No UI or technology mandated.</td></tr><tr><td>small</td><td><span class="badge tone-neutral">supported</span></td><td>Three criteria, one rule.</td></tr><tr><td>testable</td><td><span class="badge tone-neutral">supported</span></td><td>Concrete unlock and message outcomes.</td></tr><tr><td>valuable</td><td><span class="badge tone-neutral">supported</span></td><td>Access control for members, grounded in R1/R2.</td></tr></tbody></table></div><div class='children'><details class='wi t-task' id='PBD-TASK-RZ8K5QBJAWJ5' data-type='task' data-verdict='pass' data-text='PBD-TASK-RZ8K5QBJAWJ5 T1 Implement badge validation and door unlock decision Objective: On badge scan, look up the badge in the member list and unlock the door only for a registered, active member.
+Activities
+Resolve a scanned badge to a member record
+Unlock the door for a registered active member
+Keep the door locked for an unknown badge
+Keep the door locked for a deactivated badge
+Expected outcome: Door unlock decision follows the registered/unknown/deactivated status of the badge.
+Verification: Scanning a registered, an unknown and a deactivated badge yields unlock, no unlock and no unlock respectively.'><summary><span class="badge tone-accent">task</span><span class='mono'>T1</span><span class='title'>Implement badge validation and door unlock decision</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-TASK-RZ8K5QBJAWJ5</p><h3>Description</h3><div class='rich'><p><strong>Objective</strong>: On badge scan, look up the badge in the member list and unlock the door only for a registered, active member.</p><p><strong>Activities</strong></p><ul><li>Resolve a scanned badge to a member record</li><li>Unlock the door for a registered active member</li><li>Keep the door locked for an unknown badge</li><li>Keep the door locked for a deactivated badge</li></ul><p><strong>Expected outcome</strong>: Door unlock decision follows the registered/unknown/deactivated status of the badge.</p><p><strong>Verification</strong>: Scanning a registered, an unknown and a deactivated badge yields unlock, no unlock and no unlock respectively.</p></div><h3>Traceability</h3><ul><li><code>C1</code> A registered member scans their badge to unlock the fridge door. — <span class='mono'>prd.md:4</span> <span class='quote'>“A registered member scans their badge to unlock the fridge door”</span></li><li><code>C2</code> An unknown or deactivated badge does not unlock the fridge door. — <span class='mono'>prd.md:5</span> <span class='quote'>“An unknown or deactivated badge does not unlock the door”</span></li></ul><h3>Independent review</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd></dd></dl></div></details><details class='wi t-task' id='PBD-TASK-13C6XNP8N9XN' data-type='task' data-verdict='pass' data-text='PBD-TASK-13C6XNP8N9XN T2 Show &quot;Badge not recognized&quot; on rejected scans Objective: Display the exact text &quot;Badge not recognized&quot; on the kiosk screen whenever a scan is rejected.
+Activities
+Add the rejection message to the kiosk screen flow
+Trigger it for both unknown and deactivated badges
+Expected outcome: Rejected scans show &quot;Badge not recognized&quot;.
+Verification: Screen text after scanning an unknown badge and a deactivated badge matches &quot;Badge not recognized&quot; exactly.'><summary><span class="badge tone-accent">task</span><span class='mono'>T2</span><span class='title'>Show &quot;Badge not recognized&quot; on rejected scans</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-TASK-13C6XNP8N9XN</p><h3>Description</h3><div class='rich'><p><strong>Objective</strong>: Display the exact text "Badge not recognized" on the kiosk screen whenever a scan is rejected.</p><p><strong>Activities</strong></p><ul><li>Add the rejection message to the kiosk screen flow</li><li>Trigger it for both unknown and deactivated badges</li></ul><p><strong>Expected outcome</strong>: Rejected scans show "Badge not recognized".</p><p><strong>Verification</strong>: Screen text after scanning an unknown badge and a deactivated badge matches "Badge not recognized" exactly.</p></div><h3>Traceability</h3><ul><li><code>C3</code> When an unknown or deactivated badge is scanned, the screen shows &quot;Badge not recognized&quot;. — <span class='mono'>prd.md:5</span> <span class='quote'>“the screen shows &quot;Badge not recognized&quot;”</span></li></ul><h3>Independent review</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd></dd></dl></div></details></div></div></details></div></div></details><details class='wi t-feature' id='PBD-FEAT-E4ZY3PCFN1RG' data-type='feature' data-verdict='pass' data-text='PBD-FEAT-E4ZY3PCFN1RG F2 Daily take limit with warning, not lockout Capability: Track items taken per member per day and react to a fourth item.
+Value: Keeps the 3-items-per-day guideline visible and auditable without denying food to a member.
+Related rules
+A member may take at most 3 items per day.
+A fourth item on the same day is recorded.
+The member sees a warning on the fourth item.
+The member is not locked out.'><summary><span class="badge tone-accent">feature</span><span class='mono'>F2</span><span class='title'>Daily take limit with warning, not lockout</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-FEAT-E4ZY3PCFN1RG</p><h3>Description</h3><div class='rich'><p><strong>Capability</strong>: Track items taken per member per day and react to a fourth item.</p><p><strong>Value</strong>: Keeps the 3-items-per-day guideline visible and auditable without denying food to a member.</p><p><strong>Related rules</strong></p><ul><li>A member may take at most 3 items per day.</li><li>A fourth item on the same day is recorded.</li><li>The member sees a warning on the fourth item.</li><li>The member is not locked out.</li></ul></div><h3>Traceability</h3><ul><li><code>C4</code> A member may take at most 3 items per day. — <span class='mono'>prd.md:6</span> <span class='quote'>“A member may take at most 3 items per day”</span></li><li><code>C5</code> Taking a fourth item on the same day is recorded. — <span class='mono'>prd.md:7</span> <span class='quote'>“Taking a fourth item on the same day is recorded”</span></li><li><code>C6</code> When a member takes a fourth item on the same day, the member sees a warning. — <span class='mono'>prd.md:7</span> <span class='quote'>“the member sees a warning”</span></li><li><code>C7</code> A member who takes a fourth item on the same day is not locked out. — <span class='mono'>prd.md:7</span> <span class='quote'>“the member is not locked out”</span></li></ul><h3>Independent review</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd></dd></dl><div class='children'><details class='wi t-story' id='PBD-STORY-ZG6PMTD4YRYW' data-type='story' data-verdict='concern' data-text='PBD-STORY-ZG6PMTD4YRYW US2 Get warned, not blocked, when I take a fourth item in a day As a member, I want to see a warning when I take a fourth item on the same day, while the kiosk records it and still lets me in, so that I know I went past the 3-items-per-day guideline without being denied access to the fridge. AC-01 A member has already taken 3 items today, the member takes a fourth item the same day: The fourth item is recorded against the member. AC-02 A member has already taken 3 items today, the member takes a fourth item the same day: The member sees a warning. AC-03 A member took a fourth item earlier the same day, the member scans the badge again: The door unlocks; the member is not locked out. AC-04 When a member takes a first, second or third item on the same day, no over-limit warning is shown and no over-limit record is created. → No warning is shown for items within the 3-per-day limit.; No over-limit record is created for items within the limit.'><summary><span class="badge tone-accent">story</span><span class='mono'>US2</span><span class='title'>Get warned, not blocked, when I take a fourth item in a day</span><span class="badge tone-warn">concern</span><span class='mono'>4 AC</span></summary><div class='body'><p class='mono'>PBD-STORY-ZG6PMTD4YRYW</p><h3>Description</h3><div class='rich'><p><strong>As a</strong> member, <strong>I want</strong> to see a warning when I take a fourth item on the same day, while the kiosk records it and still lets me in, <strong>so that</strong> I know I went past the 3-items-per-day guideline without being denied access to the fridge.</p></div><h3>Acceptance criteria</h3><div class='rich tablewrap'><ul><li><strong>AC-01</strong> A member has already taken 3 items today, the member takes a fourth item the same day: The fourth item is recorded against the member.</li><li><strong>AC-02</strong> A member has already taken 3 items today, the member takes a fourth item the same day: The member sees a warning.</li><li><strong>AC-03</strong> A member took a fourth item earlier the same day, the member scans the badge again: The door unlocks; the member is not locked out.</li><li><strong>AC-04</strong> When a member takes a first, second or third item on the same day, no over-limit warning is shown and no over-limit record is created. → No warning is shown for items within the 3-per-day limit.; No over-limit record is created for items within the limit.</li></ul></div><div class='tablewrap'><table><thead><tr><th>ID</th><th>status</th><th>review</th><th>notes</th><th>claims</th></tr></thead><tbody><tr><td>AC-01</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C5</td></tr><tr><td>AC-02</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C6</td></tr><tr><td>AC-03</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C7</td></tr><tr><td>AC-04</td><td>proposed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>Boundary partition inferred from &#x27;at most 3 items per day&#x27; (C4); the source only describes the fourth item explicitly.</td></tr></tbody></table></div><h3>Traceability</h3><ul><li><code>C4</code> A member may take at most 3 items per day. — <span class='mono'>prd.md:6</span> <span class='quote'>“A member may take at most 3 items per day”</span></li><li><code>C5</code> Taking a fourth item on the same day is recorded. — <span class='mono'>prd.md:7</span> <span class='quote'>“Taking a fourth item on the same day is recorded”</span></li><li><code>C6</code> When a member takes a fourth item on the same day, the member sees a warning. — <span class='mono'>prd.md:7</span> <span class='quote'>“the member sees a warning”</span></li><li><code>C7</code> A member who takes a fourth item on the same day is not locked out. — <span class='mono'>prd.md:7</span> <span class='quote'>“the member is not locked out”</span></li></ul><h3>Independent review</h3><dl class='kv'><dt>verdict</dt><dd>concern</dd><dt>source</dt><dd>supported</dd><dt>tasks</dt><dd>sufficient</dd><dt>notes</dt><dd>Blocking questions Q1 (day boundary) and Q2 (how items are detected) remain open, so the story is not ready; fifth-item behaviour undefined (Q4).</dd></dl><div class='tablewrap'><table><tbody><tr><td>estimable</td><td><span class="badge tone-neutral">concern</span></td><td>Q2 unknown makes the item-counting scope unestimable.</td></tr><tr><td>independent</td><td><span class="badge tone-neutral">concern</span></td><td>Depends on member identification (US1) and on an undefined item detection mechanism.</td></tr><tr><td>negotiable</td><td><span class="badge tone-neutral">supported</span></td><td>Mechanism left open.</td></tr><tr><td>small</td><td><span class="badge tone-neutral">supported</span></td><td>One rule with its outcomes.</td></tr><tr><td>testable</td><td><span class="badge tone-neutral">concern</span></td><td>Day definition and warning content unspecified.</td></tr><tr><td>valuable</td><td><span class="badge tone-neutral">supported</span></td><td>Visible fair-use guideline per R3/R4.</td></tr></tbody></table></div><div class='children'><details class='wi t-task' id='PBD-TASK-YNKJY36Z7RH6' data-type='task' data-verdict='concern' data-text='PBD-TASK-YNKJY36Z7RH6 T3 Count items taken per member per day and record the fourth Objective: Maintain a per-member, per-day count of items taken and store a record when the count reaches four.
+Activities
+Associate each item taken with the member whose badge opened the door
+Keep the daily count per member
+Persist a record when a member takes a fourth item on the same day
+Expected outcome: Each fourth item taken by a member on one day leaves a stored record.
+Verification: After a member takes four items on the same day, exactly the fourth take appears as a recorded over-limit event.'><summary><span class="badge tone-accent">task</span><span class='mono'>T3</span><span class='title'>Count items taken per member per day and record the fourth</span><span class="badge tone-warn">concern</span></summary><div class='body'><p class='mono'>PBD-TASK-YNKJY36Z7RH6</p><h3>Description</h3><div class='rich'><p><strong>Objective</strong>: Maintain a per-member, per-day count of items taken and store a record when the count reaches four.</p><p><strong>Activities</strong></p><ul><li>Associate each item taken with the member whose badge opened the door</li><li>Keep the daily count per member</li><li>Persist a record when a member takes a fourth item on the same day</li></ul><p><strong>Expected outcome</strong>: Each fourth item taken by a member on one day leaves a stored record.</p><p><strong>Verification</strong>: After a member takes four items on the same day, exactly the fourth take appears as a recorded over-limit event.</p></div><h3>Traceability</h3><ul><li><code>C4</code> A member may take at most 3 items per day. — <span class='mono'>prd.md:6</span> <span class='quote'>“A member may take at most 3 items per day”</span></li><li><code>C5</code> Taking a fourth item on the same day is recorded. — <span class='mono'>prd.md:7</span> <span class='quote'>“Taking a fourth item on the same day is recorded”</span></li></ul><h3>Independent review</h3><dl class='kv'><dt>verdict</dt><dd>concern</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd>Verification says exactly the fourth take is recorded, which pre-empts open Q4 about fifth and later items.</dd></dl></div></details><details class='wi t-task' id='PBD-TASK-NGPT156R9W9W' data-type='task' data-verdict='pass' data-text='PBD-TASK-NGPT156R9W9W T4 Display the fourth-item warning without blocking access Objective: Show the member a warning on the fourth item of the day and leave the member&#x27;s badge access unchanged.
+Activities
+Show the warning to the member when the fourth item is taken
+Ensure the over-limit condition does not deactivate or block the badge
+Expected outcome: The member is warned and can still unlock the door afterwards.
+Verification: After a fourth item, the warning is shown and a subsequent scan of the same badge still unlocks the door.'><summary><span class="badge tone-accent">task</span><span class='mono'>T4</span><span class='title'>Display the fourth-item warning without blocking access</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-TASK-NGPT156R9W9W</p><h3>Description</h3><div class='rich'><p><strong>Objective</strong>: Show the member a warning on the fourth item of the day and leave the member's badge access unchanged.</p><p><strong>Activities</strong></p><ul><li>Show the warning to the member when the fourth item is taken</li><li>Ensure the over-limit condition does not deactivate or block the badge</li></ul><p><strong>Expected outcome</strong>: The member is warned and can still unlock the door afterwards.</p><p><strong>Verification</strong>: After a fourth item, the warning is shown and a subsequent scan of the same badge still unlocks the door.</p></div><h3>Traceability</h3><ul><li><code>C6</code> When a member takes a fourth item on the same day, the member sees a warning. — <span class='mono'>prd.md:7</span> <span class='quote'>“the member sees a warning”</span></li><li><code>C7</code> A member who takes a fourth item on the same day is not locked out. — <span class='mono'>prd.md:7</span> <span class='quote'>“the member is not locked out”</span></li></ul><h3>Independent review</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd></dd></dl></div></details></div></div></details></div></div></details><details class='wi t-feature' id='PBD-FEAT-FPTQ9HBNWG6X' data-type='feature' data-verdict='pass' data-text='PBD-FEAT-FPTQ9HBNWG6X F3 Door-open alert Capability: Monitor how long the door stays open and sound an audible alert past 60 seconds.
+Value: Reduces the chance of the fridge being left open.
+Related rules
+After the door has been open for more than 60 seconds an audible alert sounds.
+The alert keeps sounding until the door is closed.'><summary><span class="badge tone-accent">feature</span><span class='mono'>F3</span><span class='title'>Door-open alert</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-FEAT-FPTQ9HBNWG6X</p><h3>Description</h3><div class='rich'><p><strong>Capability</strong>: Monitor how long the door stays open and sound an audible alert past 60 seconds.</p><p><strong>Value</strong>: Reduces the chance of the fridge being left open.</p><p><strong>Related rules</strong></p><ul><li>After the door has been open for more than 60 seconds an audible alert sounds.</li><li>The alert keeps sounding until the door is closed.</li></ul></div><h3>Traceability</h3><ul><li><code>C8</code> If the fridge door stays open for more than 60 seconds, an audible alert sounds until the door is closed. — <span class='mono'>prd.md:8</span> <span class='quote'>“If the door stays open for more than 60 seconds, an audible alert sounds until the door is closed”</span></li></ul><h3>Independent review</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd></dd></dl><div class='children'><details class='wi t-story' id='PBD-STORY-HR31FCR2BYSM' data-type='story' data-verdict='pass' data-text='PBD-STORY-HR31FCR2BYSM US3 Hear an alert when the door is left open too long As a registered member, I want an audible alert to sound once the door has been open for more than 60 seconds and to keep sounding until the door is closed, so that I notice the door is still open and close it before the food is affected. AC-01 The door has been open for more than 60 seconds, the 60-second limit is exceeded: An audible alert sounds. AC-02 The audible alert is sounding because the door stayed open for more than 60 seconds, the door is closed: The alert keeps sounding until the door is closed and stops once it is closed. AC-03 The door is opened, the door is closed after 60 seconds or less: No audible alert sounds.'><summary><span class="badge tone-accent">story</span><span class='mono'>US3</span><span class='title'>Hear an alert when the door is left open too long</span><span class="badge tone-pass">pass</span><span class='mono'>3 AC</span></summary><div class='body'><p class='mono'>PBD-STORY-HR31FCR2BYSM</p><h3>Description</h3><div class='rich'><p><strong>As a</strong> registered member, <strong>I want</strong> an audible alert to sound once the door has been open for more than 60 seconds and to keep sounding until the door is closed, <strong>so that</strong> I notice the door is still open and close it before the food is affected.</p></div><h3>Acceptance criteria</h3><div class='rich tablewrap'><ul><li><strong>AC-01</strong> The door has been open for more than 60 seconds, the 60-second limit is exceeded: An audible alert sounds.</li><li><strong>AC-02</strong> The audible alert is sounding because the door stayed open for more than 60 seconds, the door is closed: The alert keeps sounding until the door is closed and stops once it is closed.</li><li><strong>AC-03</strong> The door is opened, the door is closed after 60 seconds or less: No audible alert sounds.</li></ul></div><div class='tablewrap'><table><thead><tr><th>ID</th><th>status</th><th>review</th><th>notes</th><th>claims</th></tr></thead><tbody><tr><td>AC-01</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C8</td></tr><tr><td>AC-02</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C8</td></tr><tr><td>AC-03</td><td>confirmed</td><td><span class="badge tone-warn">concern</span></td><td>Condition and trigger are inverted (condition &#x27;door is opened&#x27;, trigger &#x27;closed after 60 seconds or less&#x27;); meaning recoverable but awkward.</td><td>C8</td></tr></tbody></table></div><h3>Traceability</h3><ul><li><code>C8</code> If the fridge door stays open for more than 60 seconds, an audible alert sounds until the door is closed. — <span class='mono'>prd.md:8</span> <span class='quote'>“If the door stays open for more than 60 seconds, an audible alert sounds until the door is closed”</span></li></ul><h3>Independent review</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>tasks</dt><dd>sufficient</dd><dt>notes</dt><dd></dd></dl><div class='tablewrap'><table><tbody><tr><td>estimable</td><td><span class="badge tone-neutral">unknown</span></td><td>No team data.</td></tr><tr><td>independent</td><td><span class="badge tone-neutral">supported</span></td><td>Standalone.</td></tr><tr><td>negotiable</td><td><span class="badge tone-neutral">supported</span></td><td>Sound form unspecified, not over-designed.</td></tr><tr><td>small</td><td><span class="badge tone-neutral">supported</span></td><td>Single rule.</td></tr><tr><td>testable</td><td><span class="badge tone-neutral">supported</span></td><td>60 s threshold explicit.</td></tr><tr><td>valuable</td><td><span class="badge tone-neutral">supported</span></td><td>Benefit of closing the door is plausible; actor framing is a mild inference.</td></tr></tbody></table></div><div class='children'><details class='wi t-task' id='PBD-TASK-PWRPAQHNVM9X' data-type='task' data-verdict='pass' data-text='PBD-TASK-PWRPAQHNVM9X T5 Implement door-open timer and audible alert control Objective: Measure how long the door has been open, start the audible alert after more than 60 seconds and stop it when the door closes.
+Activities
+Start timing when the door opens
+Start the audible alert once open time exceeds 60 seconds
+Stop the alert and reset the timer when the door closes
+Expected outcome: The alert sounds only while the door has been open longer than 60 seconds.
+Verification: Holding the door open past 60 seconds starts the alert; closing the door stops it; closing within 60 seconds produces no alert.'><summary><span class="badge tone-accent">task</span><span class='mono'>T5</span><span class='title'>Implement door-open timer and audible alert control</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-TASK-PWRPAQHNVM9X</p><h3>Description</h3><div class='rich'><p><strong>Objective</strong>: Measure how long the door has been open, start the audible alert after more than 60 seconds and stop it when the door closes.</p><p><strong>Activities</strong></p><ul><li>Start timing when the door opens</li><li>Start the audible alert once open time exceeds 60 seconds</li><li>Stop the alert and reset the timer when the door closes</li></ul><p><strong>Expected outcome</strong>: The alert sounds only while the door has been open longer than 60 seconds.</p><p><strong>Verification</strong>: Holding the door open past 60 seconds starts the alert; closing the door stops it; closing within 60 seconds produces no alert.</p></div><h3>Traceability</h3><ul><li><code>C8</code> If the fridge door stays open for more than 60 seconds, an audible alert sounds until the door is closed. — <span class='mono'>prd.md:8</span> <span class='quote'>“If the door stays open for more than 60 seconds, an audible alert sounds until the door is closed”</span></li></ul><h3>Independent review</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd></dd></dl></div></details></div></div></details></div></div></details><details class='wi t-feature' id='PBD-FEAT-ZTSZZJQ8CTWA' data-type='feature' data-verdict='pass' data-text='PBD-FEAT-ZTSZZJQ8CTWA F4 Offline operation of the kiosk Capability: Keep validating badges during a connectivity loss and synchronize events afterwards.
+Value: Members keep access during outages and no kiosk events are lost.
+Related rules
+Without connectivity, badge checks use the last synchronized member list.
+Events are uploaded when connectivity returns.'><summary><span class="badge tone-accent">feature</span><span class='mono'>F4</span><span class='title'>Offline operation of the kiosk</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-FEAT-ZTSZZJQ8CTWA</p><h3>Description</h3><div class='rich'><p><strong>Capability</strong>: Keep validating badges during a connectivity loss and synchronize events afterwards.</p><p><strong>Value</strong>: Members keep access during outages and no kiosk events are lost.</p><p><strong>Related rules</strong></p><ul><li>Without connectivity, badge checks use the last synchronized member list.</li><li>Events are uploaded when connectivity returns.</li></ul></div><h3>Traceability</h3><ul><li><code>C9</code> If the kiosk loses connectivity, badge checks use the last synchronized member list. — <span class='mono'>prd.md:9</span> <span class='quote'>“badge checks use the last synchronized member list”</span></li><li><code>C10</code> Events recorded while the kiosk has no connectivity are uploaded when connectivity returns. — <span class='mono'>prd.md:9</span> <span class='quote'>“events are uploaded when connectivity returns”</span></li></ul><h3>Independent review</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd></dd></dl><div class='children'><details class='wi t-story' id='PBD-STORY-JH35KHV89PVC' data-type='story' data-verdict='pass' data-text='PBD-STORY-JH35KHV89PVC US4 Open the fridge with my badge while the kiosk is offline As a registered member, I want my badge to be checked against the last synchronized member list when the kiosk has no connectivity, so that I can still get food during a network outage. AC-01 The kiosk has lost connectivity and the badge belongs to a registered, active member in the last synchronized member list, the member scans the badge: The door unlocks based on the last synchronized member list. AC-02 The kiosk has lost connectivity and the badge is unknown or deactivated in the last synchronized member list, the badge is scanned: Offline, the stored list check refuses the badge and the door is not unlocked.; The offline rejection still displays &quot;Badge not recognized&quot;.'><summary><span class="badge tone-accent">story</span><span class='mono'>US4</span><span class='title'>Open the fridge with my badge while the kiosk is offline</span><span class="badge tone-pass">pass</span><span class='mono'>2 AC</span></summary><div class='body'><p class='mono'>PBD-STORY-JH35KHV89PVC</p><h3>Description</h3><div class='rich'><p><strong>As a</strong> registered member, <strong>I want</strong> my badge to be checked against the last synchronized member list when the kiosk has no connectivity, <strong>so that</strong> I can still get food during a network outage.</p></div><h3>Acceptance criteria</h3><div class='rich tablewrap'><ul><li><strong>AC-01</strong> The kiosk has lost connectivity and the badge belongs to a registered, active member in the last synchronized member list, the member scans the badge: The door unlocks based on the last synchronized member list.</li><li><strong>AC-02</strong> The kiosk has lost connectivity and the badge is unknown or deactivated in the last synchronized member list, the badge is scanned: Offline, the stored list check refuses the badge and the door is not unlocked.; The offline rejection still displays "Badge not recognized".</li></ul></div><div class='tablewrap'><table><thead><tr><th>ID</th><th>status</th><th>review</th><th>notes</th><th>claims</th></tr></thead><tbody><tr><td>AC-01</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C9</td></tr><tr><td>AC-02</td><td>confirmed</td><td><span class="badge tone-warn">concern</span></td><td>Combines unknown and deactivated badges offline in one criterion, unlike the online split in AC2/AC3; two partitions in one.</td><td>C9, C2, C3</td></tr></tbody></table></div><h3>Traceability</h3><ul><li><code>C9</code> If the kiosk loses connectivity, badge checks use the last synchronized member list. — <span class='mono'>prd.md:9</span> <span class='quote'>“badge checks use the last synchronized member list”</span></li><li><code>C2</code> An unknown or deactivated badge does not unlock the fridge door. — <span class='mono'>prd.md:5</span> <span class='quote'>“An unknown or deactivated badge does not unlock the door”</span></li><li><code>C3</code> When an unknown or deactivated badge is scanned, the screen shows &quot;Badge not recognized&quot;. — <span class='mono'>prd.md:5</span> <span class='quote'>“the screen shows &quot;Badge not recognized&quot;”</span></li></ul><h3>Independent review</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>tasks</dt><dd>sufficient</dd><dt>notes</dt><dd>Offline staleness and post-sync members remain in non-blocking Q6.</dd></dl><div class='tablewrap'><table><tbody><tr><td>estimable</td><td><span class="badge tone-neutral">unknown</span></td><td>No team data.</td></tr><tr><td>independent</td><td><span class="badge tone-neutral">supported</span></td><td>Reuses US1 validation; relation recorded.</td></tr><tr><td>negotiable</td><td><span class="badge tone-neutral">supported</span></td><td>Storage approach not mandated in story.</td></tr><tr><td>small</td><td><span class="badge tone-neutral">supported</span></td><td>Two criteria.</td></tr><tr><td>testable</td><td><span class="badge tone-neutral">supported</span></td><td>Offline accept and reject outcomes observable.</td></tr><tr><td>valuable</td><td><span class="badge tone-neutral">supported</span></td><td>Access during outages.</td></tr></tbody></table></div><div class='children'><details class='wi t-task' id='PBD-TASK-XSMZXWC57P1R' data-type='task' data-verdict='pass' data-text='PBD-TASK-XSMZXWC57P1R T6 Keep a local copy of the synchronized member list for offline badge checks Objective: Store the most recently synchronized member list on the kiosk and use it for badge checks when connectivity is lost.
+Activities
+Persist the member list on each successful synchronization
+Detect loss of connectivity
+Route badge checks to the stored list while offline
+Expected outcome: Badge checks continue offline using the last synchronized list.
+Verification: With connectivity cut, a badge that was registered and active at the last sync unlocks the door and a badge deactivated at the last sync does not.'><summary><span class="badge tone-accent">task</span><span class='mono'>T6</span><span class='title'>Keep a local copy of the synchronized member list for offline badge checks</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-TASK-XSMZXWC57P1R</p><h3>Description</h3><div class='rich'><p><strong>Objective</strong>: Store the most recently synchronized member list on the kiosk and use it for badge checks when connectivity is lost.</p><p><strong>Activities</strong></p><ul><li>Persist the member list on each successful synchronization</li><li>Detect loss of connectivity</li><li>Route badge checks to the stored list while offline</li></ul><p><strong>Expected outcome</strong>: Badge checks continue offline using the last synchronized list.</p><p><strong>Verification</strong>: With connectivity cut, a badge that was registered and active at the last sync unlocks the door and a badge deactivated at the last sync does not.</p></div><h3>Traceability</h3><ul><li><code>C9</code> If the kiosk loses connectivity, badge checks use the last synchronized member list. — <span class='mono'>prd.md:9</span> <span class='quote'>“badge checks use the last synchronized member list”</span></li></ul><h3>Independent review</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd>Covers deactivated-at-sync offline case; unknown-badge offline rejection is verified only by AC12.</dd></dl></div></details></div></div></details><details class='wi t-enabler' id='PBD-ENAB-961THYDQNX12' data-type='enabler' data-verdict='pass' data-text='PBD-ENAB-961THYDQNX12 EN1 Buffer kiosk events offline and upload them on reconnect Technical capability: Keep the events produced while the kiosk has no connectivity and upload them when connectivity returns.
+Expected outcome: No event recorded during an outage, such as a fourth-item take, is lost. AC-01 Events were produced while the kiosk had no connectivity, connectivity returns: The events produced during the outage are uploaded. AC-02 If connectivity is lost again before the upload completes, events not yet uploaded are kept and uploaded on the next reconnection. → No queued event is lost when an upload is interrupted.'><summary><span class="badge tone-accent">enabler</span><span class='mono'>EN1</span><span class='title'>Buffer kiosk events offline and upload them on reconnect</span><span class="badge tone-pass">pass</span><span class='mono'>2 AC</span></summary><div class='body'><p class='mono'>PBD-ENAB-961THYDQNX12</p><h3>Description</h3><div class='rich'><p><strong>Technical capability</strong>: Keep the events produced while the kiosk has no connectivity and upload them when connectivity returns.</p><p><strong>Expected outcome</strong>: No event recorded during an outage, such as a fourth-item take, is lost.</p></div><h3>Acceptance criteria</h3><div class='rich tablewrap'><ul><li><strong>AC-01</strong> Events were produced while the kiosk had no connectivity, connectivity returns: The events produced during the outage are uploaded.</li><li><strong>AC-02</strong> If connectivity is lost again before the upload completes, events not yet uploaded are kept and uploaded on the next reconnection. → No queued event is lost when an upload is interrupted.</li></ul></div><div class='tablewrap'><table><thead><tr><th>ID</th><th>status</th><th>review</th><th>notes</th><th>claims</th></tr></thead><tbody><tr><td>AC-01</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C10</td></tr><tr><td>AC-02</td><td>proposed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>Recovery lens; the source only states that events are uploaded when connectivity returns and does not describe interrupted uploads.</td></tr></tbody></table></div><h3>Traceability</h3><ul><li><code>C10</code> Events recorded while the kiosk has no connectivity are uploaded when connectivity returns. — <span class='mono'>prd.md:9</span> <span class='quote'>“events are uploaded when connectivity returns”</span></li></ul><h3>Independent review</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd>Legitimate enabler without persona.</dd></dl><div class='children'><details class='wi t-task' id='PBD-TASK-YGJV5KSQ9MD4' data-type='task' data-verdict='pass' data-text='PBD-TASK-YGJV5KSQ9MD4 T7 Queue offline events and upload them when connectivity returns Objective: Persist events produced while offline in a local queue and upload them once connectivity is restored.
+Activities
+Persist events locally while offline
+Detect restoration of connectivity
+Upload queued events and clear them only after the upload succeeds
+Expected outcome: Events produced offline reach the upstream system after reconnection.
+Verification: Events generated during a simulated outage are present upstream after connectivity is restored and the local queue is empty.'><summary><span class="badge tone-accent">task</span><span class='mono'>T7</span><span class='title'>Queue offline events and upload them when connectivity returns</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-TASK-YGJV5KSQ9MD4</p><h3>Description</h3><div class='rich'><p><strong>Objective</strong>: Persist events produced while offline in a local queue and upload them once connectivity is restored.</p><p><strong>Activities</strong></p><ul><li>Persist events locally while offline</li><li>Detect restoration of connectivity</li><li>Upload queued events and clear them only after the upload succeeds</li></ul><p><strong>Expected outcome</strong>: Events produced offline reach the upstream system after reconnection.</p><p><strong>Verification</strong>: Events generated during a simulated outage are present upstream after connectivity is restored and the local queue is empty.</p></div><h3>Traceability</h3><ul><li><code>C10</code> Events recorded while the kiosk has no connectivity are uploaded when connectivity returns. — <span class='mono'>prd.md:9</span> <span class='quote'>“events are uploaded when connectivity returns”</span></li></ul><h3>Independent review</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd></dd></dl></div></details></div></div></details></div></div></details><details class='wi t-feature' id='PBD-FEAT-FJCV8XNA2Q5Z' data-type='feature' data-verdict='pass' data-text='PBD-FEAT-FJCV8XNA2Q5Z F5 Expired item handling Capability: Let volunteers mark items as expired and keep the available inventory count accurate.
+Value: The available inventory count reflects only items that are still fit to take.
+Related rules
+Volunteers can mark an item as expired.
+Expired items are removed from the available inventory count.'><summary><span class="badge tone-accent">feature</span><span class='mono'>F5</span><span class='title'>Expired item handling</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-FEAT-FJCV8XNA2Q5Z</p><h3>Description</h3><div class='rich'><p><strong>Capability</strong>: Let volunteers mark items as expired and keep the available inventory count accurate.</p><p><strong>Value</strong>: The available inventory count reflects only items that are still fit to take.</p><p><strong>Related rules</strong></p><ul><li>Volunteers can mark an item as expired.</li><li>Expired items are removed from the available inventory count.</li></ul></div><h3>Traceability</h3><ul><li><code>C11</code> Volunteers can mark an item as expired. — <span class='mono'>prd.md:10</span> <span class='quote'>“Volunteers can mark an item as expired”</span></li><li><code>C12</code> Items marked as expired are removed from the available inventory count. — <span class='mono'>prd.md:10</span> <span class='quote'>“expired items are removed from the available inventory count”</span></li></ul><h3>Independent review</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd></dd></dl><div class='children'><details class='wi t-story' id='PBD-STORY-ZT0BAH0PW3FM' data-type='story' data-verdict='concern' data-text='PBD-STORY-ZT0BAH0PW3FM US5 Mark an item as expired As a volunteer, I want to mark an item as expired so that it is removed from the available inventory count, so that the available inventory count shows only items members can still take. AC-01 An item is counted in the available inventory, a volunteer marks the item as expired: The item is marked as expired. AC-02 A volunteer has marked an item as expired, the available inventory count is displayed or queried: The expired item is not included in the available inventory count. AC-03 A member who is not a volunteer cannot mark an item as expired. → The item is not marked as expired and the available inventory count is unchanged.'><summary><span class="badge tone-accent">story</span><span class='mono'>US5</span><span class='title'>Mark an item as expired</span><span class="badge tone-warn">concern</span><span class='mono'>3 AC</span></summary><div class='body'><p class='mono'>PBD-STORY-ZT0BAH0PW3FM</p><h3>Description</h3><div class='rich'><p><strong>As a</strong> volunteer, <strong>I want</strong> to mark an item as expired so that it is removed from the available inventory count, <strong>so that</strong> the available inventory count shows only items members can still take.</p></div><h3>Acceptance criteria</h3><div class='rich tablewrap'><ul><li><strong>AC-01</strong> An item is counted in the available inventory, a volunteer marks the item as expired: The item is marked as expired.</li><li><strong>AC-02</strong> A volunteer has marked an item as expired, the available inventory count is displayed or queried: The expired item is not included in the available inventory count.</li><li><strong>AC-03</strong> A member who is not a volunteer cannot mark an item as expired. → The item is not marked as expired and the available inventory count is unchanged.</li></ul></div><div class='tablewrap'><table><thead><tr><th>ID</th><th>status</th><th>review</th><th>notes</th><th>claims</th></tr></thead><tbody><tr><td>AC-01</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C11</td></tr><tr><td>AC-02</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C12</td></tr><tr><td>AC-03</td><td>proposed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>Permission lens; the source grants the action to volunteers but does not state that other users are denied or how volunteers are identified (see Q5).</td></tr></tbody></table></div><h3>Traceability</h3><ul><li><code>C11</code> Volunteers can mark an item as expired. — <span class='mono'>prd.md:10</span> <span class='quote'>“Volunteers can mark an item as expired”</span></li><li><code>C12</code> Items marked as expired are removed from the available inventory count. — <span class='mono'>prd.md:10</span> <span class='quote'>“expired items are removed from the available inventory count”</span></li></ul><h3>Independent review</h3><dl class='kv'><dt>verdict</dt><dd>concern</dd><dt>source</dt><dd>supported</dd><dt>tasks</dt><dd>sufficient</dd><dt>notes</dt><dd>Blocking Q5: volunteer identification undefined, so who may perform the action cannot be verified.</dd></dl><div class='tablewrap'><table><tbody><tr><td>estimable</td><td><span class="badge tone-neutral">concern</span></td><td>Volunteer identity and the surface for the action are unknown.</td></tr><tr><td>independent</td><td><span class="badge tone-neutral">supported</span></td><td>Standalone.</td></tr><tr><td>negotiable</td><td><span class="badge tone-neutral">supported</span></td><td>Channel unspecified.</td></tr><tr><td>small</td><td><span class="badge tone-neutral">supported</span></td><td>Mark and exclude are one outcome.</td></tr><tr><td>testable</td><td><span class="badge tone-neutral">supported</span></td><td>Count change observable.</td></tr><tr><td>valuable</td><td><span class="badge tone-neutral">supported</span></td><td>Accurate inventory.</td></tr></tbody></table></div><div class='children'><details class='wi t-task' id='PBD-TASK-90DVCQKNHFWE' data-type='task' data-verdict='pass' data-text='PBD-TASK-90DVCQKNHFWE T8 Add the mark-as-expired action and update the available inventory count Objective: Give volunteers an action to mark an item as expired and exclude expired items from the available inventory count.
+Activities
+Add the expired state to items
+Expose the mark-as-expired action to volunteers
+Exclude expired items from the available inventory count
+Expected outcome: An item marked as expired no longer counts as available.
+Verification: The available inventory count decreases by one after a volunteer marks one available item as expired.'><summary><span class="badge tone-accent">task</span><span class='mono'>T8</span><span class='title'>Add the mark-as-expired action and update the available inventory count</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-TASK-90DVCQKNHFWE</p><h3>Description</h3><div class='rich'><p><strong>Objective</strong>: Give volunteers an action to mark an item as expired and exclude expired items from the available inventory count.</p><p><strong>Activities</strong></p><ul><li>Add the expired state to items</li><li>Expose the mark-as-expired action to volunteers</li><li>Exclude expired items from the available inventory count</li></ul><p><strong>Expected outcome</strong>: An item marked as expired no longer counts as available.</p><p><strong>Verification</strong>: The available inventory count decreases by one after a volunteer marks one available item as expired.</p></div><h3>Traceability</h3><ul><li><code>C11</code> Volunteers can mark an item as expired. — <span class='mono'>prd.md:10</span> <span class='quote'>“Volunteers can mark an item as expired”</span></li><li><code>C12</code> Items marked as expired are removed from the available inventory count. — <span class='mono'>prd.md:10</span> <span class='quote'>“expired items are removed from the available inventory count”</span></li></ul><h3>Independent review</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd></dd></dl></div></details></div></div></details></div></div></details></div></div></details></div>
+<h3>Dependencies</h3><ul><li>US1 → predecessor → US2: Counting items per member per day requires the member to be identified by the badge scan delivered in US1. (proposed)</li><li>US1 → predecessor → US4: Offline checks reuse the badge validation and rejection behavior of US1 against a local member list. (proposed)</li><li>EN1 → related → US2: Fourth-item records created while offline must reach the upstream system through the offline event upload. (proposed)</li></ul></section>
+<section id="requirements"><h2>Requirements</h2><h3>Reconciled claims</h3><div class="tablewrap"><table>
+<thead><tr><th>key</th><th>claim</th><th>category</th><th>Status</th><th>covered by</th><th>rationale</th></tr></thead>
+<tbody><tr><td><code>C1</code></td><td>A registered member scans their badge to unlock the fridge door.</td><td>functional</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC1, T1</td><td>Successful badge unlock for a registered member is covered by US1/AC1.</td></tr><tr><td><code>C2</code></td><td>An unknown or deactivated badge does not unlock the fridge door.</td><td>error</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC2, AC3, AC12, T1</td><td>Unknown and deactivated badges each have a negative criterion online and offline.</td></tr><tr><td><code>C3</code></td><td>When an unknown or deactivated badge is scanned, the screen shows &quot;Badge not recognized&quot;.</td><td>error</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC2, AC3, AC12, T2</td><td>The exact message is asserted for each rejection path.</td></tr><tr><td><code>C4</code></td><td>A member may take at most 3 items per day.</td><td>constraint</td><td><span class="badge tone-warn">PARTIALLY_COVERED</span></td><td>US2, T3</td><td>The limit is reflected through recording and warning on the fourth item; the day boundary and the item counting mechanism are open (Q1, Q2) and the within-limit partition is only proposed (AC7).</td></tr><tr><td><code>C5</code></td><td>Taking a fourth item on the same day is recorded.</td><td>data</td><td><span class="badge tone-pass">COVERED</span></td><td>US2, AC4, T3</td><td>Recording of the fourth item is an explicit criterion.</td></tr><tr><td><code>C6</code></td><td>When a member takes a fourth item on the same day, the member sees a warning.</td><td>error</td><td><span class="badge tone-pass">COVERED</span></td><td>US2, AC5, T4</td><td>Warning on the fourth item is an explicit criterion; content is open in Q3.</td></tr><tr><td><code>C7</code></td><td>A member who takes a fourth item on the same day is not locked out.</td><td>constraint</td><td><span class="badge tone-pass">COVERED</span></td><td>US2, AC6, T4</td><td>No lockout is verified by a subsequent successful unlock.</td></tr><tr><td><code>C8</code></td><td>If the fridge door stays open for more than 60 seconds, an audible alert sounds until the door is closed.</td><td>functional</td><td><span class="badge tone-pass">COVERED</span></td><td>US3, AC8, AC9, AC10, T5</td><td>Alert start after more than 60 seconds, continuation until close and the no-alert boundary are covered.</td></tr><tr><td><code>C9</code></td><td>If the kiosk loses connectivity, badge checks use the last synchronized member list.</td><td>operational</td><td><span class="badge tone-pass">COVERED</span></td><td>US4, AC11, AC12, T6</td><td>Offline accept and reject paths use the last synchronized list; new-member and staleness handling are open in Q6.</td></tr><tr><td><code>C10</code></td><td>Events recorded while the kiosk has no connectivity are uploaded when connectivity returns.</td><td>integration</td><td><span class="badge tone-pass">COVERED</span></td><td>EN1, AC13, T7</td><td>Upload on reconnection is covered; event scope and destination are open in Q7.</td></tr><tr><td><code>C11</code></td><td>Volunteers can mark an item as expired.</td><td>functional</td><td><span class="badge tone-pass">COVERED</span></td><td>US5, AC15, T8</td><td>Volunteer marking an item as expired is covered; volunteer identification is open in Q5.</td></tr><tr><td><code>C12</code></td><td>Items marked as expired are removed from the available inventory count.</td><td>data</td><td><span class="badge tone-pass">COVERED</span></td><td>US5, AC16, T8</td><td>Exclusion of expired items from the available count is covered.</td></tr></tbody></table></div><h3>Independent inventory obligations</h3><div class="tablewrap"><table>
+<thead><tr><th>key</th><th>obligation</th><th>locator</th><th>Status</th><th>covered by</th><th>rationale</th></tr></thead>
+<tbody><tr><td><code>O1</code></td><td>Registered member scanning badge unlocks the door</td><td class='mono'>prd.md:4</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC1, T1</td><td>Positive path has an explicit criterion.</td></tr><tr><td><code>O2</code></td><td>Unknown or deactivated badge does not unlock the door</td><td class='mono'>prd.md:5</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC2, AC3, AC12, T1</td><td>Both badge states have separate negative criteria, online and offline.</td></tr><tr><td><code>O3</code></td><td>Screen shows the exact message on rejection</td><td class='mono'>prd.md:5</td><td><span class="badge tone-pass">COVERED</span></td><td>AC2, AC3, AC12, T2</td><td>Exact text asserted in each rejection criterion.</td></tr><tr><td><code>O4</code></td><td>At most 3 items per day per member</td><td class='mono'>prd.md:6</td><td><span class="badge tone-warn">PARTIALLY_COVERED</span></td><td>US2, AC4, AC5, AC7, T3</td><td>Limit is expressed via fourth-item behaviour; day boundary and counting mechanism are legitimately open (Q1, Q2); within-limit partition is only proposed (AC7).</td></tr><tr><td><code>O5</code></td><td>Fourth item on the same day is recorded</td><td class='mono'>prd.md:7</td><td><span class="badge tone-pass">COVERED</span></td><td>AC4, T3</td><td>Explicit criterion.</td></tr><tr><td><code>O6</code></td><td>Member sees a warning on the fourth item</td><td class='mono'>prd.md:7</td><td><span class="badge tone-pass">COVERED</span></td><td>AC5, T4</td><td>Explicit criterion; content unspecified and tracked as Q3.</td></tr><tr><td><code>O7</code></td><td>Member is not locked out after the fourth item</td><td class='mono'>prd.md:7</td><td><span class="badge tone-pass">COVERED</span></td><td>AC6, T4</td><td>Verified by a subsequent successful unlock.</td></tr><tr><td><code>O8</code></td><td>Audible alert after door open more than 60 s until closed</td><td class='mono'>prd.md:8</td><td><span class="badge tone-pass">COVERED</span></td><td>US3, AC8, AC9, AC10, T5</td><td>Start, continuation and no-alert boundary covered.</td></tr><tr><td><code>O9</code></td><td>Offline badge checks use last synchronized member list</td><td class='mono'>prd.md:9</td><td><span class="badge tone-pass">COVERED</span></td><td>US4, AC11, AC12, T6</td><td>Accept and reject paths offline; staleness and post-sync members are open in Q6.</td></tr><tr><td><code>O10</code></td><td>Events uploaded when connectivity returns</td><td class='mono'>prd.md:9</td><td><span class="badge tone-pass">COVERED</span></td><td>EN1, AC13, AC14, T7</td><td>Upload on reconnect covered; scope and destination open in Q7.</td></tr><tr><td><code>O11</code></td><td>Volunteers can mark an item as expired</td><td class='mono'>prd.md:10</td><td><span class="badge tone-pass">COVERED</span></td><td>US5, AC15, AC17, T8</td><td>Marking covered; volunteer identification open in Q5.</td></tr><tr><td><code>O12</code></td><td>Expired items removed from available inventory count</td><td class='mono'>prd.md:10</td><td><span class="badge tone-pass">COVERED</span></td><td>AC16, T8</td><td>Explicit criterion.</td></tr><tr><td><code>O13</code></td><td>Payments and donations tracking is out of scope</td><td class='mono'>prd.md:13</td><td><span class="badge tone-muted">OUT_OF_SCOPE</span></td><td>E1</td><td>Exclusion recorded in the epic out_scope; nothing designed for it.</td></tr></tbody></table></div></section>
+<section id="findings"><h2>Findings</h2><div class="grid2"><div class='card finding sev-medium'><p><span class="badge tone-warn">medium</span> <span class="badge tone-neutral">candidate_concern</span> <span class="badge tone-muted">G06</span></p><dl class='kv'><dt>Expected</dt><dd>Offline behaviour: what happens to the fourth-item recording and warning when the kiosk is offline, since events are queued.</dd><dt>Actual</dt><dd>Relation EN1 to US2 is proposed, but no criterion states that a fourth-item record made offline is retained and uploaded.</dd><dt>Why</dt><dd>R6 and R4 interact; the source does not state it, so this is a candidate rather than a confirmed gap.</dd><dt>Impact</dt><dd>Offline over-limit records could be dropped unnoticed.</dd><dt>Recommendation</dt><dd>Add a question or a proposed criterion on offline fourth-item recording.</dd><dt>IDs</dt><dd>EN1, US2</dd></dl></div><div class='card finding sev-medium'><p><span class="badge tone-warn">medium</span> <span class="badge tone-neutral">candidate_concern</span> <span class="badge tone-muted">G06</span></p><dl class='kv'><dt>Expected</dt><dd>Open blocking questions Q1, Q2 and Q5 should block readiness of US2 and US5.</dd><dt>Actual</dt><dd>Criteria for US2 and US5 are written as testable although day boundary, item detection and volunteer identity are unknown.</dd><dt>Why</dt><dd>Criteria hold only under assumptions not in the source.</dd><dt>Impact</dt><dd>Stories cannot be built or verified until answered.</dd><dt>Recommendation</dt><dd>Mark US2 and US5 not ready until Q1, Q2 and Q5 are resolved.</dd><dt>IDs</dt><dd>US2, US5, T3</dd></dl></div><div class='card finding sev-low'><p><span class="badge tone-info">low</span> <span class="badge tone-neutral">optional_improvement</span> <span class="badge tone-muted">G06</span></p><dl class='kv'><dt>Expected</dt><dd>Symmetric criteria for offline rejection paths.</dd><dt>Actual</dt><dd>AC12 merges unknown and deactivated badges; AC10 has inverted condition and trigger.</dd><dt>Why</dt><dd>Reduces clarity and traceability of each partition.</dd><dt>Impact</dt><dd>Minor testing ambiguity.</dd><dt>Recommendation</dt><dd>Split AC12 into two criteria and reword AC10 as when the door is closed within 60 seconds, no alert sounds.</dd><dt>IDs</dt><dd>AC12, AC10</dd></dl></div></div></section>
+<section id="questions"><h2>Questions</h2><div class="card"><ul><li>What defines a &#x27;day&#x27; for the 3-items limit (timezone and reset time)? — <em>Determines when a member&#x27;s count resets and therefore when a take is the fourth of the same day.</em> <span class="badge tone-fail">blocking</span> (C5, C4, US2, T3)</li><li>How does the kiosk know which items, and how many, a member has taken? — <em>Without a detection or declaration mechanism the per-member daily count cannot be implemented.</em> <span class="badge tone-fail">blocking</span> (C5, C4, US2, T3)</li><li>What does the fourth-item warning say and how is it shown? — <em>The warning text and form are not specified, so the criterion can only verify that a warning appears.</em> (C6, US2, T4)</li><li>What should happen for a fifth and later item on the same day? — <em>The source only describes the fourth item; recording and warning behavior beyond it is undefined.</em> (C6, C5, C4, US2)</li><li>Who counts as a volunteer and how does the kiosk identify one before allowing an item to be marked as expired? — <em>Needed to restrict the mark-as-expired action and to confirm proposed criterion AC17.</em> <span class="badge tone-fail">blocking</span> (AC17, C11, US5, T8)</li><li>While offline, how should a badge registered after the last synchronization be treated, and how old may the synchronized member list be? — <em>Defines access during outages for new members and the risk of using a stale list (for example, recently deactivated badges).</em> (C9, US4, T6)</li><li>Which events must be uploaded when connectivity returns, and to which system? — <em>Defines the scope and destination of the offline event queue.</em> (C10, EN1, T7)</li></ul></div></section>
+<section id="gates"><h2>Quality gates</h2><div class="tablewrap"><table><thead><tr><th>gate</th><th>Status</th>
+<th>Verification</th><th>Reason</th><th>Denominator</th></tr></thead><tbody><tr><td><code>G01</code> Source Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>every inventoried member was read and re-read by the reviewer</td><td>1/1 (independent_inventory)</td></tr><tr><td><code>G02</code> Requirements Coverage</td><td><span class="badge tone-fail">FAIL</span></td><td>—</td><td>coverage gaps in independent inventory: {&#x27;covered&#x27;: 11, &#x27;partially_covered&#x27;: 1, &#x27;out_of_scope&#x27;: 1}</td><td>13/13 (independent_inventory)</td></tr><tr><td><code>G03</code> Hierarchy Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>hierarchy invariants hold</td><td>—</td></tr><tr><td><code>G04</code> Traceability</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>every item and criterion traces to claims or a justified proposal</td><td>—</td></tr><tr><td><code>G05</code> Story Quality</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>5 stories reviewed with INVEST</td><td>—</td></tr><tr><td><code>G06</code> Acceptance Quality</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>17 criteria reviewed individually</td><td>—</td></tr><tr><td><code>G07</code> Task Coverage</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>task sufficiency reviewed per story</td><td>—</td></tr><tr><td><code>G08</code> Dependency Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>3 relations valid and reviewed</td><td>—</td></tr><tr><td><code>G09</code> Scope Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>no unsupported scope; exclusions and conflicts recorded</td><td>—</td></tr><tr><td><code>G10</code> Planning Integrity</td><td><span class="badge tone-muted">NOT_APPLICABLE</span></td><td>—</td><td>no sprint planning requested; generated fields contain no assignments, dates or completed work (enforced at design submission)</td><td>—</td></tr><tr><td><code>G11</code> Artifact Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>exports deterministic and consistent across formats</td><td>—</td></tr><tr><td><code>G12</code> Publication Safety</td><td><span class="badge tone-muted">NOT_APPLICABLE</span></td><td>—</td><td>no publication requested; a local package is not an authorization to publish</td><td>—</td></tr><tr><td><code>G13</code> Independent Review</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>separate reviewer re-read sources (13 obligations) and judged 37 items/criteria</td><td>—</td></tr><tr><td><code>G14</code> Semantic Duplication</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>duplicate candidates assessed</td><td>—</td></tr><tr><td><code>G15</code> Change Safety</td><td><span class="badge tone-muted">NOT_APPLICABLE</span></td><td>—</td><td>no decisions or prior versions in this run</td><td>—</td></tr><tr><td><code>G16</code> Privacy and Offline Boundary</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>outputs privacy-clean; run made zero remote calls</td><td>—</td></tr><tr><td><code>G17</code> Target Compatibility</td><td><span class="badge tone-muted">NOT_APPLICABLE</span></td><td>—</td><td>no target package requested</td><td>—</td></tr><tr><td><code>G18</code> Round-trip Fidelity</td><td><span class="badge tone-not_run">NOT_RUN</span></td><td>—</td><td>round-trip against a tracker (mock or live) belongs to M3; live qualification requires separate authorization</td><td>—</td></tr></tbody></table></div></section>
+<section id="sources"><h2>Sources</h2><div class="grid2"><div class='card'><h3>prd.md <span class="badge tone-accent">functional</span> <span class="badge tone-pass">complete</span></h3><p class='mono'>PBD-SRC-78385WMH95P7 · sha256:3a750badfae0b8e64d254bd6cc5f2b5cffab508e2a9d9a30db2232410eef74b2</p><ul><li>prd.md — read</li></ul></div></div>
+<h3>Limitations</h3><p class="notice">None.</p></section>
+
+<section id="data"><h2>Data</h2><details class="card"><summary>Full canonical JSON</summary>
+<pre class="json">{
+ &quot;claims&quot;: [
+  {
+   &quot;category&quot;: &quot;functional&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-3Z1VNJPW3X7S&quot;,
+     &quot;PBD-AC-5PTFXFV1EWVZ&quot;,
+     &quot;PBD-TASK-RZ8K5QBJAWJ5&quot;
+    ],
+    &quot;rationale&quot;: &quot;Successful badge unlock for a registered member is covered by US1/AC1.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 4,
+      &quot;line_start&quot;: 4,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:fd60e9212b1942a588c6e581e753497303a98226fa728c9bec55adaa35ea8494&quot;,
+      &quot;section&quot;: &quot;Requirements&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;3a750badfae0b8e6&quot;
+     },
+     &quot;summary&quot;: &quot;A registered member scans their badge to unlock the fridge door&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-RA8191YK9XX3&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;A registered member scans their badge to unlock the fridge door.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;error&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-3Z1VNJPW3X7S&quot;,
+     &quot;PBD-AC-9FBV4RM49SQY&quot;,
+     &quot;PBD-AC-0JP8QNPQKSK8&quot;,
+     &quot;PBD-AC-EG9WEEGWNNBZ&quot;,
+     &quot;PBD-TASK-RZ8K5QBJAWJ5&quot;
+    ],
+    &quot;rationale&quot;: &quot;Unknown and deactivated badges each have a negative criterion online and offline.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 5,
+      &quot;line_start&quot;: 5,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:9d8b97eab8579350285a40777b06d5c3d166c4be780874a4b47f4c6c2208f124&quot;,
+      &quot;section&quot;: &quot;Requirements&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;3a750badfae0b8e6&quot;
+     },
+     &quot;summary&quot;: &quot;An unknown or deactivated badge does not unlock the door&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-SQCKDED5K1HE&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;An unknown or deactivated badge does not unlock the fridge door.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;error&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-3Z1VNJPW3X7S&quot;,
+     &quot;PBD-AC-9FBV4RM49SQY&quot;,
+     &quot;PBD-AC-0JP8QNPQKSK8&quot;,
+     &quot;PBD-AC-EG9WEEGWNNBZ&quot;,
+     &quot;PBD-TASK-13C6XNP8N9XN&quot;
+    ],
+    &quot;rationale&quot;: &quot;The exact message is asserted for each rejection path.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 5,
+      &quot;line_start&quot;: 5,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:d4e908f4b5b7bfa4be87ed2a2d319bd1663ca179cfe19485e741080c589fded0&quot;,
+      &quot;section&quot;: &quot;Requirements&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;3a750badfae0b8e6&quot;
+     },
+     &quot;summary&quot;: &quot;the screen shows \&quot;Badge not recognized\&quot;&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-RXS4QK7K758V&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;When an unknown or deactivated badge is scanned, the screen shows \&quot;Badge not recognized\&quot;.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;constraint&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-ZG6PMTD4YRYW&quot;,
+     &quot;PBD-TASK-YNKJY36Z7RH6&quot;
+    ],
+    &quot;rationale&quot;: &quot;The limit is reflected through recording and warning on the fourth item; the day boundary and the item counting mechanism are open (Q1, Q2) and the within-limit partition is only proposed (AC7).&quot;,
+    &quot;status&quot;: &quot;PARTIALLY_COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 6,
+      &quot;line_start&quot;: 6,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:f7adf5278b159038db925fbc8f2a7e16730281e326146a3c6b5d052124a1ae6f&quot;,
+      &quot;section&quot;: &quot;Requirements&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;3a750badfae0b8e6&quot;
+     },
+     &quot;summary&quot;: &quot;A member may take at most 3 items per day&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-RJBJWEEEDX27&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;A member may take at most 3 items per day.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;ambiguous&quot;,
+    &quot;note&quot;: &quot;R4 states a fourth item is recorded with a warning and no lockout, so the limit reads as advisory rather than blocking; the &#x27;day&#x27; boundary (timezone/reset time) and how items taken are detected are not defined.&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;data&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-ZG6PMTD4YRYW&quot;,
+     &quot;PBD-AC-R7DC4PVP3DC0&quot;,
+     &quot;PBD-TASK-YNKJY36Z7RH6&quot;
+    ],
+    &quot;rationale&quot;: &quot;Recording of the fourth item is an explicit criterion.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 7,
+      &quot;line_start&quot;: 7,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:8f23663f881fdec629e7ae0cd63316ddb98e27377cedc60e9f1d10fc2af6da90&quot;,
+      &quot;section&quot;: &quot;Requirements&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;3a750badfae0b8e6&quot;
+     },
+     &quot;summary&quot;: &quot;Taking a fourth item on the same day is recorded&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-KFAQ717SCXN5&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;Taking a fourth item on the same day is recorded.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;error&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-ZG6PMTD4YRYW&quot;,
+     &quot;PBD-AC-X03YPAXPDWCG&quot;,
+     &quot;PBD-TASK-NGPT156R9W9W&quot;
+    ],
+    &quot;rationale&quot;: &quot;Warning on the fourth item is an explicit criterion; content is open in Q3.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 7,
+      &quot;line_start&quot;: 7,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:ec79817eb9d48c9c264e625c63dc6006ce4e9b0edf5d3f2d46a1e7f2a39564cd&quot;,
+      &quot;section&quot;: &quot;Requirements&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;3a750badfae0b8e6&quot;
+     },
+     &quot;summary&quot;: &quot;the member sees a warning&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-85J9HBMJBKSM&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;When a member takes a fourth item on the same day, the member sees a warning.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;,
+    &quot;note&quot;: &quot;Warning content and form are not specified.&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;constraint&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-ZG6PMTD4YRYW&quot;,
+     &quot;PBD-AC-YFGSPF68X7V4&quot;,
+     &quot;PBD-TASK-NGPT156R9W9W&quot;
+    ],
+    &quot;rationale&quot;: &quot;No lockout is verified by a subsequent successful unlock.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 7,
+      &quot;line_start&quot;: 7,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:a6680f3e8028769388e7b0010735bc6af971b5274f8d48f2ba987c33fe34b9ee&quot;,
+      &quot;section&quot;: &quot;Requirements&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;3a750badfae0b8e6&quot;
+     },
+     &quot;summary&quot;: &quot;the member is not locked out&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-30T22R34FXSB&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;A member who takes a fourth item on the same day is not locked out.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;functional&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-HR31FCR2BYSM&quot;,
+     &quot;PBD-AC-4BE8VB1CB0XQ&quot;,
+     &quot;PBD-AC-PKNG8TBXCBFY&quot;,
+     &quot;PBD-AC-Z7XVFFV612HS&quot;,
+     &quot;PBD-TASK-PWRPAQHNVM9X&quot;
+    ],
+    &quot;rationale&quot;: &quot;Alert start after more than 60 seconds, continuation until close and the no-alert boundary are covered.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 8,
+      &quot;line_start&quot;: 8,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:98201d869ed9c73cec7fc8af5f6ae04576c5837624ed70da1c961968d9ef60c6&quot;,
+      &quot;section&quot;: &quot;Requirements&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;3a750badfae0b8e6&quot;
+     },
+     &quot;summary&quot;: &quot;If the door stays open for more than 60 seconds, an audible alert sounds until the door is closed&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-3P5ABH632SVA&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;If the fridge door stays open for more than 60 seconds, an audible alert sounds until the door is closed.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;operational&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-JH35KHV89PVC&quot;,
+     &quot;PBD-AC-REG9XENQBWTA&quot;,
+     &quot;PBD-AC-EG9WEEGWNNBZ&quot;,
+     &quot;PBD-TASK-XSMZXWC57P1R&quot;
+    ],
+    &quot;rationale&quot;: &quot;Offline accept and reject paths use the last synchronized list; new-member and staleness handling are open in Q6.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 9,
+      &quot;line_start&quot;: 9,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:90e11e48e1cbc9496c62d3aec69daf5f9b22539fe49f372f2f1ef5b07312ab2b&quot;,
+      &quot;section&quot;: &quot;Requirements&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;3a750badfae0b8e6&quot;
+     },
+     &quot;summary&quot;: &quot;badge checks use the last synchronized member list&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-PZ504BRP355A&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;If the kiosk loses connectivity, badge checks use the last synchronized member list.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;,
+    &quot;note&quot;: &quot;Maximum staleness of the list is not specified.&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;integration&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-ENAB-961THYDQNX12&quot;,
+     &quot;PBD-AC-S1SJQ9YXE4VH&quot;,
+     &quot;PBD-TASK-YGJV5KSQ9MD4&quot;
+    ],
+    &quot;rationale&quot;: &quot;Upload on reconnection is covered; event scope and destination are open in Q7.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 9,
+      &quot;line_start&quot;: 9,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:6a5002b3fb58c0ac2c105a2d2decd88eb2fec350b0c50be2b724d94988360f8e&quot;,
+      &quot;section&quot;: &quot;Requirements&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;3a750badfae0b8e6&quot;
+     },
+     &quot;summary&quot;: &quot;events are uploaded when connectivity returns&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-CJ0WD9DHR6VX&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;Events recorded while the kiosk has no connectivity are uploaded when connectivity returns.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;,
+    &quot;note&quot;: &quot;Upload destination and which event types are included are not specified.&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;functional&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-ZT0BAH0PW3FM&quot;,
+     &quot;PBD-AC-D2266VTVSH8X&quot;,
+     &quot;PBD-TASK-90DVCQKNHFWE&quot;
+    ],
+    &quot;rationale&quot;: &quot;Volunteer marking an item as expired is covered; volunteer identification is open in Q5.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 10,
+      &quot;line_start&quot;: 10,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:28d6f61390f9c7c2b966300d90927c30235aabfa4e3af03889f0246206dd6dcd&quot;,
+      &quot;section&quot;: &quot;Requirements&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;3a750badfae0b8e6&quot;
+     },
+     &quot;summary&quot;: &quot;Volunteers can mark an item as expired&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-ZM689XYJSB4P&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;Volunteers can mark an item as expired.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;,
+    &quot;note&quot;: &quot;How volunteers are identified/authenticated is not specified.&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;data&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-ZT0BAH0PW3FM&quot;,
+     &quot;PBD-AC-QPBVPNDY6YX4&quot;,
+     &quot;PBD-TASK-90DVCQKNHFWE&quot;
+    ],
+    &quot;rationale&quot;: &quot;Exclusion of expired items from the available count is covered.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 10,
+      &quot;line_start&quot;: 10,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:1c54c04207ea7775d30281c0a1276a09f485321531eb85ea2ab5c52b1dfa703e&quot;,
+      &quot;section&quot;: &quot;Requirements&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;3a750badfae0b8e6&quot;
+     },
+     &quot;summary&quot;: &quot;expired items are removed from the available inventory count&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-YM2SEPK7ZPX1&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;Items marked as expired are removed from the available inventory count.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  }
+ ],
+ &quot;criteria&quot;: [
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RA8191YK9XX3&quot;
+   ],
+   &quot;condition&quot;: &quot;A registered member with an active badge is at the kiosk&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;The fridge door unlocks.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-5PTFXFV1EWVZ&quot;,
+   &quot;order&quot;: 0,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-3Z1VNJPW3X7S&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;the member scans the badge&quot;,
+   &quot;visible_id&quot;: &quot;AC-01&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-SQCKDED5K1HE&quot;,
+    &quot;PBD-CLM-RXS4QK7K758V&quot;
+   ],
+   &quot;condition&quot;: &quot;A badge that is not known to the kiosk is presented&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;The unknown badge does not unlock the door.&quot;,
+    &quot;The kiosk screen displays \&quot;Badge not recognized\&quot; for the unknown badge.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-9FBV4RM49SQY&quot;,
+   &quot;order&quot;: 1,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-3Z1VNJPW3X7S&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;the badge is scanned&quot;,
+   &quot;visible_id&quot;: &quot;AC-02&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-SQCKDED5K1HE&quot;,
+    &quot;PBD-CLM-RXS4QK7K758V&quot;
+   ],
+   &quot;condition&quot;: &quot;A badge that belongs to a deactivated member is presented&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;The deactivated badge is refused and the door remains locked even though the member was once registered.&quot;,
+    &quot;\&quot;Badge not recognized\&quot; appears on the screen, the same message as for an unknown badge.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-0JP8QNPQKSK8&quot;,
+   &quot;order&quot;: 2,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-3Z1VNJPW3X7S&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;the badge is scanned&quot;,
+   &quot;visible_id&quot;: &quot;AC-03&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-KFAQ717SCXN5&quot;
+   ],
+   &quot;condition&quot;: &quot;A member has already taken 3 items today&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;The fourth item is recorded against the member.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-R7DC4PVP3DC0&quot;,
+   &quot;order&quot;: 0,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-ZG6PMTD4YRYW&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;the member takes a fourth item the same day&quot;,
+   &quot;visible_id&quot;: &quot;AC-01&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-85J9HBMJBKSM&quot;
+   ],
+   &quot;condition&quot;: &quot;A member has already taken 3 items today&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;The member sees a warning.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-X03YPAXPDWCG&quot;,
+   &quot;order&quot;: 1,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-ZG6PMTD4YRYW&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;the member takes a fourth item the same day&quot;,
+   &quot;visible_id&quot;: &quot;AC-02&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-30T22R34FXSB&quot;
+   ],
+   &quot;condition&quot;: &quot;A member took a fourth item earlier the same day&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;The door unlocks; the member is not locked out.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-YFGSPF68X7V4&quot;,
+   &quot;order&quot;: 2,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-ZG6PMTD4YRYW&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;the member scans the badge again&quot;,
+   &quot;visible_id&quot;: &quot;AC-03&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [],
+   &quot;expected_outcomes&quot;: [
+    &quot;No warning is shown for items within the 3-per-day limit.&quot;,
+    &quot;No over-limit record is created for items within the limit.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-GZHZKHYHVSBH&quot;,
+   &quot;order&quot;: 3,
+   &quot;origin&quot;: &quot;proposed&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-ZG6PMTD4YRYW&quot;,
+   &quot;rationale&quot;: &quot;Boundary partition inferred from &#x27;at most 3 items per day&#x27; (C4); the source only describes the fourth item explicitly.&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;text&quot;: &quot;When a member takes a first, second or third item on the same day, no over-limit warning is shown and no over-limit record is created.&quot;,
+   &quot;visible_id&quot;: &quot;AC-04&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-3P5ABH632SVA&quot;
+   ],
+   &quot;condition&quot;: &quot;The door has been open for more than 60 seconds&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;An audible alert sounds.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-4BE8VB1CB0XQ&quot;,
+   &quot;order&quot;: 0,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-HR31FCR2BYSM&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;the 60-second limit is exceeded&quot;,
+   &quot;visible_id&quot;: &quot;AC-01&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-3P5ABH632SVA&quot;
+   ],
+   &quot;condition&quot;: &quot;The audible alert is sounding because the door stayed open for more than 60 seconds&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;The alert keeps sounding until the door is closed and stops once it is closed.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-PKNG8TBXCBFY&quot;,
+   &quot;order&quot;: 1,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-HR31FCR2BYSM&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;the door is closed&quot;,
+   &quot;visible_id&quot;: &quot;AC-02&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-3P5ABH632SVA&quot;
+   ],
+   &quot;condition&quot;: &quot;The door is opened&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;No audible alert sounds.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-Z7XVFFV612HS&quot;,
+   &quot;order&quot;: 2,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-HR31FCR2BYSM&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;the door is closed after 60 seconds or less&quot;,
+   &quot;visible_id&quot;: &quot;AC-03&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-PZ504BRP355A&quot;
+   ],
+   &quot;condition&quot;: &quot;The kiosk has lost connectivity and the badge belongs to a registered, active member in the last synchronized member list&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;The door unlocks based on the last synchronized member list.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-REG9XENQBWTA&quot;,
+   &quot;order&quot;: 0,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-JH35KHV89PVC&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;the member scans the badge&quot;,
+   &quot;visible_id&quot;: &quot;AC-01&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-PZ504BRP355A&quot;,
+    &quot;PBD-CLM-SQCKDED5K1HE&quot;,
+    &quot;PBD-CLM-RXS4QK7K758V&quot;
+   ],
+   &quot;condition&quot;: &quot;The kiosk has lost connectivity and the badge is unknown or deactivated in the last synchronized member list&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;Offline, the stored list check refuses the badge and the door is not unlocked.&quot;,
+    &quot;The offline rejection still displays \&quot;Badge not recognized\&quot;.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-EG9WEEGWNNBZ&quot;,
+   &quot;order&quot;: 1,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-JH35KHV89PVC&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;the badge is scanned&quot;,
+   &quot;visible_id&quot;: &quot;AC-02&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-CJ0WD9DHR6VX&quot;
+   ],
+   &quot;condition&quot;: &quot;Events were produced while the kiosk had no connectivity&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;The events produced during the outage are uploaded.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-S1SJQ9YXE4VH&quot;,
+   &quot;order&quot;: 0,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-ENAB-961THYDQNX12&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;connectivity returns&quot;,
+   &quot;visible_id&quot;: &quot;AC-01&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [],
+   &quot;expected_outcomes&quot;: [
+    &quot;No queued event is lost when an upload is interrupted.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-2HXG2TSPRVJZ&quot;,
+   &quot;order&quot;: 1,
+   &quot;origin&quot;: &quot;proposed&quot;,
+   &quot;parent&quot;: &quot;PBD-ENAB-961THYDQNX12&quot;,
+   &quot;rationale&quot;: &quot;Recovery lens; the source only states that events are uploaded when connectivity returns and does not describe interrupted uploads.&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;text&quot;: &quot;If connectivity is lost again before the upload completes, events not yet uploaded are kept and uploaded on the next reconnection.&quot;,
+   &quot;visible_id&quot;: &quot;AC-02&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-ZM689XYJSB4P&quot;
+   ],
+   &quot;condition&quot;: &quot;An item is counted in the available inventory&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;The item is marked as expired.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-D2266VTVSH8X&quot;,
+   &quot;order&quot;: 0,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-ZT0BAH0PW3FM&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;a volunteer marks the item as expired&quot;,
+   &quot;visible_id&quot;: &quot;AC-01&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-YM2SEPK7ZPX1&quot;
+   ],
+   &quot;condition&quot;: &quot;A volunteer has marked an item as expired&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;The expired item is not included in the available inventory count.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-QPBVPNDY6YX4&quot;,
+   &quot;order&quot;: 1,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-ZT0BAH0PW3FM&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;the available inventory count is displayed or queried&quot;,
+   &quot;visible_id&quot;: &quot;AC-02&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [],
+   &quot;expected_outcomes&quot;: [
+    &quot;The item is not marked as expired and the available inventory count is unchanged.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-WHSS7JP7Z97D&quot;,
+   &quot;order&quot;: 2,
+   &quot;origin&quot;: &quot;proposed&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-ZT0BAH0PW3FM&quot;,
+   &quot;rationale&quot;: &quot;Permission lens; the source grants the action to volunteers but does not state that other users are denied or how volunteers are identified (see Q5).&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;text&quot;: &quot;A member who is not a volunteer cannot mark an item as expired.&quot;,
+   &quot;visible_id&quot;: &quot;AC-03&quot;
+  }
+ ],
+ &quot;decisions&quot;: [],
+ &quot;findings&quot;: [
+  {
+   &quot;actual&quot;: &quot;Relation EN1 to US2 is proposed, but no criterion states that a fourth-item record made offline is retained and uploaded.&quot;,
+   &quot;affects&quot;: [
+    &quot;PBD-ENAB-961THYDQNX12&quot;,
+    &quot;PBD-STORY-ZG6PMTD4YRYW&quot;
+   ],
+   &quot;classification&quot;: &quot;candidate_concern&quot;,
+   &quot;evidence&quot;: [
+    {
+     &quot;ref&quot;: &quot;stages/review.json&quot;,
+     &quot;summary&quot;: &quot;independent review&quot;,
+     &quot;type&quot;: &quot;review&quot;
+    }
+   ],
+   &quot;expected&quot;: &quot;Offline behaviour: what happens to the fourth-item recording and warning when the kiosk is offline, since events are queued.&quot;,
+   &quot;gate&quot;: &quot;G06&quot;,
+   &quot;id&quot;: &quot;PBD-FND-QEAY0T3V40DQ&quot;,
+   &quot;impact&quot;: &quot;Offline over-limit records could be dropped unnoticed.&quot;,
+   &quot;recommendation&quot;: &quot;Add a question or a proposed criterion on offline fourth-item recording.&quot;,
+   &quot;review_status&quot;: &quot;candidate&quot;,
+   &quot;severity&quot;: &quot;medium&quot;,
+   &quot;why&quot;: &quot;R6 and R4 interact; the source does not state it, so this is a candidate rather than a confirmed gap.&quot;
+  },
+  {
+   &quot;actual&quot;: &quot;Criteria for US2 and US5 are written as testable although day boundary, item detection and volunteer identity are unknown.&quot;,
+   &quot;affects&quot;: [
+    &quot;PBD-STORY-ZG6PMTD4YRYW&quot;,
+    &quot;PBD-STORY-ZT0BAH0PW3FM&quot;,
+    &quot;PBD-TASK-YNKJY36Z7RH6&quot;
+   ],
+   &quot;classification&quot;: &quot;candidate_concern&quot;,
+   &quot;evidence&quot;: [
+    {
+     &quot;ref&quot;: &quot;stages/review.json&quot;,
+     &quot;summary&quot;: &quot;independent review&quot;,
+     &quot;type&quot;: &quot;review&quot;
+    }
+   ],
+   &quot;expected&quot;: &quot;Open blocking questions Q1, Q2 and Q5 should block readiness of US2 and US5.&quot;,
+   &quot;gate&quot;: &quot;G06&quot;,
+   &quot;id&quot;: &quot;PBD-FND-236RJZDVW285&quot;,
+   &quot;impact&quot;: &quot;Stories cannot be built or verified until answered.&quot;,
+   &quot;recommendation&quot;: &quot;Mark US2 and US5 not ready until Q1, Q2 and Q5 are resolved.&quot;,
+   &quot;review_status&quot;: &quot;candidate&quot;,
+   &quot;severity&quot;: &quot;medium&quot;,
+   &quot;why&quot;: &quot;Criteria hold only under assumptions not in the source.&quot;
+  },
+  {
+   &quot;actual&quot;: &quot;AC12 merges unknown and deactivated badges; AC10 has inverted condition and trigger.&quot;,
+   &quot;affects&quot;: [
+    &quot;PBD-AC-EG9WEEGWNNBZ&quot;,
+    &quot;PBD-AC-Z7XVFFV612HS&quot;
+   ],
+   &quot;classification&quot;: &quot;optional_improvement&quot;,
+   &quot;evidence&quot;: [
+    {
+     &quot;ref&quot;: &quot;stages/review.json&quot;,
+     &quot;summary&quot;: &quot;independent review&quot;,
+     &quot;type&quot;: &quot;review&quot;
+    }
+   ],
+   &quot;expected&quot;: &quot;Symmetric criteria for offline rejection paths.&quot;,
+   &quot;gate&quot;: &quot;G06&quot;,
+   &quot;id&quot;: &quot;PBD-FND-06YDCSV4Q29Y&quot;,
+   &quot;impact&quot;: &quot;Minor testing ambiguity.&quot;,
+   &quot;recommendation&quot;: &quot;Split AC12 into two criteria and reword AC10 as when the door is closed within 60 seconds, no alert sounds.&quot;,
+   &quot;review_status&quot;: &quot;confirmed&quot;,
+   &quot;severity&quot;: &quot;low&quot;,
+   &quot;why&quot;: &quot;Reduces clarity and traceability of each partition.&quot;
+  }
+ ],
+ &quot;items&quot;: [
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RA8191YK9XX3&quot;,
+    &quot;PBD-CLM-SQCKDED5K1HE&quot;,
+    &quot;PBD-CLM-RXS4QK7K758V&quot;,
+    &quot;PBD-CLM-RJBJWEEEDX27&quot;,
+    &quot;PBD-CLM-KFAQ717SCXN5&quot;,
+    &quot;PBD-CLM-85J9HBMJBKSM&quot;,
+    &quot;PBD-CLM-30T22R34FXSB&quot;,
+    &quot;PBD-CLM-3P5ABH632SVA&quot;,
+    &quot;PBD-CLM-PZ504BRP355A&quot;,
+    &quot;PBD-CLM-CJ0WD9DHR6VX&quot;,
+    &quot;PBD-CLM-ZM689XYJSB4P&quot;,
+    &quot;PBD-CLM-YM2SEPK7ZPX1&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;context&quot;: &quot;The kiosk sits on the fridge door, validates badges, must keep working when connectivity is lost, and relies on volunteers to flag expired food.&quot;,
+    &quot;in_scope&quot;: [
+     &quot;Badge unlock for registered members and rejection of unknown or deactivated badges&quot;,
+     &quot;Daily take limit of 3 items with recording and warning on a fourth item, without lockout&quot;,
+     &quot;Audible alert when the door stays open for more than 60 seconds&quot;,
+     &quot;Offline badge checks against the last synchronized member list and upload of events when connectivity returns&quot;,
+     &quot;Volunteers marking items as expired and removing them from the available inventory count&quot;
+    ],
+    &quot;kind&quot;: &quot;epic&quot;,
+    &quot;objective&quot;: &quot;Let registered members open the community fridge with their badge while the kiosk keeps the daily take guideline, door state and available inventory under control.&quot;,
+    &quot;out_scope&quot;: [
+     &quot;Payments and donations tracking&quot;
+    ],
+    &quot;outcome&quot;: &quot;Members get food through a badge-controlled door, over-limit takes are visible without denying access, the door is not silently left open, and the available inventory count excludes expired items.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;en&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objective&lt;/strong&gt;: Let registered members open the community fridge with their badge while the kiosk keeps the daily take guideline, door state and available inventory under control.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Context&lt;/strong&gt;: The kiosk sits on the fridge door, validates badges, must keep working when connectivity is lost, and relies on volunteers to flag expired food.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;In scope&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Badge unlock for registered members and rejection of unknown or deactivated badges&lt;/li&gt;&lt;li&gt;Daily take limit of 3 items with recording and warning on a fourth item, without lockout&lt;/li&gt;&lt;li&gt;Audible alert when the door stays open for more than 60 seconds&lt;/li&gt;&lt;li&gt;Offline badge checks against the last synchronized member list and upload of events when connectivity returns&lt;/li&gt;&lt;li&gt;Volunteers marking items as expired and removing them from the available inventory count&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Out of scope&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Payments and donations tracking&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Expected outcome&lt;/strong&gt;: Members get food through a badge-controlled door, over-limit takes are visible without denying access, the door is not silently left open, and the available inventory count excludes expired items.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-EPIC-W89H2AM1MSXV&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: null,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Badge-controlled community fridge with fair-use and inventory upkeep&quot;,
+   &quot;type&quot;: &quot;epic&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RA8191YK9XX3&quot;,
+    &quot;PBD-CLM-SQCKDED5K1HE&quot;,
+    &quot;PBD-CLM-RXS4QK7K758V&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;capability&quot;: &quot;Validate a scanned badge and unlock the door only for registered members.&quot;,
+    &quot;kind&quot;: &quot;feature&quot;,
+    &quot;rules&quot;: [
+     &quot;A registered member&#x27;s badge unlocks the door.&quot;,
+     &quot;An unknown or deactivated badge does not unlock the door.&quot;,
+     &quot;A rejected badge shows \&quot;Badge not recognized\&quot; on the screen.&quot;
+    ],
+    &quot;value&quot;: &quot;Only registered members can open the fridge, and people with rejected badges get explicit feedback.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;en&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Capability&lt;/strong&gt;: Validate a scanned badge and unlock the door only for registered members.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Value&lt;/strong&gt;: Only registered members can open the fridge, and people with rejected badges get explicit feedback.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Related rules&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;A registered member&amp;#x27;s badge unlocks the door.&lt;/li&gt;&lt;li&gt;An unknown or deactivated badge does not unlock the door.&lt;/li&gt;&lt;li&gt;A rejected badge shows &amp;quot;Badge not recognized&amp;quot; on the screen.&lt;/li&gt;&lt;/ul&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-FEAT-KAPKPS10T1G1&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-EPIC-W89H2AM1MSXV&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Badge access to the fridge door&quot;,
+   &quot;type&quot;: &quot;feature&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RJBJWEEEDX27&quot;,
+    &quot;PBD-CLM-KFAQ717SCXN5&quot;,
+    &quot;PBD-CLM-85J9HBMJBKSM&quot;,
+    &quot;PBD-CLM-30T22R34FXSB&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;capability&quot;: &quot;Track items taken per member per day and react to a fourth item.&quot;,
+    &quot;kind&quot;: &quot;feature&quot;,
+    &quot;rules&quot;: [
+     &quot;A member may take at most 3 items per day.&quot;,
+     &quot;A fourth item on the same day is recorded.&quot;,
+     &quot;The member sees a warning on the fourth item.&quot;,
+     &quot;The member is not locked out.&quot;
+    ],
+    &quot;value&quot;: &quot;Keeps the 3-items-per-day guideline visible and auditable without denying food to a member.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;en&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Capability&lt;/strong&gt;: Track items taken per member per day and react to a fourth item.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Value&lt;/strong&gt;: Keeps the 3-items-per-day guideline visible and auditable without denying food to a member.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Related rules&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;A member may take at most 3 items per day.&lt;/li&gt;&lt;li&gt;A fourth item on the same day is recorded.&lt;/li&gt;&lt;li&gt;The member sees a warning on the fourth item.&lt;/li&gt;&lt;li&gt;The member is not locked out.&lt;/li&gt;&lt;/ul&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-FEAT-E4ZY3PCFN1RG&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-EPIC-W89H2AM1MSXV&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Daily take limit with warning, not lockout&quot;,
+   &quot;type&quot;: &quot;feature&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-3P5ABH632SVA&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;capability&quot;: &quot;Monitor how long the door stays open and sound an audible alert past 60 seconds.&quot;,
+    &quot;kind&quot;: &quot;feature&quot;,
+    &quot;rules&quot;: [
+     &quot;After the door has been open for more than 60 seconds an audible alert sounds.&quot;,
+     &quot;The alert keeps sounding until the door is closed.&quot;
+    ],
+    &quot;value&quot;: &quot;Reduces the chance of the fridge being left open.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;en&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Capability&lt;/strong&gt;: Monitor how long the door stays open and sound an audible alert past 60 seconds.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Value&lt;/strong&gt;: Reduces the chance of the fridge being left open.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Related rules&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;After the door has been open for more than 60 seconds an audible alert sounds.&lt;/li&gt;&lt;li&gt;The alert keeps sounding until the door is closed.&lt;/li&gt;&lt;/ul&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-FEAT-FPTQ9HBNWG6X&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-EPIC-W89H2AM1MSXV&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Door-open alert&quot;,
+   &quot;type&quot;: &quot;feature&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-PZ504BRP355A&quot;,
+    &quot;PBD-CLM-CJ0WD9DHR6VX&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;capability&quot;: &quot;Keep validating badges during a connectivity loss and synchronize events afterwards.&quot;,
+    &quot;kind&quot;: &quot;feature&quot;,
+    &quot;rules&quot;: [
+     &quot;Without connectivity, badge checks use the last synchronized member list.&quot;,
+     &quot;Events are uploaded when connectivity returns.&quot;
+    ],
+    &quot;value&quot;: &quot;Members keep access during outages and no kiosk events are lost.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;en&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Capability&lt;/strong&gt;: Keep validating badges during a connectivity loss and synchronize events afterwards.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Value&lt;/strong&gt;: Members keep access during outages and no kiosk events are lost.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Related rules&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Without connectivity, badge checks use the last synchronized member list.&lt;/li&gt;&lt;li&gt;Events are uploaded when connectivity returns.&lt;/li&gt;&lt;/ul&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-FEAT-ZTSZZJQ8CTWA&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-EPIC-W89H2AM1MSXV&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Offline operation of the kiosk&quot;,
+   &quot;type&quot;: &quot;feature&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-ZM689XYJSB4P&quot;,
+    &quot;PBD-CLM-YM2SEPK7ZPX1&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;capability&quot;: &quot;Let volunteers mark items as expired and keep the available inventory count accurate.&quot;,
+    &quot;kind&quot;: &quot;feature&quot;,
+    &quot;rules&quot;: [
+     &quot;Volunteers can mark an item as expired.&quot;,
+     &quot;Expired items are removed from the available inventory count.&quot;
+    ],
+    &quot;value&quot;: &quot;The available inventory count reflects only items that are still fit to take.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;en&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Capability&lt;/strong&gt;: Let volunteers mark items as expired and keep the available inventory count accurate.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Value&lt;/strong&gt;: The available inventory count reflects only items that are still fit to take.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Related rules&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Volunteers can mark an item as expired.&lt;/li&gt;&lt;li&gt;Expired items are removed from the available inventory count.&lt;/li&gt;&lt;/ul&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-FEAT-FJCV8XNA2Q5Z&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-EPIC-W89H2AM1MSXV&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Expired item handling&quot;,
+   &quot;type&quot;: &quot;feature&quot;
+  },
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RA8191YK9XX3&quot;,
+    &quot;PBD-CLM-SQCKDED5K1HE&quot;,
+    &quot;PBD-CLM-RXS4QK7K758V&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;actor&quot;: &quot;registered member&quot;,
+    &quot;benefit&quot;: &quot;I can get food myself while the fridge stays closed to anyone who is not a registered member&quot;,
+    &quot;kind&quot;: &quot;role_goal_benefit&quot;,
+    &quot;want&quot;: &quot;the fridge door to unlock when I scan my badge, and badges that are unknown or deactivated to be refused with a clear message&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;en&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;As a&lt;/strong&gt; registered member, &lt;strong&gt;I want&lt;/strong&gt; the fridge door to unlock when I scan my badge, and badges that are unknown or deactivated to be refused with a clear message, &lt;strong&gt;so that&lt;/strong&gt; I can get food myself while the fridge stays closed to anyone who is not a registered member.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-STORY-3Z1VNJPW3X7S&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-FEAT-KAPKPS10T1G1&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;role_goal_benefit&quot;,
+   &quot;title&quot;: &quot;Unlock the fridge door by scanning my badge&quot;,
+   &quot;type&quot;: &quot;story&quot;
+  },
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RJBJWEEEDX27&quot;,
+    &quot;PBD-CLM-KFAQ717SCXN5&quot;,
+    &quot;PBD-CLM-85J9HBMJBKSM&quot;,
+    &quot;PBD-CLM-30T22R34FXSB&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;actor&quot;: &quot;member&quot;,
+    &quot;benefit&quot;: &quot;I know I went past the 3-items-per-day guideline without being denied access to the fridge&quot;,
+    &quot;kind&quot;: &quot;role_goal_benefit&quot;,
+    &quot;want&quot;: &quot;to see a warning when I take a fourth item on the same day, while the kiosk records it and still lets me in&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;en&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;As a&lt;/strong&gt; member, &lt;strong&gt;I want&lt;/strong&gt; to see a warning when I take a fourth item on the same day, while the kiosk records it and still lets me in, &lt;strong&gt;so that&lt;/strong&gt; I know I went past the 3-items-per-day guideline without being denied access to the fridge.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-STORY-ZG6PMTD4YRYW&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-FEAT-E4ZY3PCFN1RG&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;role_goal_benefit&quot;,
+   &quot;title&quot;: &quot;Get warned, not blocked, when I take a fourth item in a day&quot;,
+   &quot;type&quot;: &quot;story&quot;
+  },
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-3P5ABH632SVA&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;actor&quot;: &quot;registered member&quot;,
+    &quot;benefit&quot;: &quot;I notice the door is still open and close it before the food is affected&quot;,
+    &quot;kind&quot;: &quot;role_goal_benefit&quot;,
+    &quot;want&quot;: &quot;an audible alert to sound once the door has been open for more than 60 seconds and to keep sounding until the door is closed&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;en&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;As a&lt;/strong&gt; registered member, &lt;strong&gt;I want&lt;/strong&gt; an audible alert to sound once the door has been open for more than 60 seconds and to keep sounding until the door is closed, &lt;strong&gt;so that&lt;/strong&gt; I notice the door is still open and close it before the food is affected.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-STORY-HR31FCR2BYSM&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-FEAT-FPTQ9HBNWG6X&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;role_goal_benefit&quot;,
+   &quot;title&quot;: &quot;Hear an alert when the door is left open too long&quot;,
+   &quot;type&quot;: &quot;story&quot;
+  },
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-PZ504BRP355A&quot;,
+    &quot;PBD-CLM-SQCKDED5K1HE&quot;,
+    &quot;PBD-CLM-RXS4QK7K758V&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;actor&quot;: &quot;registered member&quot;,
+    &quot;benefit&quot;: &quot;I can still get food during a network outage&quot;,
+    &quot;kind&quot;: &quot;role_goal_benefit&quot;,
+    &quot;want&quot;: &quot;my badge to be checked against the last synchronized member list when the kiosk has no connectivity&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;en&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;As a&lt;/strong&gt; registered member, &lt;strong&gt;I want&lt;/strong&gt; my badge to be checked against the last synchronized member list when the kiosk has no connectivity, &lt;strong&gt;so that&lt;/strong&gt; I can still get food during a network outage.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-STORY-JH35KHV89PVC&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-FEAT-ZTSZZJQ8CTWA&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;role_goal_benefit&quot;,
+   &quot;title&quot;: &quot;Open the fridge with my badge while the kiosk is offline&quot;,
+   &quot;type&quot;: &quot;story&quot;
+  },
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-CJ0WD9DHR6VX&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;capability&quot;: &quot;Keep the events produced while the kiosk has no connectivity and upload them when connectivity returns.&quot;,
+    &quot;kind&quot;: &quot;enabler&quot;,
+    &quot;outcome&quot;: &quot;No event recorded during an outage, such as a fourth-item take, is lost.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;en&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Technical capability&lt;/strong&gt;: Keep the events produced while the kiosk has no connectivity and upload them when connectivity returns.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Expected outcome&lt;/strong&gt;: No event recorded during an outage, such as a fourth-item take, is lost.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-ENAB-961THYDQNX12&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-FEAT-ZTSZZJQ8CTWA&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;enabler&quot;,
+   &quot;title&quot;: &quot;Buffer kiosk events offline and upload them on reconnect&quot;,
+   &quot;type&quot;: &quot;enabler&quot;
+  },
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-ZM689XYJSB4P&quot;,
+    &quot;PBD-CLM-YM2SEPK7ZPX1&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;actor&quot;: &quot;volunteer&quot;,
+    &quot;benefit&quot;: &quot;the available inventory count shows only items members can still take&quot;,
+    &quot;kind&quot;: &quot;role_goal_benefit&quot;,
+    &quot;want&quot;: &quot;to mark an item as expired so that it is removed from the available inventory count&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;en&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;As a&lt;/strong&gt; volunteer, &lt;strong&gt;I want&lt;/strong&gt; to mark an item as expired so that it is removed from the available inventory count, &lt;strong&gt;so that&lt;/strong&gt; the available inventory count shows only items members can still take.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-STORY-ZT0BAH0PW3FM&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-FEAT-FJCV8XNA2Q5Z&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;role_goal_benefit&quot;,
+   &quot;title&quot;: &quot;Mark an item as expired&quot;,
+   &quot;type&quot;: &quot;story&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RA8191YK9XX3&quot;,
+    &quot;PBD-CLM-SQCKDED5K1HE&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Resolve a scanned badge to a member record&quot;,
+     &quot;Unlock the door for a registered active member&quot;,
+     &quot;Keep the door locked for an unknown badge&quot;,
+     &quot;Keep the door locked for a deactivated badge&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;Door unlock decision follows the registered/unknown/deactivated status of the badge.&quot;,
+    &quot;summary&quot;: &quot;On badge scan, look up the badge in the member list and unlock the door only for a registered, active member.&quot;,
+    &quot;verification&quot;: &quot;Scanning a registered, an unknown and a deactivated badge yields unlock, no unlock and no unlock respectively.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;en&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objective&lt;/strong&gt;: On badge scan, look up the badge in the member list and unlock the door only for a registered, active member.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Activities&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Resolve a scanned badge to a member record&lt;/li&gt;&lt;li&gt;Unlock the door for a registered active member&lt;/li&gt;&lt;li&gt;Keep the door locked for an unknown badge&lt;/li&gt;&lt;li&gt;Keep the door locked for a deactivated badge&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Expected outcome&lt;/strong&gt;: Door unlock decision follows the registered/unknown/deactivated status of the badge.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verification&lt;/strong&gt;: Scanning a registered, an unknown and a deactivated badge yields unlock, no unlock and no unlock respectively.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-RZ8K5QBJAWJ5&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-3Z1VNJPW3X7S&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Implement badge validation and door unlock decision&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RXS4QK7K758V&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Add the rejection message to the kiosk screen flow&quot;,
+     &quot;Trigger it for both unknown and deactivated badges&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;Rejected scans show \&quot;Badge not recognized\&quot;.&quot;,
+    &quot;summary&quot;: &quot;Display the exact text \&quot;Badge not recognized\&quot; on the kiosk screen whenever a scan is rejected.&quot;,
+    &quot;verification&quot;: &quot;Screen text after scanning an unknown badge and a deactivated badge matches \&quot;Badge not recognized\&quot; exactly.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;en&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objective&lt;/strong&gt;: Display the exact text &amp;quot;Badge not recognized&amp;quot; on the kiosk screen whenever a scan is rejected.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Activities&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Add the rejection message to the kiosk screen flow&lt;/li&gt;&lt;li&gt;Trigger it for both unknown and deactivated badges&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Expected outcome&lt;/strong&gt;: Rejected scans show &amp;quot;Badge not recognized&amp;quot;.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verification&lt;/strong&gt;: Screen text after scanning an unknown badge and a deactivated badge matches &amp;quot;Badge not recognized&amp;quot; exactly.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-13C6XNP8N9XN&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-3Z1VNJPW3X7S&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Show \&quot;Badge not recognized\&quot; on rejected scans&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RJBJWEEEDX27&quot;,
+    &quot;PBD-CLM-KFAQ717SCXN5&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Associate each item taken with the member whose badge opened the door&quot;,
+     &quot;Keep the daily count per member&quot;,
+     &quot;Persist a record when a member takes a fourth item on the same day&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;Each fourth item taken by a member on one day leaves a stored record.&quot;,
+    &quot;summary&quot;: &quot;Maintain a per-member, per-day count of items taken and store a record when the count reaches four.&quot;,
+    &quot;verification&quot;: &quot;After a member takes four items on the same day, exactly the fourth take appears as a recorded over-limit event.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;en&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objective&lt;/strong&gt;: Maintain a per-member, per-day count of items taken and store a record when the count reaches four.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Activities&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Associate each item taken with the member whose badge opened the door&lt;/li&gt;&lt;li&gt;Keep the daily count per member&lt;/li&gt;&lt;li&gt;Persist a record when a member takes a fourth item on the same day&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Expected outcome&lt;/strong&gt;: Each fourth item taken by a member on one day leaves a stored record.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verification&lt;/strong&gt;: After a member takes four items on the same day, exactly the fourth take appears as a recorded over-limit event.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-YNKJY36Z7RH6&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-ZG6PMTD4YRYW&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Count items taken per member per day and record the fourth&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-85J9HBMJBKSM&quot;,
+    &quot;PBD-CLM-30T22R34FXSB&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Show the warning to the member when the fourth item is taken&quot;,
+     &quot;Ensure the over-limit condition does not deactivate or block the badge&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;The member is warned and can still unlock the door afterwards.&quot;,
+    &quot;summary&quot;: &quot;Show the member a warning on the fourth item of the day and leave the member&#x27;s badge access unchanged.&quot;,
+    &quot;verification&quot;: &quot;After a fourth item, the warning is shown and a subsequent scan of the same badge still unlocks the door.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;en&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objective&lt;/strong&gt;: Show the member a warning on the fourth item of the day and leave the member&amp;#x27;s badge access unchanged.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Activities&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Show the warning to the member when the fourth item is taken&lt;/li&gt;&lt;li&gt;Ensure the over-limit condition does not deactivate or block the badge&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Expected outcome&lt;/strong&gt;: The member is warned and can still unlock the door afterwards.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verification&lt;/strong&gt;: After a fourth item, the warning is shown and a subsequent scan of the same badge still unlocks the door.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-NGPT156R9W9W&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-ZG6PMTD4YRYW&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Display the fourth-item warning without blocking access&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-3P5ABH632SVA&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Start timing when the door opens&quot;,
+     &quot;Start the audible alert once open time exceeds 60 seconds&quot;,
+     &quot;Stop the alert and reset the timer when the door closes&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;The alert sounds only while the door has been open longer than 60 seconds.&quot;,
+    &quot;summary&quot;: &quot;Measure how long the door has been open, start the audible alert after more than 60 seconds and stop it when the door closes.&quot;,
+    &quot;verification&quot;: &quot;Holding the door open past 60 seconds starts the alert; closing the door stops it; closing within 60 seconds produces no alert.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;en&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objective&lt;/strong&gt;: Measure how long the door has been open, start the audible alert after more than 60 seconds and stop it when the door closes.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Activities&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Start timing when the door opens&lt;/li&gt;&lt;li&gt;Start the audible alert once open time exceeds 60 seconds&lt;/li&gt;&lt;li&gt;Stop the alert and reset the timer when the door closes&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Expected outcome&lt;/strong&gt;: The alert sounds only while the door has been open longer than 60 seconds.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verification&lt;/strong&gt;: Holding the door open past 60 seconds starts the alert; closing the door stops it; closing within 60 seconds produces no alert.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-PWRPAQHNVM9X&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-HR31FCR2BYSM&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Implement door-open timer and audible alert control&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-PZ504BRP355A&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Persist the member list on each successful synchronization&quot;,
+     &quot;Detect loss of connectivity&quot;,
+     &quot;Route badge checks to the stored list while offline&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;Badge checks continue offline using the last synchronized list.&quot;,
+    &quot;summary&quot;: &quot;Store the most recently synchronized member list on the kiosk and use it for badge checks when connectivity is lost.&quot;,
+    &quot;verification&quot;: &quot;With connectivity cut, a badge that was registered and active at the last sync unlocks the door and a badge deactivated at the last sync does not.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;en&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objective&lt;/strong&gt;: Store the most recently synchronized member list on the kiosk and use it for badge checks when connectivity is lost.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Activities&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Persist the member list on each successful synchronization&lt;/li&gt;&lt;li&gt;Detect loss of connectivity&lt;/li&gt;&lt;li&gt;Route badge checks to the stored list while offline&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Expected outcome&lt;/strong&gt;: Badge checks continue offline using the last synchronized list.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verification&lt;/strong&gt;: With connectivity cut, a badge that was registered and active at the last sync unlocks the door and a badge deactivated at the last sync does not.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-XSMZXWC57P1R&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-JH35KHV89PVC&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Keep a local copy of the synchronized member list for offline badge checks&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-CJ0WD9DHR6VX&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Persist events locally while offline&quot;,
+     &quot;Detect restoration of connectivity&quot;,
+     &quot;Upload queued events and clear them only after the upload succeeds&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;Events produced offline reach the upstream system after reconnection.&quot;,
+    &quot;summary&quot;: &quot;Persist events produced while offline in a local queue and upload them once connectivity is restored.&quot;,
+    &quot;verification&quot;: &quot;Events generated during a simulated outage are present upstream after connectivity is restored and the local queue is empty.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;en&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objective&lt;/strong&gt;: Persist events produced while offline in a local queue and upload them once connectivity is restored.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Activities&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Persist events locally while offline&lt;/li&gt;&lt;li&gt;Detect restoration of connectivity&lt;/li&gt;&lt;li&gt;Upload queued events and clear them only after the upload succeeds&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Expected outcome&lt;/strong&gt;: Events produced offline reach the upstream system after reconnection.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verification&lt;/strong&gt;: Events generated during a simulated outage are present upstream after connectivity is restored and the local queue is empty.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-YGJV5KSQ9MD4&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-ENAB-961THYDQNX12&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Queue offline events and upload them when connectivity returns&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-ZM689XYJSB4P&quot;,
+    &quot;PBD-CLM-YM2SEPK7ZPX1&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Add the expired state to items&quot;,
+     &quot;Expose the mark-as-expired action to volunteers&quot;,
+     &quot;Exclude expired items from the available inventory count&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;An item marked as expired no longer counts as available.&quot;,
+    &quot;summary&quot;: &quot;Give volunteers an action to mark an item as expired and exclude expired items from the available inventory count.&quot;,
+    &quot;verification&quot;: &quot;The available inventory count decreases by one after a volunteer marks one available item as expired.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;en&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objective&lt;/strong&gt;: Give volunteers an action to mark an item as expired and exclude expired items from the available inventory count.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Activities&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Add the expired state to items&lt;/li&gt;&lt;li&gt;Expose the mark-as-expired action to volunteers&lt;/li&gt;&lt;li&gt;Exclude expired items from the available inventory count&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Expected outcome&lt;/strong&gt;: An item marked as expired no longer counts as available.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verification&lt;/strong&gt;: The available inventory count decreases by one after a volunteer marks one available item as expired.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-90DVCQKNHFWE&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-ZT0BAH0PW3FM&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Add the mark-as-expired action and update the available inventory count&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  }
+ ],
+ &quot;kind&quot;: &quot;pbd.backlog&quot;,
+ &quot;language&quot;: &quot;en&quot;,
+ &quot;profile&quot;: &quot;generic&quot;,
+ &quot;questions&quot;: [
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-CLM-KFAQ717SCXN5&quot;,
+    &quot;PBD-CLM-RJBJWEEEDX27&quot;,
+    &quot;PBD-STORY-ZG6PMTD4YRYW&quot;,
+    &quot;PBD-TASK-YNKJY36Z7RH6&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Calendar day in the kiosk&#x27;s local timezone, reset at midnight&quot;,
+    &quot;Rolling 24 hours from the first item taken&quot;,
+    &quot;Another reset time defined by the operators&quot;
+   ],
+   &quot;blocking&quot;: true,
+   &quot;id&quot;: &quot;PBD-Q-HFP8EYQ8VXPG&quot;,
+   &quot;impact&quot;: &quot;Determines when a member&#x27;s count resets and therefore when a take is the fourth of the same day.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;What defines a &#x27;day&#x27; for the 3-items limit (timezone and reset time)?&quot;
+  },
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-CLM-KFAQ717SCXN5&quot;,
+    &quot;PBD-CLM-RJBJWEEEDX27&quot;,
+    &quot;PBD-STORY-ZG6PMTD4YRYW&quot;,
+    &quot;PBD-TASK-YNKJY36Z7RH6&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Member declares items on the kiosk screen&quot;,
+    &quot;Items are scanned on the way out&quot;,
+    &quot;Sensor-based detection in the fridge&quot;
+   ],
+   &quot;blocking&quot;: true,
+   &quot;id&quot;: &quot;PBD-Q-DCJE4DYS89C7&quot;,
+   &quot;impact&quot;: &quot;Without a detection or declaration mechanism the per-member daily count cannot be implemented.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;How does the kiosk know which items, and how many, a member has taken?&quot;
+  },
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-CLM-85J9HBMJBKSM&quot;,
+    &quot;PBD-STORY-ZG6PMTD4YRYW&quot;,
+    &quot;PBD-TASK-NGPT156R9W9W&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;On-screen message with operator-approved text&quot;,
+    &quot;On-screen message plus a sound&quot;
+   ],
+   &quot;blocking&quot;: false,
+   &quot;id&quot;: &quot;PBD-Q-160CH6H8T7WC&quot;,
+   &quot;impact&quot;: &quot;The warning text and form are not specified, so the criterion can only verify that a warning appears.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;What does the fourth-item warning say and how is it shown?&quot;
+  },
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-CLM-85J9HBMJBKSM&quot;,
+    &quot;PBD-CLM-KFAQ717SCXN5&quot;,
+    &quot;PBD-CLM-RJBJWEEEDX27&quot;,
+    &quot;PBD-STORY-ZG6PMTD4YRYW&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Record and warn on every item beyond the third&quot;,
+    &quot;Record and warn only on the fourth item&quot;
+   ],
+   &quot;blocking&quot;: false,
+   &quot;id&quot;: &quot;PBD-Q-HJR559NGB8QR&quot;,
+   &quot;impact&quot;: &quot;The source only describes the fourth item; recording and warning behavior beyond it is undefined.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;What should happen for a fifth and later item on the same day?&quot;
+  },
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-AC-WHSS7JP7Z97D&quot;,
+    &quot;PBD-CLM-ZM689XYJSB4P&quot;,
+    &quot;PBD-STORY-ZT0BAH0PW3FM&quot;,
+    &quot;PBD-TASK-90DVCQKNHFWE&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Volunteer role on the member badge&quot;,
+    &quot;Separate volunteer credentials&quot;,
+    &quot;Action available outside the kiosk to volunteers only&quot;
+   ],
+   &quot;blocking&quot;: true,
+   &quot;id&quot;: &quot;PBD-Q-88A268ECQ9T5&quot;,
+   &quot;impact&quot;: &quot;Needed to restrict the mark-as-expired action and to confirm proposed criterion AC17.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;Who counts as a volunteer and how does the kiosk identify one before allowing an item to be marked as expired?&quot;
+  },
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-CLM-PZ504BRP355A&quot;,
+    &quot;PBD-STORY-JH35KHV89PVC&quot;,
+    &quot;PBD-TASK-XSMZXWC57P1R&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Reject badges not on the last synchronized list&quot;,
+    &quot;Define a maximum list age after which offline checks change behavior&quot;
+   ],
+   &quot;blocking&quot;: false,
+   &quot;id&quot;: &quot;PBD-Q-ZAR68V2XS2W1&quot;,
+   &quot;impact&quot;: &quot;Defines access during outages for new members and the risk of using a stale list (for example, recently deactivated badges).&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;While offline, how should a badge registered after the last synchronization be treated, and how old may the synchronized member list be?&quot;
+  },
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-CLM-CJ0WD9DHR6VX&quot;,
+    &quot;PBD-ENAB-961THYDQNX12&quot;,
+    &quot;PBD-TASK-YGJV5KSQ9MD4&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;All kiosk events (door unlocks, rejected scans, item takes, door alerts, expirations)&quot;,
+    &quot;Only a defined subset of events&quot;
+   ],
+   &quot;blocking&quot;: false,
+   &quot;id&quot;: &quot;PBD-Q-ZX3VFNXSVY1R&quot;,
+   &quot;impact&quot;: &quot;Defines the scope and destination of the offline event queue.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;Which events must be uploaded when connectivity returns, and to which system?&quot;
+  }
+ ],
+ &quot;relations&quot;: [
+  {
+   &quot;confidence&quot;: &quot;medium&quot;,
+   &quot;id&quot;: &quot;PBD-REL-7R2K2FAM5YE0&quot;,
+   &quot;reason&quot;: &quot;Counting items per member per day requires the member to be identified by the badge scan delivered in US1.&quot;,
+   &quot;source&quot;: &quot;PBD-STORY-3Z1VNJPW3X7S&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;target&quot;: &quot;PBD-STORY-ZG6PMTD4YRYW&quot;,
+   &quot;type&quot;: &quot;predecessor&quot;
+  },
+  {
+   &quot;confidence&quot;: &quot;medium&quot;,
+   &quot;id&quot;: &quot;PBD-REL-4CMYTCX428A6&quot;,
+   &quot;reason&quot;: &quot;Offline checks reuse the badge validation and rejection behavior of US1 against a local member list.&quot;,
+   &quot;source&quot;: &quot;PBD-STORY-3Z1VNJPW3X7S&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;target&quot;: &quot;PBD-STORY-JH35KHV89PVC&quot;,
+   &quot;type&quot;: &quot;predecessor&quot;
+  },
+  {
+   &quot;confidence&quot;: &quot;medium&quot;,
+   &quot;id&quot;: &quot;PBD-REL-3WBTWFVXY664&quot;,
+   &quot;reason&quot;: &quot;Fourth-item records created while offline must reach the upstream system through the offline event upload.&quot;,
+   &quot;source&quot;: &quot;PBD-ENAB-961THYDQNX12&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;target&quot;: &quot;PBD-STORY-ZG6PMTD4YRYW&quot;,
+   &quot;type&quot;: &quot;related&quot;
+  }
+ ],
+ &quot;run_id&quot;: &quot;PBD-RUN-SG1ZJ6H724RE&quot;,
+ &quot;schema_version&quot;: &quot;1.1.0&quot;,
+ &quot;sources&quot;: [
+  {
+   &quot;authority&quot;: &quot;functional&quot;,
+   &quot;digest&quot;: &quot;sha256:3a750badfae0b8e64d254bd6cc5f2b5cffab508e2a9d9a30db2232410eef74b2&quot;,
+   &quot;id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+   &quot;kind&quot;: &quot;file&quot;,
+   &quot;members&quot;: [
+    {
+     &quot;bytes&quot;: 792,
+     &quot;digest&quot;: &quot;sha256:b34944c50fdc00ebdb2d9b821f5cb36144703972c2379e3ca1d9225dcbd46cec&quot;,
+     &quot;media_type&quot;: &quot;application/octet-stream&quot;,
+     &quot;path&quot;: &quot;prd.md&quot;,
+     &quot;status&quot;: &quot;read&quot;
+    }
+   ],
+   &quot;read_status&quot;: &quot;complete&quot;,
+   &quot;selector&quot;: &quot;prd.md&quot;,
+   &quot;version&quot;: &quot;3a750badfae0b8e6&quot;
+  }
+ ],
+ &quot;synthetic&quot;: true
+}</pre></details></section>
+</main><script>(function(){
+var d=document,root=d.documentElement,KEY='pbd-theme';
+try{var s=localStorage.getItem(KEY);if(s)root.setAttribute('data-theme',s);}catch(e){}
+var tb=d.getElementById('theme');if(tb)tb.addEventListener('click',function(){
+var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
+var next=dark?'light':'dark';root.setAttribute('data-theme',next);try{localStorage.setItem(KEY,next);}catch(e){}});
+function norm(t){return (t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
+var items=[].slice.call(d.querySelectorAll('details.wi'));
+items.forEach(function(el){el._t=norm(el.getAttribute('data-text'));});
+var q=d.getElementById('q'),ft=d.getElementById('ftype'),fv=d.getElementById('fverdict'),out=d.getElementById('count'),
+none=d.getElementById('noresults');
+function apply(){var term=norm(q.value.trim()),type=ft.value,ver=fv.value,shown=0;
+items.forEach(function(el){el._m=(!term||el._t.indexOf(term)>=0)&&(!type||el.getAttribute('data-type')===type)&&
+(!ver||el.getAttribute('data-verdict')===ver);});
+items.slice().reverse().forEach(function(el){var keep=el._m||[].some.call(el.querySelectorAll('details.wi'),function(c){return c._m;});
+el.hidden=!keep;if(keep&&el._m)shown++;if(keep&&(term||type||ver)&&!el._m)el.open=true;});
+out.textContent=shown;none.hidden=shown>0;}
+[q,ft,fv].forEach(function(e){e.addEventListener('input',apply);});
+d.getElementById('expand').addEventListener('click',function(){items.forEach(function(e){e.open=true;});});
+d.getElementById('collapse').addEventListener('click',function(){items.forEach(function(e){e.open=false;});});
+apply();})();</script></body></html>

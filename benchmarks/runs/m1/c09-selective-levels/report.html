@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src &#x27;none&#x27;; style-src &#x27;unsafe-inline&#x27;; script-src &#x27;sha256-fXA6PQIafqslndojZsQDPkTXc2iNdIswVX15OelmO7w=&#x27;; img-src data:; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;">
+<meta name="generator" content="pbd 0.1.0.dev0">
+<title>Horta Escolar — PBD</title><style>:root{color-scheme:light;
+--bg:#f3f5fa;--side:#ffffff;--surface:#ffffff;--surface-2:#f7f8fc;--sunk:#eef1f7;--rule:#e2e6ef;--rule-strong:#ccd3e0;
+--ink:#0f172a;--ink-2:#334155;--muted:#5b6578;--faint:#8a93a6;
+--accent:#3b5bdb;--accent-2:#6d4aff;--accent-soft:#e9edff;--on-tone:#ffffff;--logo-a:#4f6bff;--logo-b:#7b4dff;
+--pass:#15803d;--fail:#c02626;--warn:#b45309;--unknown:#5f6b7f;--info:#1d63c9;
+--glow:rgba(59,91,219,.07);--shadow:0 1px 2px rgba(15,23,42,.05);--lift:0 10px 30px -18px rgba(15,23,42,.35);
+--r-sm:7px;--r:12px;--r-lg:16px;
+--sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI Variable Text","Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,SFMono-Regular,"SF Mono","Cascadia Mono",Menlo,Consolas,"Liberation Mono",monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;
+--bg:#080d1a;--side:#0a1020;--surface:#0e1628;--surface-2:#111b31;--sunk:#0b1324;--rule:rgba(148,163,184,.13);--rule-strong:rgba(148,163,184,.24);
+--ink:#e9eef8;--ink-2:#c4ccdc;--muted:#8f9ab0;--faint:#68738a;
+--accent:#7b93ff;--accent-2:#9b7bff;--accent-soft:rgba(91,124,250,.16);--on-tone:#08101f;--logo-a:#4f6bff;--logo-b:#8a5cff;
+--pass:#3ddc97;--fail:#ff7b7b;--warn:#f6b44b;--unknown:#a3adbf;--info:#6cb2ff;
+--glow:rgba(91,124,250,.20);--shadow:0 1px 2px rgba(0,0,0,.4);--lift:0 18px 40px -22px rgba(0,0,0,.9)}}
+:root[data-theme="dark"]{color-scheme:dark;
+--bg:#080d1a;--side:#0a1020;--surface:#0e1628;--surface-2:#111b31;--sunk:#0b1324;--rule:rgba(148,163,184,.13);--rule-strong:rgba(148,163,184,.24);
+--ink:#e9eef8;--ink-2:#c4ccdc;--muted:#8f9ab0;--faint:#68738a;
+--accent:#7b93ff;--accent-2:#9b7bff;--accent-soft:rgba(91,124,250,.16);--on-tone:#08101f;--logo-a:#4f6bff;--logo-b:#8a5cff;
+--pass:#3ddc97;--fail:#ff7b7b;--warn:#f6b44b;--unknown:#a3adbf;--info:#6cb2ff;
+--glow:rgba(91,124,250,.20);--shadow:0 1px 2px rgba(0,0,0,.4);--lift:0 18px 40px -22px rgba(0,0,0,.9)}
+.tone-pass{--tone:var(--pass)}.tone-fail{--tone:var(--fail)}.tone-warn{--tone:var(--warn)}.tone-blocked{--tone:var(--warn)}
+.tone-unknown{--tone:var(--unknown)}.tone-not_run{--tone:var(--faint)}.tone-neutral{--tone:var(--muted)}.tone-accent{--tone:var(--accent)}
+.tone-info{--tone:var(--info)}.tone-muted{--tone:var(--faint)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:120px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}code,pre{font-family:var(--mono);font-size:.84em}
+code{overflow-wrap:anywhere}:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:5px}
+.skip{position:absolute;left:16px;top:-60px;background:var(--surface);padding:8px 14px;border-radius:var(--r-sm);z-index:40}
+.skip:focus{top:10px}[hidden]{display:none!important}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--surface) 92%,transparent);
+backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.bar{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.logo{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--logo-a),var(--logo-b));flex:none}
+.brand h1{font-size:1.05rem;margin:0}.brand p{margin:0;color:var(--muted);font-size:.8rem}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:2px 9px;border-radius:999px;font-size:.75rem;
+font-weight:600;border:1px solid color-mix(in srgb,var(--tone,var(--muted)) 40%,var(--rule));
+color:var(--tone,var(--muted));background:color-mix(in srgb,var(--tone,var(--muted)) 9%,transparent)}
+.spacer{flex:1}button,select,input{font:inherit;color:inherit}
+.btn{border:1px solid var(--rule-strong);background:var(--surface);border-radius:var(--r-sm);padding:6px 12px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+nav.tabs{max-width:1240px;margin:0 auto;padding:0 20px 8px;display:flex;gap:4px;overflow-x:auto}
+nav.tabs a{padding:6px 12px;border-radius:999px;color:var(--ink-2);text-decoration:none;white-space:nowrap;font-size:.88rem}
+nav.tabs a:hover{background:var(--accent-soft);color:var(--accent)}
+main{max-width:1240px;margin:0 auto;padding:20px}
+section{margin:0 0 28px}h2{font-size:1.25rem;margin:0 0 12px}h3{font-size:1rem;margin:14px 0 8px}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}
+.verdict{border-left:4px solid var(--tone);display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:14px 0}
+.kpi .v{font-size:1.6rem;font-weight:700}.kpi .l{color:var(--muted);font-size:.82rem}
+.kpi .d{color:var(--faint);font-size:.78rem}
+.layer1{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px}
+.layer1 ul{margin:6px 0 0;padding-left:18px}.layer1 li{margin:3px 0}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 12px;position:sticky;top:96px;z-index:10;
+background:var(--bg);padding:8px 0}
+.toolbar input[type=search]{flex:1 1 280px;min-width:200px;padding:8px 12px;border:1px solid var(--rule-strong);
+border-radius:var(--r-sm);background:var(--surface)}
+.toolbar select{padding:7px 10px;border:1px solid var(--rule-strong);border-radius:var(--r-sm);background:var(--surface)}
+details.wi{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r);margin:8px 0;
+border-left:4px solid var(--tone,var(--rule-strong))}
+details.wi>summary{list-style:none;cursor:pointer;padding:10px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+details.wi>summary::-webkit-details-marker{display:none}
+details.wi>summary::before{content:"\25B8";color:var(--muted);transition:transform .15s}
+details.wi[open]>summary::before{transform:rotate(90deg)}
+.wi .body{padding:0 16px 14px 34px}.wi .children{margin-left:14px}
+.t-epic{--tone:#7b4dff}.t-feature{--tone:var(--info)}.t-story,.t-enabler,.t-spike,.t-bug{--tone:var(--pass)}
+.t-task{--tone:var(--warn)}.title{font-weight:600;overflow-wrap:anywhere}.mono{font-family:var(--mono);font-size:.78rem;color:var(--muted);overflow-wrap:anywhere}
+.card,.grid2>*,.layer1>*{min-width:0}
+.rich p{margin:4px 0}.rich ul{margin:4px 0;padding-left:20px}
+table{border-collapse:collapse;width:100%;font-size:.88rem}th,td{border:1px solid var(--rule);padding:6px 8px;
+text-align:left;vertical-align:top}th{background:var(--surface-2)}
+.tablewrap{overflow-x:auto}.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:12px}
+.finding{border-left:4px solid var(--tone)}.sev-critical,.sev-high{--tone:var(--fail)}.sev-medium{--tone:var(--warn)}
+.sev-low,.sev-info{--tone:var(--info)}dl.kv{display:grid;grid-template-columns:max-content 1fr;gap:4px 12px;margin:6px 0}
+dl.kv dt{color:var(--muted)}dl.kv dd{margin:0}.quote{color:var(--ink-2);font-style:italic}
+pre.json{max-height:480px;overflow:auto;background:var(--sunk);padding:12px;border-radius:var(--r-sm)}
+.notice{color:var(--muted);font-size:.85rem}
+@media (max-width:640px){.bar{padding:10px 12px}main{padding:12px}.wi .body{padding-left:14px}
+.toolbar{top:86px}dl.kv{grid-template-columns:1fr}}
+@media print{header.top,.toolbar,nav.tabs{position:static}details.wi{break-inside:avoid}.btn{display:none}}
+</style></head>
+<body><a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="bar"><div class="logo" aria-hidden="true"></div><div class="brand"><h1>Horta Escolar</h1>
+<p>Execução <code>PBD-RUN-YENYRYC082FH</code> · pt-BR · profile generic</p></div>
+<span class="badge tone-warn">SINTÉTICO</span><span class="badge tone-info">Não publicado: pacote e plano são locais.</span><span class="spacer"></span>
+<button class="btn" id="theme" type="button" aria-label="Alternar tema">◐</button></div>
+<nav class="tabs" aria-label="sections"><a href='#summary'>Resumo executivo</a><a href='#backlog'>Backlog</a><a href='#requirements'>Requisitos</a><a href='#findings'>Achados</a><a href='#questions'>Perguntas</a><a href='#gates'>Gates de qualidade</a><a href='#sources'>Fontes</a><a href='#data'>Dados</a></nav></header>
+<main id="main">
+<section id="summary" aria-labelledby="h-summary"><h2 id="h-summary">Resumo executivo</h2>
+<div class="card verdict tone-fail"><span class="badge tone-fail">FAIL</span><div><strong>1 gate(s) FAIL · 0 BLOCKED · 1 NOT_RUN</strong>
+<p class="notice">Conteúdo potencialmente sensível: compartilhe somente com quem pode ver as fontes.</p></div></div>
+<div class="kpis"><div class="card kpi"><div class="v">4</div><div class="l">Work Items</div><div class="d">story: 4</div></div><div class="card kpi"><div class="v">9</div><div class="l">Critérios de aceite</div><div class="d">3 proposed</div></div><div class="card kpi"><div class="v">4/5</div><div class="l">Cobertura independente</div><div class="d">provenance: independent reviewer inventory</div></div><div class="card kpi"><div class="v">1/1</div><div class="l">Membros lidos</div><div class="d">1 source(s)</div></div><div class="card kpi"><div class="v">3</div><div class="l">Achados</div><div class="d">medium: 1, low: 2</div></div><div class="card kpi"><div class="v">5</div><div class="l">Perguntas abertas</div><div class="d">1 blocking</div></div></div><div class="layer1"><div class="card"><h3>O que foi analisado</h3><ul><li>prd.md — functional (complete)</li></ul></div><div class="card"><h3>O que está consistente</h3><ul><li>G01 Source Integrity</li><li>G03 Hierarchy Integrity</li><li>G04 Traceability</li><li>G05 Story Quality</li><li>G06 Acceptance Quality</li><li>G09 Scope Integrity</li><li>G11 Artifact Integrity</li><li>G13 Independent Review</li><li>G14 Semantic Duplication</li><li>G16 Privacy and Offline Boundary</li></ul></div><div class="card"><h3>O que diverge</h3><ul><li><span class="badge tone-warn">medium</span> AC8 apenas diz que o professor recebe um aviso</li><li><span class="badge tone-info">low</span> &#x27;gostaria que criar...&#x27;, &#x27;para cada dia ... tenha&#x27;, &#x27;para possa agir&#x27; usam infinitivo/subjuntivo sem conectivo</li><li><span class="badge tone-info">low</span> Nenhuma relacao, pois dependencias foram omitidas no pedido</li><li>G02: coverage gaps in independent inventory: {&#x27;covered&#x27;: 4, &#x27;partially_covered&#x27;: 1}</li></ul></div><div class="card"><h3>O que precisa de decisão</h3><ul><li>Por qual canal e em que formato o professor recebe o aviso de rega não registrada até as 16h?</li><li>O limite &quot;até as 16h&quot; é inclusivo (registro feito exatamente às 16h evita o aviso) e refere-se ao momento do registro ou ao horário informado pelo aluno monitor?</li><li>Qual professor recebe o aviso (o que criou a escala ou outro) e o aviso é enviado também em dias sem turma responsável na escala?</li><li>Ao tentar atribuir uma segunda turma a um dia que já tem turma responsável, o sistema deve recusar a atribuição ou substituir a turma anterior?</li><li>Somente o aluno monitor da turma responsável pelo dia pode registrar a rega, ou qualquer aluno monitor?</li></ul></div><div class="card"><h3>O que não está comprovado</h3><ul><li>G18 NOT_RUN: round-trip against a tracker (mock or live) belongs to M3; live qualification requires separate authorization</li></ul></div></div></section>
+<section id="backlog" aria-labelledby="h-backlog"><h2 id="h-backlog">Backlog</h2>
+<div class="toolbar" role="search"><label class="sr-only" for="q">Buscar por ID, título, critério ou texto</label>
+<input id="q" type="search" placeholder="Buscar por ID, título, critério ou texto" autocomplete="off">
+<label class="sr-only" for="ftype">type</label><select id="ftype"><option value="">Todos os tipos</option><option value='story'>story</option></select>
+<label class="sr-only" for="fverdict">verdict</label><select id="fverdict"><option value="">Todas as avaliações</option>
+<option value="pass">pass</option><option value="concern">concern</option><option value="fail">fail</option></select>
+<button class="btn" id="expand" type="button">Expandir tudo</button><button class="btn" id="collapse" type="button">Recolher tudo</button>
+<span aria-live="polite"><strong id="count">4</strong> itens visíveis</span></div>
+<p id="noresults" class="notice" hidden>Nenhum item corresponde à busca.</p>
+<div id="tree"><details class='wi t-story' id='PBD-STORY-H3PR8Q421853' data-type='story' data-verdict='pass' data-text='PBD-STORY-H3PR8Q421853 US1 Professor monta a escala semanal de rega da horta Eu como professor, gostaria que criar a escala semanal de rega atribuindo turmas aos dias da semana, com no máximo uma turma responsável por dia, para cada dia da semana tenha definida a turma responsável pela rega da horta. CA-01 Quando o professor atribui uma turma a um dia da semana na escala semanal de rega, essa turma passa a constar como responsável pela rega naquele dia. → A turma atribuída aparece como responsável pelo dia escolhido na escala semanal CA-02 Quando o professor tenta atribuir uma segunda turma a um dia que já tem turma responsável, a escala continua com no máximo uma turma responsável naquele dia. → Nenhum dia da escala fica com mais de uma turma responsável CA-03 A escala semanal pode ser salva com dias da semana sem turma responsável atribuída. → Dias sem turma atribuída são aceitos na escala'><summary><span class="badge tone-accent">story</span><span class='mono'>US1</span><span class='title'>Professor monta a escala semanal de rega da horta</span><span class="badge tone-pass">pass</span><span class='mono'>3 AC</span></summary><div class='body'><p class='mono'>PBD-STORY-H3PR8Q421853</p><h3>Descrição</h3><div class='rich'><p><strong>Eu como</strong> professor, <strong>gostaria que</strong> criar a escala semanal de rega atribuindo turmas aos dias da semana, com no máximo uma turma responsável por dia, <strong>para</strong> cada dia da semana tenha definida a turma responsável pela rega da horta.</p></div><h3>Critérios de aceite</h3><div class='rich tablewrap'><ul><li><strong>CA-01</strong> Quando o professor atribui uma turma a um dia da semana na escala semanal de rega, essa turma passa a constar como responsável pela rega naquele dia. → A turma atribuída aparece como responsável pelo dia escolhido na escala semanal</li><li><strong>CA-02</strong> Quando o professor tenta atribuir uma segunda turma a um dia que já tem turma responsável, a escala continua com no máximo uma turma responsável naquele dia. → Nenhum dia da escala fica com mais de uma turma responsável</li><li><strong>CA-03</strong> A escala semanal pode ser salva com dias da semana sem turma responsável atribuída. → Dias sem turma atribuída são aceitos na escala</li></ul></div><div class='tablewrap'><table><thead><tr><th>ID</th><th>status</th><th>review</th><th>notes</th><th>claims</th></tr></thead><tbody><tr><td>CA-01</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C1</td></tr><tr><td>CA-02</td><td>confirmed</td><td><span class="badge tone-warn">concern</span></td><td>Resultado &#x27;continua com no maximo uma&#x27; nao define se recusa ou substitui (Q4); verificavel apenas parcialmente.</td><td>C2</td></tr><tr><td>CA-03</td><td>proposed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C2</td></tr></tbody></table></div><h3>Rastreabilidade</h3><ul><li><code>C1</code> O professor cria a escala semanal de rega atribuindo turmas aos dias da semana. — <span class='mono'>prd.md:3</span> <span class='quote'>“O professor cria a escala semanal de rega atribuindo turmas aos dias da semana”</span></li><li><code>C2</code> Cada dia da semana tem no máximo uma turma responsável pela rega. — <span class='mono'>prd.md:4</span> <span class='quote'>“Cada dia da semana tem no máximo uma turma responsável”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>tasks</dt><dd>not_applicable</dd><dt>notes</dt><dd>Conjuncao (criar + max uma turma) e indivisivel: mesma escala.</dd></dl><div class='tablewrap'><table><tbody><tr><td>estimable</td><td><span class="badge tone-neutral">unknown</span></td><td>Sem dados de equipe.</td></tr><tr><td>independent</td><td><span class="badge tone-neutral">supported</span></td><td>Independente das demais.</td></tr><tr><td>negotiable</td><td><span class="badge tone-neutral">supported</span></td><td>Descreve resultado, sem desenho de solucao imposto.</td></tr><tr><td>small</td><td><span class="badge tone-neutral">supported</span></td><td>Fatia vertical unica e coerente.</td></tr><tr><td>testable</td><td><span class="badge tone-neutral">supported</span></td><td>AC1-AC3 verificaveis; reacao ao conflito em Q4.</td></tr><tr><td>valuable</td><td><span class="badge tone-neutral">supported</span></td><td>Professor define responsavel por dia.</td></tr></tbody></table></div></div></details><details class='wi t-story' id='PBD-STORY-6NNZMT8HJ1VR' data-type='story' data-verdict='pass' data-text='PBD-STORY-6NNZMT8HJ1VR US2 Aluno monitor registra a rega do dia com o horário Eu como aluno monitor, gostaria que registrar a rega do dia informando o horário em que ela foi feita, para fique registrado que a rega do dia aconteceu e em que horário. CA-01 Quando o aluno monitor registra a rega do dia informando o horário, a rega do dia passa a constar como registrada com o horário informado. → A rega do dia fica registrada; O horário informado fica associado ao registro CA-02 Quando o aluno monitor tenta registrar a rega do dia sem informar o horário, o registro não é concluído. → Nenhum registro de rega sem horário é criado'><summary><span class="badge tone-accent">story</span><span class='mono'>US2</span><span class='title'>Aluno monitor registra a rega do dia com o horário</span><span class="badge tone-pass">pass</span><span class='mono'>2 AC</span></summary><div class='body'><p class='mono'>PBD-STORY-6NNZMT8HJ1VR</p><h3>Descrição</h3><div class='rich'><p><strong>Eu como</strong> aluno monitor, <strong>gostaria que</strong> registrar a rega do dia informando o horário em que ela foi feita, <strong>para</strong> fique registrado que a rega do dia aconteceu e em que horário.</p></div><h3>Critérios de aceite</h3><div class='rich tablewrap'><ul><li><strong>CA-01</strong> Quando o aluno monitor registra a rega do dia informando o horário, a rega do dia passa a constar como registrada com o horário informado. → A rega do dia fica registrada; O horário informado fica associado ao registro</li><li><strong>CA-02</strong> Quando o aluno monitor tenta registrar a rega do dia sem informar o horário, o registro não é concluído. → Nenhum registro de rega sem horário é criado</li></ul></div><div class='tablewrap'><table><thead><tr><th>ID</th><th>status</th><th>review</th><th>notes</th><th>claims</th></tr></thead><tbody><tr><td>CA-01</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C4</td></tr><tr><td>CA-02</td><td>proposed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C4</td></tr></tbody></table></div><h3>Rastreabilidade</h3><ul><li><code>C4</code> O aluno monitor registra a rega do dia informando o horário. — <span class='mono'>prd.md:6</span> <span class='quote'>“O aluno monitor registra a rega do dia informando o horário”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>tasks</dt><dd>not_applicable</dd><dt>notes</dt><dd>Permissao (Q5) em aberto.</dd></dl><div class='tablewrap'><table><tbody><tr><td>estimable</td><td><span class="badge tone-neutral">unknown</span></td><td>Sem dados de equipe.</td></tr><tr><td>independent</td><td><span class="badge tone-neutral">supported</span></td><td>Independente; US3 depende do registro mas pode ser demonstrada.</td></tr><tr><td>negotiable</td><td><span class="badge tone-neutral">supported</span></td><td>Descreve resultado, sem desenho de solucao imposto.</td></tr><tr><td>small</td><td><span class="badge tone-neutral">supported</span></td><td>Fatia vertical unica e coerente.</td></tr><tr><td>testable</td><td><span class="badge tone-neutral">supported</span></td><td>AC4/AC5 verificaveis.</td></tr><tr><td>valuable</td><td><span class="badge tone-neutral">supported</span></td><td>Registro da rega com horario.</td></tr></tbody></table></div></div></details><details class='wi t-story' id='PBD-STORY-S9RBN9PVRNR0' data-type='story' data-verdict='concern' data-text='PBD-STORY-S9RBN9PVRNR0 US3 Turma responsável acompanha no painel da sala a situação da rega do dia Eu como turma responsável, gostaria que ver, no painel da sala, se a rega do dia já foi registrada, para saber se a sua responsabilidade de rega do dia já está cumprida. CA-01 Quando a rega do dia já foi registrada, o painel da sala da turma responsável mostra que a rega do dia foi registrada. → O painel da sala indica rega do dia registrada CA-02 Enquanto a rega do dia não tiver sido registrada, o painel da sala da turma responsável mostra que a rega do dia ainda não foi registrada. → O painel da sala indica rega do dia não registrada'><summary><span class="badge tone-accent">story</span><span class='mono'>US3</span><span class='title'>Turma responsável acompanha no painel da sala a situação da rega do dia</span><span class="badge tone-warn">concern</span><span class='mono'>2 AC</span></summary><div class='body'><p class='mono'>PBD-STORY-S9RBN9PVRNR0</p><h3>Descrição</h3><div class='rich'><p><strong>Eu como</strong> turma responsável, <strong>gostaria que</strong> ver, no painel da sala, se a rega do dia já foi registrada, <strong>para</strong> saber se a sua responsabilidade de rega do dia já está cumprida.</p></div><h3>Critérios de aceite</h3><div class='rich tablewrap'><ul><li><strong>CA-01</strong> Quando a rega do dia já foi registrada, o painel da sala da turma responsável mostra que a rega do dia foi registrada. → O painel da sala indica rega do dia registrada</li><li><strong>CA-02</strong> Enquanto a rega do dia não tiver sido registrada, o painel da sala da turma responsável mostra que a rega do dia ainda não foi registrada. → O painel da sala indica rega do dia não registrada</li></ul></div><div class='tablewrap'><table><thead><tr><th>ID</th><th>status</th><th>review</th><th>notes</th><th>claims</th></tr></thead><tbody><tr><td>CA-01</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C3</td></tr><tr><td>CA-02</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C3</td></tr></tbody></table></div><h3>Rastreabilidade</h3><ul><li><code>C3</code> A turma responsável vê, no painel da sala, se a rega do dia foi registrada. — <span class='mono'>prd.md:5</span> <span class='quote'>“vê, no painel da sala, se a rega do dia foi registrada”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>concern</dd><dt>source</dt><dd>supported</dd><dt>tasks</dt><dd>not_applicable</dd><dt>notes</dt><dd>Redacao &#x27;gostaria que ver...&#x27; e &#x27;para saber&#x27; ok, mas ator &#x27;turma responsavel&#x27; e coletivo; ligacao com US2 nao modelada (dependencias omitidas por pedido).</dd></dl><div class='tablewrap'><table><tbody><tr><td>estimable</td><td><span class="badge tone-neutral">unknown</span></td><td>Sem dados de equipe.</td></tr><tr><td>independent</td><td><span class="badge tone-neutral">concern</span></td><td>Depende logicamente do registro (US2); dependencias fora do escopo solicitado.</td></tr><tr><td>negotiable</td><td><span class="badge tone-neutral">supported</span></td><td>Descreve resultado, sem desenho de solucao imposto.</td></tr><tr><td>small</td><td><span class="badge tone-neutral">supported</span></td><td>Fatia vertical unica e coerente.</td></tr><tr><td>testable</td><td><span class="badge tone-neutral">supported</span></td><td>AC6/AC7 verificaveis.</td></tr><tr><td>valuable</td><td><span class="badge tone-neutral">supported</span></td><td>Visibilidade do estado da rega.</td></tr></tbody></table></div></div></details><details class='wi t-story' id='PBD-STORY-WA304AHTZV5G' data-type='story' data-verdict='concern' data-text='PBD-STORY-WA304AHTZV5G US4 Professor é avisado quando a rega não é registrada até as 16h Eu como professor, gostaria que receber um aviso quando a rega do dia não for registrada até as 16h, para possa agir ainda no mesmo dia para que a horta não fique sem rega. CA-01 Se até as 16h não houver registro da rega do dia, o professor recebe um aviso. → O professor recebe um aviso de rega do dia não registrada CA-02 Se a rega do dia for registrada antes das 16h, o professor não recebe o aviso de rega não registrada referente a esse dia. → Nenhum aviso de rega não registrada é enviado ao professor para esse dia'><summary><span class="badge tone-accent">story</span><span class='mono'>US4</span><span class='title'>Professor é avisado quando a rega não é registrada até as 16h</span><span class="badge tone-warn">concern</span><span class='mono'>2 AC</span></summary><div class='body'><p class='mono'>PBD-STORY-WA304AHTZV5G</p><h3>Descrição</h3><div class='rich'><p><strong>Eu como</strong> professor, <strong>gostaria que</strong> receber um aviso quando a rega do dia não for registrada até as 16h, <strong>para</strong> possa agir ainda no mesmo dia para que a horta não fique sem rega.</p></div><h3>Critérios de aceite</h3><div class='rich tablewrap'><ul><li><strong>CA-01</strong> Se até as 16h não houver registro da rega do dia, o professor recebe um aviso. → O professor recebe um aviso de rega do dia não registrada</li><li><strong>CA-02</strong> Se a rega do dia for registrada antes das 16h, o professor não recebe o aviso de rega não registrada referente a esse dia. → Nenhum aviso de rega não registrada é enviado ao professor para esse dia</li></ul></div><div class='tablewrap'><table><thead><tr><th>ID</th><th>status</th><th>review</th><th>notes</th><th>claims</th></tr></thead><tbody><tr><td>CA-01</td><td>confirmed</td><td><span class="badge tone-warn">concern</span></td><td>&#x27;ate as 16h&#x27; sem fronteira nem fuso/dia; canal indefinido (Q1/Q2).</td><td>C5</td></tr><tr><td>CA-02</td><td>proposed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C5</td></tr></tbody></table></div><h3>Rastreabilidade</h3><ul><li><code>C5</code> Se a rega do dia não for registrada até as 16h, o professor recebe um aviso (canal e formato do aviso não definidos na fonte). — <span class='mono'>prd.md:7</span> <span class='quote'>“Se a rega não for registrada até as 16h, o professor recebe um aviso”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>concern</dd><dt>source</dt><dd>proposal_justified</dd><dt>tasks</dt><dd>not_applicable</dd><dt>notes</dt><dd>Beneficio &#x27;para que a horta nao fique sem rega&#x27; e inferido; Q1 bloqueante sobre canal; gramatica &#x27;para possa agir&#x27;.</dd></dl><div class='tablewrap'><table><tbody><tr><td>estimable</td><td><span class="badge tone-neutral">unknown</span></td><td>Sem dados de equipe.</td></tr><tr><td>independent</td><td><span class="badge tone-neutral">concern</span></td><td>Depende de registro (US2) e escala (US1) para saber o dia.</td></tr><tr><td>negotiable</td><td><span class="badge tone-neutral">supported</span></td><td>Descreve resultado, sem desenho de solucao imposto.</td></tr><tr><td>small</td><td><span class="badge tone-neutral">supported</span></td><td>Fatia vertical unica e coerente.</td></tr><tr><td>testable</td><td><span class="badge tone-neutral">concern</span></td><td>Sem canal/destinatario/fronteira (Q1-Q3) o aviso nao e totalmente verificavel.</td></tr><tr><td>valuable</td><td><span class="badge tone-neutral">supported</span></td><td>Beneficio inferido mas plausivel.</td></tr></tbody></table></div></div></details></div>
+<h3>Dependências</h3><p class="notice">Nenhum.</p></section>
+<section id="requirements"><h2>Requisitos</h2><h3>Claims reconciliadas</h3><div class="tablewrap"><table>
+<thead><tr><th>key</th><th>claim</th><th>category</th><th>Status</th><th>covered by</th><th>rationale</th></tr></thead>
+<tbody><tr><td><code>C1</code></td><td>O professor cria a escala semanal de rega atribuindo turmas aos dias da semana.</td><td>functional</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC1</td><td>Criação da escala semanal pelo professor coberta por US1 e verificada em AC1.</td></tr><tr><td><code>C2</code></td><td>Cada dia da semana tem no máximo uma turma responsável pela rega.</td><td>constraint</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC2</td><td>Regra de no máximo uma turma por dia verificada em AC2; reação do sistema (recusar ou substituir) em aberto em Q4.</td></tr><tr><td><code>C3</code></td><td>A turma responsável vê, no painel da sala, se a rega do dia foi registrada.</td><td>functional</td><td><span class="badge tone-pass">COVERED</span></td><td>US3, AC6, AC7</td><td>Ambos os estados (registrada / não registrada) exibidos no painel da sala.</td></tr><tr><td><code>C4</code></td><td>O aluno monitor registra a rega do dia informando o horário.</td><td>functional</td><td><span class="badge tone-pass">COVERED</span></td><td>US2, AC4</td><td>Registro da rega com horário coberto por US2/AC4; permissão em aberto em Q5.</td></tr><tr><td><code>C5</code></td><td>Se a rega do dia não for registrada até as 16h, o professor recebe um aviso (canal e formato do aviso não definidos na fonte).</td><td>functional</td><td><span class="badge tone-warn">PARTIALLY_COVERED</span></td><td>US4, AC8</td><td>Disparo do aviso coberto em AC8, mas canal/formato do aviso (Q1), fronteira das 16h (Q2) e destinatário (Q3) não são definidos pela fonte.</td></tr></tbody></table></div><h3>Obrigações do inventário independente</h3><div class="tablewrap"><table>
+<thead><tr><th>key</th><th>obligation</th><th>locator</th><th>Status</th><th>covered by</th><th>rationale</th></tr></thead>
+<tbody><tr><td><code>O1</code></td><td>Professor cria escala semanal atribuindo turmas aos dias</td><td class='mono'>prd.md:3</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC1</td><td>US1/AC1 cobrem a criacao e atribuicao.</td></tr><tr><td><code>O2</code></td><td>No maximo uma turma responsavel por dia</td><td class='mono'>prd.md:4</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC2, AC3</td><td>AC2 verifica o limite; reacao em aberto em Q4 (nao inventada).</td></tr><tr><td><code>O3</code></td><td>Turma responsavel ve no painel se a rega foi registrada</td><td class='mono'>prd.md:5</td><td><span class="badge tone-pass">COVERED</span></td><td>US3, AC6, AC7</td><td>Ambos os estados cobertos.</td></tr><tr><td><code>O4</code></td><td>Aluno monitor registra a rega informando o horario</td><td class='mono'>prd.md:6</td><td><span class="badge tone-pass">COVERED</span></td><td>US2, AC4, AC5</td><td>AC4 confirmado; AC5 e proposta marcada; permissao em Q5.</td></tr><tr><td><code>O5</code></td><td>Sem registro ate 16h o professor recebe aviso</td><td class='mono'>prd.md:7</td><td><span class="badge tone-warn">PARTIALLY_COVERED</span></td><td>US4, AC8, AC9</td><td>Gatilho coberto; canal, fronteira das 16h e destinatario indefinidos na fonte, registrados em Q1-Q3 (Q1 bloqueante).</td></tr></tbody></table></div></section>
+<section id="findings"><h2>Achados</h2><div class="grid2"><div class='card finding sev-medium'><p><span class="badge tone-warn">medium</span> <span class="badge tone-neutral">confirmed_gap</span> <span class="badge tone-muted">G06</span></p><dl class='kv'><dt>Esperado</dt><dd>Canal/formato do aviso definido para AC8 ser verificavel</dd><dt>Atual</dt><dd>AC8 apenas diz que o professor recebe um aviso</dd><dt>Por quê</dt><dd>Fonte nao define canal (Q1 bloqueante)</dd><dt>Impacto</dt><dd>US4 nao pronta para refino/teste</dd><dt>Recomendação</dt><dd>Resolver Q1 antes de comprometer US4</dd><dt>IDs</dt><dd>AC8, US4</dd></dl></div><div class='card finding sev-low'><p><span class="badge tone-info">low</span> <span class="badge tone-neutral">candidate_concern</span> <span class="badge tone-muted">G09</span></p><dl class='kv'><dt>Esperado</dt><dd>Descricoes gramaticais no formato Eu como/gostaria que/para</dd><dt>Atual</dt><dd>&#x27;gostaria que criar...&#x27;, &#x27;para cada dia ... tenha&#x27;, &#x27;para possa agir&#x27; usam infinitivo/subjuntivo sem conectivo</dd><dt>Por quê</dt><dd>Template concatena campos nao ajustados</dd><dt>Impacto</dt><dd>Legibilidade; sentido preservado</dd><dt>Recomendação</dt><dd>Reescrever want/benefit em forma que encaixe (ex.: &#x27;que eu possa criar&#x27;, &#x27;para que ...&#x27;)</dd><dt>IDs</dt><dd>US2, US1, US3, US4</dd></dl></div><div class='card finding sev-low'><p><span class="badge tone-info">low</span> <span class="badge tone-neutral">candidate_concern</span> <span class="badge tone-muted">G07</span></p><dl class='kv'><dt>Esperado</dt><dd>Dependencia US2-&gt;US3/US4 explicita</dd><dt>Atual</dt><dd>Nenhuma relacao, pois dependencias foram omitidas no pedido</dd><dt>Por quê</dt><dd>Nivel nao solicitado</dd><dt>Impacto</dt><dd>Sequenciamento nao visivel</dd><dt>Recomendação</dt><dd>Aceitar a omissao; apenas registrar</dd><dt>IDs</dt><dd>US3, US4</dd></dl></div></div></section>
+<section id="questions"><h2>Perguntas</h2><div class="card"><ul><li>Por qual canal e em que formato o professor recebe o aviso de rega não registrada até as 16h? — <em>Sem o canal definido, não é possível especificar nem verificar como o aviso chega ao professor.</em> <span class="badge tone-fail">blocking</span> (AC8, C5, US4)</li><li>O limite &quot;até as 16h&quot; é inclusivo (registro feito exatamente às 16h evita o aviso) e refere-se ao momento do registro ou ao horário informado pelo aluno monitor? — <em>Define a fronteira de disparo do aviso e quais registros são considerados no prazo.</em> (AC8, AC9, C4, C5, US4)</li><li>Qual professor recebe o aviso (o que criou a escala ou outro) e o aviso é enviado também em dias sem turma responsável na escala? — <em>Determina o destinatário e o escopo de dias em que o aviso se aplica.</em> (C5, C1, US4)</li><li>Ao tentar atribuir uma segunda turma a um dia que já tem turma responsável, o sistema deve recusar a atribuição ou substituir a turma anterior? — <em>Define o comportamento observável da regra de no máximo uma turma por dia.</em> (AC2, C2, US1)</li><li>Somente o aluno monitor da turma responsável pelo dia pode registrar a rega, ou qualquer aluno monitor? — <em>Define a regra de permissão do registro de rega.</em> (C4, US2)</li></ul></div></section>
+<section id="gates"><h2>Gates de qualidade</h2><div class="tablewrap"><table><thead><tr><th>gate</th><th>Status</th>
+<th>Verificação</th><th>Motivo</th><th>Denominador</th></tr></thead><tbody><tr><td><code>G01</code> Source Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>every inventoried member was read and re-read by the reviewer</td><td>1/1 (independent_inventory)</td></tr><tr><td><code>G02</code> Requirements Coverage</td><td><span class="badge tone-fail">FAIL</span></td><td>—</td><td>coverage gaps in independent inventory: {&#x27;covered&#x27;: 4, &#x27;partially_covered&#x27;: 1}</td><td>5/5 (independent_inventory)</td></tr><tr><td><code>G03</code> Hierarchy Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>hierarchy invariants hold</td><td>—</td></tr><tr><td><code>G04</code> Traceability</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>every item and criterion traces to claims or a justified proposal</td><td>—</td></tr><tr><td><code>G05</code> Story Quality</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>4 stories reviewed with INVEST</td><td>—</td></tr><tr><td><code>G06</code> Acceptance Quality</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>9 criteria reviewed individually</td><td>—</td></tr><tr><td><code>G07</code> Task Coverage</td><td><span class="badge tone-muted">NOT_APPLICABLE</span></td><td>—</td><td>tasks not requested</td><td>—</td></tr><tr><td><code>G08</code> Dependency Integrity</td><td><span class="badge tone-muted">NOT_APPLICABLE</span></td><td>—</td><td>dependencies not requested</td><td>—</td></tr><tr><td><code>G09</code> Scope Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>no unsupported scope; exclusions and conflicts recorded</td><td>—</td></tr><tr><td><code>G10</code> Planning Integrity</td><td><span class="badge tone-muted">NOT_APPLICABLE</span></td><td>—</td><td>no sprint planning requested; generated fields contain no assignments, dates or completed work (enforced at design submission)</td><td>—</td></tr><tr><td><code>G11</code> Artifact Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>exports deterministic and consistent across formats</td><td>—</td></tr><tr><td><code>G12</code> Publication Safety</td><td><span class="badge tone-muted">NOT_APPLICABLE</span></td><td>—</td><td>no publication requested; a local package is not an authorization to publish</td><td>—</td></tr><tr><td><code>G13</code> Independent Review</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>separate reviewer re-read sources (5 obligations) and judged 13 items/criteria</td><td>—</td></tr><tr><td><code>G14</code> Semantic Duplication</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>duplicate candidates assessed</td><td>—</td></tr><tr><td><code>G15</code> Change Safety</td><td><span class="badge tone-muted">NOT_APPLICABLE</span></td><td>—</td><td>no decisions or prior versions in this run</td><td>—</td></tr><tr><td><code>G16</code> Privacy and Offline Boundary</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>outputs privacy-clean; run made zero remote calls</td><td>—</td></tr><tr><td><code>G17</code> Target Compatibility</td><td><span class="badge tone-muted">NOT_APPLICABLE</span></td><td>—</td><td>no target package requested</td><td>—</td></tr><tr><td><code>G18</code> Round-trip Fidelity</td><td><span class="badge tone-not_run">NOT_RUN</span></td><td>—</td><td>round-trip against a tracker (mock or live) belongs to M3; live qualification requires separate authorization</td><td>—</td></tr></tbody></table></div></section>
+<section id="sources"><h2>Fontes</h2><div class="grid2"><div class='card'><h3>prd.md <span class="badge tone-accent">functional</span> <span class="badge tone-pass">complete</span></h3><p class='mono'>PBD-SRC-78385WMH95P7 · sha256:da7339c82262e4fe490c4c565c8334006e8803a6359b74d96b76b5f34a1bea57</p><ul><li>prd.md — read</li></ul></div></div>
+<h3>Limitações</h3><p class="notice">Nenhum.</p></section>
+
+<section id="data"><h2>Dados</h2><details class="card"><summary>JSON canônico completo</summary>
+<pre class="json">{
+ &quot;claims&quot;: [
+  {
+   &quot;category&quot;: &quot;functional&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-H3PR8Q421853&quot;,
+     &quot;PBD-AC-CX3YG92824K6&quot;
+    ],
+    &quot;rationale&quot;: &quot;Criação da escala semanal pelo professor coberta por US1 e verificada em AC1.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 3,
+      &quot;line_start&quot;: 3,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:409dbb029ee98851650887dea56c8b77df3db5b66ffce4350c120dd5b9281b91&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;da7339c82262e4fe&quot;
+     },
+     &quot;summary&quot;: &quot;O professor cria a escala semanal de rega atribuindo turmas aos dias da semana&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-YGQ06MSX9XCM&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;O professor cria a escala semanal de rega atribuindo turmas aos dias da semana.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;constraint&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-H3PR8Q421853&quot;,
+     &quot;PBD-AC-RV7W01FH2PDY&quot;
+    ],
+    &quot;rationale&quot;: &quot;Regra de no máximo uma turma por dia verificada em AC2; reação do sistema (recusar ou substituir) em aberto em Q4.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 4,
+      &quot;line_start&quot;: 4,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:b8539651f745e65cf535cad8df0b9ea2ee1788c194aeb3d55a33b0f5debf9bf5&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;da7339c82262e4fe&quot;
+     },
+     &quot;summary&quot;: &quot;Cada dia da semana tem no máximo uma turma responsável&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-2XF2BV78JWFJ&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;Cada dia da semana tem no máximo uma turma responsável pela rega.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;functional&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-S9RBN9PVRNR0&quot;,
+     &quot;PBD-AC-GS726SN9172Z&quot;,
+     &quot;PBD-AC-MB15YT9RA5JY&quot;
+    ],
+    &quot;rationale&quot;: &quot;Ambos os estados (registrada / não registrada) exibidos no painel da sala.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 5,
+      &quot;line_start&quot;: 5,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:bcbd56e52da10d5d249052e8f4195593d573471c560e9ba17287a4ffa2546b38&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;da7339c82262e4fe&quot;
+     },
+     &quot;summary&quot;: &quot;vê, no painel da sala, se a rega do dia foi registrada&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-5DWK4JRM7CKT&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;A turma responsável vê, no painel da sala, se a rega do dia foi registrada.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;functional&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-6NNZMT8HJ1VR&quot;,
+     &quot;PBD-AC-07F7BNPRBAXQ&quot;
+    ],
+    &quot;rationale&quot;: &quot;Registro da rega com horário coberto por US2/AC4; permissão em aberto em Q5.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 6,
+      &quot;line_start&quot;: 6,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:ffb2c04a9081ce84ede7fe39e21184c745e02c9d232d75f5678e41869250b2b2&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;da7339c82262e4fe&quot;
+     },
+     &quot;summary&quot;: &quot;O aluno monitor registra a rega do dia informando o horário&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-HEXMKQNQ1GY3&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;O aluno monitor registra a rega do dia informando o horário.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;functional&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-WA304AHTZV5G&quot;,
+     &quot;PBD-AC-6EZK6X84BJPG&quot;
+    ],
+    &quot;rationale&quot;: &quot;Disparo do aviso coberto em AC8, mas canal/formato do aviso (Q1), fronteira das 16h (Q2) e destinatário (Q3) não são definidos pela fonte.&quot;,
+    &quot;status&quot;: &quot;PARTIALLY_COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 7,
+      &quot;line_start&quot;: 7,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:5f17cb8b343e8b6606e74157f0e9d0981e2f9a492a5a2507475e8dee2cfaac7b&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;da7339c82262e4fe&quot;
+     },
+     &quot;summary&quot;: &quot;Se a rega não for registrada até as 16h, o professor recebe um aviso&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-TCYK5V97M720&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;Se a rega do dia não for registrada até as 16h, o professor recebe um aviso (canal e formato do aviso não definidos na fonte).&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  }
+ ],
+ &quot;criteria&quot;: [
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-YGQ06MSX9XCM&quot;
+   ],
+   &quot;expected_outcomes&quot;: [
+    &quot;A turma atribuída aparece como responsável pelo dia escolhido na escala semanal&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-CX3YG92824K6&quot;,
+   &quot;order&quot;: 0,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-H3PR8Q421853&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;text&quot;: &quot;Quando o professor atribui uma turma a um dia da semana na escala semanal de rega, essa turma passa a constar como responsável pela rega naquele dia.&quot;,
+   &quot;visible_id&quot;: &quot;CA-01&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-2XF2BV78JWFJ&quot;
+   ],
+   &quot;expected_outcomes&quot;: [
+    &quot;Nenhum dia da escala fica com mais de uma turma responsável&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-RV7W01FH2PDY&quot;,
+   &quot;order&quot;: 1,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-H3PR8Q421853&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;text&quot;: &quot;Quando o professor tenta atribuir uma segunda turma a um dia que já tem turma responsável, a escala continua com no máximo uma turma responsável naquele dia.&quot;,
+   &quot;visible_id&quot;: &quot;CA-02&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-2XF2BV78JWFJ&quot;
+   ],
+   &quot;expected_outcomes&quot;: [
+    &quot;Dias sem turma atribuída são aceitos na escala&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-FDEYMF12VW0S&quot;,
+   &quot;order&quot;: 2,
+   &quot;origin&quot;: &quot;proposed&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-H3PR8Q421853&quot;,
+   &quot;rationale&quot;: &quot;Inferência de \&quot;no máximo uma turma\&quot; (permite zero); a fonte não diz explicitamente se todos os dias precisam ser preenchidos.&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;text&quot;: &quot;A escala semanal pode ser salva com dias da semana sem turma responsável atribuída.&quot;,
+   &quot;visible_id&quot;: &quot;CA-03&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-HEXMKQNQ1GY3&quot;
+   ],
+   &quot;expected_outcomes&quot;: [
+    &quot;A rega do dia fica registrada&quot;,
+    &quot;O horário informado fica associado ao registro&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-07F7BNPRBAXQ&quot;,
+   &quot;order&quot;: 0,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-6NNZMT8HJ1VR&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;text&quot;: &quot;Quando o aluno monitor registra a rega do dia informando o horário, a rega do dia passa a constar como registrada com o horário informado.&quot;,
+   &quot;visible_id&quot;: &quot;CA-01&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-HEXMKQNQ1GY3&quot;
+   ],
+   &quot;expected_outcomes&quot;: [
+    &quot;Nenhum registro de rega sem horário é criado&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-66Z7PR50MFCH&quot;,
+   &quot;order&quot;: 1,
+   &quot;origin&quot;: &quot;proposed&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-6NNZMT8HJ1VR&quot;,
+   &quot;rationale&quot;: &quot;A fonte diz que o registro é feito \&quot;informando o horário\&quot;, mas não declara explicitamente o horário como obrigatório nem o comportamento na ausência dele.&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;text&quot;: &quot;Quando o aluno monitor tenta registrar a rega do dia sem informar o horário, o registro não é concluído.&quot;,
+   &quot;visible_id&quot;: &quot;CA-02&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-5DWK4JRM7CKT&quot;
+   ],
+   &quot;expected_outcomes&quot;: [
+    &quot;O painel da sala indica rega do dia registrada&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-GS726SN9172Z&quot;,
+   &quot;order&quot;: 0,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-S9RBN9PVRNR0&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;text&quot;: &quot;Quando a rega do dia já foi registrada, o painel da sala da turma responsável mostra que a rega do dia foi registrada.&quot;,
+   &quot;visible_id&quot;: &quot;CA-01&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-5DWK4JRM7CKT&quot;
+   ],
+   &quot;expected_outcomes&quot;: [
+    &quot;O painel da sala indica rega do dia não registrada&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-MB15YT9RA5JY&quot;,
+   &quot;order&quot;: 1,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-S9RBN9PVRNR0&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;text&quot;: &quot;Enquanto a rega do dia não tiver sido registrada, o painel da sala da turma responsável mostra que a rega do dia ainda não foi registrada.&quot;,
+   &quot;visible_id&quot;: &quot;CA-02&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-TCYK5V97M720&quot;
+   ],
+   &quot;expected_outcomes&quot;: [
+    &quot;O professor recebe um aviso de rega do dia não registrada&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-6EZK6X84BJPG&quot;,
+   &quot;order&quot;: 0,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-WA304AHTZV5G&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;text&quot;: &quot;Se até as 16h não houver registro da rega do dia, o professor recebe um aviso.&quot;,
+   &quot;visible_id&quot;: &quot;CA-01&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-TCYK5V97M720&quot;
+   ],
+   &quot;expected_outcomes&quot;: [
+    &quot;Nenhum aviso de rega não registrada é enviado ao professor para esse dia&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-D4BR3BR3HJ7N&quot;,
+   &quot;order&quot;: 1,
+   &quot;origin&quot;: &quot;proposed&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-WA304AHTZV5G&quot;,
+   &quot;rationale&quot;: &quot;A fonte só define quando o aviso é enviado; a ausência de aviso quando há registro é inferida da condição, não declarada.&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;text&quot;: &quot;Se a rega do dia for registrada antes das 16h, o professor não recebe o aviso de rega não registrada referente a esse dia.&quot;,
+   &quot;visible_id&quot;: &quot;CA-02&quot;
+  }
+ ],
+ &quot;decisions&quot;: [],
+ &quot;findings&quot;: [
+  {
+   &quot;actual&quot;: &quot;AC8 apenas diz que o professor recebe um aviso&quot;,
+   &quot;affects&quot;: [
+    &quot;PBD-AC-6EZK6X84BJPG&quot;,
+    &quot;PBD-STORY-WA304AHTZV5G&quot;
+   ],
+   &quot;classification&quot;: &quot;confirmed_gap&quot;,
+   &quot;evidence&quot;: [
+    {
+     &quot;ref&quot;: &quot;stages/review.json&quot;,
+     &quot;summary&quot;: &quot;independent review&quot;,
+     &quot;type&quot;: &quot;review&quot;
+    }
+   ],
+   &quot;expected&quot;: &quot;Canal/formato do aviso definido para AC8 ser verificavel&quot;,
+   &quot;gate&quot;: &quot;G06&quot;,
+   &quot;id&quot;: &quot;PBD-FND-MW47YWE0752P&quot;,
+   &quot;impact&quot;: &quot;US4 nao pronta para refino/teste&quot;,
+   &quot;recommendation&quot;: &quot;Resolver Q1 antes de comprometer US4&quot;,
+   &quot;review_status&quot;: &quot;confirmed&quot;,
+   &quot;severity&quot;: &quot;medium&quot;,
+   &quot;why&quot;: &quot;Fonte nao define canal (Q1 bloqueante)&quot;
+  },
+  {
+   &quot;actual&quot;: &quot;&#x27;gostaria que criar...&#x27;, &#x27;para cada dia ... tenha&#x27;, &#x27;para possa agir&#x27; usam infinitivo/subjuntivo sem conectivo&quot;,
+   &quot;affects&quot;: [
+    &quot;PBD-STORY-6NNZMT8HJ1VR&quot;,
+    &quot;PBD-STORY-H3PR8Q421853&quot;,
+    &quot;PBD-STORY-S9RBN9PVRNR0&quot;,
+    &quot;PBD-STORY-WA304AHTZV5G&quot;
+   ],
+   &quot;classification&quot;: &quot;candidate_concern&quot;,
+   &quot;evidence&quot;: [
+    {
+     &quot;ref&quot;: &quot;stages/review.json&quot;,
+     &quot;summary&quot;: &quot;independent review&quot;,
+     &quot;type&quot;: &quot;review&quot;
+    }
+   ],
+   &quot;expected&quot;: &quot;Descricoes gramaticais no formato Eu como/gostaria que/para&quot;,
+   &quot;gate&quot;: &quot;G09&quot;,
+   &quot;id&quot;: &quot;PBD-FND-7HXFSW25ECBD&quot;,
+   &quot;impact&quot;: &quot;Legibilidade; sentido preservado&quot;,
+   &quot;recommendation&quot;: &quot;Reescrever want/benefit em forma que encaixe (ex.: &#x27;que eu possa criar&#x27;, &#x27;para que ...&#x27;)&quot;,
+   &quot;review_status&quot;: &quot;candidate&quot;,
+   &quot;severity&quot;: &quot;low&quot;,
+   &quot;why&quot;: &quot;Template concatena campos nao ajustados&quot;
+  },
+  {
+   &quot;actual&quot;: &quot;Nenhuma relacao, pois dependencias foram omitidas no pedido&quot;,
+   &quot;affects&quot;: [
+    &quot;PBD-STORY-S9RBN9PVRNR0&quot;,
+    &quot;PBD-STORY-WA304AHTZV5G&quot;
+   ],
+   &quot;classification&quot;: &quot;candidate_concern&quot;,
+   &quot;evidence&quot;: [
+    {
+     &quot;ref&quot;: &quot;stages/review.json&quot;,
+     &quot;summary&quot;: &quot;independent review&quot;,
+     &quot;type&quot;: &quot;review&quot;
+    }
+   ],
+   &quot;expected&quot;: &quot;Dependencia US2-&gt;US3/US4 explicita&quot;,
+   &quot;gate&quot;: &quot;G07&quot;,
+   &quot;id&quot;: &quot;PBD-FND-6C223SRSKWSW&quot;,
+   &quot;impact&quot;: &quot;Sequenciamento nao visivel&quot;,
+   &quot;recommendation&quot;: &quot;Aceitar a omissao; apenas registrar&quot;,
+   &quot;review_status&quot;: &quot;candidate&quot;,
+   &quot;severity&quot;: &quot;low&quot;,
+   &quot;why&quot;: &quot;Nivel nao solicitado&quot;
+  }
+ ],
+ &quot;items&quot;: [
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-YGQ06MSX9XCM&quot;,
+    &quot;PBD-CLM-2XF2BV78JWFJ&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;actor&quot;: &quot;professor&quot;,
+    &quot;benefit&quot;: &quot;cada dia da semana tenha definida a turma responsável pela rega da horta&quot;,
+    &quot;kind&quot;: &quot;role_goal_benefit&quot;,
+    &quot;want&quot;: &quot;criar a escala semanal de rega atribuindo turmas aos dias da semana, com no máximo uma turma responsável por dia&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Eu como&lt;/strong&gt; professor, &lt;strong&gt;gostaria que&lt;/strong&gt; criar a escala semanal de rega atribuindo turmas aos dias da semana, com no máximo uma turma responsável por dia, &lt;strong&gt;para&lt;/strong&gt; cada dia da semana tenha definida a turma responsável pela rega da horta.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-STORY-H3PR8Q421853&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: null,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;role_goal_benefit&quot;,
+   &quot;title&quot;: &quot;Professor monta a escala semanal de rega da horta&quot;,
+   &quot;type&quot;: &quot;story&quot;
+  },
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-HEXMKQNQ1GY3&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;actor&quot;: &quot;aluno monitor&quot;,
+    &quot;benefit&quot;: &quot;fique registrado que a rega do dia aconteceu e em que horário&quot;,
+    &quot;kind&quot;: &quot;role_goal_benefit&quot;,
+    &quot;want&quot;: &quot;registrar a rega do dia informando o horário em que ela foi feita&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Eu como&lt;/strong&gt; aluno monitor, &lt;strong&gt;gostaria que&lt;/strong&gt; registrar a rega do dia informando o horário em que ela foi feita, &lt;strong&gt;para&lt;/strong&gt; fique registrado que a rega do dia aconteceu e em que horário.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-STORY-6NNZMT8HJ1VR&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: null,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;role_goal_benefit&quot;,
+   &quot;title&quot;: &quot;Aluno monitor registra a rega do dia com o horário&quot;,
+   &quot;type&quot;: &quot;story&quot;
+  },
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-5DWK4JRM7CKT&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;actor&quot;: &quot;turma responsável&quot;,
+    &quot;benefit&quot;: &quot;saber se a sua responsabilidade de rega do dia já está cumprida&quot;,
+    &quot;kind&quot;: &quot;role_goal_benefit&quot;,
+    &quot;want&quot;: &quot;ver, no painel da sala, se a rega do dia já foi registrada&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Eu como&lt;/strong&gt; turma responsável, &lt;strong&gt;gostaria que&lt;/strong&gt; ver, no painel da sala, se a rega do dia já foi registrada, &lt;strong&gt;para&lt;/strong&gt; saber se a sua responsabilidade de rega do dia já está cumprida.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-STORY-S9RBN9PVRNR0&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: null,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;role_goal_benefit&quot;,
+   &quot;title&quot;: &quot;Turma responsável acompanha no painel da sala a situação da rega do dia&quot;,
+   &quot;type&quot;: &quot;story&quot;
+  },
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-TCYK5V97M720&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;actor&quot;: &quot;professor&quot;,
+    &quot;benefit&quot;: &quot;possa agir ainda no mesmo dia para que a horta não fique sem rega&quot;,
+    &quot;kind&quot;: &quot;role_goal_benefit&quot;,
+    &quot;want&quot;: &quot;receber um aviso quando a rega do dia não for registrada até as 16h&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Eu como&lt;/strong&gt; professor, &lt;strong&gt;gostaria que&lt;/strong&gt; receber um aviso quando a rega do dia não for registrada até as 16h, &lt;strong&gt;para&lt;/strong&gt; possa agir ainda no mesmo dia para que a horta não fique sem rega.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-STORY-WA304AHTZV5G&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: null,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;role_goal_benefit&quot;,
+   &quot;title&quot;: &quot;Professor é avisado quando a rega não é registrada até as 16h&quot;,
+   &quot;type&quot;: &quot;story&quot;
+  }
+ ],
+ &quot;kind&quot;: &quot;pbd.backlog&quot;,
+ &quot;language&quot;: &quot;pt-BR&quot;,
+ &quot;profile&quot;: &quot;generic&quot;,
+ &quot;questions&quot;: [
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-AC-6EZK6X84BJPG&quot;,
+    &quot;PBD-CLM-TCYK5V97M720&quot;,
+    &quot;PBD-STORY-WA304AHTZV5G&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Aviso dentro do próprio sistema&quot;,
+    &quot;Outro canal a ser definido pela escola&quot;
+   ],
+   &quot;blocking&quot;: true,
+   &quot;id&quot;: &quot;PBD-Q-Y65AX2M94KTC&quot;,
+   &quot;impact&quot;: &quot;Sem o canal definido, não é possível especificar nem verificar como o aviso chega ao professor.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;Por qual canal e em que formato o professor recebe o aviso de rega não registrada até as 16h?&quot;
+  },
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-AC-6EZK6X84BJPG&quot;,
+    &quot;PBD-AC-D4BR3BR3HJ7N&quot;,
+    &quot;PBD-CLM-HEXMKQNQ1GY3&quot;,
+    &quot;PBD-CLM-TCYK5V97M720&quot;,
+    &quot;PBD-STORY-WA304AHTZV5G&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Momento em que o registro é feito&quot;,
+    &quot;Horário informado no registro&quot;
+   ],
+   &quot;blocking&quot;: false,
+   &quot;id&quot;: &quot;PBD-Q-HFJ3HYJJB614&quot;,
+   &quot;impact&quot;: &quot;Define a fronteira de disparo do aviso e quais registros são considerados no prazo.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;O limite \&quot;até as 16h\&quot; é inclusivo (registro feito exatamente às 16h evita o aviso) e refere-se ao momento do registro ou ao horário informado pelo aluno monitor?&quot;
+  },
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-CLM-TCYK5V97M720&quot;,
+    &quot;PBD-CLM-YGQ06MSX9XCM&quot;,
+    &quot;PBD-STORY-WA304AHTZV5G&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Somente o professor que criou a escala, apenas em dias com turma atribuída&quot;,
+    &quot;Outra regra definida pela escola&quot;
+   ],
+   &quot;blocking&quot;: false,
+   &quot;id&quot;: &quot;PBD-Q-02Z49F437P1W&quot;,
+   &quot;impact&quot;: &quot;Determina o destinatário e o escopo de dias em que o aviso se aplica.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;Qual professor recebe o aviso (o que criou a escala ou outro) e o aviso é enviado também em dias sem turma responsável na escala?&quot;
+  },
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-AC-RV7W01FH2PDY&quot;,
+    &quot;PBD-CLM-2XF2BV78JWFJ&quot;,
+    &quot;PBD-STORY-H3PR8Q421853&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Recusar a nova atribuição&quot;,
+    &quot;Substituir a turma anterior&quot;
+   ],
+   &quot;blocking&quot;: false,
+   &quot;id&quot;: &quot;PBD-Q-H1AFN1SSRB6N&quot;,
+   &quot;impact&quot;: &quot;Define o comportamento observável da regra de no máximo uma turma por dia.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;Ao tentar atribuir uma segunda turma a um dia que já tem turma responsável, o sistema deve recusar a atribuição ou substituir a turma anterior?&quot;
+  },
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-CLM-HEXMKQNQ1GY3&quot;,
+    &quot;PBD-STORY-6NNZMT8HJ1VR&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Apenas o monitor da turma responsável do dia&quot;,
+    &quot;Qualquer aluno monitor&quot;
+   ],
+   &quot;blocking&quot;: false,
+   &quot;id&quot;: &quot;PBD-Q-CWC15WE68XSK&quot;,
+   &quot;impact&quot;: &quot;Define a regra de permissão do registro de rega.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;Somente o aluno monitor da turma responsável pelo dia pode registrar a rega, ou qualquer aluno monitor?&quot;
+  }
+ ],
+ &quot;relations&quot;: [],
+ &quot;run_id&quot;: &quot;PBD-RUN-YENYRYC082FH&quot;,
+ &quot;schema_version&quot;: &quot;1.1.0&quot;,
+ &quot;sources&quot;: [
+  {
+   &quot;authority&quot;: &quot;functional&quot;,
+   &quot;digest&quot;: &quot;sha256:da7339c82262e4fe490c4c565c8334006e8803a6359b74d96b76b5f34a1bea57&quot;,
+   &quot;id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+   &quot;kind&quot;: &quot;file&quot;,
+   &quot;members&quot;: [
+    {
+     &quot;bytes&quot;: 418,
+     &quot;digest&quot;: &quot;sha256:b211742c6ca28b3b5db0f7ed2ee331bf3ee2d672a29e31cc5f9d6440c7a1d4c2&quot;,
+     &quot;media_type&quot;: &quot;application/octet-stream&quot;,
+     &quot;path&quot;: &quot;prd.md&quot;,
+     &quot;status&quot;: &quot;read&quot;
+    }
+   ],
+   &quot;read_status&quot;: &quot;complete&quot;,
+   &quot;selector&quot;: &quot;prd.md&quot;,
+   &quot;version&quot;: &quot;da7339c82262e4fe&quot;
+  }
+ ],
+ &quot;synthetic&quot;: true
+}</pre></details></section>
+</main><script>(function(){
+var d=document,root=d.documentElement,KEY='pbd-theme';
+try{var s=localStorage.getItem(KEY);if(s)root.setAttribute('data-theme',s);}catch(e){}
+var tb=d.getElementById('theme');if(tb)tb.addEventListener('click',function(){
+var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
+var next=dark?'light':'dark';root.setAttribute('data-theme',next);try{localStorage.setItem(KEY,next);}catch(e){}});
+function norm(t){return (t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
+var items=[].slice.call(d.querySelectorAll('details.wi'));
+items.forEach(function(el){el._t=norm(el.getAttribute('data-text'));});
+var q=d.getElementById('q'),ft=d.getElementById('ftype'),fv=d.getElementById('fverdict'),out=d.getElementById('count'),
+none=d.getElementById('noresults');
+function apply(){var term=norm(q.value.trim()),type=ft.value,ver=fv.value,shown=0;
+items.forEach(function(el){el._m=(!term||el._t.indexOf(term)>=0)&&(!type||el.getAttribute('data-type')===type)&&
+(!ver||el.getAttribute('data-verdict')===ver);});
+items.slice().reverse().forEach(function(el){var keep=el._m||[].some.call(el.querySelectorAll('details.wi'),function(c){return c._m;});
+el.hidden=!keep;if(keep&&el._m)shown++;if(keep&&(term||type||ver)&&!el._m)el.open=true;});
+out.textContent=shown;none.hidden=shown>0;}
+[q,ft,fv].forEach(function(e){e.addEventListener('input',apply);});
+d.getElementById('expand').addEventListener('click',function(){items.forEach(function(e){e.open=true;});});
+d.getElementById('collapse').addEventListener('click',function(){items.forEach(function(e){e.open=false;});});
+apply();})();</script></body></html>

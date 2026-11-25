@@ -1,0 +1,1007 @@
+{
+  "claims": [
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-JWE7KP95BXMT",
+          "PBD-AC-TVZ9WYR74CP9",
+          "PBD-TASK-Y88W1XDCEPG7"
+        ],
+        "rationale": "Agendamento com escolha de data e turno coberto por US1; turnos disponíveis pendentes em Q4.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 3,
+            "line_start": 3,
+            "member": "prd.md",
+            "quote_digest": "sha256:be10c24903281d918587763870822f53ad603ccb075abaa07f6625856f09a4a7",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "0d9d736cf448fcb3"
+          },
+          "summary": "O doador agenda a entrega de doações escolhendo data e turno.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-APG8TBANF70T",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O doador agenda a entrega de doações escolhendo data e turno.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "rationale": "PRD limita a 3 entregas por mês, em conflito com C3 (manual: até 5); sem decisão aprovada. Ver Q1.",
+        "status": "CONFLICTING"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "prd.md",
+            "quote_digest": "sha256:4e8d35896174362e61f0edee2bd2215b654cf532a8c997814c4004a3a76c2cf3",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "0d9d736cf448fcb3"
+          },
+          "summary": "no máximo 3 entregas por mês",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-T9D931WQWG8E",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Cada doador pode agendar no máximo 3 entregas por mês (PRD).",
+      "uncertainty": {
+        "level": "conflicting",
+        "note": "Conflita com C3. O manual de operação permite até 5 entregas por mês; ambas as fontes são funcionais e não há decisão aprovada que resolva o limite."
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "rationale": "Manual permite até 5 entregas por mês, em conflito com C2 (PRD: 3). Ver Q1.",
+        "status": "CONFLICTING"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 3,
+            "line_start": 3,
+            "member": "manual-operacao.md",
+            "quote_digest": "sha256:65e20600e1777c02e9a3520814c3fe711159db6f4828baacc9a6d1e6dfda5dde",
+            "source_id": "PBD-SRC-2CR6BC30M4NM",
+            "source_version": "1f3cdd8b97804106"
+          },
+          "summary": "Doadores podem agendar até 5 entregas por mês",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-WVNHVXENWGMM",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Doadores podem agendar até 5 entregas por mês (manual de operação).",
+      "uncertainty": {
+        "level": "conflicting",
+        "note": "Conflita com C2. O PRD limita a no máximo 3 entregas por mês; ambas as fontes são funcionais e não há decisão aprovada."
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "rationale": "PRD recusa eletrônicos, em conflito com C5/C6 do manual. Ver Q2.",
+        "status": "CONFLICTING"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "prd.md",
+            "quote_digest": "sha256:8691ee2e732c235aa5883a659df0313bfd1eecd36c2a22da70b398d68a702a3a",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "0d9d736cf448fcb3"
+          },
+          "summary": "Itens eletrônicos não são aceitos.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-MCF6J8R08CAA",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Itens eletrônicos não são aceitos como doação (PRD).",
+      "uncertainty": {
+        "level": "conflicting",
+        "note": "Conflita com C5 e C6. O manual de operação aceita eletrônicos em funcionamento mediante teste do voluntário."
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "rationale": "Manual aceita eletrônicos em funcionamento, em conflito com C4. Ver Q2.",
+        "status": "CONFLICTING"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "manual-operacao.md",
+            "quote_digest": "sha256:078b815a93a350821a85552e570e9ec4d01a01e02fd6def97f3e2bc200e1379e",
+            "source_id": "PBD-SRC-2CR6BC30M4NM",
+            "source_version": "1f3cdd8b97804106"
+          },
+          "summary": "Eletrônicos em funcionamento são aceitos",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-PSW09KW7NQR6",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Eletrônicos em funcionamento são aceitos como doação (manual de operação).",
+      "uncertainty": {
+        "level": "conflicting",
+        "note": "Conflita com C4. O PRD declara que itens eletrônicos não são aceitos."
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "rationale": "Teste do voluntário só se aplica se eletrônicos forem aceitos, o que contradiz C4; critério do teste não definido. Ver Q2.",
+        "status": "CONFLICTING"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "manual-operacao.md",
+            "quote_digest": "sha256:5b3ca3c482d21153475b642efa39c931b06426c18e43e3414533316ecf1466e9",
+            "source_id": "PBD-SRC-2CR6BC30M4NM",
+            "source_version": "1f3cdd8b97804106"
+          },
+          "summary": "mediante teste do voluntário",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-MZQX7RGX4EEA",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "A aceitação de um eletrônico depende de teste realizado pelo voluntário (manual de operação).",
+      "uncertainty": {
+        "level": "conflicting",
+        "note": "Conflita com C4. Só se aplica se eletrônicos forem aceitos, o que contradiz o PRD; o critério do teste e de 'em funcionamento' não é definido."
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-A0ESPZX7HE66",
+          "PBD-AC-4C4D4RW0D86S",
+          "PBD-TASK-ZEWMB764ZR89"
+        ],
+        "rationale": "Confirmação do recebimento pelo voluntário coberta por US3.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 6,
+            "line_start": 6,
+            "member": "prd.md",
+            "quote_digest": "sha256:7a679555174a4df561270cb3b90ab59896c42c9b7051a51b9841dbd31b096a0b",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "0d9d736cf448fcb3"
+          },
+          "summary": "O voluntário confirma o recebimento",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-QWB5P81SQZAB",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O voluntário confirma o recebimento da entrega de doações.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-NP7JY822V9HJ",
+          "PBD-AC-M9ZR1NNK89KP",
+          "PBD-TASK-ZXR3XH81KZES"
+        ],
+        "rationale": "Geração do recibo para o doador coberta por AC6.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 6,
+            "line_start": 6,
+            "member": "prd.md",
+            "quote_digest": "sha256:38c893d9f2b519b0eb383b89d3c7b0847f9c526c208debad3ea0aa8cc37cfee7",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "0d9d736cf448fcb3"
+          },
+          "summary": "o sistema gera um recibo para o doador",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-Q50P5VMVC8AH",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O sistema gera um recibo para o doador.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "integration",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-NP7JY822V9HJ",
+          "PBD-AC-B18392NCQ88A",
+          "PBD-TASK-ZXR3XH81KZES"
+        ],
+        "rationale": "Envio do recibo por e-mail coberto por AC7; tratamento de falha de envio em Q5.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "manual-operacao.md",
+            "quote_digest": "sha256:801b13e015869af0b1a3b28950f6316ede3323b575ebf9b8d805604055bdda81",
+            "source_id": "PBD-SRC-2CR6BC30M4NM",
+            "source_version": "1f3cdd8b97804106"
+          },
+          "summary": "O recibo é enviado por e-mail ao doador",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-NAS5V0MW85JR",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O recibo é enviado ao doador por e-mail.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-NP7JY822V9HJ",
+          "PBD-AC-M9ZR1NNK89KP",
+          "PBD-AC-2GXWHBCZR68N",
+          "PBD-TASK-ZXR3XH81KZES"
+        ],
+        "rationale": "Envio somente após a confirmação coberto por AC6 (positivo) e AC8 (negativo).",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "manual-operacao.md",
+            "quote_digest": "sha256:a1990237f6c0bdb962132c9db8dc35343916899556b81e162f3277fa088a7631",
+            "source_id": "PBD-SRC-2CR6BC30M4NM",
+            "source_version": "1f3cdd8b97804106"
+          },
+          "summary": "após a confirmação do recebimento",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-N1326R9F9N1P",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O recibo só é enviado ao doador após a confirmação do recebimento pelo voluntário.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-8SHMHG9C93W6",
+          "PBD-AC-MXNFG7EG6CDQ",
+          "PBD-AC-WCH6M539RC58",
+          "PBD-TASK-6MHQ9KC8DDK2"
+        ],
+        "rationale": "Remarcação dentro do prazo e recusa na própria data cobertas; o limite exato de '1 dia antes' depende de Q3.",
+        "status": "PARTIALLY_COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 7,
+            "line_start": 7,
+            "member": "prd.md",
+            "quote_digest": "sha256:80499bc907221d276986a70b8105468dd90316acb31bbe01230db8ec37ec3ada",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "0d9d736cf448fcb3"
+          },
+          "summary": "até 1 dia antes da data agendada",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-KX0GXNVDM223",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O doador pode remarcar uma entrega até 1 dia antes da data agendada.",
+      "uncertainty": {
+        "level": "ambiguous",
+        "note": "Não está definido se '1 dia antes' significa 24 horas ou dia de calendário."
+      }
+    }
+  ],
+  "criteria": [
+    {
+      "claim_refs": [
+        "PBD-CLM-APG8TBANF70T"
+      ],
+      "expected_outcomes": [
+        "O agendamento fica registrado para o doador com a data e o turno escolhidos"
+      ],
+      "id": "PBD-AC-TVZ9WYR74CP9",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-JWE7KP95BXMT",
+      "status": "confirmed",
+      "style": "list",
+      "text": "Quando o doador agenda uma entrega escolhendo data e turno, o agendamento é registrado com a data e o turno escolhidos.",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-APG8TBANF70T"
+      ],
+      "expected_outcomes": [
+        "Nenhum agendamento é criado"
+      ],
+      "id": "PBD-AC-TKKRT33VZ17G",
+      "order": 1,
+      "origin": "proposed",
+      "parent": "PBD-STORY-JWE7KP95BXMT",
+      "rationale": "Validação de entrada inferida da regra de que o agendamento é feito escolhendo data e turno; a fonte não descreve o comportamento para dados ausentes nem a mensagem exibida.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Quando o doador tenta agendar sem escolher data ou turno, nenhum agendamento é criado.",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-KX0GXNVDM223"
+      ],
+      "expected_outcomes": [
+        "O agendamento passa a ter a nova data"
+      ],
+      "id": "PBD-AC-MXNFG7EG6CDQ",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-8SHMHG9C93W6",
+      "status": "confirmed",
+      "style": "list",
+      "text": "Quando o doador remarca uma entrega com antecedência de pelo menos 1 dia em relação à data agendada, a entrega passa a ter a nova data escolhida.",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-KX0GXNVDM223"
+      ],
+      "expected_outcomes": [
+        "A remarcação é recusada",
+        "A entrega mantém a data original"
+      ],
+      "id": "PBD-AC-WCH6M539RC58",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-8SHMHG9C93W6",
+      "status": "confirmed",
+      "style": "list",
+      "text": "Quando o doador tenta remarcar uma entrega na própria data agendada, a remarcação é recusada e a entrega mantém a data original.",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-QWB5P81SQZAB"
+      ],
+      "expected_outcomes": [
+        "A entrega consta como recebida"
+      ],
+      "id": "PBD-AC-4C4D4RW0D86S",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-A0ESPZX7HE66",
+      "status": "confirmed",
+      "style": "list",
+      "text": "Quando o voluntário confirma o recebimento de uma entrega, a entrega passa a constar como recebida.",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-Q50P5VMVC8AH",
+        "PBD-CLM-N1326R9F9N1P"
+      ],
+      "expected_outcomes": [
+        "Um recibo é gerado para o doador da entrega"
+      ],
+      "id": "PBD-AC-M9ZR1NNK89KP",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-NP7JY822V9HJ",
+      "status": "confirmed",
+      "style": "list",
+      "text": "Quando o voluntário confirma o recebimento de uma entrega, o sistema gera um recibo para o doador dessa entrega.",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-NAS5V0MW85JR"
+      ],
+      "expected_outcomes": [
+        "O doador recebe o recibo por e-mail"
+      ],
+      "id": "PBD-AC-B18392NCQ88A",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-NP7JY822V9HJ",
+      "status": "confirmed",
+      "style": "list",
+      "text": "O recibo gerado é enviado por e-mail ao doador.",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-N1326R9F9N1P"
+      ],
+      "expected_outcomes": [
+        "Nenhum recibo é enviado ao doador"
+      ],
+      "id": "PBD-AC-2GXWHBCZR68N",
+      "order": 2,
+      "origin": "generated",
+      "parent": "PBD-STORY-NP7JY822V9HJ",
+      "status": "confirmed",
+      "style": "list",
+      "text": "Enquanto o recebimento de uma entrega não for confirmado pelo voluntário, nenhum recibo é enviado ao doador.",
+      "visible_id": "CA-03"
+    }
+  ],
+  "decisions": [],
+  "findings": [
+    {
+      "actual": "Claims are marked conflicting and dispositions are CONFLICTING with blocking questions Q1/Q2, but claims.json conflicts list is empty.",
+      "affects": [
+        "PBD-STORY-A0ESPZX7HE66",
+        "PBD-STORY-JWE7KP95BXMT"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "A source contradiction (limit 3 vs 5; electronics) is recorded as a structured conflict.",
+      "gate": "G06",
+      "id": "PBD-FND-A3A8A7AXSXCG",
+      "impact": "Downstream tooling may not surface the contradictions as formal conflicts.",
+      "recommendation": "Confirm whether conflicts must be recorded in the conflicts list; keep Q1/Q2 blocking until an approved decision.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "Conflicts are only visible through uncertainty notes and questions, not a conflict record."
+    },
+    {
+      "actual": "AC3 says 'pelo menos 1 dia' without defining 24h or calendar day.",
+      "affects": [
+        "PBD-AC-MXNFG7EG6CDQ",
+        "PBD-STORY-8SHMHG9C93W6"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Reschedule boundary criterion with determinate condition.",
+      "gate": "G05",
+      "id": "PBD-FND-43P8YF8TJDGA",
+      "impact": "Boundary cases untestable until Q3 is answered.",
+      "recommendation": "Resolve Q3 and restate AC3 with a precise cutoff.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Source itself is ambiguous; Q3 raised."
+    },
+    {
+      "actual": "Not specified in sources; correctly left as Q5 and Q2 rather than invented.",
+      "affects": [
+        "PBD-STORY-A0ESPZX7HE66",
+        "PBD-STORY-NP7JY822V9HJ"
+      ],
+      "classification": "optional_improvement",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Receipt email failure and electronics test flow handled.",
+      "gate": "G06",
+      "id": "PBD-FND-FZ79WNX45NKE",
+      "impact": "None until answered.",
+      "recommendation": "Answer Q5; revisit US3 after Q2.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "No source support."
+    }
+  ],
+  "items": [
+    {
+      "claim_refs": [
+        "PBD-CLM-APG8TBANF70T",
+        "PBD-CLM-QWB5P81SQZAB",
+        "PBD-CLM-Q50P5VMVC8AH",
+        "PBD-CLM-N1326R9F9N1P",
+        "PBD-CLM-KX0GXNVDM223"
+      ],
+      "content": {
+        "context": "O PRD e o manual de operação do bazar beneficente descrevem o agendamento pelo doador, a confirmação do recebimento pelo voluntário e o recibo. As duas fontes divergem sobre o limite mensal de entregas e sobre a aceitação de eletrônicos.",
+        "in_scope": [
+          "Agendamento de entrega com escolha de data e turno",
+          "Remarcação de entrega até 1 dia antes da data agendada",
+          "Confirmação do recebimento pelo voluntário",
+          "Geração do recibo e envio por e-mail ao doador após a confirmação"
+        ],
+        "kind": "epic",
+        "objective": "Permitir que doadores agendem a entrega de doações e que o recebimento seja confirmado com emissão de recibo ao doador.",
+        "out_scope": [
+          "Limite mensal de entregas por doador enquanto PRD (3) e manual (5) divergirem — ver Q1",
+          "Regra de aceitação ou recusa de eletrônicos enquanto PRD e manual divergirem — ver Q2"
+        ],
+        "outcome": "Doadores conseguem agendar e remarcar entregas, e cada entrega confirmada pelo voluntário gera um recibo enviado por e-mail ao doador."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir que doadores agendem a entrega de doações e que o recebimento seja confirmado com emissão de recibo ao doador.</p><p><strong>Contexto</strong>: O PRD e o manual de operação do bazar beneficente descrevem o agendamento pelo doador, a confirmação do recebimento pelo voluntário e o recibo. As duas fontes divergem sobre o limite mensal de entregas e sobre a aceitação de eletrônicos.</p><p><strong>No escopo</strong></p><ul><li>Agendamento de entrega com escolha de data e turno</li><li>Remarcação de entrega até 1 dia antes da data agendada</li><li>Confirmação do recebimento pelo voluntário</li><li>Geração do recibo e envio por e-mail ao doador após a confirmação</li></ul><p><strong>Fora do escopo</strong></p><ul><li>Limite mensal de entregas por doador enquanto PRD (3) e manual (5) divergirem — ver Q1</li><li>Regra de aceitação ou recusa de eletrônicos enquanto PRD e manual divergirem — ver Q2</li></ul><p><strong>Resultado esperado</strong>: Doadores conseguem agendar e remarcar entregas, e cada entrega confirmada pelo voluntário gera um recibo enviado por e-mail ao doador.</p>"
+      },
+      "id": "PBD-EPIC-KPDGMTK99ZHG",
+      "origin": "generated",
+      "parent": null,
+      "status": "reviewed",
+      "title": "Agendamento e recebimento de doações do bazar",
+      "type": "epic"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-APG8TBANF70T",
+        "PBD-CLM-KX0GXNVDM223"
+      ],
+      "content": {
+        "capability": "O doador agenda a entrega de doações escolhendo data e turno e pode remarcá-la dentro do prazo permitido.",
+        "kind": "feature",
+        "rules": [
+          "O agendamento exige data e turno",
+          "A remarcação só é permitida até 1 dia antes da data agendada"
+        ],
+        "value": "O bazar sabe quando cada doação chegará e o doador ajusta a data quando necessário."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: O doador agenda a entrega de doações escolhendo data e turno e pode remarcá-la dentro do prazo permitido.</p><p><strong>Valor</strong>: O bazar sabe quando cada doação chegará e o doador ajusta a data quando necessário.</p><p><strong>Regras relacionadas</strong></p><ul><li>O agendamento exige data e turno</li><li>A remarcação só é permitida até 1 dia antes da data agendada</li></ul>"
+      },
+      "id": "PBD-FEAT-J1QY1AB8ZW3X",
+      "origin": "generated",
+      "parent": "PBD-EPIC-KPDGMTK99ZHG",
+      "status": "reviewed",
+      "title": "Agendamento de entregas pelo doador",
+      "type": "feature"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-APG8TBANF70T"
+      ],
+      "content": {
+        "actor": "doador",
+        "benefit": "levar as doações ao bazar em um momento combinado",
+        "kind": "role_goal_benefit",
+        "want": "agendar a entrega das minhas doações escolhendo data e turno"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> doador, <strong>gostaria que</strong> agendar a entrega das minhas doações escolhendo data e turno, <strong>para</strong> levar as doações ao bazar em um momento combinado.</p>"
+      },
+      "id": "PBD-STORY-JWE7KP95BXMT",
+      "origin": "generated",
+      "parent": "PBD-FEAT-J1QY1AB8ZW3X",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Agendar entrega de doações com data e turno",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-KX0GXNVDM223"
+      ],
+      "content": {
+        "actor": "doador",
+        "benefit": "ajustar a entrega quando não puder comparecer na data original",
+        "kind": "role_goal_benefit",
+        "want": "remarcar uma entrega já agendada até 1 dia antes da data agendada"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> doador, <strong>gostaria que</strong> remarcar uma entrega já agendada até 1 dia antes da data agendada, <strong>para</strong> ajustar a entrega quando não puder comparecer na data original.</p>"
+      },
+      "id": "PBD-STORY-8SHMHG9C93W6",
+      "origin": "generated",
+      "parent": "PBD-FEAT-J1QY1AB8ZW3X",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Remarcar entrega agendada dentro do prazo",
+      "type": "story"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-QWB5P81SQZAB",
+        "PBD-CLM-Q50P5VMVC8AH",
+        "PBD-CLM-NAS5V0MW85JR",
+        "PBD-CLM-N1326R9F9N1P"
+      ],
+      "content": {
+        "capability": "O voluntário confirma o recebimento da entrega e, somente após essa confirmação, o sistema gera o recibo e o envia por e-mail ao doador.",
+        "kind": "feature",
+        "rules": [
+          "O recibo só é enviado após a confirmação do recebimento",
+          "O recibo é enviado ao doador por e-mail"
+        ],
+        "value": "O doador tem comprovante da doação apenas para entregas efetivamente recebidas."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: O voluntário confirma o recebimento da entrega e, somente após essa confirmação, o sistema gera o recibo e o envia por e-mail ao doador.</p><p><strong>Valor</strong>: O doador tem comprovante da doação apenas para entregas efetivamente recebidas.</p><p><strong>Regras relacionadas</strong></p><ul><li>O recibo só é enviado após a confirmação do recebimento</li><li>O recibo é enviado ao doador por e-mail</li></ul>"
+      },
+      "id": "PBD-FEAT-TBYQENAERR9C",
+      "origin": "generated",
+      "parent": "PBD-EPIC-KPDGMTK99ZHG",
+      "status": "reviewed",
+      "title": "Confirmação de recebimento e recibo ao doador",
+      "type": "feature"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-QWB5P81SQZAB"
+      ],
+      "content": {
+        "actor": "voluntário",
+        "benefit": "registrar que as doações chegaram ao bazar e liberar o recibo do doador",
+        "kind": "role_goal_benefit",
+        "want": "confirmar o recebimento de uma entrega de doações"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> voluntário, <strong>gostaria que</strong> confirmar o recebimento de uma entrega de doações, <strong>para</strong> registrar que as doações chegaram ao bazar e liberar o recibo do doador.</p>"
+      },
+      "id": "PBD-STORY-A0ESPZX7HE66",
+      "origin": "generated",
+      "parent": "PBD-FEAT-TBYQENAERR9C",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Confirmar o recebimento de uma entrega",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-Q50P5VMVC8AH",
+        "PBD-CLM-NAS5V0MW85JR",
+        "PBD-CLM-N1326R9F9N1P"
+      ],
+      "content": {
+        "actor": "doador",
+        "benefit": "ter um comprovante da doação entregue",
+        "kind": "role_goal_benefit",
+        "want": "receber por e-mail um recibo da minha doação depois que o voluntário confirmar o recebimento"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> doador, <strong>gostaria que</strong> receber por e-mail um recibo da minha doação depois que o voluntário confirmar o recebimento, <strong>para</strong> ter um comprovante da doação entregue.</p>"
+      },
+      "id": "PBD-STORY-NP7JY822V9HJ",
+      "origin": "generated",
+      "parent": "PBD-FEAT-TBYQENAERR9C",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Receber recibo por e-mail após a confirmação do recebimento",
+      "type": "story"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-APG8TBANF70T"
+      ],
+      "content": {
+        "activities": [
+          "Modelar o agendamento com doador, data e turno",
+          "Implementar a criação do agendamento a partir da escolha do doador",
+          "Recusar a criação quando data ou turno não forem informados"
+        ],
+        "kind": "task",
+        "outcome": "Agendamentos com data e turno ficam registrados para o doador.",
+        "summary": "Permitir que o doador crie um agendamento de entrega informando data e turno.",
+        "verification": "Verificar AC1 e AC2 de US1."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir que o doador crie um agendamento de entrega informando data e turno.</p><p><strong>Atividades</strong></p><ul><li>Modelar o agendamento com doador, data e turno</li><li>Implementar a criação do agendamento a partir da escolha do doador</li><li>Recusar a criação quando data ou turno não forem informados</li></ul><p><strong>Resultado esperado</strong>: Agendamentos com data e turno ficam registrados para o doador.</p><p><strong>Verificação</strong>: Verificar AC1 e AC2 de US1.</p>"
+      },
+      "id": "PBD-TASK-Y88W1XDCEPG7",
+      "origin": "generated",
+      "parent": "PBD-STORY-JWE7KP95BXMT",
+      "status": "reviewed",
+      "title": "Implementar o registro de agendamento com data e turno",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-KX0GXNVDM223"
+      ],
+      "content": {
+        "activities": [
+          "Implementar a alteração de data e turno de um agendamento existente",
+          "Bloquear a remarcação fora do prazo, mantendo a data original",
+          "Aplicar a interpretação de '1 dia antes' definida na resposta a Q3"
+        ],
+        "kind": "task",
+        "outcome": "Remarcações dentro do prazo atualizam o agendamento; fora do prazo são recusadas.",
+        "summary": "Permitir alterar a data de uma entrega agendada respeitando o prazo de 1 dia antes da data agendada.",
+        "verification": "Verificar AC3 e AC4 de US2."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir alterar a data de uma entrega agendada respeitando o prazo de 1 dia antes da data agendada.</p><p><strong>Atividades</strong></p><ul><li>Implementar a alteração de data e turno de um agendamento existente</li><li>Bloquear a remarcação fora do prazo, mantendo a data original</li><li>Aplicar a interpretação de &#x27;1 dia antes&#x27; definida na resposta a Q3</li></ul><p><strong>Resultado esperado</strong>: Remarcações dentro do prazo atualizam o agendamento; fora do prazo são recusadas.</p><p><strong>Verificação</strong>: Verificar AC3 e AC4 de US2.</p>"
+      },
+      "id": "PBD-TASK-6MHQ9KC8DDK2",
+      "origin": "generated",
+      "parent": "PBD-STORY-8SHMHG9C93W6",
+      "status": "reviewed",
+      "title": "Implementar a remarcação com verificação do prazo",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-QWB5P81SQZAB"
+      ],
+      "content": {
+        "activities": [
+          "Implementar a ação de confirmação de recebimento de uma entrega",
+          "Registrar a entrega como recebida após a confirmação"
+        ],
+        "kind": "task",
+        "outcome": "A entrega passa a constar como recebida e fica apta à emissão de recibo.",
+        "summary": "Permitir que o voluntário marque uma entrega como recebida.",
+        "verification": "Verificar AC5 de US3."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir que o voluntário marque uma entrega como recebida.</p><p><strong>Atividades</strong></p><ul><li>Implementar a ação de confirmação de recebimento de uma entrega</li><li>Registrar a entrega como recebida após a confirmação</li></ul><p><strong>Resultado esperado</strong>: A entrega passa a constar como recebida e fica apta à emissão de recibo.</p><p><strong>Verificação</strong>: Verificar AC5 de US3.</p>"
+      },
+      "id": "PBD-TASK-ZEWMB764ZR89",
+      "origin": "generated",
+      "parent": "PBD-STORY-A0ESPZX7HE66",
+      "status": "reviewed",
+      "title": "Implementar a confirmação de recebimento pelo voluntário",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-Q50P5VMVC8AH",
+        "PBD-CLM-NAS5V0MW85JR",
+        "PBD-CLM-N1326R9F9N1P"
+      ],
+      "content": {
+        "activities": [
+          "Gerar o recibo do doador a partir da entrega confirmada",
+          "Enviar o recibo por e-mail ao doador",
+          "Impedir geração e envio do recibo para entregas sem confirmação de recebimento"
+        ],
+        "kind": "task",
+        "outcome": "Toda entrega confirmada resulta em recibo enviado por e-mail ao doador; entregas não confirmadas não geram envio.",
+        "summary": "Gerar o recibo do doador e enviá-lo por e-mail apenas para entregas com recebimento confirmado.",
+        "verification": "Verificar AC6, AC7 e AC8 de US4."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Gerar o recibo do doador e enviá-lo por e-mail apenas para entregas com recebimento confirmado.</p><p><strong>Atividades</strong></p><ul><li>Gerar o recibo do doador a partir da entrega confirmada</li><li>Enviar o recibo por e-mail ao doador</li><li>Impedir geração e envio do recibo para entregas sem confirmação de recebimento</li></ul><p><strong>Resultado esperado</strong>: Toda entrega confirmada resulta em recibo enviado por e-mail ao doador; entregas não confirmadas não geram envio.</p><p><strong>Verificação</strong>: Verificar AC6, AC7 e AC8 de US4.</p>"
+      },
+      "id": "PBD-TASK-ZXR3XH81KZES",
+      "origin": "generated",
+      "parent": "PBD-STORY-NP7JY822V9HJ",
+      "status": "reviewed",
+      "title": "Gerar o recibo e enviá-lo por e-mail após a confirmação",
+      "type": "task"
+    }
+  ],
+  "kind": "pbd.backlog",
+  "language": "pt-BR",
+  "profile": "generic",
+  "questions": [
+    {
+      "affects": [
+        "PBD-CLM-T9D931WQWG8E",
+        "PBD-CLM-WVNHVXENWGMM",
+        "PBD-STORY-JWE7KP95BXMT"
+      ],
+      "alternatives": [
+        "Adotar o limite de 3 entregas por mês do PRD",
+        "Adotar o limite de até 5 entregas por mês do manual de operação"
+      ],
+      "blocking": true,
+      "id": "PBD-Q-Y5FPMBK9A4ZN",
+      "impact": "Sem a decisão não é possível definir a regra nem os critérios de bloqueio de agendamentos acima do limite em US1.",
+      "status": "open",
+      "text": "Qual é o limite mensal de entregas por doador: no máximo 3 (PRD) ou até 5 (manual de operação)? O 'mês' é o mês de calendário ou uma janela móvel?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-MCF6J8R08CAA",
+        "PBD-CLM-MZQX7RGX4EEA",
+        "PBD-CLM-PSW09KW7NQR6",
+        "PBD-STORY-A0ESPZX7HE66"
+      ],
+      "alternatives": [
+        "Recusar todos os itens eletrônicos (PRD)",
+        "Aceitar eletrônicos em funcionamento após teste do voluntário (manual de operação)"
+      ],
+      "blocking": true,
+      "id": "PBD-Q-GM0TKGQFH6SP",
+      "impact": "Define se existe recusa de eletrônicos ou um fluxo de teste pelo voluntário antes da confirmação do recebimento (US3).",
+      "status": "open",
+      "text": "Eletrônicos são aceitos como doação? O PRD diz que itens eletrônicos não são aceitos; o manual de operação aceita eletrônicos em funcionamento mediante teste do voluntário. Se aceitos, qual é o critério do teste e de 'em funcionamento'?"
+    },
+    {
+      "affects": [
+        "PBD-AC-MXNFG7EG6CDQ",
+        "PBD-CLM-KX0GXNVDM223",
+        "PBD-STORY-8SHMHG9C93W6"
+      ],
+      "alternatives": [
+        "24 horas antes do turno agendado",
+        "Até o fim do dia de calendário anterior à data agendada"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-HJS70SRFSAYG",
+      "impact": "Define o limite exato da remarcação em US2; a remarcação na própria data agendada é recusada em qualquer interpretação.",
+      "status": "open",
+      "text": "'Até 1 dia antes da data agendada' significa 24 horas antes do horário/turno agendado ou até o dia de calendário anterior?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-APG8TBANF70T",
+        "PBD-STORY-JWE7KP95BXMT"
+      ],
+      "alternatives": [],
+      "blocking": false,
+      "id": "PBD-Q-GZSNRYKN14PA",
+      "impact": "Necessário para apresentar as opções de turno no agendamento (US1).",
+      "status": "open",
+      "text": "Quais turnos estão disponíveis para o agendamento de entregas?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-NAS5V0MW85JR",
+        "PBD-STORY-NP7JY822V9HJ"
+      ],
+      "alternatives": [
+        "Reenviar automaticamente",
+        "Sinalizar ao voluntário para tratamento manual"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-KB06ZR8X5SJS",
+      "impact": "As fontes não descrevem tratamento de falha de envio; sem definição, o recibo pode não chegar ao doador.",
+      "status": "open",
+      "text": "O que deve ocorrer se o envio do recibo por e-mail falhar (por exemplo, doador sem e-mail cadastrado)?"
+    }
+  ],
+  "relations": [
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-74K8530D8QG7",
+      "reason": "A remarcação atua sobre uma entrega previamente agendada (C1, C11).",
+      "source": "PBD-STORY-JWE7KP95BXMT",
+      "status": "proposed",
+      "target": "PBD-STORY-8SHMHG9C93W6",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-N1TQGKRSYRTT",
+      "reason": "O recibo só é enviado após a confirmação do recebimento (C10).",
+      "source": "PBD-STORY-A0ESPZX7HE66",
+      "status": "proposed",
+      "target": "PBD-STORY-NP7JY822V9HJ",
+      "type": "predecessor"
+    }
+  ],
+  "run_id": "PBD-RUN-8HM1DG34HGD1",
+  "schema_version": "1.1.0",
+  "sources": [
+    {
+      "authority": "functional",
+      "digest": "sha256:0d9d736cf448fcb3cd5212e8adae5fac9256787d141c820d1164d0554c178cff",
+      "id": "PBD-SRC-78385WMH95P7",
+      "kind": "file",
+      "members": [
+        {
+          "bytes": 390,
+          "digest": "sha256:10960e27e5cd6b50b285bbdbd90b6cce6cc2e13f6102e947a4aaff7573c67b9e",
+          "media_type": "application/octet-stream",
+          "path": "prd.md",
+          "status": "read"
+        }
+      ],
+      "read_status": "complete",
+      "selector": "prd.md",
+      "version": "0d9d736cf448fcb3"
+    },
+    {
+      "authority": "functional",
+      "digest": "sha256:1f3cdd8b978041060c4c38a2097fb8fdbed8565b0aecff3fd164e6fbf9797305",
+      "id": "PBD-SRC-2CR6BC30M4NM",
+      "kind": "file",
+      "members": [
+        {
+          "bytes": 253,
+          "digest": "sha256:f3f43e7b7063ba5cb32b9e780929cafb4921f13b99c06f1577da85fa864e6b74",
+          "media_type": "application/octet-stream",
+          "path": "manual-operacao.md",
+          "status": "read"
+        }
+      ],
+      "read_status": "complete",
+      "selector": "manual-operacao.md",
+      "version": "1f3cdd8b97804106"
+    }
+  ],
+  "synthetic": true
+}

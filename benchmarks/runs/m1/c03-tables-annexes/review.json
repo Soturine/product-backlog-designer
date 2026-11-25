@@ -1,0 +1,847 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC3",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC4",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC5",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC6",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC7",
+      "notes": "'formato válido' is undefined by the source, so valid and invalid examples cannot be determined; outcome 'não é aceito' also lacks error behavior.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC8",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC9",
+      "notes": "Pending initial state is implied by the sources, flagged as proposed with Q1.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC10",
+      "notes": "Proposed message behavior is not in any source; correctly marked proposed, tied to Q3.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC11",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC12",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC13",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC14",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC15",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC16",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC17",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC18",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC19",
+      "notes": "Mandatory reason is inferred from RQ3, origin undefined (Q5).",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC20",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC21",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC22",
+      "notes": "Negative case inferred from RQ3 scope.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC23",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC24",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC25",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC26",
+      "notes": "Inference from 'pendentes' wording.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC27",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC28",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC29",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC30",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC31",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC32",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC33",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "distinct",
+      "items": [
+        "AC17",
+        "AC20"
+      ],
+      "rationale": "Permission on approve versus refuse; different actions."
+    },
+    {
+      "assessment": "distinct",
+      "items": [
+        "US3",
+        "US4"
+      ],
+      "rationale": "Different decision outcomes and side effects."
+    },
+    {
+      "assessment": "distinct",
+      "items": [
+        "T5",
+        "T6"
+      ],
+      "rationale": "Different actions; both use T4."
+    }
+  ],
+  "findings": [
+    {
+      "actual": "The annex says only 'formato válido'; AC7 has no valid/invalid examples.",
+      "affects": [
+        "AC7",
+        "US1",
+        "T1"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "A determinate rule for e-mail format validity.",
+      "gate": "G06",
+      "impact": "AC7 and T1 cannot be verified deterministically until Q2 is answered.",
+      "recommendation": "Resolve Q2 and add explicit examples to AC7.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "Source is silent; the design correctly refuses to invent it."
+    },
+    {
+      "actual": "Q8 is open; the pending-since date in T4 is inferred.",
+      "affects": [
+        "EN1",
+        "AC24",
+        "AC25",
+        "T8"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "Reference date and meaning of 'arquivado' for the 30-day rule.",
+      "gate": "G06",
+      "impact": "EN1 selection rule is only partly determined.",
+      "recommendation": "Answer Q8 before implementing EN1/T8.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "Source does not state when the clock starts or archive semantics."
+    },
+    {
+      "actual": "T4 serves US3, US4 and EN1 but is parented only to US3; US4 also describes reason supplied by the coordinator, unsupported by the sources.",
+      "affects": [
+        "T4",
+        "US4",
+        "EN1"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Shared state-model task attached where its dependency is visible.",
+      "gate": "G08",
+      "impact": "Planning may treat US4 and EN1 as independent of T4.",
+      "recommendation": "Make the T4 dependency explicit or turn it into an enabler; align US4 title with Q5.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Hidden coupling between stories and wording ahead of source."
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "US2",
+        "AC1",
+        "AC12"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "| RQ1 | O voluntário se cadastra informando nome, e-mail e telefone. | Alta |",
+      "rationale": "Split by data across US1 and US2; the telefone-optional tension with the annex is raised in Q9.",
+      "text": "Voluntario se cadastra informando nome, e-mail e telefone"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "US4",
+        "AC15",
+        "AC18"
+      ],
+      "disposition": "COVERED",
+      "key": "O2",
+      "locator": {
+        "line_start": 8,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C2",
+        "C3"
+      ],
+      "quote": "| RQ2 | O coordenador aprova ou recusa cadastros pendentes. | Alta |",
+      "rationale": "Approve and refuse are separate stories with observable state outcomes.",
+      "text": "Coordenador aprova ou recusa cadastros pendentes"
+    },
+    {
+      "covered_by": [
+        "US5",
+        "AC21",
+        "AC22"
+      ],
+      "disposition": "COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 9,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "| RQ3 | Voluntário recusado recebe e-mail com o motivo da recusa. | Média |",
+      "rationale": "Email with reason covered; origin of the reason is an open question (Q5), not invented.",
+      "text": "Voluntario recusado recebe e-mail com o motivo da recusa"
+    },
+    {
+      "covered_by": [
+        "US7",
+        "US6",
+        "AC29",
+        "AC30",
+        "AC27"
+      ],
+      "disposition": "COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 10,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C5",
+        "C6"
+      ],
+      "quote": "| RQ4 | O voluntário escolhe áreas de interesse entre as áreas cadastradas pelo coordenador. | Média |",
+      "rationale": "Choice restricted to registered areas; the implied coordinator registration is a separate, justified story.",
+      "text": "Voluntario escolhe areas de interesse entre as areas cadastradas pelo coordenador"
+    },
+    {
+      "covered_by": [
+        "US8",
+        "AC31"
+      ],
+      "disposition": "COVERED",
+      "key": "O5",
+      "locator": {
+        "line_start": 11,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C7"
+      ],
+      "quote": "| RQ5 | O coordenador exporta a lista de voluntários aprovados em CSV. | Baixa |",
+      "rationale": "Export of approved only, with positive and exclusion outcomes; layout open in Q7.",
+      "text": "Coordenador exporta lista de voluntarios aprovados em CSV"
+    },
+    {
+      "covered_by": [
+        "AC2",
+        "AC3",
+        "AC4",
+        "AC5"
+      ],
+      "disposition": "COVERED",
+      "key": "O6",
+      "locator": {
+        "line_start": 3,
+        "member": "validacoes.docx",
+        "source_id": "PBD-SRC-ZVVXZSFK4GYF"
+      },
+      "matched_claims": [
+        "C8",
+        "C9"
+      ],
+      "quote": "| Nome | Obrigatório; entre 3 e 80 caracteres. |",
+      "rationale": "Missing, 2, 3, 80 and 81 characters all exercised.",
+      "text": "Nome obrigatorio, entre 3 e 80 caracteres"
+    },
+    {
+      "covered_by": [
+        "AC6",
+        "AC7"
+      ],
+      "disposition": "PARTIALLY_COVERED",
+      "key": "O7",
+      "locator": {
+        "line_start": 4,
+        "member": "validacoes.docx",
+        "source_id": "PBD-SRC-ZVVXZSFK4GYF"
+      },
+      "matched_claims": [
+        "C10",
+        "C11"
+      ],
+      "quote": "| E-mail | Obrigatório; formato válido; não pode repetir um e-mail já cadastrado. |",
+      "rationale": "Required is covered; 'formato valido' is undefined by the source, so AC7 has no determinate examples (Q2 raised).",
+      "text": "E-mail obrigatorio e em formato valido"
+    },
+    {
+      "covered_by": [
+        "AC8"
+      ],
+      "disposition": "COVERED",
+      "key": "O8",
+      "locator": {
+        "line_start": 4,
+        "member": "validacoes.docx",
+        "source_id": "PBD-SRC-ZVVXZSFK4GYF"
+      },
+      "matched_claims": [
+        "C12"
+      ],
+      "quote": "não pode repetir um e-mail já cadastrado",
+      "rationale": "Duplicate rejected with existing record unchanged; comparison scope in Q4.",
+      "text": "E-mail nao pode repetir um e-mail ja cadastrado"
+    },
+    {
+      "covered_by": [
+        "AC11",
+        "AC12",
+        "AC13",
+        "AC14"
+      ],
+      "disposition": "COVERED",
+      "key": "O9",
+      "locator": {
+        "line_start": 5,
+        "member": "validacoes.docx",
+        "source_id": "PBD-SRC-ZVVXZSFK4GYF"
+      },
+      "matched_claims": [
+        "C13",
+        "C14",
+        "C15"
+      ],
+      "quote": "| Telefone | Opcional; somente dígitos; 10 ou 11 dígitos quando informado. |",
+      "rationale": "Absent, valid 10/11, non-digit and 9/12 outcomes covered.",
+      "text": "Telefone opcional, somente digitos, 10 ou 11 digitos quando informado"
+    },
+    {
+      "covered_by": [
+        "EN1",
+        "AC24",
+        "AC25",
+        "AC26"
+      ],
+      "disposition": "PARTIALLY_COVERED",
+      "key": "O10",
+      "locator": {
+        "line_start": 6,
+        "member": "validacoes.docx",
+        "source_id": "PBD-SRC-ZVVXZSFK4GYF"
+      },
+      "matched_claims": [
+        "C16"
+      ],
+      "quote": "Cadastros pendentes há mais de 30 dias são arquivados automaticamente.",
+      "rationale": "Rule and 30-day boundary covered; reference date and meaning of 'arquivado' are undefined by the source (Q8).",
+      "text": "Cadastros pendentes ha mais de 30 dias sao arquivados automaticamente"
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "notes": "Groups moderation plus automatic archiving; coherent around the pending queue.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F4",
+      "notes": "Candidate sizing signal: the feature has a single child story (US8) that restates it. Acceptable given RQ5 is one small requirement.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "No team data; email format undefined (Q2).",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Entry point of the flow; others depend on it, not the reverse.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Messages and email-format left open.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Eight source-backed criteria plus two proposals.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC7 lacks determinate examples until Q2 is answered.",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "Source-backed outcome for the coordinator and volunteer.",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "Name and e-mail rules in one slice; AC9 and AC10 are proposals marked as such.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "No team data.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Only shares the submission with US1.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Rules from annex only.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Single field.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Boundaries 9/10/11/12 explicit.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Optional secondary contact.",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "Priority Alta inherited from RQ1; the telefone story is arguably lower value but source-supported.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "No team data; state machine open (Q1).",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Needs pending records from US1 and the state model (T4) parented here but shared with US4 and EN1.",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "Interface not prescribed.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "One decision.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "State change observable.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Populates the approved base.",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "AC16 and AC17 are justified proposals.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Reason origin unresolved.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depends on pending state from US1 and shared T4.",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "Reason origin left open.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "One decision.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC18 observable.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Blocks refused registrations.",
+          "rating": "supported"
+        }
+      },
+      "key": "US4",
+      "notes": "Title says 'informando o motivo' but no source says the coordinator supplies the reason; AC19 is proposed and Q5 open. Candidate concern, not a confirmed defect.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "No mail integration data.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Sequenced after US4 (recorded relation).",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "Email text not prescribed.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "One notification.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Email content observable.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Volunteer learns why.",
+          "rating": "supported"
+        }
+      },
+      "key": "US5",
+      "notes": "AC23 failure handling is a justified proposal.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "EN1",
+      "notes": "Legitimate enabler without persona; criteria use only the 'mais de 30 dias' rule and its boundary.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Scope depends on Q6.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "No upstream dependency.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Edit/remove left to Q6.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Add-only slice.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC27 observable.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Enables RQ4.",
+          "rating": "supported"
+        }
+      },
+      "key": "US6",
+      "notes": "Implied by 'áreas cadastradas pelo coordenador'; priority marked proposed.",
+      "source_support": "proposal_justified",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "No team data.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Needs US6 areas.",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "Timing and cardinality open (Q6).",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "One choice action.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Only registered areas stored.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Coordinator learns interests.",
+          "rating": "supported"
+        }
+      },
+      "key": "US7",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Columns undefined.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Needs approved records but is independently demonstrable.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Layout open (Q7).",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "One export.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC31 checks inclusion and exclusion.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Use of base outside system.",
+          "rating": "supported"
+        }
+      },
+      "key": "US8",
+      "notes": "AC32 and AC33 proposed.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "T1",
+      "notes": "Depends on Q2 for the format rule.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "notes": "Concurrency safeguard beyond the source, justified by the uniqueness rule.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "T3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T4",
+      "notes": "Shared state-model task serves US3, US4 and EN1 but sits under US3 only; candidate coupling. Pending-since date is an inference.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "T5",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T6",
+      "notes": "Reason capture depends on Q5.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T7",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T8",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T9",
+      "notes": "",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "T10",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T11",
+      "notes": "Columns depend on Q7.",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "reviewer-c03",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-78385WMH95P7"
+    },
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-ZVVXZSFK4GYF"
+    }
+  ]
+}

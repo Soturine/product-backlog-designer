@@ -1,0 +1,488 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC3",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC4",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC5",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC6",
+      "notes": "Does not state what happens to the second concurrent request (rejected, waitlist offer); outcome incomplete though proposed.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC7",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC8",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC9",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC10",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC11",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC12",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC13",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "distinct",
+      "items": [
+        "US1",
+        "US2"
+      ],
+      "rationale": "Direct registration vs waitlist entry"
+    },
+    {
+      "assessment": "distinct",
+      "items": [
+        "T1",
+        "T2"
+      ],
+      "rationale": "Implementation vs removal of obsolete approval"
+    }
+  ],
+  "findings": [
+    {
+      "actual": "AC6 says only one is confirmed",
+      "affects": [
+        "AC6"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Criterion for concurrent registration states outcome of the losing request",
+      "gate": "G06",
+      "impact": "Ambiguous test expectation",
+      "recommendation": "State that the second request is rejected or offered the waitlist, or raise a question",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Second participant outcome unspecified"
+    },
+    {
+      "actual": "T3 is test planning",
+      "affects": [
+        "T3"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Tasks represent development work",
+      "gate": "G04",
+      "impact": "Minor backlog noise",
+      "recommendation": "Remove or move to test design stage",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Overlaps with Test Case design"
+    },
+    {
+      "actual": "Q4 open; US3 relies on cancellation",
+      "affects": [
+        "US3"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Cancellation capability resolved before US3 is ready",
+      "gate": "G09",
+      "impact": "US3 may be blocked",
+      "recommendation": "Resolve Q4 before refinement",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "Trigger may not exist"
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "AC5"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 3,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "O participante se inscreve em um encontro publicado.",
+      "rationale": "US1 and AC1 cover registration; AC5 is a justified proposal for unpublished meetings.",
+      "text": "Participante se inscreve em encontro publicado"
+    },
+    {
+      "covered_by": [
+        "US1",
+        "AC2",
+        "E1"
+      ],
+      "disposition": "SUPERSEDED",
+      "key": "O2",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "Inscrições em encontros exigem aprovação do moderador.",
+      "rationale": "Superseded by approved ADR-002; correctly not generated as a requirement and listed out of scope in E1.",
+      "text": "Inscrições exigem aprovação do moderador (PRD)"
+    },
+    {
+      "covered_by": [
+        "US1",
+        "AC3",
+        "AC4",
+        "AC6"
+      ],
+      "disposition": "COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "Cada encontro aceita até 20 participantes.",
+      "rationale": "Boundary 19/20 and full-meeting criteria; ADR-003 proposal does not change it.",
+      "text": "Limite de 20 participantes por encontro"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC7",
+        "AC8",
+        "AC9",
+        "T4"
+      ],
+      "disposition": "COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "Quando o encontro está lotado, o participante pode entrar na lista de espera.",
+      "rationale": "US2 with AC7 for the full-meeting path.",
+      "text": "Lista de espera quando lotado"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC10",
+        "AC11",
+        "AC13",
+        "T5"
+      ],
+      "disposition": "COVERED",
+      "key": "O5",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C5"
+      ],
+      "quote": "Se um inscrito cancelar, a primeira pessoa da lista de espera é inscrita",
+      "rationale": "US3/AC10; no moderator approval via ADR-002 in AC11.",
+      "text": "Cancelamento promove primeira pessoa da lista"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC12",
+        "T6"
+      ],
+      "disposition": "COVERED",
+      "key": "O6",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C6"
+      ],
+      "quote": "e avisada.",
+      "rationale": "AC12 covers notice; channel/deadline not in sources, asked in Q1.",
+      "text": "Primeira pessoa da lista é avisada"
+    },
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "AC3",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O7",
+      "locator": {
+        "line_start": 5,
+        "member": "adr-002-confirmacao-automatica.md",
+        "source_id": "PBD-SRC-3Q116GNGMAKT"
+      },
+      "matched_claims": [
+        "C7"
+      ],
+      "quote": "inscrições passam a ser confirmadas automaticamente enquanto houver vagas",
+      "rationale": "Approved decision implemented in US1.",
+      "text": "Inscrições confirmadas automaticamente enquanto houver vagas (aprovada)"
+    },
+    {
+      "covered_by": [
+        "US1",
+        "AC2",
+        "AC11",
+        "T2"
+      ],
+      "disposition": "COVERED",
+      "key": "O8",
+      "locator": {
+        "line_start": 5,
+        "member": "adr-002-confirmacao-automatica.md",
+        "source_id": "PBD-SRC-3Q116GNGMAKT"
+      },
+      "matched_claims": [
+        "C8"
+      ],
+      "quote": "a aprovação do moderador deixa de existir",
+      "rationale": "AC2 and AC11 assert no pending/approval step; T2 removes it.",
+      "text": "Aprovação do moderador deixa de existir (aprovada)"
+    },
+    {
+      "covered_by": [
+        "E1"
+      ],
+      "disposition": "DEFERRED",
+      "key": "O9",
+      "locator": {
+        "line_start": 4,
+        "member": "adr-003-limite.md",
+        "source_id": "PBD-SRC-3Q116GNGMAKT"
+      },
+      "matched_claims": [],
+      "quote": "Proposta: aumentar o limite de participantes por encontro para 30.",
+      "rationale": "Status is proposal under discussion; correctly not made effective; limit 20 stays, Q2 records the open decision.",
+      "text": "ADR-003 propõe limite 30 (não aprovada)"
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "Outcome and scope boundaries clear; correctly excludes moderator approval (superseded) and limit 30 (unapproved).",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "Coherent capability grouping rules from PRD and ADR-002.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "first story, no inbound dependency",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "one slice with publish, limit and auto-confirm; coherent",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "Approved ADR-002 reflected; limit 20 retained.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "T1",
+      "notes": "Implementation work; verification references CA-01/03/04/06 correctly.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "notes": "Legitimate removal work from ADR-002.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T3",
+      "notes": "Test planning is a QA activity overlapping with Test Case design; not source-required, low value as a delivery task. Optional improvement.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "F2",
+      "notes": "Waitlist and promotion capability.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "depends on US1 for capacity control (declared relation)",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "small",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "Waitlist entry covered; ordering depends on open Q3.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "T4",
+      "notes": "Verification text generic ('Critérios de US2 atendidos') but acceptable.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "cancellation existence and notice channel unknown (Q1,Q4)",
+          "rating": "concern"
+        },
+        "independent": {
+          "note": "depends on US2 and on cancellation",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "promotion and notice form one outcome in the source",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "Depends on cancellation capability that may not exist (Q4) and on US2; notice channel open (Q1). Story is valid but carries two combined outcomes (promotion and notice) that are coupled by the source.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "key": "T5",
+      "notes": "Covers promotion, empty list and no moderator approval.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T6",
+      "notes": "Notice work; correctly dependent on Q1.",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "reviewer-c06",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-78385WMH95P7"
+    },
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-3Q116GNGMAKT"
+    }
+  ]
+}

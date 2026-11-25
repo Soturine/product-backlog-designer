@@ -1,0 +1,2417 @@
+{
+  "claims": [
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-RGKD08QQE53G",
+          "PBD-STORY-Y4T11FQKAVFD",
+          "PBD-AC-GRQZ1XNWQX0G",
+          "PBD-AC-VC5XCTWEM17K"
+        ],
+        "rationale": "Autocadastro dividido por dado: nome e e-mail (US1) e telefone opcional (US2), conforme o Anexo A ao qual o PRD remete as validações; Q9 confirma a opcionalidade.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 7,
+            "line_start": 7,
+            "member": "prd.md",
+            "quote_digest": "sha256:e2cc9df1fd272fe347e5de1299b01e96e0c28865548ca90b90966a8d0726129c",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "fb94bdccbba448f0",
+            "table": "requisitos"
+          },
+          "summary": "O voluntário se cadastra informando nome, e-mail e telefone.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-1ZQ353FQM8Z2",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O voluntário se cadastra informando nome, e-mail e telefone (RQ1, prioridade Alta).",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-FTEKE3ME7QA0",
+          "PBD-AC-DK401C9QA7VX",
+          "PBD-TASK-F3GDA97SEJBW",
+          "PBD-TASK-27KHKVNQVPM6"
+        ],
+        "rationale": "Aprovação de cadastro pendente pelo coordenador.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 8,
+            "line_start": 8,
+            "member": "prd.md",
+            "quote_digest": "sha256:6453c36dcd1d4e58041314b13a534a3dc3fda7aad63c7cdaa1db6c2802a0d5e5",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "fb94bdccbba448f0",
+            "table": "requisitos"
+          },
+          "summary": "O coordenador aprova ou recusa cadastros pendentes.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-7Y7WC00Y62VA",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O coordenador aprova cadastros pendentes (RQ2, prioridade Alta).",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-M69ZV8T1WK0R",
+          "PBD-AC-092TRFCGK99Y",
+          "PBD-TASK-F3GDA97SEJBW",
+          "PBD-TASK-QTN6H7KG5XJQ"
+        ],
+        "rationale": "Recusa de cadastro pendente pelo coordenador; origem do motivo em Q5.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 8,
+            "line_start": 8,
+            "member": "prd.md",
+            "quote_digest": "sha256:6453c36dcd1d4e58041314b13a534a3dc3fda7aad63c7cdaa1db6c2802a0d5e5",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "fb94bdccbba448f0",
+            "table": "requisitos"
+          },
+          "summary": "O coordenador aprova ou recusa cadastros pendentes.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-6D8X2T62HD7J",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O coordenador recusa cadastros pendentes (RQ2, prioridade Alta).",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-3AK8NDPRJPG8",
+          "PBD-AC-G0R8FPT3J9YF",
+          "PBD-AC-XD1JG3CM1G1Q",
+          "PBD-TASK-NEWF26MNHM7V"
+        ],
+        "rationale": "E-mail ao voluntário recusado com o motivo; formato do motivo em Q5.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 9,
+            "line_start": 9,
+            "member": "prd.md",
+            "quote_digest": "sha256:d7ed16e068f144eec93b2aafc291d271d81434b063ff889930fa765739e30467",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "fb94bdccbba448f0",
+            "table": "requisitos"
+          },
+          "summary": "Voluntário recusado recebe e-mail com o motivo da recusa.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-5YQXXWNXDSKH",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O voluntário recusado recebe e-mail com o motivo da recusa (RQ3, prioridade Média).",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-2CQ27H90GV7M",
+          "PBD-AC-CW536S42CWRK",
+          "PBD-AC-400X5C25PESW",
+          "PBD-TASK-ENAFRRQSMP3Z"
+        ],
+        "rationale": "Escolha restrita às áreas cadastradas pelo coordenador; momento, obrigatoriedade e quantidade em Q6.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 10,
+            "line_start": 10,
+            "member": "prd.md",
+            "quote_digest": "sha256:edc705756dfc12b5d8208a8a29b6b28b0ddc9f226f05a582019d7b802f9ee207",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "fb94bdccbba448f0",
+            "table": "requisitos"
+          },
+          "summary": "O voluntário escolhe áreas de interesse entre as áreas cadastradas pelo coordenador.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-54YNQ6ZDKZW2",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O voluntário escolhe áreas de interesse entre as áreas cadastradas pelo coordenador (RQ4, prioridade Média).",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-PZ9CQTZP381G",
+          "PBD-AC-31DK3Q7X106C",
+          "PBD-TASK-WK4EHQ5FCKED"
+        ],
+        "rationale": "Obrigação implícita em RQ4 coberta pela inclusão de áreas; edição e remoção dependem de Q6.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 10,
+            "line_start": 10,
+            "member": "prd.md",
+            "quote_digest": "sha256:4ac828a932fd64036d0c49063381eef7d750451dc6a521295851cdf01cf98b61",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "fb94bdccbba448f0",
+            "table": "requisitos"
+          },
+          "summary": "áreas cadastradas pelo coordenador",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-WEH37M2V403E",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O coordenador cadastra as áreas de interesse disponíveis para escolha (implícito em RQ4: 'áreas cadastradas pelo coordenador').",
+      "uncertainty": {
+        "level": "ambiguous"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-T12KT9HBPJFN",
+          "PBD-AC-44GN2C2D0SN0",
+          "PBD-TASK-6CXE7SGP9J3C"
+        ],
+        "rationale": "Exportação CSV restrita a aprovados; layout do arquivo em Q7.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 11,
+            "line_start": 11,
+            "member": "prd.md",
+            "quote_digest": "sha256:c19f9d57723c4eeb47253e9b1eb277fcc8e00facba8acca1a21b74caaf8ace7f",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "fb94bdccbba448f0",
+            "table": "requisitos"
+          },
+          "summary": "O coordenador exporta a lista de voluntários aprovados em CSV.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-MHB7RSRBWB19",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O coordenador exporta a lista de voluntários aprovados em CSV (RQ5, prioridade Baixa).",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "data",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-RGKD08QQE53G",
+          "PBD-AC-GRQZ1XNWQX0G",
+          "PBD-AC-BNZFA0WT1SN9",
+          "PBD-TASK-BFWWW29Y44BN"
+        ],
+        "rationale": "Nome obrigatório com caso positivo e negativo.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 3,
+            "line_start": 3,
+            "member": "validacoes.docx",
+            "quote_digest": "sha256:f01477b37612b6e8c7060df92907bbf16dea214c2d5e965fba48580ec0268cb6",
+            "source_id": "PBD-SRC-ZVVXZSFK4GYF",
+            "source_version": "d5748d737f0868e8",
+            "table": "Anexo A"
+          },
+          "summary": "Obrigatório",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-5VGQJ2W42M2K",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O nome é obrigatório no cadastro (Anexo A).",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "data",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-RGKD08QQE53G",
+          "PBD-AC-NMA1BM0X03VK",
+          "PBD-AC-11C7E95GYBY7",
+          "PBD-AC-ARHTHQ0AJM8H",
+          "PBD-TASK-BFWWW29Y44BN"
+        ],
+        "rationale": "Fronteiras 2, 3, 80 e 81 caracteres.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 3,
+            "line_start": 3,
+            "member": "validacoes.docx",
+            "quote_digest": "sha256:2eac5b48e86214587fc0c44fe418696e36281fa722dcd70582faf433946dc173",
+            "source_id": "PBD-SRC-ZVVXZSFK4GYF",
+            "source_version": "d5748d737f0868e8",
+            "table": "Anexo A"
+          },
+          "summary": "entre 3 e 80 caracteres",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-Q44SDQPV9W69",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O nome deve ter entre 3 e 80 caracteres (Anexo A).",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "data",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-RGKD08QQE53G",
+          "PBD-AC-GRQZ1XNWQX0G",
+          "PBD-AC-3T7JEHZ80JZV",
+          "PBD-TASK-BFWWW29Y44BN"
+        ],
+        "rationale": "E-mail obrigatório com caso positivo e negativo.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "validacoes.docx",
+            "quote_digest": "sha256:f01477b37612b6e8c7060df92907bbf16dea214c2d5e965fba48580ec0268cb6",
+            "source_id": "PBD-SRC-ZVVXZSFK4GYF",
+            "source_version": "d5748d737f0868e8",
+            "table": "Anexo A"
+          },
+          "summary": "Obrigatório",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-YKD7P8GFY6JP",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O e-mail é obrigatório no cadastro (Anexo A).",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "data",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-RGKD08QQE53G",
+          "PBD-AC-E79HTZCQBE3W",
+          "PBD-TASK-BFWWW29Y44BN"
+        ],
+        "rationale": "A regra está coberta, mas 'formato válido' não é definido pela fonte (Q2), então os exemplos não são determinados.",
+        "status": "PARTIALLY_COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "validacoes.docx",
+            "quote_digest": "sha256:229375803650c903955c364a020cc253641989eb3d7273cda376bddf703fd0b3",
+            "source_id": "PBD-SRC-ZVVXZSFK4GYF",
+            "source_version": "d5748d737f0868e8",
+            "table": "Anexo A"
+          },
+          "summary": "formato válido",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-9PVM2Q2ZFXKB",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O e-mail deve ter formato válido (Anexo A; o formato não é definido).",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "data",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-RGKD08QQE53G",
+          "PBD-AC-FWWBYPNNH8CS",
+          "PBD-TASK-0CE4HGK74CFW"
+        ],
+        "rationale": "Rejeição de e-mail já cadastrado, inclusive com concorrência em T2; escopo da comparação em Q4.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "validacoes.docx",
+            "quote_digest": "sha256:cfa4582ceead3ec0149e370a0d1bf7b05e448e2c9528c29d3ef4e297d5b96c7b",
+            "source_id": "PBD-SRC-ZVVXZSFK4GYF",
+            "source_version": "d5748d737f0868e8",
+            "table": "Anexo A"
+          },
+          "summary": "não pode repetir um e-mail já cadastrado",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-PCN06YMQD796",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O e-mail não pode repetir um e-mail já cadastrado (Anexo A).",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "data",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-Y4T11FQKAVFD",
+          "PBD-AC-9RBN2YE22E3Y",
+          "PBD-TASK-CSDT6ZBB4K5N"
+        ],
+        "rationale": "Cadastro aceito sem telefone.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "validacoes.docx",
+            "quote_digest": "sha256:d15fd3573488a71455d98abd23164bfaeda22f51bda03b76a18587eacb51b71f",
+            "source_id": "PBD-SRC-ZVVXZSFK4GYF",
+            "source_version": "d5748d737f0868e8",
+            "table": "Anexo A"
+          },
+          "summary": "Opcional",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-EQP06H1RD4JS",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O telefone é opcional no cadastro (Anexo A).",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "data",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-Y4T11FQKAVFD",
+          "PBD-AC-VC5XCTWEM17K",
+          "PBD-AC-D49V9J3RTF4Q",
+          "PBD-TASK-CSDT6ZBB4K5N"
+        ],
+        "rationale": "Somente dígitos, com caso positivo e negativo.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "validacoes.docx",
+            "quote_digest": "sha256:e4c25a2035fd3b549a87e0c2f388dc8f7e82242344991f18ab83e77596ab2591",
+            "source_id": "PBD-SRC-ZVVXZSFK4GYF",
+            "source_version": "d5748d737f0868e8",
+            "table": "Anexo A"
+          },
+          "summary": "somente dígitos",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-3YJGXX3R7453",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O telefone deve conter somente dígitos (Anexo A).",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "data",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-Y4T11FQKAVFD",
+          "PBD-AC-VC5XCTWEM17K",
+          "PBD-AC-EXVKQZABCGKS",
+          "PBD-TASK-CSDT6ZBB4K5N"
+        ],
+        "rationale": "Fronteiras 9, 10, 11 e 12 dígitos.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "validacoes.docx",
+            "quote_digest": "sha256:3231416f7d6887d330f00d880d996dfc16e04d9966064a7c26e8ffeffe7587ac",
+            "source_id": "PBD-SRC-ZVVXZSFK4GYF",
+            "source_version": "d5748d737f0868e8",
+            "table": "Anexo A"
+          },
+          "summary": "10 ou 11 dígitos quando informado",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-Q2KD0S21WBWW",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O telefone, quando informado, deve ter 10 ou 11 dígitos (Anexo A).",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-ENAB-KXSVEXA2HXK9",
+          "PBD-AC-7D8BKKRDRD08",
+          "PBD-AC-EZHWPMMQDVEZ",
+          "PBD-AC-QQMBM1DVXYYG",
+          "PBD-TASK-C0PEZ406TJGA"
+        ],
+        "rationale": "Regra de mais de 30 dias coberta com fronteira; a data de referência e o significado de 'arquivado' não são definidos (Q8).",
+        "status": "PARTIALLY_COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 6,
+            "line_start": 6,
+            "member": "validacoes.docx",
+            "quote_digest": "sha256:5afff637f24424be997076d22a50096c52d21d45ff43710205981b0da90c3b3e",
+            "source_id": "PBD-SRC-ZVVXZSFK4GYF",
+            "source_version": "d5748d737f0868e8"
+          },
+          "summary": "Cadastros pendentes há mais de 30 dias são arquivados automaticamente.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-GAN8KJWQ8BMM",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Cadastros pendentes há mais de 30 dias são arquivados automaticamente (Anexo A).",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    }
+  ],
+  "criteria": [
+    {
+      "claim_refs": [
+        "PBD-CLM-1ZQ353FQM8Z2",
+        "PBD-CLM-5VGQJ2W42M2K",
+        "PBD-CLM-Q44SDQPV9W69",
+        "PBD-CLM-YKD7P8GFY6JP",
+        "PBD-CLM-9PVM2Q2ZFXKB",
+        "PBD-CLM-PCN06YMQD796"
+      ],
+      "condition": "o voluntário informa nome com 3 a 80 caracteres e e-mail em formato válido ainda não cadastrado",
+      "expected_outcomes": [
+        "o cadastro é aceito e registrado com os dados informados"
+      ],
+      "id": "PBD-AC-GRQZ1XNWQX0G",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-RGKD08QQE53G",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "ele envia o cadastro",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-5VGQJ2W42M2K"
+      ],
+      "condition": "o nome não é informado",
+      "expected_outcomes": [
+        "o cadastro não é aceito",
+        "nenhum cadastro é registrado"
+      ],
+      "id": "PBD-AC-BNZFA0WT1SN9",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-RGKD08QQE53G",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o voluntário envia o cadastro",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-Q44SDQPV9W69"
+      ],
+      "condition": "o nome informado tem 2 caracteres",
+      "expected_outcomes": [
+        "o cadastro não é aceito por nome com menos de 3 caracteres"
+      ],
+      "id": "PBD-AC-NMA1BM0X03VK",
+      "order": 2,
+      "origin": "generated",
+      "parent": "PBD-STORY-RGKD08QQE53G",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o voluntário envia o cadastro",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-Q44SDQPV9W69"
+      ],
+      "condition": "o nome informado tem 81 caracteres",
+      "expected_outcomes": [
+        "o cadastro não é aceito por nome com mais de 80 caracteres"
+      ],
+      "id": "PBD-AC-11C7E95GYBY7",
+      "order": 3,
+      "origin": "generated",
+      "parent": "PBD-STORY-RGKD08QQE53G",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o voluntário envia o cadastro",
+      "visible_id": "CA-04"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-Q44SDQPV9W69"
+      ],
+      "condition": "o nome informado tem exatamente 3 ou exatamente 80 caracteres e os demais dados são válidos",
+      "expected_outcomes": [
+        "o cadastro é aceito (os limites 3 e 80 são inclusivos)"
+      ],
+      "id": "PBD-AC-ARHTHQ0AJM8H",
+      "order": 4,
+      "origin": "generated",
+      "parent": "PBD-STORY-RGKD08QQE53G",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o voluntário envia o cadastro",
+      "visible_id": "CA-05"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-YKD7P8GFY6JP"
+      ],
+      "condition": "o e-mail não é informado",
+      "expected_outcomes": [
+        "o cadastro não é aceito",
+        "nenhum cadastro é registrado"
+      ],
+      "id": "PBD-AC-3T7JEHZ80JZV",
+      "order": 5,
+      "origin": "generated",
+      "parent": "PBD-STORY-RGKD08QQE53G",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o voluntário envia o cadastro",
+      "visible_id": "CA-06"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-9PVM2Q2ZFXKB"
+      ],
+      "condition": "o e-mail informado não está em formato válido",
+      "expected_outcomes": [
+        "o cadastro não é aceito"
+      ],
+      "id": "PBD-AC-E79HTZCQBE3W",
+      "order": 6,
+      "origin": "generated",
+      "parent": "PBD-STORY-RGKD08QQE53G",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o voluntário envia o cadastro",
+      "visible_id": "CA-07"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-PCN06YMQD796"
+      ],
+      "condition": "já existe um cadastro com o mesmo e-mail informado",
+      "expected_outcomes": [
+        "o cadastro não é aceito",
+        "o cadastro existente permanece inalterado"
+      ],
+      "id": "PBD-AC-FWWBYPNNH8CS",
+      "order": 7,
+      "origin": "generated",
+      "parent": "PBD-STORY-RGKD08QQE53G",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o voluntário envia o cadastro",
+      "visible_id": "CA-08"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "o novo cadastro aparece entre os cadastros pendentes do coordenador"
+      ],
+      "id": "PBD-AC-3BMWRGMZ1PT1",
+      "order": 8,
+      "origin": "proposed",
+      "parent": "PBD-STORY-RGKD08QQE53G",
+      "rationale": "RQ2 e o Anexo A falam em 'cadastros pendentes', mas nenhuma fonte declara explicitamente que o cadastro nasce pendente; ver questão sobre estados do cadastro.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Um cadastro aceito fica na situação pendente, aguardando decisão do coordenador.",
+      "visible_id": "CA-09"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "o voluntário vê a indicação do campo e da regra violada"
+      ],
+      "id": "PBD-AC-VB4GC3DARHSV",
+      "order": 9,
+      "origin": "proposed",
+      "parent": "PBD-STORY-RGKD08QQE53G",
+      "rationale": "Lente de validação de entrada; as fontes não definem mensagens nem comportamento ao violar as regras.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Ao recusar o cadastro por violação de regra, o voluntário é informado de qual campo e regra não foram atendidos.",
+      "visible_id": "CA-10"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-EQP06H1RD4JS"
+      ],
+      "condition": "o voluntário não informa telefone e os demais dados são válidos",
+      "expected_outcomes": [
+        "o cadastro é aceito sem telefone"
+      ],
+      "id": "PBD-AC-9RBN2YE22E3Y",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-Y4T11FQKAVFD",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "ele envia o cadastro",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-1ZQ353FQM8Z2",
+        "PBD-CLM-3YJGXX3R7453",
+        "PBD-CLM-Q2KD0S21WBWW"
+      ],
+      "condition": "o telefone informado tem 10 dígitos ou tem 11 dígitos, somente numéricos",
+      "expected_outcomes": [
+        "o cadastro é aceito com o telefone informado"
+      ],
+      "id": "PBD-AC-VC5XCTWEM17K",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-Y4T11FQKAVFD",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o voluntário envia o cadastro",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-3YJGXX3R7453"
+      ],
+      "condition": "o telefone informado contém caractere que não é dígito (por exemplo, espaço, hífen ou parênteses)",
+      "expected_outcomes": [
+        "o cadastro não é aceito"
+      ],
+      "id": "PBD-AC-D49V9J3RTF4Q",
+      "order": 2,
+      "origin": "generated",
+      "parent": "PBD-STORY-Y4T11FQKAVFD",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o voluntário envia o cadastro",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-Q2KD0S21WBWW"
+      ],
+      "condition": "o telefone informado tem 9 dígitos ou tem 12 dígitos",
+      "expected_outcomes": [
+        "o cadastro não é aceito por quantidade de dígitos fora de 10 ou 11"
+      ],
+      "id": "PBD-AC-EXVKQZABCGKS",
+      "order": 3,
+      "origin": "generated",
+      "parent": "PBD-STORY-Y4T11FQKAVFD",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o voluntário envia o cadastro",
+      "visible_id": "CA-04"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-7Y7WC00Y62VA"
+      ],
+      "condition": "existe um cadastro pendente",
+      "expected_outcomes": [
+        "o cadastro passa à situação aprovado",
+        "o cadastro deixa de constar entre os pendentes"
+      ],
+      "id": "PBD-AC-DK401C9QA7VX",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-FTEKE3ME7QA0",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o coordenador o aprova",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "a situação do cadastro permanece inalterada"
+      ],
+      "id": "PBD-AC-ZAPM7JHTDVMA",
+      "order": 1,
+      "origin": "proposed",
+      "parent": "PBD-STORY-FTEKE3ME7QA0",
+      "rationale": "RQ2 restringe a decisão a cadastros pendentes, mas não diz o que ocorre com outras situações (lente de estado).",
+      "status": "proposed",
+      "style": "list",
+      "text": "Um cadastro que não está pendente (aprovado, recusado ou arquivado) não pode ser aprovado.",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "um voluntário não consegue aprovar cadastros"
+      ],
+      "id": "PBD-AC-P5JS3N5NNJ40",
+      "order": 2,
+      "origin": "proposed",
+      "parent": "PBD-STORY-FTEKE3ME7QA0",
+      "rationale": "Lente de permissão: a fonte atribui a ação ao coordenador, sem definir controle de acesso.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Somente o coordenador pode aprovar cadastros.",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-6D8X2T62HD7J"
+      ],
+      "condition": "existe um cadastro pendente",
+      "expected_outcomes": [
+        "o cadastro passa à situação recusado",
+        "o cadastro deixa de constar entre os pendentes",
+        "o voluntário não aparece entre os aprovados"
+      ],
+      "id": "PBD-AC-092TRFCGK99Y",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-M69ZV8T1WK0R",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o coordenador o recusa",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "sem motivo, a recusa não é concluída e o cadastro continua pendente"
+      ],
+      "id": "PBD-AC-WSGH5VV87W52",
+      "order": 1,
+      "origin": "proposed",
+      "parent": "PBD-STORY-M69ZV8T1WK0R",
+      "rationale": "RQ3 exige que o e-mail contenha o motivo, o que sugere motivo obrigatório; a origem do motivo não é definida (questão aberta).",
+      "status": "proposed",
+      "style": "list",
+      "text": "A recusa só é concluída com um motivo informado pelo coordenador.",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "um voluntário não consegue recusar cadastros"
+      ],
+      "id": "PBD-AC-N78JRBGT0Y3M",
+      "order": 2,
+      "origin": "proposed",
+      "parent": "PBD-STORY-M69ZV8T1WK0R",
+      "rationale": "Lente de permissão aplicada à recusa: a fonte atribui a decisão ao coordenador, sem definir controle de acesso.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Somente o coordenador pode recusar cadastros.",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-5YQXXWNXDSKH"
+      ],
+      "condition": "o coordenador recusou um cadastro informando um motivo",
+      "expected_outcomes": [
+        "o voluntário recebe, no e-mail cadastrado, uma mensagem informando a recusa",
+        "a mensagem contém o motivo registrado pelo coordenador"
+      ],
+      "id": "PBD-AC-G0R8FPT3J9YF",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-3AK8NDPRJPG8",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "a recusa é concluída",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-5YQXXWNXDSKH"
+      ],
+      "condition": "um cadastro é aprovado",
+      "expected_outcomes": [
+        "nenhum e-mail de recusa é enviado ao voluntário"
+      ],
+      "id": "PBD-AC-XD1JG3CM1G1Q",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-3AK8NDPRJPG8",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "a aprovação é concluída",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "a falha de envio é registrada",
+        "o cadastro continua recusado"
+      ],
+      "id": "PBD-AC-FZ324YJ3B8FV",
+      "order": 2,
+      "origin": "proposed",
+      "parent": "PBD-STORY-3AK8NDPRJPG8",
+      "rationale": "Lente de erro/recuperação de integração; as fontes não tratam falha no envio de e-mail.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Se o envio do e-mail de recusa falhar, a falha fica registrada e a recusa permanece válida.",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-GAN8KJWQ8BMM"
+      ],
+      "condition": "um cadastro está pendente há mais de 30 dias",
+      "expected_outcomes": [
+        "o cadastro passa à situação arquivado",
+        "o cadastro deixa de constar entre os pendentes"
+      ],
+      "id": "PBD-AC-7D8BKKRDRD08",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-ENAB-KXSVEXA2HXK9",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "a rotina de arquivamento é executada",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-GAN8KJWQ8BMM"
+      ],
+      "condition": "um cadastro está pendente há exatamente 30 dias",
+      "expected_outcomes": [
+        "o cadastro permanece pendente (a regra é 'mais de 30 dias')"
+      ],
+      "id": "PBD-AC-EZHWPMMQDVEZ",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-ENAB-KXSVEXA2HXK9",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "a rotina de arquivamento é executada",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-GAN8KJWQ8BMM"
+      ],
+      "condition": "um cadastro aprovado ou recusado tem mais de 30 dias",
+      "expected_outcomes": [
+        "a situação do cadastro não é alterada"
+      ],
+      "id": "PBD-AC-QQMBM1DVXYYG",
+      "order": 2,
+      "origin": "generated",
+      "parent": "PBD-ENAB-KXSVEXA2HXK9",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "a rotina de arquivamento é executada",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-WEH37M2V403E"
+      ],
+      "condition": "o coordenador informa uma nova área de interesse",
+      "expected_outcomes": [
+        "a área passa a constar na lista de áreas disponíveis para os voluntários"
+      ],
+      "id": "PBD-AC-31DK3Q7X106C",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-PZ9CQTZP381G",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "ele a cadastra",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "a segunda área com nome repetido não é cadastrada"
+      ],
+      "id": "PBD-AC-A0PEP2T5FBMP",
+      "order": 1,
+      "origin": "proposed",
+      "parent": "PBD-STORY-PZ9CQTZP381G",
+      "rationale": "Lente de integridade de dados; as fontes não falam em unicidade de áreas.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Não é possível cadastrar duas áreas de interesse com o mesmo nome.",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-54YNQ6ZDKZW2"
+      ],
+      "condition": "o coordenador cadastrou áreas de interesse",
+      "expected_outcomes": [
+        "somente as áreas cadastradas pelo coordenador são oferecidas",
+        "as áreas escolhidas ficam registradas no cadastro do voluntário"
+      ],
+      "id": "PBD-AC-CW536S42CWRK",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-2CQ27H90GV7M",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o voluntário escolhe áreas de interesse",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-54YNQ6ZDKZW2"
+      ],
+      "condition": "o voluntário indica uma área que não está cadastrada pelo coordenador",
+      "expected_outcomes": [
+        "a área não é registrada no cadastro do voluntário"
+      ],
+      "id": "PBD-AC-400X5C25PESW",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-2CQ27H90GV7M",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "ele envia a escolha",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-MHB7RSRBWB19"
+      ],
+      "condition": "existem cadastros nas situações aprovado, pendente, recusado e arquivado",
+      "expected_outcomes": [
+        "é gerado um arquivo em formato CSV",
+        "o arquivo contém todos os voluntários aprovados",
+        "o arquivo não contém voluntários pendentes, recusados ou arquivados"
+      ],
+      "id": "PBD-AC-44GN2C2D0SN0",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-T12KT9HBPJFN",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o coordenador exporta a lista de voluntários aprovados",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "o arquivo é gerado sem registros de voluntários"
+      ],
+      "id": "PBD-AC-0QYSZ9SDHKCR",
+      "order": 1,
+      "origin": "proposed",
+      "parent": "PBD-STORY-T12KT9HBPJFN",
+      "rationale": "Lente de fronteira (lista vazia); as fontes não tratam este caso.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Quando não há voluntários aprovados, a exportação gera um CSV sem linhas de voluntários.",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "um voluntário não consegue exportar a lista"
+      ],
+      "id": "PBD-AC-MGPQ13DYPTCT",
+      "order": 2,
+      "origin": "proposed",
+      "parent": "PBD-STORY-T12KT9HBPJFN",
+      "rationale": "Lente de privacidade: a lista contém dados pessoais e a fonte só atribui a exportação ao coordenador.",
+      "status": "proposed",
+      "style": "list",
+      "text": "A exportação da lista de aprovados é restrita ao coordenador.",
+      "visible_id": "CA-03"
+    }
+  ],
+  "decisions": [],
+  "findings": [
+    {
+      "actual": "The annex says only 'formato válido'; AC7 has no valid/invalid examples.",
+      "affects": [
+        "PBD-AC-E79HTZCQBE3W",
+        "PBD-STORY-RGKD08QQE53G",
+        "PBD-TASK-BFWWW29Y44BN"
+      ],
+      "classification": "confirmed_gap",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "A determinate rule for e-mail format validity.",
+      "gate": "G06",
+      "id": "PBD-FND-36DBF0S2GX5H",
+      "impact": "AC7 and T1 cannot be verified deterministically until Q2 is answered.",
+      "recommendation": "Resolve Q2 and add explicit examples to AC7.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "Source is silent; the design correctly refuses to invent it."
+    },
+    {
+      "actual": "Q8 is open; the pending-since date in T4 is inferred.",
+      "affects": [
+        "PBD-AC-7D8BKKRDRD08",
+        "PBD-AC-EZHWPMMQDVEZ",
+        "PBD-ENAB-KXSVEXA2HXK9",
+        "PBD-TASK-C0PEZ406TJGA"
+      ],
+      "classification": "confirmed_gap",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Reference date and meaning of 'arquivado' for the 30-day rule.",
+      "gate": "G06",
+      "id": "PBD-FND-BJ5EZ8J8M3CA",
+      "impact": "EN1 selection rule is only partly determined.",
+      "recommendation": "Answer Q8 before implementing EN1/T8.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "Source does not state when the clock starts or archive semantics."
+    },
+    {
+      "actual": "T4 serves US3, US4 and EN1 but is parented only to US3; US4 also describes reason supplied by the coordinator, unsupported by the sources.",
+      "affects": [
+        "PBD-ENAB-KXSVEXA2HXK9",
+        "PBD-STORY-M69ZV8T1WK0R",
+        "PBD-TASK-F3GDA97SEJBW"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Shared state-model task attached where its dependency is visible.",
+      "gate": "G08",
+      "id": "PBD-FND-JNX7ZKM7BG3N",
+      "impact": "Planning may treat US4 and EN1 as independent of T4.",
+      "recommendation": "Make the T4 dependency explicit or turn it into an enabler; align US4 title with Q5.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Hidden coupling between stories and wording ahead of source."
+    }
+  ],
+  "items": [
+    {
+      "claim_refs": [
+        "PBD-CLM-1ZQ353FQM8Z2",
+        "PBD-CLM-7Y7WC00Y62VA",
+        "PBD-CLM-6D8X2T62HD7J",
+        "PBD-CLM-5YQXXWNXDSKH",
+        "PBD-CLM-54YNQ6ZDKZW2",
+        "PBD-CLM-WEH37M2V403E",
+        "PBD-CLM-MHB7RSRBWB19",
+        "PBD-CLM-GAN8KJWQ8BMM"
+      ],
+      "content": {
+        "context": "O PRD define cinco requisitos (RQ1 a RQ5) e remete as regras de validação dos campos e o arquivamento de pendentes ao Anexo A.",
+        "in_scope": [
+          "Autocadastro do voluntário com nome, e-mail e telefone validados conforme o Anexo A",
+          "Aprovação e recusa de cadastros pendentes pelo coordenador, com e-mail de recusa contendo o motivo",
+          "Cadastro de áreas de interesse pelo coordenador e escolha dessas áreas pelo voluntário",
+          "Exportação em CSV da lista de voluntários aprovados",
+          "Arquivamento automático de cadastros pendentes há mais de 30 dias"
+        ],
+        "kind": "epic",
+        "objective": "Reunir voluntários para as ações da organização por meio de um cadastro moderado pelo coordenador.",
+        "out_scope": [
+          "Organização das ações da ONG em si (citada apenas como finalidade do cadastro)"
+        ],
+        "outcome": "O coordenador dispõe de uma base de voluntários aprovados, exportável em CSV, formada a partir de cadastros validados e moderados."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Reunir voluntários para as ações da organização por meio de um cadastro moderado pelo coordenador.</p><p><strong>Contexto</strong>: O PRD define cinco requisitos (RQ1 a RQ5) e remete as regras de validação dos campos e o arquivamento de pendentes ao Anexo A.</p><p><strong>No escopo</strong></p><ul><li>Autocadastro do voluntário com nome, e-mail e telefone validados conforme o Anexo A</li><li>Aprovação e recusa de cadastros pendentes pelo coordenador, com e-mail de recusa contendo o motivo</li><li>Cadastro de áreas de interesse pelo coordenador e escolha dessas áreas pelo voluntário</li><li>Exportação em CSV da lista de voluntários aprovados</li><li>Arquivamento automático de cadastros pendentes há mais de 30 dias</li></ul><p><strong>Fora do escopo</strong></p><ul><li>Organização das ações da ONG em si (citada apenas como finalidade do cadastro)</li></ul><p><strong>Resultado esperado</strong>: O coordenador dispõe de uma base de voluntários aprovados, exportável em CSV, formada a partir de cadastros validados e moderados.</p>"
+      },
+      "id": "PBD-EPIC-GJ5XPPJHPX5Z",
+      "origin": "generated",
+      "parent": null,
+      "status": "reviewed",
+      "title": "Cadastro e moderação de voluntários da ONG",
+      "type": "epic"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-1ZQ353FQM8Z2",
+        "PBD-CLM-5VGQJ2W42M2K",
+        "PBD-CLM-Q44SDQPV9W69",
+        "PBD-CLM-YKD7P8GFY6JP",
+        "PBD-CLM-9PVM2Q2ZFXKB",
+        "PBD-CLM-PCN06YMQD796",
+        "PBD-CLM-EQP06H1RD4JS",
+        "PBD-CLM-3YJGXX3R7453",
+        "PBD-CLM-Q2KD0S21WBWW"
+      ],
+      "content": {
+        "capability": "O voluntário registra seus dados de contato (nome, e-mail e telefone) e o cadastro só é aceito se respeitar as regras do Anexo A.",
+        "kind": "feature",
+        "rules": [
+          "Nome obrigatório, entre 3 e 80 caracteres",
+          "E-mail obrigatório, em formato válido e sem repetir e-mail já cadastrado",
+          "Telefone opcional; quando informado, somente dígitos e com 10 ou 11 dígitos"
+        ],
+        "value": "Garante que a coordenação receba cadastros com dados de contato utilizáveis e sem e-mails repetidos."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: O voluntário registra seus dados de contato (nome, e-mail e telefone) e o cadastro só é aceito se respeitar as regras do Anexo A.</p><p><strong>Valor</strong>: Garante que a coordenação receba cadastros com dados de contato utilizáveis e sem e-mails repetidos.</p><p><strong>Regras relacionadas</strong></p><ul><li>Nome obrigatório, entre 3 e 80 caracteres</li><li>E-mail obrigatório, em formato válido e sem repetir e-mail já cadastrado</li><li>Telefone opcional; quando informado, somente dígitos e com 10 ou 11 dígitos</li></ul>"
+      },
+      "fields": {
+        "priority": {
+          "evidence": [
+            {
+              "locator": {
+                "line_end": 7,
+                "line_start": 7,
+                "member": "prd.md",
+                "quote_digest": "sha256:e2cc9df1fd272fe347e5de1299b01e96e0c28865548ca90b90966a8d0726129c",
+                "source_id": "PBD-SRC-78385WMH95P7",
+                "source_version": "fb94bdccbba448f0",
+                "table": "requisitos"
+              },
+              "summary": "O voluntário se cadastra informando nome, e-mail e telefone.",
+              "type": "source_locator"
+            }
+          ],
+          "review_status": "unreviewed",
+          "state": "confirmed",
+          "value": "Alta"
+        }
+      },
+      "id": "PBD-FEAT-A4CT72A047JB",
+      "origin": "generated",
+      "parent": "PBD-EPIC-GJ5XPPJHPX5Z",
+      "status": "reviewed",
+      "title": "Autocadastro do voluntário com validação do Anexo A",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-7Y7WC00Y62VA",
+        "PBD-CLM-6D8X2T62HD7J",
+        "PBD-CLM-5YQXXWNXDSKH",
+        "PBD-CLM-GAN8KJWQ8BMM"
+      ],
+      "content": {
+        "capability": "O coordenador decide sobre cada cadastro pendente (aprovar ou recusar), o voluntário recusado é informado por e-mail do motivo e pendências antigas são arquivadas automaticamente.",
+        "kind": "feature",
+        "rules": [
+          "Aprovação e recusa se aplicam a cadastros pendentes",
+          "A recusa gera e-mail ao voluntário com o motivo",
+          "Pendentes há mais de 30 dias são arquivados automaticamente"
+        ],
+        "value": "Somente voluntários aceitos pela coordenação passam a compor a base, e a fila de pendentes não acumula cadastros indefinidamente."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: O coordenador decide sobre cada cadastro pendente (aprovar ou recusar), o voluntário recusado é informado por e-mail do motivo e pendências antigas são arquivadas automaticamente.</p><p><strong>Valor</strong>: Somente voluntários aceitos pela coordenação passam a compor a base, e a fila de pendentes não acumula cadastros indefinidamente.</p><p><strong>Regras relacionadas</strong></p><ul><li>Aprovação e recusa se aplicam a cadastros pendentes</li><li>A recusa gera e-mail ao voluntário com o motivo</li><li>Pendentes há mais de 30 dias são arquivados automaticamente</li></ul>"
+      },
+      "fields": {
+        "priority": {
+          "evidence": [
+            {
+              "locator": {
+                "line_end": 8,
+                "line_start": 8,
+                "member": "prd.md",
+                "quote_digest": "sha256:6453c36dcd1d4e58041314b13a534a3dc3fda7aad63c7cdaa1db6c2802a0d5e5",
+                "source_id": "PBD-SRC-78385WMH95P7",
+                "source_version": "fb94bdccbba448f0",
+                "table": "requisitos"
+              },
+              "summary": "O coordenador aprova ou recusa cadastros pendentes.",
+              "type": "source_locator"
+            },
+            {
+              "locator": {
+                "line_end": 8,
+                "line_start": 8,
+                "member": "prd.md",
+                "quote_digest": "sha256:6453c36dcd1d4e58041314b13a534a3dc3fda7aad63c7cdaa1db6c2802a0d5e5",
+                "source_id": "PBD-SRC-78385WMH95P7",
+                "source_version": "fb94bdccbba448f0",
+                "table": "requisitos"
+              },
+              "summary": "O coordenador aprova ou recusa cadastros pendentes.",
+              "type": "source_locator"
+            }
+          ],
+          "review_status": "unreviewed",
+          "state": "confirmed",
+          "value": "Alta"
+        }
+      },
+      "id": "PBD-FEAT-58HG2GXMZ6BG",
+      "origin": "generated",
+      "parent": "PBD-EPIC-GJ5XPPJHPX5Z",
+      "status": "reviewed",
+      "title": "Moderação de cadastros pendentes",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-54YNQ6ZDKZW2",
+        "PBD-CLM-WEH37M2V403E"
+      ],
+      "content": {
+        "capability": "O coordenador mantém a lista de áreas de interesse e o voluntário indica as suas escolhendo somente entre elas.",
+        "kind": "feature",
+        "rules": [
+          "O voluntário só pode escolher áreas cadastradas pelo coordenador"
+        ],
+        "value": "Permite à coordenação conhecer em quais áreas cada voluntário quer atuar, usando um vocabulário controlado por ela."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: O coordenador mantém a lista de áreas de interesse e o voluntário indica as suas escolhendo somente entre elas.</p><p><strong>Valor</strong>: Permite à coordenação conhecer em quais áreas cada voluntário quer atuar, usando um vocabulário controlado por ela.</p><p><strong>Regras relacionadas</strong></p><ul><li>O voluntário só pode escolher áreas cadastradas pelo coordenador</li></ul>"
+      },
+      "fields": {
+        "priority": {
+          "evidence": [
+            {
+              "locator": {
+                "line_end": 10,
+                "line_start": 10,
+                "member": "prd.md",
+                "quote_digest": "sha256:edc705756dfc12b5d8208a8a29b6b28b0ddc9f226f05a582019d7b802f9ee207",
+                "source_id": "PBD-SRC-78385WMH95P7",
+                "source_version": "fb94bdccbba448f0",
+                "table": "requisitos"
+              },
+              "summary": "O voluntário escolhe áreas de interesse entre as áreas cadastradas pelo coordenador.",
+              "type": "source_locator"
+            }
+          ],
+          "review_status": "unreviewed",
+          "state": "confirmed",
+          "value": "Média"
+        }
+      },
+      "id": "PBD-FEAT-1ZCXQPS8XV64",
+      "origin": "generated",
+      "parent": "PBD-EPIC-GJ5XPPJHPX5Z",
+      "status": "reviewed",
+      "title": "Áreas de interesse dos voluntários",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-MHB7RSRBWB19"
+      ],
+      "content": {
+        "capability": "O coordenador obtém, em arquivo CSV, a lista dos voluntários aprovados.",
+        "kind": "feature",
+        "rules": [
+          "Somente voluntários aprovados compõem a lista exportada"
+        ],
+        "value": "Leva a base aprovada para uso fora do sistema."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: O coordenador obtém, em arquivo CSV, a lista dos voluntários aprovados.</p><p><strong>Valor</strong>: Leva a base aprovada para uso fora do sistema.</p><p><strong>Regras relacionadas</strong></p><ul><li>Somente voluntários aprovados compõem a lista exportada</li></ul>"
+      },
+      "fields": {
+        "priority": {
+          "evidence": [
+            {
+              "locator": {
+                "line_end": 11,
+                "line_start": 11,
+                "member": "prd.md",
+                "quote_digest": "sha256:c19f9d57723c4eeb47253e9b1eb277fcc8e00facba8acca1a21b74caaf8ace7f",
+                "source_id": "PBD-SRC-78385WMH95P7",
+                "source_version": "fb94bdccbba448f0",
+                "table": "requisitos"
+              },
+              "summary": "O coordenador exporta a lista de voluntários aprovados em CSV.",
+              "type": "source_locator"
+            }
+          ],
+          "review_status": "unreviewed",
+          "state": "confirmed",
+          "value": "Baixa"
+        }
+      },
+      "id": "PBD-FEAT-SYPKGABBXPVX",
+      "origin": "generated",
+      "parent": "PBD-EPIC-GJ5XPPJHPX5Z",
+      "status": "reviewed",
+      "title": "Exportação de voluntários aprovados",
+      "type": "feature"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-1ZQ353FQM8Z2",
+        "PBD-CLM-5VGQJ2W42M2K",
+        "PBD-CLM-Q44SDQPV9W69",
+        "PBD-CLM-YKD7P8GFY6JP",
+        "PBD-CLM-9PVM2Q2ZFXKB",
+        "PBD-CLM-PCN06YMQD796"
+      ],
+      "content": {
+        "actor": "voluntário",
+        "benefit": "ficar disponível para avaliação da coordenação e participar das ações da organização",
+        "kind": "role_goal_benefit",
+        "want": "me cadastrar informando meu nome e meu e-mail, com o sistema recusando dados fora das regras do Anexo A"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> voluntário, <strong>gostaria que</strong> me cadastrar informando meu nome e meu e-mail, com o sistema recusando dados fora das regras do Anexo A, <strong>para</strong> ficar disponível para avaliação da coordenação e participar das ações da organização.</p>"
+      },
+      "fields": {
+        "priority": {
+          "evidence": [
+            {
+              "locator": {
+                "line_end": 7,
+                "line_start": 7,
+                "member": "prd.md",
+                "quote_digest": "sha256:e2cc9df1fd272fe347e5de1299b01e96e0c28865548ca90b90966a8d0726129c",
+                "source_id": "PBD-SRC-78385WMH95P7",
+                "source_version": "fb94bdccbba448f0",
+                "table": "requisitos"
+              },
+              "summary": "O voluntário se cadastra informando nome, e-mail e telefone.",
+              "type": "source_locator"
+            }
+          ],
+          "review_status": "unreviewed",
+          "state": "confirmed",
+          "value": "Alta"
+        }
+      },
+      "id": "PBD-STORY-RGKD08QQE53G",
+      "origin": "generated",
+      "parent": "PBD-FEAT-A4CT72A047JB",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Cadastrar-se com nome e e-mail válidos",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-1ZQ353FQM8Z2",
+        "PBD-CLM-EQP06H1RD4JS",
+        "PBD-CLM-3YJGXX3R7453",
+        "PBD-CLM-Q2KD0S21WBWW"
+      ],
+      "content": {
+        "actor": "voluntário",
+        "benefit": "oferecer um segundo meio de contato sem que a ausência dele impeça meu cadastro",
+        "kind": "role_goal_benefit",
+        "want": "poder informar meu telefone no cadastro, ou deixá-lo em branco"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> voluntário, <strong>gostaria que</strong> poder informar meu telefone no cadastro, ou deixá-lo em branco, <strong>para</strong> oferecer um segundo meio de contato sem que a ausência dele impeça meu cadastro.</p>"
+      },
+      "fields": {
+        "priority": {
+          "evidence": [
+            {
+              "locator": {
+                "line_end": 7,
+                "line_start": 7,
+                "member": "prd.md",
+                "quote_digest": "sha256:e2cc9df1fd272fe347e5de1299b01e96e0c28865548ca90b90966a8d0726129c",
+                "source_id": "PBD-SRC-78385WMH95P7",
+                "source_version": "fb94bdccbba448f0",
+                "table": "requisitos"
+              },
+              "summary": "O voluntário se cadastra informando nome, e-mail e telefone.",
+              "type": "source_locator"
+            }
+          ],
+          "review_status": "unreviewed",
+          "state": "confirmed",
+          "value": "Alta"
+        }
+      },
+      "id": "PBD-STORY-Y4T11FQKAVFD",
+      "origin": "generated",
+      "parent": "PBD-FEAT-A4CT72A047JB",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Informar telefone opcional no cadastro",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-7Y7WC00Y62VA"
+      ],
+      "content": {
+        "actor": "coordenador",
+        "benefit": "incluir o voluntário na base de voluntários aprovados da organização",
+        "kind": "role_goal_benefit",
+        "want": "aprovar um cadastro pendente"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> coordenador, <strong>gostaria que</strong> aprovar um cadastro pendente, <strong>para</strong> incluir o voluntário na base de voluntários aprovados da organização.</p>"
+      },
+      "fields": {
+        "priority": {
+          "evidence": [
+            {
+              "locator": {
+                "line_end": 8,
+                "line_start": 8,
+                "member": "prd.md",
+                "quote_digest": "sha256:6453c36dcd1d4e58041314b13a534a3dc3fda7aad63c7cdaa1db6c2802a0d5e5",
+                "source_id": "PBD-SRC-78385WMH95P7",
+                "source_version": "fb94bdccbba448f0",
+                "table": "requisitos"
+              },
+              "summary": "O coordenador aprova ou recusa cadastros pendentes.",
+              "type": "source_locator"
+            }
+          ],
+          "review_status": "unreviewed",
+          "state": "confirmed",
+          "value": "Alta"
+        }
+      },
+      "id": "PBD-STORY-FTEKE3ME7QA0",
+      "origin": "generated",
+      "parent": "PBD-FEAT-58HG2GXMZ6BG",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Aprovar cadastro pendente",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-6D8X2T62HD7J"
+      ],
+      "content": {
+        "actor": "coordenador",
+        "benefit": "impedir que um cadastro não aceito entre na base de voluntários aprovados",
+        "kind": "role_goal_benefit",
+        "want": "recusar um cadastro pendente"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> coordenador, <strong>gostaria que</strong> recusar um cadastro pendente, <strong>para</strong> impedir que um cadastro não aceito entre na base de voluntários aprovados.</p>"
+      },
+      "fields": {
+        "priority": {
+          "evidence": [
+            {
+              "locator": {
+                "line_end": 8,
+                "line_start": 8,
+                "member": "prd.md",
+                "quote_digest": "sha256:6453c36dcd1d4e58041314b13a534a3dc3fda7aad63c7cdaa1db6c2802a0d5e5",
+                "source_id": "PBD-SRC-78385WMH95P7",
+                "source_version": "fb94bdccbba448f0",
+                "table": "requisitos"
+              },
+              "summary": "O coordenador aprova ou recusa cadastros pendentes.",
+              "type": "source_locator"
+            }
+          ],
+          "review_status": "unreviewed",
+          "state": "confirmed",
+          "value": "Alta"
+        }
+      },
+      "id": "PBD-STORY-M69ZV8T1WK0R",
+      "origin": "generated",
+      "parent": "PBD-FEAT-58HG2GXMZ6BG",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Recusar cadastro pendente informando o motivo",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-5YQXXWNXDSKH"
+      ],
+      "content": {
+        "actor": "voluntário recusado",
+        "benefit": "entender por que não fui aceito",
+        "kind": "role_goal_benefit",
+        "want": "receber um e-mail informando o motivo da recusa do meu cadastro"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> voluntário recusado, <strong>gostaria que</strong> receber um e-mail informando o motivo da recusa do meu cadastro, <strong>para</strong> entender por que não fui aceito.</p>"
+      },
+      "fields": {
+        "priority": {
+          "evidence": [
+            {
+              "locator": {
+                "line_end": 9,
+                "line_start": 9,
+                "member": "prd.md",
+                "quote_digest": "sha256:d7ed16e068f144eec93b2aafc291d271d81434b063ff889930fa765739e30467",
+                "source_id": "PBD-SRC-78385WMH95P7",
+                "source_version": "fb94bdccbba448f0",
+                "table": "requisitos"
+              },
+              "summary": "Voluntário recusado recebe e-mail com o motivo da recusa.",
+              "type": "source_locator"
+            }
+          ],
+          "review_status": "unreviewed",
+          "state": "confirmed",
+          "value": "Média"
+        }
+      },
+      "id": "PBD-STORY-3AK8NDPRJPG8",
+      "origin": "generated",
+      "parent": "PBD-FEAT-58HG2GXMZ6BG",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Receber e-mail com o motivo da recusa",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-GAN8KJWQ8BMM"
+      ],
+      "content": {
+        "capability": "Rotina automática que identifica cadastros pendentes há mais de 30 dias e os arquiva, sem ação do coordenador.",
+        "kind": "enabler",
+        "outcome": "Cadastros pendentes há mais de 30 dias deixam o estado pendente e passam a arquivados."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade técnica</strong>: Rotina automática que identifica cadastros pendentes há mais de 30 dias e os arquiva, sem ação do coordenador.</p><p><strong>Resultado esperado</strong>: Cadastros pendentes há mais de 30 dias deixam o estado pendente e passam a arquivados.</p>"
+      },
+      "id": "PBD-ENAB-KXSVEXA2HXK9",
+      "origin": "generated",
+      "parent": "PBD-FEAT-58HG2GXMZ6BG",
+      "status": "reviewed",
+      "story_format": "enabler",
+      "title": "Arquivamento automático de cadastros pendentes há mais de 30 dias",
+      "type": "enabler"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-WEH37M2V403E"
+      ],
+      "content": {
+        "actor": "coordenador",
+        "benefit": "definir em quais áreas os voluntários podem declarar interesse",
+        "kind": "role_goal_benefit",
+        "want": "cadastrar as áreas de interesse disponíveis para os voluntários"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> coordenador, <strong>gostaria que</strong> cadastrar as áreas de interesse disponíveis para os voluntários, <strong>para</strong> definir em quais áreas os voluntários podem declarar interesse.</p>"
+      },
+      "fields": {
+        "priority": {
+          "rationale": "Pré-requisito de RQ4 (prioridade Média); a fonte não atribui prioridade própria ao cadastro de áreas.",
+          "review_status": "unreviewed",
+          "state": "proposed",
+          "value": "Média"
+        }
+      },
+      "id": "PBD-STORY-PZ9CQTZP381G",
+      "origin": "generated",
+      "parent": "PBD-FEAT-1ZCXQPS8XV64",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Cadastrar áreas de interesse",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-54YNQ6ZDKZW2"
+      ],
+      "content": {
+        "actor": "voluntário",
+        "benefit": "indicar à coordenação em quais áreas desejo atuar",
+        "kind": "role_goal_benefit",
+        "want": "escolher minhas áreas de interesse entre as áreas cadastradas pelo coordenador"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> voluntário, <strong>gostaria que</strong> escolher minhas áreas de interesse entre as áreas cadastradas pelo coordenador, <strong>para</strong> indicar à coordenação em quais áreas desejo atuar.</p>"
+      },
+      "fields": {
+        "priority": {
+          "evidence": [
+            {
+              "locator": {
+                "line_end": 10,
+                "line_start": 10,
+                "member": "prd.md",
+                "quote_digest": "sha256:edc705756dfc12b5d8208a8a29b6b28b0ddc9f226f05a582019d7b802f9ee207",
+                "source_id": "PBD-SRC-78385WMH95P7",
+                "source_version": "fb94bdccbba448f0",
+                "table": "requisitos"
+              },
+              "summary": "O voluntário escolhe áreas de interesse entre as áreas cadastradas pelo coordenador.",
+              "type": "source_locator"
+            }
+          ],
+          "review_status": "unreviewed",
+          "state": "confirmed",
+          "value": "Média"
+        }
+      },
+      "id": "PBD-STORY-2CQ27H90GV7M",
+      "origin": "generated",
+      "parent": "PBD-FEAT-1ZCXQPS8XV64",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Escolher áreas de interesse",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-MHB7RSRBWB19"
+      ],
+      "content": {
+        "actor": "coordenador",
+        "benefit": "usar a base aprovada fora do sistema",
+        "kind": "role_goal_benefit",
+        "want": "exportar a lista de voluntários aprovados em um arquivo CSV"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> coordenador, <strong>gostaria que</strong> exportar a lista de voluntários aprovados em um arquivo CSV, <strong>para</strong> usar a base aprovada fora do sistema.</p>"
+      },
+      "fields": {
+        "priority": {
+          "evidence": [
+            {
+              "locator": {
+                "line_end": 11,
+                "line_start": 11,
+                "member": "prd.md",
+                "quote_digest": "sha256:c19f9d57723c4eeb47253e9b1eb277fcc8e00facba8acca1a21b74caaf8ace7f",
+                "source_id": "PBD-SRC-78385WMH95P7",
+                "source_version": "fb94bdccbba448f0",
+                "table": "requisitos"
+              },
+              "summary": "O coordenador exporta a lista de voluntários aprovados em CSV.",
+              "type": "source_locator"
+            }
+          ],
+          "review_status": "unreviewed",
+          "state": "confirmed",
+          "value": "Baixa"
+        }
+      },
+      "id": "PBD-STORY-T12KT9HBPJFN",
+      "origin": "generated",
+      "parent": "PBD-FEAT-SYPKGABBXPVX",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Exportar voluntários aprovados em CSV",
+      "type": "story"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-5VGQJ2W42M2K",
+        "PBD-CLM-Q44SDQPV9W69",
+        "PBD-CLM-YKD7P8GFY6JP",
+        "PBD-CLM-9PVM2Q2ZFXKB"
+      ],
+      "content": {
+        "activities": [
+          "Validar presença do nome e limite de 3 a 80 caracteres",
+          "Validar presença do e-mail",
+          "Aplicar a regra de formato de e-mail definida na resposta à questão sobre formato válido"
+        ],
+        "kind": "task",
+        "outcome": "Cadastros com nome ou e-mail fora das regras não são aceitos.",
+        "summary": "Aplicar ao envio do cadastro as regras de obrigatoriedade e tamanho do nome e de obrigatoriedade e formato do e-mail.",
+        "verification": "Critérios de aceite de US1 sobre nome (ausente, 2, 3, 80 e 81 caracteres) e e-mail (ausente, formato inválido) atendidos."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Aplicar ao envio do cadastro as regras de obrigatoriedade e tamanho do nome e de obrigatoriedade e formato do e-mail.</p><p><strong>Atividades</strong></p><ul><li>Validar presença do nome e limite de 3 a 80 caracteres</li><li>Validar presença do e-mail</li><li>Aplicar a regra de formato de e-mail definida na resposta à questão sobre formato válido</li></ul><p><strong>Resultado esperado</strong>: Cadastros com nome ou e-mail fora das regras não são aceitos.</p><p><strong>Verificação</strong>: Critérios de aceite de US1 sobre nome (ausente, 2, 3, 80 e 81 caracteres) e e-mail (ausente, formato inválido) atendidos.</p>"
+      },
+      "id": "PBD-TASK-BFWWW29Y44BN",
+      "origin": "generated",
+      "parent": "PBD-STORY-RGKD08QQE53G",
+      "status": "reviewed",
+      "title": "Implementar validações de nome e e-mail do Anexo A",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-PCN06YMQD796"
+      ],
+      "content": {
+        "activities": [
+          "Verificar a existência do e-mail antes de aceitar o cadastro",
+          "Garantir a unicidade também no armazenamento, para cobrir envios concorrentes"
+        ],
+        "kind": "task",
+        "outcome": "Não existem dois cadastros com o mesmo e-mail.",
+        "summary": "Impedir que dois cadastros compartilhem o mesmo e-mail, inclusive em envios simultâneos.",
+        "verification": "Critério de e-mail repetido de US1 atendido e teste com dois envios simultâneos do mesmo e-mail resultando em um único cadastro."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Impedir que dois cadastros compartilhem o mesmo e-mail, inclusive em envios simultâneos.</p><p><strong>Atividades</strong></p><ul><li>Verificar a existência do e-mail antes de aceitar o cadastro</li><li>Garantir a unicidade também no armazenamento, para cobrir envios concorrentes</li></ul><p><strong>Resultado esperado</strong>: Não existem dois cadastros com o mesmo e-mail.</p><p><strong>Verificação</strong>: Critério de e-mail repetido de US1 atendido e teste com dois envios simultâneos do mesmo e-mail resultando em um único cadastro.</p>"
+      },
+      "id": "PBD-TASK-0CE4HGK74CFW",
+      "origin": "generated",
+      "parent": "PBD-STORY-RGKD08QQE53G",
+      "status": "reviewed",
+      "title": "Garantir unicidade do e-mail entre cadastros",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-EQP06H1RD4JS",
+        "PBD-CLM-3YJGXX3R7453",
+        "PBD-CLM-Q2KD0S21WBWW"
+      ],
+      "content": {
+        "activities": [
+          "Tratar telefone vazio como ausente",
+          "Rejeitar caracteres que não sejam dígitos",
+          "Rejeitar quantidades de dígitos diferentes de 10 e 11"
+        ],
+        "kind": "task",
+        "outcome": "Telefone ausente é aceito; telefone informado só é aceito com 10 ou 11 dígitos numéricos.",
+        "summary": "Aceitar cadastro sem telefone e, quando o telefone vier preenchido, exigir somente dígitos e 10 ou 11 dígitos.",
+        "verification": "Critérios de aceite de US2 (sem telefone, 9, 10, 11 e 12 dígitos, caracteres não numéricos) atendidos."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Aceitar cadastro sem telefone e, quando o telefone vier preenchido, exigir somente dígitos e 10 ou 11 dígitos.</p><p><strong>Atividades</strong></p><ul><li>Tratar telefone vazio como ausente</li><li>Rejeitar caracteres que não sejam dígitos</li><li>Rejeitar quantidades de dígitos diferentes de 10 e 11</li></ul><p><strong>Resultado esperado</strong>: Telefone ausente é aceito; telefone informado só é aceito com 10 ou 11 dígitos numéricos.</p><p><strong>Verificação</strong>: Critérios de aceite de US2 (sem telefone, 9, 10, 11 e 12 dígitos, caracteres não numéricos) atendidos.</p>"
+      },
+      "id": "PBD-TASK-CSDT6ZBB4K5N",
+      "origin": "generated",
+      "parent": "PBD-STORY-Y4T11FQKAVFD",
+      "status": "reviewed",
+      "title": "Implementar validação do telefone opcional",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-7Y7WC00Y62VA",
+        "PBD-CLM-6D8X2T62HD7J",
+        "PBD-CLM-GAN8KJWQ8BMM"
+      ],
+      "content": {
+        "activities": [
+          "Definir as situações pendente, aprovado, recusado e arquivado conforme a resposta à questão sobre os estados",
+          "Registrar a data de entrada na situação pendente",
+          "Restringir aprovação e recusa a cadastros pendentes"
+        ],
+        "kind": "task",
+        "outcome": "A situação de cada cadastro é consultável e só muda pelas transições previstas.",
+        "summary": "Registrar em cada cadastro sua situação e a data a partir da qual ele está pendente, com as transições citadas nas fontes.",
+        "verification": "Critérios de aceite de US3, US4 e EN1 sobre mudança de situação atendidos."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Registrar em cada cadastro sua situação e a data a partir da qual ele está pendente, com as transições citadas nas fontes.</p><p><strong>Atividades</strong></p><ul><li>Definir as situações pendente, aprovado, recusado e arquivado conforme a resposta à questão sobre os estados</li><li>Registrar a data de entrada na situação pendente</li><li>Restringir aprovação e recusa a cadastros pendentes</li></ul><p><strong>Resultado esperado</strong>: A situação de cada cadastro é consultável e só muda pelas transições previstas.</p><p><strong>Verificação</strong>: Critérios de aceite de US3, US4 e EN1 sobre mudança de situação atendidos.</p>"
+      },
+      "id": "PBD-TASK-F3GDA97SEJBW",
+      "origin": "generated",
+      "parent": "PBD-STORY-FTEKE3ME7QA0",
+      "status": "reviewed",
+      "title": "Modelar a situação do cadastro (pendente, aprovado, recusado, arquivado)",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-7Y7WC00Y62VA"
+      ],
+      "content": {
+        "activities": [
+          "Listar cadastros pendentes para o coordenador",
+          "Executar a aprovação mudando a situação para aprovado"
+        ],
+        "kind": "task",
+        "outcome": "Cadastro aprovado deixa a lista de pendentes e passa a constar entre os aprovados.",
+        "summary": "Permitir que o coordenador veja os cadastros pendentes e aprove um deles.",
+        "verification": "Critérios de aceite de US3 atendidos."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir que o coordenador veja os cadastros pendentes e aprove um deles.</p><p><strong>Atividades</strong></p><ul><li>Listar cadastros pendentes para o coordenador</li><li>Executar a aprovação mudando a situação para aprovado</li></ul><p><strong>Resultado esperado</strong>: Cadastro aprovado deixa a lista de pendentes e passa a constar entre os aprovados.</p><p><strong>Verificação</strong>: Critérios de aceite de US3 atendidos.</p>"
+      },
+      "id": "PBD-TASK-27KHKVNQVPM6",
+      "origin": "generated",
+      "parent": "PBD-STORY-FTEKE3ME7QA0",
+      "status": "reviewed",
+      "title": "Disponibilizar ao coordenador a ação de aprovar",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-6D8X2T62HD7J",
+        "PBD-CLM-5YQXXWNXDSKH"
+      ],
+      "content": {
+        "activities": [
+          "Executar a recusa mudando a situação para recusado",
+          "Registrar o motivo da recusa conforme a resposta à questão sobre origem e obrigatoriedade do motivo"
+        ],
+        "kind": "task",
+        "outcome": "Cadastro recusado deixa a lista de pendentes e guarda o motivo da recusa.",
+        "summary": "Permitir que o coordenador recuse um cadastro pendente e registrar o motivo que será enviado ao voluntário.",
+        "verification": "Critérios de aceite de US4 atendidos."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir que o coordenador recuse um cadastro pendente e registrar o motivo que será enviado ao voluntário.</p><p><strong>Atividades</strong></p><ul><li>Executar a recusa mudando a situação para recusado</li><li>Registrar o motivo da recusa conforme a resposta à questão sobre origem e obrigatoriedade do motivo</li></ul><p><strong>Resultado esperado</strong>: Cadastro recusado deixa a lista de pendentes e guarda o motivo da recusa.</p><p><strong>Verificação</strong>: Critérios de aceite de US4 atendidos.</p>"
+      },
+      "id": "PBD-TASK-QTN6H7KG5XJQ",
+      "origin": "generated",
+      "parent": "PBD-STORY-M69ZV8T1WK0R",
+      "status": "reviewed",
+      "title": "Disponibilizar ao coordenador a ação de recusar com registro do motivo",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-5YQXXWNXDSKH"
+      ],
+      "content": {
+        "activities": [
+          "Definir o conteúdo do e-mail de recusa com o motivo",
+          "Disparar o envio a partir da recusa",
+          "Registrar falhas de envio para acompanhamento"
+        ],
+        "kind": "task",
+        "outcome": "Todo voluntário recusado recebe, no e-mail cadastrado, o motivo da recusa.",
+        "summary": "Ao concluir uma recusa, enviar ao e-mail cadastrado do voluntário uma mensagem contendo o motivo registrado.",
+        "verification": "Critérios de aceite de US5 atendidos em ambiente de teste com captura de e-mails."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Ao concluir uma recusa, enviar ao e-mail cadastrado do voluntário uma mensagem contendo o motivo registrado.</p><p><strong>Atividades</strong></p><ul><li>Definir o conteúdo do e-mail de recusa com o motivo</li><li>Disparar o envio a partir da recusa</li><li>Registrar falhas de envio para acompanhamento</li></ul><p><strong>Resultado esperado</strong>: Todo voluntário recusado recebe, no e-mail cadastrado, o motivo da recusa.</p><p><strong>Verificação</strong>: Critérios de aceite de US5 atendidos em ambiente de teste com captura de e-mails.</p>"
+      },
+      "id": "PBD-TASK-NEWF26MNHM7V",
+      "origin": "generated",
+      "parent": "PBD-STORY-3AK8NDPRJPG8",
+      "status": "reviewed",
+      "title": "Enviar e-mail de recusa com o motivo",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-GAN8KJWQ8BMM"
+      ],
+      "content": {
+        "activities": [
+          "Selecionar cadastros pendentes há mais de 30 dias a partir da data registrada em T4",
+          "Mudar a situação desses cadastros para arquivado",
+          "Agendar a execução periódica da rotina"
+        ],
+        "kind": "task",
+        "outcome": "Nenhum cadastro permanece pendente por mais de 30 dias após a execução da rotina.",
+        "summary": "Rotina automática que arquiva cadastros cuja permanência na situação pendente ultrapassa 30 dias.",
+        "verification": "Critérios de aceite de EN1 (30 dias permanece pendente; mais de 30 dias é arquivado; não pendentes intocados) atendidos."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Rotina automática que arquiva cadastros cuja permanência na situação pendente ultrapassa 30 dias.</p><p><strong>Atividades</strong></p><ul><li>Selecionar cadastros pendentes há mais de 30 dias a partir da data registrada em T4</li><li>Mudar a situação desses cadastros para arquivado</li><li>Agendar a execução periódica da rotina</li></ul><p><strong>Resultado esperado</strong>: Nenhum cadastro permanece pendente por mais de 30 dias após a execução da rotina.</p><p><strong>Verificação</strong>: Critérios de aceite de EN1 (30 dias permanece pendente; mais de 30 dias é arquivado; não pendentes intocados) atendidos.</p>"
+      },
+      "id": "PBD-TASK-C0PEZ406TJGA",
+      "origin": "generated",
+      "parent": "PBD-ENAB-KXSVEXA2HXK9",
+      "status": "reviewed",
+      "title": "Implementar rotina de arquivamento de pendentes há mais de 30 dias",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-WEH37M2V403E"
+      ],
+      "content": {
+        "activities": [
+          "Criar o registro de áreas de interesse",
+          "Disponibilizar ao coordenador a inclusão de áreas",
+          "Ajustar edição ou remoção conforme a resposta à questão sobre a gestão de áreas"
+        ],
+        "kind": "task",
+        "outcome": "Áreas cadastradas pelo coordenador ficam disponíveis para escolha pelos voluntários.",
+        "summary": "Permitir ao coordenador incluir áreas de interesse e consultá-las.",
+        "verification": "Critérios de aceite de US6 atendidos."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir ao coordenador incluir áreas de interesse e consultá-las.</p><p><strong>Atividades</strong></p><ul><li>Criar o registro de áreas de interesse</li><li>Disponibilizar ao coordenador a inclusão de áreas</li><li>Ajustar edição ou remoção conforme a resposta à questão sobre a gestão de áreas</li></ul><p><strong>Resultado esperado</strong>: Áreas cadastradas pelo coordenador ficam disponíveis para escolha pelos voluntários.</p><p><strong>Verificação</strong>: Critérios de aceite de US6 atendidos.</p>"
+      },
+      "id": "PBD-TASK-WK4EHQ5FCKED",
+      "origin": "generated",
+      "parent": "PBD-STORY-PZ9CQTZP381G",
+      "status": "reviewed",
+      "title": "Implementar o cadastro de áreas de interesse pelo coordenador",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-54YNQ6ZDKZW2"
+      ],
+      "content": {
+        "activities": [
+          "Listar apenas as áreas cadastradas pelo coordenador",
+          "Registrar as áreas escolhidas no cadastro do voluntário",
+          "Rejeitar área que não esteja cadastrada"
+        ],
+        "kind": "task",
+        "outcome": "O cadastro do voluntário guarda somente áreas cadastradas pelo coordenador.",
+        "summary": "Apresentar ao voluntário as áreas cadastradas e registrar as escolhidas no seu cadastro.",
+        "verification": "Critérios de aceite de US7 atendidos."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Apresentar ao voluntário as áreas cadastradas e registrar as escolhidas no seu cadastro.</p><p><strong>Atividades</strong></p><ul><li>Listar apenas as áreas cadastradas pelo coordenador</li><li>Registrar as áreas escolhidas no cadastro do voluntário</li><li>Rejeitar área que não esteja cadastrada</li></ul><p><strong>Resultado esperado</strong>: O cadastro do voluntário guarda somente áreas cadastradas pelo coordenador.</p><p><strong>Verificação</strong>: Critérios de aceite de US7 atendidos.</p>"
+      },
+      "id": "PBD-TASK-ENAFRRQSMP3Z",
+      "origin": "generated",
+      "parent": "PBD-STORY-2CQ27H90GV7M",
+      "status": "reviewed",
+      "title": "Permitir ao voluntário escolher entre as áreas cadastradas",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-MHB7RSRBWB19"
+      ],
+      "content": {
+        "activities": [
+          "Selecionar somente cadastros aprovados",
+          "Montar o CSV com as colunas definidas na resposta à questão sobre o layout",
+          "Disponibilizar o arquivo para download ao coordenador"
+        ],
+        "kind": "task",
+        "outcome": "O coordenador obtém um CSV contendo exatamente os voluntários aprovados.",
+        "summary": "Gerar, sob demanda do coordenador, um CSV com os voluntários na situação aprovado.",
+        "verification": "Critérios de aceite de US8 atendidos com uma base contendo cadastros em todas as situações."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Gerar, sob demanda do coordenador, um CSV com os voluntários na situação aprovado.</p><p><strong>Atividades</strong></p><ul><li>Selecionar somente cadastros aprovados</li><li>Montar o CSV com as colunas definidas na resposta à questão sobre o layout</li><li>Disponibilizar o arquivo para download ao coordenador</li></ul><p><strong>Resultado esperado</strong>: O coordenador obtém um CSV contendo exatamente os voluntários aprovados.</p><p><strong>Verificação</strong>: Critérios de aceite de US8 atendidos com uma base contendo cadastros em todas as situações.</p>"
+      },
+      "id": "PBD-TASK-6CXE7SGP9J3C",
+      "origin": "generated",
+      "parent": "PBD-STORY-T12KT9HBPJFN",
+      "status": "reviewed",
+      "title": "Gerar o arquivo CSV de voluntários aprovados",
+      "type": "task"
+    }
+  ],
+  "kind": "pbd.backlog",
+  "language": "pt-BR",
+  "profile": "generic",
+  "questions": [
+    {
+      "affects": [
+        "PBD-CLM-1ZQ353FQM8Z2",
+        "PBD-CLM-6D8X2T62HD7J",
+        "PBD-CLM-7Y7WC00Y62VA",
+        "PBD-CLM-GAN8KJWQ8BMM",
+        "PBD-ENAB-KXSVEXA2HXK9",
+        "PBD-STORY-FTEKE3ME7QA0",
+        "PBD-STORY-M69ZV8T1WK0R",
+        "PBD-STORY-RGKD08QQE53G"
+      ],
+      "alternatives": [
+        "Pendente ao ser criado; aprovado, recusado e arquivado são finais",
+        "Recusado ou arquivado pode ser reaberto pelo coordenador ou reenviado pelo voluntário"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-E6KWHYD5Z09E",
+      "impact": "Define a máquina de estados usada por aprovação, recusa, arquivamento e exportação (AC9, AC16, T4).",
+      "status": "open",
+      "text": "Quais são as situações do cadastro e suas transições? O cadastro nasce pendente? Um cadastro recusado ou arquivado pode voltar a pendente ou ser reenviado?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-9PVM2Q2ZFXKB",
+        "PBD-STORY-RGKD08QQE53G"
+      ],
+      "alternatives": [
+        "Validação sintática simples (texto@domínio)",
+        "Validação segundo a especificação de endereços de e-mail",
+        "Validação com confirmação por e-mail"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-FMT04QQMMHV8",
+      "impact": "Sem a definição, AC7 não tem exemplos determinados de e-mail válido e inválido.",
+      "status": "open",
+      "text": "O que é 'formato válido' de e-mail no Anexo A?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-3YJGXX3R7453",
+        "PBD-CLM-5VGQJ2W42M2K",
+        "PBD-CLM-9PVM2Q2ZFXKB",
+        "PBD-CLM-PCN06YMQD796",
+        "PBD-CLM-Q2KD0S21WBWW",
+        "PBD-CLM-Q44SDQPV9W69",
+        "PBD-CLM-YKD7P8GFY6JP",
+        "PBD-STORY-RGKD08QQE53G",
+        "PBD-STORY-Y4T11FQKAVFD"
+      ],
+      "alternatives": [
+        "Mensagem por campo indicando a regra violada",
+        "Mensagem única genérica"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-MCYGZSCE5BN0",
+      "impact": "As fontes não definem mensagens nem comportamento de erro; AC10 permanece proposto.",
+      "status": "open",
+      "text": "Quais mensagens o voluntário deve ver quando um campo viola as regras do Anexo A?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-PCN06YMQD796",
+        "PBD-STORY-RGKD08QQE53G",
+        "PBD-TASK-0CE4HGK74CFW"
+      ],
+      "alternatives": [
+        "Todos os cadastros, sem diferenciar maiúsculas",
+        "Apenas cadastros pendentes e aprovados"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-7VZ952NXMYGD",
+      "impact": "Determina se um voluntário recusado ou arquivado pode se cadastrar novamente e quais e-mails contam como iguais.",
+      "status": "open",
+      "text": "A regra de e-mail repetido compara com todos os cadastros (inclusive recusados e arquivados)? A comparação ignora maiúsculas e minúsculas?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-5YQXXWNXDSKH",
+        "PBD-CLM-6D8X2T62HD7J",
+        "PBD-STORY-3AK8NDPRJPG8",
+        "PBD-STORY-M69ZV8T1WK0R",
+        "PBD-TASK-NEWF26MNHM7V",
+        "PBD-TASK-QTN6H7KG5XJQ"
+      ],
+      "alternatives": [
+        "Texto livre obrigatório",
+        "Lista predefinida mantida pelo coordenador",
+        "Lista com campo complementar livre"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-88AWBHYSC5MF",
+      "impact": "Define a ação de recusa (US4, AC19) e o conteúdo do e-mail (US5).",
+      "status": "open",
+      "text": "Como o motivo da recusa é obtido: texto livre do coordenador, lista predefinida de motivos, ou ambos? É obrigatório?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-54YNQ6ZDKZW2",
+        "PBD-CLM-WEH37M2V403E",
+        "PBD-STORY-2CQ27H90GV7M",
+        "PBD-STORY-PZ9CQTZP381G"
+      ],
+      "alternatives": [
+        "Coordenador inclui, edita e remove; voluntário escolhe uma ou mais áreas no cadastro",
+        "Coordenador só inclui; escolha opcional e posterior ao cadastro"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-CYVCTBYBNWT0",
+      "impact": "Define o escopo de US6 e US7 e o que ocorre com escolhas de áreas removidas.",
+      "status": "open",
+      "text": "Como funcionam as áreas de interesse: o coordenador também edita e remove áreas? A escolha é feita no cadastro ou depois dele, é obrigatória, e quantas áreas o voluntário pode escolher?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-MHB7RSRBWB19",
+        "PBD-STORY-T12KT9HBPJFN",
+        "PBD-TASK-6CXE7SGP9J3C"
+      ],
+      "alternatives": [
+        "Nome, e-mail e telefone",
+        "Nome, e-mail, telefone e áreas de interesse"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-HE6M77NG3A0F",
+      "impact": "Sem o layout, a tarefa T11 não pode ser concluída de forma verificável.",
+      "status": "open",
+      "text": "Quais colunas, ordem, separador e codificação o CSV de voluntários aprovados deve ter? Inclui as áreas de interesse?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-GAN8KJWQ8BMM",
+        "PBD-ENAB-KXSVEXA2HXK9",
+        "PBD-TASK-C0PEZ406TJGA"
+      ],
+      "alternatives": [
+        "Contagem a partir da data do cadastro; arquivado visível e recuperável pelo coordenador",
+        "Contagem a partir da data do cadastro; arquivado oculto e definitivo"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-Y9MY96W6A1H5",
+      "impact": "Define a regra de seleção de EN1 e o tratamento posterior de cadastros arquivados.",
+      "status": "open",
+      "text": "No arquivamento automático, os 30 dias são contados a partir de qual data, e o que significa 'arquivado' (o cadastro é visível ao coordenador, pode ser recuperado, o voluntário é avisado)?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-1ZQ353FQM8Z2",
+        "PBD-CLM-EQP06H1RD4JS",
+        "PBD-STORY-Y4T11FQKAVFD"
+      ],
+      "alternatives": [
+        "Telefone opcional (Anexo A)",
+        "Telefone obrigatório (leitura literal de RQ1)"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-YBQ1YDSRRN41",
+      "impact": "Se o telefone for obrigatório, AC11 se inverte.",
+      "status": "open",
+      "text": "RQ1 lista o telefone entre os dados informados, mas o Anexo A o define como opcional. Confirma-se que o Anexo A prevalece e o telefone é opcional?"
+    }
+  ],
+  "relations": [
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-6NE0MK150KS7",
+      "reason": "A aprovação atua sobre cadastros pendentes criados pelo autocadastro.",
+      "source": "PBD-STORY-RGKD08QQE53G",
+      "status": "proposed",
+      "target": "PBD-STORY-FTEKE3ME7QA0",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-KQZWXZXQ1FFX",
+      "reason": "A recusa atua sobre cadastros pendentes criados pelo autocadastro.",
+      "source": "PBD-STORY-RGKD08QQE53G",
+      "status": "proposed",
+      "target": "PBD-STORY-M69ZV8T1WK0R",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-B0PWRSH7D9QV",
+      "reason": "O e-mail de recusa depende da recusa e do motivo registrado.",
+      "source": "PBD-STORY-M69ZV8T1WK0R",
+      "status": "proposed",
+      "target": "PBD-STORY-3AK8NDPRJPG8",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-E9BDMZD2T0HA",
+      "reason": "O voluntário escolhe entre as áreas cadastradas pelo coordenador (RQ4).",
+      "source": "PBD-STORY-PZ9CQTZP381G",
+      "status": "proposed",
+      "target": "PBD-STORY-2CQ27H90GV7M",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-9D9J834YSZEG",
+      "reason": "A exportação lista voluntários aprovados, situação produzida pela aprovação.",
+      "source": "PBD-STORY-FTEKE3ME7QA0",
+      "status": "proposed",
+      "target": "PBD-STORY-T12KT9HBPJFN",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-8WG644928RKY",
+      "reason": "O arquivamento depende de cadastros pendentes e da data de entrada nessa situação.",
+      "source": "PBD-STORY-RGKD08QQE53G",
+      "status": "proposed",
+      "target": "PBD-ENAB-KXSVEXA2HXK9",
+      "type": "predecessor"
+    }
+  ],
+  "run_id": "PBD-RUN-RXSY7EQ9YBPV",
+  "schema_version": "1.1.0",
+  "sources": [
+    {
+      "authority": "functional",
+      "digest": "sha256:fb94bdccbba448f09c87f1530b985348fc01f9d3ed97ff6b56962b633b6c6068",
+      "id": "PBD-SRC-78385WMH95P7",
+      "kind": "file",
+      "members": [
+        {
+          "bytes": 660,
+          "digest": "sha256:18320fe85b3626fbe69f53b64bff0e6718ea18e4b46a4574157bf59761cb44e7",
+          "media_type": "application/octet-stream",
+          "path": "prd.md",
+          "status": "read"
+        }
+      ],
+      "read_status": "complete",
+      "selector": "prd.md",
+      "version": "fb94bdccbba448f0"
+    },
+    {
+      "authority": "functional",
+      "digest": "sha256:d5748d737f0868e8d8e5137436ff85d8427dbdcf7c853e39d8940461687f2481",
+      "id": "PBD-SRC-ZVVXZSFK4GYF",
+      "kind": "directory",
+      "members": [
+        {
+          "bytes": 1180,
+          "digest": "sha256:4d756a3afc1f7f0eea1e21dced5d254f059d089288f0104642512abe7f185750",
+          "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "path": "validacoes.docx",
+          "status": "read"
+        }
+      ],
+      "read_status": "complete",
+      "selector": "anexos",
+      "version": "d5748d737f0868e8"
+    }
+  ],
+  "synthetic": true
+}

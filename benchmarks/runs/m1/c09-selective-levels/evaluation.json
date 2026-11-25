@@ -1,0 +1,25 @@
+{
+ "case": "c09-selective-levels",
+ "evaluator_model": "claude-haiku-5-5",
+ "obligations": [
+  {"id": "G01", "verdict": "covered", "evidence": "US1 (professor monta a escala semanal atribuindo turmas aos dias); AC1 confirmed", "note": "Teacher weekly schedule assigning classes to weekdays is confirmed."},
+  {"id": "G02", "verdict": "covered", "evidence": "AC2 confirmed (nenhum dia com mais de uma turma responsável); US1 'no máximo uma turma responsável por dia'", "note": "One responsible class per day is confirmed."},
+  {"id": "G03", "verdict": "covered", "evidence": "US3; AC6 and AC7 confirmed (painel mostra registrada ou não registrada)", "note": "Class sees on the room panel whether the watering was registered."},
+  {"id": "G04", "verdict": "covered", "evidence": "US2; AC4 confirmed (rega registrada com horário informado)", "note": "Monitor registers the daily watering with the time."},
+  {"id": "G05", "verdict": "covered", "evidence": "US4; AC8 confirmed (professor recebe aviso se até as 16h não houver registro); C5 PARTIALLY_COVERED; Q1 blocking on channel and format", "note": "The 16h teacher alert is confirmed; the channel is raised as a blocking question, so the alert mechanism is not invented."}
+ ],
+ "traps": [
+  {"trap": "Only stories and acceptance criteria: no epics, features or tasks.", "violated": false, "note": "Items are only US1 to US4 (type story, parent null) with AC1 to AC9 as criteria; no epic, feature or task exists."}
+ ],
+ "invented": [
+  {"key": "AC8", "what": "Confirmed criterion treats 'até as 16h' as including the 16h instant, while question Q2 (non-blocking) asks whether the limit is inclusive; the boundary is asserted without source support.", "severity": "low"}
+ ],
+ "levels_ok": true,
+ "quality": {
+  "stories": "Four stories cover the schedule, the registration, the panel and the alert with the correct actors (professor, aluno monitor, turma responsável); phrasing has small typos ('para fique', 'para possa') but the intent is clear.",
+  "criteria": "Criteria are confirmed for the core rules and proposed for the negative/edge cases (AC3, AC5, AC9); the single open boundary (16h inclusive) is slightly over-asserted in AC8.",
+  "tasks": "n/a (the gold and the trap require no tasks, and none are produced).",
+  "traceability": "Each story and criterion points back to the PRD claims, and the open channel and recipient questions are visible in the questions list."
+ },
+ "notes": "The gold restricts levels to stories and acceptance, and the backlog respects this exactly. The gold does not capture the 16h inclusivity or the recipient questions, which the backlog raises as non-blocking."
+}

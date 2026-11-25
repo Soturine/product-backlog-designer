@@ -4,7 +4,7 @@
 
 [Português (Brasil)](README.pt-BR.md) · [Documentation](docs/README.md) · [Roadmap](docs/roadmap.md) · [Example dashboard](examples/demo/report.html) · [Research and code audit](docs/upstream-code-audit.md)
 
-> **Development status:** pre-alpha. The methodology and agent instructions are available. The M0 runtime foundation (`pbd` CLI: schemas, validation, identity, source inventory, run state, offline guard) exists with local test evidence; see [install](docs/install.md). Generation, reports, exporters, integrations and benchmark qualification are planned, not released. The example dashboard is a static synthetic design demonstration, not a production run.
+> **Development status:** pre-alpha. Agent-led generation from zero is implemented and was dogfooded on 12 synthetic cases (readers, generator and independent reviewer as separate agents; see [M1 evidence](docs/evidence/M1.md)): `pbd` runtime with verified reader ledgers, claims, design, independent review, verified quality gates, offline HTML report, JSON/Markdown/CSV/XLSX exports and a local Azure DevOps package. Audit, compare, refinement, planning, incremental ADR updates and any tracker publication are not implemented. Nothing contacts a tracker.
 
 ## Why PBD?
 
@@ -35,7 +35,7 @@ Do not publish remotely.
 
 Generation from scratch is the primary mode: an existing backlog is optional, never a prerequisite. Sources, language and scope can be supplied directly in chat instead. Technical sources and tracker credentials are optional for local generation. The skill must not invent their contents.
 
-## Capabilities (planned)
+## Capabilities
 
 | Mode | Result |
 |---|---|
@@ -58,6 +58,17 @@ Support Agile, Scrum, Basic, CMMI and custom process profiles; discover actual d
 **Tasks:** implement reservation validation; implement persistence; verify both outcomes.
 
 The example assumes the behavior is in the fictional source. Unknown reservation duration becomes a question, not a fabricated rule. Portuguese stories use **Eu como**, **gostaria que**, **para**; native HTML preserves bold and lists. Acceptance can be rendered as a native HTML table (ID, criterion, expected outcome), list or Gherkin. Alternative formats and enablers are supported when suitable. See [work items](docs/work-items.md), [story engineering](docs/story-engineering.md), [acceptance engineering](docs/acceptance-engineering.md).
+
+## See the report
+
+Screenshots of a real `report.html` produced by the agent-led dogfood of a synthetic PRD (case [c01-prd-only](benchmarks/runs/m1/c01-prd-only/)).
+
+| Executive layer | Technical layer (work item detail) |
+|---|---|
+| ![Executive summary](docs/images/report-summary.png) | ![Backlog tree with item detail](docs/images/report-backlog.png) |
+| ![Quality gates](docs/images/report-gates.png) | ![Dark theme](docs/images/report-dark.png) |
+
+Open the interactive file yourself: [benchmarks/runs/m1/c01-prd-only/report.html](benchmarks/runs/m1/c01-prd-only/report.html) (GitHub shows HTML as source: download it, or clone the repository, and open it in any browser; it is a single offline file with no external requests). Reports for all 12 dogfood cases are in [benchmarks/runs/m1](benchmarks/runs/m1/).
 
 ## Output
 
@@ -110,7 +121,7 @@ Azure CLI authentication with REST/JSON Patch for lossless writes; optional CLI 
 | Milestone | Scope | Status |
 |---|---|---|
 | M0 | foundation, schemas, runtime contracts, reuse decisions | runtime foundation done ([evidence](docs/evidence/M0.md)); profiles and gold fixtures moved to M1 |
-| M1 | generation and default report/package workflow | planned |
+| M1 | generation and default report/package workflow | substantially complete ([evidence](docs/evidence/M1.md)); open: new-session end-to-end run, Linux symlink tests |
 | M2 | audit, compare and profiles | planned |
 | M3 | Azure export and verified publication | planned |
 | M4 | planning and capacity | planned |

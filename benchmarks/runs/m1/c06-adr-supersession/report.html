@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src &#x27;none&#x27;; style-src &#x27;unsafe-inline&#x27;; script-src &#x27;sha256-fXA6PQIafqslndojZsQDPkTXc2iNdIswVX15OelmO7w=&#x27;; img-src data:; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;">
+<meta name="generator" content="pbd 0.1.0.dev0">
+<title>Clube de Leitura — PBD</title><style>:root{color-scheme:light;
+--bg:#f3f5fa;--side:#ffffff;--surface:#ffffff;--surface-2:#f7f8fc;--sunk:#eef1f7;--rule:#e2e6ef;--rule-strong:#ccd3e0;
+--ink:#0f172a;--ink-2:#334155;--muted:#5b6578;--faint:#8a93a6;
+--accent:#3b5bdb;--accent-2:#6d4aff;--accent-soft:#e9edff;--on-tone:#ffffff;--logo-a:#4f6bff;--logo-b:#7b4dff;
+--pass:#15803d;--fail:#c02626;--warn:#b45309;--unknown:#5f6b7f;--info:#1d63c9;
+--glow:rgba(59,91,219,.07);--shadow:0 1px 2px rgba(15,23,42,.05);--lift:0 10px 30px -18px rgba(15,23,42,.35);
+--r-sm:7px;--r:12px;--r-lg:16px;
+--sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI Variable Text","Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,SFMono-Regular,"SF Mono","Cascadia Mono",Menlo,Consolas,"Liberation Mono",monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;
+--bg:#080d1a;--side:#0a1020;--surface:#0e1628;--surface-2:#111b31;--sunk:#0b1324;--rule:rgba(148,163,184,.13);--rule-strong:rgba(148,163,184,.24);
+--ink:#e9eef8;--ink-2:#c4ccdc;--muted:#8f9ab0;--faint:#68738a;
+--accent:#7b93ff;--accent-2:#9b7bff;--accent-soft:rgba(91,124,250,.16);--on-tone:#08101f;--logo-a:#4f6bff;--logo-b:#8a5cff;
+--pass:#3ddc97;--fail:#ff7b7b;--warn:#f6b44b;--unknown:#a3adbf;--info:#6cb2ff;
+--glow:rgba(91,124,250,.20);--shadow:0 1px 2px rgba(0,0,0,.4);--lift:0 18px 40px -22px rgba(0,0,0,.9)}}
+:root[data-theme="dark"]{color-scheme:dark;
+--bg:#080d1a;--side:#0a1020;--surface:#0e1628;--surface-2:#111b31;--sunk:#0b1324;--rule:rgba(148,163,184,.13);--rule-strong:rgba(148,163,184,.24);
+--ink:#e9eef8;--ink-2:#c4ccdc;--muted:#8f9ab0;--faint:#68738a;
+--accent:#7b93ff;--accent-2:#9b7bff;--accent-soft:rgba(91,124,250,.16);--on-tone:#08101f;--logo-a:#4f6bff;--logo-b:#8a5cff;
+--pass:#3ddc97;--fail:#ff7b7b;--warn:#f6b44b;--unknown:#a3adbf;--info:#6cb2ff;
+--glow:rgba(91,124,250,.20);--shadow:0 1px 2px rgba(0,0,0,.4);--lift:0 18px 40px -22px rgba(0,0,0,.9)}
+.tone-pass{--tone:var(--pass)}.tone-fail{--tone:var(--fail)}.tone-warn{--tone:var(--warn)}.tone-blocked{--tone:var(--warn)}
+.tone-unknown{--tone:var(--unknown)}.tone-not_run{--tone:var(--faint)}.tone-neutral{--tone:var(--muted)}.tone-accent{--tone:var(--accent)}
+.tone-info{--tone:var(--info)}.tone-muted{--tone:var(--faint)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:120px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}code,pre{font-family:var(--mono);font-size:.84em}
+code{overflow-wrap:anywhere}:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:5px}
+.skip{position:absolute;left:16px;top:-60px;background:var(--surface);padding:8px 14px;border-radius:var(--r-sm);z-index:40}
+.skip:focus{top:10px}[hidden]{display:none!important}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--surface) 92%,transparent);
+backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.bar{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.logo{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--logo-a),var(--logo-b));flex:none}
+.brand h1{font-size:1.05rem;margin:0}.brand p{margin:0;color:var(--muted);font-size:.8rem}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:2px 9px;border-radius:999px;font-size:.75rem;
+font-weight:600;border:1px solid color-mix(in srgb,var(--tone,var(--muted)) 40%,var(--rule));
+color:var(--tone,var(--muted));background:color-mix(in srgb,var(--tone,var(--muted)) 9%,transparent)}
+.spacer{flex:1}button,select,input{font:inherit;color:inherit}
+.btn{border:1px solid var(--rule-strong);background:var(--surface);border-radius:var(--r-sm);padding:6px 12px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+nav.tabs{max-width:1240px;margin:0 auto;padding:0 20px 8px;display:flex;gap:4px;overflow-x:auto}
+nav.tabs a{padding:6px 12px;border-radius:999px;color:var(--ink-2);text-decoration:none;white-space:nowrap;font-size:.88rem}
+nav.tabs a:hover{background:var(--accent-soft);color:var(--accent)}
+main{max-width:1240px;margin:0 auto;padding:20px}
+section{margin:0 0 28px}h2{font-size:1.25rem;margin:0 0 12px}h3{font-size:1rem;margin:14px 0 8px}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}
+.verdict{border-left:4px solid var(--tone);display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:14px 0}
+.kpi .v{font-size:1.6rem;font-weight:700}.kpi .l{color:var(--muted);font-size:.82rem}
+.kpi .d{color:var(--faint);font-size:.78rem}
+.layer1{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px}
+.layer1 ul{margin:6px 0 0;padding-left:18px}.layer1 li{margin:3px 0}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 12px;position:sticky;top:96px;z-index:10;
+background:var(--bg);padding:8px 0}
+.toolbar input[type=search]{flex:1 1 280px;min-width:200px;padding:8px 12px;border:1px solid var(--rule-strong);
+border-radius:var(--r-sm);background:var(--surface)}
+.toolbar select{padding:7px 10px;border:1px solid var(--rule-strong);border-radius:var(--r-sm);background:var(--surface)}
+details.wi{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r);margin:8px 0;
+border-left:4px solid var(--tone,var(--rule-strong))}
+details.wi>summary{list-style:none;cursor:pointer;padding:10px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+details.wi>summary::-webkit-details-marker{display:none}
+details.wi>summary::before{content:"\25B8";color:var(--muted);transition:transform .15s}
+details.wi[open]>summary::before{transform:rotate(90deg)}
+.wi .body{padding:0 16px 14px 34px}.wi .children{margin-left:14px}
+.t-epic{--tone:#7b4dff}.t-feature{--tone:var(--info)}.t-story,.t-enabler,.t-spike,.t-bug{--tone:var(--pass)}
+.t-task{--tone:var(--warn)}.title{font-weight:600;overflow-wrap:anywhere}.mono{font-family:var(--mono);font-size:.78rem;color:var(--muted);overflow-wrap:anywhere}
+.card,.grid2>*,.layer1>*{min-width:0}
+.rich p{margin:4px 0}.rich ul{margin:4px 0;padding-left:20px}
+table{border-collapse:collapse;width:100%;font-size:.88rem}th,td{border:1px solid var(--rule);padding:6px 8px;
+text-align:left;vertical-align:top}th{background:var(--surface-2)}
+.tablewrap{overflow-x:auto}.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:12px}
+.finding{border-left:4px solid var(--tone)}.sev-critical,.sev-high{--tone:var(--fail)}.sev-medium{--tone:var(--warn)}
+.sev-low,.sev-info{--tone:var(--info)}dl.kv{display:grid;grid-template-columns:max-content 1fr;gap:4px 12px;margin:6px 0}
+dl.kv dt{color:var(--muted)}dl.kv dd{margin:0}.quote{color:var(--ink-2);font-style:italic}
+pre.json{max-height:480px;overflow:auto;background:var(--sunk);padding:12px;border-radius:var(--r-sm)}
+.notice{color:var(--muted);font-size:.85rem}
+@media (max-width:640px){.bar{padding:10px 12px}main{padding:12px}.wi .body{padding-left:14px}
+.toolbar{top:86px}dl.kv{grid-template-columns:1fr}}
+@media print{header.top,.toolbar,nav.tabs{position:static}details.wi{break-inside:avoid}.btn{display:none}}
+</style></head>
+<body><a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="bar"><div class="logo" aria-hidden="true"></div><div class="brand"><h1>Clube de Leitura</h1>
+<p>Execução <code>PBD-RUN-CPHGGRAD86S3</code> · pt-BR · profile generic</p></div>
+<span class="badge tone-warn">SINTÉTICO</span><span class="badge tone-info">Não publicado: pacote e plano são locais.</span><span class="spacer"></span>
+<button class="btn" id="theme" type="button" aria-label="Alternar tema">◐</button></div>
+<nav class="tabs" aria-label="sections"><a href='#summary'>Resumo executivo</a><a href='#backlog'>Backlog</a><a href='#requirements'>Requisitos</a><a href='#findings'>Achados</a><a href='#questions'>Perguntas</a><a href='#gates'>Gates de qualidade</a><a href='#sources'>Fontes</a><a href='#data'>Dados</a></nav></header>
+<main id="main">
+<section id="summary" aria-labelledby="h-summary"><h2 id="h-summary">Resumo executivo</h2>
+<div class="card verdict tone-pass"><span class="badge tone-pass">PASS</span><div><strong>14 gate(s) PASS · 1 NOT_RUN</strong>
+<p class="notice">Conteúdo potencialmente sensível: compartilhe somente com quem pode ver as fontes.</p></div></div>
+<div class="kpis"><div class="card kpi"><div class="v">12</div><div class="l">Work Items</div><div class="d">epic: 1, feature: 2, story: 3, task: 6</div></div><div class="card kpi"><div class="v">13</div><div class="l">Critérios de aceite</div><div class="d">5 proposed</div></div><div class="card kpi"><div class="v">7/9</div><div class="l">Cobertura independente</div><div class="d">provenance: independent reviewer inventory</div></div><div class="card kpi"><div class="v">3/3</div><div class="l">Membros lidos</div><div class="d">2 source(s)</div></div><div class="card kpi"><div class="v">3</div><div class="l">Achados</div><div class="d">low: 2, medium: 1</div></div><div class="card kpi"><div class="v">4</div><div class="l">Perguntas abertas</div><div class="d">0 blocking</div></div></div><div class="layer1"><div class="card"><h3>O que foi analisado</h3><ul><li>prd.md — functional (complete)</li><li>decisoes — decision (complete)</li></ul></div><div class="card"><h3>O que está consistente</h3><ul><li>G01 Source Integrity</li><li>G02 Requirements Coverage</li><li>G03 Hierarchy Integrity</li><li>G04 Traceability</li><li>G05 Story Quality</li><li>G06 Acceptance Quality</li><li>G07 Task Coverage</li><li>G08 Dependency Integrity</li><li>G09 Scope Integrity</li><li>G11 Artifact Integrity</li><li>G13 Independent Review</li><li>G14 Semantic Duplication</li><li>G15 Change Safety</li><li>G16 Privacy and Offline Boundary</li></ul></div><div class="card"><h3>O que diverge</h3><ul><li><span class="badge tone-info">low</span> AC6 says only one is confirmed</li><li><span class="badge tone-info">low</span> T3 is test planning</li><li><span class="badge tone-warn">medium</span> Q4 open; US3 relies on cancellation</li></ul></div><div class="card"><h3>O que precisa de decisão</h3><ul><li>Por qual canal e em que prazo a primeira pessoa da lista de espera deve ser avisada de sua inscrição?</li><li>A ADR-003 (aumentar o limite para 30 participantes) será aprovada? Enquanto não for, o backlog usa o limite de 20.</li><li>Qual critério define a &#x27;primeira pessoa&#x27; da lista de espera?</li><li>O cancelamento de inscrição pelo inscrito já existe ou precisa ser construído neste escopo?</li></ul></div><div class="card"><h3>O que não está comprovado</h3><ul><li>G18 NOT_RUN: round-trip against a tracker (mock or live) belongs to M3; live qualification requires separate authorization</li></ul></div></div></section>
+<section id="backlog" aria-labelledby="h-backlog"><h2 id="h-backlog">Backlog</h2>
+<div class="toolbar" role="search"><label class="sr-only" for="q">Buscar por ID, título, critério ou texto</label>
+<input id="q" type="search" placeholder="Buscar por ID, título, critério ou texto" autocomplete="off">
+<label class="sr-only" for="ftype">type</label><select id="ftype"><option value="">Todos os tipos</option><option value='epic'>epic</option><option value='feature'>feature</option><option value='story'>story</option><option value='task'>task</option></select>
+<label class="sr-only" for="fverdict">verdict</label><select id="fverdict"><option value="">Todas as avaliações</option>
+<option value="pass">pass</option><option value="concern">concern</option><option value="fail">fail</option></select>
+<button class="btn" id="expand" type="button">Expandir tudo</button><button class="btn" id="collapse" type="button">Recolher tudo</button>
+<span aria-live="polite"><strong id="count">12</strong> itens visíveis</span></div>
+<p id="noresults" class="notice" hidden>Nenhum item corresponde à busca.</p>
+<div id="tree"><details class='wi t-epic' id='PBD-EPIC-65RD0RCSTFJY' data-type='epic' data-verdict='pass' data-text='PBD-EPIC-65RD0RCSTFJY E1 Inscrições em encontros do Clube de Leitura Objetivo: Permitir que participantes se inscrevam em encontros publicados com confirmação automática enquanto houver vagas, e que entrem em lista de espera quando o encontro estiver lotado.
+Contexto: O PRD exigia aprovação do moderador para cada inscrição; a ADR-002 (aprovada) substituiu essa regra por confirmação automática, porque a aprovação manual atrasava as confirmações. A ADR-003, que propõe elevar o limite para 30, ainda está em discussão; o limite vigente é de 20 participantes por encontro.
+No escopo
+Inscrição do participante em encontro publicado
+Confirmação automática enquanto houver vagas, sem aprovação do moderador
+Limite de 20 participantes por encontro
+Lista de espera para encontro lotado
+Inscrição e aviso da primeira pessoa da lista de espera quando um inscrito cancela
+Fora do escopo
+Fluxo de aprovação de inscrições pelo moderador (eliminado pela ADR-002)
+Alteração do limite para 30 participantes (ADR-003 não aprovada)
+Resultado esperado: Inscrições confirmadas sem espera por aprovação manual, respeitando a capacidade do encontro, e vagas liberadas por cancelamento reaproveitadas pela lista de espera.'><summary><span class="badge tone-accent">epic</span><span class='mono'>E1</span><span class='title'>Inscrições em encontros do Clube de Leitura</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-EPIC-65RD0RCSTFJY</p><h3>Descrição</h3><div class='rich'><p><strong>Objetivo</strong>: Permitir que participantes se inscrevam em encontros publicados com confirmação automática enquanto houver vagas, e que entrem em lista de espera quando o encontro estiver lotado.</p><p><strong>Contexto</strong>: O PRD exigia aprovação do moderador para cada inscrição; a ADR-002 (aprovada) substituiu essa regra por confirmação automática, porque a aprovação manual atrasava as confirmações. A ADR-003, que propõe elevar o limite para 30, ainda está em discussão; o limite vigente é de 20 participantes por encontro.</p><p><strong>No escopo</strong></p><ul><li>Inscrição do participante em encontro publicado</li><li>Confirmação automática enquanto houver vagas, sem aprovação do moderador</li><li>Limite de 20 participantes por encontro</li><li>Lista de espera para encontro lotado</li><li>Inscrição e aviso da primeira pessoa da lista de espera quando um inscrito cancela</li></ul><p><strong>Fora do escopo</strong></p><ul><li>Fluxo de aprovação de inscrições pelo moderador (eliminado pela ADR-002)</li><li>Alteração do limite para 30 participantes (ADR-003 não aprovada)</li></ul><p><strong>Resultado esperado</strong>: Inscrições confirmadas sem espera por aprovação manual, respeitando a capacidade do encontro, e vagas liberadas por cancelamento reaproveitadas pela lista de espera.</p></div><h3>Rastreabilidade</h3><ul><li><code>C1</code> O participante se inscreve em um encontro publicado. — <span class='mono'>prd.md:3</span> <span class='quote'>“O participante se inscreve em um encontro publicado.”</span></li><li><code>C3</code> Cada encontro aceita até 20 participantes. — <span class='mono'>prd.md:5</span> <span class='quote'>“Cada encontro aceita até 20 participantes.”</span></li><li><code>C4</code> Quando o encontro está lotado, o participante pode entrar na lista de espera. — <span class='mono'>prd.md:6</span> <span class='quote'>“o participante pode entrar na lista de espera”</span></li><li><code>C5</code> Se um inscrito cancelar, a primeira pessoa da lista de espera é inscrita. — <span class='mono'>prd.md:7</span> <span class='quote'>“a primeira pessoa da lista de espera é inscrita”</span></li><li><code>C6</code> Se um inscrito cancelar, a primeira pessoa da lista de espera é avisada. — <span class='mono'>prd.md:7</span> <span class='quote'>“e avisada”</span></li><li><code>C7</code> Inscrições são confirmadas automaticamente enquanto houver vagas no encontro. — <span class='mono'>adr-002-confirmacao-automatica.md:5</span> <span class='quote'>“inscrições passam a ser confirmadas automaticamente enquanto houver vagas”</span></li><li><code>C8</code> A inscrição não passa por aprovação do moderador (a aprovação do moderador deixa de existir). — <span class='mono'>adr-002-confirmacao-automatica.md:5</span> <span class='quote'>“a aprovação do moderador deixa de existir”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd>Outcome and scope boundaries clear; correctly excludes moderator approval (superseded) and limit 30 (unapproved).</dd></dl><div class='children'><details class='wi t-feature' id='PBD-FEAT-D7T913340BP5' data-type='feature' data-verdict='pass' data-text='PBD-FEAT-D7T913340BP5 F1 Inscrição com confirmação automática Capacidade: Inscrever o participante em um encontro publicado e confirmar a inscrição automaticamente enquanto houver vagas.
+Valor: Elimina o atraso causado pela aprovação manual do moderador.
+Regras relacionadas
+Inscrição só em encontro publicado
+Confirmação automática enquanto houver vagas (ADR-002)
+Sem etapa de aprovação do moderador (ADR-002)
+Até 20 participantes por encontro'><summary><span class="badge tone-accent">feature</span><span class='mono'>F1</span><span class='title'>Inscrição com confirmação automática</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-FEAT-D7T913340BP5</p><h3>Descrição</h3><div class='rich'><p><strong>Capacidade</strong>: Inscrever o participante em um encontro publicado e confirmar a inscrição automaticamente enquanto houver vagas.</p><p><strong>Valor</strong>: Elimina o atraso causado pela aprovação manual do moderador.</p><p><strong>Regras relacionadas</strong></p><ul><li>Inscrição só em encontro publicado</li><li>Confirmação automática enquanto houver vagas (ADR-002)</li><li>Sem etapa de aprovação do moderador (ADR-002)</li><li>Até 20 participantes por encontro</li></ul></div><h3>Rastreabilidade</h3><ul><li><code>C1</code> O participante se inscreve em um encontro publicado. — <span class='mono'>prd.md:3</span> <span class='quote'>“O participante se inscreve em um encontro publicado.”</span></li><li><code>C3</code> Cada encontro aceita até 20 participantes. — <span class='mono'>prd.md:5</span> <span class='quote'>“Cada encontro aceita até 20 participantes.”</span></li><li><code>C7</code> Inscrições são confirmadas automaticamente enquanto houver vagas no encontro. — <span class='mono'>adr-002-confirmacao-automatica.md:5</span> <span class='quote'>“inscrições passam a ser confirmadas automaticamente enquanto houver vagas”</span></li><li><code>C8</code> A inscrição não passa por aprovação do moderador (a aprovação do moderador deixa de existir). — <span class='mono'>adr-002-confirmacao-automatica.md:5</span> <span class='quote'>“a aprovação do moderador deixa de existir”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd>Coherent capability grouping rules from PRD and ADR-002.</dd></dl><div class='children'><details class='wi t-story' id='PBD-STORY-PASAP9QV2K9J' data-type='story' data-verdict='pass' data-text='PBD-STORY-PASAP9QV2K9J US1 Inscrever-se em encontro publicado com confirmação automática Eu como participante, gostaria que minha inscrição em um encontro publicado fosse confirmada automaticamente enquanto houver vagas, para garantir meu lugar no encontro sem esperar aprovação do moderador.
+Observações
+Limite vigente de 20 participantes; a proposta de 30 (ADR-003) não está aprovada. CA-01 Dado um encontro publicado com menos de 20 inscritos, quando o participante se inscreve: A inscrição fica confirmada imediatamente, sem etapa intermediária. CA-02 Dada uma inscrição confirmada automaticamente, quando o moderador consulta o encontro: Não existe inscrição pendente de aprovação nem ação de aprovar ou recusar disponível ao moderador. CA-03 Dado um encontro publicado com 19 inscritos, quando mais um participante se inscreve: A inscrição é confirmada e o encontro passa a ter 20 inscritos, ficando lotado. CA-04 Dado um encontro publicado que já tem 20 inscritos, quando outro participante tenta se inscrever: Nenhuma nova inscrição confirmada é criada; o total permanece 20. CA-05 Dado um encontro que não está publicado, quando um participante tenta se inscrever: Nenhuma inscrição é criada para esse encontro. CA-06 Dado um encontro com exatamente uma vaga restante, quando dois participantes se inscrevem ao mesmo tempo: Apenas uma das inscrições é confirmada e o encontro não ultrapassa 20 inscritos.'><summary><span class="badge tone-accent">story</span><span class='mono'>US1</span><span class='title'>Inscrever-se em encontro publicado com confirmação automática</span><span class="badge tone-pass">pass</span><span class='mono'>6 AC</span></summary><div class='body'><p class='mono'>PBD-STORY-PASAP9QV2K9J</p><h3>Descrição</h3><div class='rich'><p><strong>Eu como</strong> participante, <strong>gostaria que</strong> minha inscrição em um encontro publicado fosse confirmada automaticamente enquanto houver vagas, <strong>para</strong> garantir meu lugar no encontro sem esperar aprovação do moderador.</p><p><strong>Observações</strong></p><ul><li>Limite vigente de 20 participantes; a proposta de 30 (ADR-003) não está aprovada.</li></ul></div><h3>Critérios de aceite</h3><div class='rich tablewrap'><ul><li><strong>CA-01</strong> Dado um encontro publicado com menos de 20 inscritos, quando o participante se inscreve: A inscrição fica confirmada imediatamente, sem etapa intermediária.</li><li><strong>CA-02</strong> Dada uma inscrição confirmada automaticamente, quando o moderador consulta o encontro: Não existe inscrição pendente de aprovação nem ação de aprovar ou recusar disponível ao moderador.</li><li><strong>CA-03</strong> Dado um encontro publicado com 19 inscritos, quando mais um participante se inscreve: A inscrição é confirmada e o encontro passa a ter 20 inscritos, ficando lotado.</li><li><strong>CA-04</strong> Dado um encontro publicado que já tem 20 inscritos, quando outro participante tenta se inscrever: Nenhuma nova inscrição confirmada é criada; o total permanece 20.</li><li><strong>CA-05</strong> Dado um encontro que não está publicado, quando um participante tenta se inscrever: Nenhuma inscrição é criada para esse encontro.</li><li><strong>CA-06</strong> Dado um encontro com exatamente uma vaga restante, quando dois participantes se inscrevem ao mesmo tempo: Apenas uma das inscrições é confirmada e o encontro não ultrapassa 20 inscritos.</li></ul></div><div class='tablewrap'><table><thead><tr><th>ID</th><th>status</th><th>review</th><th>notes</th><th>claims</th></tr></thead><tbody><tr><td>CA-01</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C1, C7</td></tr><tr><td>CA-02</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C8</td></tr><tr><td>CA-03</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C3, C7</td></tr><tr><td>CA-04</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C3</td></tr><tr><td>CA-05</td><td>proposed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C1</td></tr><tr><td>CA-06</td><td>proposed</td><td><span class="badge tone-warn">concern</span></td><td>Does not state what happens to the second concurrent request (rejected, waitlist offer); outcome incomplete though proposed.</td><td>C3, C7</td></tr></tbody></table></div><h3>Rastreabilidade</h3><ul><li><code>C1</code> O participante se inscreve em um encontro publicado. — <span class='mono'>prd.md:3</span> <span class='quote'>“O participante se inscreve em um encontro publicado.”</span></li><li><code>C3</code> Cada encontro aceita até 20 participantes. — <span class='mono'>prd.md:5</span> <span class='quote'>“Cada encontro aceita até 20 participantes.”</span></li><li><code>C7</code> Inscrições são confirmadas automaticamente enquanto houver vagas no encontro. — <span class='mono'>adr-002-confirmacao-automatica.md:5</span> <span class='quote'>“inscrições passam a ser confirmadas automaticamente enquanto houver vagas”</span></li><li><code>C8</code> A inscrição não passa por aprovação do moderador (a aprovação do moderador deixa de existir). — <span class='mono'>adr-002-confirmacao-automatica.md:5</span> <span class='quote'>“a aprovação do moderador deixa de existir”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>tasks</dt><dd>sufficient</dd><dt>notes</dt><dd>Approved ADR-002 reflected; limit 20 retained.</dd></dl><div class='tablewrap'><table><tbody><tr><td>estimable</td><td><span class="badge tone-neutral">unknown</span></td><td>no team sizing data</td></tr><tr><td>independent</td><td><span class="badge tone-neutral">supported</span></td><td>first story, no inbound dependency</td></tr><tr><td>negotiable</td><td><span class="badge tone-neutral">supported</span></td><td>ok</td></tr><tr><td>small</td><td><span class="badge tone-neutral">supported</span></td><td>one slice with publish, limit and auto-confirm; coherent</td></tr><tr><td>testable</td><td><span class="badge tone-neutral">supported</span></td><td>ok</td></tr><tr><td>valuable</td><td><span class="badge tone-neutral">supported</span></td><td>ok</td></tr></tbody></table></div><div class='children'><details class='wi t-task' id='PBD-TASK-R1CPE4HDWFP6' data-type='task' data-verdict='pass' data-text='PBD-TASK-R1CPE4HDWFP6 T1 Implementar confirmação automática condicionada a vagas Objetivo: Registrar a inscrição do participante em encontro publicado e confirmá-la imediatamente quando o número de inscritos estiver abaixo de 20.
+Atividades
+Verificar se o encontro está publicado antes de aceitar a inscrição
+Contar inscritos confirmados e comparar com o limite de 20
+Gravar a inscrição já como confirmada quando houver vaga
+Garantir que duas inscrições simultâneas não ultrapassem o limite
+Resultado esperado: Inscrição confirmada sem intervenção manual enquanto houver vagas; nenhuma confirmação além de 20 inscritos.
+Verificação: Critérios CA-01, CA-03, CA-04 e CA-06 de US1 atendidos.'><summary><span class="badge tone-accent">task</span><span class='mono'>T1</span><span class='title'>Implementar confirmação automática condicionada a vagas</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-TASK-R1CPE4HDWFP6</p><h3>Descrição</h3><div class='rich'><p><strong>Objetivo</strong>: Registrar a inscrição do participante em encontro publicado e confirmá-la imediatamente quando o número de inscritos estiver abaixo de 20.</p><p><strong>Atividades</strong></p><ul><li>Verificar se o encontro está publicado antes de aceitar a inscrição</li><li>Contar inscritos confirmados e comparar com o limite de 20</li><li>Gravar a inscrição já como confirmada quando houver vaga</li><li>Garantir que duas inscrições simultâneas não ultrapassem o limite</li></ul><p><strong>Resultado esperado</strong>: Inscrição confirmada sem intervenção manual enquanto houver vagas; nenhuma confirmação além de 20 inscritos.</p><p><strong>Verificação</strong>: Critérios CA-01, CA-03, CA-04 e CA-06 de US1 atendidos.</p></div><h3>Rastreabilidade</h3><ul><li><code>C1</code> O participante se inscreve em um encontro publicado. — <span class='mono'>prd.md:3</span> <span class='quote'>“O participante se inscreve em um encontro publicado.”</span></li><li><code>C3</code> Cada encontro aceita até 20 participantes. — <span class='mono'>prd.md:5</span> <span class='quote'>“Cada encontro aceita até 20 participantes.”</span></li><li><code>C7</code> Inscrições são confirmadas automaticamente enquanto houver vagas no encontro. — <span class='mono'>adr-002-confirmacao-automatica.md:5</span> <span class='quote'>“inscrições passam a ser confirmadas automaticamente enquanto houver vagas”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd>Implementation work; verification references CA-01/03/04/06 correctly.</dd></dl></div></details><details class='wi t-task' id='PBD-TASK-TQA4SE1Q3QPD' data-type='task' data-verdict='pass' data-text='PBD-TASK-TQA4SE1Q3QPD T2 Remover a etapa de aprovação do moderador Objetivo: Eliminar estados, telas e regras que deixavam a inscrição pendente de aprovação do moderador, conforme ADR-002.
+Atividades
+Identificar onde a aprovação do moderador é exigida no fluxo de inscrição
+Remover o estado pendente de aprovação e a ação de aprovar inscrição
+Atualizar a documentação da regra de inscrição
+Resultado esperado: Nenhuma inscrição depende de ação do moderador para ser confirmada.
+Verificação: Critério CA-02 de US1 atendido; não existe ação de aprovação disponível ao moderador.'><summary><span class="badge tone-accent">task</span><span class='mono'>T2</span><span class='title'>Remover a etapa de aprovação do moderador</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-TASK-TQA4SE1Q3QPD</p><h3>Descrição</h3><div class='rich'><p><strong>Objetivo</strong>: Eliminar estados, telas e regras que deixavam a inscrição pendente de aprovação do moderador, conforme ADR-002.</p><p><strong>Atividades</strong></p><ul><li>Identificar onde a aprovação do moderador é exigida no fluxo de inscrição</li><li>Remover o estado pendente de aprovação e a ação de aprovar inscrição</li><li>Atualizar a documentação da regra de inscrição</li></ul><p><strong>Resultado esperado</strong>: Nenhuma inscrição depende de ação do moderador para ser confirmada.</p><p><strong>Verificação</strong>: Critério CA-02 de US1 atendido; não existe ação de aprovação disponível ao moderador.</p></div><h3>Rastreabilidade</h3><ul><li><code>C8</code> A inscrição não passa por aprovação do moderador (a aprovação do moderador deixa de existir). — <span class='mono'>adr-002-confirmacao-automatica.md:5</span> <span class='quote'>“a aprovação do moderador deixa de existir”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd>Legitimate removal work from ADR-002.</dd></dl></div></details><details class='wi t-task' id='PBD-TASK-YFDX98SNQ0BW' data-type='task' data-verdict='concern' data-text='PBD-TASK-YFDX98SNQ0BW T3 Planejar testes da regra de capacidade e confirmação Objetivo: Planejar a verificação dos limites 19/20/21 inscritos e da ausência de aprovação manual.
+Atividades
+Definir cenários de fronteira do limite de 20
+Definir cenário de inscrições concorrentes na última vaga
+Encaminhar os cenários para elaboração de casos de teste
+Resultado esperado: Plano de testes da US1 revisado pela equipe.
+Verificação: Cada critério de US1 tem ao menos um cenário planejado.'><summary><span class="badge tone-accent">task</span><span class='mono'>T3</span><span class='title'>Planejar testes da regra de capacidade e confirmação</span><span class="badge tone-warn">concern</span></summary><div class='body'><p class='mono'>PBD-TASK-YFDX98SNQ0BW</p><h3>Descrição</h3><div class='rich'><p><strong>Objetivo</strong>: Planejar a verificação dos limites 19/20/21 inscritos e da ausência de aprovação manual.</p><p><strong>Atividades</strong></p><ul><li>Definir cenários de fronteira do limite de 20</li><li>Definir cenário de inscrições concorrentes na última vaga</li><li>Encaminhar os cenários para elaboração de casos de teste</li></ul><p><strong>Resultado esperado</strong>: Plano de testes da US1 revisado pela equipe.</p><p><strong>Verificação</strong>: Cada critério de US1 tem ao menos um cenário planejado.</p></div><h3>Rastreabilidade</h3><ul><li><code>C3</code> Cada encontro aceita até 20 participantes. — <span class='mono'>prd.md:5</span> <span class='quote'>“Cada encontro aceita até 20 participantes.”</span></li><li><code>C7</code> Inscrições são confirmadas automaticamente enquanto houver vagas no encontro. — <span class='mono'>adr-002-confirmacao-automatica.md:5</span> <span class='quote'>“inscrições passam a ser confirmadas automaticamente enquanto houver vagas”</span></li><li><code>C8</code> A inscrição não passa por aprovação do moderador (a aprovação do moderador deixa de existir). — <span class='mono'>adr-002-confirmacao-automatica.md:5</span> <span class='quote'>“a aprovação do moderador deixa de existir”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>concern</dd><dt>source</dt><dd>proposal_justified</dd><dt>notes</dt><dd>Test planning is a QA activity overlapping with Test Case design; not source-required, low value as a delivery task. Optional improvement.</dd></dl></div></details></div></div></details></div></div></details><details class='wi t-feature' id='PBD-FEAT-M09H52J08CTH' data-type='feature' data-verdict='pass' data-text='PBD-FEAT-M09H52J08CTH F2 Lista de espera de encontros lotados Capacidade: Manter uma lista de espera para encontros lotados e preencher vagas liberadas por cancelamento com a primeira pessoa da lista.
+Valor: Reaproveita vagas liberadas sem trabalho manual e dá ao participante uma alternativa quando o encontro está cheio.
+Regras relacionadas
+Lista de espera disponível quando o encontro está lotado
+Cancelamento de inscrito inscreve a primeira pessoa da lista
+A pessoa promovida é avisada'><summary><span class="badge tone-accent">feature</span><span class='mono'>F2</span><span class='title'>Lista de espera de encontros lotados</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-FEAT-M09H52J08CTH</p><h3>Descrição</h3><div class='rich'><p><strong>Capacidade</strong>: Manter uma lista de espera para encontros lotados e preencher vagas liberadas por cancelamento com a primeira pessoa da lista.</p><p><strong>Valor</strong>: Reaproveita vagas liberadas sem trabalho manual e dá ao participante uma alternativa quando o encontro está cheio.</p><p><strong>Regras relacionadas</strong></p><ul><li>Lista de espera disponível quando o encontro está lotado</li><li>Cancelamento de inscrito inscreve a primeira pessoa da lista</li><li>A pessoa promovida é avisada</li></ul></div><h3>Rastreabilidade</h3><ul><li><code>C4</code> Quando o encontro está lotado, o participante pode entrar na lista de espera. — <span class='mono'>prd.md:6</span> <span class='quote'>“o participante pode entrar na lista de espera”</span></li><li><code>C5</code> Se um inscrito cancelar, a primeira pessoa da lista de espera é inscrita. — <span class='mono'>prd.md:7</span> <span class='quote'>“a primeira pessoa da lista de espera é inscrita”</span></li><li><code>C6</code> Se um inscrito cancelar, a primeira pessoa da lista de espera é avisada. — <span class='mono'>prd.md:7</span> <span class='quote'>“e avisada”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd>Waitlist and promotion capability.</dd></dl><div class='children'><details class='wi t-story' id='PBD-STORY-Q3R6G9TCYCC6' data-type='story' data-verdict='pass' data-text='PBD-STORY-Q3R6G9TCYCC6 US2 Entrar na lista de espera de encontro lotado Eu como participante, gostaria que pudesse entrar na lista de espera quando o encontro estiver lotado, para ter a chance de participar caso uma vaga seja liberada. CA-01 Dado um encontro lotado, quando o participante tenta se inscrever: O participante pode optar por entrar na lista de espera do encontro e passa a constar nela. CA-02 Dado um encontro com vagas disponíveis, quando o participante se inscreve: O participante não é colocado na lista de espera; recebe inscrição confirmada. CA-03 Dadas várias pessoas na lista de espera, quando a lista é consultada: A ordem da lista reflete a ordem de entrada, definindo quem é a primeira pessoa.'><summary><span class="badge tone-accent">story</span><span class='mono'>US2</span><span class='title'>Entrar na lista de espera de encontro lotado</span><span class="badge tone-pass">pass</span><span class='mono'>3 AC</span></summary><div class='body'><p class='mono'>PBD-STORY-Q3R6G9TCYCC6</p><h3>Descrição</h3><div class='rich'><p><strong>Eu como</strong> participante, <strong>gostaria que</strong> pudesse entrar na lista de espera quando o encontro estiver lotado, <strong>para</strong> ter a chance de participar caso uma vaga seja liberada.</p></div><h3>Critérios de aceite</h3><div class='rich tablewrap'><ul><li><strong>CA-01</strong> Dado um encontro lotado, quando o participante tenta se inscrever: O participante pode optar por entrar na lista de espera do encontro e passa a constar nela.</li><li><strong>CA-02</strong> Dado um encontro com vagas disponíveis, quando o participante se inscreve: O participante não é colocado na lista de espera; recebe inscrição confirmada.</li><li><strong>CA-03</strong> Dadas várias pessoas na lista de espera, quando a lista é consultada: A ordem da lista reflete a ordem de entrada, definindo quem é a primeira pessoa.</li></ul></div><div class='tablewrap'><table><thead><tr><th>ID</th><th>status</th><th>review</th><th>notes</th><th>claims</th></tr></thead><tbody><tr><td>CA-01</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C4</td></tr><tr><td>CA-02</td><td>proposed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C4</td></tr><tr><td>CA-03</td><td>proposed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C4</td></tr></tbody></table></div><h3>Rastreabilidade</h3><ul><li><code>C4</code> Quando o encontro está lotado, o participante pode entrar na lista de espera. — <span class='mono'>prd.md:6</span> <span class='quote'>“o participante pode entrar na lista de espera”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>tasks</dt><dd>sufficient</dd><dt>notes</dt><dd>Waitlist entry covered; ordering depends on open Q3.</dd></dl><div class='tablewrap'><table><tbody><tr><td>estimable</td><td><span class="badge tone-neutral">unknown</span></td><td>no team sizing data</td></tr><tr><td>independent</td><td><span class="badge tone-neutral">concern</span></td><td>depends on US1 for capacity control (declared relation)</td></tr><tr><td>negotiable</td><td><span class="badge tone-neutral">supported</span></td><td>ok</td></tr><tr><td>small</td><td><span class="badge tone-neutral">supported</span></td><td>small</td></tr><tr><td>testable</td><td><span class="badge tone-neutral">supported</span></td><td>ok</td></tr><tr><td>valuable</td><td><span class="badge tone-neutral">supported</span></td><td>ok</td></tr></tbody></table></div><div class='children'><details class='wi t-task' id='PBD-TASK-56SQE1MAFNDA' data-type='task' data-verdict='pass' data-text='PBD-TASK-56SQE1MAFNDA T4 Implementar entrada na lista de espera Objetivo: Oferecer ao participante a entrada na lista de espera quando o encontro atingir 20 inscritos e registrar sua posição.
+Atividades
+Detectar encontro lotado na tentativa de inscrição
+Registrar o participante na lista de espera do encontro
+Registrar a ordem de entrada para identificar a primeira pessoa da lista
+Resultado esperado: Participante registrado na lista de espera de encontro lotado, com posição definida.
+Verificação: Critérios de US2 atendidos.'><summary><span class="badge tone-accent">task</span><span class='mono'>T4</span><span class='title'>Implementar entrada na lista de espera</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-TASK-56SQE1MAFNDA</p><h3>Descrição</h3><div class='rich'><p><strong>Objetivo</strong>: Oferecer ao participante a entrada na lista de espera quando o encontro atingir 20 inscritos e registrar sua posição.</p><p><strong>Atividades</strong></p><ul><li>Detectar encontro lotado na tentativa de inscrição</li><li>Registrar o participante na lista de espera do encontro</li><li>Registrar a ordem de entrada para identificar a primeira pessoa da lista</li></ul><p><strong>Resultado esperado</strong>: Participante registrado na lista de espera de encontro lotado, com posição definida.</p><p><strong>Verificação</strong>: Critérios de US2 atendidos.</p></div><h3>Rastreabilidade</h3><ul><li><code>C4</code> Quando o encontro está lotado, o participante pode entrar na lista de espera. — <span class='mono'>prd.md:6</span> <span class='quote'>“o participante pode entrar na lista de espera”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd>Verification text generic (&#x27;Critérios de US2 atendidos&#x27;) but acceptable.</dd></dl></div></details></div></div></details><details class='wi t-story' id='PBD-STORY-XPYZ5YVZQYPX' data-type='story' data-verdict='concern' data-text='PBD-STORY-XPYZ5YVZQYPX US3 Ser inscrito e avisado ao sair da lista de espera Eu como participante, gostaria que fosse inscrito automaticamente e avisado quando um inscrito cancelar e eu for a primeira pessoa da lista de espera, para ocupar a vaga liberada sem precisar acompanhar o encontro.
+Observações
+Canal e prazo do aviso não definidos (Q1).
+Pela ADR-002, a inscrição da pessoa promovida não depende do moderador. CA-01 Dado um encontro lotado com pessoas na lista de espera, quando um inscrito cancela sua inscrição: A primeira pessoa da lista de espera passa a ter inscrição confirmada no encontro. CA-02 Dada a primeira pessoa da lista promovida após um cancelamento, quando sua inscrição é registrada: A inscrição não fica pendente de aprovação do moderador. CA-03 Dada a primeira pessoa da lista inscrita após um cancelamento, quando a inscrição é concluída: A pessoa recebe um aviso de que foi inscrita no encontro. CA-04 Dado um encontro lotado com lista de espera vazia, quando um inscrito cancela: A vaga fica livre e nenhum aviso de promoção é emitido.'><summary><span class="badge tone-accent">story</span><span class='mono'>US3</span><span class='title'>Ser inscrito e avisado ao sair da lista de espera</span><span class="badge tone-warn">concern</span><span class='mono'>4 AC</span></summary><div class='body'><p class='mono'>PBD-STORY-XPYZ5YVZQYPX</p><h3>Descrição</h3><div class='rich'><p><strong>Eu como</strong> participante, <strong>gostaria que</strong> fosse inscrito automaticamente e avisado quando um inscrito cancelar e eu for a primeira pessoa da lista de espera, <strong>para</strong> ocupar a vaga liberada sem precisar acompanhar o encontro.</p><p><strong>Observações</strong></p><ul><li>Canal e prazo do aviso não definidos (Q1).</li><li>Pela ADR-002, a inscrição da pessoa promovida não depende do moderador.</li></ul></div><h3>Critérios de aceite</h3><div class='rich tablewrap'><ul><li><strong>CA-01</strong> Dado um encontro lotado com pessoas na lista de espera, quando um inscrito cancela sua inscrição: A primeira pessoa da lista de espera passa a ter inscrição confirmada no encontro.</li><li><strong>CA-02</strong> Dada a primeira pessoa da lista promovida após um cancelamento, quando sua inscrição é registrada: A inscrição não fica pendente de aprovação do moderador.</li><li><strong>CA-03</strong> Dada a primeira pessoa da lista inscrita após um cancelamento, quando a inscrição é concluída: A pessoa recebe um aviso de que foi inscrita no encontro.</li><li><strong>CA-04</strong> Dado um encontro lotado com lista de espera vazia, quando um inscrito cancela: A vaga fica livre e nenhum aviso de promoção é emitido.</li></ul></div><div class='tablewrap'><table><thead><tr><th>ID</th><th>status</th><th>review</th><th>notes</th><th>claims</th></tr></thead><tbody><tr><td>CA-01</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C5</td></tr><tr><td>CA-02</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C5, C8</td></tr><tr><td>CA-03</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C6</td></tr><tr><td>CA-04</td><td>proposed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C5</td></tr></tbody></table></div><h3>Rastreabilidade</h3><ul><li><code>C5</code> Se um inscrito cancelar, a primeira pessoa da lista de espera é inscrita. — <span class='mono'>prd.md:7</span> <span class='quote'>“a primeira pessoa da lista de espera é inscrita”</span></li><li><code>C6</code> Se um inscrito cancelar, a primeira pessoa da lista de espera é avisada. — <span class='mono'>prd.md:7</span> <span class='quote'>“e avisada”</span></li><li><code>C8</code> A inscrição não passa por aprovação do moderador (a aprovação do moderador deixa de existir). — <span class='mono'>adr-002-confirmacao-automatica.md:5</span> <span class='quote'>“a aprovação do moderador deixa de existir”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>concern</dd><dt>source</dt><dd>supported</dd><dt>tasks</dt><dd>sufficient</dd><dt>notes</dt><dd>Depends on cancellation capability that may not exist (Q4) and on US2; notice channel open (Q1). Story is valid but carries two combined outcomes (promotion and notice) that are coupled by the source.</dd></dl><div class='tablewrap'><table><tbody><tr><td>estimable</td><td><span class="badge tone-neutral">concern</span></td><td>cancellation existence and notice channel unknown (Q1,Q4)</td></tr><tr><td>independent</td><td><span class="badge tone-neutral">concern</span></td><td>depends on US2 and on cancellation</td></tr><tr><td>negotiable</td><td><span class="badge tone-neutral">supported</span></td><td>ok</td></tr><tr><td>small</td><td><span class="badge tone-neutral">supported</span></td><td>promotion and notice form one outcome in the source</td></tr><tr><td>testable</td><td><span class="badge tone-neutral">supported</span></td><td>ok</td></tr><tr><td>valuable</td><td><span class="badge tone-neutral">supported</span></td><td>ok</td></tr></tbody></table></div><div class='children'><details class='wi t-task' id='PBD-TASK-ZFMSZ24CSC7V' data-type='task' data-verdict='pass' data-text='PBD-TASK-ZFMSZ24CSC7V T5 Promover a primeira pessoa da lista de espera no cancelamento Objetivo: Ao cancelamento de um inscrito, inscrever a primeira pessoa da lista de espera e retirá-la da lista, sem aprovação do moderador.
+Atividades
+Reagir ao cancelamento de inscrição confirmada
+Selecionar a primeira pessoa da lista de espera
+Registrar sua inscrição como confirmada e removê-la da lista
+Tratar lista de espera vazia sem efeitos colaterais
+Resultado esperado: Vaga liberada ocupada pela primeira pessoa da lista.
+Verificação: Critérios CA-01, CA-02 e CA-04 de US3 atendidos.'><summary><span class="badge tone-accent">task</span><span class='mono'>T5</span><span class='title'>Promover a primeira pessoa da lista de espera no cancelamento</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-TASK-ZFMSZ24CSC7V</p><h3>Descrição</h3><div class='rich'><p><strong>Objetivo</strong>: Ao cancelamento de um inscrito, inscrever a primeira pessoa da lista de espera e retirá-la da lista, sem aprovação do moderador.</p><p><strong>Atividades</strong></p><ul><li>Reagir ao cancelamento de inscrição confirmada</li><li>Selecionar a primeira pessoa da lista de espera</li><li>Registrar sua inscrição como confirmada e removê-la da lista</li><li>Tratar lista de espera vazia sem efeitos colaterais</li></ul><p><strong>Resultado esperado</strong>: Vaga liberada ocupada pela primeira pessoa da lista.</p><p><strong>Verificação</strong>: Critérios CA-01, CA-02 e CA-04 de US3 atendidos.</p></div><h3>Rastreabilidade</h3><ul><li><code>C5</code> Se um inscrito cancelar, a primeira pessoa da lista de espera é inscrita. — <span class='mono'>prd.md:7</span> <span class='quote'>“a primeira pessoa da lista de espera é inscrita”</span></li><li><code>C8</code> A inscrição não passa por aprovação do moderador (a aprovação do moderador deixa de existir). — <span class='mono'>adr-002-confirmacao-automatica.md:5</span> <span class='quote'>“a aprovação do moderador deixa de existir”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd>Covers promotion, empty list and no moderator approval.</dd></dl></div></details><details class='wi t-task' id='PBD-TASK-A9XQ19NG0DTW' data-type='task' data-verdict='pass' data-text='PBD-TASK-A9XQ19NG0DTW T6 Avisar a pessoa promovida da lista de espera Objetivo: Enviar aviso à pessoa inscrita a partir da lista de espera, pelo canal que for definido em resposta à Q1.
+Atividades
+Obter a definição de canal e prazo do aviso (Q1)
+Disparar o aviso após a inscrição da pessoa promovida
+Registrar que o aviso foi emitido
+Resultado esperado: Pessoa promovida recebe aviso de sua inscrição.
+Verificação: Critério CA-03 de US3 atendido.'><summary><span class="badge tone-accent">task</span><span class='mono'>T6</span><span class='title'>Avisar a pessoa promovida da lista de espera</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-TASK-A9XQ19NG0DTW</p><h3>Descrição</h3><div class='rich'><p><strong>Objetivo</strong>: Enviar aviso à pessoa inscrita a partir da lista de espera, pelo canal que for definido em resposta à Q1.</p><p><strong>Atividades</strong></p><ul><li>Obter a definição de canal e prazo do aviso (Q1)</li><li>Disparar o aviso após a inscrição da pessoa promovida</li><li>Registrar que o aviso foi emitido</li></ul><p><strong>Resultado esperado</strong>: Pessoa promovida recebe aviso de sua inscrição.</p><p><strong>Verificação</strong>: Critério CA-03 de US3 atendido.</p></div><h3>Rastreabilidade</h3><ul><li><code>C6</code> Se um inscrito cancelar, a primeira pessoa da lista de espera é avisada. — <span class='mono'>prd.md:7</span> <span class='quote'>“e avisada”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd>Notice work; correctly dependent on Q1.</dd></dl></div></details></div></div></details></div></div></details></div></div></details></div>
+<h3>Dependências</h3><ul><li>US1 → predecessor → US2: A lista de espera depende do controle de lotação (limite de 20) implementado na inscrição com confirmação automática. (proposed)</li><li>US2 → predecessor → US3: A promoção ao cancelar exige a lista de espera existente e ordenada. (proposed)</li></ul></section>
+<section id="requirements"><h2>Requisitos</h2><h3>Claims reconciliadas</h3><div class="tablewrap"><table>
+<thead><tr><th>key</th><th>claim</th><th>category</th><th>Status</th><th>covered by</th><th>rationale</th></tr></thead>
+<tbody><tr><td><code>C1</code></td><td>O participante se inscreve em um encontro publicado.</td><td>functional</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC1, T1</td><td>Inscrição em encontro publicado coberta pela US1.</td></tr><tr><td><code>C2</code></td><td>Inscrições em encontros exigem aprovação do moderador.</td><td>functional</td><td><span class="badge tone-muted">SUPERSEDED</span></td><td></td><td>Superseded by decision DEC1.</td></tr><tr><td><code>C3</code></td><td>Cada encontro aceita até 20 participantes.</td><td>constraint</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC3, AC4, T1</td><td>Limite de 20 verificado nas fronteiras 19/20; ADR-003 (30) não aprovada, ver Q2.</td></tr><tr><td><code>C4</code></td><td>Quando o encontro está lotado, o participante pode entrar na lista de espera.</td><td>functional</td><td><span class="badge tone-pass">COVERED</span></td><td>US2, AC7, T4</td><td>Entrada na lista de espera de encontro lotado coberta pela US2.</td></tr><tr><td><code>C5</code></td><td>Se um inscrito cancelar, a primeira pessoa da lista de espera é inscrita.</td><td>functional</td><td><span class="badge tone-pass">COVERED</span></td><td>US3, AC10, T5</td><td>Promoção da primeira pessoa da lista ao cancelamento coberta pela US3; critério de &#x27;primeira&#x27; em Q3.</td></tr><tr><td><code>C6</code></td><td>Se um inscrito cancelar, a primeira pessoa da lista de espera é avisada.</td><td>functional</td><td><span class="badge tone-pass">COVERED</span></td><td>US3, AC12, T6</td><td>Aviso da pessoa promovida coberto; canal e prazo em aberto (Q1).</td></tr><tr><td><code>C7</code></td><td>Inscrições são confirmadas automaticamente enquanto houver vagas no encontro.</td><td>functional</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC1, AC3, T1</td><td>Confirmação automática enquanto houver vagas (ADR-002) coberta pela US1.</td></tr><tr><td><code>C8</code></td><td>A inscrição não passa por aprovação do moderador (a aprovação do moderador deixa de existir).</td><td>functional</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC2, AC11, T2</td><td>Ausência de aprovação do moderador (ADR-002) coberta na inscrição direta e na promoção da lista.</td></tr></tbody></table></div><h3>Obrigações do inventário independente</h3><div class="tablewrap"><table>
+<thead><tr><th>key</th><th>obligation</th><th>locator</th><th>Status</th><th>covered by</th><th>rationale</th></tr></thead>
+<tbody><tr><td><code>O1</code></td><td>Participante se inscreve em encontro publicado</td><td class='mono'>prd.md:3</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC1, AC5</td><td>US1 and AC1 cover registration; AC5 is a justified proposal for unpublished meetings.</td></tr><tr><td><code>O2</code></td><td>Inscrições exigem aprovação do moderador (PRD)</td><td class='mono'>prd.md:4</td><td><span class="badge tone-muted">SUPERSEDED</span></td><td>US1, AC2, E1</td><td>Superseded by approved ADR-002; correctly not generated as a requirement and listed out of scope in E1.</td></tr><tr><td><code>O3</code></td><td>Limite de 20 participantes por encontro</td><td class='mono'>prd.md:5</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC3, AC4, AC6</td><td>Boundary 19/20 and full-meeting criteria; ADR-003 proposal does not change it.</td></tr><tr><td><code>O4</code></td><td>Lista de espera quando lotado</td><td class='mono'>prd.md:6</td><td><span class="badge tone-pass">COVERED</span></td><td>US2, AC7, AC8, AC9, T4</td><td>US2 with AC7 for the full-meeting path.</td></tr><tr><td><code>O5</code></td><td>Cancelamento promove primeira pessoa da lista</td><td class='mono'>prd.md:7</td><td><span class="badge tone-pass">COVERED</span></td><td>US3, AC10, AC11, AC13, T5</td><td>US3/AC10; no moderator approval via ADR-002 in AC11.</td></tr><tr><td><code>O6</code></td><td>Primeira pessoa da lista é avisada</td><td class='mono'>prd.md:7</td><td><span class="badge tone-pass">COVERED</span></td><td>US3, AC12, T6</td><td>AC12 covers notice; channel/deadline not in sources, asked in Q1.</td></tr><tr><td><code>O7</code></td><td>Inscrições confirmadas automaticamente enquanto houver vagas (aprovada)</td><td class='mono'>adr-002-confirmacao-automatica.md:5</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC1, AC3, T1</td><td>Approved decision implemented in US1.</td></tr><tr><td><code>O8</code></td><td>Aprovação do moderador deixa de existir (aprovada)</td><td class='mono'>adr-002-confirmacao-automatica.md:5</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC2, AC11, T2</td><td>AC2 and AC11 assert no pending/approval step; T2 removes it.</td></tr><tr><td><code>O9</code></td><td>ADR-003 propõe limite 30 (não aprovada)</td><td class='mono'>adr-003-limite.md:4</td><td><span class="badge tone-muted">DEFERRED</span></td><td>E1</td><td>Status is proposal under discussion; correctly not made effective; limit 20 stays, Q2 records the open decision.</td></tr></tbody></table></div></section>
+<section id="findings"><h2>Achados</h2><div class="grid2"><div class='card finding sev-low'><p><span class="badge tone-info">low</span> <span class="badge tone-neutral">candidate_concern</span> <span class="badge tone-muted">G06</span></p><dl class='kv'><dt>Esperado</dt><dd>Criterion for concurrent registration states outcome of the losing request</dd><dt>Atual</dt><dd>AC6 says only one is confirmed</dd><dt>Por quê</dt><dd>Second participant outcome unspecified</dd><dt>Impacto</dt><dd>Ambiguous test expectation</dd><dt>Recomendação</dt><dd>State that the second request is rejected or offered the waitlist, or raise a question</dd><dt>IDs</dt><dd>AC6</dd></dl></div><div class='card finding sev-low'><p><span class="badge tone-info">low</span> <span class="badge tone-neutral">candidate_concern</span> <span class="badge tone-muted">G04</span></p><dl class='kv'><dt>Esperado</dt><dd>Tasks represent development work</dd><dt>Atual</dt><dd>T3 is test planning</dd><dt>Por quê</dt><dd>Overlaps with Test Case design</dd><dt>Impacto</dt><dd>Minor backlog noise</dd><dt>Recomendação</dt><dd>Remove or move to test design stage</dd><dt>IDs</dt><dd>T3</dd></dl></div><div class='card finding sev-medium'><p><span class="badge tone-warn">medium</span> <span class="badge tone-neutral">candidate_concern</span> <span class="badge tone-muted">G09</span></p><dl class='kv'><dt>Esperado</dt><dd>Cancellation capability resolved before US3 is ready</dd><dt>Atual</dt><dd>Q4 open; US3 relies on cancellation</dd><dt>Por quê</dt><dd>Trigger may not exist</dd><dt>Impacto</dt><dd>US3 may be blocked</dd><dt>Recomendação</dt><dd>Resolve Q4 before refinement</dd><dt>IDs</dt><dd>US3</dd></dl></div></div></section>
+<section id="questions"><h2>Perguntas</h2><div class="card"><ul><li>Por qual canal e em que prazo a primeira pessoa da lista de espera deve ser avisada de sua inscrição? — <em>Define a implementação do aviso (T6) e a verificabilidade do critério de aviso.</em> (C6, US3, T6)</li><li>A ADR-003 (aumentar o limite para 30 participantes) será aprovada? Enquanto não for, o backlog usa o limite de 20. — <em>Mudaria os critérios de fronteira de US1 e o ponto de lotação usado pela lista de espera.</em> (C3, DEC2, US1)</li><li>Qual critério define a &#x27;primeira pessoa&#x27; da lista de espera? — <em>Determina a ordenação da lista (US2) e quem é promovido no cancelamento (US3).</em> (C5, C4, US2, US3)</li><li>O cancelamento de inscrição pelo inscrito já existe ou precisa ser construído neste escopo? — <em>O PRD usa o cancelamento como gatilho da promoção, mas não o descreve como capacidade; pode exigir uma história adicional.</em> (C5, US3)</li></ul></div></section>
+<section id="gates"><h2>Gates de qualidade</h2><div class="tablewrap"><table><thead><tr><th>gate</th><th>Status</th>
+<th>Verificação</th><th>Motivo</th><th>Denominador</th></tr></thead><tbody><tr><td><code>G01</code> Source Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>every inventoried member was read and re-read by the reviewer</td><td>3/3 (independent_inventory)</td></tr><tr><td><code>G02</code> Requirements Coverage</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>9 independent obligations dispositioned without gaps</td><td>9/9 (independent_inventory)</td></tr><tr><td><code>G03</code> Hierarchy Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>hierarchy invariants hold</td><td>—</td></tr><tr><td><code>G04</code> Traceability</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>every item and criterion traces to claims or a justified proposal</td><td>—</td></tr><tr><td><code>G05</code> Story Quality</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>3 stories reviewed with INVEST</td><td>—</td></tr><tr><td><code>G06</code> Acceptance Quality</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>13 criteria reviewed individually</td><td>—</td></tr><tr><td><code>G07</code> Task Coverage</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>task sufficiency reviewed per story</td><td>—</td></tr><tr><td><code>G08</code> Dependency Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>2 relations valid and reviewed</td><td>—</td></tr><tr><td><code>G09</code> Scope Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>no unsupported scope; exclusions and conflicts recorded</td><td>—</td></tr><tr><td><code>G10</code> Planning Integrity</td><td><span class="badge tone-muted">NOT_APPLICABLE</span></td><td>—</td><td>no sprint planning requested; generated fields contain no assignments, dates or completed work (enforced at design submission)</td><td>—</td></tr><tr><td><code>G11</code> Artifact Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>exports deterministic and consistent across formats</td><td>—</td></tr><tr><td><code>G12</code> Publication Safety</td><td><span class="badge tone-muted">NOT_APPLICABLE</span></td><td>—</td><td>no publication requested; a local package is not an authorization to publish</td><td>—</td></tr><tr><td><code>G13</code> Independent Review</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>separate reviewer re-read sources (9 obligations) and judged 25 items/criteria</td><td>—</td></tr><tr><td><code>G14</code> Semantic Duplication</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>duplicate candidates assessed</td><td>—</td></tr><tr><td><code>G15</code> Change Safety</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>superseded claims not used by active work</td><td>—</td></tr><tr><td><code>G16</code> Privacy and Offline Boundary</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>outputs privacy-clean; run made zero remote calls</td><td>—</td></tr><tr><td><code>G17</code> Target Compatibility</td><td><span class="badge tone-muted">NOT_APPLICABLE</span></td><td>—</td><td>no target package requested</td><td>—</td></tr><tr><td><code>G18</code> Round-trip Fidelity</td><td><span class="badge tone-not_run">NOT_RUN</span></td><td>—</td><td>round-trip against a tracker (mock or live) belongs to M3; live qualification requires separate authorization</td><td>—</td></tr></tbody></table></div></section>
+<section id="sources"><h2>Fontes</h2><div class="grid2"><div class='card'><h3>prd.md <span class="badge tone-accent">functional</span> <span class="badge tone-pass">complete</span></h3><p class='mono'>PBD-SRC-78385WMH95P7 · sha256:27fc74c761f5d3c6a1e49b9a0496c4c73419cc5b3348e93c74f0d8b74249b0e0</p><ul><li>prd.md — read</li></ul></div><div class='card'><h3>decisoes <span class="badge tone-accent">decision</span> <span class="badge tone-pass">complete</span></h3><p class='mono'>PBD-SRC-3Q116GNGMAKT · sha256:00311df4501e0cecbf558270e4ab4b71b7b020c5f66f47c0131817278b77ab54</p><ul><li>adr-002-confirmacao-automatica.md — read</li><li>adr-003-limite.md — read</li></ul></div></div>
+<h3>Limitações</h3><p class="notice">Nenhum.</p></section>
+
+<section id="data"><h2>Dados</h2><details class="card"><summary>JSON canônico completo</summary>
+<pre class="json">{
+ &quot;claims&quot;: [
+  {
+   &quot;category&quot;: &quot;functional&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-PASAP9QV2K9J&quot;,
+     &quot;PBD-AC-CQ5JWJJA3TV2&quot;,
+     &quot;PBD-TASK-R1CPE4HDWFP6&quot;
+    ],
+    &quot;rationale&quot;: &quot;Inscrição em encontro publicado coberta pela US1.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 3,
+      &quot;line_start&quot;: 3,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:5af12416c13d4b46fa4d4e1a0db425da0c513b21708bd12f2fdefa965df25224&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;27fc74c761f5d3c6&quot;
+     },
+     &quot;summary&quot;: &quot;O participante se inscreve em um encontro publicado.&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-RYX5MTVCMGWK&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;O participante se inscreve em um encontro publicado.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;functional&quot;,
+   &quot;disposition&quot;: {
+    &quot;rationale&quot;: &quot;Superseded by decision DEC1.&quot;,
+    &quot;status&quot;: &quot;SUPERSEDED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 4,
+      &quot;line_start&quot;: 4,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:91a52cb3e4e959a51977d1f840895ca47ff51e5a6c81794a582ad111f61f1ca8&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;27fc74c761f5d3c6&quot;
+     },
+     &quot;summary&quot;: &quot;Inscrições em encontros exigem aprovação do moderador.&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-A9QKZZ7AHQP6&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;superseded&quot;,
+    &quot;superseded_by&quot;: [
+     &quot;PBD-DEC-T22BSC4SRP7Y&quot;
+    ],
+    &quot;superseded_reason&quot;: &quot;ADR-002 (aprovada): inscrições passam a ser confirmadas automaticamente enquanto houver vagas; a aprovação do moderador deixa de existir.&quot;
+   },
+   &quot;text&quot;: &quot;Inscrições em encontros exigem aprovação do moderador.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;conflicting&quot;,
+    &quot;note&quot;: &quot;Contradito pela ADR-002 (aprovada), que elimina a aprovação do moderador; substituído pela decisão DEC1.&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;constraint&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-PASAP9QV2K9J&quot;,
+     &quot;PBD-AC-H1SVRB8Q8X87&quot;,
+     &quot;PBD-AC-5NATY7BCQYPW&quot;,
+     &quot;PBD-TASK-R1CPE4HDWFP6&quot;
+    ],
+    &quot;rationale&quot;: &quot;Limite de 20 verificado nas fronteiras 19/20; ADR-003 (30) não aprovada, ver Q2.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 5,
+      &quot;line_start&quot;: 5,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:b908345e6f35e590f47c6cbd1a11a8d3d3bac9cadd0143ad7dba62373f0f0c90&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;27fc74c761f5d3c6&quot;
+     },
+     &quot;summary&quot;: &quot;Cada encontro aceita até 20 participantes.&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-BBK708NSGS3H&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;Cada encontro aceita até 20 participantes.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;,
+    &quot;note&quot;: &quot;A ADR-003 propõe 30, mas está em discussão e não foi aprovada; o limite efetivo continua 20.&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;functional&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-Q3R6G9TCYCC6&quot;,
+     &quot;PBD-AC-ANEE7T7Z9BR5&quot;,
+     &quot;PBD-TASK-56SQE1MAFNDA&quot;
+    ],
+    &quot;rationale&quot;: &quot;Entrada na lista de espera de encontro lotado coberta pela US2.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 6,
+      &quot;line_start&quot;: 6,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:8cd73225ac9b79f82c54500900dc6724423788a0bae089900305b5fdc4637d50&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;27fc74c761f5d3c6&quot;
+     },
+     &quot;summary&quot;: &quot;o participante pode entrar na lista de espera&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-RJ0BFW5Y1VW2&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;Quando o encontro está lotado, o participante pode entrar na lista de espera.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;functional&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-XPYZ5YVZQYPX&quot;,
+     &quot;PBD-AC-STTG7F1BZ3AY&quot;,
+     &quot;PBD-TASK-ZFMSZ24CSC7V&quot;
+    ],
+    &quot;rationale&quot;: &quot;Promoção da primeira pessoa da lista ao cancelamento coberta pela US3; critério de &#x27;primeira&#x27; em Q3.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 7,
+      &quot;line_start&quot;: 7,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:0a88591fcbb6ef90a796a8312f857703e23e684fa6307fe05269171a51096969&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;27fc74c761f5d3c6&quot;
+     },
+     &quot;summary&quot;: &quot;a primeira pessoa da lista de espera é inscrita&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-569TNPA8YCWY&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;Se um inscrito cancelar, a primeira pessoa da lista de espera é inscrita.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;,
+    &quot;note&quot;: &quot;A dúvida do leitor sobre aprovação do moderador para a pessoa promovida é resolvida pela ADR-002 (aprovação deixa de existir).&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;functional&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-XPYZ5YVZQYPX&quot;,
+     &quot;PBD-AC-F04ATY9MR7R1&quot;,
+     &quot;PBD-TASK-A9XQ19NG0DTW&quot;
+    ],
+    &quot;rationale&quot;: &quot;Aviso da pessoa promovida coberto; canal e prazo em aberto (Q1).&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 7,
+      &quot;line_start&quot;: 7,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:76ea37732b2b354c358d72a71a3507752d438771bae99340cf0f2ef113110c3b&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+      &quot;source_version&quot;: &quot;27fc74c761f5d3c6&quot;
+     },
+     &quot;summary&quot;: &quot;e avisada&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-5CXYQ8DJ0WE2&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;Se um inscrito cancelar, a primeira pessoa da lista de espera é avisada.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;,
+    &quot;note&quot;: &quot;Canal e prazo do aviso não são definidos pelas fontes.&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;functional&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-PASAP9QV2K9J&quot;,
+     &quot;PBD-AC-CQ5JWJJA3TV2&quot;,
+     &quot;PBD-AC-H1SVRB8Q8X87&quot;,
+     &quot;PBD-TASK-R1CPE4HDWFP6&quot;
+    ],
+    &quot;rationale&quot;: &quot;Confirmação automática enquanto houver vagas (ADR-002) coberta pela US1.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 5,
+      &quot;line_start&quot;: 5,
+      &quot;member&quot;: &quot;adr-002-confirmacao-automatica.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:dc0959eabaea4cf5830155e0536ef9130635a1c5f0f3e4965200754594f2a37e&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-3Q116GNGMAKT&quot;,
+      &quot;source_version&quot;: &quot;00311df4501e0cec&quot;
+     },
+     &quot;summary&quot;: &quot;inscrições passam a ser confirmadas automaticamente enquanto houver vagas&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-FSV79SEGFFJ5&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;Inscrições são confirmadas automaticamente enquanto houver vagas no encontro.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;functional&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-PASAP9QV2K9J&quot;,
+     &quot;PBD-AC-706MNSRZ5GHP&quot;,
+     &quot;PBD-AC-8713SA41V80F&quot;,
+     &quot;PBD-TASK-TQA4SE1Q3QPD&quot;
+    ],
+    &quot;rationale&quot;: &quot;Ausência de aprovação do moderador (ADR-002) coberta na inscrição direta e na promoção da lista.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 5,
+      &quot;line_start&quot;: 5,
+      &quot;member&quot;: &quot;adr-002-confirmacao-automatica.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:72dd5722e12b4662e947b60373f591f3a6f8b4d2736bb83862dbb6e681dfa913&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-3Q116GNGMAKT&quot;,
+      &quot;source_version&quot;: &quot;00311df4501e0cec&quot;
+     },
+     &quot;summary&quot;: &quot;a aprovação do moderador deixa de existir&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-CGEK7QCW7H0K&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;A inscrição não passa por aprovação do moderador (a aprovação do moderador deixa de existir).&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  }
+ ],
+ &quot;criteria&quot;: [
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RYX5MTVCMGWK&quot;,
+    &quot;PBD-CLM-FSV79SEGFFJ5&quot;
+   ],
+   &quot;condition&quot;: &quot;Dado um encontro publicado com menos de 20 inscritos&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;A inscrição fica confirmada imediatamente, sem etapa intermediária.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-CQ5JWJJA3TV2&quot;,
+   &quot;order&quot;: 0,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-PASAP9QV2K9J&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;quando o participante se inscreve&quot;,
+   &quot;visible_id&quot;: &quot;CA-01&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-CGEK7QCW7H0K&quot;
+   ],
+   &quot;condition&quot;: &quot;Dada uma inscrição confirmada automaticamente&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;Não existe inscrição pendente de aprovação nem ação de aprovar ou recusar disponível ao moderador.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-706MNSRZ5GHP&quot;,
+   &quot;order&quot;: 1,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-PASAP9QV2K9J&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;quando o moderador consulta o encontro&quot;,
+   &quot;visible_id&quot;: &quot;CA-02&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-BBK708NSGS3H&quot;,
+    &quot;PBD-CLM-FSV79SEGFFJ5&quot;
+   ],
+   &quot;condition&quot;: &quot;Dado um encontro publicado com 19 inscritos&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;A inscrição é confirmada e o encontro passa a ter 20 inscritos, ficando lotado.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-H1SVRB8Q8X87&quot;,
+   &quot;order&quot;: 2,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-PASAP9QV2K9J&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;quando mais um participante se inscreve&quot;,
+   &quot;visible_id&quot;: &quot;CA-03&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-BBK708NSGS3H&quot;
+   ],
+   &quot;condition&quot;: &quot;Dado um encontro publicado que já tem 20 inscritos&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;Nenhuma nova inscrição confirmada é criada; o total permanece 20.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-5NATY7BCQYPW&quot;,
+   &quot;order&quot;: 3,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-PASAP9QV2K9J&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;quando outro participante tenta se inscrever&quot;,
+   &quot;visible_id&quot;: &quot;CA-04&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RYX5MTVCMGWK&quot;
+   ],
+   &quot;condition&quot;: &quot;Dado um encontro que não está publicado&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;Nenhuma inscrição é criada para esse encontro.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-897VH8JZGC73&quot;,
+   &quot;order&quot;: 4,
+   &quot;origin&quot;: &quot;proposed&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-PASAP9QV2K9J&quot;,
+   &quot;rationale&quot;: &quot;O PRD só prevê inscrição em encontro publicado; o tratamento de encontro não publicado é inferido, não declarado.&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;quando um participante tenta se inscrever&quot;,
+   &quot;visible_id&quot;: &quot;CA-05&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-BBK708NSGS3H&quot;,
+    &quot;PBD-CLM-FSV79SEGFFJ5&quot;
+   ],
+   &quot;condition&quot;: &quot;Dado um encontro com exatamente uma vaga restante&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;Apenas uma das inscrições é confirmada e o encontro não ultrapassa 20 inscritos.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-Y6JA8KEYYT6W&quot;,
+   &quot;order&quot;: 5,
+   &quot;origin&quot;: &quot;proposed&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-PASAP9QV2K9J&quot;,
+   &quot;rationale&quot;: &quot;Lente de concorrência: as fontes não tratam inscrições simultâneas, mas o limite de 20 precisa ser preservado.&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;quando dois participantes se inscrevem ao mesmo tempo&quot;,
+   &quot;visible_id&quot;: &quot;CA-06&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RJ0BFW5Y1VW2&quot;
+   ],
+   &quot;condition&quot;: &quot;Dado um encontro lotado&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;O participante pode optar por entrar na lista de espera do encontro e passa a constar nela.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-ANEE7T7Z9BR5&quot;,
+   &quot;order&quot;: 0,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-Q3R6G9TCYCC6&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;quando o participante tenta se inscrever&quot;,
+   &quot;visible_id&quot;: &quot;CA-01&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RJ0BFW5Y1VW2&quot;
+   ],
+   &quot;condition&quot;: &quot;Dado um encontro com vagas disponíveis&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;O participante não é colocado na lista de espera; recebe inscrição confirmada.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-297G5QAV2KWK&quot;,
+   &quot;order&quot;: 1,
+   &quot;origin&quot;: &quot;proposed&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-Q3R6G9TCYCC6&quot;,
+   &quot;rationale&quot;: &quot;Inferido de &#x27;quando o encontro está lotado&#x27; combinado com a confirmação automática da ADR-002; não declarado explicitamente.&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;quando o participante se inscreve&quot;,
+   &quot;visible_id&quot;: &quot;CA-02&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RJ0BFW5Y1VW2&quot;
+   ],
+   &quot;condition&quot;: &quot;Dadas várias pessoas na lista de espera&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;A ordem da lista reflete a ordem de entrada, definindo quem é a primeira pessoa.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-BY75CA9S3T9E&quot;,
+   &quot;order&quot;: 2,
+   &quot;origin&quot;: &quot;proposed&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-Q3R6G9TCYCC6&quot;,
+   &quot;rationale&quot;: &quot;O PRD fala em &#x27;primeira pessoa da lista&#x27; sem definir o critério de ordenação; ordem de entrada é proposta pendente da Q3.&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;quando a lista é consultada&quot;,
+   &quot;visible_id&quot;: &quot;CA-03&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-569TNPA8YCWY&quot;
+   ],
+   &quot;condition&quot;: &quot;Dado um encontro lotado com pessoas na lista de espera&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;A primeira pessoa da lista de espera passa a ter inscrição confirmada no encontro.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-STTG7F1BZ3AY&quot;,
+   &quot;order&quot;: 0,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-XPYZ5YVZQYPX&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;quando um inscrito cancela sua inscrição&quot;,
+   &quot;visible_id&quot;: &quot;CA-01&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-569TNPA8YCWY&quot;,
+    &quot;PBD-CLM-CGEK7QCW7H0K&quot;
+   ],
+   &quot;condition&quot;: &quot;Dada a primeira pessoa da lista promovida após um cancelamento&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;A inscrição não fica pendente de aprovação do moderador.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-8713SA41V80F&quot;,
+   &quot;order&quot;: 1,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-XPYZ5YVZQYPX&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;quando sua inscrição é registrada&quot;,
+   &quot;visible_id&quot;: &quot;CA-02&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-5CXYQ8DJ0WE2&quot;
+   ],
+   &quot;condition&quot;: &quot;Dada a primeira pessoa da lista inscrita após um cancelamento&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;A pessoa recebe um aviso de que foi inscrita no encontro.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-F04ATY9MR7R1&quot;,
+   &quot;order&quot;: 2,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-XPYZ5YVZQYPX&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;quando a inscrição é concluída&quot;,
+   &quot;visible_id&quot;: &quot;CA-03&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-569TNPA8YCWY&quot;
+   ],
+   &quot;condition&quot;: &quot;Dado um encontro lotado com lista de espera vazia&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;A vaga fica livre e nenhum aviso de promoção é emitido.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-2RRVNPJWA7EC&quot;,
+   &quot;order&quot;: 3,
+   &quot;origin&quot;: &quot;proposed&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-XPYZ5YVZQYPX&quot;,
+   &quot;rationale&quot;: &quot;Exceção não tratada pelas fontes; comportamento inferido para lista vazia.&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;quando um inscrito cancela&quot;,
+   &quot;visible_id&quot;: &quot;CA-04&quot;
+  }
+ ],
+ &quot;decisions&quot;: [
+  {
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 5,
+      &quot;line_start&quot;: 5,
+      &quot;member&quot;: &quot;adr-002-confirmacao-automatica.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:dc0959eabaea4cf5830155e0536ef9130635a1c5f0f3e4965200754594f2a37e&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-3Q116GNGMAKT&quot;,
+      &quot;source_version&quot;: &quot;00311df4501e0cec&quot;
+     },
+     &quot;summary&quot;: &quot;inscrições passam a ser confirmadas automaticamente enquanto houver vagas&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    },
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 5,
+      &quot;line_start&quot;: 5,
+      &quot;member&quot;: &quot;adr-002-confirmacao-automatica.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:72dd5722e12b4662e947b60373f591f3a6f8b4d2736bb83862dbb6e681dfa913&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-3Q116GNGMAKT&quot;,
+      &quot;source_version&quot;: &quot;00311df4501e0cec&quot;
+     },
+     &quot;summary&quot;: &quot;a aprovação do moderador deixa de existir&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-DEC-T22BSC4SRP7Y&quot;,
+   &quot;status&quot;: &quot;approved&quot;,
+   &quot;supersedes_claims&quot;: [
+    &quot;PBD-CLM-A9QKZZ7AHQP6&quot;
+   ],
+   &quot;text&quot;: &quot;ADR-002 (aprovada): inscrições passam a ser confirmadas automaticamente enquanto houver vagas; a aprovação do moderador deixa de existir.&quot;
+  },
+  {
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 4,
+      &quot;line_start&quot;: 4,
+      &quot;member&quot;: &quot;adr-003-limite.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:99aa6cd132f161f3146a0438c3c0186f990b892c2154b16d0edb0559cb58dd74&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-3Q116GNGMAKT&quot;,
+      &quot;source_version&quot;: &quot;00311df4501e0cec&quot;
+     },
+     &quot;summary&quot;: &quot;aumentar o limite de participantes por encontro para 30&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-DEC-B83Y44N2D1DE&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;supersedes_claims&quot;: [],
+   &quot;text&quot;: &quot;ADR-003 (proposta, em discussão; não aprovada): aumentar o limite de participantes por encontro para 30.&quot;
+  }
+ ],
+ &quot;findings&quot;: [
+  {
+   &quot;actual&quot;: &quot;AC6 says only one is confirmed&quot;,
+   &quot;affects&quot;: [
+    &quot;PBD-AC-Y6JA8KEYYT6W&quot;
+   ],
+   &quot;classification&quot;: &quot;candidate_concern&quot;,
+   &quot;evidence&quot;: [
+    {
+     &quot;ref&quot;: &quot;stages/review.json&quot;,
+     &quot;summary&quot;: &quot;independent review&quot;,
+     &quot;type&quot;: &quot;review&quot;
+    }
+   ],
+   &quot;expected&quot;: &quot;Criterion for concurrent registration states outcome of the losing request&quot;,
+   &quot;gate&quot;: &quot;G06&quot;,
+   &quot;id&quot;: &quot;PBD-FND-CSDFBN9G1TT4&quot;,
+   &quot;impact&quot;: &quot;Ambiguous test expectation&quot;,
+   &quot;recommendation&quot;: &quot;State that the second request is rejected or offered the waitlist, or raise a question&quot;,
+   &quot;review_status&quot;: &quot;candidate&quot;,
+   &quot;severity&quot;: &quot;low&quot;,
+   &quot;why&quot;: &quot;Second participant outcome unspecified&quot;
+  },
+  {
+   &quot;actual&quot;: &quot;T3 is test planning&quot;,
+   &quot;affects&quot;: [
+    &quot;PBD-TASK-YFDX98SNQ0BW&quot;
+   ],
+   &quot;classification&quot;: &quot;candidate_concern&quot;,
+   &quot;evidence&quot;: [
+    {
+     &quot;ref&quot;: &quot;stages/review.json&quot;,
+     &quot;summary&quot;: &quot;independent review&quot;,
+     &quot;type&quot;: &quot;review&quot;
+    }
+   ],
+   &quot;expected&quot;: &quot;Tasks represent development work&quot;,
+   &quot;gate&quot;: &quot;G04&quot;,
+   &quot;id&quot;: &quot;PBD-FND-S0BBTWDD5JTE&quot;,
+   &quot;impact&quot;: &quot;Minor backlog noise&quot;,
+   &quot;recommendation&quot;: &quot;Remove or move to test design stage&quot;,
+   &quot;review_status&quot;: &quot;candidate&quot;,
+   &quot;severity&quot;: &quot;low&quot;,
+   &quot;why&quot;: &quot;Overlaps with Test Case design&quot;
+  },
+  {
+   &quot;actual&quot;: &quot;Q4 open; US3 relies on cancellation&quot;,
+   &quot;affects&quot;: [
+    &quot;PBD-STORY-XPYZ5YVZQYPX&quot;
+   ],
+   &quot;classification&quot;: &quot;candidate_concern&quot;,
+   &quot;evidence&quot;: [
+    {
+     &quot;ref&quot;: &quot;stages/review.json&quot;,
+     &quot;summary&quot;: &quot;independent review&quot;,
+     &quot;type&quot;: &quot;review&quot;
+    }
+   ],
+   &quot;expected&quot;: &quot;Cancellation capability resolved before US3 is ready&quot;,
+   &quot;gate&quot;: &quot;G09&quot;,
+   &quot;id&quot;: &quot;PBD-FND-1G703CJ4E4EX&quot;,
+   &quot;impact&quot;: &quot;US3 may be blocked&quot;,
+   &quot;recommendation&quot;: &quot;Resolve Q4 before refinement&quot;,
+   &quot;review_status&quot;: &quot;candidate&quot;,
+   &quot;severity&quot;: &quot;medium&quot;,
+   &quot;why&quot;: &quot;Trigger may not exist&quot;
+  }
+ ],
+ &quot;items&quot;: [
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RYX5MTVCMGWK&quot;,
+    &quot;PBD-CLM-BBK708NSGS3H&quot;,
+    &quot;PBD-CLM-RJ0BFW5Y1VW2&quot;,
+    &quot;PBD-CLM-569TNPA8YCWY&quot;,
+    &quot;PBD-CLM-5CXYQ8DJ0WE2&quot;,
+    &quot;PBD-CLM-FSV79SEGFFJ5&quot;,
+    &quot;PBD-CLM-CGEK7QCW7H0K&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;context&quot;: &quot;O PRD exigia aprovação do moderador para cada inscrição; a ADR-002 (aprovada) substituiu essa regra por confirmação automática, porque a aprovação manual atrasava as confirmações. A ADR-003, que propõe elevar o limite para 30, ainda está em discussão; o limite vigente é de 20 participantes por encontro.&quot;,
+    &quot;in_scope&quot;: [
+     &quot;Inscrição do participante em encontro publicado&quot;,
+     &quot;Confirmação automática enquanto houver vagas, sem aprovação do moderador&quot;,
+     &quot;Limite de 20 participantes por encontro&quot;,
+     &quot;Lista de espera para encontro lotado&quot;,
+     &quot;Inscrição e aviso da primeira pessoa da lista de espera quando um inscrito cancela&quot;
+    ],
+    &quot;kind&quot;: &quot;epic&quot;,
+    &quot;objective&quot;: &quot;Permitir que participantes se inscrevam em encontros publicados com confirmação automática enquanto houver vagas, e que entrem em lista de espera quando o encontro estiver lotado.&quot;,
+    &quot;out_scope&quot;: [
+     &quot;Fluxo de aprovação de inscrições pelo moderador (eliminado pela ADR-002)&quot;,
+     &quot;Alteração do limite para 30 participantes (ADR-003 não aprovada)&quot;
+    ],
+    &quot;outcome&quot;: &quot;Inscrições confirmadas sem espera por aprovação manual, respeitando a capacidade do encontro, e vagas liberadas por cancelamento reaproveitadas pela lista de espera.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Permitir que participantes se inscrevam em encontros publicados com confirmação automática enquanto houver vagas, e que entrem em lista de espera quando o encontro estiver lotado.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Contexto&lt;/strong&gt;: O PRD exigia aprovação do moderador para cada inscrição; a ADR-002 (aprovada) substituiu essa regra por confirmação automática, porque a aprovação manual atrasava as confirmações. A ADR-003, que propõe elevar o limite para 30, ainda está em discussão; o limite vigente é de 20 participantes por encontro.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;No escopo&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Inscrição do participante em encontro publicado&lt;/li&gt;&lt;li&gt;Confirmação automática enquanto houver vagas, sem aprovação do moderador&lt;/li&gt;&lt;li&gt;Limite de 20 participantes por encontro&lt;/li&gt;&lt;li&gt;Lista de espera para encontro lotado&lt;/li&gt;&lt;li&gt;Inscrição e aviso da primeira pessoa da lista de espera quando um inscrito cancela&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Fora do escopo&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Fluxo de aprovação de inscrições pelo moderador (eliminado pela ADR-002)&lt;/li&gt;&lt;li&gt;Alteração do limite para 30 participantes (ADR-003 não aprovada)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Resultado esperado&lt;/strong&gt;: Inscrições confirmadas sem espera por aprovação manual, respeitando a capacidade do encontro, e vagas liberadas por cancelamento reaproveitadas pela lista de espera.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-EPIC-65RD0RCSTFJY&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: null,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Inscrições em encontros do Clube de Leitura&quot;,
+   &quot;type&quot;: &quot;epic&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RYX5MTVCMGWK&quot;,
+    &quot;PBD-CLM-BBK708NSGS3H&quot;,
+    &quot;PBD-CLM-FSV79SEGFFJ5&quot;,
+    &quot;PBD-CLM-CGEK7QCW7H0K&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;capability&quot;: &quot;Inscrever o participante em um encontro publicado e confirmar a inscrição automaticamente enquanto houver vagas.&quot;,
+    &quot;kind&quot;: &quot;feature&quot;,
+    &quot;rules&quot;: [
+     &quot;Inscrição só em encontro publicado&quot;,
+     &quot;Confirmação automática enquanto houver vagas (ADR-002)&quot;,
+     &quot;Sem etapa de aprovação do moderador (ADR-002)&quot;,
+     &quot;Até 20 participantes por encontro&quot;
+    ],
+    &quot;value&quot;: &quot;Elimina o atraso causado pela aprovação manual do moderador.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Capacidade&lt;/strong&gt;: Inscrever o participante em um encontro publicado e confirmar a inscrição automaticamente enquanto houver vagas.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Valor&lt;/strong&gt;: Elimina o atraso causado pela aprovação manual do moderador.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Regras relacionadas&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Inscrição só em encontro publicado&lt;/li&gt;&lt;li&gt;Confirmação automática enquanto houver vagas (ADR-002)&lt;/li&gt;&lt;li&gt;Sem etapa de aprovação do moderador (ADR-002)&lt;/li&gt;&lt;li&gt;Até 20 participantes por encontro&lt;/li&gt;&lt;/ul&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-FEAT-D7T913340BP5&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-EPIC-65RD0RCSTFJY&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Inscrição com confirmação automática&quot;,
+   &quot;type&quot;: &quot;feature&quot;
+  },
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RYX5MTVCMGWK&quot;,
+    &quot;PBD-CLM-BBK708NSGS3H&quot;,
+    &quot;PBD-CLM-FSV79SEGFFJ5&quot;,
+    &quot;PBD-CLM-CGEK7QCW7H0K&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;actor&quot;: &quot;participante&quot;,
+    &quot;benefit&quot;: &quot;garantir meu lugar no encontro sem esperar aprovação do moderador&quot;,
+    &quot;kind&quot;: &quot;role_goal_benefit&quot;,
+    &quot;notes&quot;: [
+     &quot;Limite vigente de 20 participantes; a proposta de 30 (ADR-003) não está aprovada.&quot;
+    ],
+    &quot;want&quot;: &quot;minha inscrição em um encontro publicado fosse confirmada automaticamente enquanto houver vagas&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Eu como&lt;/strong&gt; participante, &lt;strong&gt;gostaria que&lt;/strong&gt; minha inscrição em um encontro publicado fosse confirmada automaticamente enquanto houver vagas, &lt;strong&gt;para&lt;/strong&gt; garantir meu lugar no encontro sem esperar aprovação do moderador.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Observações&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Limite vigente de 20 participantes; a proposta de 30 (ADR-003) não está aprovada.&lt;/li&gt;&lt;/ul&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-STORY-PASAP9QV2K9J&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-FEAT-D7T913340BP5&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;role_goal_benefit&quot;,
+   &quot;title&quot;: &quot;Inscrever-se em encontro publicado com confirmação automática&quot;,
+   &quot;type&quot;: &quot;story&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RYX5MTVCMGWK&quot;,
+    &quot;PBD-CLM-BBK708NSGS3H&quot;,
+    &quot;PBD-CLM-FSV79SEGFFJ5&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Verificar se o encontro está publicado antes de aceitar a inscrição&quot;,
+     &quot;Contar inscritos confirmados e comparar com o limite de 20&quot;,
+     &quot;Gravar a inscrição já como confirmada quando houver vaga&quot;,
+     &quot;Garantir que duas inscrições simultâneas não ultrapassem o limite&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;Inscrição confirmada sem intervenção manual enquanto houver vagas; nenhuma confirmação além de 20 inscritos.&quot;,
+    &quot;summary&quot;: &quot;Registrar a inscrição do participante em encontro publicado e confirmá-la imediatamente quando o número de inscritos estiver abaixo de 20.&quot;,
+    &quot;verification&quot;: &quot;Critérios CA-01, CA-03, CA-04 e CA-06 de US1 atendidos.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Registrar a inscrição do participante em encontro publicado e confirmá-la imediatamente quando o número de inscritos estiver abaixo de 20.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Atividades&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Verificar se o encontro está publicado antes de aceitar a inscrição&lt;/li&gt;&lt;li&gt;Contar inscritos confirmados e comparar com o limite de 20&lt;/li&gt;&lt;li&gt;Gravar a inscrição já como confirmada quando houver vaga&lt;/li&gt;&lt;li&gt;Garantir que duas inscrições simultâneas não ultrapassem o limite&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Resultado esperado&lt;/strong&gt;: Inscrição confirmada sem intervenção manual enquanto houver vagas; nenhuma confirmação além de 20 inscritos.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verificação&lt;/strong&gt;: Critérios CA-01, CA-03, CA-04 e CA-06 de US1 atendidos.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-R1CPE4HDWFP6&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-PASAP9QV2K9J&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Implementar confirmação automática condicionada a vagas&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-CGEK7QCW7H0K&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Identificar onde a aprovação do moderador é exigida no fluxo de inscrição&quot;,
+     &quot;Remover o estado pendente de aprovação e a ação de aprovar inscrição&quot;,
+     &quot;Atualizar a documentação da regra de inscrição&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;Nenhuma inscrição depende de ação do moderador para ser confirmada.&quot;,
+    &quot;summary&quot;: &quot;Eliminar estados, telas e regras que deixavam a inscrição pendente de aprovação do moderador, conforme ADR-002.&quot;,
+    &quot;verification&quot;: &quot;Critério CA-02 de US1 atendido; não existe ação de aprovação disponível ao moderador.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Eliminar estados, telas e regras que deixavam a inscrição pendente de aprovação do moderador, conforme ADR-002.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Atividades&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Identificar onde a aprovação do moderador é exigida no fluxo de inscrição&lt;/li&gt;&lt;li&gt;Remover o estado pendente de aprovação e a ação de aprovar inscrição&lt;/li&gt;&lt;li&gt;Atualizar a documentação da regra de inscrição&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Resultado esperado&lt;/strong&gt;: Nenhuma inscrição depende de ação do moderador para ser confirmada.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verificação&lt;/strong&gt;: Critério CA-02 de US1 atendido; não existe ação de aprovação disponível ao moderador.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-TQA4SE1Q3QPD&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-PASAP9QV2K9J&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Remover a etapa de aprovação do moderador&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-BBK708NSGS3H&quot;,
+    &quot;PBD-CLM-FSV79SEGFFJ5&quot;,
+    &quot;PBD-CLM-CGEK7QCW7H0K&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Definir cenários de fronteira do limite de 20&quot;,
+     &quot;Definir cenário de inscrições concorrentes na última vaga&quot;,
+     &quot;Encaminhar os cenários para elaboração de casos de teste&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;Plano de testes da US1 revisado pela equipe.&quot;,
+    &quot;summary&quot;: &quot;Planejar a verificação dos limites 19/20/21 inscritos e da ausência de aprovação manual.&quot;,
+    &quot;verification&quot;: &quot;Cada critério de US1 tem ao menos um cenário planejado.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Planejar a verificação dos limites 19/20/21 inscritos e da ausência de aprovação manual.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Atividades&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Definir cenários de fronteira do limite de 20&lt;/li&gt;&lt;li&gt;Definir cenário de inscrições concorrentes na última vaga&lt;/li&gt;&lt;li&gt;Encaminhar os cenários para elaboração de casos de teste&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Resultado esperado&lt;/strong&gt;: Plano de testes da US1 revisado pela equipe.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verificação&lt;/strong&gt;: Cada critério de US1 tem ao menos um cenário planejado.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-YFDX98SNQ0BW&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-PASAP9QV2K9J&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Planejar testes da regra de capacidade e confirmação&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RJ0BFW5Y1VW2&quot;,
+    &quot;PBD-CLM-569TNPA8YCWY&quot;,
+    &quot;PBD-CLM-5CXYQ8DJ0WE2&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;capability&quot;: &quot;Manter uma lista de espera para encontros lotados e preencher vagas liberadas por cancelamento com a primeira pessoa da lista.&quot;,
+    &quot;kind&quot;: &quot;feature&quot;,
+    &quot;rules&quot;: [
+     &quot;Lista de espera disponível quando o encontro está lotado&quot;,
+     &quot;Cancelamento de inscrito inscreve a primeira pessoa da lista&quot;,
+     &quot;A pessoa promovida é avisada&quot;
+    ],
+    &quot;value&quot;: &quot;Reaproveita vagas liberadas sem trabalho manual e dá ao participante uma alternativa quando o encontro está cheio.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Capacidade&lt;/strong&gt;: Manter uma lista de espera para encontros lotados e preencher vagas liberadas por cancelamento com a primeira pessoa da lista.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Valor&lt;/strong&gt;: Reaproveita vagas liberadas sem trabalho manual e dá ao participante uma alternativa quando o encontro está cheio.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Regras relacionadas&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Lista de espera disponível quando o encontro está lotado&lt;/li&gt;&lt;li&gt;Cancelamento de inscrito inscreve a primeira pessoa da lista&lt;/li&gt;&lt;li&gt;A pessoa promovida é avisada&lt;/li&gt;&lt;/ul&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-FEAT-M09H52J08CTH&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-EPIC-65RD0RCSTFJY&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Lista de espera de encontros lotados&quot;,
+   &quot;type&quot;: &quot;feature&quot;
+  },
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RJ0BFW5Y1VW2&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;actor&quot;: &quot;participante&quot;,
+    &quot;benefit&quot;: &quot;ter a chance de participar caso uma vaga seja liberada&quot;,
+    &quot;kind&quot;: &quot;role_goal_benefit&quot;,
+    &quot;want&quot;: &quot;pudesse entrar na lista de espera quando o encontro estiver lotado&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Eu como&lt;/strong&gt; participante, &lt;strong&gt;gostaria que&lt;/strong&gt; pudesse entrar na lista de espera quando o encontro estiver lotado, &lt;strong&gt;para&lt;/strong&gt; ter a chance de participar caso uma vaga seja liberada.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-STORY-Q3R6G9TCYCC6&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-FEAT-M09H52J08CTH&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;role_goal_benefit&quot;,
+   &quot;title&quot;: &quot;Entrar na lista de espera de encontro lotado&quot;,
+   &quot;type&quot;: &quot;story&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-RJ0BFW5Y1VW2&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Detectar encontro lotado na tentativa de inscrição&quot;,
+     &quot;Registrar o participante na lista de espera do encontro&quot;,
+     &quot;Registrar a ordem de entrada para identificar a primeira pessoa da lista&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;Participante registrado na lista de espera de encontro lotado, com posição definida.&quot;,
+    &quot;summary&quot;: &quot;Oferecer ao participante a entrada na lista de espera quando o encontro atingir 20 inscritos e registrar sua posição.&quot;,
+    &quot;verification&quot;: &quot;Critérios de US2 atendidos.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Oferecer ao participante a entrada na lista de espera quando o encontro atingir 20 inscritos e registrar sua posição.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Atividades&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Detectar encontro lotado na tentativa de inscrição&lt;/li&gt;&lt;li&gt;Registrar o participante na lista de espera do encontro&lt;/li&gt;&lt;li&gt;Registrar a ordem de entrada para identificar a primeira pessoa da lista&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Resultado esperado&lt;/strong&gt;: Participante registrado na lista de espera de encontro lotado, com posição definida.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verificação&lt;/strong&gt;: Critérios de US2 atendidos.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-56SQE1MAFNDA&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-Q3R6G9TCYCC6&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Implementar entrada na lista de espera&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  },
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-569TNPA8YCWY&quot;,
+    &quot;PBD-CLM-5CXYQ8DJ0WE2&quot;,
+    &quot;PBD-CLM-CGEK7QCW7H0K&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;actor&quot;: &quot;participante&quot;,
+    &quot;benefit&quot;: &quot;ocupar a vaga liberada sem precisar acompanhar o encontro&quot;,
+    &quot;kind&quot;: &quot;role_goal_benefit&quot;,
+    &quot;notes&quot;: [
+     &quot;Canal e prazo do aviso não definidos (Q1).&quot;,
+     &quot;Pela ADR-002, a inscrição da pessoa promovida não depende do moderador.&quot;
+    ],
+    &quot;want&quot;: &quot;fosse inscrito automaticamente e avisado quando um inscrito cancelar e eu for a primeira pessoa da lista de espera&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Eu como&lt;/strong&gt; participante, &lt;strong&gt;gostaria que&lt;/strong&gt; fosse inscrito automaticamente e avisado quando um inscrito cancelar e eu for a primeira pessoa da lista de espera, &lt;strong&gt;para&lt;/strong&gt; ocupar a vaga liberada sem precisar acompanhar o encontro.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Observações&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Canal e prazo do aviso não definidos (Q1).&lt;/li&gt;&lt;li&gt;Pela ADR-002, a inscrição da pessoa promovida não depende do moderador.&lt;/li&gt;&lt;/ul&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-STORY-XPYZ5YVZQYPX&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-FEAT-M09H52J08CTH&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;role_goal_benefit&quot;,
+   &quot;title&quot;: &quot;Ser inscrito e avisado ao sair da lista de espera&quot;,
+   &quot;type&quot;: &quot;story&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-569TNPA8YCWY&quot;,
+    &quot;PBD-CLM-CGEK7QCW7H0K&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Reagir ao cancelamento de inscrição confirmada&quot;,
+     &quot;Selecionar a primeira pessoa da lista de espera&quot;,
+     &quot;Registrar sua inscrição como confirmada e removê-la da lista&quot;,
+     &quot;Tratar lista de espera vazia sem efeitos colaterais&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;Vaga liberada ocupada pela primeira pessoa da lista.&quot;,
+    &quot;summary&quot;: &quot;Ao cancelamento de um inscrito, inscrever a primeira pessoa da lista de espera e retirá-la da lista, sem aprovação do moderador.&quot;,
+    &quot;verification&quot;: &quot;Critérios CA-01, CA-02 e CA-04 de US3 atendidos.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Ao cancelamento de um inscrito, inscrever a primeira pessoa da lista de espera e retirá-la da lista, sem aprovação do moderador.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Atividades&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Reagir ao cancelamento de inscrição confirmada&lt;/li&gt;&lt;li&gt;Selecionar a primeira pessoa da lista de espera&lt;/li&gt;&lt;li&gt;Registrar sua inscrição como confirmada e removê-la da lista&lt;/li&gt;&lt;li&gt;Tratar lista de espera vazia sem efeitos colaterais&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Resultado esperado&lt;/strong&gt;: Vaga liberada ocupada pela primeira pessoa da lista.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verificação&lt;/strong&gt;: Critérios CA-01, CA-02 e CA-04 de US3 atendidos.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-ZFMSZ24CSC7V&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-XPYZ5YVZQYPX&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Promover a primeira pessoa da lista de espera no cancelamento&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-5CXYQ8DJ0WE2&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Obter a definição de canal e prazo do aviso (Q1)&quot;,
+     &quot;Disparar o aviso após a inscrição da pessoa promovida&quot;,
+     &quot;Registrar que o aviso foi emitido&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;Pessoa promovida recebe aviso de sua inscrição.&quot;,
+    &quot;summary&quot;: &quot;Enviar aviso à pessoa inscrita a partir da lista de espera, pelo canal que for definido em resposta à Q1.&quot;,
+    &quot;verification&quot;: &quot;Critério CA-03 de US3 atendido.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Enviar aviso à pessoa inscrita a partir da lista de espera, pelo canal que for definido em resposta à Q1.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Atividades&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Obter a definição de canal e prazo do aviso (Q1)&lt;/li&gt;&lt;li&gt;Disparar o aviso após a inscrição da pessoa promovida&lt;/li&gt;&lt;li&gt;Registrar que o aviso foi emitido&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Resultado esperado&lt;/strong&gt;: Pessoa promovida recebe aviso de sua inscrição.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verificação&lt;/strong&gt;: Critério CA-03 de US3 atendido.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-A9XQ19NG0DTW&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-XPYZ5YVZQYPX&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Avisar a pessoa promovida da lista de espera&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  }
+ ],
+ &quot;kind&quot;: &quot;pbd.backlog&quot;,
+ &quot;language&quot;: &quot;pt-BR&quot;,
+ &quot;profile&quot;: &quot;generic&quot;,
+ &quot;questions&quot;: [
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-CLM-5CXYQ8DJ0WE2&quot;,
+    &quot;PBD-STORY-XPYZ5YVZQYPX&quot;,
+    &quot;PBD-TASK-A9XQ19NG0DTW&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Aviso no próprio sistema&quot;,
+    &quot;E-mail&quot;,
+    &quot;Outro canal a definir pelo produto&quot;
+   ],
+   &quot;blocking&quot;: false,
+   &quot;id&quot;: &quot;PBD-Q-ECZN9VKWEVH9&quot;,
+   &quot;impact&quot;: &quot;Define a implementação do aviso (T6) e a verificabilidade do critério de aviso.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;Por qual canal e em que prazo a primeira pessoa da lista de espera deve ser avisada de sua inscrição?&quot;
+  },
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-CLM-BBK708NSGS3H&quot;,
+    &quot;PBD-DEC-B83Y44N2D1DE&quot;,
+    &quot;PBD-STORY-PASAP9QV2K9J&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Manter 20 (PRD vigente)&quot;,
+    &quot;Aprovar 30 (ADR-003)&quot;
+   ],
+   &quot;blocking&quot;: false,
+   &quot;id&quot;: &quot;PBD-Q-1APPRCBQMD0Z&quot;,
+   &quot;impact&quot;: &quot;Mudaria os critérios de fronteira de US1 e o ponto de lotação usado pela lista de espera.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;A ADR-003 (aumentar o limite para 30 participantes) será aprovada? Enquanto não for, o backlog usa o limite de 20.&quot;
+  },
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-CLM-569TNPA8YCWY&quot;,
+    &quot;PBD-CLM-RJ0BFW5Y1VW2&quot;,
+    &quot;PBD-STORY-Q3R6G9TCYCC6&quot;,
+    &quot;PBD-STORY-XPYZ5YVZQYPX&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Ordem de entrada na lista&quot;,
+    &quot;Outro critério definido pelo produto&quot;
+   ],
+   &quot;blocking&quot;: false,
+   &quot;id&quot;: &quot;PBD-Q-TH2K7EX7AT5R&quot;,
+   &quot;impact&quot;: &quot;Determina a ordenação da lista (US2) e quem é promovido no cancelamento (US3).&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;Qual critério define a &#x27;primeira pessoa&#x27; da lista de espera?&quot;
+  },
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-CLM-569TNPA8YCWY&quot;,
+    &quot;PBD-STORY-XPYZ5YVZQYPX&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Cancelamento já existente&quot;,
+    &quot;Incluir história de cancelamento&quot;
+   ],
+   &quot;blocking&quot;: false,
+   &quot;id&quot;: &quot;PBD-Q-JCH63GB47J7C&quot;,
+   &quot;impact&quot;: &quot;O PRD usa o cancelamento como gatilho da promoção, mas não o descreve como capacidade; pode exigir uma história adicional.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;O cancelamento de inscrição pelo inscrito já existe ou precisa ser construído neste escopo?&quot;
+  }
+ ],
+ &quot;relations&quot;: [
+  {
+   &quot;confidence&quot;: &quot;high&quot;,
+   &quot;id&quot;: &quot;PBD-REL-2F2TM3KZJ410&quot;,
+   &quot;reason&quot;: &quot;A lista de espera depende do controle de lotação (limite de 20) implementado na inscrição com confirmação automática.&quot;,
+   &quot;source&quot;: &quot;PBD-STORY-PASAP9QV2K9J&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;target&quot;: &quot;PBD-STORY-Q3R6G9TCYCC6&quot;,
+   &quot;type&quot;: &quot;predecessor&quot;
+  },
+  {
+   &quot;confidence&quot;: &quot;high&quot;,
+   &quot;id&quot;: &quot;PBD-REL-PD9WB69E72K6&quot;,
+   &quot;reason&quot;: &quot;A promoção ao cancelar exige a lista de espera existente e ordenada.&quot;,
+   &quot;source&quot;: &quot;PBD-STORY-Q3R6G9TCYCC6&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;target&quot;: &quot;PBD-STORY-XPYZ5YVZQYPX&quot;,
+   &quot;type&quot;: &quot;predecessor&quot;
+  }
+ ],
+ &quot;run_id&quot;: &quot;PBD-RUN-CPHGGRAD86S3&quot;,
+ &quot;schema_version&quot;: &quot;1.1.0&quot;,
+ &quot;sources&quot;: [
+  {
+   &quot;authority&quot;: &quot;functional&quot;,
+   &quot;digest&quot;: &quot;sha256:27fc74c761f5d3c6a1e49b9a0496c4c73419cc5b3348e93c74f0d8b74249b0e0&quot;,
+   &quot;id&quot;: &quot;PBD-SRC-78385WMH95P7&quot;,
+   &quot;kind&quot;: &quot;file&quot;,
+   &quot;members&quot;: [
+    {
+     &quot;bytes&quot;: 402,
+     &quot;digest&quot;: &quot;sha256:a3747232ca2eb14666f5015e61764d8d9b216b07f319bebcfa209bac98ac3cba&quot;,
+     &quot;media_type&quot;: &quot;application/octet-stream&quot;,
+     &quot;path&quot;: &quot;prd.md&quot;,
+     &quot;status&quot;: &quot;read&quot;
+    }
+   ],
+   &quot;read_status&quot;: &quot;complete&quot;,
+   &quot;selector&quot;: &quot;prd.md&quot;,
+   &quot;version&quot;: &quot;27fc74c761f5d3c6&quot;
+  },
+  {
+   &quot;authority&quot;: &quot;decision&quot;,
+   &quot;digest&quot;: &quot;sha256:00311df4501e0cecbf558270e4ab4b71b7b020c5f66f47c0131817278b77ab54&quot;,
+   &quot;id&quot;: &quot;PBD-SRC-3Q116GNGMAKT&quot;,
+   &quot;kind&quot;: &quot;directory&quot;,
+   &quot;members&quot;: [
+    {
+     &quot;bytes&quot;: 265,
+     &quot;digest&quot;: &quot;sha256:872930753bf13eb73a0d9bc9582190f2d2ddcb93853327e3eabf0cb465608d12&quot;,
+     &quot;media_type&quot;: &quot;application/octet-stream&quot;,
+     &quot;path&quot;: &quot;adr-002-confirmacao-automatica.md&quot;,
+     &quot;status&quot;: &quot;read&quot;
+    },
+    {
+     &quot;bytes&quot;: 150,
+     &quot;digest&quot;: &quot;sha256:ef5cace84b7775b3b2aa808bdfccf393b91555df6a4b88329f00e2441cb6250a&quot;,
+     &quot;media_type&quot;: &quot;application/octet-stream&quot;,
+     &quot;path&quot;: &quot;adr-003-limite.md&quot;,
+     &quot;status&quot;: &quot;read&quot;
+    }
+   ],
+   &quot;read_status&quot;: &quot;complete&quot;,
+   &quot;selector&quot;: &quot;decisoes&quot;,
+   &quot;version&quot;: &quot;00311df4501e0cec&quot;
+  }
+ ],
+ &quot;synthetic&quot;: true
+}</pre></details></section>
+</main><script>(function(){
+var d=document,root=d.documentElement,KEY='pbd-theme';
+try{var s=localStorage.getItem(KEY);if(s)root.setAttribute('data-theme',s);}catch(e){}
+var tb=d.getElementById('theme');if(tb)tb.addEventListener('click',function(){
+var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
+var next=dark?'light':'dark';root.setAttribute('data-theme',next);try{localStorage.setItem(KEY,next);}catch(e){}});
+function norm(t){return (t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
+var items=[].slice.call(d.querySelectorAll('details.wi'));
+items.forEach(function(el){el._t=norm(el.getAttribute('data-text'));});
+var q=d.getElementById('q'),ft=d.getElementById('ftype'),fv=d.getElementById('fverdict'),out=d.getElementById('count'),
+none=d.getElementById('noresults');
+function apply(){var term=norm(q.value.trim()),type=ft.value,ver=fv.value,shown=0;
+items.forEach(function(el){el._m=(!term||el._t.indexOf(term)>=0)&&(!type||el.getAttribute('data-type')===type)&&
+(!ver||el.getAttribute('data-verdict')===ver);});
+items.slice().reverse().forEach(function(el){var keep=el._m||[].some.call(el.querySelectorAll('details.wi'),function(c){return c._m;});
+el.hidden=!keep;if(keep&&el._m)shown++;if(keep&&(term||type||ver)&&!el._m)el.open=true;});
+out.textContent=shown;none.hidden=shown>0;}
+[q,ft,fv].forEach(function(e){e.addEventListener('input',apply);});
+d.getElementById('expand').addEventListener('click',function(){items.forEach(function(e){e.open=true;});});
+d.getElementById('collapse').addEventListener('click',function(){items.forEach(function(e){e.open=false;});});
+apply();})();</script></body></html>

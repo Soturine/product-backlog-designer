@@ -1,0 +1,31 @@
+{
+ "case": "c01-prd-only",
+ "evaluator_model": "claude-haiku-5-5",
+ "obligations": [
+  {"id": "G01", "verdict": "covered", "evidence": "US1; AC-US1-2 (confirmed: nome, categoria e disponibilidade apresentados); F1 description", "note": "Catalog with name, category and availability is confirmed and tied to the morador."},
+  {"id": "G02", "verdict": "covered", "evidence": "US2 (solicitar empréstimo de ferramenta disponível por até 7 dias); AC-US2-1 and AC-US2-2 confirmed; T3", "note": "Loan request for an available tool with due date up to 7 days is represented."},
+  {"id": "G03", "verdict": "covered", "evidence": "F2 rule 'No máximo 2 empréstimos ativos por morador'; AC-US3-1 and AC-US3-2 confirmed; T4", "note": "Limit of 2 active loans with refusal of the third is confirmed."},
+  {"id": "G04", "verdict": "covered", "evidence": "AC-US3-3 confirmed: 'É exibida a mensagem \"Limite de empréstimos atingido\"'; US3; T4", "note": "Exact refusal message is carried verbatim."},
+  {"id": "G05", "verdict": "covered", "evidence": "US5; AC-US5-1 and AC-US5-2 confirmed (registro com indicação de se voltou danificada)", "note": "Return registration with damage indication is confirmed."},
+  {"id": "G06", "verdict": "covered", "evidence": "US6; AC-US6-1, AC-US6-2, AC-US6-3 confirmed; T8, T9", "note": "Damaged tool stays unavailable until the volunteer marks it repaired."},
+  {"id": "G07", "verdict": "covered", "evidence": "US7; AC-US7-1 and AC-US7-2 confirmed (lembrete no dia anterior ao vencimento); T10, T11", "note": "Email reminder one day before due date is confirmed with its timing."},
+  {"id": "G08", "verdict": "covered", "evidence": "US4; AC-US4-1 and AC-US4-2 confirmed; F2 rule; T6", "note": "Overdue loan blocks new requests until return, with release after return."},
+  {"id": "G09", "verdict": "handled_as_question", "evidence": "Claim C16 QUESTION_REQUIRED; question 'Qual critério mensurável define que o catálogo é utilizável em celulares' (non-blocking); AC-US1-3 proposed; T2 defers to the answer", "note": "No invented device list or threshold; the missing measurable criterion is asked, which is the expected handling."},
+  {"id": "G10", "verdict": "handled_as_out_of_scope", "evidence": "E1 description 'Fora do escopo: Cobrança de multas e pagamentos'", "note": "Fines and payments are explicitly excluded in the epic."},
+  {"id": "G11", "verdict": "handled_as_out_of_scope", "evidence": "E1 description 'Fora do escopo: Entrega de ferramentas em domicílio'", "note": "Home delivery is explicitly excluded in the epic."}
+ ],
+ "traps": [
+  {"trap": "Must not invent fine amounts, payments or a reservation queue.", "violated": false, "note": "No fine values, payment flows or queue items appear; E1 excludes payments."},
+  {"trap": "Must not invent a numeric performance threshold or device list for RNF01.", "violated": false, "note": "T2 only asks to obtain the criterion (dispositivos, telas, navegadores); no threshold or device list is asserted."},
+  {"trap": "Two real actors only: morador and voluntário (no invented admin persona).", "violated": false, "note": "Only Morador and Voluntário appear as actors; QA is used only as a planning partner in T5, not as a persona."}
+ ],
+ "invented": [],
+ "levels_ok": true,
+ "quality": {
+  "stories": "Stories use the 'Eu como morador/voluntário' form with the two PRD actors and map one-to-one to the functional rules; US4 and US6 contain a duplicated 'que que' typo in the description.",
+  "criteria": "Confirmed criteria keep the source values (7 days, 2 loans, exact message, one day before due, damaged = unavailable until repaired); proposed edge criteria are clearly labelled and not presented as confirmed.",
+  "tasks": "Tasks are sensible and carry activity tags marked proposed; T5 (test planning) is a legitimate planning task but adds little delivery value.",
+  "traceability": "Every item and criterion points back to the source claims C1 to C16, and the RNF01 gap is traced to a question and to T2."
+ },
+ "notes": "The gold does not capture the blocking question on when the 7 days start (approval or pickup), which the backlog raises (blocking). The gold has no obligation for the loan-start ambiguity, so that handling is not scored."
+}

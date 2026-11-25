@@ -1,0 +1,620 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC3",
+      "notes": "",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC5",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC6",
+      "notes": "Asserts an inclusive boundary (exactly 3 months accepted) that the source does not state. It is proposed and tied to Q5, so it must not be confirmed before Q5 is answered.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC7",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC8",
+      "notes": "Commits to one of the two alternatives listed in open question Q2 ('Bloquear o registro sem lote') while Q2 is open, so the proposed criterion pre-decides the question.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC9",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "overlap",
+      "items": [
+        "F2",
+        "US4"
+      ],
+      "rationale": "Feature F2 has a single child story US4 that restates it."
+    },
+    {
+      "assessment": "overlap",
+      "items": [
+        "F3",
+        "US5"
+      ],
+      "rationale": "Feature F3 has a single child story US5 that restates it."
+    },
+    {
+      "assessment": "overlap",
+      "items": [
+        "US4",
+        "T4"
+      ],
+      "rationale": "Identical title 'Registrar vacina aplicada e lote no atendimento'; the task restates the story."
+    },
+    {
+      "assessment": "distinct",
+      "items": [
+        "US1",
+        "US2"
+      ],
+      "rationale": "Different rules: capture of species and age versus per-slot capacity."
+    },
+    {
+      "assessment": "distinct",
+      "items": [
+        "US2",
+        "US3"
+      ],
+      "rationale": "Different rules: slot capacity versus minimum age."
+    }
+  ],
+  "findings": [
+    {
+      "actual": "US3, AC4, AC5 and T3 restrict the rule to cão and gato. F1 lists the general rule but no criterion tests other species.",
+      "affects": [
+        "US3",
+        "F1",
+        "T3",
+        "AC4",
+        "AC5"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "The source rule 'Animais abaixo da idade mínima não podem ser agendados' (line 12) applies to any animal.",
+      "gate": "G06",
+      "impact": "A non-dog, non-cat animal under 3 months could be scheduled and no criterion would fail.",
+      "recommendation": "Either add a criterion for the general rule or record an explicit decision in Q3 that other species are out of scope. Trace line 12 in full.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "The general rule is only partly traced. Other species are an open question (Q3) that the design did not resolve in the criteria."
+    },
+    {
+      "actual": "AC8 fixes 'o registro não é concluído quando o lote não é informado', which is one of two alternatives in Q2. Q2 is open.",
+      "affects": [
+        "AC8",
+        "US4"
+      ],
+      "classification": "candidate_concern",
+      "expected": "A proposed criterion should not fix an alternative of an open question.",
+      "gate": "G06",
+      "impact": "Developers may implement blocking when the product owner prefers a pending-mark behaviour.",
+      "recommendation": "Keep AC8 explicitly marked as conditional on Q2, or present both alternatives as separate proposed criteria.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "The criterion pre-decides a choice the product owner has not made."
+    },
+    {
+      "actual": "AC6 asserts that exactly 3 months is accepted. The source does not say whether the minimum is inclusive.",
+      "affects": [
+        "AC6",
+        "US3"
+      ],
+      "classification": "candidate_concern",
+      "expected": "A boundary rule of 'mínima de 3 meses' states whether the boundary is inclusive only if the source does.",
+      "gate": "G04",
+      "impact": "Off-by-one error in eligibility for animals of exactly 3 months.",
+      "recommendation": "Confirm Q5 before AC6 is treated as a requirement.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "Proposed boundary that depends on open Q5."
+    },
+    {
+      "actual": "US5 adds 'no atendimento' and 'o sistema entregasse', and F3 adds 'sai do atendimento'. These are timing and mechanism assumptions.",
+      "affects": [
+        "US5",
+        "F3"
+      ],
+      "classification": "candidate_concern",
+      "expected": "The source says only that the tutor receives the receipt.",
+      "gate": "G04",
+      "impact": "Scope could be built around an assumed timing that the owner does not want.",
+      "recommendation": "Mark timing as an assumption or defer it to Q1.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Inferred detail presented as requirement."
+    },
+    {
+      "actual": "US5 is testable only for receipt. Content and channel are undefined until Q1.",
+      "affects": [
+        "US5",
+        "AC9"
+      ],
+      "classification": "candidate_concern",
+      "expected": "A story's testable criteria should verify its want.",
+      "gate": "G07",
+      "impact": "The story could be accepted without verifying the delivered content.",
+      "recommendation": "Keep US5 blocked on Q1 or split receipt from content once Q1 is answered.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Testability depends on an open question."
+    },
+    {
+      "actual": "T5's first activity is 'Definir conteúdo e canal de entrega' (decision, Q1). T5 is marked draft without a block.",
+      "affects": [
+        "T5",
+        "US5"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Tasks should be executable activities.",
+      "gate": "G08",
+      "impact": "The task may be picked up before Q1 is answered.",
+      "recommendation": "Record T5 as blocked by Q1 and move the decision out of the activities.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "A decision is not implementation work."
+    },
+    {
+      "actual": "F2 and US4 overlap; F3 and US5 overlap; US4 and T4 have identical titles.",
+      "affects": [
+        "F2",
+        "US4",
+        "F3",
+        "US5",
+        "T4"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Each feature or story should carry distinct content.",
+      "gate": "G09",
+      "impact": "Duplicate entries increase review load and may create double counting.",
+      "recommendation": "Collapse F2 or F3 into the child story, or give the feature a distinct capability statement.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Sizing signal: a feature whose only child restates it."
+    },
+    {
+      "actual": "Page 3 of prd.pdf has no text layer and could not be rendered by the reviewer. The design records it as Q4, which is correct. The reviewer could not verify page 3 content.",
+      "affects": [
+        "E1"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "Every readable source obligation is traced; unreadable content is flagged as blocked.",
+      "gate": "G02",
+      "impact": "Requirements on page 3 are unknown and may change the backlog.",
+      "recommendation": "Provide a legible copy of page 3 and rerun the review. Keep Q4 open until then.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "Source completeness cannot be confirmed for page 3."
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 3,
+        "member": "prd.pdf",
+        "source_id": "PBD-SRC-TQZARCVE5PAF"
+      },
+      "matched_claims": [
+        "C1",
+        "C2"
+      ],
+      "quote": "O tutor agenda a vacinação informando espécie e idade do animal.",
+      "rationale": "US1 and AC1 cover scheduling with species and age; T1 implements the fields.",
+      "text": "Tutor agenda a vacinacao informando especie e idade do animal"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC2",
+        "T2"
+      ],
+      "disposition": "COVERED",
+      "key": "O2",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.pdf",
+        "source_id": "PBD-SRC-TQZARCVE5PAF"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "Cada horário atende no máximo 10 animais.",
+      "rationale": "US2 with AC2 refuses the 11th booking; T2 implements the count. AC3 is a derived boundary case and is not required for coverage.",
+      "text": "Each time slot serves at most 10 animals"
+    },
+    {
+      "covered_by": [
+        "US4",
+        "AC7",
+        "T4"
+      ],
+      "disposition": "COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.pdf",
+        "source_id": "PBD-SRC-TQZARCVE5PAF"
+      },
+      "matched_claims": [
+        "C4",
+        "C5"
+      ],
+      "quote": "O voluntário registra a vacina aplicada e o lote.",
+      "rationale": "US4, AC7 and T4 cover recording both vaccine and batch. Behaviour when the batch is missing is not stated by the source and is an open question (Q2), not a missing obligation.",
+      "text": "Volunteer records the vaccine applied and the batch"
+    },
+    {
+      "covered_by": [
+        "US5",
+        "AC9",
+        "T5"
+      ],
+      "disposition": "COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.pdf",
+        "source_id": "PBD-SRC-TQZARCVE5PAF"
+      },
+      "matched_claims": [
+        "C6"
+      ],
+      "quote": "O tutor recebe o comprovante de vacinação.",
+      "rationale": "US5 and AC9 cover delivery of the receipt to the tutor. Content and channel are open (Q1) and do not remove the obligation itself.",
+      "text": "Tutor receives the vaccination receipt"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC4",
+        "T3"
+      ],
+      "disposition": "COVERED",
+      "key": "O5",
+      "locator": {
+        "line_start": 10,
+        "member": "prd.pdf",
+        "source_id": "PBD-SRC-TQZARCVE5PAF"
+      },
+      "matched_claims": [
+        "C7"
+      ],
+      "quote": "Cão        3 meses         Antirrábica",
+      "rationale": "AC4 tests dog below 3 months; T3 implements the rule.",
+      "text": "Dog rule: minimum age 3 months, Antirrabica"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC5",
+        "T3"
+      ],
+      "disposition": "COVERED",
+      "key": "O6",
+      "locator": {
+        "line_start": 11,
+        "member": "prd.pdf",
+        "source_id": "PBD-SRC-TQZARCVE5PAF"
+      },
+      "matched_claims": [
+        "C8"
+      ],
+      "quote": "Gato       3 meses         Antirrábica",
+      "rationale": "AC5 tests cat below 3 months; T3 implements the rule.",
+      "text": "Cat rule: minimum age 3 months, Antirrabica"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC4",
+        "AC5",
+        "T3"
+      ],
+      "disposition": "PARTIALLY_COVERED",
+      "key": "O7",
+      "locator": {
+        "line_start": 12,
+        "member": "prd.pdf",
+        "source_id": "PBD-SRC-TQZARCVE5PAF"
+      },
+      "matched_claims": [
+        "C9"
+      ],
+      "quote": "Animais abaixo da idade mínima não podem ser agendados.",
+      "rationale": "The source rule is general. The design tests and implements it only for dog and cat (AC4, AC5, T3); F1 states the general rule but no criterion checks other species. Other species are an open question (Q3), so the general rule is only partly traced.",
+      "text": "Animals below the minimum age cannot be scheduled (general rule, no species limit in the source)"
+    },
+    {
+      "covered_by": [],
+      "disposition": "BLOCKED",
+      "key": "O8",
+      "locator": {
+        "line_start": 13,
+        "member": "prd.pdf",
+        "source_id": "PBD-SRC-TQZARCVE5PAF"
+      },
+      "matched_claims": [],
+      "quote": "--- página 3 ---",
+      "rationale": "Page 3 content is unreadable in the text layer and the page could not be rendered. Any obligation on page 3 is unverified. Design records this as Q4, which is consistent with the gap.",
+      "text": "Page 3 of the PRD has no extractable text and could not be rendered by this reviewer"
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "Epic objective, scope and outcome are synthesised from pages 1-2 and state the unread page 3 in context.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "Rules restate source lines 3, 4, 10, 11 and 12. The general minimum-age rule (line 12) is listed here but the child story narrows it to cão and gato; see finding on O7.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "notes": "Candidate sizing signal only: its single child US4 restates the feature. Not a defect.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F3",
+      "notes": "Rule list contains a placeholder ('Conteúdo e canal de entrega a definir') rather than a rule. The value 'sai do atendimento' adds a timing the source does not state.",
+      "source_support": "proposal_justified",
+      "source_support_note": "Feature exists in source line 6; timing and placement are inferred.",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Predecessor relation to US4 is a process-order inference (medium confidence), not a hard technical dependency.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Scope of fields is open to discussion.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Single scheduling capability.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC1 gives a concrete expected outcome.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Benefit 'acompanhar a vacinação do animal' is an inference but a reasonable one for the tutor.",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Can be built on top of US1 but does not require US4 or US5.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "The number 10 is fixed by source; the mechanism is negotiable.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "One rule.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC2 and AC3 are testable.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Keeps slots within capacity.",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "The rule is a business rule expressed as a story. Acceptable for this backlog; the boundary case AC3 is a proposed derivation.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Candidate sizing signal: two species and the general rule are bundled. This is a conjunction, not automatically two stories.",
+          "rating": "concern"
+        },
+        "testable": {
+          "note": "The general rule cannot be verified for species other than dog and cat until Q3 is answered.",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "Prevents ineligible bookings.",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "The source rule at line 12 applies to any animal below the minimum age. The story limits it to 'cão ou gato' and AC4/AC5 test only those species. Other species are an open question (Q3), so the story is narrower than the source rule without an explicit decision.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC7 is concrete.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Registration of each application.",
+          "rating": "supported"
+        }
+      },
+      "key": "US4",
+      "notes": "Missing-batch behaviour is handled by the proposed AC8 and Q2, which is appropriately marked as open.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "depends on Q1",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Predecessor on US4 is a process-order inference.",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "Channel is fixed in the want ('sistema entregasse') before Q1 is answered.",
+          "rating": "concern"
+        },
+        "small": {
+          "note": "",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC9 checks receipt only; content is undefined.",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "Tutor gets proof of vaccination.",
+          "rating": "supported"
+        }
+      },
+      "key": "US5",
+      "notes": "'no atendimento' and 'o sistema entregasse' add a timing and a delivery mechanism the source does not state. Content and channel depend on Q1 and AC9 tests only receipt, so the story is only partly testable.",
+      "source_support": "proposal_justified",
+      "task_sufficiency": "insufficient",
+      "verdict": "concern"
+    },
+    {
+      "key": "T1",
+      "notes": "Technical activity derived from the story; verification via AC1 is clear.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "notes": "Verification via AC2 and AC3 is clear.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "T3",
+      "notes": "Activity 'Bloquear agendamento abaixo da idade mínima' is generic (any species) while the summary and criteria cover only cão and gato. The task would implement more than AC4/AC5 verify.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "T4",
+      "notes": "Title is identical to US4; see duplicate note. Verification via AC7 is clear.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "T5",
+      "notes": "First activity is a decision ('Definir conteúdo e canal', Q1), not implementation work. The task cannot be executed until Q1 is answered, but is marked draft as if ready.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    }
+  ],
+  "reviewer": {
+    "agent": "reviewer-c11",
+    "independence": "separate_agent",
+    "model": "claude-haiku-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": false,
+      "source_id": "PBD-SRC-TQZARCVE5PAF"
+    }
+  ]
+}

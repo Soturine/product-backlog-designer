@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src &#x27;none&#x27;; style-src &#x27;unsafe-inline&#x27;; script-src &#x27;sha256-fXA6PQIafqslndojZsQDPkTXc2iNdIswVX15OelmO7w=&#x27;; img-src data:; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;">
+<meta name="generator" content="pbd 0.1.0.dev0">
+<title>Feira de Trocas — PBD</title><style>:root{color-scheme:light;
+--bg:#f3f5fa;--side:#ffffff;--surface:#ffffff;--surface-2:#f7f8fc;--sunk:#eef1f7;--rule:#e2e6ef;--rule-strong:#ccd3e0;
+--ink:#0f172a;--ink-2:#334155;--muted:#5b6578;--faint:#8a93a6;
+--accent:#3b5bdb;--accent-2:#6d4aff;--accent-soft:#e9edff;--on-tone:#ffffff;--logo-a:#4f6bff;--logo-b:#7b4dff;
+--pass:#15803d;--fail:#c02626;--warn:#b45309;--unknown:#5f6b7f;--info:#1d63c9;
+--glow:rgba(59,91,219,.07);--shadow:0 1px 2px rgba(15,23,42,.05);--lift:0 10px 30px -18px rgba(15,23,42,.35);
+--r-sm:7px;--r:12px;--r-lg:16px;
+--sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI Variable Text","Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,SFMono-Regular,"SF Mono","Cascadia Mono",Menlo,Consolas,"Liberation Mono",monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;
+--bg:#080d1a;--side:#0a1020;--surface:#0e1628;--surface-2:#111b31;--sunk:#0b1324;--rule:rgba(148,163,184,.13);--rule-strong:rgba(148,163,184,.24);
+--ink:#e9eef8;--ink-2:#c4ccdc;--muted:#8f9ab0;--faint:#68738a;
+--accent:#7b93ff;--accent-2:#9b7bff;--accent-soft:rgba(91,124,250,.16);--on-tone:#08101f;--logo-a:#4f6bff;--logo-b:#8a5cff;
+--pass:#3ddc97;--fail:#ff7b7b;--warn:#f6b44b;--unknown:#a3adbf;--info:#6cb2ff;
+--glow:rgba(91,124,250,.20);--shadow:0 1px 2px rgba(0,0,0,.4);--lift:0 18px 40px -22px rgba(0,0,0,.9)}}
+:root[data-theme="dark"]{color-scheme:dark;
+--bg:#080d1a;--side:#0a1020;--surface:#0e1628;--surface-2:#111b31;--sunk:#0b1324;--rule:rgba(148,163,184,.13);--rule-strong:rgba(148,163,184,.24);
+--ink:#e9eef8;--ink-2:#c4ccdc;--muted:#8f9ab0;--faint:#68738a;
+--accent:#7b93ff;--accent-2:#9b7bff;--accent-soft:rgba(91,124,250,.16);--on-tone:#08101f;--logo-a:#4f6bff;--logo-b:#8a5cff;
+--pass:#3ddc97;--fail:#ff7b7b;--warn:#f6b44b;--unknown:#a3adbf;--info:#6cb2ff;
+--glow:rgba(91,124,250,.20);--shadow:0 1px 2px rgba(0,0,0,.4);--lift:0 18px 40px -22px rgba(0,0,0,.9)}
+.tone-pass{--tone:var(--pass)}.tone-fail{--tone:var(--fail)}.tone-warn{--tone:var(--warn)}.tone-blocked{--tone:var(--warn)}
+.tone-unknown{--tone:var(--unknown)}.tone-not_run{--tone:var(--faint)}.tone-neutral{--tone:var(--muted)}.tone-accent{--tone:var(--accent)}
+.tone-info{--tone:var(--info)}.tone-muted{--tone:var(--faint)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:120px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}code,pre{font-family:var(--mono);font-size:.84em}
+code{overflow-wrap:anywhere}:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:5px}
+.skip{position:absolute;left:16px;top:-60px;background:var(--surface);padding:8px 14px;border-radius:var(--r-sm);z-index:40}
+.skip:focus{top:10px}[hidden]{display:none!important}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--surface) 92%,transparent);
+backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.bar{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.logo{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--logo-a),var(--logo-b));flex:none}
+.brand h1{font-size:1.05rem;margin:0}.brand p{margin:0;color:var(--muted);font-size:.8rem}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:2px 9px;border-radius:999px;font-size:.75rem;
+font-weight:600;border:1px solid color-mix(in srgb,var(--tone,var(--muted)) 40%,var(--rule));
+color:var(--tone,var(--muted));background:color-mix(in srgb,var(--tone,var(--muted)) 9%,transparent)}
+.spacer{flex:1}button,select,input{font:inherit;color:inherit}
+.btn{border:1px solid var(--rule-strong);background:var(--surface);border-radius:var(--r-sm);padding:6px 12px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+nav.tabs{max-width:1240px;margin:0 auto;padding:0 20px 8px;display:flex;gap:4px;overflow-x:auto}
+nav.tabs a{padding:6px 12px;border-radius:999px;color:var(--ink-2);text-decoration:none;white-space:nowrap;font-size:.88rem}
+nav.tabs a:hover{background:var(--accent-soft);color:var(--accent)}
+main{max-width:1240px;margin:0 auto;padding:20px}
+section{margin:0 0 28px}h2{font-size:1.25rem;margin:0 0 12px}h3{font-size:1rem;margin:14px 0 8px}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}
+.verdict{border-left:4px solid var(--tone);display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:14px 0}
+.kpi .v{font-size:1.6rem;font-weight:700}.kpi .l{color:var(--muted);font-size:.82rem}
+.kpi .d{color:var(--faint);font-size:.78rem}
+.layer1{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px}
+.layer1 ul{margin:6px 0 0;padding-left:18px}.layer1 li{margin:3px 0}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 12px;position:sticky;top:96px;z-index:10;
+background:var(--bg);padding:8px 0}
+.toolbar input[type=search]{flex:1 1 280px;min-width:200px;padding:8px 12px;border:1px solid var(--rule-strong);
+border-radius:var(--r-sm);background:var(--surface)}
+.toolbar select{padding:7px 10px;border:1px solid var(--rule-strong);border-radius:var(--r-sm);background:var(--surface)}
+details.wi{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r);margin:8px 0;
+border-left:4px solid var(--tone,var(--rule-strong))}
+details.wi>summary{list-style:none;cursor:pointer;padding:10px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+details.wi>summary::-webkit-details-marker{display:none}
+details.wi>summary::before{content:"\25B8";color:var(--muted);transition:transform .15s}
+details.wi[open]>summary::before{transform:rotate(90deg)}
+.wi .body{padding:0 16px 14px 34px}.wi .children{margin-left:14px}
+.t-epic{--tone:#7b4dff}.t-feature{--tone:var(--info)}.t-story,.t-enabler,.t-spike,.t-bug{--tone:var(--pass)}
+.t-task{--tone:var(--warn)}.title{font-weight:600;overflow-wrap:anywhere}.mono{font-family:var(--mono);font-size:.78rem;color:var(--muted);overflow-wrap:anywhere}
+.card,.grid2>*,.layer1>*{min-width:0}
+.rich p{margin:4px 0}.rich ul{margin:4px 0;padding-left:20px}
+table{border-collapse:collapse;width:100%;font-size:.88rem}th,td{border:1px solid var(--rule);padding:6px 8px;
+text-align:left;vertical-align:top}th{background:var(--surface-2)}
+.tablewrap{overflow-x:auto}.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:12px}
+.finding{border-left:4px solid var(--tone)}.sev-critical,.sev-high{--tone:var(--fail)}.sev-medium{--tone:var(--warn)}
+.sev-low,.sev-info{--tone:var(--info)}dl.kv{display:grid;grid-template-columns:max-content 1fr;gap:4px 12px;margin:6px 0}
+dl.kv dt{color:var(--muted)}dl.kv dd{margin:0}.quote{color:var(--ink-2);font-style:italic}
+pre.json{max-height:480px;overflow:auto;background:var(--sunk);padding:12px;border-radius:var(--r-sm)}
+.notice{color:var(--muted);font-size:.85rem}
+@media (max-width:640px){.bar{padding:10px 12px}main{padding:12px}.wi .body{padding-left:14px}
+.toolbar{top:86px}dl.kv{grid-template-columns:1fr}}
+@media print{header.top,.toolbar,nav.tabs{position:static}details.wi{break-inside:avoid}.btn{display:none}}
+</style></head>
+<body><a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="bar"><div class="logo" aria-hidden="true"></div><div class="brand"><h1>Feira de Trocas</h1>
+<p>Execução <code>PBD-RUN-AKCQQ9XJAH5J</code> · pt-BR · profile generic</p></div>
+<span class="badge tone-warn">SINTÉTICO</span><span class="badge tone-info">Não publicado: pacote e plano são locais.</span><span class="spacer"></span>
+<button class="btn" id="theme" type="button" aria-label="Alternar tema">◐</button></div>
+<nav class="tabs" aria-label="sections"><a href='#summary'>Resumo executivo</a><a href='#backlog'>Backlog</a><a href='#requirements'>Requisitos</a><a href='#findings'>Achados</a><a href='#questions'>Perguntas</a><a href='#gates'>Gates de qualidade</a><a href='#sources'>Fontes</a><a href='#data'>Dados</a></nav></header>
+<main id="main">
+<section id="summary" aria-labelledby="h-summary"><h2 id="h-summary">Resumo executivo</h2>
+<div class="card verdict tone-fail"><span class="badge tone-fail">FAIL</span><div><strong>2 gate(s) FAIL · 1 BLOCKED · 1 NOT_RUN</strong>
+<p class="notice">Conteúdo potencialmente sensível: compartilhe somente com quem pode ver as fontes.</p></div></div>
+<div class="kpis"><div class="card kpi"><div class="v">11</div><div class="l">Work Items</div><div class="d">epic: 1, feature: 2, spike: 1, story: 3, task: 4</div></div><div class="card kpi"><div class="v">7</div><div class="l">Critérios de aceite</div><div class="d">3 proposed</div></div><div class="card kpi"><div class="v">2/4</div><div class="l">Cobertura independente</div><div class="d">provenance: independent reviewer inventory</div></div><div class="card kpi"><div class="v">1/2</div><div class="l">Membros lidos</div><div class="d">1 source(s)</div></div><div class="card kpi"><div class="v">4</div><div class="l">Achados</div><div class="d">high: 1, medium: 2, low: 1</div></div><div class="card kpi"><div class="v">4</div><div class="l">Perguntas abertas</div><div class="d">2 blocking</div></div></div><div class="layer1"><div class="card"><h3>O que foi analisado</h3><ul><li>fontes — functional (partial)</li></ul></div><div class="card"><h3>O que está consistente</h3><ul><li>G03 Hierarchy Integrity</li><li>G04 Traceability</li><li>G05 Story Quality</li><li>G06 Acceptance Quality</li><li>G08 Dependency Integrity</li><li>G09 Scope Integrity</li><li>G11 Artifact Integrity</li><li>G13 Independent Review</li><li>G14 Semantic Duplication</li><li>G16 Privacy and Offline Boundary</li></ul></div><div class="card"><h3>O que diverge</h3><ul><li><span class="badge tone-fail">high</span> Only SP1 plus Q1; no story or criterion for lifecycle. The source member is unreadable and the design correctly did not invent content.</li><li><span class="badge tone-warn">medium</span> Both have status confirmed although the day unit, start event and &#x27;resposta&#x27; are undefined.</li><li><span class="badge tone-warn">medium</span> T3 and T4 reference CA-06/CA-07 and T2 references CA-03, but visible IDs are per story (US3: CA-01/CA-02; US2 request: CA-01).</li><li><span class="badge tone-info">low</span> US3 description reads &#x27;Quando Quando ...&#x27; and &#x27;quero quero ...&#x27;; T4 is QA planning, not product work.</li><li>G02: coverage gaps in independent inventory: {&#x27;covered&#x27;: 2, &#x27;blocked&#x27;: 1, &#x27;partially_covered&#x27;: 1}</li><li>G07: stories with insufficient tasks: [&#x27;US3&#x27;]</li></ul></div><div class="card"><h3>O que precisa de decisão</h3><ul><li>Qual é o conteúdo do diagrama fluxo-pedido.png? É necessária uma transcrição com os estados do pedido de troca, as transições permitidas e os eventos que as disparam.</li><li>Os 5 dias do cancelamento automático são corridos ou úteis, a partir de qual evento começa a contagem e quem deve responder ao pedido?</li><li>Foto e descrição são obrigatórias para publicar um item? Há restrições de quantidade de fotos, formato ou tamanho da descrição?</li><li>O item oferecido no pedido precisa estar publicado? O sistema deve impedir oferta de item alheio e pedido para o próprio item?</li></ul></div><div class="card"><h3>O que não está comprovado</h3><ul><li>G01 BLOCKED: incomplete reading: fontes/fluxo-pedido.png: unreadable (no text extractor for this format; provide a transcription)</li><li>G18 NOT_RUN: round-trip against a tracker (mock or live) belongs to M3; live qualification requires separate authorization</li><li>unreadable member: fontes: fluxo-pedido.png (no text extractor for this format; provide a transcription)</li></ul></div></div></section>
+<section id="backlog" aria-labelledby="h-backlog"><h2 id="h-backlog">Backlog</h2>
+<div class="toolbar" role="search"><label class="sr-only" for="q">Buscar por ID, título, critério ou texto</label>
+<input id="q" type="search" placeholder="Buscar por ID, título, critério ou texto" autocomplete="off">
+<label class="sr-only" for="ftype">type</label><select id="ftype"><option value="">Todos os tipos</option><option value='epic'>epic</option><option value='feature'>feature</option><option value='spike'>spike</option><option value='story'>story</option><option value='task'>task</option></select>
+<label class="sr-only" for="fverdict">verdict</label><select id="fverdict"><option value="">Todas as avaliações</option>
+<option value="pass">pass</option><option value="concern">concern</option><option value="fail">fail</option></select>
+<button class="btn" id="expand" type="button">Expandir tudo</button><button class="btn" id="collapse" type="button">Recolher tudo</button>
+<span aria-live="polite"><strong id="count">11</strong> itens visíveis</span></div>
+<p id="noresults" class="notice" hidden>Nenhum item corresponde à busca.</p>
+<div id="tree"><details class='wi t-epic' id='PBD-EPIC-WZDR4BBJXAW1' data-type='epic' data-verdict='pass' data-text='PBD-EPIC-WZDR4BBJXAW1 E1 Feira de Trocas: publicação de itens e pedidos de troca Objetivo: Permitir que participantes publiquem itens para troca e que outros participantes enviem pedidos de troca oferecendo itens próprios.
+Contexto: O PRD descreve quatro regras. O ciclo de vida do pedido de troca (estados e transições) está definido apenas no diagrama fluxo-pedido.png, que não pôde ser lido; essa parte permanece bloqueada até haver uma transcrição.
+No escopo
+Publicação de item para troca com foto e descrição
+Envio de pedido de troca oferecendo um item próprio
+Cancelamento automático de pedidos sem resposta em 5 dias (regra de contagem pendente de esclarecimento)
+Levantamento dos estados e transições do pedido a partir do diagrama
+Fora do escopo
+Resposta ao pedido de troca e demais transições de estado: não descritas no texto legível; bloqueadas até a transcrição de fluxo-pedido.png
+Qualquer regra de estado inferida sem a transcrição do diagrama
+Resultado esperado: Participantes conseguem publicar itens e propor trocas, e pedidos sem resposta deixam de ficar pendentes após o prazo definido.'><summary><span class="badge tone-accent">epic</span><span class='mono'>E1</span><span class='title'>Feira de Trocas: publicação de itens e pedidos de troca</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-EPIC-WZDR4BBJXAW1</p><h3>Descrição</h3><div class='rich'><p><strong>Objetivo</strong>: Permitir que participantes publiquem itens para troca e que outros participantes enviem pedidos de troca oferecendo itens próprios.</p><p><strong>Contexto</strong>: O PRD descreve quatro regras. O ciclo de vida do pedido de troca (estados e transições) está definido apenas no diagrama <strong>fluxo-pedido.png</strong>, que não pôde ser lido; essa parte permanece bloqueada até haver uma transcrição.</p><p><strong>No escopo</strong></p><ul><li>Publicação de item para troca com foto e descrição</li><li>Envio de pedido de troca oferecendo um item próprio</li><li>Cancelamento automático de pedidos sem resposta em 5 dias (regra de contagem pendente de esclarecimento)</li><li>Levantamento dos estados e transições do pedido a partir do diagrama</li></ul><p><strong>Fora do escopo</strong></p><ul><li>Resposta ao pedido de troca e demais transições de estado: não descritas no texto legível; bloqueadas até a transcrição de fluxo-pedido.png</li><li>Qualquer regra de estado inferida sem a transcrição do diagrama</li></ul><p><strong>Resultado esperado</strong>: Participantes conseguem publicar itens e propor trocas, e pedidos sem resposta deixam de ficar pendentes após o prazo definido.</p></div><h3>Rastreabilidade</h3><ul><li><code>C1</code> O participante publica um item para troca com foto e descrição. — <span class='mono'>prd.md:3</span> <span class='quote'>“O participante publica um item para troca com foto e descrição”</span></li><li><code>C2</code> Outro participante envia um pedido de troca para um item publicado, oferecendo um item próprio. — <span class='mono'>prd.md:4</span> <span class='quote'>“Outro participante envia um pedido de troca oferecendo um item próprio”</span></li><li><code>C3</code> Os estados do pedido de troca e suas transições seguem o diagrama fluxo-pedido.png, cujo conteúdo não foi lido (imagem sem transcrição). — <span class='mono'>prd.md:5</span> <span class='quote'>“seguem o diagrama fluxo-pedido.png”</span></li><li><code>C4</code> Pedidos de troca sem resposta em 5 dias são cancelados automaticamente. — <span class='mono'>prd.md:6</span> <span class='quote'>“Pedidos sem resposta em 5 dias são cancelados automaticamente”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd>Scope and out-of-scope correctly flag the blocked lifecycle.</dd></dl><div class='children'><details class='wi t-feature' id='PBD-FEAT-760244NT45HJ' data-type='feature' data-verdict='pass' data-text='PBD-FEAT-760244NT45HJ F1 Publicação de itens para troca Capacidade: O participante publica um item para troca informando foto e descrição.
+Valor: Torna o item disponível como candidato a troca para outros participantes.
+Regras relacionadas
+O item publicado tem foto e descrição (C1).'><summary><span class="badge tone-accent">feature</span><span class='mono'>F1</span><span class='title'>Publicação de itens para troca</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-FEAT-760244NT45HJ</p><h3>Descrição</h3><div class='rich'><p><strong>Capacidade</strong>: O participante publica um item para troca informando foto e descrição.</p><p><strong>Valor</strong>: Torna o item disponível como candidato a troca para outros participantes.</p><p><strong>Regras relacionadas</strong></p><ul><li>O item publicado tem foto e descrição (C1).</li></ul></div><h3>Rastreabilidade</h3><ul><li><code>C1</code> O participante publica um item para troca com foto e descrição. — <span class='mono'>prd.md:3</span> <span class='quote'>“O participante publica um item para troca com foto e descrição”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd></dd></dl><div class='children'><details class='wi t-story' id='PBD-STORY-31SRBFAR32HP' data-type='story' data-verdict='pass' data-text='PBD-STORY-31SRBFAR32HP US1 Publicar item para troca com foto e descrição Eu como participante, gostaria que publicar um item para troca com foto e descrição, para que outros participantes possam conhecer o item e propor uma troca. CA-01 o participante informou a foto e a descrição do item, ele publica o item para troca: O item fica publicado para troca com a foto e a descrição informadas. CA-02 Uma tentativa de publicar item sem foto ou sem descrição não resulta em item publicado. → Nenhum item é publicado quando faltar a foto ou a descrição.'><summary><span class="badge tone-accent">story</span><span class='mono'>US1</span><span class='title'>Publicar item para troca com foto e descrição</span><span class="badge tone-pass">pass</span><span class='mono'>2 AC</span></summary><div class='body'><p class='mono'>PBD-STORY-31SRBFAR32HP</p><h3>Descrição</h3><div class='rich'><p><strong>Eu como</strong> participante, <strong>gostaria que</strong> publicar um item para troca com foto e descrição, <strong>para</strong> que outros participantes possam conhecer o item e propor uma troca.</p></div><h3>Critérios de aceite</h3><div class='rich tablewrap'><ul><li><strong>CA-01</strong> o participante informou a foto e a descrição do item, ele publica o item para troca: O item fica publicado para troca com a foto e a descrição informadas.</li><li><strong>CA-02</strong> Uma tentativa de publicar item sem foto ou sem descrição não resulta em item publicado. → Nenhum item é publicado quando faltar a foto ou a descrição.</li></ul></div><div class='tablewrap'><table><thead><tr><th>ID</th><th>status</th><th>review</th><th>notes</th><th>claims</th></tr></thead><tbody><tr><td>CA-01</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C1</td></tr><tr><td>CA-02</td><td>proposed</td><td><span class="badge tone-pass">pass</span></td><td>Proposed, labelled, tied to open Q3.</td><td>Lente de validação de entrada: a fonte diz que o item é publicado &#x27;com foto e descrição&#x27;, mas não declara explicitamente que ambos são obrigatórios (Q3).</td></tr></tbody></table></div><h3>Rastreabilidade</h3><ul><li><code>C1</code> O participante publica um item para troca com foto e descrição. — <span class='mono'>prd.md:3</span> <span class='quote'>“O participante publica um item para troca com foto e descrição”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>tasks</dt><dd>sufficient</dd><dt>notes</dt><dd></dd></dl><div class='tablewrap'><table><tbody><tr><td>estimable</td><td><span class="badge tone-neutral">unknown</span></td><td>No team data; photo constraints open in Q3.</td></tr><tr><td>independent</td><td><span class="badge tone-neutral">supported</span></td><td>Stands alone.</td></tr><tr><td>negotiable</td><td><span class="badge tone-neutral">supported</span></td><td>Outcome-focused.</td></tr><tr><td>small</td><td><span class="badge tone-neutral">supported</span></td><td>Single slice.</td></tr><tr><td>testable</td><td><span class="badge tone-neutral">supported</span></td><td>AC1 observable.</td></tr><tr><td>valuable</td><td><span class="badge tone-neutral">supported</span></td><td>Actor and benefit plausible and consistent with source.</td></tr></tbody></table></div><div class='children'><details class='wi t-task' id='PBD-TASK-FFKWHYD90XWP' data-type='task' data-verdict='pass' data-text='PBD-TASK-FFKWHYD90XWP T1 Implementar a publicação de item com foto e descrição Objetivo: Construir o fluxo em que o participante informa foto e descrição e publica o item para troca.
+Atividades
+Receber e armazenar a foto e a descrição do item
+Registrar o item como publicado e associado ao participante que o publicou
+Resultado esperado: Item publicado com sua foto e descrição, disponível como alvo de pedidos de troca.
+Verificação: Publicar um item com foto e descrição e confirmar que ele aparece publicado com os dados informados (CA-01).'><summary><span class="badge tone-accent">task</span><span class='mono'>T1</span><span class='title'>Implementar a publicação de item com foto e descrição</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-TASK-FFKWHYD90XWP</p><h3>Descrição</h3><div class='rich'><p><strong>Objetivo</strong>: Construir o fluxo em que o participante informa foto e descrição e publica o item para troca.</p><p><strong>Atividades</strong></p><ul><li>Receber e armazenar a foto e a descrição do item</li><li>Registrar o item como publicado e associado ao participante que o publicou</li></ul><p><strong>Resultado esperado</strong>: Item publicado com sua foto e descrição, disponível como alvo de pedidos de troca.</p><p><strong>Verificação</strong>: Publicar um item com foto e descrição e confirmar que ele aparece publicado com os dados informados (CA-01).</p></div><h3>Rastreabilidade</h3><ul><li><code>C1</code> O participante publica um item para troca com foto e descrição. — <span class='mono'>prd.md:3</span> <span class='quote'>“O participante publica um item para troca com foto e descrição”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd></dd></dl></div></details></div></div></details></div></div></details><details class='wi t-feature' id='PBD-FEAT-H7B1N6G192TJ' data-type='feature' data-verdict='concern' data-text='PBD-FEAT-H7B1N6G192TJ F2 Pedidos de troca Capacidade: Um participante envia pedido de troca para um item publicado oferecendo um item próprio; pedidos sem resposta são cancelados automaticamente.
+Valor: Viabiliza a negociação de trocas entre participantes.
+Regras relacionadas
+O pedido oferece um item próprio do solicitante (C2).
+Estados e transições seguem fluxo-pedido.png, ainda não transcrito (C3).
+Pedidos sem resposta em 5 dias são cancelados automaticamente (C4).'><summary><span class="badge tone-accent">feature</span><span class='mono'>F2</span><span class='title'>Pedidos de troca</span><span class="badge tone-warn">concern</span></summary><div class='body'><p class='mono'>PBD-FEAT-H7B1N6G192TJ</p><h3>Descrição</h3><div class='rich'><p><strong>Capacidade</strong>: Um participante envia pedido de troca para um item publicado oferecendo um item próprio; pedidos sem resposta são cancelados automaticamente.</p><p><strong>Valor</strong>: Viabiliza a negociação de trocas entre participantes.</p><p><strong>Regras relacionadas</strong></p><ul><li>O pedido oferece um item próprio do solicitante (C2).</li><li>Estados e transições seguem fluxo-pedido.png, ainda não transcrito (C3).</li><li>Pedidos sem resposta em 5 dias são cancelados automaticamente (C4).</li></ul></div><h3>Rastreabilidade</h3><ul><li><code>C2</code> Outro participante envia um pedido de troca para um item publicado, oferecendo um item próprio. — <span class='mono'>prd.md:4</span> <span class='quote'>“Outro participante envia um pedido de troca oferecendo um item próprio”</span></li><li><code>C3</code> Os estados do pedido de troca e suas transições seguem o diagrama fluxo-pedido.png, cujo conteúdo não foi lido (imagem sem transcrição). — <span class='mono'>prd.md:5</span> <span class='quote'>“seguem o diagrama fluxo-pedido.png”</span></li><li><code>C4</code> Pedidos de troca sem resposta em 5 dias são cancelados automaticamente. — <span class='mono'>prd.md:6</span> <span class='quote'>“Pedidos sem resposta em 5 dias são cancelados automaticamente”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>concern</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd>Groups request submission, automatic cancellation and the lifecycle rule; acceptable but loosely cohesive (candidate).</dd></dl><div class='children'><details class='wi t-story' id='PBD-STORY-S1TMZ8YMD10Y' data-type='story' data-verdict='pass' data-text='PBD-STORY-S1TMZ8YMD10Y US2 Enviar pedido de troca oferecendo item próprio Eu como participante, gostaria que enviar um pedido de troca para um item publicado por outro participante, oferecendo um item meu, para propor a troca do meu item pelo item publicado. CA-01 existe um item publicado por outro participante e o solicitante possui um item próprio, o solicitante envia um pedido de troca para o item publicado oferecendo seu item: O pedido de troca é registrado associando o item publicado, o item oferecido e o participante solicitante. CA-02 Um pedido de troca que ofereça item que não pertence ao solicitante não é registrado. → Nenhum pedido é registrado quando o item oferecido não é do solicitante. CA-03 O participante não consegue enviar pedido de troca para um item publicado por ele mesmo. → Nenhum pedido é registrado para item do próprio solicitante.'><summary><span class="badge tone-accent">story</span><span class='mono'>US2</span><span class='title'>Enviar pedido de troca oferecendo item próprio</span><span class="badge tone-pass">pass</span><span class='mono'>3 AC</span></summary><div class='body'><p class='mono'>PBD-STORY-S1TMZ8YMD10Y</p><h3>Descrição</h3><div class='rich'><p><strong>Eu como</strong> participante, <strong>gostaria que</strong> enviar um pedido de troca para um item publicado por outro participante, oferecendo um item meu, <strong>para</strong> propor a troca do meu item pelo item publicado.</p></div><h3>Critérios de aceite</h3><div class='rich tablewrap'><ul><li><strong>CA-01</strong> existe um item publicado por outro participante e o solicitante possui um item próprio, o solicitante envia um pedido de troca para o item publicado oferecendo seu item: O pedido de troca é registrado associando o item publicado, o item oferecido e o participante solicitante.</li><li><strong>CA-02</strong> Um pedido de troca que ofereça item que não pertence ao solicitante não é registrado. → Nenhum pedido é registrado quando o item oferecido não é do solicitante.</li><li><strong>CA-03</strong> O participante não consegue enviar pedido de troca para um item publicado por ele mesmo. → Nenhum pedido é registrado para item do próprio solicitante.</li></ul></div><div class='tablewrap'><table><thead><tr><th>ID</th><th>status</th><th>review</th><th>notes</th><th>claims</th></tr></thead><tbody><tr><td>CA-01</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C2</td></tr><tr><td>CA-02</td><td>proposed</td><td><span class="badge tone-pass">pass</span></td><td>Proposed, &#x27;item próprio&#x27; implies it; Q4 open.</td><td>Lente de permissões: a fonte exige oferta de &#x27;item próprio&#x27;, mas não descreve o comportamento ao oferecer item alheio (Q4).</td></tr><tr><td>CA-03</td><td>proposed</td><td><span class="badge tone-warn">concern</span></td><td>&#x27;Outro participante&#x27; implies it but is only a proposal; candidate.</td><td>A fonte fala em &#x27;outro participante&#x27; enviando o pedido, mas não proíbe explicitamente o pedido para o próprio item (Q4).</td></tr></tbody></table></div><h3>Rastreabilidade</h3><ul><li><code>C2</code> Outro participante envia um pedido de troca para um item publicado, oferecendo um item próprio. — <span class='mono'>prd.md:4</span> <span class='quote'>“Outro participante envia um pedido de troca oferecendo um item próprio”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>tasks</dt><dd>sufficient</dd><dt>notes</dt><dd>Sequencing dependency on US1 is declared.</dd></dl><div class='tablewrap'><table><tbody><tr><td>estimable</td><td><span class="badge tone-neutral">unknown</span></td><td>No team data; Q4 open.</td></tr><tr><td>independent</td><td><span class="badge tone-neutral">supported</span></td><td>Real predecessor on US1 recorded.</td></tr><tr><td>negotiable</td><td><span class="badge tone-neutral">supported</span></td><td>No premature design.</td></tr><tr><td>small</td><td><span class="badge tone-neutral">supported</span></td><td>Single slice.</td></tr><tr><td>testable</td><td><span class="badge tone-neutral">supported</span></td><td>AC3 observable.</td></tr><tr><td>valuable</td><td><span class="badge tone-neutral">supported</span></td><td>Supported by source.</td></tr></tbody></table></div><div class='children'><details class='wi t-task' id='PBD-TASK-7JTR1GZHC51G' data-type='task' data-verdict='concern' data-text='PBD-TASK-7JTR1GZHC51G T2 Implementar o envio de pedido de troca com item oferecido Objetivo: Permitir que um participante selecione um item próprio como oferta e envie o pedido para um item publicado por outro participante.
+Atividades
+Permitir a escolha do item próprio oferecido
+Registrar o pedido relacionando item publicado, item oferecido e participante solicitante
+Resultado esperado: Pedido de troca registrado com o item desejado e o item oferecido.
+Verificação: Enviar um pedido oferecendo um item próprio e confirmar o registro com ambos os itens e o solicitante (CA-03).'><summary><span class="badge tone-accent">task</span><span class='mono'>T2</span><span class='title'>Implementar o envio de pedido de troca com item oferecido</span><span class="badge tone-warn">concern</span></summary><div class='body'><p class='mono'>PBD-TASK-7JTR1GZHC51G</p><h3>Descrição</h3><div class='rich'><p><strong>Objetivo</strong>: Permitir que um participante selecione um item próprio como oferta e envie o pedido para um item publicado por outro participante.</p><p><strong>Atividades</strong></p><ul><li>Permitir a escolha do item próprio oferecido</li><li>Registrar o pedido relacionando item publicado, item oferecido e participante solicitante</li></ul><p><strong>Resultado esperado</strong>: Pedido de troca registrado com o item desejado e o item oferecido.</p><p><strong>Verificação</strong>: Enviar um pedido oferecendo um item próprio e confirmar o registro com ambos os itens e o solicitante (CA-03).</p></div><h3>Rastreabilidade</h3><ul><li><code>C2</code> Outro participante envia um pedido de troca para um item publicado, oferecendo um item próprio. — <span class='mono'>prd.md:4</span> <span class='quote'>“Outro participante envia um pedido de troca oferecendo um item próprio”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>concern</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd>Verification cites CA-03, but the registration criterion of US2 is displayed as CA-01 (CA-03 is the self-request prohibition). Wrong cross-reference.</dd></dl></div></details></div></div></details><details class='wi t-story' id='PBD-STORY-2AE2DG9J8RB4' data-type='story' data-verdict='concern' data-text='PBD-STORY-2AE2DG9J8RB4 US3 Cancelar automaticamente pedido de troca sem resposta em 5 dias Quando Quando um pedido de troca fica sem resposta por 5 dias, quero quero que ele seja cancelado automaticamente, para que o pedido seja encerrado sem exigir ação manual de nenhum participante.
+Observações
+A unidade dos 5 dias (corridos ou úteis), o evento inicial da contagem e quem deve responder não estão definidos (Q2).
+O estado resultante do cancelamento depende do diagrama não transcrito (Q1). CA-01 um pedido de troca permanece sem resposta, completam-se 5 dias contados conforme a definição de Q2: O pedido é cancelado automaticamente, sem ação de nenhum participante. CA-02 um pedido de troca recebeu resposta antes de completar 5 dias, o prazo de 5 dias se encerra: O pedido não é cancelado pela regra de cancelamento automático.'><summary><span class="badge tone-accent">story</span><span class='mono'>US3</span><span class='title'>Cancelar automaticamente pedido de troca sem resposta em 5 dias</span><span class="badge tone-warn">concern</span><span class='mono'>2 AC</span></summary><div class='body'><p class='mono'>PBD-STORY-2AE2DG9J8RB4</p><h3>Descrição</h3><div class='rich'><p><strong>Quando</strong> Quando um pedido de troca fica sem resposta por 5 dias, <strong>quero</strong> quero que ele seja cancelado automaticamente, <strong>para que</strong> o pedido seja encerrado sem exigir ação manual de nenhum participante.</p><p><strong>Observações</strong></p><ul><li>A unidade dos 5 dias (corridos ou úteis), o evento inicial da contagem e quem deve responder não estão definidos (Q2).</li><li>O estado resultante do cancelamento depende do diagrama não transcrito (Q1).</li></ul></div><h3>Critérios de aceite</h3><div class='rich tablewrap'><ul><li><strong>CA-01</strong> um pedido de troca permanece sem resposta, completam-se 5 dias contados conforme a definição de Q2: O pedido é cancelado automaticamente, sem ação de nenhum participante.</li><li><strong>CA-02</strong> um pedido de troca recebeu resposta antes de completar 5 dias, o prazo de 5 dias se encerra: O pedido não é cancelado pela regra de cancelamento automático.</li></ul></div><div class='tablewrap'><table><thead><tr><th>ID</th><th>status</th><th>review</th><th>notes</th><th>claims</th></tr></thead><tbody><tr><td>CA-01</td><td>confirmed</td><td><span class="badge tone-warn">concern</span></td><td>Status confirmed, but trigger depends on the unresolved Q2 definition of 5 days and the start event; should be treated as blocked/ambiguous.</td><td>C4</td></tr><tr><td>CA-02</td><td>confirmed</td><td><span class="badge tone-warn">concern</span></td><td>&#x27;Resposta&#x27; is undefined and depends on the unreadable diagram; the status confirmed overstates certainty.</td><td>C4</td></tr></tbody></table></div><h3>Rastreabilidade</h3><ul><li><code>C4</code> Pedidos de troca sem resposta em 5 dias são cancelados automaticamente. — <span class='mono'>prd.md:6</span> <span class='quote'>“Pedidos sem resposta em 5 dias são cancelados automaticamente”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>concern</dd><dt>source</dt><dd>supported</dd><dt>tasks</dt><dd>insufficient</dd><dt>notes</dt><dd>Cannot be fully specified: day unit, start event and resulting state unknown (Q1, Q2). Rendered description duplicates words (&#x27;Quando Quando&#x27;, &#x27;quero quero&#x27;).</dd></dl><div class='tablewrap'><table><tbody><tr><td>estimable</td><td><span class="badge tone-neutral">concern</span></td><td>Unknown deadline semantics and state model.</td></tr><tr><td>independent</td><td><span class="badge tone-neutral">concern</span></td><td>Depends on SP1/Q1 and Q2 to define response and canceled state.</td></tr><tr><td>negotiable</td><td><span class="badge tone-neutral">supported</span></td><td>Implementation not prescribed.</td></tr><tr><td>small</td><td><span class="badge tone-neutral">supported</span></td><td>Single rule.</td></tr><tr><td>testable</td><td><span class="badge tone-neutral">concern</span></td><td>Boundary cannot be verified until Q2 answered.</td></tr><tr><td>valuable</td><td><span class="badge tone-neutral">supported</span></td><td>Source states the rule; benefit is a mild inference.</td></tr></tbody></table></div><div class='children'><details class='wi t-task' id='PBD-TASK-K7E0G573SZYB' data-type='task' data-verdict='concern' data-text='PBD-TASK-K7E0G573SZYB T3 Implementar o cancelamento automático por falta de resposta Objetivo: Criar a rotina que identifica pedidos de troca sem resposta após o prazo de 5 dias e os cancela sem intervenção de participante.
+Atividades
+Aplicar a regra de prazo conforme a resposta à Q2 (unidade dos dias e evento inicial)
+Cancelar apenas pedidos que continuam sem resposta ao fim do prazo
+Resultado esperado: Pedidos sem resposta no prazo ficam cancelados; pedidos respondidos não são afetados pela rotina.
+Verificação: Verificar CA-06 e CA-07 com pedidos respondidos e não respondidos.
+Observações
+Bloqueada até a resposta às questões Q1 e Q2.'><summary><span class="badge tone-accent">task</span><span class='mono'>T3</span><span class='title'>Implementar o cancelamento automático por falta de resposta</span><span class="badge tone-warn">concern</span></summary><div class='body'><p class='mono'>PBD-TASK-K7E0G573SZYB</p><h3>Descrição</h3><div class='rich'><p><strong>Objetivo</strong>: Criar a rotina que identifica pedidos de troca sem resposta após o prazo de 5 dias e os cancela sem intervenção de participante.</p><p><strong>Atividades</strong></p><ul><li>Aplicar a regra de prazo conforme a resposta à Q2 (unidade dos dias e evento inicial)</li><li>Cancelar apenas pedidos que continuam sem resposta ao fim do prazo</li></ul><p><strong>Resultado esperado</strong>: Pedidos sem resposta no prazo ficam cancelados; pedidos respondidos não são afetados pela rotina.</p><p><strong>Verificação</strong>: Verificar CA-06 e CA-07 com pedidos respondidos e não respondidos.</p><p><strong>Observações</strong></p><ul><li>Bloqueada até a resposta às questões Q1 e Q2.</li></ul></div><h3>Rastreabilidade</h3><ul><li><code>C4</code> Pedidos de troca sem resposta em 5 dias são cancelados automaticamente. — <span class='mono'>prd.md:6</span> <span class='quote'>“Pedidos sem resposta em 5 dias são cancelados automaticamente”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>concern</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd>Verification cites CA-06 and CA-07, which do not exist under US3 (displayed CA-01, CA-02). Task is correctly marked blocked by Q1/Q2.</dd></dl></div></details><details class='wi t-task' id='PBD-TASK-38Y98V34N1V3' data-type='task' data-verdict='concern' data-text='PBD-TASK-38Y98V34N1V3 T4 Planejar os testes de prazo do cancelamento automático Objetivo: Planejar a verificação da regra de 5 dias, incluindo o limite do prazo, depois que a contagem for definida.
+Atividades
+Definir cenários de pedido respondido antes do prazo e pedido sem resposta ao fim do prazo
+Incluir o limite exato do prazo conforme a definição obtida em Q2
+Resultado esperado: Plano de testes da regra de cancelamento automático entregue ao time de QA.
+Verificação: Plano cobre CA-06 e CA-07 e o limite do prazo definido.'><summary><span class="badge tone-accent">task</span><span class='mono'>T4</span><span class='title'>Planejar os testes de prazo do cancelamento automático</span><span class="badge tone-warn">concern</span></summary><div class='body'><p class='mono'>PBD-TASK-38Y98V34N1V3</p><h3>Descrição</h3><div class='rich'><p><strong>Objetivo</strong>: Planejar a verificação da regra de 5 dias, incluindo o limite do prazo, depois que a contagem for definida.</p><p><strong>Atividades</strong></p><ul><li>Definir cenários de pedido respondido antes do prazo e pedido sem resposta ao fim do prazo</li><li>Incluir o limite exato do prazo conforme a definição obtida em Q2</li></ul><p><strong>Resultado esperado</strong>: Plano de testes da regra de cancelamento automático entregue ao time de QA.</p><p><strong>Verificação</strong>: Plano cobre CA-06 e CA-07 e o limite do prazo definido.</p></div><h3>Rastreabilidade</h3><ul><li><code>C4</code> Pedidos de troca sem resposta em 5 dias são cancelados automaticamente. — <span class='mono'>prd.md:6</span> <span class='quote'>“Pedidos sem resposta em 5 dias são cancelados automaticamente”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>concern</dd><dt>source</dt><dd>proposal_justified</dd><dt>notes</dt><dd>Test-planning is a QA artifact rather than product work and is not supported by source; also cites nonexistent CA-06/CA-07 (candidate).</dd></dl></div></details></div></div></details><details class='wi t-spike' id='PBD-SPIKE-MKEPV836YP0F' data-type='spike' data-verdict='pass' data-text='PBD-SPIKE-MKEPV836YP0F SP1 Levantar estados e transições do pedido de troca a partir de fluxo-pedido.png Pergunta a responder: Quais são os estados do pedido de troca e quais transições são permitidas entre eles, conforme o diagrama fluxo-pedido.png?
+Decisão esperada: Lista transcrita e validada pelo responsável pelo produto com os estados, as transições e os eventos que as disparam, servindo de base para novas histórias (resposta ao pedido, cancelamento).
+Contexto: O diagrama é uma imagem sem extrator de texto; seu conteúdo não foi lido e não deve ser presumido.'><summary><span class="badge tone-accent">spike</span><span class='mono'>SP1</span><span class='title'>Levantar estados e transições do pedido de troca a partir de fluxo-pedido.png</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-SPIKE-MKEPV836YP0F</p><h3>Descrição</h3><div class='rich'><p><strong>Pergunta a responder</strong>: Quais são os estados do pedido de troca e quais transições são permitidas entre eles, conforme o diagrama fluxo-pedido.png?</p><p><strong>Decisão esperada</strong>: Lista transcrita e validada pelo responsável pelo produto com os estados, as transições e os eventos que as disparam, servindo de base para novas histórias (resposta ao pedido, cancelamento).</p><p><strong>Contexto</strong>: O diagrama é uma imagem sem extrator de texto; seu conteúdo não foi lido e não deve ser presumido.</p></div><h3>Rastreabilidade</h3><ul><li><code>C3</code> Os estados do pedido de troca e suas transições seguem o diagrama fluxo-pedido.png, cujo conteúdo não foi lido (imagem sem transcrição). — <span class='mono'>prd.md:5</span> <span class='quote'>“seguem o diagrama fluxo-pedido.png”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd>Correct handling of an unreadable source; a timebox is not given (optional).</dd></dl></div></details></div></div></details></div></div></details></div>
+<h3>Dependências</h3><ul><li>US1 → predecessor → US2: O pedido de troca é feito sobre um item já publicado. (proposed)</li><li>US2 → predecessor → US3: O cancelamento automático atua sobre pedidos de troca existentes. (proposed)</li><li>SP1 → predecessor → US3: O estado de cancelamento e o que conta como &#x27;resposta&#x27; dependem dos estados e transições do diagrama fluxo-pedido.png. (proposed)</li></ul></section>
+<section id="requirements"><h2>Requisitos</h2><h3>Claims reconciliadas</h3><div class="tablewrap"><table>
+<thead><tr><th>key</th><th>claim</th><th>category</th><th>Status</th><th>covered by</th><th>rationale</th></tr></thead>
+<tbody><tr><td><code>C1</code></td><td>O participante publica um item para troca com foto e descrição.</td><td>functional</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC1, T1</td><td>Publicação com foto e descrição coberta pela US1 e CA-01; obrigatoriedade dos campos fica como proposta (CA-02) e questão Q3.</td></tr><tr><td><code>C2</code></td><td>Outro participante envia um pedido de troca para um item publicado, oferecendo um item próprio.</td><td>functional</td><td><span class="badge tone-pass">COVERED</span></td><td>US2, AC3, T2</td><td>Envio de pedido com item próprio coberto pela US2 e CA-03; validações adicionais propostas (CA-04, CA-05) e Q4.</td></tr><tr><td><code>C3</code></td><td>Os estados do pedido de troca e suas transições seguem o diagrama fluxo-pedido.png, cujo conteúdo não foi lido (imagem sem transcrição).</td><td>functional</td><td><span class="badge tone-info">QUESTION_REQUIRED</span></td><td>SP1</td><td>O diagrama fluxo-pedido.png é ilegível; estados e transições não foram inventados. Bloqueado por Q1; SP1 levanta a informação.</td></tr><tr><td><code>C4</code></td><td>Pedidos de troca sem resposta em 5 dias são cancelados automaticamente.</td><td>functional</td><td><span class="badge tone-warn">PARTIALLY_COVERED</span></td><td>US3, AC6, AC7, T3, T4</td><td>A regra de cancelamento automático está coberta, mas a contagem dos 5 dias, o evento inicial e quem responde estão indefinidos (Q2, bloqueante) e o estado resultante depende do diagrama (Q1).</td></tr></tbody></table></div><h3>Obrigações do inventário independente</h3><div class="tablewrap"><table>
+<thead><tr><th>key</th><th>obligation</th><th>locator</th><th>Status</th><th>covered by</th><th>rationale</th></tr></thead>
+<tbody><tr><td><code>O1</code></td><td>Participante publica item para troca com foto e descrição.</td><td class='mono'>prd.md:3</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC1, AC2, T1</td><td>US1 and AC1 cover publication; mandatory-field validation is a labelled proposal (AC2, Q3).</td></tr><tr><td><code>O2</code></td><td>Outro participante envia pedido de troca oferecendo item próprio.</td><td class='mono'>prd.md:4</td><td><span class="badge tone-pass">COVERED</span></td><td>US2, AC3, AC4, AC5, T2</td><td>US2 and AC3 cover the request; AC4/AC5 are proposals tied to Q4.</td></tr><tr><td><code>O3</code></td><td>Estados e transições do pedido seguem o diagrama (imagem não legível).</td><td class='mono'>prd.md:5</td><td><span class="badge tone-blocked">BLOCKED</span></td><td>SP1</td><td>fluxo-pedido.png has no extractable text; states and transitions cannot be known. SP1 and Q1 correctly refuse to invent them; no story or criterion covers the lifecycle.</td></tr><tr><td><code>O4</code></td><td>Pedidos sem resposta em 5 dias são cancelados automaticamente.</td><td class='mono'>prd.md:6</td><td><span class="badge tone-warn">PARTIALLY_COVERED</span></td><td>US3, AC6, AC7, T3</td><td>Rule is captured, but the day unit, start event, who must respond and the resulting state are undefined and depend on the unreadable diagram (Q1, Q2 blocking).</td></tr></tbody></table></div></section>
+<section id="findings"><h2>Achados</h2><div class="grid2"><div class='card finding sev-high'><p><span class="badge tone-fail">high</span> <span class="badge tone-neutral">confirmed_gap</span> <span class="badge tone-muted">G06</span></p><dl class='kv'><dt>Esperado</dt><dd>Lifecycle states and transitions from fluxo-pedido.png (O3) covered, or explicitly marked blocked.</dd><dt>Atual</dt><dd>Only SP1 plus Q1; no story or criterion for lifecycle. The source member is unreadable and the design correctly did not invent content.</dd><dt>Por quê</dt><dd>The image is unreadable, so coverage of O3 and the status part of O4 cannot be confirmed.</dd><dt>Impacto</dt><dd>Request response, status transitions and the cancel state remain unspecified; the backlog is incomplete for that part.</dd><dt>Recomendação</dt><dd>Obtain a transcription (Q1) and derive stories and criteria from it before refinement.</dd><dt>IDs</dt><dd>SP1, US3, T3</dd></dl></div><div class='card finding sev-medium'><p><span class="badge tone-warn">medium</span> <span class="badge tone-neutral">confirmed_divergence</span> <span class="badge tone-muted">G08</span></p><dl class='kv'><dt>Esperado</dt><dd>AC6 and AC7 marked as ambiguous or blocked given Q2 and Q1.</dd><dt>Atual</dt><dd>Both have status confirmed although the day unit, start event and &#x27;resposta&#x27; are undefined.</dd><dt>Por quê</dt><dd>An unverified assumption is accepted as confirmed.</dd><dt>Impacto</dt><dd>Readiness appears higher than it is.</dd><dt>Recomendação</dt><dd>Mark AC6 and AC7 as blocked or proposed until Q1 and Q2 are answered.</dd><dt>IDs</dt><dd>AC7, AC6, US3</dd></dl></div><div class='card finding sev-medium'><p><span class="badge tone-warn">medium</span> <span class="badge tone-neutral">confirmed_divergence</span> <span class="badge tone-muted">G09</span></p><dl class='kv'><dt>Esperado</dt><dd>Task verification references resolve to the visible criterion IDs of the parent story.</dd><dt>Atual</dt><dd>T3 and T4 reference CA-06/CA-07 and T2 references CA-03, but visible IDs are per story (US3: CA-01/CA-02; US2 request: CA-01).</dd><dt>Por quê</dt><dd>Cross-references use global keys instead of visible IDs.</dd><dt>Impacto</dt><dd>Misleading traceability for implementers and testers.</dd><dt>Recomendação</dt><dd>Use the story-local visible IDs or reference the criteria by their stable IDs.</dd><dt>IDs</dt><dd>T4, T2, T3</dd></dl></div><div class='card finding sev-low'><p><span class="badge tone-info">low</span> <span class="badge tone-neutral">candidate_concern</span> <span class="badge tone-muted">G13</span></p><dl class='kv'><dt>Esperado</dt><dd>A job story rendering with the situation and motivation without repeated leading words.</dd><dt>Atual</dt><dd>US3 description reads &#x27;Quando Quando ...&#x27; and &#x27;quero quero ...&#x27;; T4 is QA planning, not product work.</dd><dt>Por quê</dt><dd>Template duplicates the labels; the test task is out of artifact type.</dd><dt>Impacto</dt><dd>Cosmetic and clarity issues.</dd><dt>Recomendação</dt><dd>Fix the rendering and consider dropping T4 in favour of Test Cases.</dd><dt>IDs</dt><dd>US3, T4</dd></dl></div></div></section>
+<section id="questions"><h2>Perguntas</h2><div class="card"><ul><li>Qual é o conteúdo do diagrama fluxo-pedido.png? É necessária uma transcrição com os estados do pedido de troca, as transições permitidas e os eventos que as disparam. — <em>Sem a transcrição, o ciclo de vida do pedido (incluindo resposta e cancelamento) não pode ser especificado; o diagrama é ilegível para a ferramenta.</em> <span class="badge tone-fail">blocking</span> (C3, SP1, US3, T3)</li><li>Os 5 dias do cancelamento automático são corridos ou úteis, a partir de qual evento começa a contagem e quem deve responder ao pedido? — <em>Define quando um pedido deve ser cancelado; sem isso a regra de prazo não pode ser implementada nem verificada no limite.</em> <span class="badge tone-fail">blocking</span> (AC6, C4, US3, T4, T3)</li><li>Foto e descrição são obrigatórias para publicar um item? Há restrições de quantidade de fotos, formato ou tamanho da descrição? — <em>Determina a validação da publicação e a confirmação de CA-02.</em> (AC2, C1, US1)</li><li>O item oferecido no pedido precisa estar publicado? O sistema deve impedir oferta de item alheio e pedido para o próprio item? — <em>Determina as regras de validação do envio do pedido e a confirmação de CA-04 e CA-05.</em> (AC4, AC5, C2, US2)</li></ul></div></section>
+<section id="gates"><h2>Gates de qualidade</h2><div class="tablewrap"><table><thead><tr><th>gate</th><th>Status</th>
+<th>Verificação</th><th>Motivo</th><th>Denominador</th></tr></thead><tbody><tr><td><code>G01</code> Source Integrity</td><td><span class="badge tone-blocked">BLOCKED</span></td><td>—</td><td>incomplete reading: fontes/fluxo-pedido.png: unreadable (no text extractor for this format; provide a transcription)</td><td>1/2 (independent_inventory)</td></tr><tr><td><code>G02</code> Requirements Coverage</td><td><span class="badge tone-fail">FAIL</span></td><td>—</td><td>coverage gaps in independent inventory: {&#x27;covered&#x27;: 2, &#x27;blocked&#x27;: 1, &#x27;partially_covered&#x27;: 1}</td><td>4/4 (independent_inventory)</td></tr><tr><td><code>G03</code> Hierarchy Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>hierarchy invariants hold</td><td>—</td></tr><tr><td><code>G04</code> Traceability</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>every item and criterion traces to claims or a justified proposal</td><td>—</td></tr><tr><td><code>G05</code> Story Quality</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>3 stories reviewed with INVEST</td><td>—</td></tr><tr><td><code>G06</code> Acceptance Quality</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>7 criteria reviewed individually</td><td>—</td></tr><tr><td><code>G07</code> Task Coverage</td><td><span class="badge tone-fail">FAIL</span></td><td>—</td><td>stories with insufficient tasks: [&#x27;US3&#x27;]</td><td>—</td></tr><tr><td><code>G08</code> Dependency Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>3 relations valid and reviewed</td><td>—</td></tr><tr><td><code>G09</code> Scope Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>no unsupported scope; exclusions and conflicts recorded</td><td>—</td></tr><tr><td><code>G10</code> Planning Integrity</td><td><span class="badge tone-muted">NOT_APPLICABLE</span></td><td>—</td><td>no sprint planning requested; generated fields contain no assignments, dates or completed work (enforced at design submission)</td><td>—</td></tr><tr><td><code>G11</code> Artifact Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>exports deterministic and consistent across formats</td><td>—</td></tr><tr><td><code>G12</code> Publication Safety</td><td><span class="badge tone-muted">NOT_APPLICABLE</span></td><td>—</td><td>no publication requested; a local package is not an authorization to publish</td><td>—</td></tr><tr><td><code>G13</code> Independent Review</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>separate reviewer re-read sources (4 obligations) and judged 18 items/criteria</td><td>—</td></tr><tr><td><code>G14</code> Semantic Duplication</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>duplicate candidates assessed</td><td>—</td></tr><tr><td><code>G15</code> Change Safety</td><td><span class="badge tone-muted">NOT_APPLICABLE</span></td><td>—</td><td>no decisions or prior versions in this run</td><td>—</td></tr><tr><td><code>G16</code> Privacy and Offline Boundary</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>outputs privacy-clean; run made zero remote calls</td><td>—</td></tr><tr><td><code>G17</code> Target Compatibility</td><td><span class="badge tone-muted">NOT_APPLICABLE</span></td><td>—</td><td>no target package requested</td><td>—</td></tr><tr><td><code>G18</code> Round-trip Fidelity</td><td><span class="badge tone-not_run">NOT_RUN</span></td><td>—</td><td>round-trip against a tracker (mock or live) belongs to M3; live qualification requires separate authorization</td><td>—</td></tr></tbody></table></div></section>
+<section id="sources"><h2>Fontes</h2><div class="grid2"><div class='card'><h3>fontes <span class="badge tone-accent">functional</span> <span class="badge tone-warn">partial</span></h3><p class='mono'>PBD-SRC-RMS7K6MQS0N4 · sha256:2beb1ad6b6067eccf005f580bc5ed41182aa9bd98709737f778ccd564b410c18</p><ul><li>fluxo-pedido.png — unreadable</li><li>prd.md — read</li></ul></div></div>
+<h3>Limitações</h3><ul><li>unreadable member: fontes: fluxo-pedido.png (no text extractor for this format; provide a transcription)</li></ul></section>
+
+<section id="data"><h2>Dados</h2><details class="card"><summary>JSON canônico completo</summary>
+<pre class="json">{
+ &quot;claims&quot;: [
+  {
+   &quot;category&quot;: &quot;functional&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-31SRBFAR32HP&quot;,
+     &quot;PBD-AC-WSB77BM2TKRZ&quot;,
+     &quot;PBD-TASK-FFKWHYD90XWP&quot;
+    ],
+    &quot;rationale&quot;: &quot;Publicação com foto e descrição coberta pela US1 e CA-01; obrigatoriedade dos campos fica como proposta (CA-02) e questão Q3.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 3,
+      &quot;line_start&quot;: 3,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:460451fadf9b9e71802496af077c6f805d98d8208c6d33fcfc3e3bc92485e6e6&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-RMS7K6MQS0N4&quot;,
+      &quot;source_version&quot;: &quot;2beb1ad6b6067ecc&quot;
+     },
+     &quot;summary&quot;: &quot;O participante publica um item para troca com foto e descrição&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-DTZXQW3GGWKK&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;O participante publica um item para troca com foto e descrição.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;functional&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-S1TMZ8YMD10Y&quot;,
+     &quot;PBD-AC-7J7K0N31F0YV&quot;,
+     &quot;PBD-TASK-7JTR1GZHC51G&quot;
+    ],
+    &quot;rationale&quot;: &quot;Envio de pedido com item próprio coberto pela US2 e CA-03; validações adicionais propostas (CA-04, CA-05) e Q4.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 4,
+      &quot;line_start&quot;: 4,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:4076883d3db769159ca7199b22beef52e88075b27613f7ea76abc14cc80695cd&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-RMS7K6MQS0N4&quot;,
+      &quot;source_version&quot;: &quot;2beb1ad6b6067ecc&quot;
+     },
+     &quot;summary&quot;: &quot;Outro participante envia um pedido de troca oferecendo um item próprio&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-R5SS9DA88GF1&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;Outro participante envia um pedido de troca para um item publicado, oferecendo um item próprio.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;functional&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-SPIKE-MKEPV836YP0F&quot;
+    ],
+    &quot;rationale&quot;: &quot;O diagrama fluxo-pedido.png é ilegível; estados e transições não foram inventados. Bloqueado por Q1; SP1 levanta a informação.&quot;,
+    &quot;status&quot;: &quot;QUESTION_REQUIRED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 5,
+      &quot;line_start&quot;: 5,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:e2fda5f284695b4fe0ca5a9ba08aa2bf43c5d6bdd53407aa9a4b6f671f83808a&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-RMS7K6MQS0N4&quot;,
+      &quot;source_version&quot;: &quot;2beb1ad6b6067ecc&quot;
+     },
+     &quot;summary&quot;: &quot;seguem o diagrama fluxo-pedido.png&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-2SA6A87MGFYB&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;Os estados do pedido de troca e suas transições seguem o diagrama fluxo-pedido.png, cujo conteúdo não foi lido (imagem sem transcrição).&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;unknown&quot;,
+    &quot;note&quot;: &quot;O diagrama fluxo-pedido.png é ilegível sem transcrição; estados e transições não podem ser derivados da fonte.&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;functional&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-2AE2DG9J8RB4&quot;,
+     &quot;PBD-AC-YRVNEDJY47S4&quot;,
+     &quot;PBD-AC-G7QDP49T91P6&quot;,
+     &quot;PBD-TASK-K7E0G573SZYB&quot;,
+     &quot;PBD-TASK-38Y98V34N1V3&quot;
+    ],
+    &quot;rationale&quot;: &quot;A regra de cancelamento automático está coberta, mas a contagem dos 5 dias, o evento inicial e quem responde estão indefinidos (Q2, bloqueante) e o estado resultante depende do diagrama (Q1).&quot;,
+    &quot;status&quot;: &quot;PARTIALLY_COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 6,
+      &quot;line_start&quot;: 6,
+      &quot;member&quot;: &quot;prd.md&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:0c761d34131f2cb952b4aec191883cd890b95c12672d09cc93cf19db88e837e7&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-RMS7K6MQS0N4&quot;,
+      &quot;source_version&quot;: &quot;2beb1ad6b6067ecc&quot;
+     },
+     &quot;summary&quot;: &quot;Pedidos sem resposta em 5 dias são cancelados automaticamente&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-JV81BM5JDJVQ&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;Pedidos de troca sem resposta em 5 dias são cancelados automaticamente.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;ambiguous&quot;,
+    &quot;note&quot;: &quot;A fonte não define se os 5 dias são corridos ou úteis, a partir de qual evento a contagem começa, nem quem deve responder; o estado &#x27;cancelado&#x27; depende do diagrama ilegível.&quot;
+   }
+  }
+ ],
+ &quot;criteria&quot;: [
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-DTZXQW3GGWKK&quot;
+   ],
+   &quot;condition&quot;: &quot;o participante informou a foto e a descrição do item&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;O item fica publicado para troca com a foto e a descrição informadas.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-WSB77BM2TKRZ&quot;,
+   &quot;order&quot;: 0,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-31SRBFAR32HP&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;ele publica o item para troca&quot;,
+   &quot;visible_id&quot;: &quot;CA-01&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [],
+   &quot;expected_outcomes&quot;: [
+    &quot;Nenhum item é publicado quando faltar a foto ou a descrição.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-2MG4HA04DXKF&quot;,
+   &quot;order&quot;: 1,
+   &quot;origin&quot;: &quot;proposed&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-31SRBFAR32HP&quot;,
+   &quot;rationale&quot;: &quot;Lente de validação de entrada: a fonte diz que o item é publicado &#x27;com foto e descrição&#x27;, mas não declara explicitamente que ambos são obrigatórios (Q3).&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;text&quot;: &quot;Uma tentativa de publicar item sem foto ou sem descrição não resulta em item publicado.&quot;,
+   &quot;visible_id&quot;: &quot;CA-02&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-R5SS9DA88GF1&quot;
+   ],
+   &quot;condition&quot;: &quot;existe um item publicado por outro participante e o solicitante possui um item próprio&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;O pedido de troca é registrado associando o item publicado, o item oferecido e o participante solicitante.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-7J7K0N31F0YV&quot;,
+   &quot;order&quot;: 0,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-S1TMZ8YMD10Y&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;o solicitante envia um pedido de troca para o item publicado oferecendo seu item&quot;,
+   &quot;visible_id&quot;: &quot;CA-01&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [],
+   &quot;expected_outcomes&quot;: [
+    &quot;Nenhum pedido é registrado quando o item oferecido não é do solicitante.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-NKNJ5VD4EMSJ&quot;,
+   &quot;order&quot;: 1,
+   &quot;origin&quot;: &quot;proposed&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-S1TMZ8YMD10Y&quot;,
+   &quot;rationale&quot;: &quot;Lente de permissões: a fonte exige oferta de &#x27;item próprio&#x27;, mas não descreve o comportamento ao oferecer item alheio (Q4).&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;text&quot;: &quot;Um pedido de troca que ofereça item que não pertence ao solicitante não é registrado.&quot;,
+   &quot;visible_id&quot;: &quot;CA-02&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [],
+   &quot;expected_outcomes&quot;: [
+    &quot;Nenhum pedido é registrado para item do próprio solicitante.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-ZGERQ4CSV417&quot;,
+   &quot;order&quot;: 2,
+   &quot;origin&quot;: &quot;proposed&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-S1TMZ8YMD10Y&quot;,
+   &quot;rationale&quot;: &quot;A fonte fala em &#x27;outro participante&#x27; enviando o pedido, mas não proíbe explicitamente o pedido para o próprio item (Q4).&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;text&quot;: &quot;O participante não consegue enviar pedido de troca para um item publicado por ele mesmo.&quot;,
+   &quot;visible_id&quot;: &quot;CA-03&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-JV81BM5JDJVQ&quot;
+   ],
+   &quot;condition&quot;: &quot;um pedido de troca permanece sem resposta&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;O pedido é cancelado automaticamente, sem ação de nenhum participante.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-YRVNEDJY47S4&quot;,
+   &quot;order&quot;: 0,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-2AE2DG9J8RB4&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;completam-se 5 dias contados conforme a definição de Q2&quot;,
+   &quot;visible_id&quot;: &quot;CA-01&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-JV81BM5JDJVQ&quot;
+   ],
+   &quot;condition&quot;: &quot;um pedido de troca recebeu resposta antes de completar 5 dias&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;O pedido não é cancelado pela regra de cancelamento automático.&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-G7QDP49T91P6&quot;,
+   &quot;order&quot;: 1,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-2AE2DG9J8RB4&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;o prazo de 5 dias se encerra&quot;,
+   &quot;visible_id&quot;: &quot;CA-02&quot;
+  }
+ ],
+ &quot;decisions&quot;: [],
+ &quot;findings&quot;: [
+  {
+   &quot;actual&quot;: &quot;Only SP1 plus Q1; no story or criterion for lifecycle. The source member is unreadable and the design correctly did not invent content.&quot;,
+   &quot;affects&quot;: [
+    &quot;PBD-SPIKE-MKEPV836YP0F&quot;,
+    &quot;PBD-STORY-2AE2DG9J8RB4&quot;,
+    &quot;PBD-TASK-K7E0G573SZYB&quot;
+   ],
+   &quot;classification&quot;: &quot;confirmed_gap&quot;,
+   &quot;evidence&quot;: [
+    {
+     &quot;ref&quot;: &quot;stages/review.json&quot;,
+     &quot;summary&quot;: &quot;independent review&quot;,
+     &quot;type&quot;: &quot;review&quot;
+    }
+   ],
+   &quot;expected&quot;: &quot;Lifecycle states and transitions from fluxo-pedido.png (O3) covered, or explicitly marked blocked.&quot;,
+   &quot;gate&quot;: &quot;G06&quot;,
+   &quot;id&quot;: &quot;PBD-FND-TV3N54QJT6FF&quot;,
+   &quot;impact&quot;: &quot;Request response, status transitions and the cancel state remain unspecified; the backlog is incomplete for that part.&quot;,
+   &quot;recommendation&quot;: &quot;Obtain a transcription (Q1) and derive stories and criteria from it before refinement.&quot;,
+   &quot;review_status&quot;: &quot;confirmed&quot;,
+   &quot;severity&quot;: &quot;high&quot;,
+   &quot;why&quot;: &quot;The image is unreadable, so coverage of O3 and the status part of O4 cannot be confirmed.&quot;
+  },
+  {
+   &quot;actual&quot;: &quot;Both have status confirmed although the day unit, start event and &#x27;resposta&#x27; are undefined.&quot;,
+   &quot;affects&quot;: [
+    &quot;PBD-AC-G7QDP49T91P6&quot;,
+    &quot;PBD-AC-YRVNEDJY47S4&quot;,
+    &quot;PBD-STORY-2AE2DG9J8RB4&quot;
+   ],
+   &quot;classification&quot;: &quot;confirmed_divergence&quot;,
+   &quot;evidence&quot;: [
+    {
+     &quot;ref&quot;: &quot;stages/review.json&quot;,
+     &quot;summary&quot;: &quot;independent review&quot;,
+     &quot;type&quot;: &quot;review&quot;
+    }
+   ],
+   &quot;expected&quot;: &quot;AC6 and AC7 marked as ambiguous or blocked given Q2 and Q1.&quot;,
+   &quot;gate&quot;: &quot;G08&quot;,
+   &quot;id&quot;: &quot;PBD-FND-D0T6RX556B6N&quot;,
+   &quot;impact&quot;: &quot;Readiness appears higher than it is.&quot;,
+   &quot;recommendation&quot;: &quot;Mark AC6 and AC7 as blocked or proposed until Q1 and Q2 are answered.&quot;,
+   &quot;review_status&quot;: &quot;confirmed&quot;,
+   &quot;severity&quot;: &quot;medium&quot;,
+   &quot;why&quot;: &quot;An unverified assumption is accepted as confirmed.&quot;
+  },
+  {
+   &quot;actual&quot;: &quot;T3 and T4 reference CA-06/CA-07 and T2 references CA-03, but visible IDs are per story (US3: CA-01/CA-02; US2 request: CA-01).&quot;,
+   &quot;affects&quot;: [
+    &quot;PBD-TASK-38Y98V34N1V3&quot;,
+    &quot;PBD-TASK-7JTR1GZHC51G&quot;,
+    &quot;PBD-TASK-K7E0G573SZYB&quot;
+   ],
+   &quot;classification&quot;: &quot;confirmed_divergence&quot;,
+   &quot;evidence&quot;: [
+    {
+     &quot;ref&quot;: &quot;stages/review.json&quot;,
+     &quot;summary&quot;: &quot;independent review&quot;,
+     &quot;type&quot;: &quot;review&quot;
+    }
+   ],
+   &quot;expected&quot;: &quot;Task verification references resolve to the visible criterion IDs of the parent story.&quot;,
+   &quot;gate&quot;: &quot;G09&quot;,
+   &quot;id&quot;: &quot;PBD-FND-T53R9BRFFHNS&quot;,
+   &quot;impact&quot;: &quot;Misleading traceability for implementers and testers.&quot;,
+   &quot;recommendation&quot;: &quot;Use the story-local visible IDs or reference the criteria by their stable IDs.&quot;,
+   &quot;review_status&quot;: &quot;confirmed&quot;,
+   &quot;severity&quot;: &quot;medium&quot;,
+   &quot;why&quot;: &quot;Cross-references use global keys instead of visible IDs.&quot;
+  },
+  {
+   &quot;actual&quot;: &quot;US3 description reads &#x27;Quando Quando ...&#x27; and &#x27;quero quero ...&#x27;; T4 is QA planning, not product work.&quot;,
+   &quot;affects&quot;: [
+    &quot;PBD-STORY-2AE2DG9J8RB4&quot;,
+    &quot;PBD-TASK-38Y98V34N1V3&quot;
+   ],
+   &quot;classification&quot;: &quot;candidate_concern&quot;,
+   &quot;evidence&quot;: [
+    {
+     &quot;ref&quot;: &quot;stages/review.json&quot;,
+     &quot;summary&quot;: &quot;independent review&quot;,
+     &quot;type&quot;: &quot;review&quot;
+    }
+   ],
+   &quot;expected&quot;: &quot;A job story rendering with the situation and motivation without repeated leading words.&quot;,
+   &quot;gate&quot;: &quot;G13&quot;,
+   &quot;id&quot;: &quot;PBD-FND-S4YF2DK9264W&quot;,
+   &quot;impact&quot;: &quot;Cosmetic and clarity issues.&quot;,
+   &quot;recommendation&quot;: &quot;Fix the rendering and consider dropping T4 in favour of Test Cases.&quot;,
+   &quot;review_status&quot;: &quot;candidate&quot;,
+   &quot;severity&quot;: &quot;low&quot;,
+   &quot;why&quot;: &quot;Template duplicates the labels; the test task is out of artifact type.&quot;
+  }
+ ],
+ &quot;items&quot;: [
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-DTZXQW3GGWKK&quot;,
+    &quot;PBD-CLM-R5SS9DA88GF1&quot;,
+    &quot;PBD-CLM-2SA6A87MGFYB&quot;,
+    &quot;PBD-CLM-JV81BM5JDJVQ&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;context&quot;: &quot;O PRD descreve quatro regras. O ciclo de vida do pedido de troca (estados e transições) está definido apenas no diagrama **fluxo-pedido.png**, que não pôde ser lido; essa parte permanece bloqueada até haver uma transcrição.&quot;,
+    &quot;in_scope&quot;: [
+     &quot;Publicação de item para troca com foto e descrição&quot;,
+     &quot;Envio de pedido de troca oferecendo um item próprio&quot;,
+     &quot;Cancelamento automático de pedidos sem resposta em 5 dias (regra de contagem pendente de esclarecimento)&quot;,
+     &quot;Levantamento dos estados e transições do pedido a partir do diagrama&quot;
+    ],
+    &quot;kind&quot;: &quot;epic&quot;,
+    &quot;objective&quot;: &quot;Permitir que participantes publiquem itens para troca e que outros participantes enviem pedidos de troca oferecendo itens próprios.&quot;,
+    &quot;out_scope&quot;: [
+     &quot;Resposta ao pedido de troca e demais transições de estado: não descritas no texto legível; bloqueadas até a transcrição de fluxo-pedido.png&quot;,
+     &quot;Qualquer regra de estado inferida sem a transcrição do diagrama&quot;
+    ],
+    &quot;outcome&quot;: &quot;Participantes conseguem publicar itens e propor trocas, e pedidos sem resposta deixam de ficar pendentes após o prazo definido.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Permitir que participantes publiquem itens para troca e que outros participantes enviem pedidos de troca oferecendo itens próprios.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Contexto&lt;/strong&gt;: O PRD descreve quatro regras. O ciclo de vida do pedido de troca (estados e transições) está definido apenas no diagrama &lt;strong&gt;fluxo-pedido.png&lt;/strong&gt;, que não pôde ser lido; essa parte permanece bloqueada até haver uma transcrição.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;No escopo&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Publicação de item para troca com foto e descrição&lt;/li&gt;&lt;li&gt;Envio de pedido de troca oferecendo um item próprio&lt;/li&gt;&lt;li&gt;Cancelamento automático de pedidos sem resposta em 5 dias (regra de contagem pendente de esclarecimento)&lt;/li&gt;&lt;li&gt;Levantamento dos estados e transições do pedido a partir do diagrama&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Fora do escopo&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Resposta ao pedido de troca e demais transições de estado: não descritas no texto legível; bloqueadas até a transcrição de fluxo-pedido.png&lt;/li&gt;&lt;li&gt;Qualquer regra de estado inferida sem a transcrição do diagrama&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Resultado esperado&lt;/strong&gt;: Participantes conseguem publicar itens e propor trocas, e pedidos sem resposta deixam de ficar pendentes após o prazo definido.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-EPIC-WZDR4BBJXAW1&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: null,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Feira de Trocas: publicação de itens e pedidos de troca&quot;,
+   &quot;type&quot;: &quot;epic&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-DTZXQW3GGWKK&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;capability&quot;: &quot;O participante publica um item para troca informando foto e descrição.&quot;,
+    &quot;kind&quot;: &quot;feature&quot;,
+    &quot;rules&quot;: [
+     &quot;O item publicado tem foto e descrição (C1).&quot;
+    ],
+    &quot;value&quot;: &quot;Torna o item disponível como candidato a troca para outros participantes.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Capacidade&lt;/strong&gt;: O participante publica um item para troca informando foto e descrição.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Valor&lt;/strong&gt;: Torna o item disponível como candidato a troca para outros participantes.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Regras relacionadas&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;O item publicado tem foto e descrição (C1).&lt;/li&gt;&lt;/ul&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-FEAT-760244NT45HJ&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-EPIC-WZDR4BBJXAW1&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Publicação de itens para troca&quot;,
+   &quot;type&quot;: &quot;feature&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-R5SS9DA88GF1&quot;,
+    &quot;PBD-CLM-2SA6A87MGFYB&quot;,
+    &quot;PBD-CLM-JV81BM5JDJVQ&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;capability&quot;: &quot;Um participante envia pedido de troca para um item publicado oferecendo um item próprio; pedidos sem resposta são cancelados automaticamente.&quot;,
+    &quot;kind&quot;: &quot;feature&quot;,
+    &quot;rules&quot;: [
+     &quot;O pedido oferece um item próprio do solicitante (C2).&quot;,
+     &quot;Estados e transições seguem fluxo-pedido.png, ainda não transcrito (C3).&quot;,
+     &quot;Pedidos sem resposta em 5 dias são cancelados automaticamente (C4).&quot;
+    ],
+    &quot;value&quot;: &quot;Viabiliza a negociação de trocas entre participantes.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Capacidade&lt;/strong&gt;: Um participante envia pedido de troca para um item publicado oferecendo um item próprio; pedidos sem resposta são cancelados automaticamente.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Valor&lt;/strong&gt;: Viabiliza a negociação de trocas entre participantes.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Regras relacionadas&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;O pedido oferece um item próprio do solicitante (C2).&lt;/li&gt;&lt;li&gt;Estados e transições seguem fluxo-pedido.png, ainda não transcrito (C3).&lt;/li&gt;&lt;li&gt;Pedidos sem resposta em 5 dias são cancelados automaticamente (C4).&lt;/li&gt;&lt;/ul&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-FEAT-H7B1N6G192TJ&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-EPIC-WZDR4BBJXAW1&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Pedidos de troca&quot;,
+   &quot;type&quot;: &quot;feature&quot;
+  },
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-DTZXQW3GGWKK&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;actor&quot;: &quot;participante&quot;,
+    &quot;benefit&quot;: &quot;que outros participantes possam conhecer o item e propor uma troca&quot;,
+    &quot;kind&quot;: &quot;role_goal_benefit&quot;,
+    &quot;want&quot;: &quot;publicar um item para troca com foto e descrição&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Eu como&lt;/strong&gt; participante, &lt;strong&gt;gostaria que&lt;/strong&gt; publicar um item para troca com foto e descrição, &lt;strong&gt;para&lt;/strong&gt; que outros participantes possam conhecer o item e propor uma troca.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-STORY-31SRBFAR32HP&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-FEAT-760244NT45HJ&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;role_goal_benefit&quot;,
+   &quot;title&quot;: &quot;Publicar item para troca com foto e descrição&quot;,
+   &quot;type&quot;: &quot;story&quot;
+  },
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-R5SS9DA88GF1&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;actor&quot;: &quot;participante&quot;,
+    &quot;benefit&quot;: &quot;propor a troca do meu item pelo item publicado&quot;,
+    &quot;kind&quot;: &quot;role_goal_benefit&quot;,
+    &quot;want&quot;: &quot;enviar um pedido de troca para um item publicado por outro participante, oferecendo um item meu&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Eu como&lt;/strong&gt; participante, &lt;strong&gt;gostaria que&lt;/strong&gt; enviar um pedido de troca para um item publicado por outro participante, oferecendo um item meu, &lt;strong&gt;para&lt;/strong&gt; propor a troca do meu item pelo item publicado.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-STORY-S1TMZ8YMD10Y&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-FEAT-H7B1N6G192TJ&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;role_goal_benefit&quot;,
+   &quot;title&quot;: &quot;Enviar pedido de troca oferecendo item próprio&quot;,
+   &quot;type&quot;: &quot;story&quot;
+  },
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-JV81BM5JDJVQ&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;kind&quot;: &quot;job_story&quot;,
+    &quot;motivation&quot;: &quot;quero que ele seja cancelado automaticamente&quot;,
+    &quot;notes&quot;: [
+     &quot;A unidade dos 5 dias (corridos ou úteis), o evento inicial da contagem e quem deve responder não estão definidos (Q2).&quot;,
+     &quot;O estado resultante do cancelamento depende do diagrama não transcrito (Q1).&quot;
+    ],
+    &quot;outcome&quot;: &quot;o pedido seja encerrado sem exigir ação manual de nenhum participante&quot;,
+    &quot;situation&quot;: &quot;Quando um pedido de troca fica sem resposta por 5 dias&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Quando&lt;/strong&gt; Quando um pedido de troca fica sem resposta por 5 dias, &lt;strong&gt;quero&lt;/strong&gt; quero que ele seja cancelado automaticamente, &lt;strong&gt;para que&lt;/strong&gt; o pedido seja encerrado sem exigir ação manual de nenhum participante.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Observações&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;A unidade dos 5 dias (corridos ou úteis), o evento inicial da contagem e quem deve responder não estão definidos (Q2).&lt;/li&gt;&lt;li&gt;O estado resultante do cancelamento depende do diagrama não transcrito (Q1).&lt;/li&gt;&lt;/ul&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-STORY-2AE2DG9J8RB4&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-FEAT-H7B1N6G192TJ&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;job_story&quot;,
+   &quot;title&quot;: &quot;Cancelar automaticamente pedido de troca sem resposta em 5 dias&quot;,
+   &quot;type&quot;: &quot;story&quot;
+  },
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-2SA6A87MGFYB&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;context&quot;: &quot;O diagrama é uma imagem sem extrator de texto; seu conteúdo não foi lido e não deve ser presumido.&quot;,
+    &quot;decision&quot;: &quot;Lista transcrita e validada pelo responsável pelo produto com os estados, as transições e os eventos que as disparam, servindo de base para novas histórias (resposta ao pedido, cancelamento).&quot;,
+    &quot;kind&quot;: &quot;spike&quot;,
+    &quot;question&quot;: &quot;Quais são os estados do pedido de troca e quais transições são permitidas entre eles, conforme o diagrama fluxo-pedido.png?&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Pergunta a responder&lt;/strong&gt;: Quais são os estados do pedido de troca e quais transições são permitidas entre eles, conforme o diagrama fluxo-pedido.png?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Decisão esperada&lt;/strong&gt;: Lista transcrita e validada pelo responsável pelo produto com os estados, as transições e os eventos que as disparam, servindo de base para novas histórias (resposta ao pedido, cancelamento).&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Contexto&lt;/strong&gt;: O diagrama é uma imagem sem extrator de texto; seu conteúdo não foi lido e não deve ser presumido.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-SPIKE-MKEPV836YP0F&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-FEAT-H7B1N6G192TJ&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;spike&quot;,
+   &quot;title&quot;: &quot;Levantar estados e transições do pedido de troca a partir de fluxo-pedido.png&quot;,
+   &quot;type&quot;: &quot;spike&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-DTZXQW3GGWKK&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Receber e armazenar a foto e a descrição do item&quot;,
+     &quot;Registrar o item como publicado e associado ao participante que o publicou&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;Item publicado com sua foto e descrição, disponível como alvo de pedidos de troca.&quot;,
+    &quot;summary&quot;: &quot;Construir o fluxo em que o participante informa foto e descrição e publica o item para troca.&quot;,
+    &quot;verification&quot;: &quot;Publicar um item com foto e descrição e confirmar que ele aparece publicado com os dados informados (CA-01).&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Construir o fluxo em que o participante informa foto e descrição e publica o item para troca.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Atividades&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Receber e armazenar a foto e a descrição do item&lt;/li&gt;&lt;li&gt;Registrar o item como publicado e associado ao participante que o publicou&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Resultado esperado&lt;/strong&gt;: Item publicado com sua foto e descrição, disponível como alvo de pedidos de troca.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verificação&lt;/strong&gt;: Publicar um item com foto e descrição e confirmar que ele aparece publicado com os dados informados (CA-01).&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-FFKWHYD90XWP&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-31SRBFAR32HP&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Implementar a publicação de item com foto e descrição&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-R5SS9DA88GF1&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Permitir a escolha do item próprio oferecido&quot;,
+     &quot;Registrar o pedido relacionando item publicado, item oferecido e participante solicitante&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;Pedido de troca registrado com o item desejado e o item oferecido.&quot;,
+    &quot;summary&quot;: &quot;Permitir que um participante selecione um item próprio como oferta e envie o pedido para um item publicado por outro participante.&quot;,
+    &quot;verification&quot;: &quot;Enviar um pedido oferecendo um item próprio e confirmar o registro com ambos os itens e o solicitante (CA-03).&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Permitir que um participante selecione um item próprio como oferta e envie o pedido para um item publicado por outro participante.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Atividades&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Permitir a escolha do item próprio oferecido&lt;/li&gt;&lt;li&gt;Registrar o pedido relacionando item publicado, item oferecido e participante solicitante&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Resultado esperado&lt;/strong&gt;: Pedido de troca registrado com o item desejado e o item oferecido.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verificação&lt;/strong&gt;: Enviar um pedido oferecendo um item próprio e confirmar o registro com ambos os itens e o solicitante (CA-03).&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-7JTR1GZHC51G&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-S1TMZ8YMD10Y&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Implementar o envio de pedido de troca com item oferecido&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-JV81BM5JDJVQ&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Aplicar a regra de prazo conforme a resposta à Q2 (unidade dos dias e evento inicial)&quot;,
+     &quot;Cancelar apenas pedidos que continuam sem resposta ao fim do prazo&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;notes&quot;: [
+     &quot;Bloqueada até a resposta às questões Q1 e Q2.&quot;
+    ],
+    &quot;outcome&quot;: &quot;Pedidos sem resposta no prazo ficam cancelados; pedidos respondidos não são afetados pela rotina.&quot;,
+    &quot;summary&quot;: &quot;Criar a rotina que identifica pedidos de troca sem resposta após o prazo de 5 dias e os cancela sem intervenção de participante.&quot;,
+    &quot;verification&quot;: &quot;Verificar CA-06 e CA-07 com pedidos respondidos e não respondidos.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Criar a rotina que identifica pedidos de troca sem resposta após o prazo de 5 dias e os cancela sem intervenção de participante.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Atividades&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Aplicar a regra de prazo conforme a resposta à Q2 (unidade dos dias e evento inicial)&lt;/li&gt;&lt;li&gt;Cancelar apenas pedidos que continuam sem resposta ao fim do prazo&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Resultado esperado&lt;/strong&gt;: Pedidos sem resposta no prazo ficam cancelados; pedidos respondidos não são afetados pela rotina.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verificação&lt;/strong&gt;: Verificar CA-06 e CA-07 com pedidos respondidos e não respondidos.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Observações&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Bloqueada até a resposta às questões Q1 e Q2.&lt;/li&gt;&lt;/ul&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-K7E0G573SZYB&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-2AE2DG9J8RB4&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Implementar o cancelamento automático por falta de resposta&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-JV81BM5JDJVQ&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Definir cenários de pedido respondido antes do prazo e pedido sem resposta ao fim do prazo&quot;,
+     &quot;Incluir o limite exato do prazo conforme a definição obtida em Q2&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;Plano de testes da regra de cancelamento automático entregue ao time de QA.&quot;,
+    &quot;summary&quot;: &quot;Planejar a verificação da regra de 5 dias, incluindo o limite do prazo, depois que a contagem for definida.&quot;,
+    &quot;verification&quot;: &quot;Plano cobre CA-06 e CA-07 e o limite do prazo definido.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Planejar a verificação da regra de 5 dias, incluindo o limite do prazo, depois que a contagem for definida.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Atividades&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Definir cenários de pedido respondido antes do prazo e pedido sem resposta ao fim do prazo&lt;/li&gt;&lt;li&gt;Incluir o limite exato do prazo conforme a definição obtida em Q2&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Resultado esperado&lt;/strong&gt;: Plano de testes da regra de cancelamento automático entregue ao time de QA.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verificação&lt;/strong&gt;: Plano cobre CA-06 e CA-07 e o limite do prazo definido.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-38Y98V34N1V3&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-2AE2DG9J8RB4&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Planejar os testes de prazo do cancelamento automático&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  }
+ ],
+ &quot;kind&quot;: &quot;pbd.backlog&quot;,
+ &quot;language&quot;: &quot;pt-BR&quot;,
+ &quot;profile&quot;: &quot;generic&quot;,
+ &quot;questions&quot;: [
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-CLM-2SA6A87MGFYB&quot;,
+    &quot;PBD-SPIKE-MKEPV836YP0F&quot;,
+    &quot;PBD-STORY-2AE2DG9J8RB4&quot;,
+    &quot;PBD-TASK-K7E0G573SZYB&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Fornecer transcrição textual do diagrama&quot;,
+    &quot;Fornecer o diagrama em formato textual (lista de estados e transições)&quot;
+   ],
+   &quot;blocking&quot;: true,
+   &quot;id&quot;: &quot;PBD-Q-HE6WBSTW7VF5&quot;,
+   &quot;impact&quot;: &quot;Sem a transcrição, o ciclo de vida do pedido (incluindo resposta e cancelamento) não pode ser especificado; o diagrama é ilegível para a ferramenta.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;Qual é o conteúdo do diagrama fluxo-pedido.png? É necessária uma transcrição com os estados do pedido de troca, as transições permitidas e os eventos que as disparam.&quot;
+  },
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-AC-YRVNEDJY47S4&quot;,
+    &quot;PBD-CLM-JV81BM5JDJVQ&quot;,
+    &quot;PBD-STORY-2AE2DG9J8RB4&quot;,
+    &quot;PBD-TASK-38Y98V34N1V3&quot;,
+    &quot;PBD-TASK-K7E0G573SZYB&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Dias corridos a partir do envio do pedido&quot;,
+    &quot;Dias úteis a partir do envio do pedido&quot;,
+    &quot;Outra definição informada pelo produto&quot;
+   ],
+   &quot;blocking&quot;: true,
+   &quot;id&quot;: &quot;PBD-Q-R55W9PS5F69D&quot;,
+   &quot;impact&quot;: &quot;Define quando um pedido deve ser cancelado; sem isso a regra de prazo não pode ser implementada nem verificada no limite.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;Os 5 dias do cancelamento automático são corridos ou úteis, a partir de qual evento começa a contagem e quem deve responder ao pedido?&quot;
+  },
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-AC-2MG4HA04DXKF&quot;,
+    &quot;PBD-CLM-DTZXQW3GGWKK&quot;,
+    &quot;PBD-STORY-31SRBFAR32HP&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Ambas obrigatórias&quot;,
+    &quot;Apenas uma obrigatória&quot;,
+    &quot;Ambas opcionais&quot;
+   ],
+   &quot;blocking&quot;: false,
+   &quot;id&quot;: &quot;PBD-Q-B0R10G9QJHGG&quot;,
+   &quot;impact&quot;: &quot;Determina a validação da publicação e a confirmação de CA-02.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;Foto e descrição são obrigatórias para publicar um item? Há restrições de quantidade de fotos, formato ou tamanho da descrição?&quot;
+  },
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-AC-NKNJ5VD4EMSJ&quot;,
+    &quot;PBD-AC-ZGERQ4CSV417&quot;,
+    &quot;PBD-CLM-R5SS9DA88GF1&quot;,
+    &quot;PBD-STORY-S1TMZ8YMD10Y&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Item oferecido deve estar publicado&quot;,
+    &quot;Item oferecido pode ser qualquer item do participante&quot;
+   ],
+   &quot;blocking&quot;: false,
+   &quot;id&quot;: &quot;PBD-Q-1N94EF6D9FQQ&quot;,
+   &quot;impact&quot;: &quot;Determina as regras de validação do envio do pedido e a confirmação de CA-04 e CA-05.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;O item oferecido no pedido precisa estar publicado? O sistema deve impedir oferta de item alheio e pedido para o próprio item?&quot;
+  }
+ ],
+ &quot;relations&quot;: [
+  {
+   &quot;confidence&quot;: &quot;medium&quot;,
+   &quot;id&quot;: &quot;PBD-REL-RDDWTFXJS8P3&quot;,
+   &quot;reason&quot;: &quot;O pedido de troca é feito sobre um item já publicado.&quot;,
+   &quot;source&quot;: &quot;PBD-STORY-31SRBFAR32HP&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;target&quot;: &quot;PBD-STORY-S1TMZ8YMD10Y&quot;,
+   &quot;type&quot;: &quot;predecessor&quot;
+  },
+  {
+   &quot;confidence&quot;: &quot;medium&quot;,
+   &quot;id&quot;: &quot;PBD-REL-0PADNEWP2X1R&quot;,
+   &quot;reason&quot;: &quot;O cancelamento automático atua sobre pedidos de troca existentes.&quot;,
+   &quot;source&quot;: &quot;PBD-STORY-S1TMZ8YMD10Y&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;target&quot;: &quot;PBD-STORY-2AE2DG9J8RB4&quot;,
+   &quot;type&quot;: &quot;predecessor&quot;
+  },
+  {
+   &quot;confidence&quot;: &quot;medium&quot;,
+   &quot;id&quot;: &quot;PBD-REL-GVSGC1GQRT1K&quot;,
+   &quot;reason&quot;: &quot;O estado de cancelamento e o que conta como &#x27;resposta&#x27; dependem dos estados e transições do diagrama fluxo-pedido.png.&quot;,
+   &quot;source&quot;: &quot;PBD-SPIKE-MKEPV836YP0F&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;target&quot;: &quot;PBD-STORY-2AE2DG9J8RB4&quot;,
+   &quot;type&quot;: &quot;predecessor&quot;
+  }
+ ],
+ &quot;run_id&quot;: &quot;PBD-RUN-AKCQQ9XJAH5J&quot;,
+ &quot;schema_version&quot;: &quot;1.1.0&quot;,
+ &quot;sources&quot;: [
+  {
+   &quot;authority&quot;: &quot;functional&quot;,
+   &quot;digest&quot;: &quot;sha256:2beb1ad6b6067eccf005f580bc5ed41182aa9bd98709737f778ccd564b410c18&quot;,
+   &quot;id&quot;: &quot;PBD-SRC-RMS7K6MQS0N4&quot;,
+   &quot;kind&quot;: &quot;directory&quot;,
+   &quot;members&quot;: [
+    {
+     &quot;bytes&quot;: 136,
+     &quot;digest&quot;: &quot;sha256:aa0e117003c3d63bab1210c06b1e5fd5979134b6f545eea92f6a4004234a357c&quot;,
+     &quot;media_type&quot;: &quot;image/png&quot;,
+     &quot;path&quot;: &quot;fluxo-pedido.png&quot;,
+     &quot;status&quot;: &quot;unreadable&quot;
+    },
+    {
+     &quot;bytes&quot;: 358,
+     &quot;digest&quot;: &quot;sha256:5397ecc4a75136b129c79a2602ce58a25ebbe771f6973cb2ddc1ec2cb65cc6fc&quot;,
+     &quot;media_type&quot;: &quot;application/octet-stream&quot;,
+     &quot;path&quot;: &quot;prd.md&quot;,
+     &quot;status&quot;: &quot;read&quot;
+    }
+   ],
+   &quot;read_status&quot;: &quot;partial&quot;,
+   &quot;selector&quot;: &quot;fontes&quot;,
+   &quot;version&quot;: &quot;2beb1ad6b6067ecc&quot;
+  }
+ ],
+ &quot;synthetic&quot;: true
+}</pre></details></section>
+</main><script>(function(){
+var d=document,root=d.documentElement,KEY='pbd-theme';
+try{var s=localStorage.getItem(KEY);if(s)root.setAttribute('data-theme',s);}catch(e){}
+var tb=d.getElementById('theme');if(tb)tb.addEventListener('click',function(){
+var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
+var next=dark?'light':'dark';root.setAttribute('data-theme',next);try{localStorage.setItem(KEY,next);}catch(e){}});
+function norm(t){return (t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
+var items=[].slice.call(d.querySelectorAll('details.wi'));
+items.forEach(function(el){el._t=norm(el.getAttribute('data-text'));});
+var q=d.getElementById('q'),ft=d.getElementById('ftype'),fv=d.getElementById('fverdict'),out=d.getElementById('count'),
+none=d.getElementById('noresults');
+function apply(){var term=norm(q.value.trim()),type=ft.value,ver=fv.value,shown=0;
+items.forEach(function(el){el._m=(!term||el._t.indexOf(term)>=0)&&(!type||el.getAttribute('data-type')===type)&&
+(!ver||el.getAttribute('data-verdict')===ver);});
+items.slice().reverse().forEach(function(el){var keep=el._m||[].some.call(el.querySelectorAll('details.wi'),function(c){return c._m;});
+el.hidden=!keep;if(keep&&el._m)shown++;if(keep&&(term||type||ver)&&!el._m)el.open=true;});
+out.textContent=shown;none.hidden=shown>0;}
+[q,ft,fv].forEach(function(e){e.addEventListener('input',apply);});
+d.getElementById('expand').addEventListener('click',function(){items.forEach(function(e){e.open=true;});});
+d.getElementById('collapse').addEventListener('click',function(){items.forEach(function(e){e.open=false;});});
+apply();})();</script></body></html>

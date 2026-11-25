@@ -1,0 +1,603 @@
+{
+  "claims": [
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-H3PR8Q421853",
+          "PBD-AC-CX3YG92824K6"
+        ],
+        "rationale": "Criação da escala semanal pelo professor coberta por US1 e verificada em AC1.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 3,
+            "line_start": 3,
+            "member": "prd.md",
+            "quote_digest": "sha256:409dbb029ee98851650887dea56c8b77df3db5b66ffce4350c120dd5b9281b91",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "da7339c82262e4fe"
+          },
+          "summary": "O professor cria a escala semanal de rega atribuindo turmas aos dias da semana",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-YGQ06MSX9XCM",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O professor cria a escala semanal de rega atribuindo turmas aos dias da semana.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-H3PR8Q421853",
+          "PBD-AC-RV7W01FH2PDY"
+        ],
+        "rationale": "Regra de no máximo uma turma por dia verificada em AC2; reação do sistema (recusar ou substituir) em aberto em Q4.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "prd.md",
+            "quote_digest": "sha256:b8539651f745e65cf535cad8df0b9ea2ee1788c194aeb3d55a33b0f5debf9bf5",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "da7339c82262e4fe"
+          },
+          "summary": "Cada dia da semana tem no máximo uma turma responsável",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-2XF2BV78JWFJ",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Cada dia da semana tem no máximo uma turma responsável pela rega.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-S9RBN9PVRNR0",
+          "PBD-AC-GS726SN9172Z",
+          "PBD-AC-MB15YT9RA5JY"
+        ],
+        "rationale": "Ambos os estados (registrada / não registrada) exibidos no painel da sala.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "prd.md",
+            "quote_digest": "sha256:bcbd56e52da10d5d249052e8f4195593d573471c560e9ba17287a4ffa2546b38",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "da7339c82262e4fe"
+          },
+          "summary": "vê, no painel da sala, se a rega do dia foi registrada",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-5DWK4JRM7CKT",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "A turma responsável vê, no painel da sala, se a rega do dia foi registrada.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-6NNZMT8HJ1VR",
+          "PBD-AC-07F7BNPRBAXQ"
+        ],
+        "rationale": "Registro da rega com horário coberto por US2/AC4; permissão em aberto em Q5.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 6,
+            "line_start": 6,
+            "member": "prd.md",
+            "quote_digest": "sha256:ffb2c04a9081ce84ede7fe39e21184c745e02c9d232d75f5678e41869250b2b2",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "da7339c82262e4fe"
+          },
+          "summary": "O aluno monitor registra a rega do dia informando o horário",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-HEXMKQNQ1GY3",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O aluno monitor registra a rega do dia informando o horário.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-WA304AHTZV5G",
+          "PBD-AC-6EZK6X84BJPG"
+        ],
+        "rationale": "Disparo do aviso coberto em AC8, mas canal/formato do aviso (Q1), fronteira das 16h (Q2) e destinatário (Q3) não são definidos pela fonte.",
+        "status": "PARTIALLY_COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 7,
+            "line_start": 7,
+            "member": "prd.md",
+            "quote_digest": "sha256:5f17cb8b343e8b6606e74157f0e9d0981e2f9a492a5a2507475e8dee2cfaac7b",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "da7339c82262e4fe"
+          },
+          "summary": "Se a rega não for registrada até as 16h, o professor recebe um aviso",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-TCYK5V97M720",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Se a rega do dia não for registrada até as 16h, o professor recebe um aviso (canal e formato do aviso não definidos na fonte).",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    }
+  ],
+  "criteria": [
+    {
+      "claim_refs": [
+        "PBD-CLM-YGQ06MSX9XCM"
+      ],
+      "expected_outcomes": [
+        "A turma atribuída aparece como responsável pelo dia escolhido na escala semanal"
+      ],
+      "id": "PBD-AC-CX3YG92824K6",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-H3PR8Q421853",
+      "status": "confirmed",
+      "style": "list",
+      "text": "Quando o professor atribui uma turma a um dia da semana na escala semanal de rega, essa turma passa a constar como responsável pela rega naquele dia.",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-2XF2BV78JWFJ"
+      ],
+      "expected_outcomes": [
+        "Nenhum dia da escala fica com mais de uma turma responsável"
+      ],
+      "id": "PBD-AC-RV7W01FH2PDY",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-H3PR8Q421853",
+      "status": "confirmed",
+      "style": "list",
+      "text": "Quando o professor tenta atribuir uma segunda turma a um dia que já tem turma responsável, a escala continua com no máximo uma turma responsável naquele dia.",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-2XF2BV78JWFJ"
+      ],
+      "expected_outcomes": [
+        "Dias sem turma atribuída são aceitos na escala"
+      ],
+      "id": "PBD-AC-FDEYMF12VW0S",
+      "order": 2,
+      "origin": "proposed",
+      "parent": "PBD-STORY-H3PR8Q421853",
+      "rationale": "Inferência de \"no máximo uma turma\" (permite zero); a fonte não diz explicitamente se todos os dias precisam ser preenchidos.",
+      "status": "proposed",
+      "style": "list",
+      "text": "A escala semanal pode ser salva com dias da semana sem turma responsável atribuída.",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-HEXMKQNQ1GY3"
+      ],
+      "expected_outcomes": [
+        "A rega do dia fica registrada",
+        "O horário informado fica associado ao registro"
+      ],
+      "id": "PBD-AC-07F7BNPRBAXQ",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-6NNZMT8HJ1VR",
+      "status": "confirmed",
+      "style": "list",
+      "text": "Quando o aluno monitor registra a rega do dia informando o horário, a rega do dia passa a constar como registrada com o horário informado.",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-HEXMKQNQ1GY3"
+      ],
+      "expected_outcomes": [
+        "Nenhum registro de rega sem horário é criado"
+      ],
+      "id": "PBD-AC-66Z7PR50MFCH",
+      "order": 1,
+      "origin": "proposed",
+      "parent": "PBD-STORY-6NNZMT8HJ1VR",
+      "rationale": "A fonte diz que o registro é feito \"informando o horário\", mas não declara explicitamente o horário como obrigatório nem o comportamento na ausência dele.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Quando o aluno monitor tenta registrar a rega do dia sem informar o horário, o registro não é concluído.",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-5DWK4JRM7CKT"
+      ],
+      "expected_outcomes": [
+        "O painel da sala indica rega do dia registrada"
+      ],
+      "id": "PBD-AC-GS726SN9172Z",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-S9RBN9PVRNR0",
+      "status": "confirmed",
+      "style": "list",
+      "text": "Quando a rega do dia já foi registrada, o painel da sala da turma responsável mostra que a rega do dia foi registrada.",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-5DWK4JRM7CKT"
+      ],
+      "expected_outcomes": [
+        "O painel da sala indica rega do dia não registrada"
+      ],
+      "id": "PBD-AC-MB15YT9RA5JY",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-S9RBN9PVRNR0",
+      "status": "confirmed",
+      "style": "list",
+      "text": "Enquanto a rega do dia não tiver sido registrada, o painel da sala da turma responsável mostra que a rega do dia ainda não foi registrada.",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-TCYK5V97M720"
+      ],
+      "expected_outcomes": [
+        "O professor recebe um aviso de rega do dia não registrada"
+      ],
+      "id": "PBD-AC-6EZK6X84BJPG",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-WA304AHTZV5G",
+      "status": "confirmed",
+      "style": "list",
+      "text": "Se até as 16h não houver registro da rega do dia, o professor recebe um aviso.",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-TCYK5V97M720"
+      ],
+      "expected_outcomes": [
+        "Nenhum aviso de rega não registrada é enviado ao professor para esse dia"
+      ],
+      "id": "PBD-AC-D4BR3BR3HJ7N",
+      "order": 1,
+      "origin": "proposed",
+      "parent": "PBD-STORY-WA304AHTZV5G",
+      "rationale": "A fonte só define quando o aviso é enviado; a ausência de aviso quando há registro é inferida da condição, não declarada.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Se a rega do dia for registrada antes das 16h, o professor não recebe o aviso de rega não registrada referente a esse dia.",
+      "visible_id": "CA-02"
+    }
+  ],
+  "decisions": [],
+  "findings": [
+    {
+      "actual": "AC8 apenas diz que o professor recebe um aviso",
+      "affects": [
+        "PBD-AC-6EZK6X84BJPG",
+        "PBD-STORY-WA304AHTZV5G"
+      ],
+      "classification": "confirmed_gap",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Canal/formato do aviso definido para AC8 ser verificavel",
+      "gate": "G06",
+      "id": "PBD-FND-MW47YWE0752P",
+      "impact": "US4 nao pronta para refino/teste",
+      "recommendation": "Resolver Q1 antes de comprometer US4",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "Fonte nao define canal (Q1 bloqueante)"
+    },
+    {
+      "actual": "'gostaria que criar...', 'para cada dia ... tenha', 'para possa agir' usam infinitivo/subjuntivo sem conectivo",
+      "affects": [
+        "PBD-STORY-6NNZMT8HJ1VR",
+        "PBD-STORY-H3PR8Q421853",
+        "PBD-STORY-S9RBN9PVRNR0",
+        "PBD-STORY-WA304AHTZV5G"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Descricoes gramaticais no formato Eu como/gostaria que/para",
+      "gate": "G09",
+      "id": "PBD-FND-7HXFSW25ECBD",
+      "impact": "Legibilidade; sentido preservado",
+      "recommendation": "Reescrever want/benefit em forma que encaixe (ex.: 'que eu possa criar', 'para que ...')",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Template concatena campos nao ajustados"
+    },
+    {
+      "actual": "Nenhuma relacao, pois dependencias foram omitidas no pedido",
+      "affects": [
+        "PBD-STORY-S9RBN9PVRNR0",
+        "PBD-STORY-WA304AHTZV5G"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Dependencia US2->US3/US4 explicita",
+      "gate": "G07",
+      "id": "PBD-FND-6C223SRSKWSW",
+      "impact": "Sequenciamento nao visivel",
+      "recommendation": "Aceitar a omissao; apenas registrar",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Nivel nao solicitado"
+    }
+  ],
+  "items": [
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-YGQ06MSX9XCM",
+        "PBD-CLM-2XF2BV78JWFJ"
+      ],
+      "content": {
+        "actor": "professor",
+        "benefit": "cada dia da semana tenha definida a turma responsável pela rega da horta",
+        "kind": "role_goal_benefit",
+        "want": "criar a escala semanal de rega atribuindo turmas aos dias da semana, com no máximo uma turma responsável por dia"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> professor, <strong>gostaria que</strong> criar a escala semanal de rega atribuindo turmas aos dias da semana, com no máximo uma turma responsável por dia, <strong>para</strong> cada dia da semana tenha definida a turma responsável pela rega da horta.</p>"
+      },
+      "id": "PBD-STORY-H3PR8Q421853",
+      "origin": "generated",
+      "parent": null,
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Professor monta a escala semanal de rega da horta",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-HEXMKQNQ1GY3"
+      ],
+      "content": {
+        "actor": "aluno monitor",
+        "benefit": "fique registrado que a rega do dia aconteceu e em que horário",
+        "kind": "role_goal_benefit",
+        "want": "registrar a rega do dia informando o horário em que ela foi feita"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> aluno monitor, <strong>gostaria que</strong> registrar a rega do dia informando o horário em que ela foi feita, <strong>para</strong> fique registrado que a rega do dia aconteceu e em que horário.</p>"
+      },
+      "id": "PBD-STORY-6NNZMT8HJ1VR",
+      "origin": "generated",
+      "parent": null,
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Aluno monitor registra a rega do dia com o horário",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-5DWK4JRM7CKT"
+      ],
+      "content": {
+        "actor": "turma responsável",
+        "benefit": "saber se a sua responsabilidade de rega do dia já está cumprida",
+        "kind": "role_goal_benefit",
+        "want": "ver, no painel da sala, se a rega do dia já foi registrada"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> turma responsável, <strong>gostaria que</strong> ver, no painel da sala, se a rega do dia já foi registrada, <strong>para</strong> saber se a sua responsabilidade de rega do dia já está cumprida.</p>"
+      },
+      "id": "PBD-STORY-S9RBN9PVRNR0",
+      "origin": "generated",
+      "parent": null,
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Turma responsável acompanha no painel da sala a situação da rega do dia",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-TCYK5V97M720"
+      ],
+      "content": {
+        "actor": "professor",
+        "benefit": "possa agir ainda no mesmo dia para que a horta não fique sem rega",
+        "kind": "role_goal_benefit",
+        "want": "receber um aviso quando a rega do dia não for registrada até as 16h"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> professor, <strong>gostaria que</strong> receber um aviso quando a rega do dia não for registrada até as 16h, <strong>para</strong> possa agir ainda no mesmo dia para que a horta não fique sem rega.</p>"
+      },
+      "id": "PBD-STORY-WA304AHTZV5G",
+      "origin": "generated",
+      "parent": null,
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Professor é avisado quando a rega não é registrada até as 16h",
+      "type": "story"
+    }
+  ],
+  "kind": "pbd.backlog",
+  "language": "pt-BR",
+  "profile": "generic",
+  "questions": [
+    {
+      "affects": [
+        "PBD-AC-6EZK6X84BJPG",
+        "PBD-CLM-TCYK5V97M720",
+        "PBD-STORY-WA304AHTZV5G"
+      ],
+      "alternatives": [
+        "Aviso dentro do próprio sistema",
+        "Outro canal a ser definido pela escola"
+      ],
+      "blocking": true,
+      "id": "PBD-Q-Y65AX2M94KTC",
+      "impact": "Sem o canal definido, não é possível especificar nem verificar como o aviso chega ao professor.",
+      "status": "open",
+      "text": "Por qual canal e em que formato o professor recebe o aviso de rega não registrada até as 16h?"
+    },
+    {
+      "affects": [
+        "PBD-AC-6EZK6X84BJPG",
+        "PBD-AC-D4BR3BR3HJ7N",
+        "PBD-CLM-HEXMKQNQ1GY3",
+        "PBD-CLM-TCYK5V97M720",
+        "PBD-STORY-WA304AHTZV5G"
+      ],
+      "alternatives": [
+        "Momento em que o registro é feito",
+        "Horário informado no registro"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-HFJ3HYJJB614",
+      "impact": "Define a fronteira de disparo do aviso e quais registros são considerados no prazo.",
+      "status": "open",
+      "text": "O limite \"até as 16h\" é inclusivo (registro feito exatamente às 16h evita o aviso) e refere-se ao momento do registro ou ao horário informado pelo aluno monitor?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-TCYK5V97M720",
+        "PBD-CLM-YGQ06MSX9XCM",
+        "PBD-STORY-WA304AHTZV5G"
+      ],
+      "alternatives": [
+        "Somente o professor que criou a escala, apenas em dias com turma atribuída",
+        "Outra regra definida pela escola"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-02Z49F437P1W",
+      "impact": "Determina o destinatário e o escopo de dias em que o aviso se aplica.",
+      "status": "open",
+      "text": "Qual professor recebe o aviso (o que criou a escala ou outro) e o aviso é enviado também em dias sem turma responsável na escala?"
+    },
+    {
+      "affects": [
+        "PBD-AC-RV7W01FH2PDY",
+        "PBD-CLM-2XF2BV78JWFJ",
+        "PBD-STORY-H3PR8Q421853"
+      ],
+      "alternatives": [
+        "Recusar a nova atribuição",
+        "Substituir a turma anterior"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-H1AFN1SSRB6N",
+      "impact": "Define o comportamento observável da regra de no máximo uma turma por dia.",
+      "status": "open",
+      "text": "Ao tentar atribuir uma segunda turma a um dia que já tem turma responsável, o sistema deve recusar a atribuição ou substituir a turma anterior?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-HEXMKQNQ1GY3",
+        "PBD-STORY-6NNZMT8HJ1VR"
+      ],
+      "alternatives": [
+        "Apenas o monitor da turma responsável do dia",
+        "Qualquer aluno monitor"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-CWC15WE68XSK",
+      "impact": "Define a regra de permissão do registro de rega.",
+      "status": "open",
+      "text": "Somente o aluno monitor da turma responsável pelo dia pode registrar a rega, ou qualquer aluno monitor?"
+    }
+  ],
+  "relations": [],
+  "run_id": "PBD-RUN-YENYRYC082FH",
+  "schema_version": "1.1.0",
+  "sources": [
+    {
+      "authority": "functional",
+      "digest": "sha256:da7339c82262e4fe490c4c565c8334006e8803a6359b74d96b76b5f34a1bea57",
+      "id": "PBD-SRC-78385WMH95P7",
+      "kind": "file",
+      "members": [
+        {
+          "bytes": 418,
+          "digest": "sha256:b211742c6ca28b3b5db0f7ed2ee331bf3ee2d672a29e31cc5f9d6440c7a1d4c2",
+          "media_type": "application/octet-stream",
+          "path": "prd.md",
+          "status": "read"
+        }
+      ],
+      "read_status": "complete",
+      "selector": "prd.md",
+      "version": "da7339c82262e4fe"
+    }
+  ],
+  "synthetic": true
+}

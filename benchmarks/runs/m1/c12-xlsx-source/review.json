@@ -1,0 +1,542 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC4",
+      "notes": "Measures advance time from an undefined anchor ('começa com menos de 1 dia de antecedência'). The source gives only the minimum, not when it is counted from.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC5",
+      "notes": "Asserts that a booking made exactly 1 day ahead is accepted, which assumes an inclusive boundary and calendar-day counting. Both are open (Q1). It is proposed and must not be confirmed before Q1 is answered.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC6",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "overlap",
+      "items": [
+        "F1",
+        "US1"
+      ],
+      "rationale": "Feature F1 has a single child story US1 that restates it."
+    },
+    {
+      "assessment": "overlap",
+      "items": [
+        "F3",
+        "US4"
+      ],
+      "rationale": "Feature F3 has a single child story US4 that restates it."
+    },
+    {
+      "assessment": "distinct",
+      "items": [
+        "US2",
+        "US3"
+      ],
+      "rationale": "Different rules: maximum duration versus minimum advance time."
+    },
+    {
+      "assessment": "distinct",
+      "items": [
+        "T2",
+        "T3"
+      ],
+      "rationale": "Different rules read from different rows of Regras."
+    }
+  ],
+  "findings": [
+    {
+      "actual": "F2, US2, US3, AC2, AC3 and AC4 hard-code 4 horas and 1 dia in their wording, while T2 and T3 read them from Regras.",
+      "affects": [
+        "F2",
+        "US2",
+        "US3",
+        "AC2",
+        "AC3",
+        "AC4"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Source R2 and R3 define the limits by reference to the Regras tab, so they are configurable values.",
+      "gate": "G04",
+      "impact": "A change in Regras leaves the stories and criteria describing an outdated rule.",
+      "recommendation": "Refer to the Regras value in the want and rule text, keeping the concrete values only as examples in the criteria, with the source of the value stated.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "The stories and criteria can contradict the configured value the tasks use."
+    },
+    {
+      "actual": "AC5 accepts a booking exactly 1 day ahead while Q1 (calendar versus business days) is open.",
+      "affects": [
+        "AC5",
+        "US3"
+      ],
+      "classification": "candidate_concern",
+      "expected": "A proposed boundary criterion should not assume an answer to an open question.",
+      "gate": "G06",
+      "impact": "The accepted booking window may differ from the owner's intent by a day.",
+      "recommendation": "Keep AC5 explicitly conditional on Q1, or present both calendar and business-day variants.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "The inclusive boundary and day count are unresolved."
+    },
+    {
+      "actual": "AC4 measures 'antecedência' from an undefined point. Q1 addresses the unit but not the anchor.",
+      "affects": [
+        "AC4",
+        "US3",
+        "T3"
+      ],
+      "classification": "candidate_concern",
+      "expected": "A rule that measures advance time should state the reference point.",
+      "gate": "G06",
+      "impact": "Different implementers may measure from booking time or from submission and disagree on the boundary.",
+      "recommendation": "Add the reference point to Q1 or to a new question and to AC4's condition.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "Underspecified measurement."
+    },
+    {
+      "actual": "No epic, feature, story or task records the Prioridade column, and no open question mentions it.",
+      "affects": [
+        "E1",
+        "F1",
+        "F3",
+        "US1",
+        "US4"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Source priority values (Alta, Alta, Média, Média for R1 to R4) are either carried or deliberately dropped.",
+      "gate": "G02",
+      "impact": "The owner cannot see the priority the source assigns to each requirement.",
+      "recommendation": "Carry the priority as metadata where the format allows, or record an explicit decision to drop it.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Source metadata is silently lost."
+    },
+    {
+      "actual": "The design excludes the 8-hour draft value but Q2 still offers 'Usar 8 horas se o rascunho for válido', which the source says is discarded.",
+      "affects": [
+        "US2",
+        "F2"
+      ],
+      "classification": "candidate_concern",
+      "expected": "The hidden draft marked 'rascunho descartado' should be settled once.",
+      "gate": "G02",
+      "impact": "Minor: the owner may be asked to reconsider a discarded value.",
+      "recommendation": "Close Q2 with a note that the draft is discarded, or keep the question only if the owner must confirm it.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "The question offers an option the source already rejects."
+    },
+    {
+      "actual": "F1 and US1, and F3 and US4, restate the same capability with a single child.",
+      "affects": [
+        "F1",
+        "US1",
+        "F3",
+        "US4"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Each feature should add content beyond its only child story.",
+      "gate": "G09",
+      "impact": "Duplicate entries increase review load.",
+      "recommendation": "Collapse F1 into US1 or F3 into US4, or give each feature a distinct capability statement.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Sizing signal: feature whose only child restates it."
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "T1",
+        "F1"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 4,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "O morador reserva uma sala informando data, horário e finalidade.",
+      "rationale": "US1, AC1 and T1 cover the reservation with date, time and purpose.",
+      "text": "Morador reserva uma sala informando data, horario e finalidade"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC2",
+        "AC3",
+        "T2",
+        "F2"
+      ],
+      "disposition": "COVERED",
+      "key": "O2",
+      "locator": {
+        "line_start": 5,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "Uma reserva dura no máximo o limite da aba Regras.",
+      "rationale": "US2 with AC2 and AC3 refuses durations above the limit and accepts the limit itself; T2 reads the limit from Regras. The hard-coded value is a separate finding.",
+      "text": "Uma reserva dura no maximo o limite da aba Regras"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC4",
+        "T3",
+        "F2"
+      ],
+      "disposition": "COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 6,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "Reservas exigem a antecedência mínima da aba Regras.",
+      "rationale": "US3, AC4 and T3 cover the minimum advance period. The anchor for measuring advance time is not defined by the source (see finding).",
+      "text": "Reservas exigem a antecedencia minima da aba Regras"
+    },
+    {
+      "covered_by": [
+        "US4",
+        "AC6",
+        "T4",
+        "F3"
+      ],
+      "disposition": "COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 7,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [
+        "C6"
+      ],
+      "quote": "O zelador vê as reservas do dia por sala.",
+      "rationale": "US4, AC6 and T4 cover the daily view grouped by room.",
+      "text": "Zelador ve as reservas do dia por sala"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC2",
+        "AC3",
+        "T2"
+      ],
+      "disposition": "COVERED",
+      "key": "O5",
+      "locator": {
+        "line_start": 10,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "A2=Duração máxima (horas) | B2=4",
+      "rationale": "The active value 4 hours from the Regras tab is applied in the design. The conflicting hidden draft is handled by O8.",
+      "text": "Regras: duracao maxima de 4 horas"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC4",
+        "T3"
+      ],
+      "disposition": "COVERED",
+      "key": "O6",
+      "locator": {
+        "line_start": 11,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [
+        "C5"
+      ],
+      "quote": "A3=Antecedência mínima (dias) | B3=1",
+      "rationale": "The 1-day value is applied. Whether the unit is calendar or business days is open (Q1) and does not remove the obligation.",
+      "text": "Regras: antecedencia minima de 1 dia"
+    },
+    {
+      "covered_by": [
+        "E1"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O7",
+      "locator": {
+        "line_start": 12,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [],
+      "quote": "A4=Salas disponíveis | B4=3 (fórmula: =COUNTA(Salas!A:A))",
+      "rationale": "The value cannot be verified from the file: the Salas sheet is absent and the formula result is cached. The design keeps it out of scope and asks Q3. This is correct until the owner answers.",
+      "text": "Regras: salas disponiveis = 3, given by a formula that references a sheet 'Salas' not present in the workbook"
+    },
+    {
+      "covered_by": [],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O8",
+      "locator": {
+        "line_start": 14,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [],
+      "quote": "A1=Duração máxima (horas) | B1=8",
+      "rationale": "The sheet is hidden and its row 15 says 'rascunho descartado'. The 8-hour value is correctly not used. Q2 remains open for the owner to confirm that the 4-hour value in Regras is the one in force.",
+      "text": "Hidden sheet Rascunho proposes a 8-hour maximum and is marked as a discarded draft"
+    },
+    {
+      "covered_by": [],
+      "disposition": "NOT_COVERED",
+      "key": "O9",
+      "locator": {
+        "line_start": 4,
+        "member": "requisitos.xlsx",
+        "source_id": "PBD-SRC-AZNESFVTM1HG"
+      },
+      "matched_claims": [],
+      "quote": "C3=Alta",
+      "rationale": "The Prioridade column is not carried into any epic, feature, story or task and no open question records it. The backlog format may not have a priority field, so this is recorded as a candidate concern.",
+      "text": "Priority column for R1 to R4 (Alta, Alta, Média, Média)"
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "Objective, scope and outcome match the Requisitos and Regras tabs. Out-of-scope items for conflicts, cancellation and room count are marked as not in source or as Q3.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "Candidate sizing signal only: its single child US1 restates it. Not a defect.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "notes": "Rules fix the values at 4 horas and 1 dia while the source states both limits by reference to the Regras tab, and the epic says the rules are 'configuradas na planilha'. Hard-coding in the feature contradicts that intent.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "F3",
+      "notes": "Candidate sizing signal only: its single child US4 restates it. Not a defect.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "US2 to US4 depend on reservations existing; this is a process-order dependency and is acceptable.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Single capability.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC1 gives a concrete outcome.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "The reservation gives the resident the room at the chosen time.",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depends on US1 by design.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "The value is fixed in the want rather than referenced to Regras.",
+          "rating": "concern"
+        },
+        "small": {
+          "note": "One rule.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC2 and AC3 test the boundary at 4 horas.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Keeps room use within the limit.",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "The want fixes the limit at 4 horas, while source R2 defines it as the Regras value and T2 reads it from Regras. The story goes stale if the Regras value changes. The value is also not yet confirmed against the hidden draft (Q2).",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depends on US1 by design.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "The value is fixed in the want rather than referenced to Regras.",
+          "rating": "concern"
+        },
+        "small": {
+          "note": "One rule.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "The anchor is undefined and AC5 depends on Q1.",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "Gives time to prepare.",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "The criteria do not define the point from which advance time is measured (AC4 'começa com menos de 1 dia de antecedência'). Q1 covers calendar versus business days but not the anchor. The want also hard-codes 1 dia.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depends on US1 by design.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC6 is concrete.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Caretaker sees daily use per room.",
+          "rating": "supported"
+        }
+      },
+      "key": "US4",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "T1",
+      "notes": "Technical activity derived from US1. Verification via AC1 is clear.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "notes": "Reads the limit from Regras as the source requires. Verification refers to Q2 as if the 4-hour value were uncertain; the value comes from Regras, so the reference is somewhat misleading but not wrong.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "T3",
+      "notes": "Reads the value from Regras. Verification correctly depends on Q1 for AC5.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "T4",
+      "notes": "Verification via AC6 is clear.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "reviewer-c12",
+    "independence": "separate_agent",
+    "model": "claude-haiku-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-AZNESFVTM1HG"
+    }
+  ]
+}

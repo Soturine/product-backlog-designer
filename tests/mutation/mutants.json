@@ -1,18 +1,125 @@
 {
-  "description": "Single-point defects injected by tools/mutation_check.py. Each must be killed (test suite fails). 'old' must occur in the file; only the first occurrence is replaced.",
-  "mutants": [
-    {"id": "empty-denominator-accepted", "file": "src/pbd/validation/gates.py", "old": "if den.get(\"total\", 0) == 0:", "new": "if False:"},
-    {"id": "coverage-gaps-ignored", "file": "src/pbd/validation/gates.py", "old": "    if gaps:\n", "new": "    if False:\n"},
-    {"id": "failed-verification-ignored", "file": "src/pbd/validation/gates.py", "old": "if result.get(\"verification\") == \"failed\":", "new": "if False:"},
-    {"id": "hierarchy-cycle-ignored", "file": "src/pbd/validation/invariants.py", "old": "TopologicalSorter(graph).prepare()", "new": "pass"},
-    {"id": "trace-reciprocity-ignored", "file": "src/pbd/validation/invariants.py", "old": "if target is not None and cid not in target.get(\"claim_refs\", []):", "new": "if False:"},
-    {"id": "stale-artifact-accepted", "file": "src/pbd/validation/verify.py", "old": "if actual != digest:", "new": "if False:"},
-    {"id": "foreign-run-accepted", "file": "src/pbd/validation/verify.py", "old": "if ev.get(\"run_id\") != run_id:", "new": "if False:"},
-    {"id": "stale-approval-accepted", "file": "src/pbd/integrations/authority.py", "old": "if approval.get(\"approved_plan_digest\") != actual:", "new": "if False:"},
-    {"id": "archive-traversal-allowed", "file": "src/pbd/sources/scope.py", "old": "any(p == \"..\" for p in parts)", "new": "False"},
-    {"id": "network-guard-disabled", "file": "src/pbd/security/network.py", "old": "            ledger.blocked.append(str(host))\n", "new": "            return\n"},
-    {"id": "no-downstream-invalidation", "file": "src/pbd/persistence/state.py", "old": "dep[\"status\"] = \"invalidated\"", "new": "dep[\"status\"] = dep[\"status\"]"},
-    {"id": "journal-chain-unchecked", "file": "src/pbd/persistence/atomic.py", "old": "if entry.get(\"prev\") != prev:", "new": "if False:"},
-    {"id": "title-anchor-allowed", "file": "src/pbd/core/identity.py", "old": "    if bad:\n", "new": "    if False:\n"}
-  ]
+ "description": "Single-point defects injected by tools/mutation_check.py. Each must be killed (test suite fails). 'old' must occur in the file; only the first occurrence is replaced.",
+ "mutants": [
+  {
+   "id": "empty-denominator-accepted",
+   "file": "src/pbd/validation/gates.py",
+   "old": "if den.get(\"total\", 0) == 0:",
+   "new": "if False:"
+  },
+  {
+   "id": "coverage-gaps-ignored",
+   "file": "src/pbd/validation/gates.py",
+   "old": "    if gaps:\n",
+   "new": "    if False:\n"
+  },
+  {
+   "id": "failed-verification-ignored",
+   "file": "src/pbd/validation/gates.py",
+   "old": "if result.get(\"verification\") == \"failed\":",
+   "new": "if False:"
+  },
+  {
+   "id": "hierarchy-cycle-ignored",
+   "file": "src/pbd/validation/invariants.py",
+   "old": "TopologicalSorter(graph).prepare()",
+   "new": "pass"
+  },
+  {
+   "id": "trace-reciprocity-ignored",
+   "file": "src/pbd/validation/invariants.py",
+   "old": "if target is not None and cid not in target.get(\"claim_refs\", []):",
+   "new": "if False:"
+  },
+  {
+   "id": "stale-artifact-accepted",
+   "file": "src/pbd/validation/verify.py",
+   "old": "if actual != digest:",
+   "new": "if False:"
+  },
+  {
+   "id": "foreign-run-accepted",
+   "file": "src/pbd/validation/verify.py",
+   "old": "if ev.get(\"run_id\") != run_id:",
+   "new": "if False:"
+  },
+  {
+   "id": "stale-approval-accepted",
+   "file": "src/pbd/integrations/authority.py",
+   "old": "if approval.get(\"approved_plan_digest\") != actual:",
+   "new": "if False:"
+  },
+  {
+   "id": "archive-traversal-allowed",
+   "file": "src/pbd/sources/scope.py",
+   "old": "any(p == \"..\" for p in parts)",
+   "new": "False"
+  },
+  {
+   "id": "network-guard-disabled",
+   "file": "src/pbd/security/network.py",
+   "old": "            ledger.blocked.append(str(host))\n",
+   "new": "            return\n"
+  },
+  {
+   "id": "no-downstream-invalidation",
+   "file": "src/pbd/persistence/state.py",
+   "old": "dep[\"status\"] = \"invalidated\"",
+   "new": "dep[\"status\"] = dep[\"status\"]"
+  },
+  {
+   "id": "journal-chain-unchecked",
+   "file": "src/pbd/persistence/atomic.py",
+   "old": "if entry.get(\"prev\") != prev:",
+   "new": "if False:"
+  },
+  {
+   "id": "title-anchor-allowed",
+   "file": "src/pbd/core/identity.py",
+   "old": "    if bad:\n",
+   "new": "    if False:\n"
+  },
+  {
+   "id": "gapped-member-read-allowed",
+   "file": "src/pbd/pipeline/reading.py",
+   "old": "if status == \"read\" and meta.get(\"gaps\") and vt is None:",
+   "new": "if False:"
+  },
+  {
+   "id": "page-locator-unchecked",
+   "file": "src/pbd/pipeline/reading.py",
+   "old": "if span is None or not (span[1] <= start and end <= span[2]):",
+   "new": "if False:"
+  },
+  {
+   "id": "reviewer-quote-unchecked",
+   "file": "src/pbd/pipeline/review.py",
+   "old": "elif len(quote.strip()) < 3 or normalize_for_match(quote) not in normalize_for_match(",
+   "new": "elif False and normalize_for_match(quote) not in normalize_for_match("
+  },
+  {
+   "id": "reader-as-reviewer-allowed",
+   "file": "src/pbd/pipeline/review.py",
+   "old": "if independence == \"separate_agent\" and str(reviewer.get(\"agent\")) in builders:",
+   "new": "if False:"
+  },
+  {
+   "id": "g13-source-coverage-unchecked",
+   "file": "src/pbd/pipeline/finalize.py",
+   "old": "            if not cited:",
+   "new": "            if False:"
+  },
+  {
+   "id": "duplicated-prefix-kept",
+   "file": "src/pbd/render/richtext.py",
+   "old": "if stripped.casefold().startswith(candidate.casefold() + \" \"):",
+   "new": "if False:"
+  },
+  {
+   "id": "claim-uncertainty-shape-unchecked",
+   "file": "src/pbd/pipeline/design.py",
+   "old": "        if extra:\n            errors.append(f\"{label} ({key}): uncertainty accepts only",
+   "new": "        if False:\n            errors.append(f\"{label} ({key}): uncertainty accepts only"
+  }
+ ]
 }

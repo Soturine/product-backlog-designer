@@ -1,0 +1,485 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "notes": "Introduces 'mutirao disponivel para inscricao', an availability concept absent from the source (candidate, not confirmed defect). Core outcome is supported.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC2",
+      "notes": "Initial unconfirmed state; trigger 'quando consultada' is loose but observable.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC3",
+      "notes": "Proposed validation lens; clearly status proposed and tied to Q5; no size list invented.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC4",
+      "notes": "Restates source line 4 at behavior level; no gateway or amount invented.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC5",
+      "notes": "Transition on gateway confirmation, supported by lines 4 and 5.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC6",
+      "notes": "Stays unconfirmed while payment is not confirmed. Overlaps partly with AC2 but covers a different state (payment initiated).",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC7",
+      "notes": "Proposed; user notification wording is vague ('informado') with no message defined, consistent with Q3 pending. Acceptable as proposed, not as confirmed behavior.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC8",
+      "notes": "Source line 6.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC9",
+      "notes": "Combines C4 and C3; unconfirmed excluded.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC10",
+      "notes": "Per-mutirao segregation, from 'por mutirao'.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC11",
+      "notes": "Proposed boundary case; no text for the indication invented.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "distinct",
+      "items": [
+        "AC2",
+        "AC6"
+      ],
+      "rationale": "AC2 covers a freshly registered entry before payment starts; AC6 covers waiting for gateway confirmation after payment is started. Overlapping outcome but different state and trigger."
+    },
+    {
+      "assessment": "distinct",
+      "items": [
+        "T3",
+        "T6",
+        "T8"
+      ],
+      "rationale": "Test-planning tasks scoped to different stories."
+    },
+    {
+      "assessment": "distinct",
+      "items": [
+        "F2",
+        "US3"
+      ],
+      "rationale": "Feature capability restates its only child story; acceptable hierarchy, optional simplification."
+    }
+  ],
+  "findings": [
+    {
+      "actual": "Tasks and the design cite criteria as AC-01..AC-11 with global numbering, while visible criterion IDs restart per story (CA-01..CA-04); e.g. T4 cites AC-04 but CA-04 under US2 is a different criterion (failure handling, proposed).",
+      "affects": [
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "T5",
+        "T6",
+        "T7",
+        "T8"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "Cross-references from tasks to acceptance criteria use identifiers that a reader can resolve (visible IDs).",
+      "gate": "G06",
+      "impact": "Implementers may verify the wrong criterion.",
+      "recommendation": "Reference criteria by stable global key or by story-qualified visible ID (US2/CA-01).",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "Ambiguous references make traceability and later test mapping error-prone."
+    },
+    {
+      "actual": "US1 benefit says 'garantir meu lugar no mutirao', which the source does not state and which contradicts the rule that only paid registrations are confirmed.",
+      "affects": [
+        "US1"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "Story benefit follows the source: registration is only confirmed after payment.",
+      "gate": "G05",
+      "impact": "Misleads stakeholders about what US1 delivers.",
+      "recommendation": "Rephrase the benefit as 'registrar meu interesse e seguir para o pagamento' or similar, without a place guarantee.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "Unsupported value claim in the story text."
+    },
+    {
+      "actual": "Only T1 -> T7 is recorded; US3 has no edge to US2.",
+      "affects": [
+        "US3",
+        "US2"
+      ],
+      "classification": "candidate_concern",
+      "expected": "A sequencing relation from the story producing confirmed registrations (US2) to the list (US3), or an explicit note that none is needed.",
+      "gate": "G09",
+      "impact": "Planning could schedule US3 without realistic data; may be intended since T1 supplies the status model.",
+      "recommendation": "Confirm whether US2 -> US3 sequencing is needed; add or justify.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Confirmed registrants only exist after US2 flow."
+    },
+    {
+      "actual": "T2 mentions 'ambiente de homologacao' and T4 a gateway test environment; AC1 mentions 'mutirao disponivel para inscricao'.",
+      "affects": [
+        "T2",
+        "T4",
+        "AC1"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Verification steps reference only environments supported by the source.",
+      "gate": "G04",
+      "impact": "Low; could set false expectations on environments and mutirao availability rules.",
+      "recommendation": "Use neutral wording ('ambiente de teste') and drop or question the availability notion.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Mild invented context not present in the PRD; no technology, gateway, amount or threshold was invented."
+    },
+    {
+      "actual": "Story text reads 'gostaria que me inscrever' / 'gostaria que pagar' / 'gostaria que ver' (infinitive after 'que').",
+      "affects": [
+        "US1",
+        "US2",
+        "US3"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Grammatically valid pt-BR story statements.",
+      "gate": "G06",
+      "impact": "Readability only.",
+      "recommendation": "Use 'gostaria de' or a subjunctive.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Template wording defect; meaning remains clear."
+    },
+    {
+      "actual": "C5 left uncovered with open question Q4 and no performance criterion.",
+      "affects": [
+        "E1"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "Non-measurable 'rapido' handled without inventing a threshold.",
+      "gate": "G02",
+      "impact": "None; coverage of O5 stays QUESTION_REQUIRED until Q4 is answered.",
+      "recommendation": "Keep as is.",
+      "review_status": "confirmed",
+      "severity": "info",
+      "why": "Correct handling."
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "T2"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 3,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "O participante se inscreve em um mutirão informando nome e tamanho de camiseta.",
+      "rationale": "US1 and AC1 state the registration with name and size; mandatory-ness is not asserted by the source and is left to Q5/AC3 (proposed).",
+      "text": "Participant registers for a mutirao providing name and t-shirt size."
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC4",
+        "AC5",
+        "SP1",
+        "T4"
+      ],
+      "disposition": "PARTIALLY_COVERED",
+      "key": "O2",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "A taxa simbólica de inscrição é paga pelo gateway de pagamentos parceiro.",
+      "rationale": "Payment through the partner gateway is covered at behavior level; gateway identity, contract, fee amount and failure handling are unknown and correctly routed to SP1/Q1/Q2/Q3 without inventing any technology or value.",
+      "text": "The symbolic fee is paid through the partner payment gateway (gateway unidentified, no amount, no interface)."
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC2",
+        "AC5",
+        "AC6",
+        "AC9",
+        "T5"
+      ],
+      "disposition": "COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "A inscrição só é confirmada após a confirmação do pagamento.",
+      "rationale": "Initial unconfirmed state, transition on confirmation, and staying unconfirmed otherwise are all verifiable.",
+      "text": "Registration is confirmed only after payment confirmation."
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC8",
+        "AC9",
+        "AC10",
+        "T7"
+      ],
+      "disposition": "COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "O organizador vê a lista de inscritos confirmados por mutirão.",
+      "rationale": "Confirmed-only, per-mutirao list covered; list content and access permission are open questions (Q6), not invented.",
+      "text": "The organizer sees the list of confirmed registrants per mutirao."
+    },
+    {
+      "covered_by": [],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O5",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C5"
+      ],
+      "quote": "O sistema deve ser rápido.",
+      "rationale": "No metric, operation or threshold in the source. Correctly left without a criterion and with an open question (Q4); no threshold invented.",
+      "text": "Non-measurable performance requirement."
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "Epic outcome and scope match the PRD; out_scope on mutirao management is a reasonable boundary. 'confiavel' in the outcome is mildly subjective but harmless.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "Groups registration, fee payment and confirmation rule; rules restate source lines 3-5 without additions.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "notes": "Candidate sizing signal: the only child (US3) essentially restates the feature capability. Not a defect; optional merge or keep for hierarchy.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "SP1",
+      "notes": "Justified spike for the unknown gateway contract (PRD names no gateway). Has question, decision output and follow-up links; no timebox supplied, none invented. Does not name any technology.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "No team data; field obligation open in Q5.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Must precede US2 (proposed predecessor edge exists, legitimate sequencing).",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "Describes outcome, not design.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Single registration slice.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC1-AC3 are observable.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Benefit text overstates (guarantees a place); value is source-supported only as 'registers participation pending payment'.",
+          "rating": "concern"
+        }
+      },
+      "key": "US1",
+      "notes": "Benefit 'garantir meu lugar no mutirao' is not in the source and conflicts with the rule that registration is only confirmed after payment; a registration alone does not guarantee a place. Wording 'gostaria que me inscrever' is ungrammatical in the template.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Blocking Q1: gateway and contract unknown; estimating is not possible until SP1 or answer.",
+          "rating": "concern"
+        },
+        "independent": {
+          "note": "Depends on US1 and on SP1 (blocking Q1); edges recorded.",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "Gateway left to SP1, no technology imposed.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Cannot judge until contract is known.",
+          "rating": "unknown"
+        },
+        "testable": {
+          "note": "AC4 and AC5 are testable only at behavior level; failure handling AC7 is proposed and message undefined.",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "Benefit (confirmed registration) follows from source line 5.",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "Blocked by Q1 (gateway unknown); title bundles pay and confirm, which are one indivisible flow so acceptable. Grammar 'gostaria que pagar'.",
+      "source_support": "supported",
+      "task_sufficiency": "partial",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "No team data.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Candidate: data of confirmed registrants originates in US2; no US2 -> US3 relation recorded (T1 -> T7 only).",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "List content left open (Q6).",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "One list view.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC8-AC10 determinate.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Source line 6.",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "Clear actor and outcome; benefit 'saber quem participara' is a reasonable inference. No explicit dependency recorded on US2 although confirmed registrants only exist after US2 (candidate).",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "T1",
+      "notes": "Enabling model task mapped to C1/C3. 'estrutura persistida' presumes persistence, which is implicit but not stated; mild. Verification references AC-01/AC-02, whose visible IDs differ (see finding).",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "notes": "Verification names an 'ambiente de homologacao', an environment not in the source; AC-01/AC-02 labels do not match visible IDs CA-01/CA-02.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "T3",
+      "notes": "Test planning task (not Test Cases); distinct from T6/T8 by scope. Refers to AC-03 conditional on Q5.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "T4",
+      "notes": "Depends on SP1 (relation recorded). Verification assumes a gateway test environment, not stated in source. Label AC-04 ambiguous because visible ID CA-04 belongs to a different story.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "T5",
+      "notes": "Directly implements C3 transition; covers non-confirmed returns generically. Depends on SP1. Label AC-05/AC-06 does not match visible IDs.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "T6",
+      "notes": "Test planning for US2; cites 'AC-04 a AC-07' with global numbering while visible IDs restart per story (labeling issue only).",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "T7",
+      "notes": "Implements C4; filter by mutirao and exclusion of unconfirmed. Labels AC-08..AC-10 are global keys, not visible IDs.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "T8",
+      "notes": "Test planning for US3; distinct from T7. Verification 'Plano revisado pelo time' is thin but adequate.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "reviewer-c08",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-78385WMH95P7"
+    }
+  ]
+}

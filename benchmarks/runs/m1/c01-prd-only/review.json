@@ -1,0 +1,831 @@
+{
+  "criteria": [
+    {
+      "key": "AC-US1-1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC-US1-2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC-US1-3",
+      "notes": "Not measurable until Q1 answered.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC-US2-1",
+      "notes": "Condition about being able to request loans is circular and vague.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC-US2-2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC-US2-3",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC-US2-4",
+      "notes": "Timing depends on blocking Q2.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC-US3-1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC-US3-2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC-US3-3",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC-US3-4",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC-US4-1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC-US4-2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC-US5-1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC-US5-2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC-US5-3",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC-US5-4",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC-US6-1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC-US6-2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC-US6-3",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC-US7-1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC-US7-2",
+      "notes": "Introduces a daily verification mechanism not in the source.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC-US7-3",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "distinct",
+      "items": [
+        "US3",
+        "US4"
+      ],
+      "rationale": "Different refusal rules (limit vs overdue)."
+    },
+    {
+      "assessment": "distinct",
+      "items": [
+        "AC-US2-4",
+        "AC-US6-1"
+      ],
+      "rationale": "Both change availability but from different triggers."
+    }
+  ],
+  "findings": [
+    {
+      "actual": "AC-US2-1 condition is circular and Q2 on activation and start of the 7 days is blocking.",
+      "affects": [
+        "US2",
+        "AC-US2-1",
+        "AC-US2-4"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Criteria for US2 state a clear precondition and timing of loan start.",
+      "gate": "G06",
+      "impact": "Testers cannot determine when a loan exists or counts toward the limit.",
+      "recommendation": "Resolve Q2, then rewrite AC-US2-1 and AC-US2-4 with the concrete state.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "Circular condition and open activation moment make the criterion hard to verify."
+    },
+    {
+      "actual": "AC-US7-2 assumes a daily verification and T10 adds duplicate-reminder prevention.",
+      "affects": [
+        "AC-US7-2",
+        "T10"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Criteria and tasks stay within source authority.",
+      "gate": "G06",
+      "impact": "May constrain implementation prematurely.",
+      "recommendation": "Mark as proposal or move to technical task notes.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Mechanism not stated in PRD."
+    },
+    {
+      "actual": "T5 plans boundary and concurrency tests.",
+      "affects": [
+        "T5"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Tasks describe build work; test design is a separate artifact.",
+      "gate": "G06",
+      "impact": "Duplicated effort or confusion between tasks and tests.",
+      "recommendation": "Drop T5 or reframe as implementing a concurrency safeguard.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Overlaps with Test Case design."
+    },
+    {
+      "actual": "US4 benefit is inferred and the wording is a rule from the morador viewpoint.",
+      "affects": [
+        "US4"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Story benefit grounded in source.",
+      "gate": "G06",
+      "impact": "Minor traceability weakness.",
+      "recommendation": "Keep as proposal or reword as policy enforcement.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "RF08 gives no benefit."
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "E1"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "Permitir que moradores cadastrados emprestem ferramentas do acervo comunitário do bairro.",
+      "rationale": "Epic objective.",
+      "text": "Objetivo: moradores cadastrados emprestam ferramentas do acervo"
+    },
+    {
+      "covered_by": [
+        "E1",
+        "US5",
+        "US6"
+      ],
+      "disposition": "COVERED",
+      "key": "O2",
+      "locator": {
+        "line_start": 8,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [],
+      "quote": "Voluntário: pessoa que registra devoluções e mantém o acervo.",
+      "rationale": "Actor represented in epic context and volunteer stories.",
+      "text": "Voluntário registra devoluções e mantém o acervo"
+    },
+    {
+      "covered_by": [
+        "US1",
+        "AC-US1-1",
+        "AC-US1-2"
+      ],
+      "disposition": "COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 11,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C2",
+        "C3"
+      ],
+      "quote": "RF01 O morador consulta o catálogo de ferramentas com nome, categoria e disponibilidade.",
+      "rationale": "Both criteria cover listing and attributes.",
+      "text": "Catálogo consultável com nome, categoria, disponibilidade"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC-US2-1"
+      ],
+      "disposition": "COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 12,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "RF02 O morador solicita o empréstimo de uma ferramenta disponível por até 7 dias.",
+      "rationale": "Request covered; trigger condition worded loosely.",
+      "text": "Solicitar empréstimo de ferramenta disponível"
+    },
+    {
+      "covered_by": [
+        "AC-US2-2"
+      ],
+      "disposition": "COVERED",
+      "key": "O5",
+      "locator": {
+        "line_start": 12,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C5"
+      ],
+      "quote": "por até 7 dias.",
+      "rationale": "Upper bound criterion; Q3 open on interpretation.",
+      "text": "Prazo de até 7 dias"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC-US3-1",
+        "AC-US3-2",
+        "AC-US3-4"
+      ],
+      "disposition": "COVERED",
+      "key": "O6",
+      "locator": {
+        "line_start": 13,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C6"
+      ],
+      "quote": "RF03 Um morador pode ter no máximo 2 empréstimos ativos ao mesmo tempo.",
+      "rationale": "Boundary at 1 and 2 plus proposed concurrency.",
+      "text": "Máximo 2 empréstimos ativos"
+    },
+    {
+      "covered_by": [
+        "AC-US3-2",
+        "AC-US3-3"
+      ],
+      "disposition": "COVERED",
+      "key": "O7",
+      "locator": {
+        "line_start": 14,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C7",
+        "C8"
+      ],
+      "quote": "é recusada com a mensagem \"Limite de empréstimos atingido\".",
+      "rationale": "Refusal and exact message.",
+      "text": "Recusa acima do limite com mensagem exata"
+    },
+    {
+      "covered_by": [
+        "US5",
+        "AC-US5-1"
+      ],
+      "disposition": "COVERED",
+      "key": "O8",
+      "locator": {
+        "line_start": 15,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C9"
+      ],
+      "quote": "RF05 O voluntário registra a devolução",
+      "rationale": "Return recorded.",
+      "text": "Voluntário registra devolução"
+    },
+    {
+      "covered_by": [
+        "AC-US5-2"
+      ],
+      "disposition": "COVERED",
+      "key": "O9",
+      "locator": {
+        "line_start": 15,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C10"
+      ],
+      "quote": "informa se a ferramenta voltou danificada.",
+      "rationale": "Damage indication in record.",
+      "text": "Informar se voltou danificada"
+    },
+    {
+      "covered_by": [
+        "US6",
+        "AC-US6-1",
+        "AC-US6-2",
+        "AC-US6-3"
+      ],
+      "disposition": "COVERED",
+      "key": "O10",
+      "locator": {
+        "line_start": 16,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C11",
+        "C12"
+      ],
+      "quote": "RF06 Ferramenta devolvida danificada fica indisponível até o voluntário marcá-la como reparada.",
+      "rationale": "Unavailability, blocking and repair release.",
+      "text": "Danificada indisponível até marcada reparada pelo voluntário"
+    },
+    {
+      "covered_by": [
+        "US7",
+        "AC-US7-1",
+        "AC-US7-2"
+      ],
+      "disposition": "COVERED",
+      "key": "O11",
+      "locator": {
+        "line_start": 17,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C13",
+        "C14"
+      ],
+      "quote": "RF07 O morador recebe um lembrete por e-mail 1 dia antes do vencimento do empréstimo.",
+      "rationale": "Reminder and timing.",
+      "text": "Lembrete por e-mail 1 dia antes do vencimento"
+    },
+    {
+      "covered_by": [
+        "US4",
+        "AC-US4-1",
+        "AC-US4-2"
+      ],
+      "disposition": "COVERED",
+      "key": "O12",
+      "locator": {
+        "line_start": 18,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C15"
+      ],
+      "quote": "RF08 Empréstimos em atraso impedem novas solicitações do morador até a devolução.",
+      "rationale": "Block and release.",
+      "text": "Atraso impede novas solicitações até devolução"
+    },
+    {
+      "covered_by": [
+        "US1",
+        "AC-US1-3"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O13",
+      "locator": {
+        "line_start": 21,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C16"
+      ],
+      "quote": "RNF01 O catálogo deve ser utilizável em celulares.",
+      "rationale": "No measurable criterion; proposed criterion plus question Q1 is the right handling.",
+      "text": "Catálogo utilizável em celulares"
+    },
+    {
+      "covered_by": [
+        "E1"
+      ],
+      "disposition": "OUT_OF_SCOPE",
+      "key": "O14",
+      "locator": {
+        "line_start": 24,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [],
+      "quote": "Cobrança de multas e pagamentos.",
+      "rationale": "Listed in epic out_scope; no story created.",
+      "text": "Fora de escopo: multas e pagamentos"
+    },
+    {
+      "covered_by": [
+        "E1"
+      ],
+      "disposition": "OUT_OF_SCOPE",
+      "key": "O15",
+      "locator": {
+        "line_start": 25,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [],
+      "quote": "Entrega de ferramentas em domicílio.",
+      "rationale": "Listed in epic out_scope; no story created.",
+      "text": "Fora de escopo: entrega em domicílio"
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "mobile criterion proposed pending Q1",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "blocking Q2 affects scope",
+          "rating": "concern"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "Q2 (blocking) leaves start of loan period and moment of activation undefined.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "depends on US2 loans existing",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "Thin slice mostly a refinement of the US2 refusal path; acceptable because the source gives the exact message, but coupled to US2.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "depends on US2 and US5",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "benefit inferred",
+          "rating": "concern"
+        }
+      },
+      "key": "US4",
+      "notes": "Benefit not stated in source; wording frames a rule from the morador viewpoint. Q5 on overdue vs limit open.",
+      "source_support": "proposal_justified",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "needs loans from US2",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US5",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "depends on US5",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US6",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team sizing data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "depends on US2 due dates",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US7",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "T1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "notes": "Depends on unanswered Q1; adjust wording vague until criterion exists.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "T3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T5",
+      "notes": "Test planning overlaps with Test Case design, a separate artifact; borderline as a story task.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "T6",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T7",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T8",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T9",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T10",
+      "notes": "Adds duplicate-reminder prevention and daily execution not stated in source.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "T11",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "reviewer-c01",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-78385WMH95P7"
+    }
+  ]
+}

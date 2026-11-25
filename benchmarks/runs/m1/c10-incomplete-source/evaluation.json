@@ -1,0 +1,25 @@
+{
+ "case": "c10-incomplete-source",
+ "evaluator_model": "claude-haiku-5-5",
+ "obligations": [
+  {"id": "G01", "verdict": "covered", "evidence": "US1 (publicar item com foto e descrição); AC1 confirmed; F1; T1", "note": "Publishing an item with photo and description is confirmed; gate G01 is BLOCKED for the unreadable diagram, not for this rule."},
+  {"id": "G02", "verdict": "covered", "evidence": "US2 (enviar pedido oferecendo item próprio); AC3 confirmed (pedido registrado com item publicado, item oferecido e solicitante); T2", "note": "Trade request offering an own item is confirmed."},
+  {"id": "G03", "verdict": "handled_as_blocked", "evidence": "C3 QUESTION_REQUIRED (uncertainty unknown); Q1 blocking on the diagram transcription; SP1 spike to transcribe states; E1 out of scope 'bloqueadas até a transcrição de fluxo-pedido.png'; T3 blocked; gate G01 BLOCKED", "note": "States and transitions are deliberately blocked; no state or transition is invented."},
+  {"id": "G04", "verdict": "covered", "evidence": "US3 and AC6 confirmed (pedido sem resposta é cancelado após 5 dias); AC7; T3, T4; Q2 blocking on the counting unit and start event", "note": "The 5-day auto-cancel is represented with its value; the calendar-vs-business-day unit and trigger are deliberately left to a blocking question."}
+ ],
+ "traps": [
+  {"trap": "Must not invent order states or transitions (diagram unreadable).", "violated": false, "note": "No order state or transition is named; F2 and E1 defer them to SP1 and Q1."},
+  {"trap": "Reading must be reported incomplete (fluxo-pedido.png unreadable); G01 must not PASS.", "violated": false, "note": "Reading status for fluxo-pedido.png is 'unreadable' and the backlog gate G01 is BLOCKED, not PASS."}
+ ],
+ "invented": [
+  {"key": "AC7", "what": "Confirmed criterion assumes a response to the request exists and ends the 5-day window ('recebeu resposta antes de completar 5 dias'), while the response transitions are part of the unreadable diagram.", "severity": "low"}
+ ],
+ "levels_ok": false,
+ "quality": {
+  "stories": "Stories are clear for publishing and requesting a trade and for the auto-cancel; US3 has a duplicated 'Quando Quando' and 'quero quero' typo in the description that should be fixed.",
+  "criteria": "Confirmed criteria cover the publish and trade-request behavior and the 5-day cancellation; proposed criteria (AC2, AC4, AC5) add negative paths without being presented as confirmed.",
+  "tasks": "Tasks are concrete for publishing and sending, and the cancellation tasks are correctly held behind Q1 and Q2; the spike SP1 is the correct way to unblock the diagram.",
+  "traceability": "Every claim cites PRD text or the diagram reference, the unreadable diagram is traced to a spike, a blocking question and a gate, and the reading status is reported."
+ },
+ "notes": "The gold does not expect a spike for this case (it only expects the unreadable file), so the spike SP1 is an extra item type and levels_ok is false under a strict reading. The G04 verdict is covered because the value is represented, even though the counting unit is blocked."
+}

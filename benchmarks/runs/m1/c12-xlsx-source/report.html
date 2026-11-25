@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src &#x27;none&#x27;; style-src &#x27;unsafe-inline&#x27;; script-src &#x27;sha256-fXA6PQIafqslndojZsQDPkTXc2iNdIswVX15OelmO7w=&#x27;; img-src data:; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;">
+<meta name="generator" content="pbd 0.1.0.dev0">
+<title>Empréstimo de Salas — PBD</title><style>:root{color-scheme:light;
+--bg:#f3f5fa;--side:#ffffff;--surface:#ffffff;--surface-2:#f7f8fc;--sunk:#eef1f7;--rule:#e2e6ef;--rule-strong:#ccd3e0;
+--ink:#0f172a;--ink-2:#334155;--muted:#5b6578;--faint:#8a93a6;
+--accent:#3b5bdb;--accent-2:#6d4aff;--accent-soft:#e9edff;--on-tone:#ffffff;--logo-a:#4f6bff;--logo-b:#7b4dff;
+--pass:#15803d;--fail:#c02626;--warn:#b45309;--unknown:#5f6b7f;--info:#1d63c9;
+--glow:rgba(59,91,219,.07);--shadow:0 1px 2px rgba(15,23,42,.05);--lift:0 10px 30px -18px rgba(15,23,42,.35);
+--r-sm:7px;--r:12px;--r-lg:16px;
+--sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI Variable Text","Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,SFMono-Regular,"SF Mono","Cascadia Mono",Menlo,Consolas,"Liberation Mono",monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;
+--bg:#080d1a;--side:#0a1020;--surface:#0e1628;--surface-2:#111b31;--sunk:#0b1324;--rule:rgba(148,163,184,.13);--rule-strong:rgba(148,163,184,.24);
+--ink:#e9eef8;--ink-2:#c4ccdc;--muted:#8f9ab0;--faint:#68738a;
+--accent:#7b93ff;--accent-2:#9b7bff;--accent-soft:rgba(91,124,250,.16);--on-tone:#08101f;--logo-a:#4f6bff;--logo-b:#8a5cff;
+--pass:#3ddc97;--fail:#ff7b7b;--warn:#f6b44b;--unknown:#a3adbf;--info:#6cb2ff;
+--glow:rgba(91,124,250,.20);--shadow:0 1px 2px rgba(0,0,0,.4);--lift:0 18px 40px -22px rgba(0,0,0,.9)}}
+:root[data-theme="dark"]{color-scheme:dark;
+--bg:#080d1a;--side:#0a1020;--surface:#0e1628;--surface-2:#111b31;--sunk:#0b1324;--rule:rgba(148,163,184,.13);--rule-strong:rgba(148,163,184,.24);
+--ink:#e9eef8;--ink-2:#c4ccdc;--muted:#8f9ab0;--faint:#68738a;
+--accent:#7b93ff;--accent-2:#9b7bff;--accent-soft:rgba(91,124,250,.16);--on-tone:#08101f;--logo-a:#4f6bff;--logo-b:#8a5cff;
+--pass:#3ddc97;--fail:#ff7b7b;--warn:#f6b44b;--unknown:#a3adbf;--info:#6cb2ff;
+--glow:rgba(91,124,250,.20);--shadow:0 1px 2px rgba(0,0,0,.4);--lift:0 18px 40px -22px rgba(0,0,0,.9)}
+.tone-pass{--tone:var(--pass)}.tone-fail{--tone:var(--fail)}.tone-warn{--tone:var(--warn)}.tone-blocked{--tone:var(--warn)}
+.tone-unknown{--tone:var(--unknown)}.tone-not_run{--tone:var(--faint)}.tone-neutral{--tone:var(--muted)}.tone-accent{--tone:var(--accent)}
+.tone-info{--tone:var(--info)}.tone-muted{--tone:var(--faint)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:120px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}code,pre{font-family:var(--mono);font-size:.84em}
+code{overflow-wrap:anywhere}:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:5px}
+.skip{position:absolute;left:16px;top:-60px;background:var(--surface);padding:8px 14px;border-radius:var(--r-sm);z-index:40}
+.skip:focus{top:10px}[hidden]{display:none!important}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--surface) 92%,transparent);
+backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.bar{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.logo{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--logo-a),var(--logo-b));flex:none}
+.brand h1{font-size:1.05rem;margin:0}.brand p{margin:0;color:var(--muted);font-size:.8rem}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:2px 9px;border-radius:999px;font-size:.75rem;
+font-weight:600;border:1px solid color-mix(in srgb,var(--tone,var(--muted)) 40%,var(--rule));
+color:var(--tone,var(--muted));background:color-mix(in srgb,var(--tone,var(--muted)) 9%,transparent)}
+.spacer{flex:1}button,select,input{font:inherit;color:inherit}
+.btn{border:1px solid var(--rule-strong);background:var(--surface);border-radius:var(--r-sm);padding:6px 12px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+nav.tabs{max-width:1240px;margin:0 auto;padding:0 20px 8px;display:flex;gap:4px;overflow-x:auto}
+nav.tabs a{padding:6px 12px;border-radius:999px;color:var(--ink-2);text-decoration:none;white-space:nowrap;font-size:.88rem}
+nav.tabs a:hover{background:var(--accent-soft);color:var(--accent)}
+main{max-width:1240px;margin:0 auto;padding:20px}
+section{margin:0 0 28px}h2{font-size:1.25rem;margin:0 0 12px}h3{font-size:1rem;margin:14px 0 8px}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}
+.verdict{border-left:4px solid var(--tone);display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:14px 0}
+.kpi .v{font-size:1.6rem;font-weight:700}.kpi .l{color:var(--muted);font-size:.82rem}
+.kpi .d{color:var(--faint);font-size:.78rem}
+.layer1{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px}
+.layer1 ul{margin:6px 0 0;padding-left:18px}.layer1 li{margin:3px 0}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 12px;position:sticky;top:96px;z-index:10;
+background:var(--bg);padding:8px 0}
+.toolbar input[type=search]{flex:1 1 280px;min-width:200px;padding:8px 12px;border:1px solid var(--rule-strong);
+border-radius:var(--r-sm);background:var(--surface)}
+.toolbar select{padding:7px 10px;border:1px solid var(--rule-strong);border-radius:var(--r-sm);background:var(--surface)}
+details.wi{background:var(--surface);border:1px solid var(--rule);border-radius:var(--r);margin:8px 0;
+border-left:4px solid var(--tone,var(--rule-strong))}
+details.wi>summary{list-style:none;cursor:pointer;padding:10px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+details.wi>summary::-webkit-details-marker{display:none}
+details.wi>summary::before{content:"\25B8";color:var(--muted);transition:transform .15s}
+details.wi[open]>summary::before{transform:rotate(90deg)}
+.wi .body{padding:0 16px 14px 34px}.wi .children{margin-left:14px}
+.t-epic{--tone:#7b4dff}.t-feature{--tone:var(--info)}.t-story,.t-enabler,.t-spike,.t-bug{--tone:var(--pass)}
+.t-task{--tone:var(--warn)}.title{font-weight:600;overflow-wrap:anywhere}.mono{font-family:var(--mono);font-size:.78rem;color:var(--muted);overflow-wrap:anywhere}
+.card,.grid2>*,.layer1>*{min-width:0}
+.rich p{margin:4px 0}.rich ul{margin:4px 0;padding-left:20px}
+table{border-collapse:collapse;width:100%;font-size:.88rem}th,td{border:1px solid var(--rule);padding:6px 8px;
+text-align:left;vertical-align:top}th{background:var(--surface-2)}
+.tablewrap{overflow-x:auto}.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:12px}
+.finding{border-left:4px solid var(--tone)}.sev-critical,.sev-high{--tone:var(--fail)}.sev-medium{--tone:var(--warn)}
+.sev-low,.sev-info{--tone:var(--info)}dl.kv{display:grid;grid-template-columns:max-content 1fr;gap:4px 12px;margin:6px 0}
+dl.kv dt{color:var(--muted)}dl.kv dd{margin:0}.quote{color:var(--ink-2);font-style:italic}
+pre.json{max-height:480px;overflow:auto;background:var(--sunk);padding:12px;border-radius:var(--r-sm)}
+.notice{color:var(--muted);font-size:.85rem}
+@media (max-width:640px){.bar{padding:10px 12px}main{padding:12px}.wi .body{padding-left:14px}
+.toolbar{top:86px}dl.kv{grid-template-columns:1fr}}
+@media print{header.top,.toolbar,nav.tabs{position:static}details.wi{break-inside:avoid}.btn{display:none}}
+</style></head>
+<body><a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="bar"><div class="logo" aria-hidden="true"></div><div class="brand"><h1>Empréstimo de Salas</h1>
+<p>Execução <code>PBD-RUN-2FRWTSFW2T8Z</code> · pt-BR · profile azure-scrum</p></div>
+<span class="badge tone-warn">SINTÉTICO</span><span class="badge tone-info">Não publicado: pacote e plano são locais.</span><span class="spacer"></span>
+<button class="btn" id="theme" type="button" aria-label="Alternar tema">◐</button></div>
+<nav class="tabs" aria-label="sections"><a href='#summary'>Resumo executivo</a><a href='#backlog'>Backlog</a><a href='#requirements'>Requisitos</a><a href='#findings'>Achados</a><a href='#questions'>Perguntas</a><a href='#gates'>Gates de qualidade</a><a href='#sources'>Fontes</a><a href='#azure'>Pacote Azure</a><a href='#data'>Dados</a></nav></header>
+<main id="main">
+<section id="summary" aria-labelledby="h-summary"><h2 id="h-summary">Resumo executivo</h2>
+<div class="card verdict tone-fail"><span class="badge tone-fail">FAIL</span><div><strong>1 gate(s) FAIL · 1 BLOCKED · 1 NOT_RUN</strong>
+<p class="notice">Conteúdo potencialmente sensível: compartilhe somente com quem pode ver as fontes.</p></div></div>
+<div class="kpis"><div class="card kpi"><div class="v">12</div><div class="l">Work Items</div><div class="d">epic: 1, feature: 3, story: 4, task: 4</div></div><div class="card kpi"><div class="v">6</div><div class="l">Critérios de aceite</div><div class="d">1 proposed</div></div><div class="card kpi"><div class="v">6/9</div><div class="l">Cobertura independente</div><div class="d">provenance: independent reviewer inventory</div></div><div class="card kpi"><div class="v">1/1</div><div class="l">Membros lidos</div><div class="d">1 source(s)</div></div><div class="card kpi"><div class="v">6</div><div class="l">Achados</div><div class="d">medium: 3, low: 3</div></div><div class="card kpi"><div class="v">3</div><div class="l">Perguntas abertas</div><div class="d">0 blocking</div></div></div><div class="layer1"><div class="card"><h3>O que foi analisado</h3><ul><li>requisitos.xlsx — functional (complete)</li></ul></div><div class="card"><h3>O que está consistente</h3><ul><li>G01 Source Integrity</li><li>G03 Hierarchy Integrity</li><li>G04 Traceability</li><li>G05 Story Quality</li><li>G06 Acceptance Quality</li><li>G07 Task Coverage</li><li>G08 Dependency Integrity</li><li>G09 Scope Integrity</li><li>G11 Artifact Integrity</li><li>G13 Independent Review</li><li>G14 Semantic Duplication</li><li>G16 Privacy and Offline Boundary</li></ul></div><div class="card"><h3>O que diverge</h3><ul><li><span class="badge tone-warn">medium</span> F2, US2, US3, AC2, AC3 and AC4 hard-code 4 horas and 1 dia in their wording, while T2 and T3 read them from Regras.</li><li><span class="badge tone-warn">medium</span> AC5 accepts a booking exactly 1 day ahead while Q1 (calendar versus business days) is open.</li><li><span class="badge tone-warn">medium</span> AC4 measures &#x27;antecedência&#x27; from an undefined point. Q1 addresses the unit but not the anchor.</li><li><span class="badge tone-info">low</span> No epic, feature, story or task records the Prioridade column, and no open question mentions it.</li><li><span class="badge tone-info">low</span> The design excludes the 8-hour draft value but Q2 still offers &#x27;Usar 8 horas se o rascunho for válido&#x27;, which the source says is discarded.</li><li><span class="badge tone-info">low</span> F1 and US1, and F3 and US4, restate the same capability with a single child.</li><li>G02: coverage gaps in independent inventory: {&#x27;covered&#x27;: 6, &#x27;question_required&#x27;: 2, &#x27;not_covered&#x27;: 1}</li></ul></div><div class="card"><h3>O que precisa de decisão</h3><ul><li>A antecedência mínima de 1 dia é contada em dias corridos ou em dias úteis?</li><li>A aba oculta Rascunho indica duração máxima de 8 horas e está marcada como descartada. Confirmar que o valor vigente é 4 horas da aba Regras.</li><li>O número de salas disponíveis (3) vem de uma fórmula que referencia a aba Salas, inexistente no arquivo. Qual é o número real de salas?</li></ul></div><div class="card"><h3>O que não está comprovado</h3><ul><li>G17 BLOCKED: target compatibility needs a discovered or mock target schema; only unverified default profile azure-scrum was used</li><li>G18 NOT_RUN: round-trip against a tracker (mock or live) belongs to M3; live qualification requires separate authorization</li></ul></div></div></section>
+<section id="backlog" aria-labelledby="h-backlog"><h2 id="h-backlog">Backlog</h2>
+<div class="toolbar" role="search"><label class="sr-only" for="q">Buscar por ID, título, critério ou texto</label>
+<input id="q" type="search" placeholder="Buscar por ID, título, critério ou texto" autocomplete="off">
+<label class="sr-only" for="ftype">type</label><select id="ftype"><option value="">Todos os tipos</option><option value='epic'>epic</option><option value='feature'>feature</option><option value='story'>story</option><option value='task'>task</option></select>
+<label class="sr-only" for="fverdict">verdict</label><select id="fverdict"><option value="">Todas as avaliações</option>
+<option value="pass">pass</option><option value="concern">concern</option><option value="fail">fail</option></select>
+<button class="btn" id="expand" type="button">Expandir tudo</button><button class="btn" id="collapse" type="button">Recolher tudo</button>
+<span aria-live="polite"><strong id="count">12</strong> itens visíveis</span></div>
+<p id="noresults" class="notice" hidden>Nenhum item corresponde à busca.</p>
+<div id="tree"><details class='wi t-epic' id='PBD-EPIC-PC6SGWXRFMZH' data-type='epic' data-verdict='pass' data-text='PBD-EPIC-PC6SGWXRFMZH E1 Reserva de salas comunitárias Objetivo: Permitir que moradores reservem salas comunitárias dentro das regras de duração e antecedência, e que o zelador acompanhe as reservas do dia.
+Contexto: Planilha requisitos.xlsx: abas Requisitos e Regras; a aba oculta Rascunho está marcada como descartada.
+No escopo
+Reserva pelo morador com data, horário e finalidade
+Duração máxima da reserva conforme a aba Regras
+Antecedência mínima conforme a aba Regras
+Visão diária de reservas por sala para o zelador
+Fora do escopo
+Conflitos de horário e cancelamento (não descritos na fonte)
+Quantidade real de salas (ver Q3)
+Resultado esperado: Reservas válidas ficam registradas e o zelador vê as reservas do dia por sala.'><summary><span class="badge tone-accent">epic</span><span class='mono'>E1</span><span class='title'>Reserva de salas comunitárias</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-EPIC-PC6SGWXRFMZH</p><h3>Descrição</h3><div class='rich'><p><strong>Objetivo</strong>: Permitir que moradores reservem salas comunitárias dentro das regras de duração e antecedência, e que o zelador acompanhe as reservas do dia.</p><p><strong>Contexto</strong>: Planilha requisitos.xlsx: abas Requisitos e Regras; a aba oculta Rascunho está marcada como descartada.</p><p><strong>No escopo</strong></p><ul><li>Reserva pelo morador com data, horário e finalidade</li><li>Duração máxima da reserva conforme a aba Regras</li><li>Antecedência mínima conforme a aba Regras</li><li>Visão diária de reservas por sala para o zelador</li></ul><p><strong>Fora do escopo</strong></p><ul><li>Conflitos de horário e cancelamento (não descritos na fonte)</li><li>Quantidade real de salas (ver Q3)</li></ul><p><strong>Resultado esperado</strong>: Reservas válidas ficam registradas e o zelador vê as reservas do dia por sala.</p></div><h3>Rastreabilidade</h3><ul><li><code>C1</code> O morador reserva uma sala informando data, horário e finalidade. — <span class='mono'>requisitos.xlsx:4</span> <span class='quote'>“O morador reserva uma sala informando data, horário e finalidade.”</span></li><li><code>C2</code> Uma reserva dura no máximo o limite de duração máxima definido na aba Regras. — <span class='mono'>requisitos.xlsx:5</span> <span class='quote'>“Uma reserva dura no máximo o limite da aba Regras.”</span></li><li><code>C3</code> Duração máxima de uma reserva: 4 horas (aba Regras). — <span class='mono'>requisitos.xlsx:10</span> <span class='quote'>“A2=Duração máxima (horas) | B2=4”</span></li><li><code>C4</code> Reservas exigem a antecedência mínima definida na aba Regras. — <span class='mono'>requisitos.xlsx:6</span> <span class='quote'>“Reservas exigem a antecedência mínima da aba Regras.”</span></li><li><code>C5</code> Antecedência mínima de reserva: 1 dia (aba Regras). — <span class='mono'>requisitos.xlsx:11</span> <span class='quote'>“A3=Antecedência mínima (dias) | B3=1”</span></li><li><code>C6</code> O zelador vê as reservas do dia por sala. — <span class='mono'>requisitos.xlsx:7</span> <span class='quote'>“O zelador vê as reservas do dia por sala.”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd>Objective, scope and outcome match the Requisitos and Regras tabs. Out-of-scope items for conflicts, cancellation and room count are marked as not in source or as Q3.</dd></dl><div class='children'><details class='wi t-feature' id='PBD-FEAT-X9WHCV7JCP8H' data-type='feature' data-verdict='pass' data-text='PBD-FEAT-X9WHCV7JCP8H F1 Reserva de sala pelo morador Capacidade: Registrar uma reserva de sala com data, horário e finalidade.
+Valor: O morador garante o uso da sala no horário desejado.
+Regras relacionadas
+O morador informa data, horário e finalidade'><summary><span class="badge tone-accent">feature</span><span class='mono'>F1</span><span class='title'>Reserva de sala pelo morador</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-FEAT-X9WHCV7JCP8H</p><h3>Descrição</h3><div class='rich'><p><strong>Capacidade</strong>: Registrar uma reserva de sala com data, horário e finalidade.</p><p><strong>Valor</strong>: O morador garante o uso da sala no horário desejado.</p><p><strong>Regras relacionadas</strong></p><ul><li>O morador informa data, horário e finalidade</li></ul></div><h3>Rastreabilidade</h3><ul><li><code>C1</code> O morador reserva uma sala informando data, horário e finalidade. — <span class='mono'>requisitos.xlsx:4</span> <span class='quote'>“O morador reserva uma sala informando data, horário e finalidade.”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd>Candidate sizing signal only: its single child US1 restates it. Not a defect.</dd></dl><div class='children'><details class='wi t-story' id='PBD-STORY-Q20JGVA1SZ6T' data-type='story' data-verdict='pass' data-text='PBD-STORY-Q20JGVA1SZ6T US1 Reservar sala informando data, horário e finalidade Eu como morador, gostaria que o sistema registrasse a reserva de uma sala com data, horário e finalidade, para usar a sala no horário desejado. CA-01 o morador quer reservar uma sala, informa data, horário e finalidade: a reserva fica registrada com data, horário e finalidade'><summary><span class="badge tone-accent">story</span><span class='mono'>US1</span><span class='title'>Reservar sala informando data, horário e finalidade</span><span class="badge tone-pass">pass</span><span class='mono'>1 AC</span></summary><div class='body'><p class='mono'>PBD-STORY-Q20JGVA1SZ6T</p><h3>Descrição</h3><div class='rich'><p><strong>Eu como</strong> morador, <strong>gostaria que</strong> o sistema registrasse a reserva de uma sala com data, horário e finalidade, <strong>para</strong> usar a sala no horário desejado.</p></div><h3>Critérios de aceite</h3><div class='rich tablewrap'><ul><li><strong>CA-01</strong> o morador quer reservar uma sala, informa data, horário e finalidade: a reserva fica registrada com data, horário e finalidade</li></ul></div><div class='tablewrap'><table><thead><tr><th>ID</th><th>status</th><th>review</th><th>notes</th><th>claims</th></tr></thead><tbody><tr><td>CA-01</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C1</td></tr></tbody></table></div><h3>Rastreabilidade</h3><ul><li><code>C1</code> O morador reserva uma sala informando data, horário e finalidade. — <span class='mono'>requisitos.xlsx:4</span> <span class='quote'>“O morador reserva uma sala informando data, horário e finalidade.”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>tasks</dt><dd>sufficient</dd><dt>notes</dt><dd></dd></dl><div class='tablewrap'><table><tbody><tr><td>estimable</td><td><span class="badge tone-neutral">unknown</span></td><td>no team sizing data</td></tr><tr><td>independent</td><td><span class="badge tone-neutral">supported</span></td><td>US2 to US4 depend on reservations existing; this is a process-order dependency and is acceptable.</td></tr><tr><td>negotiable</td><td><span class="badge tone-neutral">supported</span></td><td></td></tr><tr><td>small</td><td><span class="badge tone-neutral">supported</span></td><td>Single capability.</td></tr><tr><td>testable</td><td><span class="badge tone-neutral">supported</span></td><td>AC1 gives a concrete outcome.</td></tr><tr><td>valuable</td><td><span class="badge tone-neutral">supported</span></td><td>The reservation gives the resident the room at the chosen time.</td></tr></tbody></table></div><div class='children'><details class='wi t-task' id='PBD-TASK-Z1XX8757S132' data-type='task' data-verdict='pass' data-text='PBD-TASK-Z1XX8757S132 T1 Implementar formulário de reserva com data, horário e finalidade Objetivo: Incluir na reserva os campos de data, horário e finalidade.
+Atividades
+Incluir campos de data, horário e finalidade no formulário de reserva
+Salvar a reserva com os três valores
+Resultado esperado: Reserva guardada com data, horário e finalidade.
+Verificação: Executar AC1 e confirmar que a reserva guarda os três valores.'><summary><span class="badge tone-accent">task</span><span class='mono'>T1</span><span class='title'>Implementar formulário de reserva com data, horário e finalidade</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-TASK-Z1XX8757S132</p><h3>Descrição</h3><div class='rich'><p><strong>Objetivo</strong>: Incluir na reserva os campos de data, horário e finalidade.</p><p><strong>Atividades</strong></p><ul><li>Incluir campos de data, horário e finalidade no formulário de reserva</li><li>Salvar a reserva com os três valores</li></ul><p><strong>Resultado esperado</strong>: Reserva guardada com data, horário e finalidade.</p><p><strong>Verificação</strong>: Executar AC1 e confirmar que a reserva guarda os três valores.</p></div><h3>Rastreabilidade</h3><ul><li><code>C1</code> O morador reserva uma sala informando data, horário e finalidade. — <span class='mono'>requisitos.xlsx:4</span> <span class='quote'>“O morador reserva uma sala informando data, horário e finalidade.”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>proposal_justified</dd><dt>notes</dt><dd>Technical activity derived from US1. Verification via AC1 is clear.</dd></dl></div></details></div></div></details></div></div></details><details class='wi t-feature' id='PBD-FEAT-0GNQRNM44W13' data-type='feature' data-verdict='concern' data-text='PBD-FEAT-0GNQRNM44W13 F2 Regras de duração e antecedência Capacidade: Aplicar os limites de duração máxima e antecedência mínima definidos na aba Regras.
+Valor: As reservas seguem regras únicas e configuradas na planilha.
+Regras relacionadas
+Duração máxima = 4 horas (aba Regras)
+Antecedência mínima = 1 dia (aba Regras)'><summary><span class="badge tone-accent">feature</span><span class='mono'>F2</span><span class='title'>Regras de duração e antecedência</span><span class="badge tone-warn">concern</span></summary><div class='body'><p class='mono'>PBD-FEAT-0GNQRNM44W13</p><h3>Descrição</h3><div class='rich'><p><strong>Capacidade</strong>: Aplicar os limites de duração máxima e antecedência mínima definidos na aba Regras.</p><p><strong>Valor</strong>: As reservas seguem regras únicas e configuradas na planilha.</p><p><strong>Regras relacionadas</strong></p><ul><li>Duração máxima = 4 horas (aba Regras)</li><li>Antecedência mínima = 1 dia (aba Regras)</li></ul></div><h3>Rastreabilidade</h3><ul><li><code>C2</code> Uma reserva dura no máximo o limite de duração máxima definido na aba Regras. — <span class='mono'>requisitos.xlsx:5</span> <span class='quote'>“Uma reserva dura no máximo o limite da aba Regras.”</span></li><li><code>C3</code> Duração máxima de uma reserva: 4 horas (aba Regras). — <span class='mono'>requisitos.xlsx:10</span> <span class='quote'>“A2=Duração máxima (horas) | B2=4”</span></li><li><code>C4</code> Reservas exigem a antecedência mínima definida na aba Regras. — <span class='mono'>requisitos.xlsx:6</span> <span class='quote'>“Reservas exigem a antecedência mínima da aba Regras.”</span></li><li><code>C5</code> Antecedência mínima de reserva: 1 dia (aba Regras). — <span class='mono'>requisitos.xlsx:11</span> <span class='quote'>“A3=Antecedência mínima (dias) | B3=1”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>concern</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd>Rules fix the values at 4 horas and 1 dia while the source states both limits by reference to the Regras tab, and the epic says the rules are &#x27;configuradas na planilha&#x27;. Hard-coding in the feature contradicts that intent.</dd></dl><div class='children'><details class='wi t-story' id='PBD-STORY-7DM16A3VWNM4' data-type='story' data-verdict='concern' data-text='PBD-STORY-7DM16A3VWNM4 US2 Limitar a reserva à duração máxima Eu como morador, gostaria que o sistema recusasse reservas com duração acima de 4 horas, para manter o uso das salas dentro da duração máxima. CA-01 a reserva pedida tem duração maior que 4 horas, o morador confirma a reserva: a reserva não é aceita CA-02 a reserva pedida tem duração de exatamente 4 horas, o morador confirma a reserva: a reserva é aceita'><summary><span class="badge tone-accent">story</span><span class='mono'>US2</span><span class='title'>Limitar a reserva à duração máxima</span><span class="badge tone-warn">concern</span><span class='mono'>2 AC</span></summary><div class='body'><p class='mono'>PBD-STORY-7DM16A3VWNM4</p><h3>Descrição</h3><div class='rich'><p><strong>Eu como</strong> morador, <strong>gostaria que</strong> o sistema recusasse reservas com duração acima de 4 horas, <strong>para</strong> manter o uso das salas dentro da duração máxima.</p></div><h3>Critérios de aceite</h3><div class='rich tablewrap'><ul><li><strong>CA-01</strong> a reserva pedida tem duração maior que 4 horas, o morador confirma a reserva: a reserva não é aceita</li><li><strong>CA-02</strong> a reserva pedida tem duração de exatamente 4 horas, o morador confirma a reserva: a reserva é aceita</li></ul></div><div class='tablewrap'><table><thead><tr><th>ID</th><th>status</th><th>review</th><th>notes</th><th>claims</th></tr></thead><tbody><tr><td>CA-01</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C2, C3</td></tr><tr><td>CA-02</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C2, C3</td></tr></tbody></table></div><h3>Rastreabilidade</h3><ul><li><code>C2</code> Uma reserva dura no máximo o limite de duração máxima definido na aba Regras. — <span class='mono'>requisitos.xlsx:5</span> <span class='quote'>“Uma reserva dura no máximo o limite da aba Regras.”</span></li><li><code>C3</code> Duração máxima de uma reserva: 4 horas (aba Regras). — <span class='mono'>requisitos.xlsx:10</span> <span class='quote'>“A2=Duração máxima (horas) | B2=4”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>concern</dd><dt>source</dt><dd>supported</dd><dt>tasks</dt><dd>sufficient</dd><dt>notes</dt><dd>The want fixes the limit at 4 horas, while source R2 defines it as the Regras value and T2 reads it from Regras. The story goes stale if the Regras value changes. The value is also not yet confirmed against the hidden draft (Q2).</dd></dl><div class='tablewrap'><table><tbody><tr><td>estimable</td><td><span class="badge tone-neutral">unknown</span></td><td>no team sizing data</td></tr><tr><td>independent</td><td><span class="badge tone-neutral">supported</span></td><td>Depends on US1 by design.</td></tr><tr><td>negotiable</td><td><span class="badge tone-neutral">concern</span></td><td>The value is fixed in the want rather than referenced to Regras.</td></tr><tr><td>small</td><td><span class="badge tone-neutral">supported</span></td><td>One rule.</td></tr><tr><td>testable</td><td><span class="badge tone-neutral">supported</span></td><td>AC2 and AC3 test the boundary at 4 horas.</td></tr><tr><td>valuable</td><td><span class="badge tone-neutral">supported</span></td><td>Keeps room use within the limit.</td></tr></tbody></table></div><div class='children'><details class='wi t-task' id='PBD-TASK-9V70RS0K4THH' data-type='task' data-verdict='pass' data-text='PBD-TASK-9V70RS0K4THH T2 Aplicar duração máxima da aba Regras Objetivo: Ler o limite de duração máxima da aba Regras e recusar reservas acima dele.
+Atividades
+Ler o valor de duração máxima da aba Regras
+Recusar reserva com duração acima do limite
+Resultado esperado: Nenhuma reserva passa do limite configurado.
+Verificação: Executar AC2 e AC3; o valor de 4 horas depende da resposta à Q2.'><summary><span class="badge tone-accent">task</span><span class='mono'>T2</span><span class='title'>Aplicar duração máxima da aba Regras</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-TASK-9V70RS0K4THH</p><h3>Descrição</h3><div class='rich'><p><strong>Objetivo</strong>: Ler o limite de duração máxima da aba Regras e recusar reservas acima dele.</p><p><strong>Atividades</strong></p><ul><li>Ler o valor de duração máxima da aba Regras</li><li>Recusar reserva com duração acima do limite</li></ul><p><strong>Resultado esperado</strong>: Nenhuma reserva passa do limite configurado.</p><p><strong>Verificação</strong>: Executar AC2 e AC3; o valor de 4 horas depende da resposta à Q2.</p></div><h3>Rastreabilidade</h3><ul><li><code>C2</code> Uma reserva dura no máximo o limite de duração máxima definido na aba Regras. — <span class='mono'>requisitos.xlsx:5</span> <span class='quote'>“Uma reserva dura no máximo o limite da aba Regras.”</span></li><li><code>C3</code> Duração máxima de uma reserva: 4 horas (aba Regras). — <span class='mono'>requisitos.xlsx:10</span> <span class='quote'>“A2=Duração máxima (horas) | B2=4”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>proposal_justified</dd><dt>notes</dt><dd>Reads the limit from Regras as the source requires. Verification refers to Q2 as if the 4-hour value were uncertain; the value comes from Regras, so the reference is somewhat misleading but not wrong.</dd></dl></div></details></div></div></details><details class='wi t-story' id='PBD-STORY-6QZVZCR20YSQ' data-type='story' data-verdict='concern' data-text='PBD-STORY-6QZVZCR20YSQ US3 Exigir antecedência mínima da reserva Eu como morador, gostaria que o sistema recusasse reservas feitas com menos de 1 dia de antecedência, para garantir a antecedência mínima da reserva. CA-01 a reserva pedida começa com menos de 1 dia de antecedência, o morador confirma a reserva: a reserva não é aceita CA-02 A reserva feita com exatamente 1 dia de antecedência é aceita → a reserva é aceita'><summary><span class="badge tone-accent">story</span><span class='mono'>US3</span><span class='title'>Exigir antecedência mínima da reserva</span><span class="badge tone-warn">concern</span><span class='mono'>2 AC</span></summary><div class='body'><p class='mono'>PBD-STORY-6QZVZCR20YSQ</p><h3>Descrição</h3><div class='rich'><p><strong>Eu como</strong> morador, <strong>gostaria que</strong> o sistema recusasse reservas feitas com menos de 1 dia de antecedência, <strong>para</strong> garantir a antecedência mínima da reserva.</p></div><h3>Critérios de aceite</h3><div class='rich tablewrap'><ul><li><strong>CA-01</strong> a reserva pedida começa com menos de 1 dia de antecedência, o morador confirma a reserva: a reserva não é aceita</li><li><strong>CA-02</strong> A reserva feita com exatamente 1 dia de antecedência é aceita → a reserva é aceita</li></ul></div><div class='tablewrap'><table><thead><tr><th>ID</th><th>status</th><th>review</th><th>notes</th><th>claims</th></tr></thead><tbody><tr><td>CA-01</td><td>confirmed</td><td><span class="badge tone-warn">concern</span></td><td>Measures advance time from an undefined anchor (&#x27;começa com menos de 1 dia de antecedência&#x27;). The source gives only the minimum, not when it is counted from.</td><td>C4, C5</td></tr><tr><td>CA-02</td><td>proposed</td><td><span class="badge tone-warn">concern</span></td><td>Asserts that a booking made exactly 1 day ahead is accepted, which assumes an inclusive boundary and calendar-day counting. Both are open (Q1). It is proposed and must not be confirmed before Q1 is answered.</td><td>A fonte não define se a contagem é em dias corridos ou úteis (ver Q1).</td></tr></tbody></table></div><h3>Rastreabilidade</h3><ul><li><code>C4</code> Reservas exigem a antecedência mínima definida na aba Regras. — <span class='mono'>requisitos.xlsx:6</span> <span class='quote'>“Reservas exigem a antecedência mínima da aba Regras.”</span></li><li><code>C5</code> Antecedência mínima de reserva: 1 dia (aba Regras). — <span class='mono'>requisitos.xlsx:11</span> <span class='quote'>“A3=Antecedência mínima (dias) | B3=1”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>concern</dd><dt>source</dt><dd>supported</dd><dt>tasks</dt><dd>sufficient</dd><dt>notes</dt><dd>The criteria do not define the point from which advance time is measured (AC4 &#x27;começa com menos de 1 dia de antecedência&#x27;). Q1 covers calendar versus business days but not the anchor. The want also hard-codes 1 dia.</dd></dl><div class='tablewrap'><table><tbody><tr><td>estimable</td><td><span class="badge tone-neutral">unknown</span></td><td>no team sizing data</td></tr><tr><td>independent</td><td><span class="badge tone-neutral">supported</span></td><td>Depends on US1 by design.</td></tr><tr><td>negotiable</td><td><span class="badge tone-neutral">concern</span></td><td>The value is fixed in the want rather than referenced to Regras.</td></tr><tr><td>small</td><td><span class="badge tone-neutral">supported</span></td><td>One rule.</td></tr><tr><td>testable</td><td><span class="badge tone-neutral">concern</span></td><td>The anchor is undefined and AC5 depends on Q1.</td></tr><tr><td>valuable</td><td><span class="badge tone-neutral">supported</span></td><td>Gives time to prepare.</td></tr></tbody></table></div><div class='children'><details class='wi t-task' id='PBD-TASK-4S66248CA4T2' data-type='task' data-verdict='pass' data-text='PBD-TASK-4S66248CA4T2 T3 Aplicar antecedência mínima da aba Regras Objetivo: Ler a antecedência mínima da aba Regras e recusar reservas feitas com antecedência menor.
+Atividades
+Ler o valor de antecedência mínima da aba Regras
+Recusar reserva feita com antecedência menor que o mínimo
+Resultado esperado: Nenhuma reserva é aceita fora da antecedência mínima.
+Verificação: Executar AC4; AC5 depende da resposta à Q1.'><summary><span class="badge tone-accent">task</span><span class='mono'>T3</span><span class='title'>Aplicar antecedência mínima da aba Regras</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-TASK-4S66248CA4T2</p><h3>Descrição</h3><div class='rich'><p><strong>Objetivo</strong>: Ler a antecedência mínima da aba Regras e recusar reservas feitas com antecedência menor.</p><p><strong>Atividades</strong></p><ul><li>Ler o valor de antecedência mínima da aba Regras</li><li>Recusar reserva feita com antecedência menor que o mínimo</li></ul><p><strong>Resultado esperado</strong>: Nenhuma reserva é aceita fora da antecedência mínima.</p><p><strong>Verificação</strong>: Executar AC4; AC5 depende da resposta à Q1.</p></div><h3>Rastreabilidade</h3><ul><li><code>C4</code> Reservas exigem a antecedência mínima definida na aba Regras. — <span class='mono'>requisitos.xlsx:6</span> <span class='quote'>“Reservas exigem a antecedência mínima da aba Regras.”</span></li><li><code>C5</code> Antecedência mínima de reserva: 1 dia (aba Regras). — <span class='mono'>requisitos.xlsx:11</span> <span class='quote'>“A3=Antecedência mínima (dias) | B3=1”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>proposal_justified</dd><dt>notes</dt><dd>Reads the value from Regras. Verification correctly depends on Q1 for AC5.</dd></dl></div></details></div></div></details></div></div></details><details class='wi t-feature' id='PBD-FEAT-NSGN8D2RCEDX' data-type='feature' data-verdict='pass' data-text='PBD-FEAT-NSGN8D2RCEDX F3 Visão diária de reservas para o zelador Capacidade: Mostrar ao zelador as reservas do dia, separadas por sala.
+Valor: O zelador acompanha o uso das salas no dia.
+Regras relacionadas
+As reservas do dia são agrupadas por sala'><summary><span class="badge tone-accent">feature</span><span class='mono'>F3</span><span class='title'>Visão diária de reservas para o zelador</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-FEAT-NSGN8D2RCEDX</p><h3>Descrição</h3><div class='rich'><p><strong>Capacidade</strong>: Mostrar ao zelador as reservas do dia, separadas por sala.</p><p><strong>Valor</strong>: O zelador acompanha o uso das salas no dia.</p><p><strong>Regras relacionadas</strong></p><ul><li>As reservas do dia são agrupadas por sala</li></ul></div><h3>Rastreabilidade</h3><ul><li><code>C6</code> O zelador vê as reservas do dia por sala. — <span class='mono'>requisitos.xlsx:7</span> <span class='quote'>“O zelador vê as reservas do dia por sala.”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>notes</dt><dd>Candidate sizing signal only: its single child US4 restates it. Not a defect.</dd></dl><div class='children'><details class='wi t-story' id='PBD-STORY-557VG9Z0A8PM' data-type='story' data-verdict='pass' data-text='PBD-STORY-557VG9Z0A8PM US4 Ver reservas do dia por sala Eu como zelador, gostaria que o sistema mostrasse as reservas do dia separadas por sala, para acompanhar o uso das salas no dia. CA-01 há reservas marcadas para o dia, o zelador abre as reservas do dia: as reservas aparecem agrupadas por sala'><summary><span class="badge tone-accent">story</span><span class='mono'>US4</span><span class='title'>Ver reservas do dia por sala</span><span class="badge tone-pass">pass</span><span class='mono'>1 AC</span></summary><div class='body'><p class='mono'>PBD-STORY-557VG9Z0A8PM</p><h3>Descrição</h3><div class='rich'><p><strong>Eu como</strong> zelador, <strong>gostaria que</strong> o sistema mostrasse as reservas do dia separadas por sala, <strong>para</strong> acompanhar o uso das salas no dia.</p></div><h3>Critérios de aceite</h3><div class='rich tablewrap'><ul><li><strong>CA-01</strong> há reservas marcadas para o dia, o zelador abre as reservas do dia: as reservas aparecem agrupadas por sala</li></ul></div><div class='tablewrap'><table><thead><tr><th>ID</th><th>status</th><th>review</th><th>notes</th><th>claims</th></tr></thead><tbody><tr><td>CA-01</td><td>confirmed</td><td><span class="badge tone-pass">pass</span></td><td></td><td>C6</td></tr></tbody></table></div><h3>Rastreabilidade</h3><ul><li><code>C6</code> O zelador vê as reservas do dia por sala. — <span class='mono'>requisitos.xlsx:7</span> <span class='quote'>“O zelador vê as reservas do dia por sala.”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>supported</dd><dt>tasks</dt><dd>sufficient</dd><dt>notes</dt><dd></dd></dl><div class='tablewrap'><table><tbody><tr><td>estimable</td><td><span class="badge tone-neutral">unknown</span></td><td>no team sizing data</td></tr><tr><td>independent</td><td><span class="badge tone-neutral">supported</span></td><td>Depends on US1 by design.</td></tr><tr><td>negotiable</td><td><span class="badge tone-neutral">supported</span></td><td></td></tr><tr><td>small</td><td><span class="badge tone-neutral">supported</span></td><td></td></tr><tr><td>testable</td><td><span class="badge tone-neutral">supported</span></td><td>AC6 is concrete.</td></tr><tr><td>valuable</td><td><span class="badge tone-neutral">supported</span></td><td>Caretaker sees daily use per room.</td></tr></tbody></table></div><div class='children'><details class='wi t-task' id='PBD-TASK-HW2KARGF57C7' data-type='task' data-verdict='pass' data-text='PBD-TASK-HW2KARGF57C7 T4 Montar visão diária de reservas por sala Objetivo: Listar as reservas do dia agrupadas por sala para o zelador.
+Atividades
+Filtrar as reservas do dia
+Agrupar as reservas por sala
+Resultado esperado: Zelador vê as reservas do dia por sala.
+Verificação: Executar AC6.'><summary><span class="badge tone-accent">task</span><span class='mono'>T4</span><span class='title'>Montar visão diária de reservas por sala</span><span class="badge tone-pass">pass</span></summary><div class='body'><p class='mono'>PBD-TASK-HW2KARGF57C7</p><h3>Descrição</h3><div class='rich'><p><strong>Objetivo</strong>: Listar as reservas do dia agrupadas por sala para o zelador.</p><p><strong>Atividades</strong></p><ul><li>Filtrar as reservas do dia</li><li>Agrupar as reservas por sala</li></ul><p><strong>Resultado esperado</strong>: Zelador vê as reservas do dia por sala.</p><p><strong>Verificação</strong>: Executar AC6.</p></div><h3>Rastreabilidade</h3><ul><li><code>C6</code> O zelador vê as reservas do dia por sala. — <span class='mono'>requisitos.xlsx:7</span> <span class='quote'>“O zelador vê as reservas do dia por sala.”</span></li></ul><h3>Revisão independente</h3><dl class='kv'><dt>verdict</dt><dd>pass</dd><dt>source</dt><dd>proposal_justified</dd><dt>notes</dt><dd>Verification via AC6 is clear.</dd></dl></div></details></div></div></details></div></div></details></div></div></details></div>
+<h3>Dependências</h3><ul><li>US1 → predecessor → US2: As regras de duração se aplicam às reservas criadas pela história de reserva. (proposed)</li><li>US1 → predecessor → US3: As regras de antecedência se aplicam às reservas criadas pela história de reserva. (proposed)</li><li>US1 → predecessor → US4: A visão do zelador mostra reservas criadas pela história de reserva. (proposed)</li></ul></section>
+<section id="requirements"><h2>Requisitos</h2><h3>Claims reconciliadas</h3><div class="tablewrap"><table>
+<thead><tr><th>key</th><th>claim</th><th>category</th><th>Status</th><th>covered by</th><th>rationale</th></tr></thead>
+<tbody><tr><td><code>C1</code></td><td>O morador reserva uma sala informando data, horário e finalidade.</td><td>functional</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC1, T1, F1</td><td>Reserva com data, horário e finalidade coberta por US1, AC1 e T1.</td></tr><tr><td><code>C2</code></td><td>Uma reserva dura no máximo o limite de duração máxima definido na aba Regras.</td><td>constraint</td><td><span class="badge tone-pass">COVERED</span></td><td>US2, AC2, AC3, T2</td><td>Limite de duração coberto por US2, AC2, AC3 e T2.</td></tr><tr><td><code>C3</code></td><td>Duração máxima de uma reserva: 4 horas (aba Regras).</td><td>data</td><td><span class="badge tone-warn">PARTIALLY_COVERED</span></td><td>US2, AC2, AC3, T2</td><td>Valor de 4 horas coberto pela aba Regras; o valor conflitante da aba oculta depende da Q2.</td></tr><tr><td><code>C4</code></td><td>Reservas exigem a antecedência mínima definida na aba Regras.</td><td>constraint</td><td><span class="badge tone-pass">COVERED</span></td><td>US3, AC4, T3</td><td>Exigência de antecedência mínima coberta por US3, AC4 e T3.</td></tr><tr><td><code>C5</code></td><td>Antecedência mínima de reserva: 1 dia (aba Regras).</td><td>data</td><td><span class="badge tone-warn">PARTIALLY_COVERED</span></td><td>US3, AC4, T3</td><td>Valor de 1 dia coberto; a unidade (dias corridos ou úteis) depende da Q1.</td></tr><tr><td><code>C6</code></td><td>O zelador vê as reservas do dia por sala.</td><td>functional</td><td><span class="badge tone-pass">COVERED</span></td><td>US4, AC6, T4, F3</td><td>Visão diária por sala coberta por US4, AC6 e T4.</td></tr></tbody></table></div><h3>Obrigações do inventário independente</h3><div class="tablewrap"><table>
+<thead><tr><th>key</th><th>obligation</th><th>locator</th><th>Status</th><th>covered by</th><th>rationale</th></tr></thead>
+<tbody><tr><td><code>O1</code></td><td>Morador reserva uma sala informando data, horario e finalidade</td><td class='mono'>requisitos.xlsx:4</td><td><span class="badge tone-pass">COVERED</span></td><td>US1, AC1, T1, F1</td><td>US1, AC1 and T1 cover the reservation with date, time and purpose.</td></tr><tr><td><code>O2</code></td><td>Uma reserva dura no maximo o limite da aba Regras</td><td class='mono'>requisitos.xlsx:5</td><td><span class="badge tone-pass">COVERED</span></td><td>US2, AC2, AC3, T2, F2</td><td>US2 with AC2 and AC3 refuses durations above the limit and accepts the limit itself; T2 reads the limit from Regras. The hard-coded value is a separate finding.</td></tr><tr><td><code>O3</code></td><td>Reservas exigem a antecedencia minima da aba Regras</td><td class='mono'>requisitos.xlsx:6</td><td><span class="badge tone-pass">COVERED</span></td><td>US3, AC4, T3, F2</td><td>US3, AC4 and T3 cover the minimum advance period. The anchor for measuring advance time is not defined by the source (see finding).</td></tr><tr><td><code>O4</code></td><td>Zelador ve as reservas do dia por sala</td><td class='mono'>requisitos.xlsx:7</td><td><span class="badge tone-pass">COVERED</span></td><td>US4, AC6, T4, F3</td><td>US4, AC6 and T4 cover the daily view grouped by room.</td></tr><tr><td><code>O5</code></td><td>Regras: duracao maxima de 4 horas</td><td class='mono'>requisitos.xlsx:10</td><td><span class="badge tone-pass">COVERED</span></td><td>US2, AC2, AC3, T2</td><td>The active value 4 hours from the Regras tab is applied in the design. The conflicting hidden draft is handled by O8.</td></tr><tr><td><code>O6</code></td><td>Regras: antecedencia minima de 1 dia</td><td class='mono'>requisitos.xlsx:11</td><td><span class="badge tone-pass">COVERED</span></td><td>US3, AC4, T3</td><td>The 1-day value is applied. Whether the unit is calendar or business days is open (Q1) and does not remove the obligation.</td></tr><tr><td><code>O7</code></td><td>Regras: salas disponiveis = 3, given by a formula that references a sheet &#x27;Salas&#x27; not present in the workbook</td><td class='mono'>requisitos.xlsx:12</td><td><span class="badge tone-info">QUESTION_REQUIRED</span></td><td>E1</td><td>The value cannot be verified from the file: the Salas sheet is absent and the formula result is cached. The design keeps it out of scope and asks Q3. This is correct until the owner answers.</td></tr><tr><td><code>O8</code></td><td>Hidden sheet Rascunho proposes a 8-hour maximum and is marked as a discarded draft</td><td class='mono'>requisitos.xlsx:14</td><td><span class="badge tone-info">QUESTION_REQUIRED</span></td><td></td><td>The sheet is hidden and its row 15 says &#x27;rascunho descartado&#x27;. The 8-hour value is correctly not used. Q2 remains open for the owner to confirm that the 4-hour value in Regras is the one in force.</td></tr><tr><td><code>O9</code></td><td>Priority column for R1 to R4 (Alta, Alta, Média, Média)</td><td class='mono'>requisitos.xlsx:4</td><td><span class="badge tone-fail">NOT_COVERED</span></td><td></td><td>The Prioridade column is not carried into any epic, feature, story or task and no open question records it. The backlog format may not have a priority field, so this is recorded as a candidate concern.</td></tr></tbody></table></div></section>
+<section id="findings"><h2>Achados</h2><div class="grid2"><div class='card finding sev-medium'><p><span class="badge tone-warn">medium</span> <span class="badge tone-neutral">candidate_concern</span> <span class="badge tone-muted">G04</span></p><dl class='kv'><dt>Esperado</dt><dd>Source R2 and R3 define the limits by reference to the Regras tab, so they are configurable values.</dd><dt>Atual</dt><dd>F2, US2, US3, AC2, AC3 and AC4 hard-code 4 horas and 1 dia in their wording, while T2 and T3 read them from Regras.</dd><dt>Por quê</dt><dd>The stories and criteria can contradict the configured value the tasks use.</dd><dt>Impacto</dt><dd>A change in Regras leaves the stories and criteria describing an outdated rule.</dd><dt>Recomendação</dt><dd>Refer to the Regras value in the want and rule text, keeping the concrete values only as examples in the criteria, with the source of the value stated.</dd><dt>IDs</dt><dd>AC2, AC4, AC3, F2, US3, US2</dd></dl></div><div class='card finding sev-medium'><p><span class="badge tone-warn">medium</span> <span class="badge tone-neutral">candidate_concern</span> <span class="badge tone-muted">G06</span></p><dl class='kv'><dt>Esperado</dt><dd>A proposed boundary criterion should not assume an answer to an open question.</dd><dt>Atual</dt><dd>AC5 accepts a booking exactly 1 day ahead while Q1 (calendar versus business days) is open.</dd><dt>Por quê</dt><dd>The inclusive boundary and day count are unresolved.</dd><dt>Impacto</dt><dd>The accepted booking window may differ from the owner&#x27;s intent by a day.</dd><dt>Recomendação</dt><dd>Keep AC5 explicitly conditional on Q1, or present both calendar and business-day variants.</dd><dt>IDs</dt><dd>AC5, US3</dd></dl></div><div class='card finding sev-medium'><p><span class="badge tone-warn">medium</span> <span class="badge tone-neutral">candidate_concern</span> <span class="badge tone-muted">G06</span></p><dl class='kv'><dt>Esperado</dt><dd>A rule that measures advance time should state the reference point.</dd><dt>Atual</dt><dd>AC4 measures &#x27;antecedência&#x27; from an undefined point. Q1 addresses the unit but not the anchor.</dd><dt>Por quê</dt><dd>Underspecified measurement.</dd><dt>Impacto</dt><dd>Different implementers may measure from booking time or from submission and disagree on the boundary.</dd><dt>Recomendação</dt><dd>Add the reference point to Q1 or to a new question and to AC4&#x27;s condition.</dd><dt>IDs</dt><dd>AC4, US3, T3</dd></dl></div><div class='card finding sev-low'><p><span class="badge tone-info">low</span> <span class="badge tone-neutral">candidate_concern</span> <span class="badge tone-muted">G02</span></p><dl class='kv'><dt>Esperado</dt><dd>Source priority values (Alta, Alta, Média, Média for R1 to R4) are either carried or deliberately dropped.</dd><dt>Atual</dt><dd>No epic, feature, story or task records the Prioridade column, and no open question mentions it.</dd><dt>Por quê</dt><dd>Source metadata is silently lost.</dd><dt>Impacto</dt><dd>The owner cannot see the priority the source assigns to each requirement.</dd><dt>Recomendação</dt><dd>Carry the priority as metadata where the format allows, or record an explicit decision to drop it.</dd><dt>IDs</dt><dd>E1, F3, F1, US4, US1</dd></dl></div><div class='card finding sev-low'><p><span class="badge tone-info">low</span> <span class="badge tone-neutral">candidate_concern</span> <span class="badge tone-muted">G02</span></p><dl class='kv'><dt>Esperado</dt><dd>The hidden draft marked &#x27;rascunho descartado&#x27; should be settled once.</dd><dt>Atual</dt><dd>The design excludes the 8-hour draft value but Q2 still offers &#x27;Usar 8 horas se o rascunho for válido&#x27;, which the source says is discarded.</dd><dt>Por quê</dt><dd>The question offers an option the source already rejects.</dd><dt>Impacto</dt><dd>Minor: the owner may be asked to reconsider a discarded value.</dd><dt>Recomendação</dt><dd>Close Q2 with a note that the draft is discarded, or keep the question only if the owner must confirm it.</dd><dt>IDs</dt><dd>F2, US2</dd></dl></div><div class='card finding sev-low'><p><span class="badge tone-info">low</span> <span class="badge tone-neutral">candidate_concern</span> <span class="badge tone-muted">G09</span></p><dl class='kv'><dt>Esperado</dt><dd>Each feature should add content beyond its only child story.</dd><dt>Atual</dt><dd>F1 and US1, and F3 and US4, restate the same capability with a single child.</dd><dt>Por quê</dt><dd>Sizing signal: feature whose only child restates it.</dd><dt>Impacto</dt><dd>Duplicate entries increase review load.</dd><dt>Recomendação</dt><dd>Collapse F1 into US1 or F3 into US4, or give each feature a distinct capability statement.</dd><dt>IDs</dt><dd>F3, F1, US4, US1</dd></dl></div></div></section>
+<section id="questions"><h2>Perguntas</h2><div class="card"><ul><li>A antecedência mínima de 1 dia é contada em dias corridos ou em dias úteis? — <em>Define a contagem da regra de antecedência e o critério AC5.</em> (C5, US3)</li><li>A aba oculta Rascunho indica duração máxima de 8 horas e está marcada como descartada. Confirmar que o valor vigente é 4 horas da aba Regras. — <em>Evita usar um valor descartado na regra de duração máxima.</em> (C3, US2)</li><li>O número de salas disponíveis (3) vem de uma fórmula que referencia a aba Salas, inexistente no arquivo. Qual é o número real de salas? — <em>A quantidade de salas não é verificável no arquivo e não foi usada como regra.</em> (E1)</li></ul></div></section>
+<section id="gates"><h2>Gates de qualidade</h2><div class="tablewrap"><table><thead><tr><th>gate</th><th>Status</th>
+<th>Verificação</th><th>Motivo</th><th>Denominador</th></tr></thead><tbody><tr><td><code>G01</code> Source Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>every inventoried member was read and re-read by the reviewer</td><td>1/1 (independent_inventory)</td></tr><tr><td><code>G02</code> Requirements Coverage</td><td><span class="badge tone-fail">FAIL</span></td><td>—</td><td>coverage gaps in independent inventory: {&#x27;covered&#x27;: 6, &#x27;question_required&#x27;: 2, &#x27;not_covered&#x27;: 1}</td><td>9/9 (independent_inventory)</td></tr><tr><td><code>G03</code> Hierarchy Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>hierarchy invariants hold</td><td>—</td></tr><tr><td><code>G04</code> Traceability</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>every item and criterion traces to claims or a justified proposal</td><td>—</td></tr><tr><td><code>G05</code> Story Quality</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>4 stories reviewed with INVEST</td><td>—</td></tr><tr><td><code>G06</code> Acceptance Quality</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>6 criteria reviewed individually</td><td>—</td></tr><tr><td><code>G07</code> Task Coverage</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>task sufficiency reviewed per story</td><td>—</td></tr><tr><td><code>G08</code> Dependency Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>3 relations valid and reviewed</td><td>—</td></tr><tr><td><code>G09</code> Scope Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>no unsupported scope; exclusions and conflicts recorded</td><td>—</td></tr><tr><td><code>G10</code> Planning Integrity</td><td><span class="badge tone-muted">NOT_APPLICABLE</span></td><td>—</td><td>no sprint planning requested; generated fields contain no assignments, dates or completed work (enforced at design submission)</td><td>—</td></tr><tr><td><code>G11</code> Artifact Integrity</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>exports deterministic and consistent across formats</td><td>—</td></tr><tr><td><code>G12</code> Publication Safety</td><td><span class="badge tone-muted">NOT_APPLICABLE</span></td><td>—</td><td>no publication requested; a local package is not an authorization to publish</td><td>—</td></tr><tr><td><code>G13</code> Independent Review</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>separate reviewer re-read sources (9 obligations) and judged 18 items/criteria</td><td>—</td></tr><tr><td><code>G14</code> Semantic Duplication</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>duplicate candidates assessed</td><td>—</td></tr><tr><td><code>G15</code> Change Safety</td><td><span class="badge tone-muted">NOT_APPLICABLE</span></td><td>—</td><td>no decisions or prior versions in this run</td><td>—</td></tr><tr><td><code>G16</code> Privacy and Offline Boundary</td><td><span class="badge tone-pass">PASS</span></td><td>verified</td><td>outputs privacy-clean; run made zero remote calls</td><td>—</td></tr><tr><td><code>G17</code> Target Compatibility</td><td><span class="badge tone-blocked">BLOCKED</span></td><td>—</td><td>target compatibility needs a discovered or mock target schema; only unverified default profile azure-scrum was used</td><td>—</td></tr><tr><td><code>G18</code> Round-trip Fidelity</td><td><span class="badge tone-not_run">NOT_RUN</span></td><td>—</td><td>round-trip against a tracker (mock or live) belongs to M3; live qualification requires separate authorization</td><td>—</td></tr></tbody></table></div></section>
+<section id="sources"><h2>Fontes</h2><div class="grid2"><div class='card'><h3>requisitos.xlsx <span class="badge tone-accent">functional</span> <span class="badge tone-pass">complete</span></h3><p class='mono'>PBD-SRC-AZNESFVTM1HG · sha256:7b6f9f5e5181ef6b7b00a009393246f0120f0a81d05e7afd1f490b21016c1c85</p><ul><li>requisitos.xlsx — read</li></ul></div></div>
+<h3>Limitações</h3><p class="notice">Nenhum.</p></section>
+<section id='azure'><h2>Pacote Azure</h2><p class='notice'>Local package only. Not a publication and not an approval. Proposed fields are never written. profile: azure-scrum (verified: False)</p><details class='card'><summary><code>E1</code> Epic</summary><div class='tablewrap'><table><tbody><tr><th>System.Description</th><td><div class='rich'><p><strong>Objetivo</strong>: Permitir que moradores reservem salas comunitárias dentro das regras de duração e antecedência, e que o zelador acompanhe as reservas do dia.</p><p><strong>Contexto</strong>: Planilha requisitos.xlsx: abas Requisitos e Regras; a aba oculta Rascunho está marcada como descartada.</p><p><strong>No escopo</strong></p><ul><li>Reserva pelo morador com data, horário e finalidade</li><li>Duração máxima da reserva conforme a aba Regras</li><li>Antecedência mínima conforme a aba Regras</li><li>Visão diária de reservas por sala para o zelador</li></ul><p><strong>Fora do escopo</strong></p><ul><li>Conflitos de horário e cancelamento (não descritos na fonte)</li><li>Quantidade real de salas (ver Q3)</li></ul><p><strong>Resultado esperado</strong>: Reservas válidas ficam registradas e o zelador vê as reservas do dia por sala.</p></div></td></tr><tr><th>System.Title</th><td><div class='rich'>Reserva de salas comunitárias</div></td></tr></tbody></table></div></details><details class='card'><summary><code>F1</code> Feature</summary><div class='tablewrap'><table><tbody><tr><th>System.Description</th><td><div class='rich'><p><strong>Capacidade</strong>: Registrar uma reserva de sala com data, horário e finalidade.</p><p><strong>Valor</strong>: O morador garante o uso da sala no horário desejado.</p><p><strong>Regras relacionadas</strong></p><ul><li>O morador informa data, horário e finalidade</li></ul></div></td></tr><tr><th>System.Title</th><td><div class='rich'>Reserva de sala pelo morador</div></td></tr></tbody></table></div></details><details class='card'><summary><code>F2</code> Feature</summary><div class='tablewrap'><table><tbody><tr><th>System.Description</th><td><div class='rich'><p><strong>Capacidade</strong>: Aplicar os limites de duração máxima e antecedência mínima definidos na aba Regras.</p><p><strong>Valor</strong>: As reservas seguem regras únicas e configuradas na planilha.</p><p><strong>Regras relacionadas</strong></p><ul><li>Duração máxima = 4 horas (aba Regras)</li><li>Antecedência mínima = 1 dia (aba Regras)</li></ul></div></td></tr><tr><th>System.Title</th><td><div class='rich'>Regras de duração e antecedência</div></td></tr></tbody></table></div></details><details class='card'><summary><code>F3</code> Feature</summary><div class='tablewrap'><table><tbody><tr><th>System.Description</th><td><div class='rich'><p><strong>Capacidade</strong>: Mostrar ao zelador as reservas do dia, separadas por sala.</p><p><strong>Valor</strong>: O zelador acompanha o uso das salas no dia.</p><p><strong>Regras relacionadas</strong></p><ul><li>As reservas do dia são agrupadas por sala</li></ul></div></td></tr><tr><th>System.Title</th><td><div class='rich'>Visão diária de reservas para o zelador</div></td></tr></tbody></table></div></details><details class='card'><summary><code>US1</code> Product Backlog Item</summary><div class='tablewrap'><table><tbody><tr><th>Microsoft.VSTS.Common.AcceptanceCriteria</th><td><div class='rich'><ul><li><strong>CA-01</strong> o morador quer reservar uma sala, informa data, horário e finalidade: a reserva fica registrada com data, horário e finalidade</li></ul></div></td></tr><tr><th>System.Description</th><td><div class='rich'><p><strong>Eu como</strong> morador, <strong>gostaria que</strong> o sistema registrasse a reserva de uma sala com data, horário e finalidade, <strong>para</strong> usar a sala no horário desejado.</p></div></td></tr><tr><th>System.Title</th><td><div class='rich'>Reservar sala informando data, horário e finalidade</div></td></tr></tbody></table></div></details><details class='card'><summary><code>US2</code> Product Backlog Item</summary><div class='tablewrap'><table><tbody><tr><th>Microsoft.VSTS.Common.AcceptanceCriteria</th><td><div class='rich'><ul><li><strong>CA-01</strong> a reserva pedida tem duração maior que 4 horas, o morador confirma a reserva: a reserva não é aceita</li><li><strong>CA-02</strong> a reserva pedida tem duração de exatamente 4 horas, o morador confirma a reserva: a reserva é aceita</li></ul></div></td></tr><tr><th>System.Description</th><td><div class='rich'><p><strong>Eu como</strong> morador, <strong>gostaria que</strong> o sistema recusasse reservas com duração acima de 4 horas, <strong>para</strong> manter o uso das salas dentro da duração máxima.</p></div></td></tr><tr><th>System.Title</th><td><div class='rich'>Limitar a reserva à duração máxima</div></td></tr></tbody></table></div></details><details class='card'><summary><code>US3</code> Product Backlog Item</summary><div class='tablewrap'><table><tbody><tr><th>Microsoft.VSTS.Common.AcceptanceCriteria</th><td><div class='rich'><ul><li><strong>CA-01</strong> a reserva pedida começa com menos de 1 dia de antecedência, o morador confirma a reserva: a reserva não é aceita</li><li><strong>CA-02</strong> A reserva feita com exatamente 1 dia de antecedência é aceita → a reserva é aceita</li></ul></div></td></tr><tr><th>System.Description</th><td><div class='rich'><p><strong>Eu como</strong> morador, <strong>gostaria que</strong> o sistema recusasse reservas feitas com menos de 1 dia de antecedência, <strong>para</strong> garantir a antecedência mínima da reserva.</p></div></td></tr><tr><th>System.Title</th><td><div class='rich'>Exigir antecedência mínima da reserva</div></td></tr></tbody></table></div></details><details class='card'><summary><code>US4</code> Product Backlog Item</summary><div class='tablewrap'><table><tbody><tr><th>Microsoft.VSTS.Common.AcceptanceCriteria</th><td><div class='rich'><ul><li><strong>CA-01</strong> há reservas marcadas para o dia, o zelador abre as reservas do dia: as reservas aparecem agrupadas por sala</li></ul></div></td></tr><tr><th>System.Description</th><td><div class='rich'><p><strong>Eu como</strong> zelador, <strong>gostaria que</strong> o sistema mostrasse as reservas do dia separadas por sala, <strong>para</strong> acompanhar o uso das salas no dia.</p></div></td></tr><tr><th>System.Title</th><td><div class='rich'>Ver reservas do dia por sala</div></td></tr></tbody></table></div></details><details class='card'><summary><code>T1</code> Task</summary><div class='tablewrap'><table><tbody><tr><th>System.Description</th><td><div class='rich'><p><strong>Objetivo</strong>: Incluir na reserva os campos de data, horário e finalidade.</p><p><strong>Atividades</strong></p><ul><li>Incluir campos de data, horário e finalidade no formulário de reserva</li><li>Salvar a reserva com os três valores</li></ul><p><strong>Resultado esperado</strong>: Reserva guardada com data, horário e finalidade.</p><p><strong>Verificação</strong>: Executar AC1 e confirmar que a reserva guarda os três valores.</p></div></td></tr><tr><th>System.Title</th><td><div class='rich'>Implementar formulário de reserva com data, horário e finalidade</div></td></tr></tbody></table></div></details><details class='card'><summary><code>T2</code> Task</summary><div class='tablewrap'><table><tbody><tr><th>System.Description</th><td><div class='rich'><p><strong>Objetivo</strong>: Ler o limite de duração máxima da aba Regras e recusar reservas acima dele.</p><p><strong>Atividades</strong></p><ul><li>Ler o valor de duração máxima da aba Regras</li><li>Recusar reserva com duração acima do limite</li></ul><p><strong>Resultado esperado</strong>: Nenhuma reserva passa do limite configurado.</p><p><strong>Verificação</strong>: Executar AC2 e AC3; o valor de 4 horas depende da resposta à Q2.</p></div></td></tr><tr><th>System.Title</th><td><div class='rich'>Aplicar duração máxima da aba Regras</div></td></tr></tbody></table></div></details><details class='card'><summary><code>T3</code> Task</summary><div class='tablewrap'><table><tbody><tr><th>System.Description</th><td><div class='rich'><p><strong>Objetivo</strong>: Ler a antecedência mínima da aba Regras e recusar reservas feitas com antecedência menor.</p><p><strong>Atividades</strong></p><ul><li>Ler o valor de antecedência mínima da aba Regras</li><li>Recusar reserva feita com antecedência menor que o mínimo</li></ul><p><strong>Resultado esperado</strong>: Nenhuma reserva é aceita fora da antecedência mínima.</p><p><strong>Verificação</strong>: Executar AC4; AC5 depende da resposta à Q1.</p></div></td></tr><tr><th>System.Title</th><td><div class='rich'>Aplicar antecedência mínima da aba Regras</div></td></tr></tbody></table></div></details><details class='card'><summary><code>T4</code> Task</summary><div class='tablewrap'><table><tbody><tr><th>System.Description</th><td><div class='rich'><p><strong>Objetivo</strong>: Listar as reservas do dia agrupadas por sala para o zelador.</p><p><strong>Atividades</strong></p><ul><li>Filtrar as reservas do dia</li><li>Agrupar as reservas por sala</li></ul><p><strong>Resultado esperado</strong>: Zelador vê as reservas do dia por sala.</p><p><strong>Verificação</strong>: Executar AC6.</p></div></td></tr><tr><th>System.Title</th><td><div class='rich'>Montar visão diária de reservas por sala</div></td></tr></tbody></table></div></details><p class="notice">Nenhum.</p></section>
+<section id="data"><h2>Dados</h2><details class="card"><summary>JSON canônico completo</summary>
+<pre class="json">{
+ &quot;claims&quot;: [
+  {
+   &quot;category&quot;: &quot;functional&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-Q20JGVA1SZ6T&quot;,
+     &quot;PBD-AC-47GY8SQNCXQC&quot;,
+     &quot;PBD-TASK-Z1XX8757S132&quot;,
+     &quot;PBD-FEAT-X9WHCV7JCP8H&quot;
+    ],
+    &quot;rationale&quot;: &quot;Reserva com data, horário e finalidade coberta por US1, AC1 e T1.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 4,
+      &quot;line_start&quot;: 4,
+      &quot;member&quot;: &quot;requisitos.xlsx&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:3c14f166d70ade453c2acd13fe543a3ad0577d41585c0ab444c751ece1c350a0&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-AZNESFVTM1HG&quot;,
+      &quot;source_version&quot;: &quot;7b6f9f5e5181ef6b&quot;,
+      &quot;table&quot;: &quot;Requisitos&quot;
+     },
+     &quot;summary&quot;: &quot;O morador reserva uma sala informando data, horário e finalidade.&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-BJ699MGJG0BJ&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;O morador reserva uma sala informando data, horário e finalidade.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;constraint&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-7DM16A3VWNM4&quot;,
+     &quot;PBD-AC-B0Q1KBYVGQVZ&quot;,
+     &quot;PBD-AC-PC31ZZ1HM2ZT&quot;,
+     &quot;PBD-TASK-9V70RS0K4THH&quot;
+    ],
+    &quot;rationale&quot;: &quot;Limite de duração coberto por US2, AC2, AC3 e T2.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 5,
+      &quot;line_start&quot;: 5,
+      &quot;member&quot;: &quot;requisitos.xlsx&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:82033925606a2dbcfcc8493bf4516265b85729388036b79d5aa070426f707f7b&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-AZNESFVTM1HG&quot;,
+      &quot;source_version&quot;: &quot;7b6f9f5e5181ef6b&quot;,
+      &quot;table&quot;: &quot;Requisitos&quot;
+     },
+     &quot;summary&quot;: &quot;Uma reserva dura no máximo o limite da aba Regras.&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-E8PRXWJA7EJ3&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;Uma reserva dura no máximo o limite de duração máxima definido na aba Regras.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;data&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-7DM16A3VWNM4&quot;,
+     &quot;PBD-AC-B0Q1KBYVGQVZ&quot;,
+     &quot;PBD-AC-PC31ZZ1HM2ZT&quot;,
+     &quot;PBD-TASK-9V70RS0K4THH&quot;
+    ],
+    &quot;rationale&quot;: &quot;Valor de 4 horas coberto pela aba Regras; o valor conflitante da aba oculta depende da Q2.&quot;,
+    &quot;status&quot;: &quot;PARTIALLY_COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 10,
+      &quot;line_start&quot;: 10,
+      &quot;member&quot;: &quot;requisitos.xlsx&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:0b534a4d03fceda963abdfecf35b2b42823cbb1a411ca21dda7f02963cb84d56&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-AZNESFVTM1HG&quot;,
+      &quot;source_version&quot;: &quot;7b6f9f5e5181ef6b&quot;,
+      &quot;table&quot;: &quot;Regras&quot;
+     },
+     &quot;summary&quot;: &quot;A2=Duração máxima (horas) | B2=4&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-4CAV124AFGBX&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;Duração máxima de uma reserva: 4 horas (aba Regras).&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;constraint&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-6QZVZCR20YSQ&quot;,
+     &quot;PBD-AC-C1PE24B0344Z&quot;,
+     &quot;PBD-TASK-4S66248CA4T2&quot;
+    ],
+    &quot;rationale&quot;: &quot;Exigência de antecedência mínima coberta por US3, AC4 e T3.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 6,
+      &quot;line_start&quot;: 6,
+      &quot;member&quot;: &quot;requisitos.xlsx&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:a0b8ef92c88952aae6759e832bde0c422520ff95449324de6cd08faa0e7763a8&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-AZNESFVTM1HG&quot;,
+      &quot;source_version&quot;: &quot;7b6f9f5e5181ef6b&quot;,
+      &quot;table&quot;: &quot;Requisitos&quot;
+     },
+     &quot;summary&quot;: &quot;Reservas exigem a antecedência mínima da aba Regras.&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-A3Z5ECDXVY33&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;Reservas exigem a antecedência mínima definida na aba Regras.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;data&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-6QZVZCR20YSQ&quot;,
+     &quot;PBD-AC-C1PE24B0344Z&quot;,
+     &quot;PBD-TASK-4S66248CA4T2&quot;
+    ],
+    &quot;rationale&quot;: &quot;Valor de 1 dia coberto; a unidade (dias corridos ou úteis) depende da Q1.&quot;,
+    &quot;status&quot;: &quot;PARTIALLY_COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 11,
+      &quot;line_start&quot;: 11,
+      &quot;member&quot;: &quot;requisitos.xlsx&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:55e1969a55c4055900808eeafab01a843c5eb4b763af91b109f0165bf99d2e69&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-AZNESFVTM1HG&quot;,
+      &quot;source_version&quot;: &quot;7b6f9f5e5181ef6b&quot;,
+      &quot;table&quot;: &quot;Regras&quot;
+     },
+     &quot;summary&quot;: &quot;A3=Antecedência mínima (dias) | B3=1&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-S84Q659N4PWJ&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;Antecedência mínima de reserva: 1 dia (aba Regras).&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;,
+    &quot;note&quot;: &quot;Unidade e forma de contagem (dias corridos ou úteis) não definidas na fonte.&quot;
+   }
+  },
+  {
+   &quot;category&quot;: &quot;functional&quot;,
+   &quot;disposition&quot;: {
+    &quot;covered_by&quot;: [
+     &quot;PBD-STORY-557VG9Z0A8PM&quot;,
+     &quot;PBD-AC-KM24D02M95PC&quot;,
+     &quot;PBD-TASK-HW2KARGF57C7&quot;,
+     &quot;PBD-FEAT-NSGN8D2RCEDX&quot;
+    ],
+    &quot;rationale&quot;: &quot;Visão diária por sala coberta por US4, AC6 e T4.&quot;,
+    &quot;status&quot;: &quot;COVERED&quot;
+   },
+   &quot;evidence&quot;: [
+    {
+     &quot;locator&quot;: {
+      &quot;line_end&quot;: 7,
+      &quot;line_start&quot;: 7,
+      &quot;member&quot;: &quot;requisitos.xlsx&quot;,
+      &quot;quote_digest&quot;: &quot;sha256:49200540f8b04a0077106ebbf6b47a764b7d7783a96586ae7cdcf6fda73d21e6&quot;,
+      &quot;source_id&quot;: &quot;PBD-SRC-AZNESFVTM1HG&quot;,
+      &quot;source_version&quot;: &quot;7b6f9f5e5181ef6b&quot;,
+      &quot;table&quot;: &quot;Requisitos&quot;
+     },
+     &quot;summary&quot;: &quot;O zelador vê as reservas do dia por sala.&quot;,
+     &quot;type&quot;: &quot;source_locator&quot;
+    }
+   ],
+   &quot;id&quot;: &quot;PBD-CLM-1JP9JS26PES0&quot;,
+   &quot;temporal&quot;: {
+    &quot;status&quot;: &quot;effective&quot;
+   },
+   &quot;text&quot;: &quot;O zelador vê as reservas do dia por sala.&quot;,
+   &quot;uncertainty&quot;: {
+    &quot;level&quot;: &quot;confirmed&quot;
+   }
+  }
+ ],
+ &quot;criteria&quot;: [
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-BJ699MGJG0BJ&quot;
+   ],
+   &quot;condition&quot;: &quot;o morador quer reservar uma sala&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;a reserva fica registrada com data, horário e finalidade&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-47GY8SQNCXQC&quot;,
+   &quot;order&quot;: 0,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-Q20JGVA1SZ6T&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;informa data, horário e finalidade&quot;,
+   &quot;visible_id&quot;: &quot;CA-01&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-E8PRXWJA7EJ3&quot;,
+    &quot;PBD-CLM-4CAV124AFGBX&quot;
+   ],
+   &quot;condition&quot;: &quot;a reserva pedida tem duração maior que 4 horas&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;a reserva não é aceita&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-B0Q1KBYVGQVZ&quot;,
+   &quot;order&quot;: 0,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-7DM16A3VWNM4&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;o morador confirma a reserva&quot;,
+   &quot;visible_id&quot;: &quot;CA-01&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-E8PRXWJA7EJ3&quot;,
+    &quot;PBD-CLM-4CAV124AFGBX&quot;
+   ],
+   &quot;condition&quot;: &quot;a reserva pedida tem duração de exatamente 4 horas&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;a reserva é aceita&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-PC31ZZ1HM2ZT&quot;,
+   &quot;order&quot;: 1,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-7DM16A3VWNM4&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;o morador confirma a reserva&quot;,
+   &quot;visible_id&quot;: &quot;CA-02&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-A3Z5ECDXVY33&quot;,
+    &quot;PBD-CLM-S84Q659N4PWJ&quot;
+   ],
+   &quot;condition&quot;: &quot;a reserva pedida começa com menos de 1 dia de antecedência&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;a reserva não é aceita&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-C1PE24B0344Z&quot;,
+   &quot;order&quot;: 0,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-6QZVZCR20YSQ&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;o morador confirma a reserva&quot;,
+   &quot;visible_id&quot;: &quot;CA-01&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [],
+   &quot;expected_outcomes&quot;: [
+    &quot;a reserva é aceita&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-VA76JH3VC3VW&quot;,
+   &quot;order&quot;: 1,
+   &quot;origin&quot;: &quot;proposed&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-6QZVZCR20YSQ&quot;,
+   &quot;rationale&quot;: &quot;A fonte não define se a contagem é em dias corridos ou úteis (ver Q1).&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;text&quot;: &quot;A reserva feita com exatamente 1 dia de antecedência é aceita&quot;,
+   &quot;visible_id&quot;: &quot;CA-02&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-1JP9JS26PES0&quot;
+   ],
+   &quot;condition&quot;: &quot;há reservas marcadas para o dia&quot;,
+   &quot;expected_outcomes&quot;: [
+    &quot;as reservas aparecem agrupadas por sala&quot;
+   ],
+   &quot;id&quot;: &quot;PBD-AC-KM24D02M95PC&quot;,
+   &quot;order&quot;: 0,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-557VG9Z0A8PM&quot;,
+   &quot;status&quot;: &quot;confirmed&quot;,
+   &quot;style&quot;: &quot;list&quot;,
+   &quot;trigger&quot;: &quot;o zelador abre as reservas do dia&quot;,
+   &quot;visible_id&quot;: &quot;CA-01&quot;
+  }
+ ],
+ &quot;decisions&quot;: [],
+ &quot;findings&quot;: [
+  {
+   &quot;actual&quot;: &quot;F2, US2, US3, AC2, AC3 and AC4 hard-code 4 horas and 1 dia in their wording, while T2 and T3 read them from Regras.&quot;,
+   &quot;affects&quot;: [
+    &quot;PBD-AC-B0Q1KBYVGQVZ&quot;,
+    &quot;PBD-AC-C1PE24B0344Z&quot;,
+    &quot;PBD-AC-PC31ZZ1HM2ZT&quot;,
+    &quot;PBD-FEAT-0GNQRNM44W13&quot;,
+    &quot;PBD-STORY-6QZVZCR20YSQ&quot;,
+    &quot;PBD-STORY-7DM16A3VWNM4&quot;
+   ],
+   &quot;classification&quot;: &quot;candidate_concern&quot;,
+   &quot;evidence&quot;: [
+    {
+     &quot;ref&quot;: &quot;stages/review.json&quot;,
+     &quot;summary&quot;: &quot;independent review&quot;,
+     &quot;type&quot;: &quot;review&quot;
+    }
+   ],
+   &quot;expected&quot;: &quot;Source R2 and R3 define the limits by reference to the Regras tab, so they are configurable values.&quot;,
+   &quot;gate&quot;: &quot;G04&quot;,
+   &quot;id&quot;: &quot;PBD-FND-CM1WTJZTRQKG&quot;,
+   &quot;impact&quot;: &quot;A change in Regras leaves the stories and criteria describing an outdated rule.&quot;,
+   &quot;recommendation&quot;: &quot;Refer to the Regras value in the want and rule text, keeping the concrete values only as examples in the criteria, with the source of the value stated.&quot;,
+   &quot;review_status&quot;: &quot;candidate&quot;,
+   &quot;severity&quot;: &quot;medium&quot;,
+   &quot;why&quot;: &quot;The stories and criteria can contradict the configured value the tasks use.&quot;
+  },
+  {
+   &quot;actual&quot;: &quot;AC5 accepts a booking exactly 1 day ahead while Q1 (calendar versus business days) is open.&quot;,
+   &quot;affects&quot;: [
+    &quot;PBD-AC-VA76JH3VC3VW&quot;,
+    &quot;PBD-STORY-6QZVZCR20YSQ&quot;
+   ],
+   &quot;classification&quot;: &quot;candidate_concern&quot;,
+   &quot;evidence&quot;: [
+    {
+     &quot;ref&quot;: &quot;stages/review.json&quot;,
+     &quot;summary&quot;: &quot;independent review&quot;,
+     &quot;type&quot;: &quot;review&quot;
+    }
+   ],
+   &quot;expected&quot;: &quot;A proposed boundary criterion should not assume an answer to an open question.&quot;,
+   &quot;gate&quot;: &quot;G06&quot;,
+   &quot;id&quot;: &quot;PBD-FND-RA44Q1ZR2TCW&quot;,
+   &quot;impact&quot;: &quot;The accepted booking window may differ from the owner&#x27;s intent by a day.&quot;,
+   &quot;recommendation&quot;: &quot;Keep AC5 explicitly conditional on Q1, or present both calendar and business-day variants.&quot;,
+   &quot;review_status&quot;: &quot;candidate&quot;,
+   &quot;severity&quot;: &quot;medium&quot;,
+   &quot;why&quot;: &quot;The inclusive boundary and day count are unresolved.&quot;
+  },
+  {
+   &quot;actual&quot;: &quot;AC4 measures &#x27;antecedência&#x27; from an undefined point. Q1 addresses the unit but not the anchor.&quot;,
+   &quot;affects&quot;: [
+    &quot;PBD-AC-C1PE24B0344Z&quot;,
+    &quot;PBD-STORY-6QZVZCR20YSQ&quot;,
+    &quot;PBD-TASK-4S66248CA4T2&quot;
+   ],
+   &quot;classification&quot;: &quot;candidate_concern&quot;,
+   &quot;evidence&quot;: [
+    {
+     &quot;ref&quot;: &quot;stages/review.json&quot;,
+     &quot;summary&quot;: &quot;independent review&quot;,
+     &quot;type&quot;: &quot;review&quot;
+    }
+   ],
+   &quot;expected&quot;: &quot;A rule that measures advance time should state the reference point.&quot;,
+   &quot;gate&quot;: &quot;G06&quot;,
+   &quot;id&quot;: &quot;PBD-FND-4X90HG8QCS1J&quot;,
+   &quot;impact&quot;: &quot;Different implementers may measure from booking time or from submission and disagree on the boundary.&quot;,
+   &quot;recommendation&quot;: &quot;Add the reference point to Q1 or to a new question and to AC4&#x27;s condition.&quot;,
+   &quot;review_status&quot;: &quot;candidate&quot;,
+   &quot;severity&quot;: &quot;medium&quot;,
+   &quot;why&quot;: &quot;Underspecified measurement.&quot;
+  },
+  {
+   &quot;actual&quot;: &quot;No epic, feature, story or task records the Prioridade column, and no open question mentions it.&quot;,
+   &quot;affects&quot;: [
+    &quot;PBD-EPIC-PC6SGWXRFMZH&quot;,
+    &quot;PBD-FEAT-NSGN8D2RCEDX&quot;,
+    &quot;PBD-FEAT-X9WHCV7JCP8H&quot;,
+    &quot;PBD-STORY-557VG9Z0A8PM&quot;,
+    &quot;PBD-STORY-Q20JGVA1SZ6T&quot;
+   ],
+   &quot;classification&quot;: &quot;candidate_concern&quot;,
+   &quot;evidence&quot;: [
+    {
+     &quot;ref&quot;: &quot;stages/review.json&quot;,
+     &quot;summary&quot;: &quot;independent review&quot;,
+     &quot;type&quot;: &quot;review&quot;
+    }
+   ],
+   &quot;expected&quot;: &quot;Source priority values (Alta, Alta, Média, Média for R1 to R4) are either carried or deliberately dropped.&quot;,
+   &quot;gate&quot;: &quot;G02&quot;,
+   &quot;id&quot;: &quot;PBD-FND-9DYYQ0TC76CS&quot;,
+   &quot;impact&quot;: &quot;The owner cannot see the priority the source assigns to each requirement.&quot;,
+   &quot;recommendation&quot;: &quot;Carry the priority as metadata where the format allows, or record an explicit decision to drop it.&quot;,
+   &quot;review_status&quot;: &quot;candidate&quot;,
+   &quot;severity&quot;: &quot;low&quot;,
+   &quot;why&quot;: &quot;Source metadata is silently lost.&quot;
+  },
+  {
+   &quot;actual&quot;: &quot;The design excludes the 8-hour draft value but Q2 still offers &#x27;Usar 8 horas se o rascunho for válido&#x27;, which the source says is discarded.&quot;,
+   &quot;affects&quot;: [
+    &quot;PBD-FEAT-0GNQRNM44W13&quot;,
+    &quot;PBD-STORY-7DM16A3VWNM4&quot;
+   ],
+   &quot;classification&quot;: &quot;candidate_concern&quot;,
+   &quot;evidence&quot;: [
+    {
+     &quot;ref&quot;: &quot;stages/review.json&quot;,
+     &quot;summary&quot;: &quot;independent review&quot;,
+     &quot;type&quot;: &quot;review&quot;
+    }
+   ],
+   &quot;expected&quot;: &quot;The hidden draft marked &#x27;rascunho descartado&#x27; should be settled once.&quot;,
+   &quot;gate&quot;: &quot;G02&quot;,
+   &quot;id&quot;: &quot;PBD-FND-KMF4E9255933&quot;,
+   &quot;impact&quot;: &quot;Minor: the owner may be asked to reconsider a discarded value.&quot;,
+   &quot;recommendation&quot;: &quot;Close Q2 with a note that the draft is discarded, or keep the question only if the owner must confirm it.&quot;,
+   &quot;review_status&quot;: &quot;candidate&quot;,
+   &quot;severity&quot;: &quot;low&quot;,
+   &quot;why&quot;: &quot;The question offers an option the source already rejects.&quot;
+  },
+  {
+   &quot;actual&quot;: &quot;F1 and US1, and F3 and US4, restate the same capability with a single child.&quot;,
+   &quot;affects&quot;: [
+    &quot;PBD-FEAT-NSGN8D2RCEDX&quot;,
+    &quot;PBD-FEAT-X9WHCV7JCP8H&quot;,
+    &quot;PBD-STORY-557VG9Z0A8PM&quot;,
+    &quot;PBD-STORY-Q20JGVA1SZ6T&quot;
+   ],
+   &quot;classification&quot;: &quot;candidate_concern&quot;,
+   &quot;evidence&quot;: [
+    {
+     &quot;ref&quot;: &quot;stages/review.json&quot;,
+     &quot;summary&quot;: &quot;independent review&quot;,
+     &quot;type&quot;: &quot;review&quot;
+    }
+   ],
+   &quot;expected&quot;: &quot;Each feature should add content beyond its only child story.&quot;,
+   &quot;gate&quot;: &quot;G09&quot;,
+   &quot;id&quot;: &quot;PBD-FND-RJK2B5S58P6F&quot;,
+   &quot;impact&quot;: &quot;Duplicate entries increase review load.&quot;,
+   &quot;recommendation&quot;: &quot;Collapse F1 into US1 or F3 into US4, or give each feature a distinct capability statement.&quot;,
+   &quot;review_status&quot;: &quot;candidate&quot;,
+   &quot;severity&quot;: &quot;low&quot;,
+   &quot;why&quot;: &quot;Sizing signal: feature whose only child restates it.&quot;
+  }
+ ],
+ &quot;items&quot;: [
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-BJ699MGJG0BJ&quot;,
+    &quot;PBD-CLM-E8PRXWJA7EJ3&quot;,
+    &quot;PBD-CLM-4CAV124AFGBX&quot;,
+    &quot;PBD-CLM-A3Z5ECDXVY33&quot;,
+    &quot;PBD-CLM-S84Q659N4PWJ&quot;,
+    &quot;PBD-CLM-1JP9JS26PES0&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;context&quot;: &quot;Planilha requisitos.xlsx: abas Requisitos e Regras; a aba oculta Rascunho está marcada como descartada.&quot;,
+    &quot;in_scope&quot;: [
+     &quot;Reserva pelo morador com data, horário e finalidade&quot;,
+     &quot;Duração máxima da reserva conforme a aba Regras&quot;,
+     &quot;Antecedência mínima conforme a aba Regras&quot;,
+     &quot;Visão diária de reservas por sala para o zelador&quot;
+    ],
+    &quot;kind&quot;: &quot;epic&quot;,
+    &quot;objective&quot;: &quot;Permitir que moradores reservem salas comunitárias dentro das regras de duração e antecedência, e que o zelador acompanhe as reservas do dia.&quot;,
+    &quot;out_scope&quot;: [
+     &quot;Conflitos de horário e cancelamento (não descritos na fonte)&quot;,
+     &quot;Quantidade real de salas (ver Q3)&quot;
+    ],
+    &quot;outcome&quot;: &quot;Reservas válidas ficam registradas e o zelador vê as reservas do dia por sala.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Permitir que moradores reservem salas comunitárias dentro das regras de duração e antecedência, e que o zelador acompanhe as reservas do dia.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Contexto&lt;/strong&gt;: Planilha requisitos.xlsx: abas Requisitos e Regras; a aba oculta Rascunho está marcada como descartada.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;No escopo&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Reserva pelo morador com data, horário e finalidade&lt;/li&gt;&lt;li&gt;Duração máxima da reserva conforme a aba Regras&lt;/li&gt;&lt;li&gt;Antecedência mínima conforme a aba Regras&lt;/li&gt;&lt;li&gt;Visão diária de reservas por sala para o zelador&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Fora do escopo&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Conflitos de horário e cancelamento (não descritos na fonte)&lt;/li&gt;&lt;li&gt;Quantidade real de salas (ver Q3)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Resultado esperado&lt;/strong&gt;: Reservas válidas ficam registradas e o zelador vê as reservas do dia por sala.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-EPIC-PC6SGWXRFMZH&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: null,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Reserva de salas comunitárias&quot;,
+   &quot;type&quot;: &quot;epic&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-BJ699MGJG0BJ&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;capability&quot;: &quot;Registrar uma reserva de sala com data, horário e finalidade.&quot;,
+    &quot;kind&quot;: &quot;feature&quot;,
+    &quot;rules&quot;: [
+     &quot;O morador informa data, horário e finalidade&quot;
+    ],
+    &quot;value&quot;: &quot;O morador garante o uso da sala no horário desejado.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Capacidade&lt;/strong&gt;: Registrar uma reserva de sala com data, horário e finalidade.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Valor&lt;/strong&gt;: O morador garante o uso da sala no horário desejado.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Regras relacionadas&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;O morador informa data, horário e finalidade&lt;/li&gt;&lt;/ul&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-FEAT-X9WHCV7JCP8H&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-EPIC-PC6SGWXRFMZH&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Reserva de sala pelo morador&quot;,
+   &quot;type&quot;: &quot;feature&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-E8PRXWJA7EJ3&quot;,
+    &quot;PBD-CLM-4CAV124AFGBX&quot;,
+    &quot;PBD-CLM-A3Z5ECDXVY33&quot;,
+    &quot;PBD-CLM-S84Q659N4PWJ&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;capability&quot;: &quot;Aplicar os limites de duração máxima e antecedência mínima definidos na aba Regras.&quot;,
+    &quot;kind&quot;: &quot;feature&quot;,
+    &quot;rules&quot;: [
+     &quot;Duração máxima = 4 horas (aba Regras)&quot;,
+     &quot;Antecedência mínima = 1 dia (aba Regras)&quot;
+    ],
+    &quot;value&quot;: &quot;As reservas seguem regras únicas e configuradas na planilha.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Capacidade&lt;/strong&gt;: Aplicar os limites de duração máxima e antecedência mínima definidos na aba Regras.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Valor&lt;/strong&gt;: As reservas seguem regras únicas e configuradas na planilha.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Regras relacionadas&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Duração máxima = 4 horas (aba Regras)&lt;/li&gt;&lt;li&gt;Antecedência mínima = 1 dia (aba Regras)&lt;/li&gt;&lt;/ul&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-FEAT-0GNQRNM44W13&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-EPIC-PC6SGWXRFMZH&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Regras de duração e antecedência&quot;,
+   &quot;type&quot;: &quot;feature&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-1JP9JS26PES0&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;capability&quot;: &quot;Mostrar ao zelador as reservas do dia, separadas por sala.&quot;,
+    &quot;kind&quot;: &quot;feature&quot;,
+    &quot;rules&quot;: [
+     &quot;As reservas do dia são agrupadas por sala&quot;
+    ],
+    &quot;value&quot;: &quot;O zelador acompanha o uso das salas no dia.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Capacidade&lt;/strong&gt;: Mostrar ao zelador as reservas do dia, separadas por sala.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Valor&lt;/strong&gt;: O zelador acompanha o uso das salas no dia.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Regras relacionadas&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;As reservas do dia são agrupadas por sala&lt;/li&gt;&lt;/ul&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-FEAT-NSGN8D2RCEDX&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-EPIC-PC6SGWXRFMZH&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Visão diária de reservas para o zelador&quot;,
+   &quot;type&quot;: &quot;feature&quot;
+  },
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-BJ699MGJG0BJ&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;actor&quot;: &quot;morador&quot;,
+    &quot;benefit&quot;: &quot;usar a sala no horário desejado&quot;,
+    &quot;kind&quot;: &quot;role_goal_benefit&quot;,
+    &quot;want&quot;: &quot;o sistema registrasse a reserva de uma sala com data, horário e finalidade&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Eu como&lt;/strong&gt; morador, &lt;strong&gt;gostaria que&lt;/strong&gt; o sistema registrasse a reserva de uma sala com data, horário e finalidade, &lt;strong&gt;para&lt;/strong&gt; usar a sala no horário desejado.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-STORY-Q20JGVA1SZ6T&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-FEAT-X9WHCV7JCP8H&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;role_goal_benefit&quot;,
+   &quot;title&quot;: &quot;Reservar sala informando data, horário e finalidade&quot;,
+   &quot;type&quot;: &quot;story&quot;
+  },
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-E8PRXWJA7EJ3&quot;,
+    &quot;PBD-CLM-4CAV124AFGBX&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;actor&quot;: &quot;morador&quot;,
+    &quot;benefit&quot;: &quot;manter o uso das salas dentro da duração máxima&quot;,
+    &quot;kind&quot;: &quot;role_goal_benefit&quot;,
+    &quot;want&quot;: &quot;o sistema recusasse reservas com duração acima de 4 horas&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Eu como&lt;/strong&gt; morador, &lt;strong&gt;gostaria que&lt;/strong&gt; o sistema recusasse reservas com duração acima de 4 horas, &lt;strong&gt;para&lt;/strong&gt; manter o uso das salas dentro da duração máxima.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-STORY-7DM16A3VWNM4&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-FEAT-0GNQRNM44W13&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;role_goal_benefit&quot;,
+   &quot;title&quot;: &quot;Limitar a reserva à duração máxima&quot;,
+   &quot;type&quot;: &quot;story&quot;
+  },
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-A3Z5ECDXVY33&quot;,
+    &quot;PBD-CLM-S84Q659N4PWJ&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;actor&quot;: &quot;morador&quot;,
+    &quot;benefit&quot;: &quot;garantir a antecedência mínima da reserva&quot;,
+    &quot;kind&quot;: &quot;role_goal_benefit&quot;,
+    &quot;want&quot;: &quot;o sistema recusasse reservas feitas com menos de 1 dia de antecedência&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Eu como&lt;/strong&gt; morador, &lt;strong&gt;gostaria que&lt;/strong&gt; o sistema recusasse reservas feitas com menos de 1 dia de antecedência, &lt;strong&gt;para&lt;/strong&gt; garantir a antecedência mínima da reserva.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-STORY-6QZVZCR20YSQ&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-FEAT-0GNQRNM44W13&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;role_goal_benefit&quot;,
+   &quot;title&quot;: &quot;Exigir antecedência mínima da reserva&quot;,
+   &quot;type&quot;: &quot;story&quot;
+  },
+  {
+   &quot;acceptance_style&quot;: &quot;list&quot;,
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-1JP9JS26PES0&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;actor&quot;: &quot;zelador&quot;,
+    &quot;benefit&quot;: &quot;acompanhar o uso das salas no dia&quot;,
+    &quot;kind&quot;: &quot;role_goal_benefit&quot;,
+    &quot;want&quot;: &quot;o sistema mostrasse as reservas do dia separadas por sala&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Eu como&lt;/strong&gt; zelador, &lt;strong&gt;gostaria que&lt;/strong&gt; o sistema mostrasse as reservas do dia separadas por sala, &lt;strong&gt;para&lt;/strong&gt; acompanhar o uso das salas no dia.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-STORY-557VG9Z0A8PM&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-FEAT-NSGN8D2RCEDX&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;story_format&quot;: &quot;role_goal_benefit&quot;,
+   &quot;title&quot;: &quot;Ver reservas do dia por sala&quot;,
+   &quot;type&quot;: &quot;story&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-BJ699MGJG0BJ&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Incluir campos de data, horário e finalidade no formulário de reserva&quot;,
+     &quot;Salvar a reserva com os três valores&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;Reserva guardada com data, horário e finalidade.&quot;,
+    &quot;summary&quot;: &quot;Incluir na reserva os campos de data, horário e finalidade.&quot;,
+    &quot;verification&quot;: &quot;Executar AC1 e confirmar que a reserva guarda os três valores.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Incluir na reserva os campos de data, horário e finalidade.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Atividades&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Incluir campos de data, horário e finalidade no formulário de reserva&lt;/li&gt;&lt;li&gt;Salvar a reserva com os três valores&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Resultado esperado&lt;/strong&gt;: Reserva guardada com data, horário e finalidade.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verificação&lt;/strong&gt;: Executar AC1 e confirmar que a reserva guarda os três valores.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-Z1XX8757S132&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-Q20JGVA1SZ6T&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Implementar formulário de reserva com data, horário e finalidade&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-E8PRXWJA7EJ3&quot;,
+    &quot;PBD-CLM-4CAV124AFGBX&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Ler o valor de duração máxima da aba Regras&quot;,
+     &quot;Recusar reserva com duração acima do limite&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;Nenhuma reserva passa do limite configurado.&quot;,
+    &quot;summary&quot;: &quot;Ler o limite de duração máxima da aba Regras e recusar reservas acima dele.&quot;,
+    &quot;verification&quot;: &quot;Executar AC2 e AC3; o valor de 4 horas depende da resposta à Q2.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Ler o limite de duração máxima da aba Regras e recusar reservas acima dele.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Atividades&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Ler o valor de duração máxima da aba Regras&lt;/li&gt;&lt;li&gt;Recusar reserva com duração acima do limite&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Resultado esperado&lt;/strong&gt;: Nenhuma reserva passa do limite configurado.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verificação&lt;/strong&gt;: Executar AC2 e AC3; o valor de 4 horas depende da resposta à Q2.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-9V70RS0K4THH&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-7DM16A3VWNM4&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Aplicar duração máxima da aba Regras&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-A3Z5ECDXVY33&quot;,
+    &quot;PBD-CLM-S84Q659N4PWJ&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Ler o valor de antecedência mínima da aba Regras&quot;,
+     &quot;Recusar reserva feita com antecedência menor que o mínimo&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;Nenhuma reserva é aceita fora da antecedência mínima.&quot;,
+    &quot;summary&quot;: &quot;Ler a antecedência mínima da aba Regras e recusar reservas feitas com antecedência menor.&quot;,
+    &quot;verification&quot;: &quot;Executar AC4; AC5 depende da resposta à Q1.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Ler a antecedência mínima da aba Regras e recusar reservas feitas com antecedência menor.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Atividades&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Ler o valor de antecedência mínima da aba Regras&lt;/li&gt;&lt;li&gt;Recusar reserva feita com antecedência menor que o mínimo&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Resultado esperado&lt;/strong&gt;: Nenhuma reserva é aceita fora da antecedência mínima.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verificação&lt;/strong&gt;: Executar AC4; AC5 depende da resposta à Q1.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-4S66248CA4T2&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-6QZVZCR20YSQ&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Aplicar antecedência mínima da aba Regras&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  },
+  {
+   &quot;claim_refs&quot;: [
+    &quot;PBD-CLM-1JP9JS26PES0&quot;
+   ],
+   &quot;content&quot;: {
+    &quot;activities&quot;: [
+     &quot;Filtrar as reservas do dia&quot;,
+     &quot;Agrupar as reservas por sala&quot;
+    ],
+    &quot;kind&quot;: &quot;task&quot;,
+    &quot;outcome&quot;: &quot;Zelador vê as reservas do dia por sala.&quot;,
+    &quot;summary&quot;: &quot;Listar as reservas do dia agrupadas por sala para o zelador.&quot;,
+    &quot;verification&quot;: &quot;Executar AC6.&quot;
+   },
+   &quot;description&quot;: {
+    &quot;format&quot;: &quot;html&quot;,
+    &quot;language&quot;: &quot;pt-BR&quot;,
+    &quot;value&quot;: &quot;&lt;p&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Listar as reservas do dia agrupadas por sala para o zelador.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Atividades&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Filtrar as reservas do dia&lt;/li&gt;&lt;li&gt;Agrupar as reservas por sala&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Resultado esperado&lt;/strong&gt;: Zelador vê as reservas do dia por sala.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Verificação&lt;/strong&gt;: Executar AC6.&lt;/p&gt;&quot;
+   },
+   &quot;id&quot;: &quot;PBD-TASK-HW2KARGF57C7&quot;,
+   &quot;origin&quot;: &quot;generated&quot;,
+   &quot;parent&quot;: &quot;PBD-STORY-557VG9Z0A8PM&quot;,
+   &quot;status&quot;: &quot;reviewed&quot;,
+   &quot;title&quot;: &quot;Montar visão diária de reservas por sala&quot;,
+   &quot;type&quot;: &quot;task&quot;
+  }
+ ],
+ &quot;kind&quot;: &quot;pbd.backlog&quot;,
+ &quot;language&quot;: &quot;pt-BR&quot;,
+ &quot;profile&quot;: &quot;azure-scrum&quot;,
+ &quot;questions&quot;: [
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-CLM-S84Q659N4PWJ&quot;,
+    &quot;PBD-STORY-6QZVZCR20YSQ&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Dias corridos&quot;,
+    &quot;Dias úteis&quot;
+   ],
+   &quot;blocking&quot;: false,
+   &quot;id&quot;: &quot;PBD-Q-Y0TRRGD1KSZH&quot;,
+   &quot;impact&quot;: &quot;Define a contagem da regra de antecedência e o critério AC5.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;A antecedência mínima de 1 dia é contada em dias corridos ou em dias úteis?&quot;
+  },
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-CLM-4CAV124AFGBX&quot;,
+    &quot;PBD-STORY-7DM16A3VWNM4&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Manter 4 horas (aba Regras)&quot;,
+    &quot;Usar 8 horas se o rascunho for válido&quot;
+   ],
+   &quot;blocking&quot;: false,
+   &quot;id&quot;: &quot;PBD-Q-ZR0RD9Y79G2H&quot;,
+   &quot;impact&quot;: &quot;Evita usar um valor descartado na regra de duração máxima.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;A aba oculta Rascunho indica duração máxima de 8 horas e está marcada como descartada. Confirmar que o valor vigente é 4 horas da aba Regras.&quot;
+  },
+  {
+   &quot;affects&quot;: [
+    &quot;PBD-EPIC-PC6SGWXRFMZH&quot;
+   ],
+   &quot;alternatives&quot;: [
+    &quot;Informar o número real de salas&quot;,
+    &quot;Manter fora do escopo&quot;
+   ],
+   &quot;blocking&quot;: false,
+   &quot;id&quot;: &quot;PBD-Q-NRR7ZMXJ0A2C&quot;,
+   &quot;impact&quot;: &quot;A quantidade de salas não é verificável no arquivo e não foi usada como regra.&quot;,
+   &quot;status&quot;: &quot;open&quot;,
+   &quot;text&quot;: &quot;O número de salas disponíveis (3) vem de uma fórmula que referencia a aba Salas, inexistente no arquivo. Qual é o número real de salas?&quot;
+  }
+ ],
+ &quot;relations&quot;: [
+  {
+   &quot;confidence&quot;: &quot;medium&quot;,
+   &quot;id&quot;: &quot;PBD-REL-2ZF60G5VYGSC&quot;,
+   &quot;reason&quot;: &quot;As regras de duração se aplicam às reservas criadas pela história de reserva.&quot;,
+   &quot;source&quot;: &quot;PBD-STORY-Q20JGVA1SZ6T&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;target&quot;: &quot;PBD-STORY-7DM16A3VWNM4&quot;,
+   &quot;type&quot;: &quot;predecessor&quot;
+  },
+  {
+   &quot;confidence&quot;: &quot;medium&quot;,
+   &quot;id&quot;: &quot;PBD-REL-DTCDMFPNF1TQ&quot;,
+   &quot;reason&quot;: &quot;As regras de antecedência se aplicam às reservas criadas pela história de reserva.&quot;,
+   &quot;source&quot;: &quot;PBD-STORY-Q20JGVA1SZ6T&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;target&quot;: &quot;PBD-STORY-6QZVZCR20YSQ&quot;,
+   &quot;type&quot;: &quot;predecessor&quot;
+  },
+  {
+   &quot;confidence&quot;: &quot;medium&quot;,
+   &quot;id&quot;: &quot;PBD-REL-C83ZFJ5WHC5W&quot;,
+   &quot;reason&quot;: &quot;A visão do zelador mostra reservas criadas pela história de reserva.&quot;,
+   &quot;source&quot;: &quot;PBD-STORY-Q20JGVA1SZ6T&quot;,
+   &quot;status&quot;: &quot;proposed&quot;,
+   &quot;target&quot;: &quot;PBD-STORY-557VG9Z0A8PM&quot;,
+   &quot;type&quot;: &quot;predecessor&quot;
+  }
+ ],
+ &quot;run_id&quot;: &quot;PBD-RUN-2FRWTSFW2T8Z&quot;,
+ &quot;schema_version&quot;: &quot;1.1.0&quot;,
+ &quot;sources&quot;: [
+  {
+   &quot;authority&quot;: &quot;functional&quot;,
+   &quot;digest&quot;: &quot;sha256:7b6f9f5e5181ef6b7b00a009393246f0120f0a81d05e7afd1f490b21016c1c85&quot;,
+   &quot;id&quot;: &quot;PBD-SRC-AZNESFVTM1HG&quot;,
+   &quot;kind&quot;: &quot;file&quot;,
+   &quot;members&quot;: [
+    {
+     &quot;bytes&quot;: 2886,
+     &quot;digest&quot;: &quot;sha256:f456fa3442e4c6ea3910bdbfe3e4ab94e82325abcf1017a623e8f6d900ca8f56&quot;,
+     &quot;media_type&quot;: &quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;,
+     &quot;path&quot;: &quot;requisitos.xlsx&quot;,
+     &quot;status&quot;: &quot;read&quot;
+    }
+   ],
+   &quot;read_status&quot;: &quot;complete&quot;,
+   &quot;selector&quot;: &quot;requisitos.xlsx&quot;,
+   &quot;version&quot;: &quot;7b6f9f5e5181ef6b&quot;
+  }
+ ],
+ &quot;synthetic&quot;: true
+}</pre></details></section>
+</main><script>(function(){
+var d=document,root=d.documentElement,KEY='pbd-theme';
+try{var s=localStorage.getItem(KEY);if(s)root.setAttribute('data-theme',s);}catch(e){}
+var tb=d.getElementById('theme');if(tb)tb.addEventListener('click',function(){
+var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
+var next=dark?'light':'dark';root.setAttribute('data-theme',next);try{localStorage.setItem(KEY,next);}catch(e){}});
+function norm(t){return (t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
+var items=[].slice.call(d.querySelectorAll('details.wi'));
+items.forEach(function(el){el._t=norm(el.getAttribute('data-text'));});
+var q=d.getElementById('q'),ft=d.getElementById('ftype'),fv=d.getElementById('fverdict'),out=d.getElementById('count'),
+none=d.getElementById('noresults');
+function apply(){var term=norm(q.value.trim()),type=ft.value,ver=fv.value,shown=0;
+items.forEach(function(el){el._m=(!term||el._t.indexOf(term)>=0)&&(!type||el.getAttribute('data-type')===type)&&
+(!ver||el.getAttribute('data-verdict')===ver);});
+items.slice().reverse().forEach(function(el){var keep=el._m||[].some.call(el.querySelectorAll('details.wi'),function(c){return c._m;});
+el.hidden=!keep;if(keep&&el._m)shown++;if(keep&&(term||type||ver)&&!el._m)el.open=true;});
+out.textContent=shown;none.hidden=shown>0;}
+[q,ft,fv].forEach(function(e){e.addEventListener('input',apply);});
+d.getElementById('expand').addEventListener('click',function(){items.forEach(function(e){e.open=true;});});
+d.getElementById('collapse').addEventListener('click',function(){items.forEach(function(e){e.open=false;});});
+apply();})();</script></body></html>

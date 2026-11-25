@@ -1,0 +1,738 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC3",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC4",
+      "notes": "O TDD diz que avisos usam a fila; usá-la para entregar o código é inferência. Candidato; Q3 já pergunta.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC5",
+      "notes": "Texto exato vem só do snapshot; marcado como proposto, correto. Mantido como concern por depender de confirmação.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC6",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC7",
+      "notes": "Afirma que expira exatamente ao completar 72 horas, o que equivale a >= do snapshot. O PRD não define a fronteira (Q2). Candidato.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC8",
+      "notes": "Redundante com AC6 (48 h é menor que 72 h) e cita o snapshot dentro do critério. Útil como guarda de regressão; sugere-se reescrever sem referência à implementação.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC9",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC10",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC11",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC12",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC13",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC14",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC15",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC16",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC17",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC18",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "distinct",
+      "items": [
+        "AC6",
+        "AC8"
+      ],
+      "rationale": "AC8 é caso particular de AC6; mantido como guarda contra o prazo de 48 h do snapshot."
+    },
+    {
+      "assessment": "distinct",
+      "items": [
+        "US1",
+        "T2"
+      ],
+      "rationale": "Story e task em níveis diferentes."
+    },
+    {
+      "assessment": "distinct",
+      "items": [
+        "AC4",
+        "AC11"
+      ],
+      "rationale": "Mensagens e gatilhos diferentes: código versus devolução."
+    }
+  ],
+  "findings": [
+    {
+      "actual": "O backlog cobre só o registro do evento (AC13); a regra de 3 tentativas e 10 minutos é delegada ao firmware sem critério ou questão de verificação além de Q6.",
+      "affects": [
+        "EN2",
+        "AC13",
+        "AC14"
+      ],
+      "classification": "candidate_concern",
+      "expected": "O comportamento RF3 (3 tentativas, 10 minutos) deve ter dono e critério verificável, ou ficar explicitamente fora do escopo do software.",
+      "gate": "G06",
+      "impact": "Risco de o bloqueio de 10 minutos nunca ser validado.",
+      "recommendation": "Registrar RF3 como PARTIALLY_COVERED com decisão explícita sobre quem verifica o firmware e responder Q6.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "O TDD atribui a execução ao firmware, então a divisão é legítima, mas a regra do PRD fica sem verificação no escopo."
+    },
+    {
+      "actual": "US2 é a história do morador sendo avisado, mas AC9 e T4 descrevem a devolução automática pelo sistema sem ator (Q5).",
+      "affects": [
+        "US2",
+        "AC9",
+        "T4"
+      ],
+      "classification": "candidate_concern",
+      "expected": "A devolução à portaria tem um ator ou processo definido e uma história coerente.",
+      "gate": "G04",
+      "impact": "Dificuldade de estimar e testar a devolução.",
+      "recommendation": "Responder Q5; considerar item próprio para a devolução ou reescrever o ator.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "Critério de devolução fica sob um valor (aviso) diferente do seu resultado."
+    },
+    {
+      "actual": "AC7 afirma expiração ao completar 72 horas e AC5 fixa o texto da mensagem, ambos baseados só no snapshot.",
+      "affects": [
+        "AC5",
+        "AC7",
+        "AC4"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Critérios de expiração não impõem fronteira nem texto que as fontes funcionais não definem.",
+      "gate": "G07",
+      "impact": "Teste pode validar comportamento não aprovado.",
+      "recommendation": "Manter AC5 como proposto e marcar AC7 como dependente de Q2.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Evidência de implementação não é autoridade de requisito."
+    },
+    {
+      "actual": "AC8 cita o snapshot e repete AC6; T2 prescreve build_message.",
+      "affects": [
+        "AC8",
+        "T2"
+      ],
+      "classification": "optional_improvement",
+      "expected": "Critérios sem referência à implementação e sem redundância.",
+      "gate": "G08",
+      "impact": "Baixo.",
+      "recommendation": "Reescrever AC8 em termos de comportamento e T2 sem citar a função.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Acopla o backlog ao código existente."
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "AC2"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 3,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "RF1 Quando uma encomenda é depositada, o morador recebe um código de retirada de 6 dígitos.",
+      "rationale": "AC1 cobre o recebimento e AC2 o formato de 6 dígitos. O gatilho do depósito segue em aberto (Q7), registrado como questão.",
+      "text": "Ao depositar encomenda, o morador recebe código de retirada de 6 dígitos."
+    },
+    {
+      "covered_by": [
+        "EN1",
+        "AC6",
+        "AC7",
+        "AC8"
+      ],
+      "disposition": "COVERED",
+      "key": "O2",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "RF2 O código de retirada expira 72 horas após o depósito.",
+      "rationale": "EN1 e AC6-AC8 tratam a expiração em 72 horas.",
+      "text": "O código expira 72 horas após o depósito."
+    },
+    {
+      "covered_by": [
+        "EN2",
+        "AC13"
+      ],
+      "disposition": "PARTIALLY_COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "RF3 Após 3 tentativas com código incorreto, o armário fica bloqueado por 10 minutos.",
+      "rationale": "O TDD atribui a execução ao firmware; o backlog cobre apenas o registro do evento. A regra de 3 tentativas e 10 minutos não tem critério verificável no software, e o escopo do contador é a questão Q6.",
+      "text": "Após 3 tentativas incorretas o armário fica bloqueado por 10 minutos."
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC9",
+        "AC12",
+        "T4"
+      ],
+      "disposition": "COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "RF4 Encomenda não retirada até a expiração do código é devolvida à portaria e o morador é avisado.",
+      "rationale": "AC9 cobre a devolução e AC12 propõe o caso negativo. O executor da devolução está em aberto (Q5).",
+      "text": "Encomenda não retirada até a expiração do código é devolvida à portaria."
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC10",
+        "AC11",
+        "T5"
+      ],
+      "disposition": "COVERED",
+      "key": "O5",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C5"
+      ],
+      "quote": "RF4 Encomenda não retirada até a expiração do código é devolvida à portaria e o morador é avisado.",
+      "rationale": "AC10 e AC11 cobrem o aviso ao morador.",
+      "text": "O morador é avisado da devolução."
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC15",
+        "T7"
+      ],
+      "disposition": "COVERED",
+      "key": "O6",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C6"
+      ],
+      "quote": "RF5 O porteiro consulta quais armários estão ocupados.",
+      "rationale": "US3 e AC15 cobrem a consulta.",
+      "text": "O porteiro consulta quais armários estão ocupados."
+    },
+    {
+      "covered_by": [
+        "AC3",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O7",
+      "locator": {
+        "line_start": 3,
+        "member": "tdd.md",
+        "source_id": "PBD-SRC-Y0MFZXA3AMBG"
+      },
+      "matched_claims": [
+        "C7"
+      ],
+      "quote": "Os códigos são gerados pelo serviço locker-api por meio de POST /lockers/{id}/codes.",
+      "rationale": "AC3 e T1 fixam o endpoint.",
+      "text": "Códigos são gerados pelo locker-api via POST /lockers/{id}/codes."
+    },
+    {
+      "covered_by": [
+        "AC4",
+        "AC11",
+        "T2",
+        "T5"
+      ],
+      "disposition": "COVERED",
+      "key": "O8",
+      "locator": {
+        "line_start": 4,
+        "member": "tdd.md",
+        "source_id": "PBD-SRC-Y0MFZXA3AMBG"
+      },
+      "matched_claims": [
+        "C8"
+      ],
+      "quote": "Avisos ao morador usam a fila de mensagens \"notificacoes\" já existente no condomínio.",
+      "rationale": "AC11 aplica a fila ao aviso de devolução. AC4 estende a fila à entrega do código, o que é inferência (ver achado).",
+      "text": "Avisos ao morador usam a fila existente \"notificacoes\"."
+    },
+    {
+      "covered_by": [
+        "EN2",
+        "AC13",
+        "AC14",
+        "SP1",
+        "T6"
+      ],
+      "disposition": "COVERED",
+      "key": "O9",
+      "locator": {
+        "line_start": 5,
+        "member": "tdd.md",
+        "source_id": "PBD-SRC-Y0MFZXA3AMBG"
+      },
+      "matched_claims": [
+        "C9",
+        "C10"
+      ],
+      "quote": "O bloqueio por tentativas incorretas é executado pelo firmware do armário; o software apenas registra o evento de bloqueio.",
+      "rationale": "EN2, AC13, AC14 e T6 refletem a fronteira; SP1 resolve a interface desconhecida.",
+      "text": "O bloqueio é executado pelo firmware; o software apenas registra o evento."
+    },
+    {
+      "covered_by": [
+        "AC16",
+        "T7"
+      ],
+      "disposition": "COVERED",
+      "key": "O10",
+      "locator": {
+        "line_start": 6,
+        "member": "tdd.md",
+        "source_id": "PBD-SRC-Y0MFZXA3AMBG"
+      },
+      "matched_claims": [
+        "C11"
+      ],
+      "quote": "A consulta de ocupação usa GET /lockers?status=occupied.",
+      "rationale": "AC16 e T7 fixam o endpoint.",
+      "text": "A consulta de ocupação usa GET /lockers?status=occupied."
+    },
+    {
+      "covered_by": [
+        "EN1",
+        "AC8",
+        "T3"
+      ],
+      "disposition": "CONFLICTING",
+      "key": "O11",
+      "locator": {
+        "line_start": 4,
+        "member": "codes.py",
+        "source_id": "PBD-SRC-N4W88QSZKKPP"
+      },
+      "matched_claims": [
+        "C12",
+        "C2"
+      ],
+      "quote": "EXPIRY_HOURS = 48",
+      "rationale": "O PRD (autoridade funcional) prevalece; T3 propõe a correção e Q1 pede confirmação. Divergência registrada de forma correta.",
+      "text": "O snapshot usa 48 horas, divergindo das 72 horas do PRD."
+    },
+    {
+      "covered_by": [
+        "EN1",
+        "T3"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O12",
+      "locator": {
+        "line_start": 12,
+        "member": "codes.py",
+        "source_id": "PBD-SRC-N4W88QSZKKPP"
+      },
+      "matched_claims": [
+        "C14"
+      ],
+      "quote": "return age_hours >= EXPIRY_HOURS",
+      "rationale": "Fronteira só existe na evidência de implementação; Q2 está aberta. AC7 afirma a fronteira como fato (ver achado).",
+      "text": "O snapshot expira o código quando a idade é maior ou igual ao limite; o PRD não define o instante exato."
+    },
+    {
+      "covered_by": [
+        "AC2",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O13",
+      "locator": {
+        "line_start": 8,
+        "member": "codes.py",
+        "source_id": "PBD-SRC-N4W88QSZKKPP"
+      },
+      "matched_claims": [
+        "C13"
+      ],
+      "quote": "return f\"{secrets.randbelow(10**6):06d}\"",
+      "rationale": "Consistente com RF1; AC2 explicita zeros à esquerda.",
+      "text": "O snapshot gera o código com 6 dígitos e zeros à esquerda."
+    },
+    {
+      "covered_by": [
+        "AC5",
+        "T2"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O14",
+      "locator": {
+        "line_start": 6,
+        "member": "notify.py",
+        "source_id": "PBD-SRC-N4W88QSZKKPP"
+      },
+      "matched_claims": [
+        "C15"
+      ],
+      "quote": "return {\"queue\": QUEUE, \"to\": resident_id, \"text\": f\"Seu código de retirada é {code}\"}",
+      "rationale": "O texto vem só da evidência de implementação e não é requisito; AC5 está corretamente proposto e Q3 está aberta.",
+      "text": "O snapshot monta a mensagem \"Seu código de retirada é {code}\" para a fila notificacoes."
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F3",
+      "notes": "A feature registra apenas o evento, conforme o TDD.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados do time; o gatilho do depósito é incerto (Q7).",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depende do locker-api, que é externo e existente.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Canal e texto ficam como propostos.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Uma fatia vertical única: gerar e entregar o código.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC1 a AC4 são observáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "O morador precisa do código para retirar a encomenda.",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "O gatilho do depósito e a identificação do morador estão em aberto (Q7), já registrados.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "T1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "notes": "Prescreve reaproveitar build_message do snapshot, que é evidência e não requisito. Candidato a ajuste de redação.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados do time.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "A relação proposta US1 -> EN1 é fraca; EN1 pode ser feito em paralelo.",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "Prescreve o resultado, não a implementação.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo restrito.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC6 a AC8 verificam a regra.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Habilita a devolução e o aviso.",
+          "rating": "supported"
+        }
+      },
+      "key": "EN1",
+      "notes": "Habilitador legítimo sem persona, sustenta RF2 e RF4.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "T3",
+      "notes": "Corrige a divergência 48/72; depende da resposta a Q1 e Q2.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Executor da devolução desconhecido.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depende da expiração (EN1), que é uma aresta real.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Canal e texto abertos.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Devolução mais aviso formam um resultado único.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC9 exige observar a devolução sem definir como ela é registrada.",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "O morador sabe onde está a encomenda.",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "A história é do morador (ser avisado), mas AC9 e T4 descrevem a devolução automática do sistema, sem ator definido (Q5). Candidato: a devolução pode merecer item próprio ou o ator ser esclarecido.",
+      "source_support": "supported",
+      "task_sufficiency": "partial",
+      "verdict": "concern"
+    },
+    {
+      "key": "T4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T5",
+      "notes": "Texto do aviso fica a confirmar (Q4).",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Interface do firmware desconhecida.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depende de SP1, uma aresta necessária.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Interface a definir no spike.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo restrito.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC13 e AC14.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Dá rastro dos bloqueios.",
+          "rating": "supported"
+        }
+      },
+      "key": "EN2",
+      "notes": "Habilitador legítimo; o recebimento do evento depende de SP1.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "SP1",
+      "notes": "Spike justificado pela interface firmware-software indefinida. Sem timebox explícito.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "T6",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados do time.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Sem dependências.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Interface aberta.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Fatia pequena.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC15 a AC18.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Visibilidade de ocupação para o porteiro.",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "Interface e dados exibidos em aberto (Q8).",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "T7",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "reviewer-c04",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-78385WMH95P7"
+    },
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-Y0MFZXA3AMBG"
+    },
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-N4W88QSZKKPP"
+    }
+  ]
+}

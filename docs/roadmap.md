@@ -1,6 +1,6 @@
 # Roadmap
 
-Status: CP0/M0 runtime foundation exit criteria met with local evidence ([M0 evidence](evidence/M0.md)); M0 roadmap items *process profiles*, *benchmark gold fixtures* and *runtime intent router* are carried into M1. M1–M6 pending. Documentation does not count as runtime completion.
+Status: CP0/M0 met ([M0 evidence](evidence/M0.md)). CP1/M1 substantially complete ([M1 evidence](evidence/M1.md)): agent-led generation dogfooded on 12 synthetic cases with gold evaluation; open items are an end-to-end run in a new host session driven only by natural language and Linux symlink qualification; two pre-registered thresholds were missed (c04 critical recall, c06 trap). M2–M6 pending. Documentation does not count as runtime completion.
 
 | Milestone | Deliverables | Exit evidence |
 |---|---|---|

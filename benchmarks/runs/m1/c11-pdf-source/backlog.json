@@ -1,0 +1,1171 @@
+{
+  "claims": [
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-99DKRE0HC9M2",
+          "PBD-AC-1QW6A83C0K1R",
+          "PBD-TASK-WBAJ7SWT00K9"
+        ],
+        "rationale": "Agendamento coberto pela história US1 e pelo critério AC1.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 3,
+            "line_start": 3,
+            "member": "prd.pdf",
+            "page": 1,
+            "quote_digest": "sha256:434b78ecf09f265845013f70e1d7867b7332aa0e3dd04e6c555a07c5ee22a85a",
+            "source_id": "PBD-SRC-TQZARCVE5PAF",
+            "source_version": "8f69e9c0f74cac64"
+          },
+          "summary": "O tutor agenda a vacinação",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-8DQ89NYS81ZJ",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O tutor agenda a vacinação.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "data",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-99DKRE0HC9M2",
+          "PBD-AC-1QW6A83C0K1R",
+          "PBD-TASK-WBAJ7SWT00K9"
+        ],
+        "rationale": "Espécie e idade no agendamento cobertas por AC1 e T1.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 3,
+            "line_start": 3,
+            "member": "prd.pdf",
+            "page": 1,
+            "quote_digest": "sha256:12f282fbd00534cfa00339855dd2623323ca232f4ff4f1bb48f8915557277719",
+            "source_id": "PBD-SRC-TQZARCVE5PAF",
+            "source_version": "8f69e9c0f74cac64"
+          },
+          "summary": "informando espécie e idade do animal",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-EGZEMR6J7RB6",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Ao agendar, o tutor informa a espécie e a idade do animal.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-BE9S8Q2H8DJ1",
+          "PBD-AC-PEXB5DBV2CGQ",
+          "PBD-TASK-AVPREGWGGKE5"
+        ],
+        "rationale": "Limite de 10 animais coberto por AC2 e T2; AC3 é caso de fronteira proposto e não rastreia a claim.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "prd.pdf",
+            "page": 1,
+            "quote_digest": "sha256:4410b22f9141758be1ca526af6effc0a1f7f37e8a0a95ace94a511c9d16468bc",
+            "source_id": "PBD-SRC-TQZARCVE5PAF",
+            "source_version": "8f69e9c0f74cac64"
+          },
+          "summary": "Cada horário atende no máximo 10 animais",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-T5Q5NZ63A7J8",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Cada horário atende no máximo 10 animais.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-F518NZWMFSA8",
+          "PBD-AC-HR9A5MXSTYFH",
+          "PBD-TASK-12Z330EGH0K0"
+        ],
+        "rationale": "Registro da vacina aplicada coberto por AC7 e T4.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "prd.pdf",
+            "page": 1,
+            "quote_digest": "sha256:eccb642c1dabb140098c40c9b0db4f646c43e8a863bd70b6189792de950f0b29",
+            "source_id": "PBD-SRC-TQZARCVE5PAF",
+            "source_version": "8f69e9c0f74cac64"
+          },
+          "summary": "registra a vacina aplicada",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-KQMQYQG1TPPM",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O voluntário registra a vacina aplicada.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "data",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-F518NZWMFSA8",
+          "PBD-AC-HR9A5MXSTYFH",
+          "PBD-TASK-12Z330EGH0K0"
+        ],
+        "rationale": "Registro do lote coberto por AC7 e T4; comportamento sem lote depende da Q2 (AC8 proposto).",
+        "status": "PARTIALLY_COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "prd.pdf",
+            "page": 1,
+            "quote_digest": "sha256:5a0328f39c07652b0967a3ab48159ec977ef50fe9cf539c064e314123d2af92b",
+            "source_id": "PBD-SRC-TQZARCVE5PAF",
+            "source_version": "8f69e9c0f74cac64"
+          },
+          "summary": "e o lote",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-A6C7GB8AXJDF",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O voluntário registra o lote da vacina aplicada.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-ZT21M8KDQ2MX",
+          "PBD-AC-28B9W0B66TB2",
+          "PBD-TASK-5EYDW9X6BTK9"
+        ],
+        "rationale": "Entrega do comprovante coberta por AC9; conteúdo e canal dependem da Q1.",
+        "status": "PARTIALLY_COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 6,
+            "line_start": 6,
+            "member": "prd.pdf",
+            "page": 1,
+            "quote_digest": "sha256:f25052a987e869ebde892506d0e877a27019718244886450d3954cf0e3f63273",
+            "source_id": "PBD-SRC-TQZARCVE5PAF",
+            "source_version": "8f69e9c0f74cac64"
+          },
+          "summary": "O tutor recebe o comprovante de vacinação",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-556TEA8YKRX2",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O tutor recebe o comprovante de vacinação.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "data",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-PJYGZ5847MVF",
+          "PBD-AC-SNX6NCAMHZ8C",
+          "PBD-TASK-5T2AK5PK0SY5"
+        ],
+        "rationale": "Regra de cão coberta por AC4 e T3.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 10,
+            "line_start": 10,
+            "member": "prd.pdf",
+            "page": 2,
+            "quote_digest": "sha256:85b3e12d50f4a2440951faab7f5e46d581cb631de68ca8571858f43ba8bde290",
+            "source_id": "PBD-SRC-TQZARCVE5PAF",
+            "source_version": "8f69e9c0f74cac64",
+            "table": "Tabela de regras por espécie"
+          },
+          "summary": "Cão        3 meses         Antirrábica",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-7K0XF0ZFTGQP",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Cão: idade mínima de 3 meses e vacina Antirrábica.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "data",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-PJYGZ5847MVF",
+          "PBD-AC-RJKEGK9XCXX8",
+          "PBD-TASK-5T2AK5PK0SY5"
+        ],
+        "rationale": "Regra de gato coberta por AC5 e T3.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 11,
+            "line_start": 11,
+            "member": "prd.pdf",
+            "page": 2,
+            "quote_digest": "sha256:541b9b40024302bafe404696184e62fe99b43de55cbc1f26842a88e0170e1a40",
+            "source_id": "PBD-SRC-TQZARCVE5PAF",
+            "source_version": "8f69e9c0f74cac64",
+            "table": "Tabela de regras por espécie"
+          },
+          "summary": "Gato       3 meses         Antirrábica",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-ZC7SY8YQ5RQE",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Gato: idade mínima de 3 meses e vacina Antirrábica.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "error",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-PJYGZ5847MVF",
+          "PBD-AC-SNX6NCAMHZ8C",
+          "PBD-AC-RJKEGK9XCXX8",
+          "PBD-TASK-5T2AK5PK0SY5"
+        ],
+        "rationale": "Bloqueio de animais abaixo da idade mínima coberto por AC4, AC5 e T3.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 12,
+            "line_start": 12,
+            "member": "prd.pdf",
+            "page": 2,
+            "quote_digest": "sha256:bea42d3f5e2f0844fe3324e7a2f46e880727333aa97799a4562ada22163cadf5",
+            "source_id": "PBD-SRC-TQZARCVE5PAF",
+            "source_version": "8f69e9c0f74cac64"
+          },
+          "summary": "Animais abaixo da idade mínima não podem ser agendados",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-2YNG1RXY0ZJQ",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Animais abaixo da idade mínima não podem ser agendados.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    }
+  ],
+  "criteria": [
+    {
+      "claim_refs": [
+        "PBD-CLM-8DQ89NYS81ZJ",
+        "PBD-CLM-EGZEMR6J7RB6"
+      ],
+      "condition": "o tutor agenda a vacinação de um animal",
+      "expected_outcomes": [
+        "o agendamento fica registrado com a espécie e a idade do animal"
+      ],
+      "id": "PBD-AC-1QW6A83C0K1R",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-99DKRE0HC9M2",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "informa a espécie e a idade do animal",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-T5Q5NZ63A7J8"
+      ],
+      "condition": "um horário já tem 10 animais agendados",
+      "expected_outcomes": [
+        "o agendamento não é aceito"
+      ],
+      "id": "PBD-AC-PEXB5DBV2CGQ",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-BE9S8Q2H8DJ1",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o tutor tenta agendar mais um animal nesse horário",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "o agendamento é aceito"
+      ],
+      "id": "PBD-AC-DJEW6XNGHC0B",
+      "order": 1,
+      "origin": "proposed",
+      "parent": "PBD-STORY-BE9S8Q2H8DJ1",
+      "rationale": "Caso de fronteira derivado do limite de 10 animais; a fonte não descreve este exemplo.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Com 9 animais agendados no horário, o tutor agenda o 10º animal",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-7K0XF0ZFTGQP",
+        "PBD-CLM-2YNG1RXY0ZJQ"
+      ],
+      "condition": "um cão tem idade menor que 3 meses",
+      "expected_outcomes": [
+        "o agendamento não é permitido"
+      ],
+      "id": "PBD-AC-SNX6NCAMHZ8C",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-PJYGZ5847MVF",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o tutor tenta agendar a vacinação do cão",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-ZC7SY8YQ5RQE",
+        "PBD-CLM-2YNG1RXY0ZJQ"
+      ],
+      "condition": "um gato tem idade menor que 3 meses",
+      "expected_outcomes": [
+        "o agendamento não é permitido"
+      ],
+      "id": "PBD-AC-RJKEGK9XCXX8",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-PJYGZ5847MVF",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o tutor tenta agendar a vacinação do gato",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "o agendamento é aceito"
+      ],
+      "id": "PBD-AC-FDSYKTFVJ95M",
+      "order": 2,
+      "origin": "proposed",
+      "parent": "PBD-STORY-PJYGZ5847MVF",
+      "rationale": "A fonte diz idade mínima de 3 meses, mas não diz se o limite é inclusivo (ver Q5).",
+      "status": "proposed",
+      "style": "list",
+      "text": "Um cão ou gato com exatamente 3 meses pode ser agendado",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-KQMQYQG1TPPM",
+        "PBD-CLM-A6C7GB8AXJDF"
+      ],
+      "condition": "o voluntário registra um atendimento de vacinação",
+      "expected_outcomes": [
+        "a vacina aplicada e o lote ficam registrados no atendimento"
+      ],
+      "id": "PBD-AC-HR9A5MXSTYFH",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-F518NZWMFSA8",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "informa a vacina aplicada e o lote",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "o registro não é concluído"
+      ],
+      "id": "PBD-AC-1PXDQ0VR8K8D",
+      "order": 1,
+      "origin": "proposed",
+      "parent": "PBD-STORY-F518NZWMFSA8",
+      "rationale": "A fonte exige o registro do lote, mas não diz o comportamento quando ele falta (ver Q2).",
+      "status": "proposed",
+      "style": "list",
+      "text": "O registro não é concluído quando o lote não é informado",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-556TEA8YKRX2"
+      ],
+      "condition": "a vacina aplicada foi registrada para o animal",
+      "expected_outcomes": [
+        "o tutor recebe o comprovante de vacinação"
+      ],
+      "id": "PBD-AC-28B9W0B66TB2",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-ZT21M8KDQ2MX",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o atendimento de vacinação é concluído",
+      "visible_id": "CA-01"
+    }
+  ],
+  "decisions": [],
+  "findings": [
+    {
+      "actual": "US3, AC4, AC5 and T3 restrict the rule to cão and gato. F1 lists the general rule but no criterion tests other species.",
+      "affects": [
+        "PBD-AC-RJKEGK9XCXX8",
+        "PBD-AC-SNX6NCAMHZ8C",
+        "PBD-FEAT-2K43S6PYBNB0",
+        "PBD-STORY-PJYGZ5847MVF",
+        "PBD-TASK-5T2AK5PK0SY5"
+      ],
+      "classification": "confirmed_gap",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "The source rule 'Animais abaixo da idade mínima não podem ser agendados' (line 12) applies to any animal.",
+      "gate": "G06",
+      "id": "PBD-FND-R63MDGKBHR1K",
+      "impact": "A non-dog, non-cat animal under 3 months could be scheduled and no criterion would fail.",
+      "recommendation": "Either add a criterion for the general rule or record an explicit decision in Q3 that other species are out of scope. Trace line 12 in full.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "The general rule is only partly traced. Other species are an open question (Q3) that the design did not resolve in the criteria."
+    },
+    {
+      "actual": "AC8 fixes 'o registro não é concluído quando o lote não é informado', which is one of two alternatives in Q2. Q2 is open.",
+      "affects": [
+        "PBD-AC-1PXDQ0VR8K8D",
+        "PBD-STORY-F518NZWMFSA8"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "A proposed criterion should not fix an alternative of an open question.",
+      "gate": "G06",
+      "id": "PBD-FND-WSERTN92762E",
+      "impact": "Developers may implement blocking when the product owner prefers a pending-mark behaviour.",
+      "recommendation": "Keep AC8 explicitly marked as conditional on Q2, or present both alternatives as separate proposed criteria.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "The criterion pre-decides a choice the product owner has not made."
+    },
+    {
+      "actual": "AC6 asserts that exactly 3 months is accepted. The source does not say whether the minimum is inclusive.",
+      "affects": [
+        "PBD-AC-FDSYKTFVJ95M",
+        "PBD-STORY-PJYGZ5847MVF"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "A boundary rule of 'mínima de 3 meses' states whether the boundary is inclusive only if the source does.",
+      "gate": "G04",
+      "id": "PBD-FND-JZE79WCWPHAB",
+      "impact": "Off-by-one error in eligibility for animals of exactly 3 months.",
+      "recommendation": "Confirm Q5 before AC6 is treated as a requirement.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "Proposed boundary that depends on open Q5."
+    },
+    {
+      "actual": "US5 adds 'no atendimento' and 'o sistema entregasse', and F3 adds 'sai do atendimento'. These are timing and mechanism assumptions.",
+      "affects": [
+        "PBD-FEAT-5MCRSS8PJBF0",
+        "PBD-STORY-ZT21M8KDQ2MX"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "The source says only that the tutor receives the receipt.",
+      "gate": "G04",
+      "id": "PBD-FND-X99WFBED2K94",
+      "impact": "Scope could be built around an assumed timing that the owner does not want.",
+      "recommendation": "Mark timing as an assumption or defer it to Q1.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Inferred detail presented as requirement."
+    },
+    {
+      "actual": "US5 is testable only for receipt. Content and channel are undefined until Q1.",
+      "affects": [
+        "PBD-AC-28B9W0B66TB2",
+        "PBD-STORY-ZT21M8KDQ2MX"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "A story's testable criteria should verify its want.",
+      "gate": "G07",
+      "id": "PBD-FND-M4E92VETZSJ0",
+      "impact": "The story could be accepted without verifying the delivered content.",
+      "recommendation": "Keep US5 blocked on Q1 or split receipt from content once Q1 is answered.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Testability depends on an open question."
+    },
+    {
+      "actual": "T5's first activity is 'Definir conteúdo e canal de entrega' (decision, Q1). T5 is marked draft without a block.",
+      "affects": [
+        "PBD-STORY-ZT21M8KDQ2MX",
+        "PBD-TASK-5EYDW9X6BTK9"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Tasks should be executable activities.",
+      "gate": "G08",
+      "id": "PBD-FND-ZAFT96DCTH2K",
+      "impact": "The task may be picked up before Q1 is answered.",
+      "recommendation": "Record T5 as blocked by Q1 and move the decision out of the activities.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "A decision is not implementation work."
+    },
+    {
+      "actual": "F2 and US4 overlap; F3 and US5 overlap; US4 and T4 have identical titles.",
+      "affects": [
+        "PBD-FEAT-5MCRSS8PJBF0",
+        "PBD-FEAT-EPRCTAMBRBT7",
+        "PBD-STORY-F518NZWMFSA8",
+        "PBD-STORY-ZT21M8KDQ2MX",
+        "PBD-TASK-12Z330EGH0K0"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Each feature or story should carry distinct content.",
+      "gate": "G09",
+      "id": "PBD-FND-YQZK5D0C4XPN",
+      "impact": "Duplicate entries increase review load and may create double counting.",
+      "recommendation": "Collapse F2 or F3 into the child story, or give the feature a distinct capability statement.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Sizing signal: a feature whose only child restates it."
+    },
+    {
+      "actual": "Page 3 of prd.pdf has no text layer and could not be rendered by the reviewer. The design records it as Q4, which is correct. The reviewer could not verify page 3 content.",
+      "affects": [
+        "PBD-EPIC-DHVN264FE69B"
+      ],
+      "classification": "confirmed_gap",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Every readable source obligation is traced; unreadable content is flagged as blocked.",
+      "gate": "G02",
+      "id": "PBD-FND-84TXX10G12FW",
+      "impact": "Requirements on page 3 are unknown and may change the backlog.",
+      "recommendation": "Provide a legible copy of page 3 and rerun the review. Keep Q4 open until then.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "Source completeness cannot be confirmed for page 3."
+    }
+  ],
+  "items": [
+    {
+      "claim_refs": [
+        "PBD-CLM-8DQ89NYS81ZJ",
+        "PBD-CLM-EGZEMR6J7RB6",
+        "PBD-CLM-T5Q5NZ63A7J8",
+        "PBD-CLM-KQMQYQG1TPPM",
+        "PBD-CLM-A6C7GB8AXJDF",
+        "PBD-CLM-556TEA8YKRX2",
+        "PBD-CLM-7K0XF0ZFTGQP",
+        "PBD-CLM-ZC7SY8YQ5RQE",
+        "PBD-CLM-2YNG1RXY0ZJQ"
+      ],
+      "content": {
+        "context": "PRD Mutirão de Vacinação de Animais (fonte única, páginas 1 e 2; página 3 não lida).",
+        "in_scope": [
+          "Agendamento pelo tutor com espécie e idade do animal",
+          "Limite de 10 animais por horário",
+          "Idade mínima de 3 meses para cão e gato",
+          "Registro da vacina aplicada e do lote pelo voluntário",
+          "Comprovante de vacinação entregue ao tutor"
+        ],
+        "kind": "epic",
+        "objective": "Organizar a vacinação antirrábica de cães e gatos no mutirão, do agendamento ao comprovante.",
+        "out_scope": [
+          "Espécies além de cão e gato (não definidas na fonte)",
+          "Conteúdo e canal do comprovante (não especificados na fonte)"
+        ],
+        "outcome": "Animais elegíveis são agendados dentro do limite por horário, têm a vacina e o lote registrados e o tutor recebe comprovante."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Organizar a vacinação antirrábica de cães e gatos no mutirão, do agendamento ao comprovante.</p><p><strong>Contexto</strong>: PRD Mutirão de Vacinação de Animais (fonte única, páginas 1 e 2; página 3 não lida).</p><p><strong>No escopo</strong></p><ul><li>Agendamento pelo tutor com espécie e idade do animal</li><li>Limite de 10 animais por horário</li><li>Idade mínima de 3 meses para cão e gato</li><li>Registro da vacina aplicada e do lote pelo voluntário</li><li>Comprovante de vacinação entregue ao tutor</li></ul><p><strong>Fora do escopo</strong></p><ul><li>Espécies além de cão e gato (não definidas na fonte)</li><li>Conteúdo e canal do comprovante (não especificados na fonte)</li></ul><p><strong>Resultado esperado</strong>: Animais elegíveis são agendados dentro do limite por horário, têm a vacina e o lote registrados e o tutor recebe comprovante.</p>"
+      },
+      "id": "PBD-EPIC-DHVN264FE69B",
+      "origin": "generated",
+      "parent": null,
+      "status": "reviewed",
+      "title": "Agendamento, atendimento e comprovante da vacinação no mutirão",
+      "type": "epic"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-8DQ89NYS81ZJ",
+        "PBD-CLM-EGZEMR6J7RB6",
+        "PBD-CLM-T5Q5NZ63A7J8",
+        "PBD-CLM-7K0XF0ZFTGQP",
+        "PBD-CLM-ZC7SY8YQ5RQE",
+        "PBD-CLM-2YNG1RXY0ZJQ"
+      ],
+      "content": {
+        "capability": "Agendar a vacinação informando espécie e idade, aplicando limite por horário e idade mínima por espécie.",
+        "kind": "feature",
+        "rules": [
+          "Cada horário atende no máximo 10 animais",
+          "Cão: idade mínima 3 meses e vacina Antirrábica",
+          "Gato: idade mínima 3 meses e vacina Antirrábica",
+          "Animais abaixo da idade mínima não podem ser agendados"
+        ],
+        "value": "Só animais elegíveis entram na agenda, dentro do limite de atendimento de cada horário."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Agendar a vacinação informando espécie e idade, aplicando limite por horário e idade mínima por espécie.</p><p><strong>Valor</strong>: Só animais elegíveis entram na agenda, dentro do limite de atendimento de cada horário.</p><p><strong>Regras relacionadas</strong></p><ul><li>Cada horário atende no máximo 10 animais</li><li>Cão: idade mínima 3 meses e vacina Antirrábica</li><li>Gato: idade mínima 3 meses e vacina Antirrábica</li><li>Animais abaixo da idade mínima não podem ser agendados</li></ul>"
+      },
+      "id": "PBD-FEAT-2K43S6PYBNB0",
+      "origin": "generated",
+      "parent": "PBD-EPIC-DHVN264FE69B",
+      "status": "reviewed",
+      "title": "Agendamento de vacinação com regras de elegibilidade",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-KQMQYQG1TPPM",
+        "PBD-CLM-A6C7GB8AXJDF"
+      ],
+      "content": {
+        "capability": "Registrar, no atendimento, a vacina aplicada e o lote usado.",
+        "kind": "feature",
+        "rules": [
+          "O voluntário registra a vacina aplicada",
+          "O voluntário registra o lote da vacina"
+        ],
+        "value": "Cada aplicação fica registrada com vacina e lote."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Registrar, no atendimento, a vacina aplicada e o lote usado.</p><p><strong>Valor</strong>: Cada aplicação fica registrada com vacina e lote.</p><p><strong>Regras relacionadas</strong></p><ul><li>O voluntário registra a vacina aplicada</li><li>O voluntário registra o lote da vacina</li></ul>"
+      },
+      "id": "PBD-FEAT-EPRCTAMBRBT7",
+      "origin": "generated",
+      "parent": "PBD-EPIC-DHVN264FE69B",
+      "status": "reviewed",
+      "title": "Registro da aplicação da vacina",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-556TEA8YKRX2"
+      ],
+      "content": {
+        "capability": "Entregar ao tutor o comprovante da vacinação realizada.",
+        "kind": "feature",
+        "rules": [
+          "Conteúdo e canal de entrega a definir (ver Q1)"
+        ],
+        "value": "O tutor sai do atendimento com comprovante da vacinação do animal."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Entregar ao tutor o comprovante da vacinação realizada.</p><p><strong>Valor</strong>: O tutor sai do atendimento com comprovante da vacinação do animal.</p><p><strong>Regras relacionadas</strong></p><ul><li>Conteúdo e canal de entrega a definir (ver Q1)</li></ul>"
+      },
+      "id": "PBD-FEAT-5MCRSS8PJBF0",
+      "origin": "generated",
+      "parent": "PBD-EPIC-DHVN264FE69B",
+      "status": "reviewed",
+      "title": "Comprovante de vacinação",
+      "type": "feature"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-8DQ89NYS81ZJ",
+        "PBD-CLM-EGZEMR6J7RB6"
+      ],
+      "content": {
+        "actor": "tutor",
+        "benefit": "acompanhar a vacinação do animal",
+        "kind": "role_goal_benefit",
+        "want": "o sistema registrasse o agendamento da vacinação com a espécie e a idade do animal"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> tutor, <strong>gostaria que</strong> o sistema registrasse o agendamento da vacinação com a espécie e a idade do animal, <strong>para</strong> acompanhar a vacinação do animal.</p>"
+      },
+      "id": "PBD-STORY-99DKRE0HC9M2",
+      "origin": "generated",
+      "parent": "PBD-FEAT-2K43S6PYBNB0",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Agendar vacinação informando espécie e idade do animal",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-T5Q5NZ63A7J8"
+      ],
+      "content": {
+        "actor": "tutor",
+        "benefit": "garantir o atendimento dentro do limite de cada horário",
+        "kind": "role_goal_benefit",
+        "want": "o sistema recusasse novo agendamento quando o horário já tivesse 10 animais"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> tutor, <strong>gostaria que</strong> o sistema recusasse novo agendamento quando o horário já tivesse 10 animais, <strong>para</strong> garantir o atendimento dentro do limite de cada horário.</p>"
+      },
+      "id": "PBD-STORY-BE9S8Q2H8DJ1",
+      "origin": "generated",
+      "parent": "PBD-FEAT-2K43S6PYBNB0",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Respeitar o limite de 10 animais por horário",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-7K0XF0ZFTGQP",
+        "PBD-CLM-ZC7SY8YQ5RQE",
+        "PBD-CLM-2YNG1RXY0ZJQ"
+      ],
+      "content": {
+        "actor": "tutor",
+        "benefit": "evitar agendamentos fora da idade mínima da vacina antirrábica",
+        "kind": "role_goal_benefit",
+        "want": "o sistema impedisse o agendamento de cão ou gato abaixo de 3 meses"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> tutor, <strong>gostaria que</strong> o sistema impedisse o agendamento de cão ou gato abaixo de 3 meses, <strong>para</strong> evitar agendamentos fora da idade mínima da vacina antirrábica.</p>"
+      },
+      "id": "PBD-STORY-PJYGZ5847MVF",
+      "origin": "generated",
+      "parent": "PBD-FEAT-2K43S6PYBNB0",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Aplicar a idade mínima de cães e gatos no agendamento",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-KQMQYQG1TPPM",
+        "PBD-CLM-A6C7GB8AXJDF"
+      ],
+      "content": {
+        "actor": "voluntário",
+        "benefit": "manter o registro de cada aplicação",
+        "kind": "role_goal_benefit",
+        "want": "o sistema registrasse a vacina aplicada e o lote da vacina no atendimento"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> voluntário, <strong>gostaria que</strong> o sistema registrasse a vacina aplicada e o lote da vacina no atendimento, <strong>para</strong> manter o registro de cada aplicação.</p>"
+      },
+      "id": "PBD-STORY-F518NZWMFSA8",
+      "origin": "generated",
+      "parent": "PBD-FEAT-EPRCTAMBRBT7",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Registrar vacina aplicada e lote no atendimento",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-556TEA8YKRX2"
+      ],
+      "content": {
+        "actor": "tutor",
+        "benefit": "ter a comprovação da vacinação do animal",
+        "kind": "role_goal_benefit",
+        "want": "o sistema entregasse o comprovante da vacinação realizada no atendimento"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> tutor, <strong>gostaria que</strong> o sistema entregasse o comprovante da vacinação realizada no atendimento, <strong>para</strong> ter a comprovação da vacinação do animal.</p>"
+      },
+      "id": "PBD-STORY-ZT21M8KDQ2MX",
+      "origin": "generated",
+      "parent": "PBD-FEAT-5MCRSS8PJBF0",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Entregar comprovante de vacinação ao tutor",
+      "type": "story"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-8DQ89NYS81ZJ",
+        "PBD-CLM-EGZEMR6J7RB6"
+      ],
+      "content": {
+        "activities": [
+          "Incluir campos de espécie e idade no formulário de agendamento",
+          "Salvar o agendamento com os dois valores"
+        ],
+        "kind": "task",
+        "outcome": "Agendamento guarda espécie e idade do animal.",
+        "summary": "Incluir no agendamento os campos de espécie e idade do animal.",
+        "verification": "Executar AC1 e confirmar que o agendamento guarda espécie e idade."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Incluir no agendamento os campos de espécie e idade do animal.</p><p><strong>Atividades</strong></p><ul><li>Incluir campos de espécie e idade no formulário de agendamento</li><li>Salvar o agendamento com os dois valores</li></ul><p><strong>Resultado esperado</strong>: Agendamento guarda espécie e idade do animal.</p><p><strong>Verificação</strong>: Executar AC1 e confirmar que o agendamento guarda espécie e idade.</p>"
+      },
+      "id": "PBD-TASK-WBAJ7SWT00K9",
+      "origin": "generated",
+      "parent": "PBD-STORY-99DKRE0HC9M2",
+      "status": "reviewed",
+      "title": "Implementar campos de espécie e idade no agendamento",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-T5Q5NZ63A7J8"
+      ],
+      "content": {
+        "activities": [
+          "Contar animais agendados por horário",
+          "Recusar agendamento quando o horário já tiver 10 animais"
+        ],
+        "kind": "task",
+        "outcome": "Nenhum horário passa de 10 animais agendados.",
+        "summary": "Contar os agendamentos de cada horário e recusar o excedente.",
+        "verification": "Executar AC2 e AC3."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Contar os agendamentos de cada horário e recusar o excedente.</p><p><strong>Atividades</strong></p><ul><li>Contar animais agendados por horário</li><li>Recusar agendamento quando o horário já tiver 10 animais</li></ul><p><strong>Resultado esperado</strong>: Nenhum horário passa de 10 animais agendados.</p><p><strong>Verificação</strong>: Executar AC2 e AC3.</p>"
+      },
+      "id": "PBD-TASK-AVPREGWGGKE5",
+      "origin": "generated",
+      "parent": "PBD-STORY-BE9S8Q2H8DJ1",
+      "status": "reviewed",
+      "title": "Aplicar limite de 10 animais por horário",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-7K0XF0ZFTGQP",
+        "PBD-CLM-ZC7SY8YQ5RQE",
+        "PBD-CLM-2YNG1RXY0ZJQ"
+      ],
+      "content": {
+        "activities": [
+          "Registrar a regra de cão e de gato (3 meses, Antirrábica)",
+          "Bloquear agendamento abaixo da idade mínima"
+        ],
+        "kind": "task",
+        "outcome": "Cães e gatos abaixo de 3 meses não são agendados.",
+        "summary": "Manter a regra de idade mínima e vacina para cão e gato e bloquear agendamentos fora dela.",
+        "verification": "Executar AC4 e AC5; AC6 depende de confirmação (Q5)."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Manter a regra de idade mínima e vacina para cão e gato e bloquear agendamentos fora dela.</p><p><strong>Atividades</strong></p><ul><li>Registrar a regra de cão e de gato (3 meses, Antirrábica)</li><li>Bloquear agendamento abaixo da idade mínima</li></ul><p><strong>Resultado esperado</strong>: Cães e gatos abaixo de 3 meses não são agendados.</p><p><strong>Verificação</strong>: Executar AC4 e AC5; AC6 depende de confirmação (Q5).</p>"
+      },
+      "id": "PBD-TASK-5T2AK5PK0SY5",
+      "origin": "generated",
+      "parent": "PBD-STORY-PJYGZ5847MVF",
+      "status": "reviewed",
+      "title": "Aplicar regra de idade mínima e vacina por espécie",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-KQMQYQG1TPPM",
+        "PBD-CLM-A6C7GB8AXJDF"
+      ],
+      "content": {
+        "activities": [
+          "Incluir campos de vacina aplicada e lote no registro do atendimento"
+        ],
+        "kind": "task",
+        "outcome": "Cada aplicação fica registrada com vacina e lote.",
+        "summary": "Incluir no registro do voluntário os campos de vacina aplicada e lote.",
+        "verification": "Executar AC7; AC8 depende da resposta à Q2."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Incluir no registro do voluntário os campos de vacina aplicada e lote.</p><p><strong>Atividades</strong></p><ul><li>Incluir campos de vacina aplicada e lote no registro do atendimento</li></ul><p><strong>Resultado esperado</strong>: Cada aplicação fica registrada com vacina e lote.</p><p><strong>Verificação</strong>: Executar AC7; AC8 depende da resposta à Q2.</p>"
+      },
+      "id": "PBD-TASK-12Z330EGH0K0",
+      "origin": "generated",
+      "parent": "PBD-STORY-F518NZWMFSA8",
+      "status": "reviewed",
+      "title": "Registrar vacina aplicada e lote no atendimento",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-556TEA8YKRX2"
+      ],
+      "content": {
+        "activities": [
+          "Definir conteúdo e canal de entrega do comprovante (Q1)",
+          "Gerar o comprovante ao concluir o atendimento"
+        ],
+        "kind": "task",
+        "outcome": "Tutor recebe o comprovante da vacinação.",
+        "summary": "Gerar o comprovante ao concluir o atendimento e entregá-lo ao tutor.",
+        "verification": "Executar AC9 após a resposta à Q1."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Gerar o comprovante ao concluir o atendimento e entregá-lo ao tutor.</p><p><strong>Atividades</strong></p><ul><li>Definir conteúdo e canal de entrega do comprovante (Q1)</li><li>Gerar o comprovante ao concluir o atendimento</li></ul><p><strong>Resultado esperado</strong>: Tutor recebe o comprovante da vacinação.</p><p><strong>Verificação</strong>: Executar AC9 após a resposta à Q1.</p>"
+      },
+      "id": "PBD-TASK-5EYDW9X6BTK9",
+      "origin": "generated",
+      "parent": "PBD-STORY-ZT21M8KDQ2MX",
+      "status": "reviewed",
+      "title": "Gerar comprovante de vacinação para o tutor",
+      "type": "task"
+    }
+  ],
+  "kind": "pbd.backlog",
+  "language": "pt-BR",
+  "profile": "generic",
+  "questions": [
+    {
+      "affects": [
+        "PBD-CLM-556TEA8YKRX2",
+        "PBD-STORY-ZT21M8KDQ2MX"
+      ],
+      "alternatives": [
+        "Comprovante impresso entregue no atendimento",
+        "Comprovante digital enviado ao tutor"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-EAQ4WN4G0PCB",
+      "impact": "Define o conteúdo e a entrega da história de comprovante e seus critérios.",
+      "status": "open",
+      "text": "Qual o conteúdo do comprovante de vacinação e por qual canal ele é entregue ao tutor?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-A6C7GB8AXJDF",
+        "PBD-STORY-F518NZWMFSA8"
+      ],
+      "alternatives": [
+        "Bloquear o registro sem lote",
+        "Permitir registro sem lote e marcar pendência"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-TTMRMBB5Q9BJ",
+      "impact": "Define se o registro é bloqueado sem lote; hoje a fonte só diz que o lote é registrado.",
+      "status": "open",
+      "text": "O que acontece quando o lote da vacina não é informado no registro?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-7K0XF0ZFTGQP",
+        "PBD-CLM-ZC7SY8YQ5RQE",
+        "PBD-STORY-PJYGZ5847MVF"
+      ],
+      "alternatives": [
+        "Manter fora do escopo",
+        "Definir regra própria para cada nova espécie"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-X31WFNN5B25P",
+      "impact": "Regras de outras espécies estão indefinidas; o escopo atual cobre só cão e gato.",
+      "status": "open",
+      "text": "Como tratar espécies além de cão e gato, já que a tabela de regras cobre apenas esses dois?"
+    },
+    {
+      "affects": [
+        "PBD-EPIC-DHVN264FE69B"
+      ],
+      "alternatives": [
+        "Enviar a página 3 em formato legível para nova leitura"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-PRY6MQWRES7R",
+      "impact": "Requisitos eventualmente contidos na página 3 não foram lidos e podem alterar o backlog.",
+      "status": "open",
+      "text": "A página 3 do PRD não tem texto e não pôde ser inspecionada. Ela contém requisitos adicionais?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-7K0XF0ZFTGQP",
+        "PBD-CLM-ZC7SY8YQ5RQE"
+      ],
+      "alternatives": [
+        "Inclusiva (3 meses pode)",
+        "Exclusiva (precisa passar de 3 meses)"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-8WXNNNFYY1C4",
+      "impact": "Define o limite exato da regra de idade mínima e o critério AC6.",
+      "status": "open",
+      "text": "A idade mínima de 3 meses é inclusiva, ou seja, um animal com exatamente 3 meses pode ser agendado?"
+    }
+  ],
+  "relations": [
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-DKNWK06S60BA",
+      "reason": "Pela ordem do processo no PRD, o agendamento precede o atendimento e o registro da vacina.",
+      "source": "PBD-STORY-99DKRE0HC9M2",
+      "status": "proposed",
+      "target": "PBD-STORY-F518NZWMFSA8",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-3C5BN58CZXG4",
+      "reason": "Pela ordem do processo no PRD, o comprovante segue o registro da vacina.",
+      "source": "PBD-STORY-F518NZWMFSA8",
+      "status": "proposed",
+      "target": "PBD-STORY-ZT21M8KDQ2MX",
+      "type": "predecessor"
+    }
+  ],
+  "run_id": "PBD-RUN-2YCFJ6N4MNJR",
+  "schema_version": "1.1.0",
+  "sources": [
+    {
+      "authority": "functional",
+      "digest": "sha256:8f69e9c0f74cac64293b2b4812426f247c743c1cd2606d0d2f574bd3a85a8c5e",
+      "id": "PBD-SRC-TQZARCVE5PAF",
+      "kind": "file",
+      "members": [
+        {
+          "bytes": 1741,
+          "digest": "sha256:dd7bd2b767ba65e425851d461c290a567cca0248f39d9c5efff09c6cd73dde1c",
+          "media_type": "application/pdf",
+          "path": "prd.pdf",
+          "status": "partial"
+        }
+      ],
+      "read_status": "partial",
+      "selector": "prd.pdf",
+      "version": "8f69e9c0f74cac64"
+    }
+  ],
+  "synthetic": true
+}

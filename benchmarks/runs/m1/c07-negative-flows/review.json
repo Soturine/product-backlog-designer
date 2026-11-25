@@ -1,0 +1,698 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC3",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC4",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC5",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC6",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC7",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC8",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC9",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC10",
+      "notes": "Condition and trigger are inverted (condition 'door is opened', trigger 'closed after 60 seconds or less'); meaning recoverable but awkward.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC11",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC12",
+      "notes": "Combines unknown and deactivated badges offline in one criterion, unlike the online split in AC2/AC3; two partitions in one.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC13",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC14",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC15",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC16",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC17",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "distinct",
+      "items": [
+        "AC2",
+        "AC3"
+      ],
+      "rationale": "Different badge states; shared message is intended by source."
+    },
+    {
+      "assessment": "distinct",
+      "items": [
+        "AC2",
+        "AC12"
+      ],
+      "rationale": "Online versus offline check source."
+    },
+    {
+      "assessment": "distinct",
+      "items": [
+        "T1",
+        "T6"
+      ],
+      "rationale": "Online decision versus local list storage."
+    }
+  ],
+  "findings": [
+    {
+      "actual": "Relation EN1 to US2 is proposed, but no criterion states that a fourth-item record made offline is retained and uploaded.",
+      "affects": [
+        "US2",
+        "EN1"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Offline behaviour: what happens to the fourth-item recording and warning when the kiosk is offline, since events are queued.",
+      "gate": "G06",
+      "impact": "Offline over-limit records could be dropped unnoticed.",
+      "recommendation": "Add a question or a proposed criterion on offline fourth-item recording.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "R6 and R4 interact; the source does not state it, so this is a candidate rather than a confirmed gap."
+    },
+    {
+      "actual": "Criteria for US2 and US5 are written as testable although day boundary, item detection and volunteer identity are unknown.",
+      "affects": [
+        "US2",
+        "US5",
+        "T3"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Open blocking questions Q1, Q2 and Q5 should block readiness of US2 and US5.",
+      "gate": "G06",
+      "impact": "Stories cannot be built or verified until answered.",
+      "recommendation": "Mark US2 and US5 not ready until Q1, Q2 and Q5 are resolved.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "Criteria hold only under assumptions not in the source."
+    },
+    {
+      "actual": "AC12 merges unknown and deactivated badges; AC10 has inverted condition and trigger.",
+      "affects": [
+        "AC10",
+        "AC12"
+      ],
+      "classification": "optional_improvement",
+      "expected": "Symmetric criteria for offline rejection paths.",
+      "gate": "G06",
+      "impact": "Minor testing ambiguity.",
+      "recommendation": "Split AC12 into two criteria and reword AC10 as when the door is closed within 60 seconds, no alert sounds.",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "Reduces clarity and traceability of each partition."
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "R1 A registered member scans their badge to unlock the fridge door.",
+      "rationale": "Positive path has an explicit criterion.",
+      "text": "Registered member scanning badge unlocks the door"
+    },
+    {
+      "covered_by": [
+        "US1",
+        "AC2",
+        "AC3",
+        "AC12",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O2",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "An unknown or deactivated badge does not unlock the door",
+      "rationale": "Both badge states have separate negative criteria, online and offline.",
+      "text": "Unknown or deactivated badge does not unlock the door"
+    },
+    {
+      "covered_by": [
+        "AC2",
+        "AC3",
+        "AC12",
+        "T2"
+      ],
+      "disposition": "COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "the screen shows \"Badge not recognized\"",
+      "rationale": "Exact text asserted in each rejection criterion.",
+      "text": "Screen shows the exact message on rejection"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC4",
+        "AC5",
+        "AC7",
+        "T3"
+      ],
+      "disposition": "PARTIALLY_COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "R3 A member may take at most 3 items per day.",
+      "rationale": "Limit is expressed via fourth-item behaviour; day boundary and counting mechanism are legitimately open (Q1, Q2); within-limit partition is only proposed (AC7).",
+      "text": "At most 3 items per day per member"
+    },
+    {
+      "covered_by": [
+        "AC4",
+        "T3"
+      ],
+      "disposition": "COVERED",
+      "key": "O5",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C5"
+      ],
+      "quote": "Taking a fourth item on the same day is recorded",
+      "rationale": "Explicit criterion.",
+      "text": "Fourth item on the same day is recorded"
+    },
+    {
+      "covered_by": [
+        "AC5",
+        "T4"
+      ],
+      "disposition": "COVERED",
+      "key": "O6",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C6"
+      ],
+      "quote": "the member sees a warning",
+      "rationale": "Explicit criterion; content unspecified and tracked as Q3.",
+      "text": "Member sees a warning on the fourth item"
+    },
+    {
+      "covered_by": [
+        "AC6",
+        "T4"
+      ],
+      "disposition": "COVERED",
+      "key": "O7",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C7"
+      ],
+      "quote": "the member is not locked out",
+      "rationale": "Verified by a subsequent successful unlock.",
+      "text": "Member is not locked out after the fourth item"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC8",
+        "AC9",
+        "AC10",
+        "T5"
+      ],
+      "disposition": "COVERED",
+      "key": "O8",
+      "locator": {
+        "line_start": 8,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C8"
+      ],
+      "quote": "If the door stays open for more than 60 seconds, an audible alert sounds until the door is closed.",
+      "rationale": "Start, continuation and no-alert boundary covered.",
+      "text": "Audible alert after door open more than 60 s until closed"
+    },
+    {
+      "covered_by": [
+        "US4",
+        "AC11",
+        "AC12",
+        "T6"
+      ],
+      "disposition": "COVERED",
+      "key": "O9",
+      "locator": {
+        "line_start": 9,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C9"
+      ],
+      "quote": "badge checks use the last synchronized member list",
+      "rationale": "Accept and reject paths offline; staleness and post-sync members are open in Q6.",
+      "text": "Offline badge checks use last synchronized member list"
+    },
+    {
+      "covered_by": [
+        "EN1",
+        "AC13",
+        "AC14",
+        "T7"
+      ],
+      "disposition": "COVERED",
+      "key": "O10",
+      "locator": {
+        "line_start": 9,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C10"
+      ],
+      "quote": "events are uploaded when connectivity returns",
+      "rationale": "Upload on reconnect covered; scope and destination open in Q7.",
+      "text": "Events uploaded when connectivity returns"
+    },
+    {
+      "covered_by": [
+        "US5",
+        "AC15",
+        "AC17",
+        "T8"
+      ],
+      "disposition": "COVERED",
+      "key": "O11",
+      "locator": {
+        "line_start": 10,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C11"
+      ],
+      "quote": "R7 Volunteers can mark an item as expired",
+      "rationale": "Marking covered; volunteer identification open in Q5.",
+      "text": "Volunteers can mark an item as expired"
+    },
+    {
+      "covered_by": [
+        "AC16",
+        "T8"
+      ],
+      "disposition": "COVERED",
+      "key": "O12",
+      "locator": {
+        "line_start": 10,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C12"
+      ],
+      "quote": "expired items are removed from the available inventory count",
+      "rationale": "Explicit criterion.",
+      "text": "Expired items removed from available inventory count"
+    },
+    {
+      "covered_by": [
+        "E1"
+      ],
+      "disposition": "OUT_OF_SCOPE",
+      "key": "O13",
+      "locator": {
+        "line_start": 13,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [],
+      "quote": "Payments and donations tracking.",
+      "rationale": "Exclusion recorded in the epic out_scope; nothing designed for it.",
+      "text": "Payments and donations tracking is out of scope"
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F5",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "No team data.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Foundation for US2 and US4.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "No UI or technology mandated.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Three criteria, one rule.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Concrete unlock and message outcomes.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Access control for members, grounded in R1/R2.",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "Success and rejection share one decision; coherent slice, conjunction is not a split signal.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Q2 unknown makes the item-counting scope unestimable.",
+          "rating": "concern"
+        },
+        "independent": {
+          "note": "Depends on member identification (US1) and on an undefined item detection mechanism.",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "Mechanism left open.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "One rule with its outcomes.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Day definition and warning content unspecified.",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "Visible fair-use guideline per R3/R4.",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "Blocking questions Q1 (day boundary) and Q2 (how items are detected) remain open, so the story is not ready; fifth-item behaviour undefined (Q4).",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "No team data.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Standalone.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Sound form unspecified, not over-designed.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Single rule.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "60 s threshold explicit.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Benefit of closing the door is plausible; actor framing is a mild inference.",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "No team data.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Reuses US1 validation; relation recorded.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Storage approach not mandated in story.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Two criteria.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Offline accept and reject outcomes observable.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Access during outages.",
+          "rating": "supported"
+        }
+      },
+      "key": "US4",
+      "notes": "Offline staleness and post-sync members remain in non-blocking Q6.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "EN1",
+      "notes": "Legitimate enabler without persona.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Volunteer identity and the surface for the action are unknown.",
+          "rating": "concern"
+        },
+        "independent": {
+          "note": "Standalone.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Channel unspecified.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Mark and exclude are one outcome.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Count change observable.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Accurate inventory.",
+          "rating": "supported"
+        }
+      },
+      "key": "US5",
+      "notes": "Blocking Q5: volunteer identification undefined, so who may perform the action cannot be verified.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "key": "T1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T3",
+      "notes": "Verification says exactly the fourth take is recorded, which pre-empts open Q4 about fifth and later items.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "T4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T5",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T6",
+      "notes": "Covers deactivated-at-sync offline case; unknown-badge offline rejection is verified only by AC12.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T7",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T8",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "reviewer-c07",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-78385WMH95P7"
+    }
+  ]
+}

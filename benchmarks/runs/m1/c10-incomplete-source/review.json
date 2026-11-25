@@ -1,0 +1,372 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "notes": "Proposed, labelled, tied to open Q3.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC3",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC4",
+      "notes": "Proposed, 'item próprio' implies it; Q4 open.",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC5",
+      "notes": "'Outro participante' implies it but is only a proposal; candidate.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC6",
+      "notes": "Status confirmed, but trigger depends on the unresolved Q2 definition of 5 days and the start event; should be treated as blocked/ambiguous.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC7",
+      "notes": "'Resposta' is undefined and depends on the unreadable diagram; the status confirmed overstates certainty.",
+      "source_support": "supported",
+      "verdict": "concern"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "distinct",
+      "items": [
+        "AC4",
+        "AC5"
+      ],
+      "rationale": "Different rules: offering another person's item versus requesting one's own item."
+    },
+    {
+      "assessment": "distinct",
+      "items": [
+        "T3",
+        "T4"
+      ],
+      "rationale": "Implementation versus test planning, though T4 is of questionable type."
+    }
+  ],
+  "findings": [
+    {
+      "actual": "Only SP1 plus Q1; no story or criterion for lifecycle. The source member is unreadable and the design correctly did not invent content.",
+      "affects": [
+        "SP1",
+        "US3",
+        "T3"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "Lifecycle states and transitions from fluxo-pedido.png (O3) covered, or explicitly marked blocked.",
+      "gate": "G06",
+      "impact": "Request response, status transitions and the cancel state remain unspecified; the backlog is incomplete for that part.",
+      "recommendation": "Obtain a transcription (Q1) and derive stories and criteria from it before refinement.",
+      "review_status": "confirmed",
+      "severity": "high",
+      "why": "The image is unreadable, so coverage of O3 and the status part of O4 cannot be confirmed."
+    },
+    {
+      "actual": "Both have status confirmed although the day unit, start event and 'resposta' are undefined.",
+      "affects": [
+        "AC6",
+        "AC7",
+        "US3"
+      ],
+      "classification": "confirmed_divergence",
+      "expected": "AC6 and AC7 marked as ambiguous or blocked given Q2 and Q1.",
+      "gate": "G08",
+      "impact": "Readiness appears higher than it is.",
+      "recommendation": "Mark AC6 and AC7 as blocked or proposed until Q1 and Q2 are answered.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "An unverified assumption is accepted as confirmed."
+    },
+    {
+      "actual": "T3 and T4 reference CA-06/CA-07 and T2 references CA-03, but visible IDs are per story (US3: CA-01/CA-02; US2 request: CA-01).",
+      "affects": [
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "classification": "confirmed_divergence",
+      "expected": "Task verification references resolve to the visible criterion IDs of the parent story.",
+      "gate": "G09",
+      "impact": "Misleading traceability for implementers and testers.",
+      "recommendation": "Use the story-local visible IDs or reference the criteria by their stable IDs.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "Cross-references use global keys instead of visible IDs."
+    },
+    {
+      "actual": "US3 description reads 'Quando Quando ...' and 'quero quero ...'; T4 is QA planning, not product work.",
+      "affects": [
+        "US3",
+        "T4"
+      ],
+      "classification": "candidate_concern",
+      "expected": "A job story rendering with the situation and motivation without repeated leading words.",
+      "gate": "G13",
+      "impact": "Cosmetic and clarity issues.",
+      "recommendation": "Fix the rendering and consider dropping T4 in favour of Test Cases.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Template duplicates the labels; the test task is out of artifact type."
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "AC2",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 3,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-RMS7K6MQS0N4"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "O participante publica um item para troca com foto e descrição.",
+      "rationale": "US1 and AC1 cover publication; mandatory-field validation is a labelled proposal (AC2, Q3).",
+      "text": "Participante publica item para troca com foto e descrição."
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC3",
+        "AC4",
+        "AC5",
+        "T2"
+      ],
+      "disposition": "COVERED",
+      "key": "O2",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-RMS7K6MQS0N4"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "Outro participante envia um pedido de troca oferecendo um item próprio.",
+      "rationale": "US2 and AC3 cover the request; AC4/AC5 are proposals tied to Q4.",
+      "text": "Outro participante envia pedido de troca oferecendo item próprio."
+    },
+    {
+      "covered_by": [
+        "SP1"
+      ],
+      "disposition": "BLOCKED",
+      "key": "O3",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-RMS7K6MQS0N4"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "Os estados do pedido de troca e suas transições seguem o diagrama fluxo-pedido.png.",
+      "rationale": "fluxo-pedido.png has no extractable text; states and transitions cannot be known. SP1 and Q1 correctly refuse to invent them; no story or criterion covers the lifecycle.",
+      "text": "Estados e transições do pedido seguem o diagrama (imagem não legível)."
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC6",
+        "AC7",
+        "T3"
+      ],
+      "disposition": "PARTIALLY_COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-RMS7K6MQS0N4"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "Pedidos sem resposta em 5 dias são cancelados automaticamente.",
+      "rationale": "Rule is captured, but the day unit, start event, who must respond and the resulting state are undefined and depend on the unreadable diagram (Q1, Q2 blocking).",
+      "text": "Pedidos sem resposta em 5 dias são cancelados automaticamente."
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "Scope and out-of-scope correctly flag the blocked lifecycle.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "notes": "Groups request submission, automatic cancellation and the lifecycle rule; acceptable but loosely cohesive (candidate).",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "No team data; photo constraints open in Q3.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Stands alone.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Outcome-focused.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Single slice.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC1 observable.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Actor and benefit plausible and consistent with source.",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "No team data; Q4 open.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Real predecessor on US1 recorded.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "No premature design.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Single slice.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC3 observable.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Supported by source.",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "Sequencing dependency on US1 is declared.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Unknown deadline semantics and state model.",
+          "rating": "concern"
+        },
+        "independent": {
+          "note": "Depends on SP1/Q1 and Q2 to define response and canceled state.",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "Implementation not prescribed.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Single rule.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Boundary cannot be verified until Q2 answered.",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "Source states the rule; benefit is a mild inference.",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "Cannot be fully specified: day unit, start event and resulting state unknown (Q1, Q2). Rendered description duplicates words ('Quando Quando', 'quero quero').",
+      "source_support": "supported",
+      "task_sufficiency": "insufficient",
+      "verdict": "concern"
+    },
+    {
+      "key": "SP1",
+      "notes": "Correct handling of an unreadable source; a timebox is not given (optional).",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "notes": "Verification cites CA-03, but the registration criterion of US2 is displayed as CA-01 (CA-03 is the self-request prohibition). Wrong cross-reference.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "T3",
+      "notes": "Verification cites CA-06 and CA-07, which do not exist under US3 (displayed CA-01, CA-02). Task is correctly marked blocked by Q1/Q2.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "T4",
+      "notes": "Test-planning is a QA artifact rather than product work and is not supported by source; also cites nonexistent CA-06/CA-07 (candidate).",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    }
+  ],
+  "reviewer": {
+    "agent": "reviewer-c10",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-RMS7K6MQS0N4"
+    }
+  ]
+}

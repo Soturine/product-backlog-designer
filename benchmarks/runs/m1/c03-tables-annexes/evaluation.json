@@ -1,0 +1,32 @@
+{
+ "case": "c03-tables-annexes",
+ "evaluator_model": "claude-haiku-5-5",
+ "obligations": [
+  {"id": "G01", "verdict": "covered", "evidence": "US1 (cadastrar nome e e-mail); US2 (telefone opcional); AC1 confirmed; F1", "note": "Self-registration with name, email and phone is represented, with phone optional."},
+  {"id": "G02", "verdict": "covered", "evidence": "US3 (aprovar cadastro pendente); US4 (recusar cadastro pendente); AC15 and AC18 confirmed; T4, T5, T6", "note": "Coordinator approval and refusal of pending registrations are confirmed."},
+  {"id": "G03", "verdict": "covered", "evidence": "US5; AC21 confirmed (e-mail de recusa contém o motivo registrado); T7", "note": "Refusal email with the reason is confirmed."},
+  {"id": "G04", "verdict": "covered", "evidence": "US7; AC29 and AC30 confirmed (somente áreas cadastradas pelo coordenador); T10", "note": "Interest areas are chosen only from coordinator-registered areas."},
+  {"id": "G05", "verdict": "covered", "evidence": "US8; AC31 confirmed (arquivo CSV com todos os aprovados e nenhum outro); T11", "note": "CSV export of approved volunteers is confirmed."},
+  {"id": "G06", "verdict": "covered", "evidence": "AC2 (nome ausente rejeitado), AC3 (2 caracteres rejeitado), AC4 (81 rejeitado), AC5 (3 e 80 aceitos, inclusivos); T1", "note": "Name required with 3 to 80 characters, boundaries included."},
+  {"id": "G07", "verdict": "covered", "evidence": "AC6 (e-mail ausente), AC7 (formato inválido), AC8 (e-mail repetido); T1, T2; question on what 'formato válido' means", "note": "Email required, valid and unique is represented; the undefined format is raised as a question."},
+  {"id": "G08", "verdict": "covered", "evidence": "AC11 (sem telefone aceito), AC12 (10 ou 11 dígitos), AC13 (não dígito rejeitado), AC14 (9 ou 12 dígitos rejeitado); T3", "note": "Phone is optional, digits only, 10 or 11 when present, with boundaries."},
+  {"id": "G09", "verdict": "covered", "evidence": "EN1 (arquivamento automático de pendentes há mais de 30 dias); AC24, AC25 (exatamente 30 dias permanece), AC26; T8; question on the start date of the 30 days", "note": "Auto-archive after more than 30 days is confirmed with the boundary, though it sits in an enabler item."}
+ ],
+ "traps": [
+  {"trap": "Table header row ('ID | Requisito | Prioridade') is not a requirement.", "violated": false, "note": "No item or criterion is derived from the table header row."},
+  {"trap": "Telefone is optional: must not be made mandatory.", "violated": false, "note": "AC11 and US2 accept registration without phone; T3 treats empty phone as absent."},
+  {"trap": "Priorities Alta/Média/Baixa are sourced and may be confirmed fields; no other invented priority.", "violated": false, "note": "Priority fields are Alta/Média/Baixa and map to RQ1 to RQ5; US6 carries a proposed Média inherited from RQ4, labelled proposed, so not a confirmed invention."}
+ ],
+ "invented": [
+  {"key": "AC26", "what": "Confirmed criterion that approved or refused registrations over 30 days are not altered by the archiving routine; the source only says pending registrations are archived, so the exclusion is inferred.", "severity": "low"},
+  {"key": "T2", "what": "Task asserts concurrency-safe uniqueness at storage level and a concurrent-send test; the source only requires that a repeated email is not accepted.", "severity": "low"}
+ ],
+ "levels_ok": false,
+ "quality": {
+  "stories": "Stories follow the 'Eu como voluntário/coordenador' form and map cleanly to RQ1 to RQ5 and to the Annex A rules; the story set is complete and each item carries its source priority.",
+  "criteria": "Criteria are very thorough on boundaries (3 and 80 inclusive, 9/10/11/12 digits, exactly 30 days) and cover the rejection cases; several proposed criteria add useful negative paths.",
+  "tasks": "Tasks are concrete and tied to the open questions (status model, email format, CSV layout); the T2 storage-level concurrency assumption goes slightly beyond the source.",
+  "traceability": "Claims cite RQ and Anexo quotes; the header-row trap and the phone-optional conflict with RQ1 are handled and raised as a question."
+ },
+ "notes": "The backlog includes an enabler item (EN1) that is not in the requested levels (epics, features, stories, tasks), so levels_ok is false. The gold does not mention the enabler concept, so this is scored strictly as a level breach. Gate G02 shows FAIL in the backlog, not scored here."
+}

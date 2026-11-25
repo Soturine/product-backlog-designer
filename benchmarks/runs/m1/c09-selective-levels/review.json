@@ -1,0 +1,365 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "notes": "Resultado 'continua com no maximo uma' nao define se recusa ou substitui (Q4); verificavel apenas parcialmente.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC3",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC4",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC5",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC6",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC7",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC8",
+      "notes": "'ate as 16h' sem fronteira nem fuso/dia; canal indefinido (Q1/Q2).",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC9",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "distinct",
+      "items": [
+        "US2",
+        "US3"
+      ],
+      "rationale": "Registrar versus visualizar o estado: atores e regras diferentes."
+    },
+    {
+      "assessment": "distinct",
+      "items": [
+        "AC6",
+        "AC7"
+      ],
+      "rationale": "Estados complementares do painel."
+    }
+  ],
+  "findings": [
+    {
+      "actual": "AC8 apenas diz que o professor recebe um aviso",
+      "affects": [
+        "US4",
+        "AC8"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "Canal/formato do aviso definido para AC8 ser verificavel",
+      "gate": "G06",
+      "impact": "US4 nao pronta para refino/teste",
+      "recommendation": "Resolver Q1 antes de comprometer US4",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "Fonte nao define canal (Q1 bloqueante)"
+    },
+    {
+      "actual": "'gostaria que criar...', 'para cada dia ... tenha', 'para possa agir' usam infinitivo/subjuntivo sem conectivo",
+      "affects": [
+        "US1",
+        "US2",
+        "US3",
+        "US4"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Descricoes gramaticais no formato Eu como/gostaria que/para",
+      "gate": "G09",
+      "impact": "Legibilidade; sentido preservado",
+      "recommendation": "Reescrever want/benefit em forma que encaixe (ex.: 'que eu possa criar', 'para que ...')",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Template concatena campos nao ajustados"
+    },
+    {
+      "actual": "Nenhuma relacao, pois dependencias foram omitidas no pedido",
+      "affects": [
+        "US3",
+        "US4"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Dependencia US2->US3/US4 explicita",
+      "gate": "G07",
+      "impact": "Sequenciamento nao visivel",
+      "recommendation": "Aceitar a omissao; apenas registrar",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Nivel nao solicitado"
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 3,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "O professor cria a escala semanal de rega atribuindo turmas aos dias da semana.",
+      "rationale": "US1/AC1 cobrem a criacao e atribuicao.",
+      "text": "Professor cria escala semanal atribuindo turmas aos dias"
+    },
+    {
+      "covered_by": [
+        "US1",
+        "AC2",
+        "AC3"
+      ],
+      "disposition": "COVERED",
+      "key": "O2",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "Cada dia da semana tem no máximo uma turma responsável.",
+      "rationale": "AC2 verifica o limite; reacao em aberto em Q4 (nao inventada).",
+      "text": "No maximo uma turma responsavel por dia"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC6",
+        "AC7"
+      ],
+      "disposition": "COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "A turma responsável vê, no painel da sala, se a rega do dia foi registrada.",
+      "rationale": "Ambos os estados cobertos.",
+      "text": "Turma responsavel ve no painel se a rega foi registrada"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC4",
+        "AC5"
+      ],
+      "disposition": "COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "O aluno monitor registra a rega do dia informando o horário.",
+      "rationale": "AC4 confirmado; AC5 e proposta marcada; permissao em Q5.",
+      "text": "Aluno monitor registra a rega informando o horario"
+    },
+    {
+      "covered_by": [
+        "US4",
+        "AC8",
+        "AC9"
+      ],
+      "disposition": "PARTIALLY_COVERED",
+      "key": "O5",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C5"
+      ],
+      "quote": "Se a rega não for registrada até as 16h, o professor recebe um aviso.",
+      "rationale": "Gatilho coberto; canal, fronteira das 16h e destinatario indefinidos na fonte, registrados em Q1-Q3 (Q1 bloqueante).",
+      "text": "Sem registro ate 16h o professor recebe aviso"
+    }
+  ],
+  "items": [
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Independente das demais.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Descreve resultado, sem desenho de solucao imposto.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Fatia vertical unica e coerente.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC1-AC3 verificaveis; reacao ao conflito em Q4.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Professor define responsavel por dia.",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "Conjuncao (criar + max uma turma) e indivisivel: mesma escala.",
+      "source_support": "supported",
+      "task_sufficiency": "not_applicable",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Independente; US3 depende do registro mas pode ser demonstrada.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Descreve resultado, sem desenho de solucao imposto.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Fatia vertical unica e coerente.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC4/AC5 verificaveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Registro da rega com horario.",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "Permissao (Q5) em aberto.",
+      "source_support": "supported",
+      "task_sufficiency": "not_applicable",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depende logicamente do registro (US2); dependencias fora do escopo solicitado.",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "Descreve resultado, sem desenho de solucao imposto.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Fatia vertical unica e coerente.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC6/AC7 verificaveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Visibilidade do estado da rega.",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "Redacao 'gostaria que ver...' e 'para saber' ok, mas ator 'turma responsavel' e coletivo; ligacao com US2 nao modelada (dependencias omitidas por pedido).",
+      "source_support": "supported",
+      "task_sufficiency": "not_applicable",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depende de registro (US2) e escala (US1) para saber o dia.",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "Descreve resultado, sem desenho de solucao imposto.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Fatia vertical unica e coerente.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Sem canal/destinatario/fronteira (Q1-Q3) o aviso nao e totalmente verificavel.",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "Beneficio inferido mas plausivel.",
+          "rating": "supported"
+        }
+      },
+      "key": "US4",
+      "notes": "Beneficio 'para que a horta nao fique sem rega' e inferido; Q1 bloqueante sobre canal; gramatica 'para possa agir'.",
+      "source_support": "proposal_justified",
+      "task_sufficiency": "not_applicable",
+      "verdict": "concern"
+    }
+  ],
+  "reviewer": {
+    "agent": "reviewer-c09",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-78385WMH95P7"
+    }
+  ]
+}

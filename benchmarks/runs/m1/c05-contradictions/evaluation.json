@@ -1,0 +1,29 @@
+{
+ "case": "c05-contradictions",
+ "evaluator_model": "claude-haiku-5-5",
+ "obligations": [
+  {"id": "G01", "verdict": "covered", "evidence": "US1 (agendar com data e turno); AC1 confirmed; F1; T1", "note": "Scheduling with date and shift is confirmed."},
+  {"id": "G02", "verdict": "handled_as_conflict", "evidence": "C2 CONFLICTING (PRD 'no máximo 3 entregas por mês'); C3 CONFLICTING (manual 'até 5 entregas por mês'); Q1 blocking on the limit and on calendar vs rolling month; E1 out of scope 'Limite mensal ... (3) e manual (5) divergirem - ver Q1'", "note": "Both values are kept with locators, no criterion picks one, and a blocking question is raised."},
+  {"id": "G03", "verdict": "handled_as_conflict", "evidence": "C4 CONFLICTING (PRD 'Itens eletrônicos não são aceitos'); C5 and C6 CONFLICTING (manual); Q2 blocking; E1 out of scope 'Regra de aceitação ou recusa de eletrônicos enquanto PRD e manual divergirem - ver Q2'", "note": "Electronics are neither accepted nor rejected in any criterion; the divergence is a blocking question."},
+  {"id": "G04", "verdict": "covered", "evidence": "US3 (confirmar recebimento); US4 and AC6 (recibo gerado após confirmação); AC7 (enviado por e-mail); F2", "note": "Receipt confirmation and generated receipt are represented."},
+  {"id": "G05", "verdict": "covered", "evidence": "US2 (remarcar até 1 dia antes); AC3 and AC4 confirmed; Q3 non-blocking on the meaning of '1 dia antes'; T2", "note": "The 1-day reschedule limit is confirmed with a refusal on the scheduled date, while its exact interpretation is asked."},
+  {"id": "G06", "verdict": "handled_as_conflict", "evidence": "C3 CONFLICTING (manual 5 per month) and C2 CONFLICTING; Q1 blocking; not used as a criterion", "note": "The manual's 5-per-month value is preserved as a conflict and not silently adopted."},
+  {"id": "G07", "verdict": "handled_as_conflict", "evidence": "C5 CONFLICTING (manual 'Eletrônicos em funcionamento são aceitos'), C6 CONFLICTING (mediante teste); Q2 blocking", "note": "The manual's conditional acceptance is kept as an unresolved conflict with a blocking question."},
+  {"id": "G08", "verdict": "covered", "evidence": "C9 COVERED (recibo enviado por e-mail, quote from both sources); AC7 confirmed; US4", "note": "Receipt email is represented as confirmed."}
+ ],
+ "traps": [
+  {"trap": "Must not silently pick 3 or 5 deliveries: conflict must be CONFLICTING/QUESTION with both locators.", "violated": false, "note": "C2 (PRD) and C3 (manual) are both CONFLICTING with their own quotes and Q1 is blocking; no criterion or task fixes a number."},
+  {"trap": "Must not silently accept or reject electronics.", "violated": false, "note": "C4, C5, C6 are CONFLICTING and Q2 is blocking; no criterion accepts or rejects electronics."}
+ ],
+ "invented": [
+  {"key": "AC3", "what": "Confirmed criterion accepts a reschedule with 'pelo menos 1 dia em relação à data agendada', which fixes a calendar-day reading of 'até 1 dia antes'; claim C11 is ambiguous and Q3 asks exactly this, so the reading is asserted as confirmed.", "severity": "medium"}
+ ],
+ "levels_ok": true,
+ "quality": {
+  "stories": "Stories follow the 'Eu como doador/voluntário' form, one per flow (schedule, reschedule, confirm, receipt); the conflicting rules are kept out of stories.",
+  "criteria": "Criteria are confirmed for the uncontested rules (scheduling, receipt, email, no receipt before confirmation) and the conflicts are not turned into criteria, which is the intended behavior.",
+  "tasks": "Tasks are concrete and tied to the criteria; T2 names the open interpretation Q3, which keeps the open point visible in the work plan.",
+  "traceability": "Each conflict claim carries both PRD and manual quotes, and the epic lists the conflicts as out of scope with the question references."
+ },
+ "notes": "The gold expectation (conflicts for limit and electronics) is well met. The gold does not capture the calendar-vs-24h reading of the reschedule window, which is the source of the medium invention on AC3."
+}

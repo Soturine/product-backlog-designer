@@ -1,0 +1,1957 @@
+{
+  "claims": [
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-EPIC-Z5QBD43TTJDX"
+        ],
+        "rationale": "Objetivo do produto representado pelo épico; detalhado pelas features F1 a F4.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "prd.md",
+            "quote_digest": "sha256:8bd7c2e33307e94c27817775bb29bad036eddf7dd00c4b986a273ec0d45a7304",
+            "section": "1",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "50f2a185b045231b"
+          },
+          "summary": "Permitir que moradores cadastrados emprestem ferramentas",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-F56Y4ACD8X4P",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Moradores cadastrados podem emprestar ferramentas do acervo comunitário do bairro (objetivo do produto).",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-3BREBCK8493M",
+          "PBD-AC-662D6X4BQDNG",
+          "PBD-TASK-FMZFY84SSTF9"
+        ],
+        "rationale": "Consulta do catálogo pelo morador.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 11,
+            "line_start": 11,
+            "member": "prd.md",
+            "quote_digest": "sha256:33168e28138898cb349912f7492e8a07076ebe3ee816f7896ac2f18b6078050b",
+            "section": "3",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "50f2a185b045231b"
+          },
+          "summary": "O morador consulta o catálogo de ferramentas",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-KN9WYN2NX6SN",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O morador consulta o catálogo de ferramentas.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "data",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-3BREBCK8493M",
+          "PBD-AC-R99E90V2VNY7",
+          "PBD-TASK-FMZFY84SSTF9"
+        ],
+        "rationale": "Atributos exibidos no catálogo.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 11,
+            "line_start": 11,
+            "member": "prd.md",
+            "quote_digest": "sha256:54792f0ef2f87514c99510835bc5b203e2d3f4fd1aa251f4aed471446f349c36",
+            "section": "3",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "50f2a185b045231b"
+          },
+          "summary": "com nome, categoria e disponibilidade",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-MY7HE36VE3PB",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O catálogo exibe nome, categoria e disponibilidade de cada ferramenta.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-TN0C5B0H3F8T",
+          "PBD-AC-PSVZ25RW8A9Q",
+          "PBD-TASK-5RQ5T9Y8N92R"
+        ],
+        "rationale": "Solicitação de ferramenta disponível; fluxo de aprovação em Q2.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 12,
+            "line_start": 12,
+            "member": "prd.md",
+            "quote_digest": "sha256:6ea679109f2f7887c6be26a5ca77b5be1471a6d7330816253e09c191c9923e47",
+            "section": "3",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "50f2a185b045231b"
+          },
+          "summary": "O morador solicita o empréstimo de uma ferramenta disponível",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-JFTJTF407587",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O morador solicita o empréstimo de uma ferramenta disponível.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-TN0C5B0H3F8T",
+          "PBD-AC-99WDK2QM6FZT",
+          "PBD-TASK-5RQ5T9Y8N92R"
+        ],
+        "rationale": "Vencimento de até 7 dias; interpretação da duração em Q3.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 12,
+            "line_start": 12,
+            "member": "prd.md",
+            "quote_digest": "sha256:e65662aa5af08e6865d05c8e00e48937a03db2ac30d7c10eab5ae49d68a2d205",
+            "section": "3",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "50f2a185b045231b"
+          },
+          "summary": "por até 7 dias",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-R7Z41W5WMS2T",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O empréstimo tem duração de até 7 dias.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-ZZEPX4S06BP1",
+          "PBD-AC-6QW45BSEVK6R",
+          "PBD-AC-AY6BF0TJAEND",
+          "PBD-TASK-88430NB9V7B5"
+        ],
+        "rationale": "Limite de 2 empréstimos ativos com fronteira.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 13,
+            "line_start": 13,
+            "member": "prd.md",
+            "quote_digest": "sha256:d04154c66f86da5646eaa7a12316024e59635e4498ecac6a6766ce01ce122c45",
+            "section": "3",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "50f2a185b045231b"
+          },
+          "summary": "no máximo 2 empréstimos ativos ao mesmo tempo",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-SNHYJWKAAVED",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Um morador pode ter no máximo 2 empréstimos ativos ao mesmo tempo.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "error",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-ZZEPX4S06BP1",
+          "PBD-AC-AY6BF0TJAEND",
+          "PBD-TASK-88430NB9V7B5"
+        ],
+        "rationale": "Recusa acima do limite.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 14,
+            "line_start": 14,
+            "member": "prd.md",
+            "quote_digest": "sha256:d838523efce9ce5037b23c7a89e92b867302ff2b1f0540cd748e5cb9338da9a2",
+            "section": "3",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "50f2a185b045231b"
+          },
+          "summary": "exceda o limite de empréstimos ativos é recusada",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-JD818HV85E2Z",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Uma solicitação que exceda o limite de empréstimos ativos é recusada.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "error",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-ZZEPX4S06BP1",
+          "PBD-AC-FS4ZNBY829K8",
+          "PBD-TASK-88430NB9V7B5"
+        ],
+        "rationale": "Mensagem exata da recusa.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 14,
+            "line_start": 14,
+            "member": "prd.md",
+            "quote_digest": "sha256:94dda48fcc501cddbd810c337f04d1947cbc66a83e857b3340d359adecc8a2d5",
+            "section": "3",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "50f2a185b045231b"
+          },
+          "summary": "\"Limite de empréstimos atingido\"",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-ZMCXZEGFCRGN",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "A recusa por limite exibe a mensagem \"Limite de empréstimos atingido\".",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-X2HJ47VYBY10",
+          "PBD-AC-8ERJVAHR0GVY",
+          "PBD-TASK-BW5PHKM8C0CF"
+        ],
+        "rationale": "Registro da devolução pelo voluntário.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 15,
+            "line_start": 15,
+            "member": "prd.md",
+            "quote_digest": "sha256:f4e02595d1b514de481519ed6c2bf5a846ca6ea006d9b4e00cb2ca0ba8bb3ea1",
+            "section": "3",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "50f2a185b045231b"
+          },
+          "summary": "O voluntário registra a devolução",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-SXXZ5YE81NTV",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O voluntário registra a devolução de uma ferramenta.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-X2HJ47VYBY10",
+          "PBD-AC-F4H6MSZM6A5T",
+          "PBD-TASK-BW5PHKM8C0CF"
+        ],
+        "rationale": "Indicação de dano no registro.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 15,
+            "line_start": 15,
+            "member": "prd.md",
+            "quote_digest": "sha256:5839c99a347b776db3775b62403d9bfbaa9a57e22a512da6e6fc7f4f7dd485ca",
+            "section": "3",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "50f2a185b045231b"
+          },
+          "summary": "informa se a ferramenta voltou danificada",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-29KKBRP6F6KN",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Ao registrar a devolução, o voluntário informa se a ferramenta voltou danificada.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-5Z7XRD8MZWPE",
+          "PBD-AC-NSAS3YV9K0W2",
+          "PBD-TASK-HFF0PRERVRZQ"
+        ],
+        "rationale": "Ferramenta danificada fica indisponível.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 16,
+            "line_start": 16,
+            "member": "prd.md",
+            "quote_digest": "sha256:b6df68ef9adcc8b1c7de58c0272972cd672069ebd5a1a1a694c725a04aa0df65",
+            "section": "3",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "50f2a185b045231b"
+          },
+          "summary": "Ferramenta devolvida danificada fica indisponível",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-8WHPNKZGDBBX",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Ferramenta devolvida danificada fica indisponível.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-5Z7XRD8MZWPE",
+          "PBD-AC-45H7ZB9QP50C",
+          "PBD-AC-JVFSCHDZXD1E",
+          "PBD-TASK-DENP4AAKV2CJ"
+        ],
+        "rationale": "Indisponível até marcação de reparo pelo voluntário.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 16,
+            "line_start": 16,
+            "member": "prd.md",
+            "quote_digest": "sha256:07e0b4f1aa195ed37fc5c4c9ac61704f5b9b62ace51f1719178428c4afa246df",
+            "section": "3",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "50f2a185b045231b"
+          },
+          "summary": "até o voluntário marcá-la como reparada",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-GG3R4FCEBGMC",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "A ferramenta danificada permanece indisponível até o voluntário marcá-la como reparada.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "integration",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-63515WBW1J5K",
+          "PBD-AC-E6XRB3G96F3Z",
+          "PBD-TASK-MV4D569RZ7QJ"
+        ],
+        "rationale": "Lembrete por e-mail; serviço e falhas em Q7.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 17,
+            "line_start": 17,
+            "member": "prd.md",
+            "quote_digest": "sha256:2a28afed5b7a5c6460f8e5a77d47de22dacd1a03f3ec923b3da3313df4874fec",
+            "section": "3",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "50f2a185b045231b"
+          },
+          "summary": "recebe um lembrete por e-mail",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-GA9Y59QQXGWE",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O morador recebe um lembrete por e-mail sobre o vencimento do empréstimo.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-63515WBW1J5K",
+          "PBD-AC-E6XRB3G96F3Z",
+          "PBD-AC-7JSF9P3CP3B9",
+          "PBD-TASK-BDA6G4BB56CB"
+        ],
+        "rationale": "Envio na véspera do vencimento.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 17,
+            "line_start": 17,
+            "member": "prd.md",
+            "quote_digest": "sha256:02989b607b6eeae0b6178f58c2bb98c64ba5804a748c27a9ea677abd0e2d2931",
+            "section": "3",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "50f2a185b045231b"
+          },
+          "summary": "1 dia antes do vencimento do empréstimo",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-TW1C7PB46D0W",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O lembrete é enviado 1 dia antes do vencimento do empréstimo.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-07M6M9K8BAD5",
+          "PBD-AC-NWD6ZAYVXD8H",
+          "PBD-AC-0TGNS6QJ1VJ8",
+          "PBD-TASK-ZKP70P0Y01CS"
+        ],
+        "rationale": "Bloqueio por atraso até a devolução; mensagem em Q4.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 18,
+            "line_start": 18,
+            "member": "prd.md",
+            "quote_digest": "sha256:ce9dcc1d61ef8306ece51c9f091e9ebee1de002a506e030b9345ef8c15f91c5c",
+            "section": "3",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "50f2a185b045231b"
+          },
+          "summary": "Empréstimos em atraso impedem novas solicitações do morador até a devolução",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-W2W639SKJPAQ",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Empréstimos em atraso impedem novas solicitações do morador até a devolução.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "nonfunctional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-3BREBCK8493M",
+          "PBD-TASK-6JNYFGBHWWTA"
+        ],
+        "rationale": "Requisito sem critério mensurável; apenas critério proposto até a resposta de Q1.",
+        "status": "QUESTION_REQUIRED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 21,
+            "line_start": 21,
+            "member": "prd.md",
+            "quote_digest": "sha256:9d56a4ce0eab074933e9e1a0bbd236222dfc4f1ef0b2dd35c408e819c9e97cfd",
+            "section": "4",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "50f2a185b045231b"
+          },
+          "summary": "O catálogo deve ser utilizável em celulares",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-QGXX6ZHYWVN7",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O catálogo deve ser utilizável em celulares.",
+      "uncertainty": {
+        "level": "ambiguous",
+        "note": "A fonte não define critério mensurável de usabilidade em celulares (dispositivos, tamanhos de tela, navegadores)."
+      }
+    }
+  ],
+  "criteria": [
+    {
+      "claim_refs": [
+        "PBD-CLM-KN9WYN2NX6SN"
+      ],
+      "condition": "O acervo possui ferramentas cadastradas",
+      "expected_outcomes": [
+        "Cada ferramenta do acervo é listada para o morador"
+      ],
+      "id": "PBD-AC-662D6X4BQDNG",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-3BREBCK8493M",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o morador consulta o catálogo",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-MY7HE36VE3PB"
+      ],
+      "condition": "O catálogo é exibido ao morador",
+      "expected_outcomes": [
+        "Nome, categoria e disponibilidade da ferramenta são apresentados"
+      ],
+      "id": "PBD-AC-R99E90V2VNY7",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-3BREBCK8493M",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o morador observa uma ferramenta listada",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-QGXX6ZHYWVN7"
+      ],
+      "expected_outcomes": [
+        "Consulta do catálogo concluída em celular sem perda das informações exigidas"
+      ],
+      "id": "PBD-AC-0DK91Y0W893V",
+      "order": 2,
+      "origin": "proposed",
+      "parent": "PBD-STORY-3BREBCK8493M",
+      "rationale": "RNF01 não define dispositivos, tamanhos de tela nem navegadores; o critério mensurável depende da resposta à pergunta Q1.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Ao acessar o catálogo por um celular, o morador consegue consultar as ferramentas com nome, categoria e disponibilidade.",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-JFTJTF407587"
+      ],
+      "condition": "A ferramenta está disponível e o morador pode solicitar empréstimos",
+      "expected_outcomes": [
+        "Um empréstimo da ferramenta é registrado para o morador"
+      ],
+      "id": "PBD-AC-PSVZ25RW8A9Q",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-TN0C5B0H3F8T",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o morador solicita o empréstimo da ferramenta",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-R7Z41W5WMS2T"
+      ],
+      "condition": "Um empréstimo foi registrado",
+      "expected_outcomes": [
+        "O vencimento não ultrapassa 7 dias a partir do início do empréstimo"
+      ],
+      "id": "PBD-AC-99WDK2QM6FZT",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-TN0C5B0H3F8T",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o vencimento do empréstimo é definido",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-JFTJTF407587"
+      ],
+      "expected_outcomes": [
+        "A solicitação não gera empréstimo para ferramenta indisponível"
+      ],
+      "id": "PBD-AC-CD40RY2CV968",
+      "order": 2,
+      "origin": "proposed",
+      "parent": "PBD-STORY-TN0C5B0H3F8T",
+      "rationale": "A fonte só prevê solicitação de ferramenta disponível; o caso negativo é inferido e a mensagem de recusa não é definida (Q4).",
+      "status": "proposed",
+      "style": "list",
+      "text": "Quando o morador tenta solicitar uma ferramenta indisponível, nenhum empréstimo é criado.",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-JFTJTF407587"
+      ],
+      "expected_outcomes": [
+        "A disponibilidade da ferramenta emprestada é atualizada no catálogo"
+      ],
+      "id": "PBD-AC-E4M590S08P5H",
+      "order": 3,
+      "origin": "proposed",
+      "parent": "PBD-STORY-TN0C5B0H3F8T",
+      "rationale": "Inferido da exibição de disponibilidade no catálogo; a fonte não descreve o momento exato (solicitação ou retirada, ver Q2).",
+      "status": "proposed",
+      "style": "list",
+      "text": "Após o registro do empréstimo, a ferramenta passa a constar como indisponível no catálogo até a devolução.",
+      "visible_id": "CA-04"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-SNHYJWKAAVED"
+      ],
+      "condition": "O morador possui 1 empréstimo ativo e nenhum atraso",
+      "expected_outcomes": [
+        "A solicitação é aceita e o morador passa a ter 2 empréstimos ativos"
+      ],
+      "id": "PBD-AC-6QW45BSEVK6R",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-ZZEPX4S06BP1",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o morador solicita uma ferramenta disponível",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-SNHYJWKAAVED",
+        "PBD-CLM-JD818HV85E2Z"
+      ],
+      "condition": "O morador já possui 2 empréstimos ativos",
+      "expected_outcomes": [
+        "A solicitação é recusada",
+        "Nenhum novo empréstimo é criado"
+      ],
+      "id": "PBD-AC-AY6BF0TJAEND",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-ZZEPX4S06BP1",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o morador solicita mais uma ferramenta",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-ZMCXZEGFCRGN"
+      ],
+      "condition": "Uma solicitação foi recusada por exceder o limite de empréstimos ativos",
+      "expected_outcomes": [
+        "É exibida a mensagem \"Limite de empréstimos atingido\""
+      ],
+      "id": "PBD-AC-FS4ZNBY829K8",
+      "order": 2,
+      "origin": "generated",
+      "parent": "PBD-STORY-ZZEPX4S06BP1",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "a recusa é apresentada ao morador",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-SNHYJWKAAVED"
+      ],
+      "expected_outcomes": [
+        "O morador nunca fica com mais de 2 empréstimos ativos"
+      ],
+      "id": "PBD-AC-89MNKH2E042H",
+      "order": 3,
+      "origin": "proposed",
+      "parent": "PBD-STORY-ZZEPX4S06BP1",
+      "rationale": "Lente de concorrência: a fonte define o limite, mas não trata solicitações simultâneas.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Se o morador com 1 empréstimo ativo enviar duas solicitações ao mesmo tempo, apenas uma pode ser aceita.",
+      "visible_id": "CA-04"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-W2W639SKJPAQ"
+      ],
+      "condition": "O morador possui um empréstimo vencido e ainda não devolvido",
+      "expected_outcomes": [
+        "A solicitação é recusada e nenhum empréstimo é criado"
+      ],
+      "id": "PBD-AC-NWD6ZAYVXD8H",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-07M6M9K8BAD5",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o morador solicita uma nova ferramenta",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-W2W639SKJPAQ"
+      ],
+      "condition": "O voluntário registrou a devolução do empréstimo que estava em atraso",
+      "expected_outcomes": [
+        "O atraso deixa de impedir a solicitação, que segue as demais regras de empréstimo"
+      ],
+      "id": "PBD-AC-0TGNS6QJ1VJ8",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-07M6M9K8BAD5",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o morador faz uma nova solicitação",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-SXXZ5YE81NTV"
+      ],
+      "condition": "Existe um empréstimo ativo da ferramenta",
+      "expected_outcomes": [
+        "A devolução fica registrada no empréstimo"
+      ],
+      "id": "PBD-AC-8ERJVAHR0GVY",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-X2HJ47VYBY10",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o voluntário registra a devolução",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-29KKBRP6F6KN"
+      ],
+      "condition": "O voluntário está registrando uma devolução",
+      "expected_outcomes": [
+        "O registro contém a indicação de se a ferramenta voltou danificada ou não"
+      ],
+      "id": "PBD-AC-F4H6MSZM6A5T",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-X2HJ47VYBY10",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o voluntário conclui o registro",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-SXXZ5YE81NTV"
+      ],
+      "expected_outcomes": [
+        "O total de empréstimos ativos do morador diminui após a devolução"
+      ],
+      "id": "PBD-AC-FXKF8VYHYDEJ",
+      "order": 2,
+      "origin": "proposed",
+      "parent": "PBD-STORY-X2HJ47VYBY10",
+      "rationale": "Inferido da noção de empréstimo ativo em RF03; a fonte não declara explicitamente o efeito da devolução no limite.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Uma devolução registrada deixa de contar como empréstimo ativo do morador para o limite de 2.",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-29KKBRP6F6KN"
+      ],
+      "expected_outcomes": [
+        "Ferramenta sem dano retorna à disponibilidade"
+      ],
+      "id": "PBD-AC-JGJJJ855TK0Q",
+      "order": 3,
+      "origin": "proposed",
+      "parent": "PBD-STORY-X2HJ47VYBY10",
+      "rationale": "A fonte só trata do caso danificado; o retorno à disponibilidade sem dano é inferido.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Uma ferramenta devolvida sem dano volta a ficar disponível no catálogo.",
+      "visible_id": "CA-04"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-8WHPNKZGDBBX"
+      ],
+      "condition": "A devolução foi registrada com a indicação de que a ferramenta voltou danificada",
+      "expected_outcomes": [
+        "A ferramenta passa a constar como indisponível"
+      ],
+      "id": "PBD-AC-NSAS3YV9K0W2",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-5Z7XRD8MZWPE",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o registro da devolução é concluído",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-GG3R4FCEBGMC"
+      ],
+      "condition": "A ferramenta está indisponível por dano e ainda não foi marcada como reparada",
+      "expected_outcomes": [
+        "A ferramenta continua indisponível e não pode ser emprestada"
+      ],
+      "id": "PBD-AC-45H7ZB9QP50C",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-5Z7XRD8MZWPE",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "um morador tenta solicitá-la",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-GG3R4FCEBGMC"
+      ],
+      "condition": "A ferramenta está indisponível por dano",
+      "expected_outcomes": [
+        "A indisponibilidade por dano é encerrada e a ferramenta pode voltar a ser emprestada"
+      ],
+      "id": "PBD-AC-JVFSCHDZXD1E",
+      "order": 2,
+      "origin": "generated",
+      "parent": "PBD-STORY-5Z7XRD8MZWPE",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o voluntário a marca como reparada",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-GA9Y59QQXGWE",
+        "PBD-CLM-TW1C7PB46D0W"
+      ],
+      "condition": "O morador possui empréstimo ativo com vencimento no dia seguinte",
+      "expected_outcomes": [
+        "O morador recebe um lembrete por e-mail sobre esse empréstimo"
+      ],
+      "id": "PBD-AC-E6XRB3G96F3Z",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-63515WBW1J5K",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "chega o dia anterior ao vencimento",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-TW1C7PB46D0W"
+      ],
+      "condition": "O empréstimo ativo vence em mais de 1 dia",
+      "expected_outcomes": [
+        "Ainda não é enviado lembrete para esse empréstimo"
+      ],
+      "id": "PBD-AC-7JSF9P3CP3B9",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-63515WBW1J5K",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "a verificação diária de vencimentos ocorre",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-GA9Y59QQXGWE"
+      ],
+      "expected_outcomes": [
+        "Morador que já devolveu não recebe lembrete"
+      ],
+      "id": "PBD-AC-V34WFP1RHZ3X",
+      "order": 2,
+      "origin": "proposed",
+      "parent": "PBD-STORY-63515WBW1J5K",
+      "rationale": "Caso de exceção não citado na fonte; evita lembrete indevido.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Se o empréstimo já foi devolvido antes da véspera do vencimento, nenhum lembrete é enviado.",
+      "visible_id": "CA-03"
+    }
+  ],
+  "decisions": [],
+  "findings": [
+    {
+      "actual": "AC-US2-1 condition is circular and Q2 on activation and start of the 7 days is blocking.",
+      "affects": [
+        "PBD-AC-E4M590S08P5H",
+        "PBD-AC-PSVZ25RW8A9Q",
+        "PBD-STORY-TN0C5B0H3F8T"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Criteria for US2 state a clear precondition and timing of loan start.",
+      "gate": "G06",
+      "id": "PBD-FND-ZZG2P9X85CEZ",
+      "impact": "Testers cannot determine when a loan exists or counts toward the limit.",
+      "recommendation": "Resolve Q2, then rewrite AC-US2-1 and AC-US2-4 with the concrete state.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "Circular condition and open activation moment make the criterion hard to verify."
+    },
+    {
+      "actual": "AC-US7-2 assumes a daily verification and T10 adds duplicate-reminder prevention.",
+      "affects": [
+        "PBD-AC-7JSF9P3CP3B9",
+        "PBD-TASK-BDA6G4BB56CB"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Criteria and tasks stay within source authority.",
+      "gate": "G06",
+      "id": "PBD-FND-EG9T99ZV7EGQ",
+      "impact": "May constrain implementation prematurely.",
+      "recommendation": "Mark as proposal or move to technical task notes.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Mechanism not stated in PRD."
+    },
+    {
+      "actual": "T5 plans boundary and concurrency tests.",
+      "affects": [
+        "PBD-TASK-EN4J6ER7VQMM"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Tasks describe build work; test design is a separate artifact.",
+      "gate": "G06",
+      "id": "PBD-FND-KMC55GPDY3MV",
+      "impact": "Duplicated effort or confusion between tasks and tests.",
+      "recommendation": "Drop T5 or reframe as implementing a concurrency safeguard.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Overlaps with Test Case design."
+    },
+    {
+      "actual": "US4 benefit is inferred and the wording is a rule from the morador viewpoint.",
+      "affects": [
+        "PBD-STORY-07M6M9K8BAD5"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Story benefit grounded in source.",
+      "gate": "G06",
+      "id": "PBD-FND-PA4J2W2590Q4",
+      "impact": "Minor traceability weakness.",
+      "recommendation": "Keep as proposal or reword as policy enforcement.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "RF08 gives no benefit."
+    }
+  ],
+  "items": [
+    {
+      "claim_refs": [
+        "PBD-CLM-F56Y4ACD8X4P"
+      ],
+      "content": {
+        "context": "PRD da Biblioteca de Ferramentas do Bairro. Usuários: **Morador** (pessoa cadastrada que pega ferramentas emprestadas) e **Voluntário** (registra devoluções e mantém o acervo).",
+        "in_scope": [
+          "Consulta do catálogo de ferramentas",
+          "Solicitação de empréstimo com prazo e limites de elegibilidade",
+          "Registro de devolução e controle de ferramentas danificadas",
+          "Lembrete por e-mail antes do vencimento"
+        ],
+        "kind": "epic",
+        "objective": "Permitir que moradores cadastrados emprestem ferramentas do acervo comunitário do bairro.",
+        "out_scope": [
+          "Cobrança de multas e pagamentos",
+          "Entrega de ferramentas em domicílio"
+        ],
+        "outcome": "Moradores conseguem pegar ferramentas emprestadas respeitando prazo e limites, e voluntários mantêm o acervo em condições de uso."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir que moradores cadastrados emprestem ferramentas do acervo comunitário do bairro.</p><p><strong>Contexto</strong>: PRD da Biblioteca de Ferramentas do Bairro. Usuários: <strong>Morador</strong> (pessoa cadastrada que pega ferramentas emprestadas) e <strong>Voluntário</strong> (registra devoluções e mantém o acervo).</p><p><strong>No escopo</strong></p><ul><li>Consulta do catálogo de ferramentas</li><li>Solicitação de empréstimo com prazo e limites de elegibilidade</li><li>Registro de devolução e controle de ferramentas danificadas</li><li>Lembrete por e-mail antes do vencimento</li></ul><p><strong>Fora do escopo</strong></p><ul><li>Cobrança de multas e pagamentos</li><li>Entrega de ferramentas em domicílio</li></ul><p><strong>Resultado esperado</strong>: Moradores conseguem pegar ferramentas emprestadas respeitando prazo e limites, e voluntários mantêm o acervo em condições de uso.</p>"
+      },
+      "id": "PBD-EPIC-Z5QBD43TTJDX",
+      "origin": "generated",
+      "parent": null,
+      "status": "reviewed",
+      "title": "Empréstimo de ferramentas do acervo comunitário do bairro",
+      "type": "epic"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-KN9WYN2NX6SN",
+        "PBD-CLM-MY7HE36VE3PB",
+        "PBD-CLM-QGXX6ZHYWVN7"
+      ],
+      "content": {
+        "capability": "Consulta do catálogo de ferramentas do acervo pelo morador.",
+        "kind": "feature",
+        "rules": [
+          "Cada ferramenta aparece com nome, categoria e disponibilidade",
+          "O catálogo deve ser utilizável em celulares (critério mensurável pendente)"
+        ],
+        "value": "O morador descobre quais ferramentas existem e quais estão disponíveis antes de solicitar."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Consulta do catálogo de ferramentas do acervo pelo morador.</p><p><strong>Valor</strong>: O morador descobre quais ferramentas existem e quais estão disponíveis antes de solicitar.</p><p><strong>Regras relacionadas</strong></p><ul><li>Cada ferramenta aparece com nome, categoria e disponibilidade</li><li>O catálogo deve ser utilizável em celulares (critério mensurável pendente)</li></ul>"
+      },
+      "id": "PBD-FEAT-CKR13V445GQF",
+      "origin": "generated",
+      "parent": "PBD-EPIC-Z5QBD43TTJDX",
+      "status": "reviewed",
+      "title": "Catálogo de ferramentas",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-JFTJTF407587",
+        "PBD-CLM-R7Z41W5WMS2T",
+        "PBD-CLM-SNHYJWKAAVED",
+        "PBD-CLM-JD818HV85E2Z",
+        "PBD-CLM-ZMCXZEGFCRGN",
+        "PBD-CLM-W2W639SKJPAQ"
+      ],
+      "content": {
+        "capability": "Solicitação de empréstimo de ferramenta disponível, sujeita a prazo, limite de empréstimos ativos e bloqueio por atraso.",
+        "kind": "feature",
+        "rules": [
+          "Prazo do empréstimo de até 7 dias",
+          "No máximo 2 empréstimos ativos por morador",
+          "Solicitação acima do limite é recusada com a mensagem \"Limite de empréstimos atingido\"",
+          "Empréstimo em atraso impede novas solicitações até a devolução"
+        ],
+        "value": "O acervo é compartilhado de forma justa entre os moradores."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Solicitação de empréstimo de ferramenta disponível, sujeita a prazo, limite de empréstimos ativos e bloqueio por atraso.</p><p><strong>Valor</strong>: O acervo é compartilhado de forma justa entre os moradores.</p><p><strong>Regras relacionadas</strong></p><ul><li>Prazo do empréstimo de até 7 dias</li><li>No máximo 2 empréstimos ativos por morador</li><li>Solicitação acima do limite é recusada com a mensagem &quot;Limite de empréstimos atingido&quot;</li><li>Empréstimo em atraso impede novas solicitações até a devolução</li></ul>"
+      },
+      "id": "PBD-FEAT-2G41SVVRWW20",
+      "origin": "generated",
+      "parent": "PBD-EPIC-Z5QBD43TTJDX",
+      "status": "reviewed",
+      "title": "Solicitação de empréstimo com regras de elegibilidade",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-SXXZ5YE81NTV",
+        "PBD-CLM-29KKBRP6F6KN",
+        "PBD-CLM-8WHPNKZGDBBX",
+        "PBD-CLM-GG3R4FCEBGMC"
+      ],
+      "content": {
+        "capability": "Registro da devolução pelo voluntário, com indicação de dano, e bloqueio da ferramenta danificada até o reparo.",
+        "kind": "feature",
+        "rules": [
+          "Na devolução o voluntário informa se a ferramenta voltou danificada",
+          "Ferramenta danificada fica indisponível até o voluntário marcá-la como reparada"
+        ],
+        "value": "Ferramentas danificadas não voltam a circular antes de serem reparadas."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Registro da devolução pelo voluntário, com indicação de dano, e bloqueio da ferramenta danificada até o reparo.</p><p><strong>Valor</strong>: Ferramentas danificadas não voltam a circular antes de serem reparadas.</p><p><strong>Regras relacionadas</strong></p><ul><li>Na devolução o voluntário informa se a ferramenta voltou danificada</li><li>Ferramenta danificada fica indisponível até o voluntário marcá-la como reparada</li></ul>"
+      },
+      "id": "PBD-FEAT-Y64TXYF43TTY",
+      "origin": "generated",
+      "parent": "PBD-EPIC-Z5QBD43TTJDX",
+      "status": "reviewed",
+      "title": "Devolução e controle de ferramentas danificadas",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-GA9Y59QQXGWE",
+        "PBD-CLM-TW1C7PB46D0W"
+      ],
+      "content": {
+        "capability": "Envio de lembrete por e-mail ao morador na véspera do vencimento do empréstimo.",
+        "kind": "feature",
+        "rules": [
+          "O lembrete é enviado 1 dia antes do vencimento"
+        ],
+        "value": "Ajuda o morador a devolver no prazo, evitando o bloqueio por atraso e a retenção de ferramentas."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Envio de lembrete por e-mail ao morador na véspera do vencimento do empréstimo.</p><p><strong>Valor</strong>: Ajuda o morador a devolver no prazo, evitando o bloqueio por atraso e a retenção de ferramentas.</p><p><strong>Regras relacionadas</strong></p><ul><li>O lembrete é enviado 1 dia antes do vencimento</li></ul>"
+      },
+      "id": "PBD-FEAT-CXKQATMRQFMT",
+      "origin": "generated",
+      "parent": "PBD-EPIC-Z5QBD43TTJDX",
+      "status": "reviewed",
+      "title": "Lembrete de vencimento por e-mail",
+      "type": "feature"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-KN9WYN2NX6SN",
+        "PBD-CLM-MY7HE36VE3PB",
+        "PBD-CLM-QGXX6ZHYWVN7"
+      ],
+      "content": {
+        "actor": "morador",
+        "benefit": "saber quais ferramentas posso pedir emprestadas",
+        "kind": "role_goal_benefit",
+        "want": "consultar o catálogo de ferramentas com nome, categoria e disponibilidade de cada uma, inclusive pelo celular"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> morador, <strong>gostaria que</strong> consultar o catálogo de ferramentas com nome, categoria e disponibilidade de cada uma, inclusive pelo celular, <strong>para</strong> saber quais ferramentas posso pedir emprestadas.</p>"
+      },
+      "id": "PBD-STORY-3BREBCK8493M",
+      "origin": "generated",
+      "parent": "PBD-FEAT-CKR13V445GQF",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Consultar o catálogo de ferramentas",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-JFTJTF407587",
+        "PBD-CLM-R7Z41W5WMS2T"
+      ],
+      "content": {
+        "actor": "morador",
+        "benefit": "usar a ferramenta sem precisar comprá-la",
+        "kind": "role_goal_benefit",
+        "notes": [
+          "O fluxo de aprovação/retirada após a solicitação não está descrito na fonte (ver perguntas)."
+        ],
+        "want": "solicitar o empréstimo de uma ferramenta disponível por até 7 dias"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> morador, <strong>gostaria que</strong> solicitar o empréstimo de uma ferramenta disponível por até 7 dias, <strong>para</strong> usar a ferramenta sem precisar comprá-la.</p><p><strong>Observações</strong></p><ul><li>O fluxo de aprovação/retirada após a solicitação não está descrito na fonte (ver perguntas).</li></ul>"
+      },
+      "id": "PBD-STORY-TN0C5B0H3F8T",
+      "origin": "generated",
+      "parent": "PBD-FEAT-2G41SVVRWW20",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Solicitar empréstimo de ferramenta disponível",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-SNHYJWKAAVED",
+        "PBD-CLM-JD818HV85E2Z",
+        "PBD-CLM-ZMCXZEGFCRGN"
+      ],
+      "content": {
+        "actor": "morador",
+        "benefit": "entender por que minha solicitação não foi aceita",
+        "kind": "role_goal_benefit",
+        "want": "ser informado com a mensagem \"Limite de empréstimos atingido\" quando já tiver 2 empréstimos ativos e tentar um novo"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> morador, <strong>gostaria que</strong> ser informado com a mensagem &quot;Limite de empréstimos atingido&quot; quando já tiver 2 empréstimos ativos e tentar um novo, <strong>para</strong> entender por que minha solicitação não foi aceita.</p>"
+      },
+      "id": "PBD-STORY-ZZEPX4S06BP1",
+      "origin": "generated",
+      "parent": "PBD-FEAT-2G41SVVRWW20",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Recusar solicitação acima do limite de empréstimos ativos",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-W2W639SKJPAQ"
+      ],
+      "content": {
+        "actor": "morador",
+        "benefit": "que as ferramentas retidas voltem ao acervo antes de novos empréstimos",
+        "kind": "role_goal_benefit",
+        "want": "que uma nova solicitação minha só seja aceita depois que eu devolver o empréstimo em atraso"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> morador, <strong>gostaria que</strong> que uma nova solicitação minha só seja aceita depois que eu devolver o empréstimo em atraso, <strong>para</strong> que as ferramentas retidas voltem ao acervo antes de novos empréstimos.</p>"
+      },
+      "id": "PBD-STORY-07M6M9K8BAD5",
+      "origin": "generated",
+      "parent": "PBD-FEAT-2G41SVVRWW20",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Impedir novas solicitações de morador com empréstimo em atraso",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-SXXZ5YE81NTV",
+        "PBD-CLM-29KKBRP6F6KN"
+      ],
+      "content": {
+        "actor": "voluntário",
+        "benefit": "manter o acervo atualizado sobre o que voltou e em que estado",
+        "kind": "role_goal_benefit",
+        "want": "registrar a devolução de uma ferramenta informando se ela voltou danificada"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> voluntário, <strong>gostaria que</strong> registrar a devolução de uma ferramenta informando se ela voltou danificada, <strong>para</strong> manter o acervo atualizado sobre o que voltou e em que estado.</p>"
+      },
+      "id": "PBD-STORY-X2HJ47VYBY10",
+      "origin": "generated",
+      "parent": "PBD-FEAT-Y64TXYF43TTY",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Registrar devolução com indicação de dano",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-8WHPNKZGDBBX",
+        "PBD-CLM-GG3R4FCEBGMC"
+      ],
+      "content": {
+        "actor": "voluntário",
+        "benefit": "evitar que moradores recebam ferramentas sem condições de uso",
+        "kind": "role_goal_benefit",
+        "want": "que a ferramenta devolvida danificada fique indisponível até eu marcá-la como reparada"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> voluntário, <strong>gostaria que</strong> que a ferramenta devolvida danificada fique indisponível até eu marcá-la como reparada, <strong>para</strong> evitar que moradores recebam ferramentas sem condições de uso.</p>"
+      },
+      "id": "PBD-STORY-5Z7XRD8MZWPE",
+      "origin": "generated",
+      "parent": "PBD-FEAT-Y64TXYF43TTY",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Manter ferramenta danificada indisponível até o reparo",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-GA9Y59QQXGWE",
+        "PBD-CLM-TW1C7PB46D0W"
+      ],
+      "content": {
+        "actor": "morador",
+        "benefit": "devolver a ferramenta no prazo",
+        "kind": "role_goal_benefit",
+        "want": "receber um lembrete por e-mail 1 dia antes do vencimento do meu empréstimo"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> morador, <strong>gostaria que</strong> receber um lembrete por e-mail 1 dia antes do vencimento do meu empréstimo, <strong>para</strong> devolver a ferramenta no prazo.</p>"
+      },
+      "id": "PBD-STORY-63515WBW1J5K",
+      "origin": "generated",
+      "parent": "PBD-FEAT-CXKQATMRQFMT",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Receber lembrete por e-mail na véspera do vencimento",
+      "type": "story"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-KN9WYN2NX6SN",
+        "PBD-CLM-MY7HE36VE3PB"
+      ],
+      "content": {
+        "activities": [
+          "Definir a origem dos dados de nome, categoria e disponibilidade",
+          "Implementar a consulta e a apresentação ao morador"
+        ],
+        "kind": "task",
+        "outcome": "Catálogo consultável pelo morador exibindo nome, categoria e disponibilidade.",
+        "summary": "Construir a consulta do catálogo que apresenta cada ferramenta do acervo com seus três atributos exigidos.",
+        "verification": "Critérios CA-01 e CA-02 de US1 demonstrados com um acervo de exemplo contendo ferramentas disponíveis e indisponíveis."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Construir a consulta do catálogo que apresenta cada ferramenta do acervo com seus três atributos exigidos.</p><p><strong>Atividades</strong></p><ul><li>Definir a origem dos dados de nome, categoria e disponibilidade</li><li>Implementar a consulta e a apresentação ao morador</li></ul><p><strong>Resultado esperado</strong>: Catálogo consultável pelo morador exibindo nome, categoria e disponibilidade.</p><p><strong>Verificação</strong>: Critérios CA-01 e CA-02 de US1 demonstrados com um acervo de exemplo contendo ferramentas disponíveis e indisponíveis.</p>"
+      },
+      "fields": {
+        "activity": {
+          "rationale": "Trabalho de construção da consulta do catálogo.",
+          "review_status": "unreviewed",
+          "state": "proposed",
+          "value": "Development"
+        }
+      },
+      "id": "PBD-TASK-FMZFY84SSTF9",
+      "origin": "generated",
+      "parent": "PBD-STORY-3BREBCK8493M",
+      "status": "reviewed",
+      "title": "Implementar a listagem do catálogo com nome, categoria e disponibilidade",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-QGXX6ZHYWVN7"
+      ],
+      "content": {
+        "activities": [
+          "Obter o critério mensurável de uso em celular (dispositivos, telas, navegadores)",
+          "Adaptar a apresentação do catálogo a esse critério"
+        ],
+        "kind": "task",
+        "outcome": "Catálogo utilizável em celulares segundo o critério acordado.",
+        "summary": "Tornar o catálogo utilizável em celulares conforme o critério que for acordado em resposta à pergunta sobre RNF01.",
+        "verification": "Revisão do catálogo nos dispositivos/navegadores definidos na resposta à pergunta de RNF01."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Tornar o catálogo utilizável em celulares conforme o critério que for acordado em resposta à pergunta sobre RNF01.</p><p><strong>Atividades</strong></p><ul><li>Obter o critério mensurável de uso em celular (dispositivos, telas, navegadores)</li><li>Adaptar a apresentação do catálogo a esse critério</li></ul><p><strong>Resultado esperado</strong>: Catálogo utilizável em celulares segundo o critério acordado.</p><p><strong>Verificação</strong>: Revisão do catálogo nos dispositivos/navegadores definidos na resposta à pergunta de RNF01.</p>"
+      },
+      "fields": {
+        "activity": {
+          "rationale": "Depende primeiro de definir o critério de usabilidade em celular.",
+          "review_status": "unreviewed",
+          "state": "proposed",
+          "value": "Design"
+        }
+      },
+      "id": "PBD-TASK-6JNYFGBHWWTA",
+      "origin": "generated",
+      "parent": "PBD-STORY-3BREBCK8493M",
+      "status": "reviewed",
+      "title": "Ajustar a consulta do catálogo para uso em celulares",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-JFTJTF407587",
+        "PBD-CLM-R7Z41W5WMS2T"
+      ],
+      "content": {
+        "activities": [
+          "Modelar o empréstimo (morador, ferramenta, início, vencimento, situação)",
+          "Validar a disponibilidade da ferramenta no momento da solicitação",
+          "Calcular o vencimento respeitando o máximo de 7 dias"
+        ],
+        "kind": "task",
+        "outcome": "Solicitação de ferramenta disponível gera um empréstimo com vencimento em até 7 dias.",
+        "summary": "Registrar o empréstimo quando o morador solicita uma ferramenta disponível, com data de vencimento que não ultrapasse 7 dias.",
+        "verification": "Critérios de US2 demonstrados, incluindo a solicitação de uma ferramenta indisponível."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Registrar o empréstimo quando o morador solicita uma ferramenta disponível, com data de vencimento que não ultrapasse 7 dias.</p><p><strong>Atividades</strong></p><ul><li>Modelar o empréstimo (morador, ferramenta, início, vencimento, situação)</li><li>Validar a disponibilidade da ferramenta no momento da solicitação</li><li>Calcular o vencimento respeitando o máximo de 7 dias</li></ul><p><strong>Resultado esperado</strong>: Solicitação de ferramenta disponível gera um empréstimo com vencimento em até 7 dias.</p><p><strong>Verificação</strong>: Critérios de US2 demonstrados, incluindo a solicitação de uma ferramenta indisponível.</p>"
+      },
+      "fields": {
+        "activity": {
+          "rationale": "Regra central de criação do empréstimo.",
+          "review_status": "unreviewed",
+          "state": "proposed",
+          "value": "Development"
+        }
+      },
+      "id": "PBD-TASK-5RQ5T9Y8N92R",
+      "origin": "generated",
+      "parent": "PBD-STORY-TN0C5B0H3F8T",
+      "status": "reviewed",
+      "title": "Implementar a criação do empréstimo com prazo de até 7 dias",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-SNHYJWKAAVED",
+        "PBD-CLM-JD818HV85E2Z",
+        "PBD-CLM-ZMCXZEGFCRGN"
+      ],
+      "content": {
+        "activities": [
+          "Contar empréstimos ativos do morador no momento da solicitação",
+          "Recusar sem criar empréstimo quando o limite já foi atingido",
+          "Exibir a mensagem exata definida no PRD"
+        ],
+        "kind": "task",
+        "outcome": "Solicitações acima do limite são recusadas com a mensagem prevista.",
+        "summary": "Antes de criar um empréstimo, contar os empréstimos ativos do morador e recusar a solicitação quando já houver 2, exibindo \"Limite de empréstimos atingido\".",
+        "verification": "Critérios CA-01 a CA-03 de US3 demonstrados com moradores com 1 e com 2 empréstimos ativos."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Antes de criar um empréstimo, contar os empréstimos ativos do morador e recusar a solicitação quando já houver 2, exibindo &quot;Limite de empréstimos atingido&quot;.</p><p><strong>Atividades</strong></p><ul><li>Contar empréstimos ativos do morador no momento da solicitação</li><li>Recusar sem criar empréstimo quando o limite já foi atingido</li><li>Exibir a mensagem exata definida no PRD</li></ul><p><strong>Resultado esperado</strong>: Solicitações acima do limite são recusadas com a mensagem prevista.</p><p><strong>Verificação</strong>: Critérios CA-01 a CA-03 de US3 demonstrados com moradores com 1 e com 2 empréstimos ativos.</p>"
+      },
+      "fields": {
+        "activity": {
+          "rationale": "Regra de negócio aplicada na solicitação.",
+          "review_status": "unreviewed",
+          "state": "proposed",
+          "value": "Development"
+        }
+      },
+      "id": "PBD-TASK-88430NB9V7B5",
+      "origin": "generated",
+      "parent": "PBD-STORY-ZZEPX4S06BP1",
+      "status": "reviewed",
+      "title": "Aplicar o limite de 2 empréstimos ativos na solicitação",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-SNHYJWKAAVED",
+        "PBD-CLM-JD818HV85E2Z"
+      ],
+      "content": {
+        "activities": [
+          "Listar os cenários de fronteira e de solicitações simultâneas a cobrir",
+          "Combinar com QA a elaboração dos casos de teste correspondentes"
+        ],
+        "kind": "task",
+        "outcome": "Plano de verificação do limite acordado com QA.",
+        "summary": "Planejar a verificação do limite nas fronteiras (1 e 2 empréstimos ativos) e com solicitações simultâneas do mesmo morador.",
+        "verification": "Plano revisado cobrindo os critérios de US3, inclusive o proposto de concorrência."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Planejar a verificação do limite nas fronteiras (1 e 2 empréstimos ativos) e com solicitações simultâneas do mesmo morador.</p><p><strong>Atividades</strong></p><ul><li>Listar os cenários de fronteira e de solicitações simultâneas a cobrir</li><li>Combinar com QA a elaboração dos casos de teste correspondentes</li></ul><p><strong>Resultado esperado</strong>: Plano de verificação do limite acordado com QA.</p><p><strong>Verificação</strong>: Plano revisado cobrindo os critérios de US3, inclusive o proposto de concorrência.</p>"
+      },
+      "fields": {
+        "activity": {
+          "rationale": "Regra de limite tem fronteira explícita e risco de concorrência.",
+          "review_status": "unreviewed",
+          "state": "proposed",
+          "value": "Testing"
+        }
+      },
+      "id": "PBD-TASK-EN4J6ER7VQMM",
+      "origin": "generated",
+      "parent": "PBD-STORY-ZZEPX4S06BP1",
+      "status": "reviewed",
+      "title": "Planejar testes de fronteira e concorrência do limite de empréstimos",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-W2W639SKJPAQ"
+      ],
+      "content": {
+        "activities": [
+          "Determinar a situação de atraso a partir do vencimento e da ausência de devolução",
+          "Recusar a solicitação enquanto houver atraso",
+          "Liberar novas solicitações após o registro da devolução"
+        ],
+        "kind": "task",
+        "outcome": "Morador com atraso não consegue novo empréstimo até devolver.",
+        "summary": "Identificar se o morador possui empréstimo cujo vencimento já passou sem devolução e, nesse caso, recusar novas solicitações até a devolução ser registrada.",
+        "verification": "Critérios de US4 demonstrados antes e depois do registro da devolução em atraso."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Identificar se o morador possui empréstimo cujo vencimento já passou sem devolução e, nesse caso, recusar novas solicitações até a devolução ser registrada.</p><p><strong>Atividades</strong></p><ul><li>Determinar a situação de atraso a partir do vencimento e da ausência de devolução</li><li>Recusar a solicitação enquanto houver atraso</li><li>Liberar novas solicitações após o registro da devolução</li></ul><p><strong>Resultado esperado</strong>: Morador com atraso não consegue novo empréstimo até devolver.</p><p><strong>Verificação</strong>: Critérios de US4 demonstrados antes e depois do registro da devolução em atraso.</p>"
+      },
+      "fields": {
+        "activity": {
+          "rationale": "Regra de bloqueio aplicada na solicitação.",
+          "review_status": "unreviewed",
+          "state": "proposed",
+          "value": "Development"
+        }
+      },
+      "id": "PBD-TASK-ZKP70P0Y01CS",
+      "origin": "generated",
+      "parent": "PBD-STORY-07M6M9K8BAD5",
+      "status": "reviewed",
+      "title": "Bloquear solicitações de morador com empréstimo vencido não devolvido",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-SXXZ5YE81NTV",
+        "PBD-CLM-29KKBRP6F6KN"
+      ],
+      "content": {
+        "activities": [
+          "Disponibilizar ao voluntário a seleção do empréstimo a devolver",
+          "Registrar a data da devolução e a indicação de dano",
+          "Encerrar o empréstimo como devolvido"
+        ],
+        "kind": "task",
+        "outcome": "Devolução registrada com a informação de dano.",
+        "summary": "Permitir ao voluntário registrar a devolução de um empréstimo e informar obrigatoriamente se a ferramenta voltou danificada.",
+        "verification": "Critérios de US5 demonstrados para devolução com e sem dano."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir ao voluntário registrar a devolução de um empréstimo e informar obrigatoriamente se a ferramenta voltou danificada.</p><p><strong>Atividades</strong></p><ul><li>Disponibilizar ao voluntário a seleção do empréstimo a devolver</li><li>Registrar a data da devolução e a indicação de dano</li><li>Encerrar o empréstimo como devolvido</li></ul><p><strong>Resultado esperado</strong>: Devolução registrada com a informação de dano.</p><p><strong>Verificação</strong>: Critérios de US5 demonstrados para devolução com e sem dano.</p>"
+      },
+      "fields": {
+        "activity": {
+          "rationale": "Fluxo do voluntário na devolução.",
+          "review_status": "unreviewed",
+          "state": "proposed",
+          "value": "Development"
+        }
+      },
+      "id": "PBD-TASK-BW5PHKM8C0CF",
+      "origin": "generated",
+      "parent": "PBD-STORY-X2HJ47VYBY10",
+      "status": "reviewed",
+      "title": "Implementar o registro de devolução pelo voluntário com indicação de dano",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-8WHPNKZGDBBX"
+      ],
+      "content": {
+        "activities": [
+          "Atualizar a disponibilidade da ferramenta a partir da indicação de dano",
+          "Garantir que a ferramenta danificada não aceite novas solicitações"
+        ],
+        "kind": "task",
+        "outcome": "Ferramenta danificada aparece e se comporta como indisponível.",
+        "summary": "Quando a devolução indicar dano, mudar a ferramenta para indisponível, refletindo isso no catálogo e na solicitação.",
+        "verification": "Critérios CA-01 e CA-02 de US6 demonstrados após uma devolução marcada como danificada."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Quando a devolução indicar dano, mudar a ferramenta para indisponível, refletindo isso no catálogo e na solicitação.</p><p><strong>Atividades</strong></p><ul><li>Atualizar a disponibilidade da ferramenta a partir da indicação de dano</li><li>Garantir que a ferramenta danificada não aceite novas solicitações</li></ul><p><strong>Resultado esperado</strong>: Ferramenta danificada aparece e se comporta como indisponível.</p><p><strong>Verificação</strong>: Critérios CA-01 e CA-02 de US6 demonstrados após uma devolução marcada como danificada.</p>"
+      },
+      "fields": {
+        "activity": {
+          "rationale": "Regra de estado da ferramenta.",
+          "review_status": "unreviewed",
+          "state": "proposed",
+          "value": "Development"
+        }
+      },
+      "id": "PBD-TASK-HFF0PRERVRZQ",
+      "origin": "generated",
+      "parent": "PBD-STORY-5Z7XRD8MZWPE",
+      "status": "reviewed",
+      "title": "Tornar indisponível a ferramenta devolvida danificada",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-GG3R4FCEBGMC"
+      ],
+      "content": {
+        "activities": [
+          "Listar ao voluntário as ferramentas indisponíveis por dano",
+          "Registrar a marcação de reparo e atualizar a disponibilidade"
+        ],
+        "kind": "task",
+        "outcome": "Ferramenta reparada volta a poder ser emprestada.",
+        "summary": "Oferecer ao voluntário a ação de marcar uma ferramenta danificada como reparada, encerrando a indisponibilidade por dano.",
+        "verification": "Critério CA-03 de US6 demonstrado."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Oferecer ao voluntário a ação de marcar uma ferramenta danificada como reparada, encerrando a indisponibilidade por dano.</p><p><strong>Atividades</strong></p><ul><li>Listar ao voluntário as ferramentas indisponíveis por dano</li><li>Registrar a marcação de reparo e atualizar a disponibilidade</li></ul><p><strong>Resultado esperado</strong>: Ferramenta reparada volta a poder ser emprestada.</p><p><strong>Verificação</strong>: Critério CA-03 de US6 demonstrado.</p>"
+      },
+      "fields": {
+        "activity": {
+          "rationale": "Ação do voluntário na manutenção do acervo.",
+          "review_status": "unreviewed",
+          "state": "proposed",
+          "value": "Development"
+        }
+      },
+      "id": "PBD-TASK-DENP4AAKV2CJ",
+      "origin": "generated",
+      "parent": "PBD-STORY-5Z7XRD8MZWPE",
+      "status": "reviewed",
+      "title": "Permitir ao voluntário marcar ferramenta como reparada",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-TW1C7PB46D0W"
+      ],
+      "content": {
+        "activities": [
+          "Definir a execução periódica da verificação de vencimentos",
+          "Excluir empréstimos já devolvidos",
+          "Evitar lembretes duplicados para o mesmo empréstimo"
+        ],
+        "kind": "task",
+        "outcome": "Lembretes gerados exatamente na véspera do vencimento.",
+        "summary": "Identificar, a cada dia, os empréstimos ativos cujo vencimento é no dia seguinte e gerar um lembrete para cada morador correspondente.",
+        "verification": "Critérios CA-01 e CA-02 de US7 demonstrados com empréstimos que vencem em 1 e em 3 dias."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Identificar, a cada dia, os empréstimos ativos cujo vencimento é no dia seguinte e gerar um lembrete para cada morador correspondente.</p><p><strong>Atividades</strong></p><ul><li>Definir a execução periódica da verificação de vencimentos</li><li>Excluir empréstimos já devolvidos</li><li>Evitar lembretes duplicados para o mesmo empréstimo</li></ul><p><strong>Resultado esperado</strong>: Lembretes gerados exatamente na véspera do vencimento.</p><p><strong>Verificação</strong>: Critérios CA-01 e CA-02 de US7 demonstrados com empréstimos que vencem em 1 e em 3 dias.</p>"
+      },
+      "fields": {
+        "activity": {
+          "rationale": "Regra temporal do lembrete.",
+          "review_status": "unreviewed",
+          "state": "proposed",
+          "value": "Development"
+        }
+      },
+      "id": "PBD-TASK-BDA6G4BB56CB",
+      "origin": "generated",
+      "parent": "PBD-STORY-63515WBW1J5K",
+      "status": "reviewed",
+      "title": "Selecionar empréstimos que vencem no dia seguinte e gerar o lembrete",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-GA9Y59QQXGWE"
+      ],
+      "content": {
+        "activities": [
+          "Confirmar o serviço de e-mail e a origem do endereço do morador",
+          "Redigir o conteúdo do lembrete com a ferramenta e a data de vencimento",
+          "Tratar falhas de envio conforme a resposta da pergunta correspondente"
+        ],
+        "kind": "task",
+        "outcome": "Morador recebe o lembrete na sua caixa de e-mail.",
+        "summary": "Enviar ao endereço de e-mail do morador o lembrete gerado, usando o serviço de e-mail a ser definido (ver perguntas).",
+        "verification": "Envio observado em ambiente de teste para um morador com empréstimo vencendo no dia seguinte."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Enviar ao endereço de e-mail do morador o lembrete gerado, usando o serviço de e-mail a ser definido (ver perguntas).</p><p><strong>Atividades</strong></p><ul><li>Confirmar o serviço de e-mail e a origem do endereço do morador</li><li>Redigir o conteúdo do lembrete com a ferramenta e a data de vencimento</li><li>Tratar falhas de envio conforme a resposta da pergunta correspondente</li></ul><p><strong>Resultado esperado</strong>: Morador recebe o lembrete na sua caixa de e-mail.</p><p><strong>Verificação</strong>: Envio observado em ambiente de teste para um morador com empréstimo vencendo no dia seguinte.</p>"
+      },
+      "fields": {
+        "activity": {
+          "rationale": "Integração com canal de e-mail.",
+          "review_status": "unreviewed",
+          "state": "proposed",
+          "value": "Development"
+        }
+      },
+      "id": "PBD-TASK-MV4D569RZ7QJ",
+      "origin": "generated",
+      "parent": "PBD-STORY-63515WBW1J5K",
+      "status": "reviewed",
+      "title": "Integrar o envio do e-mail de lembrete ao morador",
+      "type": "task"
+    }
+  ],
+  "kind": "pbd.backlog",
+  "language": "pt-BR",
+  "profile": "azure-agile",
+  "questions": [
+    {
+      "affects": [
+        "PBD-CLM-QGXX6ZHYWVN7",
+        "PBD-STORY-3BREBCK8493M",
+        "PBD-TASK-6JNYFGBHWWTA"
+      ],
+      "alternatives": [
+        "Lista de dispositivos/navegadores de referência",
+        "Largura mínima de tela suportada"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-6JTJQ6KFJ26M",
+      "impact": "Sem o critério, RNF01 não pode ser aceito de forma verificável.",
+      "status": "open",
+      "text": "Qual critério mensurável define que o catálogo é \"utilizável em celulares\" (dispositivos, tamanhos de tela, navegadores)?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-JFTJTF407587",
+        "PBD-CLM-R7Z41W5WMS2T",
+        "PBD-STORY-TN0C5B0H3F8T"
+      ],
+      "alternatives": [
+        "Ativo na solicitação",
+        "Ativo na retirada confirmada pelo voluntário"
+      ],
+      "blocking": true,
+      "id": "PBD-Q-Y8CESQXS9CX9",
+      "impact": "Define o início do prazo, o momento em que a ferramenta fica indisponível e quando o empréstimo conta para o limite.",
+      "status": "open",
+      "text": "Após a solicitação, o empréstimo fica ativo imediatamente ou depende de aprovação/retirada com o voluntário? A partir de quando contam os 7 dias?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-R7Z41W5WMS2T",
+        "PBD-CLM-TW1C7PB46D0W",
+        "PBD-STORY-63515WBW1J5K",
+        "PBD-STORY-TN0C5B0H3F8T"
+      ],
+      "alternatives": [
+        "Duração escolhida pelo morador, máximo 7 dias",
+        "Prazo fixo de 7 dias"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-QX8AYBWX6207",
+      "impact": "Altera a solicitação e o cálculo do vencimento usado no lembrete.",
+      "status": "open",
+      "text": "\"Por até 7 dias\": o morador escolhe a duração (até 7) ou o prazo é sempre 7 dias? Há renovação?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-W2W639SKJPAQ",
+        "PBD-STORY-07M6M9K8BAD5",
+        "PBD-STORY-TN0C5B0H3F8T"
+      ],
+      "alternatives": [],
+      "blocking": false,
+      "id": "PBD-Q-DMMRKPM5AN88",
+      "impact": "A fonte só define a mensagem de recusa por limite; as demais recusas ficam sem texto definido.",
+      "status": "open",
+      "text": "Que mensagem é exibida quando a solicitação é recusada por empréstimo em atraso ou por ferramenta indisponível?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-SNHYJWKAAVED",
+        "PBD-CLM-W2W639SKJPAQ",
+        "PBD-STORY-07M6M9K8BAD5",
+        "PBD-STORY-ZZEPX4S06BP1"
+      ],
+      "alternatives": [],
+      "blocking": false,
+      "id": "PBD-Q-1E2CY18YJ30T",
+      "impact": "Define a ordem de avaliação e a mensagem exibida.",
+      "status": "open",
+      "text": "Um empréstimo em atraso continua contando como ativo para o limite de 2? Qual recusa prevalece quando ambas as regras se aplicam?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-F56Y4ACD8X4P",
+        "PBD-EPIC-Z5QBD43TTJDX",
+        "PBD-STORY-5Z7XRD8MZWPE",
+        "PBD-STORY-X2HJ47VYBY10"
+      ],
+      "alternatives": [
+        "Fora do escopo deste backlog (já existente)",
+        "Incluir épico de cadastro e acesso"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-9JBTBPX9RF3B",
+      "impact": "Permissões não descritas; o PRD pressupõe moradores cadastrados e voluntários sem definir o mecanismo.",
+      "status": "open",
+      "text": "Como o morador é cadastrado e autenticado, e como o voluntário é autorizado a registrar devoluções e reparos?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-GA9Y59QQXGWE",
+        "PBD-STORY-63515WBW1J5K",
+        "PBD-TASK-MV4D569RZ7QJ"
+      ],
+      "alternatives": [],
+      "blocking": false,
+      "id": "PBD-Q-F0YQFCQYDPYQ",
+      "impact": "Define a integração e o tratamento de falha do lembrete.",
+      "status": "open",
+      "text": "Qual serviço de e-mail será usado e o que fazer se o envio do lembrete falhar ou o morador não tiver e-mail cadastrado?"
+    }
+  ],
+  "relations": [
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-NZV0CA4R75TF",
+      "reason": "O limite de empréstimos ativos só pode ser aplicado depois que empréstimos são criados.",
+      "source": "PBD-STORY-TN0C5B0H3F8T",
+      "status": "proposed",
+      "target": "PBD-STORY-ZZEPX4S06BP1",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-XQR1DZ5Z3WQ2",
+      "reason": "O atraso é avaliado sobre empréstimos existentes e seus vencimentos.",
+      "source": "PBD-STORY-TN0C5B0H3F8T",
+      "status": "proposed",
+      "target": "PBD-STORY-07M6M9K8BAD5",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-HGTQH79P55Y2",
+      "reason": "Só há devolução a registrar após existir um empréstimo.",
+      "source": "PBD-STORY-TN0C5B0H3F8T",
+      "status": "proposed",
+      "target": "PBD-STORY-X2HJ47VYBY10",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-F6V5XVSR6X09",
+      "reason": "O desbloqueio por atraso depende do registro da devolução.",
+      "source": "PBD-STORY-X2HJ47VYBY10",
+      "status": "proposed",
+      "target": "PBD-STORY-07M6M9K8BAD5",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-2NX442V3EBKQ",
+      "reason": "A indisponibilidade por dano é disparada pela indicação de dano no registro da devolução.",
+      "source": "PBD-STORY-X2HJ47VYBY10",
+      "status": "proposed",
+      "target": "PBD-STORY-5Z7XRD8MZWPE",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-Q3FPZNZ525PQ",
+      "reason": "O lembrete depende do vencimento definido no empréstimo.",
+      "source": "PBD-STORY-TN0C5B0H3F8T",
+      "status": "proposed",
+      "target": "PBD-STORY-63515WBW1J5K",
+      "type": "predecessor"
+    }
+  ],
+  "run_id": "PBD-RUN-H2RBNJ6H158J",
+  "schema_version": "1.1.0",
+  "sources": [
+    {
+      "authority": "functional",
+      "digest": "sha256:50f2a185b045231b3f2f75b7c38537fee54db06cf686fe92012d6cda7e14d7e8",
+      "id": "PBD-SRC-78385WMH95P7",
+      "kind": "file",
+      "members": [
+        {
+          "bytes": 1266,
+          "digest": "sha256:5bcd9c92e402c6a5e10bc8a9da65d7f52e678d1827081d37e46a313378cbc836",
+          "media_type": "application/octet-stream",
+          "path": "prd.md",
+          "status": "read"
+        }
+      ],
+      "read_status": "complete",
+      "selector": "prd.md",
+      "version": "50f2a185b045231b"
+    }
+  ],
+  "synthetic": true
+}

@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — M0 corrective round and M1 agent-led generation
+- Gate evidence is verified against artifact hashes, run and stage; coverage denominators carry hash-bound inventories and disposition breakdowns; G13 requires deterministic evidence of complete, independent review.
+- Agent-led pipeline: `pbd start`, verified reader ledgers (one reader per declared source, quotes checked against cited lines and pages), claims reconciliation, design, independent review, `pbd finalize`; work orders describe each next stage.
+- Sources: UTF-8/UTF-16/cp1252 text, DOCX (headers, footers, notes, comments), XLSX, PDF text layer (optional pypdf), images as visual members; gaps can never be certified as read without a vision transcription.
+- Outputs: two-layer offline report.html (Assertiva design tokens), canonical JSON and projections, Markdown, CSV, XLSX, Mermaid, local Azure package; process profiles for generic, Azure Agile, Scrum, Basic and CMMI.
+- Skill: procedures for orchestrator, readers, designer and reviewer; `pbd skill install`; discovery verified in a fresh Claude Code session.
+- Dogfood: 12 synthetic cases with pre-registered gold, separate reader, generator, reviewer and evaluator agents; 90 gold obligations, 0 missed, 80/81 critical; two thresholds missed and reported. Eleven defects found and fixed with regressions.
+
 ## Unreleased — M0 runtime foundation
 - Add `pbd` Python package (3.11+, sole runtime dependency `jsonschema`) and offline CLI: `doctor`, `schema`, `validate`, `inventory`, `id`, `run`, `privacy-scan`.
 - Add strict versioned v1 JSON Schemas: backlog (sources, claims, items, criteria, relations, questions, decisions, findings, field provenance, temporal supersession, typed evidence), run manifest, gate report (G01–G18), publication plan (no DELETE) and receipt (mock never live-verified).

@@ -1,0 +1,30 @@
+{
+ "case": "c04-code-tech",
+ "evaluator_model": "claude-haiku-5-5",
+ "obligations": [
+  {"id": "G01", "verdict": "covered", "evidence": "C1; US1 (código de 6 dígitos); AC1 and AC2 confirmed (6 dígitos numéricos, zeros à esquerda); T1", "note": "6-digit pickup code on deposit is confirmed with its format."},
+  {"id": "G02", "verdict": "covered", "evidence": "AC6 and AC7 confirmed (72 horas do depósito); EN1 rule; T3", "note": "Expiry at 72 hours is confirmed as the PRD requirement, not the 48 h snapshot."},
+  {"id": "G03", "verdict": "partial", "evidence": "F3 rule 'Após 3 tentativas com código incorreto o armário fica bloqueado por 10 minutos (RF3)'; AC13 confirmed mentions only '3 tentativas'; no confirmed criterion carries 10 minutos", "note": "The 3-attempt rule is in an acceptance criterion but the 10-minute lock duration appears only in the feature rule text, not in a confirmed criterion."},
+  {"id": "G04", "verdict": "covered", "evidence": "AC9 (não retirada é devolvida à portaria), AC10 (morador avisado), AC11 (aviso pela fila notificacoes); US2; T4, T5", "note": "Return to front desk and notice to the resident are confirmed."},
+  {"id": "G05", "verdict": "covered", "evidence": "US3; AC15 and AC16 confirmed (porteiro vê armários ocupados via GET /lockers?status=occupied); T7", "note": "Doorman occupancy query is confirmed."},
+  {"id": "G06", "verdict": "covered", "evidence": "AC3 confirmed (geração via POST /lockers/{id}/codes); C7; T1", "note": "Code generation through locker-api endpoint is confirmed."},
+  {"id": "G07", "verdict": "covered", "evidence": "AC4 confirmed (mensagem publicada na fila notificacoes existente); AC11; T2 'sem criar nova fila'", "note": "Notifications via the existing queue, with no new queue, are confirmed."},
+  {"id": "G08", "verdict": "covered", "evidence": "EN2 out of scope in E1 ('Execução do bloqueio... responsabilidade do firmware'); AC13 and AC14 confirmed (software apenas registra, não emite comando); SP1 spike on the event channel", "note": "Lockout execution stays with firmware and the software only records the event."},
+  {"id": "G09", "verdict": "covered", "evidence": "F4 rule 'GET /lockers?status=occupied (TDD)'; AC16 confirmed; T7", "note": "Occupancy endpoint is represented."}
+ ],
+ "traps": [
+  {"trap": "src/codes.py EXPIRY_HOURS = 48 contradicts PRD 72h: code is evidence, not authority; must surface divergence, keep 72h as requirement.", "violated": false, "note": "C12 is CONFLICTING, EN1 states the PRD prevails, AC7 keeps 72 h and Q1 asks to confirm the correction; the divergence is surfaced."},
+  {"trap": "Software must not implement the lockout timer itself (TDD assigns it to firmware); only log/verify.", "violated": false, "note": "EN2, AC14 and T6 limit the software to recording the firmware event; no timer or lockout command is specified."}
+ ],
+ "invented": [
+  {"key": "AC7", "what": "Confirmed criterion decides that the code is expired exactly when 72 hours are reached (>=), while claim C14 on the boundary is QUESTION_REQUIRED and question Q2 is open.", "severity": "medium"}
+ ],
+ "levels_ok": false,
+ "quality": {
+  "stories": "Stories follow the 'Eu como morador/porteiro' form and map to RF1 to RF5; US1 and US2 explicitly flag the unknown deposit trigger and the notice channel as open.",
+  "criteria": "Criteria are precise on the 6-digit format, the 72-hour value and the firmware/software split; the 48-hour snapshot is explicitly rejected, which is the key conflict handling.",
+  "tasks": "Tasks are concrete (POST endpoint, queue reuse, GET query) and the spike SP1 is a good way to resolve the firmware channel; T3 explicitly aligns the 72-hour rule with the test boundary question.",
+  "traceability": "Claims cite the PRD, TDD and code snippets with locators; the CONFLICTING claim C12 is visible in EN1 and T3, and the code is treated as evidence rather than authority."
+ },
+ "notes": "The backlog uses enabler (EN1, EN2) and spike (SP1) item types that are not among the requested levels, so levels_ok is false under a strict reading. The G03 partial is a judgment about where the 10-minute value sits. The gold conflict expectation (48 vs 72) is handled well."
+}

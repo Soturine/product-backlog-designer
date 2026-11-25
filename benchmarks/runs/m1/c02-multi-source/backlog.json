@@ -1,0 +1,1843 @@
+{
+  "claims": [
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-KZVYSW30RJ3T",
+          "PBD-AC-FS5CGRJQ2QE3",
+          "PBD-AC-7HZHG8H9M048",
+          "PBD-TASK-R574ES1NSZK6"
+        ],
+        "rationale": "Reserva em bloco de uma hora cheia coberta por US1; multiplicidade de blocos aberta em Q5.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "prd.md",
+            "quote_digest": "sha256:a9c4b4884a5fed624c60d8a7faa67be9d1e30a24b7fbb30ff00de2b45252e9c8",
+            "section": "Requisitos",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "5446f5e5ae0efee9"
+          },
+          "summary": "O sócio reserva uma quadra em blocos de 1 hora.",
+          "type": "source_locator"
+        },
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "glossario.md",
+            "quote_digest": "sha256:23b9723aa3ba67b62bc243deb3df5fa53d6399329ff62a101eede9f906a0023a",
+            "source_id": "PBD-SRC-Z59MJ51KN19Q",
+            "source_version": "ff48c653ec5f92c6"
+          },
+          "summary": "Bloco: período de reserva de uma hora cheia.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-X5BG7QFDT3SK",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O sócio reserva uma quadra em blocos de 1 hora; bloco é o período de reserva de uma hora cheia",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-KZVYSW30RJ3T",
+          "PBD-AC-FS5CGRJQ2QE3",
+          "PBD-AC-XJ4FBET6WQDP",
+          "PBD-TASK-R574ES1NSZK6"
+        ],
+        "rationale": "Antecedência máxima de 14 dias com caso positivo e negativo.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "prd.md",
+            "quote_digest": "sha256:f1ba8a950ea6a3fc0a5bb384b02e24b50710cb890ef52546adbdc7d06f04cc2b",
+            "section": "Requisitos",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "5446f5e5ae0efee9"
+          },
+          "summary": "Reservas podem ser feitas com até 14 dias de antecedência.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-8GR5Y2H4Y85C",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Reservas podem ser feitas com até 14 dias de antecedência",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-KF11314Y77M5",
+          "PBD-AC-TWB19D2KNYFP",
+          "PBD-AC-ADXACAGHN7VR",
+          "PBD-AC-SR8R0BXJ79Q6",
+          "PBD-TASK-FD6AR4RK2A41"
+        ],
+        "rationale": "Cancelamento da própria reserva dentro e fora do prazo de 2 horas.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 6,
+            "line_start": 6,
+            "member": "prd.md",
+            "quote_digest": "sha256:2ab9ca0ab26115bf3c479e1ba147ccfcfdbbbbbe27db0cd95ca67576013da12f",
+            "section": "Requisitos",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "5446f5e5ae0efee9"
+          },
+          "summary": "O sócio pode cancelar a própria reserva até 2 horas antes do início.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-ARW6E4CTVX1Q",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O sócio pode cancelar a própria reserva até 2 horas antes do início",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-CADKJEXSF1Q9",
+          "PBD-AC-V88ZFBEG1MX5",
+          "PBD-TASK-7BXKJH5GYYNA"
+        ],
+        "rationale": "Bloqueio por intervalo de datas pelo administrador; efeito em reservas existentes aberto em Q3.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 7,
+            "line_start": 7,
+            "member": "prd.md",
+            "quote_digest": "sha256:45384ff38d950d7a882087a844594d31ce5d1e09d66d683355e9103ab3ea182e",
+            "section": "Requisitos",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "5446f5e5ae0efee9"
+          },
+          "summary": "O administrador bloqueia uma quadra para manutenção em um intervalo de datas.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-25N48VNMSYKB",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O administrador bloqueia uma quadra para manutenção em um intervalo de datas",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "error",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-CADKJEXSF1Q9",
+          "PBD-AC-7EF7SGPEB5KK",
+          "PBD-TASK-M0YSYZCF3CH3"
+        ],
+        "rationale": "Reserva em quadra bloqueada é recusada.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 8,
+            "line_start": 8,
+            "member": "prd.md",
+            "quote_digest": "sha256:a6a19dd6be2617d1fcfa3bde257b406b75018d57595fc6602b099e352cd17f76",
+            "section": "Requisitos",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "5446f5e5ae0efee9"
+          },
+          "summary": "Não é permitido reservar uma quadra bloqueada.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-2KWCSK1D7DR1",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Não é permitido reservar uma quadra bloqueada",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-A148GQ3XANXD",
+          "PBD-AC-ZPJR21WFDVQJ",
+          "PBD-AC-C8E8ARVHSCCW",
+          "PBD-TASK-FFAWZKGR7V42"
+        ],
+        "rationale": "Consulta de reservas futuras e passadas.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 9,
+            "line_start": 9,
+            "member": "prd.md",
+            "quote_digest": "sha256:ff5c22b01f49010d31a3c805f17873e8dfcaa293a262b7e0da70d70dfc675bd4",
+            "section": "Requisitos",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "5446f5e5ae0efee9"
+          },
+          "summary": "O sócio vê suas reservas futuras e passadas.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-36TS9GYZ4MMW",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O sócio vê suas reservas futuras e passadas",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-KZVYSW30RJ3T",
+          "PBD-AC-1T8C3F8DN6QT",
+          "PBD-AC-5T9B57J1SGCV",
+          "PBD-TASK-CQK4XBS730S9"
+        ],
+        "rationale": "Limite de 3 reservas futuras com limite inferior e superior.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 3,
+            "line_start": 3,
+            "member": "regras-de-uso.md",
+            "quote_digest": "sha256:658a125f07e9a6c7ddaf1c6c21a9b3ae457a898b1ce157262ea1cef7e60183d9",
+            "source_id": "PBD-SRC-4RHX3A209VQS",
+            "source_version": "8dc4fa43ab68c26f"
+          },
+          "summary": "no máximo 3 reservas futuras",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-WBYYMZ2EPZD5",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Cada sócio pode manter no máximo 3 reservas futuras",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-PTX3J3CVQJAV",
+          "PBD-AC-HK1ET49ZD0H0",
+          "PBD-AC-3H6WYENWA3TG",
+          "PBD-TASK-MR0BSMHG09BA"
+        ],
+        "rationale": "A regra está representada em US5, mas a forma de determinar 'não utilizada' (Q1) e o prazo de cancelamento (Q2) não estão definidos nas fontes.",
+        "status": "QUESTION_REQUIRED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "regras-de-uso.md",
+            "quote_digest": "sha256:9495c0fa16a71567a0793014006b67f80be823da0b814afe629dbadbcde25028",
+            "source_id": "PBD-SRC-4RHX3A209VQS",
+            "source_version": "8dc4fa43ab68c26f"
+          },
+          "summary": "não utilizada e não cancelada conta como falta",
+          "type": "source_locator"
+        },
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "glossario.md",
+            "quote_digest": "sha256:fa2b1566c909773a82c641a22ccfc0b97db8518238104c821c4ea5176e32f038",
+            "source_id": "PBD-SRC-Z59MJ51KN19Q",
+            "source_version": "ff48c653ec5f92c6"
+          },
+          "summary": "Falta: reserva não utilizada e não cancelada dentro do prazo.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-35R9NE4743AC",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Uma reserva não utilizada e não cancelada dentro do prazo conta como falta",
+      "uncertainty": {
+        "level": "ambiguous",
+        "note": "As fontes não definem como se determina que uma reserva foi 'não utilizada'; o 'prazo' do glossário não tem valor explícito (o PRD permite cancelar até 2 horas antes do início, mas nenhuma fonte liga esse limite à definição de falta)"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-EGSAWYCCMFCR",
+          "PBD-AC-9QJEEG9PGTXM",
+          "PBD-AC-Q706JR7732YY",
+          "PBD-AC-YNAJWDJEHB09",
+          "PBD-TASK-V4ZGH7BPQ6FG"
+        ],
+        "rationale": "Impedimento de 15 dias após 3 faltas em 30 dias; forma de contagem aberta em Q7.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "regras-de-uso.md",
+            "quote_digest": "sha256:c1ba7b8591067ca00a7421fef8cc20e0deeb5b41df6baf9e7c3b8b72eb801754",
+            "source_id": "PBD-SRC-4RHX3A209VQS",
+            "source_version": "8dc4fa43ab68c26f"
+          },
+          "summary": "Com 3 faltas em 30 dias, o sócio fica impedido de fazer novas reservas por 15 dias",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-RVFY3JCTFZQ1",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Com 3 faltas em 30 dias, o sócio fica impedido de fazer novas reservas por 15 dias",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-0V6AA33YGSSK",
+          "PBD-AC-BN8T69K1QSHS",
+          "PBD-TASK-SG9RKNR246KJ"
+        ],
+        "rationale": "Remoção de falta indevida pelo administrador.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 6,
+            "line_start": 6,
+            "member": "regras-de-uso.md",
+            "quote_digest": "sha256:557d1f7f6b0d1da59914ae4cd1f09ade89daeebae6eef86efeec44b3e7478d9f",
+            "source_id": "PBD-SRC-4RHX3A209VQS",
+            "source_version": "8dc4fa43ab68c26f"
+          },
+          "summary": "pode remover uma falta registrada indevidamente",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-VRP63KQVCAPT",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O administrador pode remover uma falta registrada indevidamente",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-0V6AA33YGSSK",
+          "PBD-AC-BN8T69K1QSHS",
+          "PBD-AC-YHTCHH83P438",
+          "PBD-TASK-SG9RKNR246KJ"
+        ],
+        "rationale": "Motivo obrigatório na remoção, com caso negativo.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 6,
+            "line_start": 6,
+            "member": "regras-de-uso.md",
+            "quote_digest": "sha256:2c67fae72adf21a4d4ea44c75f205ec6cb44ee82fad52cf4272d6946b41582b7",
+            "source_id": "PBD-SRC-4RHX3A209VQS",
+            "source_version": "8dc4fa43ab68c26f"
+          },
+          "summary": "informando o motivo",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-5C9SE3VKBV23",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Ao remover uma falta, o administrador deve informar o motivo",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "data",
+      "disposition": {
+        "rationale": "O glossário define sócio como pessoa com cadastro ativo, mas nenhuma fonte diz se a reserva deve verificar o cadastro; ver Q6.",
+        "status": "QUESTION_REQUIRED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 3,
+            "line_start": 3,
+            "member": "glossario.md",
+            "quote_digest": "sha256:6f023f46d44173fb139fa620158a4acc8538e46dadb9e779cbe65c6bcf5e0770",
+            "source_id": "PBD-SRC-Z59MJ51KN19Q",
+            "source_version": "ff48c653ec5f92c6"
+          },
+          "summary": "Sócio: pessoa associada ao clube com cadastro ativo.",
+          "type": "source_locator"
+        }
+      ],
+      "id": "PBD-CLM-J68HN8YW35FD",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Sócio é a pessoa associada ao clube com cadastro ativo",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    }
+  ],
+  "criteria": [
+    {
+      "claim_refs": [
+        "PBD-CLM-X5BG7QFDT3SK",
+        "PBD-CLM-8GR5Y2H4Y85C"
+      ],
+      "condition": "a quadra está disponível no bloco escolhido e o início está dentro dos próximos 14 dias",
+      "expected_outcomes": [
+        "A reserva é criada para o sócio, a quadra e o bloco escolhidos"
+      ],
+      "id": "PBD-AC-FS5CGRJQ2QE3",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-KZVYSW30RJ3T",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o sócio solicita a reserva",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-X5BG7QFDT3SK"
+      ],
+      "condition": "o sócio escolhe um período de reserva",
+      "expected_outcomes": [
+        "A reserva ocupa um bloco de uma hora cheia"
+      ],
+      "id": "PBD-AC-7HZHG8H9M048",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-KZVYSW30RJ3T",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o sócio solicita a reserva",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-8GR5Y2H4Y85C"
+      ],
+      "condition": "o início do bloco escolhido está a mais de 14 dias da data da solicitação",
+      "expected_outcomes": [
+        "A reserva fora da antecedência máxima de 14 dias é recusada",
+        "O bloco além de 14 dias continua sem reserva"
+      ],
+      "id": "PBD-AC-XJ4FBET6WQDP",
+      "order": 2,
+      "origin": "generated",
+      "parent": "PBD-STORY-KZVYSW30RJ3T",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o sócio solicita a reserva",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-WBYYMZ2EPZD5"
+      ],
+      "condition": "o sócio mantém 2 reservas futuras",
+      "expected_outcomes": [
+        "A reserva é criada e o sócio passa a manter 3 reservas futuras"
+      ],
+      "id": "PBD-AC-1T8C3F8DN6QT",
+      "order": 3,
+      "origin": "generated",
+      "parent": "PBD-STORY-KZVYSW30RJ3T",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o sócio solicita uma nova reserva válida",
+      "visible_id": "CA-04"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-WBYYMZ2EPZD5"
+      ],
+      "condition": "o sócio já mantém 3 reservas futuras",
+      "expected_outcomes": [
+        "A quarta reserva futura é recusada",
+        "O sócio continua com exatamente 3 reservas futuras"
+      ],
+      "id": "PBD-AC-5T9B57J1SGCV",
+      "order": 4,
+      "origin": "generated",
+      "parent": "PBD-STORY-KZVYSW30RJ3T",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o sócio solicita uma nova reserva",
+      "visible_id": "CA-05"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "Após cancelar uma de 3 reservas futuras, o sócio consegue criar uma nova reserva"
+      ],
+      "id": "PBD-AC-VYH9QQ8VVAM6",
+      "order": 5,
+      "origin": "proposed",
+      "parent": "PBD-STORY-KZVYSW30RJ3T",
+      "rationale": "Inferência de 'manter no máximo 3 reservas futuras'; as fontes não tratam explicitamente reservas canceladas no limite.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Uma reserva cancelada deixa de contar para o limite de 3 reservas futuras do sócio.",
+      "visible_id": "CA-06"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-ARW6E4CTVX1Q"
+      ],
+      "condition": "faltam mais de 2 horas para o início da reserva do próprio sócio",
+      "expected_outcomes": [
+        "A reserva fica cancelada"
+      ],
+      "id": "PBD-AC-TWB19D2KNYFP",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-KF11314Y77M5",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o sócio solicita o cancelamento",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-ARW6E4CTVX1Q"
+      ],
+      "condition": "faltam menos de 2 horas para o início da reserva",
+      "expected_outcomes": [
+        "O cancelamento é recusado",
+        "A reserva permanece ativa"
+      ],
+      "id": "PBD-AC-ADXACAGHN7VR",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-KF11314Y77M5",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o sócio solicita o cancelamento",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-ARW6E4CTVX1Q"
+      ],
+      "condition": "a reserva pertence a outro sócio",
+      "expected_outcomes": [
+        "O cancelamento é recusado",
+        "A reserva do outro sócio permanece ativa"
+      ],
+      "id": "PBD-AC-SR8R0BXJ79Q6",
+      "order": 2,
+      "origin": "generated",
+      "parent": "PBD-STORY-KF11314Y77M5",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o sócio solicita o cancelamento",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "A reserva fica cancelada"
+      ],
+      "id": "PBD-AC-S1RKENAJ05CD",
+      "order": 3,
+      "origin": "proposed",
+      "parent": "PBD-STORY-KF11314Y77M5",
+      "rationale": "Lente de limite: interpretação de 'até 2 horas antes' como inclusiva; precisa de confirmação junto com a referência de horário (Q4).",
+      "status": "proposed",
+      "style": "list",
+      "text": "Quando faltam exatamente 2 horas para o início, o cancelamento é aceito.",
+      "visible_id": "CA-04"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-36TS9GYZ4MMW"
+      ],
+      "condition": "o sócio possui reservas com início no futuro",
+      "expected_outcomes": [
+        "As reservas futuras do sócio são exibidas"
+      ],
+      "id": "PBD-AC-ZPJR21WFDVQJ",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-A148GQ3XANXD",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o sócio consulta suas reservas",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-36TS9GYZ4MMW"
+      ],
+      "condition": "o sócio possui reservas com início no passado",
+      "expected_outcomes": [
+        "As reservas passadas do sócio são exibidas"
+      ],
+      "id": "PBD-AC-C8E8ARVHSCCW",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-A148GQ3XANXD",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o sócio consulta suas reservas",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "Reservas de outros sócios não aparecem na consulta"
+      ],
+      "id": "PBD-AC-R8TRFBWV1J53",
+      "order": 2,
+      "origin": "proposed",
+      "parent": "PBD-STORY-A148GQ3XANXD",
+      "rationale": "Lente de permissões: a fonte fala em 'suas reservas', mas não declara restrição de visibilidade sobre reservas de terceiros.",
+      "status": "proposed",
+      "style": "list",
+      "text": "A consulta exibe apenas reservas do próprio sócio.",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-25N48VNMSYKB"
+      ],
+      "condition": "o administrador informa a quadra, a data inicial e a data final",
+      "expected_outcomes": [
+        "A quadra fica bloqueada para manutenção em todo o intervalo de datas informado"
+      ],
+      "id": "PBD-AC-V88ZFBEG1MX5",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-CADKJEXSF1Q9",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o administrador confirma o bloqueio para manutenção",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-2KWCSK1D7DR1"
+      ],
+      "condition": "a quadra está bloqueada para manutenção na data do bloco escolhido",
+      "expected_outcomes": [
+        "A reserva na quadra em manutenção é recusada",
+        "A quadra bloqueada continua sem reserva no intervalo"
+      ],
+      "id": "PBD-AC-7EF7SGPEB5KK",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-CADKJEXSF1Q9",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "um sócio solicita a reserva da quadra",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "Uma reserva válida fora do intervalo bloqueado é criada"
+      ],
+      "id": "PBD-AC-C27N5Y3NM8FS",
+      "order": 2,
+      "origin": "proposed",
+      "parent": "PBD-STORY-CADKJEXSF1Q9",
+      "rationale": "Lente de limites: as fontes só restringem a quadra bloqueada; o comportamento fora do intervalo é inferido.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Reservas da mesma quadra em datas fora do intervalo bloqueado continuam permitidas.",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "A tentativa de bloqueio por um sócio é recusada"
+      ],
+      "id": "PBD-AC-MXRMK22E9CDT",
+      "order": 3,
+      "origin": "proposed",
+      "parent": "PBD-STORY-CADKJEXSF1Q9",
+      "rationale": "Lente de permissões: a fonte atribui o bloqueio ao administrador, mas não proíbe explicitamente outros perfis.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Somente o administrador consegue bloquear uma quadra para manutenção.",
+      "visible_id": "CA-04"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-35R9NE4743AC"
+      ],
+      "condition": "a reserva não foi cancelada e não foi utilizada pelo sócio",
+      "expected_outcomes": [
+        "Uma falta é registrada para o sócio da reserva"
+      ],
+      "id": "PBD-AC-HK1ET49ZD0H0",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-PTX3J3CVQJAV",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o horário da reserva termina",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-35R9NE4743AC"
+      ],
+      "condition": "a reserva foi cancelada dentro do prazo",
+      "expected_outcomes": [
+        "Nenhuma falta é registrada para o sócio"
+      ],
+      "id": "PBD-AC-3H6WYENWA3TG",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-PTX3J3CVQJAV",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o horário da reserva termina",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-RVFY3JCTFZQ1"
+      ],
+      "condition": "o sócio acumula a 3ª falta dentro de 30 dias",
+      "expected_outcomes": [
+        "O sócio impedido por faltas não consegue reservar",
+        "Nenhuma nova reserva é registrada para o sócio durante o impedimento"
+      ],
+      "id": "PBD-AC-9QJEEG9PGTXM",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-EGSAWYCCMFCR",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o sócio solicita uma nova reserva nos 15 dias seguintes",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-RVFY3JCTFZQ1"
+      ],
+      "condition": "o sócio tem 2 faltas nos últimos 30 dias e nenhum impedimento",
+      "expected_outcomes": [
+        "A reserva é criada"
+      ],
+      "id": "PBD-AC-Q706JR7732YY",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-EGSAWYCCMFCR",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o sócio solicita uma reserva válida",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-RVFY3JCTFZQ1"
+      ],
+      "condition": "o período de 15 dias de impedimento terminou",
+      "expected_outcomes": [
+        "A reserva é criada"
+      ],
+      "id": "PBD-AC-YNAJWDJEHB09",
+      "order": 2,
+      "origin": "generated",
+      "parent": "PBD-STORY-EGSAWYCCMFCR",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o sócio solicita uma reserva válida",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-VRP63KQVCAPT",
+        "PBD-CLM-5C9SE3VKBV23"
+      ],
+      "condition": "o sócio tem uma falta registrada indevidamente",
+      "expected_outcomes": [
+        "A falta deixa de constar para o sócio",
+        "O motivo informado fica associado à remoção"
+      ],
+      "id": "PBD-AC-BN8T69K1QSHS",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-0V6AA33YGSSK",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o administrador remove a falta informando o motivo",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-5C9SE3VKBV23"
+      ],
+      "condition": "o administrador não informa o motivo",
+      "expected_outcomes": [
+        "A remoção é recusada",
+        "A falta permanece registrada"
+      ],
+      "id": "PBD-AC-YHTCHH83P438",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-0V6AA33YGSSK",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o administrador tenta remover a falta",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [],
+      "expected_outcomes": [
+        "A tentativa de remoção por um sócio é recusada"
+      ],
+      "id": "PBD-AC-MERKEENEXRAT",
+      "order": 2,
+      "origin": "proposed",
+      "parent": "PBD-STORY-0V6AA33YGSSK",
+      "rationale": "Lente de permissões: a regra atribui a remoção ao administrador, mas não proíbe explicitamente outros perfis.",
+      "status": "proposed",
+      "style": "list",
+      "text": "Somente o administrador consegue remover uma falta.",
+      "visible_id": "CA-03"
+    }
+  ],
+  "decisions": [],
+  "findings": [
+    {
+      "actual": "US5 e US6 têm 'administrador' como ator ('aplicar as regras de uso').",
+      "affects": [
+        "PBD-STORY-EGSAWYCCMFCR",
+        "PBD-STORY-PTX3J3CVQJAV"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Ator de US5/US6 sustentado pelas fontes; a regra de falta/impedimento é aplicada automaticamente e só a remoção cita o administrador.",
+      "gate": "G06",
+      "id": "PBD-FND-QWDPE9GFX4EZ",
+      "impact": "Pode induzir a uma tela/ação manual de administrador não pedida.",
+      "recommendation": "Reformular como regra de sistema (ator sócio/clube ou habilitador) ou perguntar quem registra a falta.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "As fontes não dizem que o administrador registra faltas nem aplica o impedimento."
+    },
+    {
+      "actual": "AC22 diz que, terminados os 15 dias de impedimento, a reserva é criada, sem condicionar a novas contagens de faltas.",
+      "affects": [
+        "PBD-AC-YNAJWDJEHB09",
+        "PBD-STORY-EGSAWYCCMFCR"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "AC22 compatível com a janela de 30 dias da regra.",
+      "gate": "G07",
+      "id": "PBD-FND-Y6N0EY9TGWC1",
+      "impact": "Critério pode contradizer o comportamento correto.",
+      "recommendation": "Condicionar AC22 à resposta de Q7 ou marcá-lo como bloqueado.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "Se a janela de 30 dias é móvel, as 3 faltas ainda podem estar dentro dela após 15 dias, reativando o impedimento; Q7 trata a contagem mas AC22 afirma resultado incondicional."
+    },
+    {
+      "actual": "T8 inclui 'Aguardar a resposta de Q1' e AC18/AC19 dependem de Q1 bloqueante e do 'prazo' (Q2) indefinido.",
+      "affects": [
+        "PBD-AC-3H6WYENWA3TG",
+        "PBD-AC-HK1ET49ZD0H0",
+        "PBD-STORY-PTX3J3CVQJAV",
+        "PBD-TASK-MR0BSMHG09BA"
+      ],
+      "classification": "confirmed_gap",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "T8 como trabalho executável.",
+      "gate": "G05",
+      "id": "PBD-FND-0DXXG4Z7QNFQ",
+      "impact": "US5/T8 não prontas para execução; AC18 e AC19 não são determináveis.",
+      "recommendation": "Marcar US5/T8 como bloqueadas por Q1, remover a atividade de espera e manter AC18/AC19 como condicionais.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "Espera por decisão não é atividade de trabalho; critérios usam termos sem definição."
+    },
+    {
+      "actual": "AC20 afirma 'O sócio impedido por faltas não consegue reservar', quase circular, e a recusa não é descrita (sem estado/mensagem).",
+      "affects": [
+        "PBD-AC-9QJEEG9PGTXM"
+      ],
+      "classification": "candidate_concern",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Resultado observável e específico em AC20.",
+      "gate": "G08",
+      "id": "PBD-FND-QD9R9808N85W",
+      "impact": "Baixa; segundo resultado já determina que nenhuma reserva é criada.",
+      "recommendation": "Substituir por 'a solicitação é recusada e nenhuma reserva é criada'.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Resultado repete a condição em vez de dizer o efeito observável."
+    },
+    {
+      "actual": "AC1/AC3 e AC7/AC8 deixam o limite exato sem critério (só AC10 proposto para 2h).",
+      "affects": [
+        "PBD-AC-ADXACAGHN7VR",
+        "PBD-AC-FS5CGRJQ2QE3",
+        "PBD-AC-TWB19D2KNYFP",
+        "PBD-AC-XJ4FBET6WQDP"
+      ],
+      "classification": "optional_improvement",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Limites exatos (14 dias, 2 horas) determinados.",
+      "gate": "G04",
+      "id": "PBD-FND-J4ZYXFS60D8Z",
+      "impact": "Baixa; já registrado como pergunta.",
+      "recommendation": "Após Q4, adicionar critério de limite para 14 dias.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Q4 está aberta e cobre a inclusividade."
+    }
+  ],
+  "items": [
+    {
+      "claim_refs": [
+        "PBD-CLM-X5BG7QFDT3SK",
+        "PBD-CLM-8GR5Y2H4Y85C",
+        "PBD-CLM-ARW6E4CTVX1Q",
+        "PBD-CLM-25N48VNMSYKB",
+        "PBD-CLM-2KWCSK1D7DR1",
+        "PBD-CLM-36TS9GYZ4MMW",
+        "PBD-CLM-WBYYMZ2EPZD5",
+        "PBD-CLM-35R9NE4743AC",
+        "PBD-CLM-RVFY3JCTFZQ1",
+        "PBD-CLM-VRP63KQVCAPT",
+        "PBD-CLM-5C9SE3VKBV23",
+        "PBD-CLM-J68HN8YW35FD"
+      ],
+      "content": {
+        "context": "O PRD define a reserva em blocos de 1 hora, antecedência, cancelamento, bloqueio para manutenção e consulta; as regras de uso definem o limite de reservas futuras, faltas e impedimento; o glossário define sócio, bloco e falta.",
+        "in_scope": [
+          "Reserva de quadra pelo sócio em blocos de 1 hora",
+          "Cancelamento da própria reserva e consulta de reservas futuras e passadas",
+          "Bloqueio de quadra para manutenção pelo administrador",
+          "Registro de faltas, impedimento por faltas e remoção de falta indevida pelo administrador"
+        ],
+        "kind": "epic",
+        "objective": "Permitir que sócios reservem, cancelem e consultem reservas de quadras do clube, com regras de uso aplicadas e com o administrador controlando bloqueios de manutenção e faltas.",
+        "out_scope": [
+          "Comportamento não descrito nas fontes, como cobrança, notificações ou cadastro de sócios e quadras"
+        ],
+        "outcome": "Sócios com acesso a quadras conforme as regras de uso e administrador com controle de manutenção e faltas."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir que sócios reservem, cancelem e consultem reservas de quadras do clube, com regras de uso aplicadas e com o administrador controlando bloqueios de manutenção e faltas.</p><p><strong>Contexto</strong>: O PRD define a reserva em blocos de 1 hora, antecedência, cancelamento, bloqueio para manutenção e consulta; as regras de uso definem o limite de reservas futuras, faltas e impedimento; o glossário define sócio, bloco e falta.</p><p><strong>No escopo</strong></p><ul><li>Reserva de quadra pelo sócio em blocos de 1 hora</li><li>Cancelamento da própria reserva e consulta de reservas futuras e passadas</li><li>Bloqueio de quadra para manutenção pelo administrador</li><li>Registro de faltas, impedimento por faltas e remoção de falta indevida pelo administrador</li></ul><p><strong>Fora do escopo</strong></p><ul><li>Comportamento não descrito nas fontes, como cobrança, notificações ou cadastro de sócios e quadras</li></ul><p><strong>Resultado esperado</strong>: Sócios com acesso a quadras conforme as regras de uso e administrador com controle de manutenção e faltas.</p>"
+      },
+      "id": "PBD-EPIC-1510GR3F608R",
+      "origin": "generated",
+      "parent": null,
+      "status": "reviewed",
+      "title": "Reserva de quadras do clube pelos sócios",
+      "type": "epic"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-X5BG7QFDT3SK",
+        "PBD-CLM-8GR5Y2H4Y85C",
+        "PBD-CLM-WBYYMZ2EPZD5",
+        "PBD-CLM-J68HN8YW35FD"
+      ],
+      "content": {
+        "capability": "O sócio reserva uma quadra em um bloco de uma hora cheia, respeitando a antecedência máxima e o limite de reservas futuras.",
+        "kind": "feature",
+        "rules": [
+          "Reserva em blocos de 1 hora (hora cheia)",
+          "Antecedência máxima de 14 dias",
+          "No máximo 3 reservas futuras por sócio"
+        ],
+        "value": "Garante ao sócio o uso da quadra no horário escolhido dentro das regras do clube."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: O sócio reserva uma quadra em um bloco de uma hora cheia, respeitando a antecedência máxima e o limite de reservas futuras.</p><p><strong>Valor</strong>: Garante ao sócio o uso da quadra no horário escolhido dentro das regras do clube.</p><p><strong>Regras relacionadas</strong></p><ul><li>Reserva em blocos de 1 hora (hora cheia)</li><li>Antecedência máxima de 14 dias</li><li>No máximo 3 reservas futuras por sócio</li></ul>"
+      },
+      "id": "PBD-FEAT-ND3C5CMDK2A1",
+      "origin": "generated",
+      "parent": "PBD-EPIC-1510GR3F608R",
+      "status": "reviewed",
+      "title": "Reserva de quadra pelo sócio",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-ARW6E4CTVX1Q",
+        "PBD-CLM-36TS9GYZ4MMW"
+      ],
+      "content": {
+        "capability": "O sócio cancela a própria reserva dentro do prazo e consulta suas reservas futuras e passadas.",
+        "kind": "feature",
+        "rules": [
+          "Cancelamento da própria reserva até 2 horas antes do início",
+          "Consulta de reservas futuras e passadas do próprio sócio"
+        ],
+        "value": "Dá ao sócio controle e visibilidade sobre as próprias reservas."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: O sócio cancela a própria reserva dentro do prazo e consulta suas reservas futuras e passadas.</p><p><strong>Valor</strong>: Dá ao sócio controle e visibilidade sobre as próprias reservas.</p><p><strong>Regras relacionadas</strong></p><ul><li>Cancelamento da própria reserva até 2 horas antes do início</li><li>Consulta de reservas futuras e passadas do próprio sócio</li></ul>"
+      },
+      "id": "PBD-FEAT-WYV2FQ1GB02N",
+      "origin": "generated",
+      "parent": "PBD-EPIC-1510GR3F608R",
+      "status": "reviewed",
+      "title": "Cancelamento e consulta de reservas pelo sócio",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-25N48VNMSYKB",
+        "PBD-CLM-2KWCSK1D7DR1"
+      ],
+      "content": {
+        "capability": "O administrador bloqueia uma quadra para manutenção em um intervalo de datas e a quadra bloqueada não pode ser reservada.",
+        "kind": "feature",
+        "rules": [
+          "Bloqueio por intervalo de datas",
+          "Quadra bloqueada não pode ser reservada"
+        ],
+        "value": "Evita reservas em quadras indisponíveis por manutenção."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: O administrador bloqueia uma quadra para manutenção em um intervalo de datas e a quadra bloqueada não pode ser reservada.</p><p><strong>Valor</strong>: Evita reservas em quadras indisponíveis por manutenção.</p><p><strong>Regras relacionadas</strong></p><ul><li>Bloqueio por intervalo de datas</li><li>Quadra bloqueada não pode ser reservada</li></ul>"
+      },
+      "id": "PBD-FEAT-BHCCT8DHD6QB",
+      "origin": "generated",
+      "parent": "PBD-EPIC-1510GR3F608R",
+      "status": "reviewed",
+      "title": "Bloqueio de quadra para manutenção",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-35R9NE4743AC",
+        "PBD-CLM-RVFY3JCTFZQ1",
+        "PBD-CLM-VRP63KQVCAPT",
+        "PBD-CLM-5C9SE3VKBV23"
+      ],
+      "content": {
+        "capability": "Reservas não utilizadas e não canceladas contam como falta; 3 faltas em 30 dias impedem novas reservas por 15 dias; o administrador remove faltas indevidas informando o motivo.",
+        "kind": "feature",
+        "rules": [
+          "Reserva não utilizada e não cancelada dentro do prazo conta como falta",
+          "3 faltas em 30 dias geram impedimento de novas reservas por 15 dias",
+          "Remoção de falta indevida exige motivo"
+        ],
+        "value": "Aplica as regras de uso das quadras e permite corrigir faltas registradas indevidamente."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Reservas não utilizadas e não canceladas contam como falta; 3 faltas em 30 dias impedem novas reservas por 15 dias; o administrador remove faltas indevidas informando o motivo.</p><p><strong>Valor</strong>: Aplica as regras de uso das quadras e permite corrigir faltas registradas indevidamente.</p><p><strong>Regras relacionadas</strong></p><ul><li>Reserva não utilizada e não cancelada dentro do prazo conta como falta</li><li>3 faltas em 30 dias geram impedimento de novas reservas por 15 dias</li><li>Remoção de falta indevida exige motivo</li></ul>"
+      },
+      "id": "PBD-FEAT-Y4KHG0E3RH23",
+      "origin": "generated",
+      "parent": "PBD-EPIC-1510GR3F608R",
+      "status": "reviewed",
+      "title": "Controle de faltas e impedimento",
+      "type": "feature"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-X5BG7QFDT3SK",
+        "PBD-CLM-8GR5Y2H4Y85C",
+        "PBD-CLM-WBYYMZ2EPZD5"
+      ],
+      "content": {
+        "actor": "sócio",
+        "benefit": "garantir o uso da quadra no horário que escolhi",
+        "kind": "role_goal_benefit",
+        "want": "reservar uma quadra em um bloco de uma hora cheia com até 14 dias de antecedência"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> sócio, <strong>gostaria que</strong> reservar uma quadra em um bloco de uma hora cheia com até 14 dias de antecedência, <strong>para</strong> garantir o uso da quadra no horário que escolhi.</p>"
+      },
+      "id": "PBD-STORY-KZVYSW30RJ3T",
+      "origin": "generated",
+      "parent": "PBD-FEAT-ND3C5CMDK2A1",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Reservar quadra em bloco de 1 hora",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-ARW6E4CTVX1Q"
+      ],
+      "content": {
+        "actor": "sócio",
+        "benefit": "desistir do horário quando não puder comparecer",
+        "kind": "role_goal_benefit",
+        "want": "cancelar a minha reserva até 2 horas antes do início"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> sócio, <strong>gostaria que</strong> cancelar a minha reserva até 2 horas antes do início, <strong>para</strong> desistir do horário quando não puder comparecer.</p>"
+      },
+      "id": "PBD-STORY-KF11314Y77M5",
+      "origin": "generated",
+      "parent": "PBD-FEAT-WYV2FQ1GB02N",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Cancelar a própria reserva até 2 horas antes",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-36TS9GYZ4MMW"
+      ],
+      "content": {
+        "actor": "sócio",
+        "benefit": "acompanhar os horários que reservei e o meu histórico de uso",
+        "kind": "role_goal_benefit",
+        "want": "ver as minhas reservas futuras e passadas"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> sócio, <strong>gostaria que</strong> ver as minhas reservas futuras e passadas, <strong>para</strong> acompanhar os horários que reservei e o meu histórico de uso.</p>"
+      },
+      "id": "PBD-STORY-A148GQ3XANXD",
+      "origin": "generated",
+      "parent": "PBD-FEAT-WYV2FQ1GB02N",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Consultar reservas futuras e passadas",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-25N48VNMSYKB",
+        "PBD-CLM-2KWCSK1D7DR1"
+      ],
+      "content": {
+        "actor": "administrador",
+        "benefit": "impedir que a quadra seja reservada enquanto estiver em manutenção",
+        "kind": "role_goal_benefit",
+        "want": "bloquear uma quadra para manutenção em um intervalo de datas"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> administrador, <strong>gostaria que</strong> bloquear uma quadra para manutenção em um intervalo de datas, <strong>para</strong> impedir que a quadra seja reservada enquanto estiver em manutenção.</p>"
+      },
+      "id": "PBD-STORY-CADKJEXSF1Q9",
+      "origin": "generated",
+      "parent": "PBD-FEAT-BHCCT8DHD6QB",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Bloquear quadra para manutenção em intervalo de datas",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-35R9NE4743AC"
+      ],
+      "content": {
+        "actor": "administrador",
+        "benefit": "aplicar as regras de uso das quadras",
+        "kind": "role_goal_benefit",
+        "want": "que reservas não utilizadas e não canceladas dentro do prazo sejam contadas como falta do sócio"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> administrador, <strong>gostaria que</strong> que reservas não utilizadas e não canceladas dentro do prazo sejam contadas como falta do sócio, <strong>para</strong> aplicar as regras de uso das quadras.</p>"
+      },
+      "id": "PBD-STORY-PTX3J3CVQJAV",
+      "origin": "generated",
+      "parent": "PBD-FEAT-Y4KHG0E3RH23",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Registrar falta por reserva não utilizada e não cancelada",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-RVFY3JCTFZQ1"
+      ],
+      "content": {
+        "actor": "administrador",
+        "benefit": "aplicar a penalidade prevista nas regras de uso",
+        "kind": "role_goal_benefit",
+        "want": "que o sócio com 3 faltas em 30 dias fique impedido de fazer novas reservas por 15 dias"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> administrador, <strong>gostaria que</strong> que o sócio com 3 faltas em 30 dias fique impedido de fazer novas reservas por 15 dias, <strong>para</strong> aplicar a penalidade prevista nas regras de uso.</p>"
+      },
+      "id": "PBD-STORY-EGSAWYCCMFCR",
+      "origin": "generated",
+      "parent": "PBD-FEAT-Y4KHG0E3RH23",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Impedir novas reservas após 3 faltas em 30 dias",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-VRP63KQVCAPT",
+        "PBD-CLM-5C9SE3VKBV23"
+      ],
+      "content": {
+        "actor": "administrador",
+        "benefit": "corrigir o histórico de faltas do sócio com justificativa registrada",
+        "kind": "role_goal_benefit",
+        "want": "remover uma falta registrada indevidamente, informando o motivo"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> administrador, <strong>gostaria que</strong> remover uma falta registrada indevidamente, informando o motivo, <strong>para</strong> corrigir o histórico de faltas do sócio com justificativa registrada.</p>"
+      },
+      "id": "PBD-STORY-0V6AA33YGSSK",
+      "origin": "generated",
+      "parent": "PBD-FEAT-Y4KHG0E3RH23",
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Remover falta registrada indevidamente informando o motivo",
+      "type": "story"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-X5BG7QFDT3SK",
+        "PBD-CLM-8GR5Y2H4Y85C"
+      ],
+      "content": {
+        "activities": [
+          "Modelar a reserva com sócio, quadra e bloco de uma hora",
+          "Validar a antecedência máxima de 14 dias no momento da solicitação",
+          "Rejeitar a solicitação fora do prazo sem criar reserva"
+        ],
+        "kind": "task",
+        "outcome": "Reserva criada apenas para blocos de uma hora dentro de 14 dias.",
+        "summary": "Criar a reserva de quadra pelo sócio em um bloco de uma hora cheia, aceitando apenas inícios dentro dos próximos 14 dias.",
+        "verification": "Critérios AC1, AC2 e AC3 demonstrados em revisão da história."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Criar a reserva de quadra pelo sócio em um bloco de uma hora cheia, aceitando apenas inícios dentro dos próximos 14 dias.</p><p><strong>Atividades</strong></p><ul><li>Modelar a reserva com sócio, quadra e bloco de uma hora</li><li>Validar a antecedência máxima de 14 dias no momento da solicitação</li><li>Rejeitar a solicitação fora do prazo sem criar reserva</li></ul><p><strong>Resultado esperado</strong>: Reserva criada apenas para blocos de uma hora dentro de 14 dias.</p><p><strong>Verificação</strong>: Critérios AC1, AC2 e AC3 demonstrados em revisão da história.</p>"
+      },
+      "id": "PBD-TASK-R574ES1NSZK6",
+      "origin": "generated",
+      "parent": "PBD-STORY-KZVYSW30RJ3T",
+      "status": "reviewed",
+      "title": "Implementar criação de reserva em bloco de uma hora cheia com limite de antecedência",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-WBYYMZ2EPZD5"
+      ],
+      "content": {
+        "activities": [
+          "Contar reservas futuras ativas do sócio",
+          "Recusar a nova reserva quando o sócio já mantém 3 reservas futuras"
+        ],
+        "kind": "task",
+        "outcome": "Nenhum sócio passa a manter mais de 3 reservas futuras.",
+        "summary": "Contar as reservas futuras do sócio no momento da solicitação e recusar uma quarta.",
+        "verification": "Critérios AC4 e AC5 demonstrados, incluindo o limite de 3."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Contar as reservas futuras do sócio no momento da solicitação e recusar uma quarta.</p><p><strong>Atividades</strong></p><ul><li>Contar reservas futuras ativas do sócio</li><li>Recusar a nova reserva quando o sócio já mantém 3 reservas futuras</li></ul><p><strong>Resultado esperado</strong>: Nenhum sócio passa a manter mais de 3 reservas futuras.</p><p><strong>Verificação</strong>: Critérios AC4 e AC5 demonstrados, incluindo o limite de 3.</p>"
+      },
+      "id": "PBD-TASK-CQK4XBS730S9",
+      "origin": "generated",
+      "parent": "PBD-STORY-KZVYSW30RJ3T",
+      "status": "reviewed",
+      "title": "Aplicar limite de 3 reservas futuras por sócio",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-X5BG7QFDT3SK",
+        "PBD-CLM-8GR5Y2H4Y85C",
+        "PBD-CLM-WBYYMZ2EPZD5"
+      ],
+      "content": {
+        "activities": [
+          "Listar cenários positivos e negativos a partir de AC1 a AC5",
+          "Identificar dados de sócio com 2 e 3 reservas futuras"
+        ],
+        "kind": "task",
+        "outcome": "Plano de testes da história US1 rastreado aos critérios.",
+        "summary": "Planejar a verificação dos critérios de reserva, com foco nos limites de 14 dias e de 3 reservas futuras.",
+        "verification": "Plano revisado contra os critérios AC1 a AC5."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Planejar a verificação dos critérios de reserva, com foco nos limites de 14 dias e de 3 reservas futuras.</p><p><strong>Atividades</strong></p><ul><li>Listar cenários positivos e negativos a partir de AC1 a AC5</li><li>Identificar dados de sócio com 2 e 3 reservas futuras</li></ul><p><strong>Resultado esperado</strong>: Plano de testes da história US1 rastreado aos critérios.</p><p><strong>Verificação</strong>: Plano revisado contra os critérios AC1 a AC5.</p>"
+      },
+      "id": "PBD-TASK-PQH195PFWKVA",
+      "origin": "generated",
+      "parent": "PBD-STORY-KZVYSW30RJ3T",
+      "status": "reviewed",
+      "title": "Planejar testes de reserva cobrindo antecedência e limite",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-ARW6E4CTVX1Q"
+      ],
+      "content": {
+        "activities": [
+          "Verificar que a reserva pertence ao sócio solicitante",
+          "Comparar o momento da solicitação com o início da reserva menos 2 horas",
+          "Registrar a reserva como cancelada ou recusar o cancelamento"
+        ],
+        "kind": "task",
+        "outcome": "Cancelamentos dentro do prazo aplicados; fora do prazo ou de terceiros recusados.",
+        "summary": "Permitir ao sócio cancelar apenas a própria reserva e somente até 2 horas antes do início.",
+        "verification": "Critérios AC7, AC8 e AC9 demonstrados."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir ao sócio cancelar apenas a própria reserva e somente até 2 horas antes do início.</p><p><strong>Atividades</strong></p><ul><li>Verificar que a reserva pertence ao sócio solicitante</li><li>Comparar o momento da solicitação com o início da reserva menos 2 horas</li><li>Registrar a reserva como cancelada ou recusar o cancelamento</li></ul><p><strong>Resultado esperado</strong>: Cancelamentos dentro do prazo aplicados; fora do prazo ou de terceiros recusados.</p><p><strong>Verificação</strong>: Critérios AC7, AC8 e AC9 demonstrados.</p>"
+      },
+      "id": "PBD-TASK-FD6AR4RK2A41",
+      "origin": "generated",
+      "parent": "PBD-STORY-KF11314Y77M5",
+      "status": "reviewed",
+      "title": "Implementar cancelamento da própria reserva com prazo de 2 horas",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-36TS9GYZ4MMW"
+      ],
+      "content": {
+        "activities": [
+          "Recuperar as reservas do sócio autenticado",
+          "Separar reservas futuras e passadas pelo horário de início"
+        ],
+        "kind": "task",
+        "outcome": "Sócio visualiza suas reservas futuras e passadas.",
+        "summary": "Disponibilizar ao sócio a lista das próprias reservas, distinguindo futuras e passadas.",
+        "verification": "Critérios AC11 e AC12 demonstrados."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Disponibilizar ao sócio a lista das próprias reservas, distinguindo futuras e passadas.</p><p><strong>Atividades</strong></p><ul><li>Recuperar as reservas do sócio autenticado</li><li>Separar reservas futuras e passadas pelo horário de início</li></ul><p><strong>Resultado esperado</strong>: Sócio visualiza suas reservas futuras e passadas.</p><p><strong>Verificação</strong>: Critérios AC11 e AC12 demonstrados.</p>"
+      },
+      "id": "PBD-TASK-FFAWZKGR7V42",
+      "origin": "generated",
+      "parent": "PBD-STORY-A148GQ3XANXD",
+      "status": "reviewed",
+      "title": "Implementar consulta das reservas do sócio separando futuras e passadas",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-25N48VNMSYKB"
+      ],
+      "content": {
+        "activities": [
+          "Registrar quadra, data inicial e data final do bloqueio",
+          "Restringir a operação ao administrador"
+        ],
+        "kind": "task",
+        "outcome": "Bloqueio de manutenção registrado para a quadra no intervalo informado.",
+        "summary": "Permitir ao administrador registrar o bloqueio de uma quadra para manutenção entre uma data inicial e uma data final.",
+        "verification": "Critério AC14 demonstrado."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir ao administrador registrar o bloqueio de uma quadra para manutenção entre uma data inicial e uma data final.</p><p><strong>Atividades</strong></p><ul><li>Registrar quadra, data inicial e data final do bloqueio</li><li>Restringir a operação ao administrador</li></ul><p><strong>Resultado esperado</strong>: Bloqueio de manutenção registrado para a quadra no intervalo informado.</p><p><strong>Verificação</strong>: Critério AC14 demonstrado.</p>"
+      },
+      "id": "PBD-TASK-7BXKJH5GYYNA",
+      "origin": "generated",
+      "parent": "PBD-STORY-CADKJEXSF1Q9",
+      "status": "reviewed",
+      "title": "Implementar registro de bloqueio de quadra por intervalo de datas",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-2KWCSK1D7DR1"
+      ],
+      "content": {
+        "activities": [
+          "Consultar bloqueios da quadra que cubram a data do bloco solicitado",
+          "Recusar a reserva sem criá-la quando houver bloqueio"
+        ],
+        "kind": "task",
+        "outcome": "Nenhuma reserva é criada para quadra bloqueada.",
+        "summary": "Incluir na criação de reserva a verificação de bloqueio de manutenção da quadra.",
+        "verification": "Critério AC15 demonstrado."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Incluir na criação de reserva a verificação de bloqueio de manutenção da quadra.</p><p><strong>Atividades</strong></p><ul><li>Consultar bloqueios da quadra que cubram a data do bloco solicitado</li><li>Recusar a reserva sem criá-la quando houver bloqueio</li></ul><p><strong>Resultado esperado</strong>: Nenhuma reserva é criada para quadra bloqueada.</p><p><strong>Verificação</strong>: Critério AC15 demonstrado.</p>"
+      },
+      "id": "PBD-TASK-M0YSYZCF3CH3",
+      "origin": "generated",
+      "parent": "PBD-STORY-CADKJEXSF1Q9",
+      "status": "reviewed",
+      "title": "Recusar reservas em quadra bloqueada",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-35R9NE4743AC"
+      ],
+      "content": {
+        "activities": [
+          "Aguardar a resposta de Q1 sobre como identificar reserva não utilizada",
+          "Registrar a falta vinculada à reserva e ao sócio",
+          "Não registrar falta para reserva cancelada"
+        ],
+        "kind": "task",
+        "outcome": "Faltas registradas apenas para reservas não utilizadas e não canceladas.",
+        "summary": "Registrar falta do sócio para reserva não cancelada que não foi utilizada, conforme o critério de não utilização a ser definido em Q1.",
+        "verification": "Critérios AC18 e AC19 demonstrados após a resposta de Q1."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Registrar falta do sócio para reserva não cancelada que não foi utilizada, conforme o critério de não utilização a ser definido em Q1.</p><p><strong>Atividades</strong></p><ul><li>Aguardar a resposta de Q1 sobre como identificar reserva não utilizada</li><li>Registrar a falta vinculada à reserva e ao sócio</li><li>Não registrar falta para reserva cancelada</li></ul><p><strong>Resultado esperado</strong>: Faltas registradas apenas para reservas não utilizadas e não canceladas.</p><p><strong>Verificação</strong>: Critérios AC18 e AC19 demonstrados após a resposta de Q1.</p>"
+      },
+      "id": "PBD-TASK-MR0BSMHG09BA",
+      "origin": "generated",
+      "parent": "PBD-STORY-PTX3J3CVQJAV",
+      "status": "reviewed",
+      "title": "Implementar registro de falta para reserva não utilizada e não cancelada",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-RVFY3JCTFZQ1"
+      ],
+      "content": {
+        "activities": [
+          "Contar as faltas do sócio na janela de 30 dias",
+          "Registrar o impedimento por 15 dias ao atingir 3 faltas",
+          "Recusar novas reservas durante o impedimento"
+        ],
+        "kind": "task",
+        "outcome": "Sócio impedido não consegue criar novas reservas durante 15 dias.",
+        "summary": "Bloquear novas reservas do sócio por 15 dias quando ele acumular 3 faltas em 30 dias.",
+        "verification": "Critérios AC20, AC21 e AC22 demonstrados."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Bloquear novas reservas do sócio por 15 dias quando ele acumular 3 faltas em 30 dias.</p><p><strong>Atividades</strong></p><ul><li>Contar as faltas do sócio na janela de 30 dias</li><li>Registrar o impedimento por 15 dias ao atingir 3 faltas</li><li>Recusar novas reservas durante o impedimento</li></ul><p><strong>Resultado esperado</strong>: Sócio impedido não consegue criar novas reservas durante 15 dias.</p><p><strong>Verificação</strong>: Critérios AC20, AC21 e AC22 demonstrados.</p>"
+      },
+      "id": "PBD-TASK-V4ZGH7BPQ6FG",
+      "origin": "generated",
+      "parent": "PBD-STORY-EGSAWYCCMFCR",
+      "status": "reviewed",
+      "title": "Implementar impedimento de 15 dias após 3 faltas em 30 dias",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-VRP63KQVCAPT",
+        "PBD-CLM-5C9SE3VKBV23"
+      ],
+      "content": {
+        "activities": [
+          "Restringir a remoção ao administrador",
+          "Exigir o preenchimento do motivo antes de concluir a remoção",
+          "Guardar o motivo associado à falta removida"
+        ],
+        "kind": "task",
+        "outcome": "Falta removida somente com motivo informado pelo administrador.",
+        "summary": "Permitir ao administrador remover uma falta registrada, exigindo o motivo da remoção.",
+        "verification": "Critérios AC23 e AC24 demonstrados."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir ao administrador remover uma falta registrada, exigindo o motivo da remoção.</p><p><strong>Atividades</strong></p><ul><li>Restringir a remoção ao administrador</li><li>Exigir o preenchimento do motivo antes de concluir a remoção</li><li>Guardar o motivo associado à falta removida</li></ul><p><strong>Resultado esperado</strong>: Falta removida somente com motivo informado pelo administrador.</p><p><strong>Verificação</strong>: Critérios AC23 e AC24 demonstrados.</p>"
+      },
+      "id": "PBD-TASK-SG9RKNR246KJ",
+      "origin": "generated",
+      "parent": "PBD-STORY-0V6AA33YGSSK",
+      "status": "reviewed",
+      "title": "Implementar remoção de falta com motivo obrigatório",
+      "type": "task"
+    }
+  ],
+  "kind": "pbd.backlog",
+  "language": "pt-BR",
+  "profile": "generic",
+  "questions": [
+    {
+      "affects": [
+        "PBD-CLM-35R9NE4743AC",
+        "PBD-STORY-EGSAWYCCMFCR",
+        "PBD-STORY-PTX3J3CVQJAV"
+      ],
+      "alternatives": [
+        "Confirmação de presença pelo sócio",
+        "Registro de não comparecimento pelo administrador"
+      ],
+      "blocking": true,
+      "id": "PBD-Q-X201T2P2T6NH",
+      "impact": "Sem essa definição não é possível registrar faltas nem aplicar o impedimento.",
+      "status": "open",
+      "text": "Como se determina que uma reserva foi 'não utilizada' (por exemplo, presença confirmada pelo sócio ou registro pelo administrador)?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-35R9NE4743AC",
+        "PBD-CLM-ARW6E4CTVX1Q",
+        "PBD-STORY-PTX3J3CVQJAV"
+      ],
+      "alternatives": [
+        "Sim, o mesmo limite de 2 horas",
+        "Outro prazo a ser definido pelo clube"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-02Y81KFPWZBM",
+      "impact": "Define quais cancelamentos evitam o registro de falta.",
+      "status": "open",
+      "text": "O 'prazo' de cancelamento citado na definição de falta é o mesmo limite de 2 horas antes do início definido no PRD?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-25N48VNMSYKB",
+        "PBD-STORY-CADKJEXSF1Q9"
+      ],
+      "alternatives": [
+        "Cancelar as reservas afetadas",
+        "Manter as reservas",
+        "Impedir o bloqueio enquanto houver reservas no intervalo"
+      ],
+      "blocking": true,
+      "id": "PBD-Q-85RE7HHZCWC2",
+      "impact": "Afeta o bloqueio, a consulta das reservas do sócio e o registro de faltas.",
+      "status": "open",
+      "text": "O que acontece com reservas já existentes quando a quadra é bloqueada para manutenção no mesmo período?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-8GR5Y2H4Y85C",
+        "PBD-CLM-ARW6E4CTVX1Q",
+        "PBD-STORY-KF11314Y77M5",
+        "PBD-STORY-KZVYSW30RJ3T"
+      ],
+      "alternatives": [
+        "Horário local do clube com limites inclusivos"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-T23YCPP9QADM",
+      "impact": "Determina os casos de limite das validações de reserva e cancelamento.",
+      "status": "open",
+      "text": "Qual referência de horário e fuso é usada para contar os 14 dias de antecedência e as 2 horas de cancelamento, e os limites são inclusivos?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-X5BG7QFDT3SK",
+        "PBD-STORY-KZVYSW30RJ3T"
+      ],
+      "alternatives": [
+        "Um único bloco por reserva",
+        "Vários blocos consecutivos por reserva"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-N3GFWMSS03NN",
+      "impact": "Define os períodos aceitos na reserva e a contagem do limite de reservas futuras.",
+      "status": "open",
+      "text": "Uma reserva pode ter vários blocos consecutivos de 1 hora, e o bloco deve começar sempre em hora cheia (por exemplo, 10:00)?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-J68HN8YW35FD",
+        "PBD-STORY-KZVYSW30RJ3T"
+      ],
+      "alternatives": [
+        "Sim, apenas sócios com cadastro ativo reservam",
+        "Sem verificação adicional na reserva"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-0HATCWKKVHGT",
+      "impact": "Define a elegibilidade para reservar, já que o glossário define sócio como pessoa com cadastro ativo.",
+      "status": "open",
+      "text": "Pessoas sem cadastro ativo devem ser impedidas de reservar quadras?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-RVFY3JCTFZQ1",
+        "PBD-STORY-EGSAWYCCMFCR"
+      ],
+      "alternatives": [
+        "Janela móvel de 30 dias com impedimento a partir da 3ª falta",
+        "Período fixo de 30 dias"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-5YS97D6METWC",
+      "impact": "Determina quando o impedimento começa e termina e o efeito sobre reservas existentes.",
+      "status": "open",
+      "text": "Como se contam as 3 faltas em 30 dias (janela móvel ou período fixo) e o impedimento de 15 dias começa na data da 3ª falta? Reservas futuras já existentes são mantidas durante o impedimento?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-RVFY3JCTFZQ1",
+        "PBD-CLM-VRP63KQVCAPT",
+        "PBD-STORY-0V6AA33YGSSK"
+      ],
+      "alternatives": [
+        "Sim, o impedimento é encerrado",
+        "Não, o impedimento em vigor é mantido"
+      ],
+      "blocking": false,
+      "id": "PBD-Q-D8VQPYC8G395",
+      "impact": "Afeta a consistência entre US6 e US7.",
+      "status": "open",
+      "text": "A remoção de uma falta indevida encerra um impedimento já em vigor quando a contagem fica abaixo de 3?"
+    }
+  ],
+  "relations": [
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-Z1G6GPX8MWFM",
+      "reason": "O cancelamento atua sobre reservas criadas em US1.",
+      "source": "PBD-STORY-KZVYSW30RJ3T",
+      "status": "proposed",
+      "target": "PBD-STORY-KF11314Y77M5",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-E63MC1CV6DF6",
+      "reason": "A consulta exibe reservas criadas em US1.",
+      "source": "PBD-STORY-KZVYSW30RJ3T",
+      "status": "proposed",
+      "target": "PBD-STORY-A148GQ3XANXD",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-YH74BX5D8T18",
+      "reason": "A recusa de reserva em quadra bloqueada (AC15) se aplica ao fluxo de reserva de US1.",
+      "source": "PBD-STORY-KZVYSW30RJ3T",
+      "status": "proposed",
+      "target": "PBD-STORY-CADKJEXSF1Q9",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-WPYE92NXWAHT",
+      "reason": "Faltas são registradas sobre reservas criadas em US1.",
+      "source": "PBD-STORY-KZVYSW30RJ3T",
+      "status": "proposed",
+      "target": "PBD-STORY-PTX3J3CVQJAV",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-NEJF34Q4T6JP",
+      "reason": "O impedimento depende da contagem de faltas registradas em US5.",
+      "source": "PBD-STORY-PTX3J3CVQJAV",
+      "status": "proposed",
+      "target": "PBD-STORY-EGSAWYCCMFCR",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-ZH5QNXBB0V4W",
+      "reason": "Só é possível remover faltas já registradas por US5.",
+      "source": "PBD-STORY-PTX3J3CVQJAV",
+      "status": "proposed",
+      "target": "PBD-STORY-0V6AA33YGSSK",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-PHGPMJFZZ0TY",
+      "reason": "Reserva cancelada no prazo não conta como falta; o prazo pode ser o mesmo de US2 (Q2).",
+      "source": "PBD-STORY-KF11314Y77M5",
+      "status": "proposed",
+      "target": "PBD-STORY-PTX3J3CVQJAV",
+      "type": "related"
+    }
+  ],
+  "run_id": "PBD-RUN-KJDTBSW7YDHX",
+  "schema_version": "1.1.0",
+  "sources": [
+    {
+      "authority": "functional",
+      "digest": "sha256:5446f5e5ae0efee9489301160bc2ed489a68161b8dd9c8985da26668b9925740",
+      "id": "PBD-SRC-78385WMH95P7",
+      "kind": "file",
+      "members": [
+        {
+          "bytes": 442,
+          "digest": "sha256:8e2d1e2e1c64476146bc5800f50483e86ed80789463997bb45e44bcb08c6ac62",
+          "media_type": "application/octet-stream",
+          "path": "prd.md",
+          "status": "read"
+        }
+      ],
+      "read_status": "complete",
+      "selector": "prd.md",
+      "version": "5446f5e5ae0efee9"
+    },
+    {
+      "authority": "functional",
+      "digest": "sha256:8dc4fa43ab68c26f33b41f7b1ae5a98f47f96c32e4b671de7b3431247b7904ae",
+      "id": "PBD-SRC-4RHX3A209VQS",
+      "kind": "directory",
+      "members": [
+        {
+          "bytes": 337,
+          "digest": "sha256:53a47f71efe9e7aabfdb8200987de572b87b2a199a7402ca22e7bc6010210894",
+          "media_type": "application/octet-stream",
+          "path": "regras-de-uso.md",
+          "status": "read"
+        }
+      ],
+      "read_status": "complete",
+      "selector": "regras",
+      "version": "8dc4fa43ab68c26f"
+    },
+    {
+      "authority": "other",
+      "digest": "sha256:ff48c653ec5f92c68bd92567d68647e513b785095674466faeca787d43e42c64",
+      "id": "PBD-SRC-Z59MJ51KN19Q",
+      "kind": "file",
+      "members": [
+        {
+          "bytes": 196,
+          "digest": "sha256:9ed5af092dac27d760f42cc00184575509227bd9810ca818438c9b2566bc7153",
+          "media_type": "application/octet-stream",
+          "path": "glossario.md",
+          "status": "read"
+        }
+      ],
+      "read_status": "complete",
+      "selector": "glossario.md",
+      "version": "ff48c653ec5f92c6"
+    }
+  ],
+  "synthetic": true
+}

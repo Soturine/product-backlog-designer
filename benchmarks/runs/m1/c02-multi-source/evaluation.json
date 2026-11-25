@@ -1,0 +1,31 @@
+{
+ "case": "c02-multi-source",
+ "evaluator_model": "claude-haiku-5-5",
+ "obligations": [
+  {"id": "G01", "verdict": "covered", "evidence": "F1 rule 'Reserva em blocos de 1 hora (hora cheia)'; US1; AC2 confirmed (ocupa um bloco de uma hora cheia); T1", "note": "One-hour full-hour blocks are confirmed."},
+  {"id": "G02", "verdict": "covered", "evidence": "AC1 and AC3 confirmed (AC3: reserva fora de 14 dias é recusada); F1 rule 'Antecedência máxima de 14 dias'; T1", "note": "The 14-day advance limit is confirmed with its refusal."},
+  {"id": "G03", "verdict": "covered", "evidence": "AC7 and AC8 confirmed (cancelamento até 2 horas antes; menos de 2 horas recusado); AC10 proposed for the exact boundary; T4", "note": "The 2-hour cancellation cutoff and refusal are carried with values."},
+  {"id": "G04", "verdict": "covered", "evidence": "US4; AC14 confirmed (administrador bloqueia quadra em intervalo de datas); T6", "note": "Admin maintenance block over a date range is confirmed."},
+  {"id": "G05", "verdict": "covered", "evidence": "AC15 confirmed (reserva em quadra bloqueada é recusada); T7", "note": "Refusal of reservations on blocked courts is confirmed."},
+  {"id": "G06", "verdict": "covered", "evidence": "US3; AC11 and AC12 confirmed (futuras e passadas exibidas); T5", "note": "Member sees future and past reservations."},
+  {"id": "G07", "verdict": "covered", "evidence": "F1 rule 'No máximo 3 reservas futuras por sócio'; AC4 and AC5 confirmed (quarta reserva recusada); T2", "note": "The limit of 3 future reservations is confirmed, with the 4th refused."},
+  {"id": "G08", "verdict": "covered", "evidence": "F4 rule 'Reserva não utilizada e não cancelada dentro do prazo conta como falta'; US5; AC18 and AC19 confirmed; T8; question Q1 blocking on how 'não utilizada' is determined", "note": "The rule is confirmed and the undefined 'não utilizada' test is raised as a blocking question, though claim C8 is QUESTION_REQUIRED while AC18 is confirmed."},
+  {"id": "G09", "verdict": "covered", "evidence": "F4 rule '3 faltas em 30 dias geram impedimento de novas reservas por 15 dias'; AC20, AC21, AC22 confirmed; T9", "note": "Three absences in 30 days leads to a 15-day block; the window type is asked in a non-blocking question."},
+  {"id": "G10", "verdict": "covered", "evidence": "AC23 confirmed (administrador remove a falta informando o motivo); US7; T10", "note": "Admin removal of a wrongly registered absence is confirmed."}
+ ],
+ "traps": [
+  {"trap": "Glossary definitions are informative, not obligations; no story should exist only for a definition.", "violated": false, "note": "No story or item is built from a glossary definition alone; the 'sócio' definition is raised as a question (Q on cadastro ativo) instead."},
+  {"trap": "Rules from regras/ must be represented although they are not in the PRD.", "violated": false, "note": "Max 3 future reservations, absences, 15-day impediment and removal of absences all come from regras-de-uso and are represented in F1 and F4."}
+ ],
+ "invented": [
+  {"key": "AC21", "what": "Confirmed criterion 'o sócio tem 2 faltas nos últimos 30 dias' presumes a sliding 30-day window, while the source leaves the window type open (question on janela móvel ou período fixo is non-blocking).", "severity": "medium"}
+ ],
+ "levels_ok": true,
+ "quality": {
+  "stories": "Stories follow the 'Eu como sócio/administrador' form, one per rule group, with the values from the PRD and regras kept; US5 and US6 repeat a 'que que' typo.",
+  "criteria": "Criteria are detailed and carry boundary values (14 days, 2 hours, 3 reservations, 15 days, motivo obrigatório); the AC21 window assumption is the one place where a confirmed criterion goes beyond the source.",
+  "tasks": "Tasks are concrete and reference the questions they depend on (Q1 for absence detection); T3 and T3-style test-planning tasks are proportionate.",
+  "traceability": "Claims cite PRD and regras quotes, glossary terms are used only as support, and the questions about the 2-hour boundary, timezone and 'não utilizada' are visible."
+ },
+ "notes": "The gold leaves open how a no-show is detected, which the backlog correctly raises as blocking. The gate G07 shows FAIL in the backlog, which the gold does not mention; it is not scored here. The glossary-only trap is respected."
+}

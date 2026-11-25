@@ -1,0 +1,1022 @@
+[
+ {
+  "case": "c01-prd-only",
+  "run_id": "PBD-RUN-H2RBNJ6H158J",
+  "runtime": "cbdc137 (design via editable working tree, see notes)",
+  "replacement_run": false,
+  "agents": {
+   "readers": [
+    {
+     "agent": "reader-c01-prd",
+     "model": "claude-sonnet-5-5"
+    }
+   ],
+   "orchestrator": {
+    "agent": "generator-c01",
+    "model": "claude-opus-5-5"
+   },
+   "designer": {
+    "agent": "generator-c01",
+    "independence": "separate_agent",
+    "model": "claude-opus-5-5"
+   },
+   "reviewer": {
+    "agent": "reviewer-c01",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+   }
+  },
+  "counts": {
+   "items": {
+    "by_type": {
+     "epic": 1,
+     "feature": 4,
+     "story": 7,
+     "task": 11
+    },
+    "total": 23
+   },
+   "criteria": 23,
+   "claims": 16,
+   "questions": {
+    "blocking": 1,
+    "open": 7
+   },
+   "independent_obligations": 15,
+   "coverage_breakdown": {
+    "COVERED": 12,
+    "OUT_OF_SCOPE": 2,
+    "QUESTION_REQUIRED": 1
+   }
+  },
+  "gates": {
+   "G01": "PASS",
+   "G02": "PASS",
+   "G03": "PASS",
+   "G04": "PASS",
+   "G05": "PASS",
+   "G06": "PASS",
+   "G07": "PASS",
+   "G08": "PASS",
+   "G09": "PASS",
+   "G10": "NOT_APPLICABLE",
+   "G11": "PASS",
+   "G12": "NOT_APPLICABLE",
+   "G13": "PASS",
+   "G14": "PASS",
+   "G15": "NOT_APPLICABLE",
+   "G16": "PASS",
+   "G17": "BLOCKED",
+   "G18": "NOT_RUN"
+  },
+  "gate_reasons": {
+   "G17": "target compatibility needs a discovered or mock target schema; only unverified default profile azure-agile was used"
+  },
+  "status": {
+   "publication_readiness": "local_package_ready",
+   "remote_state": "not_contacted",
+   "run": "complete",
+   "semantic_review": "independent_complete",
+   "source_coverage": "complete_reading"
+  },
+  "limitations": []
+ },
+ {
+  "case": "c02-multi-source",
+  "run_id": "PBD-RUN-KJDTBSW7YDHX",
+  "runtime": "cbdc137 (design via editable working tree, see notes)",
+  "replacement_run": false,
+  "agents": {
+   "readers": [
+    {
+     "agent": "reader-c02-regras",
+     "model": "claude-sonnet-5-5"
+    },
+    {
+     "agent": "reader-c02-prd",
+     "model": "claude-sonnet-5-5"
+    },
+    {
+     "agent": "reader-c02-glossario",
+     "model": "claude-sonnet-5-5"
+    }
+   ],
+   "orchestrator": {
+    "agent": "generator-c02",
+    "model": "claude-opus-5-5"
+   },
+   "designer": {
+    "agent": "generator-c02",
+    "independence": "separate_agent",
+    "model": "claude-opus-5-5"
+   },
+   "reviewer": {
+    "agent": "reviewer-c02",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+   }
+  },
+  "counts": {
+   "items": {
+    "by_type": {
+     "epic": 1,
+     "feature": 4,
+     "story": 7,
+     "task": 10
+    },
+    "total": 22
+   },
+   "criteria": 25,
+   "claims": 12,
+   "questions": {
+    "blocking": 2,
+    "open": 8
+   },
+   "independent_obligations": 14,
+   "coverage_breakdown": {
+    "COVERED": 11,
+    "QUESTION_REQUIRED": 3
+   }
+  },
+  "gates": {
+   "G01": "PASS",
+   "G02": "PASS",
+   "G03": "PASS",
+   "G04": "PASS",
+   "G05": "PASS",
+   "G06": "PASS",
+   "G07": "FAIL",
+   "G08": "PASS",
+   "G09": "PASS",
+   "G10": "NOT_APPLICABLE",
+   "G11": "PASS",
+   "G12": "NOT_APPLICABLE",
+   "G13": "PASS",
+   "G14": "PASS",
+   "G15": "NOT_APPLICABLE",
+   "G16": "PASS",
+   "G17": "NOT_APPLICABLE",
+   "G18": "NOT_RUN"
+  },
+  "gate_reasons": {
+   "G07": "stories with insufficient tasks: ['US5']"
+  },
+  "status": {
+   "publication_readiness": "not_applicable",
+   "remote_state": "not_contacted",
+   "run": "complete",
+   "semantic_review": "independent_complete",
+   "source_coverage": "complete_reading"
+  },
+  "limitations": []
+ },
+ {
+  "case": "c03-tables-annexes",
+  "run_id": "PBD-RUN-RXSY7EQ9YBPV",
+  "runtime": "cbdc137 (design via editable working tree, see notes)",
+  "replacement_run": false,
+  "agents": {
+   "readers": [
+    {
+     "agent": "reader-c03-prd",
+     "model": "claude-sonnet-5-5"
+    },
+    {
+     "agent": "reader-c03-anexos",
+     "model": "claude-sonnet-5-5"
+    }
+   ],
+   "orchestrator": {
+    "agent": "generator-c03",
+    "model": "claude-opus-5-5"
+   },
+   "designer": {
+    "agent": "generator-c03",
+    "independence": "separate_agent",
+    "model": "claude-opus-5-5"
+   },
+   "reviewer": {
+    "agent": "reviewer-c03",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+   }
+  },
+  "counts": {
+   "items": {
+    "by_type": {
+     "enabler": 1,
+     "epic": 1,
+     "feature": 4,
+     "story": 8,
+     "task": 11
+    },
+    "total": 25
+   },
+   "criteria": 33,
+   "claims": 16,
+   "questions": {
+    "blocking": 0,
+    "open": 9
+   },
+   "independent_obligations": 10,
+   "coverage_breakdown": {
+    "COVERED": 8,
+    "PARTIALLY_COVERED": 2
+   }
+  },
+  "gates": {
+   "G01": "PASS",
+   "G02": "FAIL",
+   "G03": "PASS",
+   "G04": "PASS",
+   "G05": "PASS",
+   "G06": "PASS",
+   "G07": "PASS",
+   "G08": "PASS",
+   "G09": "PASS",
+   "G10": "NOT_APPLICABLE",
+   "G11": "PASS",
+   "G12": "NOT_APPLICABLE",
+   "G13": "PASS",
+   "G14": "PASS",
+   "G15": "NOT_APPLICABLE",
+   "G16": "PASS",
+   "G17": "NOT_APPLICABLE",
+   "G18": "NOT_RUN"
+  },
+  "gate_reasons": {
+   "G02": "coverage gaps in independent inventory: {'covered': 8, 'partially_covered': 2}"
+  },
+  "status": {
+   "publication_readiness": "not_applicable",
+   "remote_state": "not_contacted",
+   "run": "complete",
+   "semantic_review": "independent_complete",
+   "source_coverage": "complete_reading"
+  },
+  "limitations": []
+ },
+ {
+  "case": "c04-code-tech",
+  "run_id": "PBD-RUN-DGV8QR83VH6K",
+  "runtime": "cbdc137 (design via editable working tree, see notes)",
+  "replacement_run": false,
+  "agents": {
+   "readers": [
+    {
+     "agent": "reader-c04-prd",
+     "model": "claude-sonnet-5-5"
+    },
+    {
+     "agent": "reader-c04-src",
+     "model": "claude-sonnet-5-5"
+    },
+    {
+     "agent": "reader-c04-tdd",
+     "model": "claude-sonnet-5-5"
+    }
+   ],
+   "orchestrator": {
+    "agent": "generator-c04",
+    "model": "claude-opus-5-5"
+   },
+   "designer": {
+    "agent": "generator-c04",
+    "independence": "separate_agent",
+    "model": "claude-opus-5-5"
+   },
+   "reviewer": {
+    "agent": "reviewer-c04",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+   }
+  },
+  "counts": {
+   "items": {
+    "by_type": {
+     "enabler": 2,
+     "epic": 1,
+     "feature": 4,
+     "spike": 1,
+     "story": 3,
+     "task": 7
+    },
+    "total": 18
+   },
+   "criteria": 18,
+   "claims": 15,
+   "questions": {
+    "blocking": 0,
+    "open": 8
+   },
+   "independent_obligations": 14,
+   "coverage_breakdown": {
+    "CONFLICTING": 1,
+    "COVERED": 10,
+    "PARTIALLY_COVERED": 1,
+    "QUESTION_REQUIRED": 2
+   }
+  },
+  "gates": {
+   "G01": "PASS",
+   "G02": "FAIL",
+   "G03": "PASS",
+   "G04": "PASS",
+   "G05": "PASS",
+   "G06": "PASS",
+   "G07": "NOT_RUN",
+   "G08": "PASS",
+   "G09": "PASS",
+   "G10": "NOT_APPLICABLE",
+   "G11": "PASS",
+   "G12": "NOT_APPLICABLE",
+   "G13": "PASS",
+   "G14": "PASS",
+   "G15": "NOT_APPLICABLE",
+   "G16": "PASS",
+   "G17": "NOT_APPLICABLE",
+   "G18": "NOT_RUN"
+  },
+  "gate_reasons": {
+   "G02": "coverage gaps in independent inventory: {'covered': 10, 'partially_covered': 1, 'conflicting': 1, 'question_required': 2}"
+  },
+  "status": {
+   "publication_readiness": "not_applicable",
+   "remote_state": "not_contacted",
+   "run": "complete",
+   "semantic_review": "independent_complete",
+   "source_coverage": "complete_reading"
+  },
+  "limitations": []
+ },
+ {
+  "case": "c05-contradictions",
+  "run_id": "PBD-RUN-8HM1DG34HGD1",
+  "runtime": "cbdc137",
+  "replacement_run": true,
+  "agents": {
+   "readers": [
+    {
+     "agent": "reader-c05-manual",
+     "model": "claude-sonnet-5-5"
+    },
+    {
+     "agent": "reader-c05-prd",
+     "model": "claude-sonnet-5-5"
+    }
+   ],
+   "orchestrator": {
+    "agent": "generator-c05",
+    "model": "claude-opus-5-5"
+   },
+   "designer": {
+    "agent": "generator-c05",
+    "independence": "separate_agent",
+    "model": "claude-opus-5-5"
+   },
+   "reviewer": {
+    "agent": "reviewer-c05",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+   }
+  },
+  "counts": {
+   "items": {
+    "by_type": {
+     "epic": 1,
+     "feature": 2,
+     "story": 4,
+     "task": 4
+    },
+    "total": 11
+   },
+   "criteria": 8,
+   "claims": 11,
+   "questions": {
+    "blocking": 2,
+    "open": 5
+   },
+   "independent_obligations": 8,
+   "coverage_breakdown": {
+    "CONFLICTING": 4,
+    "COVERED": 3,
+    "PARTIALLY_COVERED": 1
+   }
+  },
+  "gates": {
+   "G01": "PASS",
+   "G02": "FAIL",
+   "G03": "PASS",
+   "G04": "PASS",
+   "G05": "PASS",
+   "G06": "PASS",
+   "G07": "PASS",
+   "G08": "PASS",
+   "G09": "PASS",
+   "G10": "NOT_APPLICABLE",
+   "G11": "PASS",
+   "G12": "NOT_APPLICABLE",
+   "G13": "PASS",
+   "G14": "PASS",
+   "G15": "NOT_APPLICABLE",
+   "G16": "PASS",
+   "G17": "NOT_APPLICABLE",
+   "G18": "NOT_RUN"
+  },
+  "gate_reasons": {
+   "G02": "coverage gaps in independent inventory: {'covered': 3, 'conflicting': 4, 'partially_covered': 1}"
+  },
+  "status": {
+   "publication_readiness": "not_applicable",
+   "remote_state": "not_contacted",
+   "run": "complete",
+   "semantic_review": "independent_complete",
+   "source_coverage": "complete_reading"
+  },
+  "limitations": []
+ },
+ {
+  "case": "c06-adr-supersession",
+  "run_id": "PBD-RUN-CPHGGRAD86S3",
+  "runtime": "e3ca0cc-era editable tree (claims/design), cbdc137 (review/finalize)",
+  "replacement_run": false,
+  "agents": {
+   "readers": [
+    {
+     "agent": "reader-c06-decisoes",
+     "model": "claude-sonnet-5-5"
+    },
+    {
+     "agent": "reader-c06-prd",
+     "model": "claude-sonnet-5-5"
+    }
+   ],
+   "orchestrator": {
+    "agent": "generator-c06",
+    "model": "claude-opus-5-5"
+   },
+   "designer": {
+    "agent": "generator-c06",
+    "independence": "separate_agent",
+    "model": "claude-opus-5-5"
+   },
+   "reviewer": {
+    "agent": "reviewer-c06",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+   }
+  },
+  "counts": {
+   "items": {
+    "by_type": {
+     "epic": 1,
+     "feature": 2,
+     "story": 3,
+     "task": 6
+    },
+    "total": 12
+   },
+   "criteria": 13,
+   "claims": 8,
+   "questions": {
+    "blocking": 0,
+    "open": 4
+   },
+   "independent_obligations": 9,
+   "coverage_breakdown": {
+    "COVERED": 7,
+    "DEFERRED": 1,
+    "SUPERSEDED": 1
+   }
+  },
+  "gates": {
+   "G01": "PASS",
+   "G02": "PASS",
+   "G03": "PASS",
+   "G04": "PASS",
+   "G05": "PASS",
+   "G06": "PASS",
+   "G07": "PASS",
+   "G08": "PASS",
+   "G09": "PASS",
+   "G10": "NOT_APPLICABLE",
+   "G11": "PASS",
+   "G12": "NOT_APPLICABLE",
+   "G13": "PASS",
+   "G14": "PASS",
+   "G15": "PASS",
+   "G16": "PASS",
+   "G17": "NOT_APPLICABLE",
+   "G18": "NOT_RUN"
+  },
+  "gate_reasons": {},
+  "status": {
+   "publication_readiness": "not_applicable",
+   "remote_state": "not_contacted",
+   "run": "complete",
+   "semantic_review": "independent_complete",
+   "source_coverage": "complete_reading"
+  },
+  "limitations": []
+ },
+ {
+  "case": "c07-negative-flows",
+  "run_id": "PBD-RUN-SG1ZJ6H724RE",
+  "runtime": "cbdc137 (design via editable working tree, see notes)",
+  "replacement_run": false,
+  "agents": {
+   "readers": [
+    {
+     "agent": "reader-c07-prd",
+     "model": "claude-sonnet-5-5"
+    }
+   ],
+   "orchestrator": {
+    "agent": "generator-c07",
+    "model": "claude-opus-5-5"
+   },
+   "designer": {
+    "agent": "generator-c07",
+    "independence": "separate_agent",
+    "model": "claude-opus-5-5"
+   },
+   "reviewer": {
+    "agent": "reviewer-c07",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+   }
+  },
+  "counts": {
+   "items": {
+    "by_type": {
+     "enabler": 1,
+     "epic": 1,
+     "feature": 5,
+     "story": 5,
+     "task": 8
+    },
+    "total": 20
+   },
+   "criteria": 17,
+   "claims": 12,
+   "questions": {
+    "blocking": 3,
+    "open": 7
+   },
+   "independent_obligations": 13,
+   "coverage_breakdown": {
+    "COVERED": 11,
+    "OUT_OF_SCOPE": 1,
+    "PARTIALLY_COVERED": 1
+   }
+  },
+  "gates": {
+   "G01": "PASS",
+   "G02": "FAIL",
+   "G03": "PASS",
+   "G04": "PASS",
+   "G05": "PASS",
+   "G06": "PASS",
+   "G07": "PASS",
+   "G08": "PASS",
+   "G09": "PASS",
+   "G10": "NOT_APPLICABLE",
+   "G11": "PASS",
+   "G12": "NOT_APPLICABLE",
+   "G13": "PASS",
+   "G14": "PASS",
+   "G15": "NOT_APPLICABLE",
+   "G16": "PASS",
+   "G17": "NOT_APPLICABLE",
+   "G18": "NOT_RUN"
+  },
+  "gate_reasons": {
+   "G02": "coverage gaps in independent inventory: {'covered': 11, 'partially_covered': 1, 'out_of_scope': 1}"
+  },
+  "status": {
+   "publication_readiness": "not_applicable",
+   "remote_state": "not_contacted",
+   "run": "complete",
+   "semantic_review": "independent_complete",
+   "source_coverage": "complete_reading"
+  },
+  "limitations": []
+ },
+ {
+  "case": "c08-insufficient-tech",
+  "run_id": "PBD-RUN-XPJR5Q0JMVK5",
+  "runtime": "cbdc137 (claims/design via editable working tree, see notes)",
+  "replacement_run": true,
+  "agents": {
+   "readers": [
+    {
+     "agent": "reader-c08-prd",
+     "model": "claude-sonnet-5-5"
+    }
+   ],
+   "orchestrator": {
+    "agent": "generator-c08",
+    "model": "claude-opus-5-5"
+   },
+   "designer": {
+    "agent": "generator-c08",
+    "independence": "separate_agent",
+    "model": "claude-opus-5-5"
+   },
+   "reviewer": {
+    "agent": "reviewer-c08",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+   }
+  },
+  "counts": {
+   "items": {
+    "by_type": {
+     "epic": 1,
+     "feature": 2,
+     "spike": 1,
+     "story": 3,
+     "task": 8
+    },
+    "total": 15
+   },
+   "criteria": 11,
+   "claims": 5,
+   "questions": {
+    "blocking": 1,
+    "open": 6
+   },
+   "independent_obligations": 5,
+   "coverage_breakdown": {
+    "COVERED": 3,
+    "PARTIALLY_COVERED": 1,
+    "QUESTION_REQUIRED": 1
+   }
+  },
+  "gates": {
+   "G01": "PASS",
+   "G02": "FAIL",
+   "G03": "PASS",
+   "G04": "PASS",
+   "G05": "PASS",
+   "G06": "PASS",
+   "G07": "NOT_RUN",
+   "G08": "PASS",
+   "G09": "PASS",
+   "G10": "NOT_APPLICABLE",
+   "G11": "PASS",
+   "G12": "NOT_APPLICABLE",
+   "G13": "PASS",
+   "G14": "PASS",
+   "G15": "NOT_APPLICABLE",
+   "G16": "PASS",
+   "G17": "NOT_APPLICABLE",
+   "G18": "NOT_RUN"
+  },
+  "gate_reasons": {
+   "G02": "coverage gaps in independent inventory: {'covered': 3, 'partially_covered': 1, 'question_required': 1}"
+  },
+  "status": {
+   "publication_readiness": "not_applicable",
+   "remote_state": "not_contacted",
+   "run": "complete",
+   "semantic_review": "independent_complete",
+   "source_coverage": "complete_reading"
+  },
+  "limitations": []
+ },
+ {
+  "case": "c09-selective-levels",
+  "run_id": "PBD-RUN-YENYRYC082FH",
+  "runtime": "e3ca0cc-era editable tree (claims/design/review), cbdc137 (finalize)",
+  "replacement_run": false,
+  "agents": {
+   "readers": [
+    {
+     "agent": "reader-c09-prd",
+     "model": "claude-sonnet-5-5"
+    }
+   ],
+   "orchestrator": {
+    "agent": "generator-c09",
+    "model": "claude-opus-5-5"
+   },
+   "designer": {
+    "agent": "generator-c09",
+    "independence": "separate_agent",
+    "model": "claude-opus-5-5"
+   },
+   "reviewer": {
+    "agent": "reviewer-c09",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+   }
+  },
+  "counts": {
+   "items": {
+    "by_type": {
+     "story": 4
+    },
+    "total": 4
+   },
+   "criteria": 9,
+   "claims": 5,
+   "questions": {
+    "blocking": 1,
+    "open": 5
+   },
+   "independent_obligations": 5,
+   "coverage_breakdown": {
+    "COVERED": 4,
+    "PARTIALLY_COVERED": 1
+   }
+  },
+  "gates": {
+   "G01": "PASS",
+   "G02": "FAIL",
+   "G03": "PASS",
+   "G04": "PASS",
+   "G05": "PASS",
+   "G06": "PASS",
+   "G07": "NOT_APPLICABLE",
+   "G08": "NOT_APPLICABLE",
+   "G09": "PASS",
+   "G10": "NOT_APPLICABLE",
+   "G11": "PASS",
+   "G12": "NOT_APPLICABLE",
+   "G13": "PASS",
+   "G14": "PASS",
+   "G15": "NOT_APPLICABLE",
+   "G16": "PASS",
+   "G17": "NOT_APPLICABLE",
+   "G18": "NOT_RUN"
+  },
+  "gate_reasons": {
+   "G02": "coverage gaps in independent inventory: {'covered': 4, 'partially_covered': 1}"
+  },
+  "status": {
+   "publication_readiness": "not_applicable",
+   "remote_state": "not_contacted",
+   "run": "complete",
+   "semantic_review": "independent_complete",
+   "source_coverage": "complete_reading"
+  },
+  "limitations": []
+ },
+ {
+  "case": "c10-incomplete-source",
+  "run_id": "PBD-RUN-AKCQQ9XJAH5J",
+  "runtime": "cbdc137 (claims/design via editable working tree, see notes)",
+  "replacement_run": true,
+  "agents": {
+   "readers": [
+    {
+     "agent": "reader-c10-fontes",
+     "model": "claude-sonnet-5-5"
+    }
+   ],
+   "orchestrator": {
+    "agent": "generator-c10",
+    "model": "claude-opus-5-5"
+   },
+   "designer": {
+    "agent": "generator-c10",
+    "independence": "separate_agent",
+    "model": "claude-opus-5-5"
+   },
+   "reviewer": {
+    "agent": "reviewer-c10",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+   }
+  },
+  "counts": {
+   "items": {
+    "by_type": {
+     "epic": 1,
+     "feature": 2,
+     "spike": 1,
+     "story": 3,
+     "task": 4
+    },
+    "total": 11
+   },
+   "criteria": 7,
+   "claims": 4,
+   "questions": {
+    "blocking": 2,
+    "open": 4
+   },
+   "independent_obligations": 4,
+   "coverage_breakdown": {
+    "BLOCKED": 1,
+    "COVERED": 2,
+    "PARTIALLY_COVERED": 1
+   }
+  },
+  "gates": {
+   "G01": "BLOCKED",
+   "G02": "FAIL",
+   "G03": "PASS",
+   "G04": "PASS",
+   "G05": "PASS",
+   "G06": "PASS",
+   "G07": "FAIL",
+   "G08": "PASS",
+   "G09": "PASS",
+   "G10": "NOT_APPLICABLE",
+   "G11": "PASS",
+   "G12": "NOT_APPLICABLE",
+   "G13": "PASS",
+   "G14": "PASS",
+   "G15": "NOT_APPLICABLE",
+   "G16": "PASS",
+   "G17": "NOT_APPLICABLE",
+   "G18": "NOT_RUN"
+  },
+  "gate_reasons": {
+   "G01": "incomplete reading: fontes/fluxo-pedido.png: unreadable (no text extractor for this format; provide a transcription)",
+   "G02": "coverage gaps in independent inventory: {'covered': 2, 'blocked': 1, 'partially_covered': 1}",
+   "G07": "stories with insufficient tasks: ['US3']"
+  },
+  "status": {
+   "publication_readiness": "not_applicable",
+   "remote_state": "not_contacted",
+   "run": "complete",
+   "semantic_review": "independent_complete",
+   "source_coverage": "incomplete_reading"
+  },
+  "limitations": [
+   "unreadable member: fontes: fluxo-pedido.png (no text extractor for this format; provide a transcription)"
+  ]
+ },
+ {
+  "case": "c11-pdf-source",
+  "run_id": "PBD-RUN-2YCFJ6N4MNJR",
+  "runtime": "63c16dd",
+  "replacement_run": false,
+  "agents": {
+   "readers": [
+    {
+     "agent": "reader-c11-prd",
+     "model": "claude-sonnet-5-5"
+    }
+   ],
+   "orchestrator": {
+    "agent": "generator-c11",
+    "model": "claude-haiku-5-5"
+   },
+   "designer": {
+    "agent": "generator-c11",
+    "independence": "separate_agent",
+    "model": "claude-haiku-5-5"
+   },
+   "reviewer": {
+    "agent": "reviewer-c11",
+    "independence": "separate_agent",
+    "model": "claude-haiku-5-5"
+   }
+  },
+  "counts": {
+   "items": {
+    "by_type": {
+     "epic": 1,
+     "feature": 3,
+     "story": 5,
+     "task": 5
+    },
+    "total": 14
+   },
+   "criteria": 9,
+   "claims": 9,
+   "questions": {
+    "blocking": 0,
+    "open": 5
+   },
+   "independent_obligations": 8,
+   "coverage_breakdown": {
+    "BLOCKED": 1,
+    "COVERED": 6,
+    "PARTIALLY_COVERED": 1
+   }
+  },
+  "gates": {
+   "G01": "BLOCKED",
+   "G02": "FAIL",
+   "G03": "PASS",
+   "G04": "PASS",
+   "G05": "PASS",
+   "G06": "PASS",
+   "G07": "FAIL",
+   "G08": "PASS",
+   "G09": "PASS",
+   "G10": "NOT_APPLICABLE",
+   "G11": "PASS",
+   "G12": "NOT_APPLICABLE",
+   "G13": "PASS",
+   "G14": "PASS",
+   "G15": "NOT_APPLICABLE",
+   "G16": "PASS",
+   "G17": "NOT_APPLICABLE",
+   "G18": "NOT_RUN"
+  },
+  "gate_reasons": {
+   "G01": "incomplete reading: prd.pdf/prd.pdf: partial (page 3 has no extractable text layer and the original PDF could not be rendered (pdftoppm not installed), so its content was not inspected)",
+   "G02": "coverage gaps in independent inventory: {'covered': 6, 'partially_covered': 1, 'blocked': 1}",
+   "G07": "stories with insufficient tasks: ['US5']"
+  },
+  "status": {
+   "publication_readiness": "not_applicable",
+   "remote_state": "not_contacted",
+   "run": "complete",
+   "semantic_review": "independent_complete",
+   "source_coverage": "incomplete_reading"
+  },
+  "limitations": [
+   "extraction gaps: prd.pdf: prd.pdf (page 3: no extractable text layer (scanned or image))"
+  ]
+ },
+ {
+  "case": "c12-xlsx-source",
+  "run_id": "PBD-RUN-2FRWTSFW2T8Z",
+  "runtime": "63c16dd",
+  "replacement_run": false,
+  "agents": {
+   "readers": [
+    {
+     "agent": "reader-c12-xlsx",
+     "model": "claude-sonnet-5-5"
+    }
+   ],
+   "orchestrator": {
+    "agent": "generator-c12",
+    "model": "claude-haiku-5-5"
+   },
+   "designer": {
+    "agent": "generator-c12",
+    "independence": "separate_agent",
+    "model": "claude-haiku-5-5"
+   },
+   "reviewer": {
+    "agent": "reviewer-c12",
+    "independence": "separate_agent",
+    "model": "claude-haiku-5-5"
+   }
+  },
+  "counts": {
+   "items": {
+    "by_type": {
+     "epic": 1,
+     "feature": 3,
+     "story": 4,
+     "task": 4
+    },
+    "total": 12
+   },
+   "criteria": 6,
+   "claims": 6,
+   "questions": {
+    "blocking": 0,
+    "open": 3
+   },
+   "independent_obligations": 9,
+   "coverage_breakdown": {
+    "COVERED": 6,
+    "NOT_COVERED": 1,
+    "QUESTION_REQUIRED": 2
+   }
+  },
+  "gates": {
+   "G01": "PASS",
+   "G02": "FAIL",
+   "G03": "PASS",
+   "G04": "PASS",
+   "G05": "PASS",
+   "G06": "PASS",
+   "G07": "PASS",
+   "G08": "PASS",
+   "G09": "PASS",
+   "G10": "NOT_APPLICABLE",
+   "G11": "PASS",
+   "G12": "NOT_APPLICABLE",
+   "G13": "PASS",
+   "G14": "PASS",
+   "G15": "NOT_APPLICABLE",
+   "G16": "PASS",
+   "G17": "BLOCKED",
+   "G18": "NOT_RUN"
+  },
+  "gate_reasons": {
+   "G02": "coverage gaps in independent inventory: {'covered': 6, 'question_required': 2, 'not_covered': 1}",
+   "G17": "target compatibility needs a discovered or mock target schema; only unverified default profile azure-scrum was used"
+  },
+  "status": {
+   "publication_readiness": "local_package_ready",
+   "remote_state": "not_contacted",
+   "run": "complete",
+   "semantic_review": "independent_complete",
+   "source_coverage": "complete_reading"
+  },
+  "limitations": []
+ }
+]

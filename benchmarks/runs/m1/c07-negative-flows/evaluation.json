@@ -1,0 +1,31 @@
+{
+ "case": "c07-negative-flows",
+ "evaluator_model": "claude-haiku-5-5",
+ "obligations": [
+  {"id": "G01", "verdict": "covered", "evidence": "US1 (unlock when scanning badge); AC1 confirmed; T1", "note": "Registered member badge unlocks the door, confirmed."},
+  {"id": "G02", "verdict": "covered", "evidence": "AC2 and AC3 confirmed (unknown and deactivated badge do not unlock; screen shows 'Badge not recognized'); T2 with exact text", "note": "Rejection of unknown or deactivated badges with the exact message is carried."},
+  {"id": "G03", "verdict": "covered", "evidence": "F2 rule 'A member may take at most 3 items per day'; AC4 and AC5 use the 3-item count before the fourth; E1 'Daily take limit of 3 items'", "note": "The 3-per-day guideline value is present, although C4 is marked PARTIALLY_COVERED for its guideline nature."},
+  {"id": "G04", "verdict": "covered", "evidence": "AC4 (fourth item recorded), AC5 (member sees warning), AC6 (door unlocks, not locked out confirmed); T3, T4; US2", "note": "Fourth item is recorded and warned without lockout, confirmed in the criteria."},
+  {"id": "G05", "verdict": "covered", "evidence": "AC8, AC9, AC10 confirmed (alert after more than 60 seconds, sounds until closed, no alert within 60 s); T5; US3", "note": "Door-open alert after 60 seconds until closed is confirmed."},
+  {"id": "G06", "verdict": "covered", "evidence": "AC11 and AC12 confirmed (offline check uses last synchronized list; unknown or deactivated refused); T6", "note": "Offline badge checks against the cached list are confirmed."},
+  {"id": "G07", "verdict": "covered", "evidence": "AC13 confirmed (events produced offline uploaded on reconnect); EN1; T7", "note": "Offline events upload when connectivity returns is confirmed."},
+  {"id": "G08", "verdict": "covered", "evidence": "US5; AC15 and AC16 confirmed (expired item excluded from available inventory count); T8", "note": "Volunteer marking expired and removal from the count are confirmed."},
+  {"id": "G09", "verdict": "handled_as_out_of_scope", "evidence": "E1 'Out of scope: Payments and donations tracking'", "note": "Payments and donations are explicitly excluded."}
+ ],
+ "traps": [
+  {"trap": "Must not turn the 4th-item rule into a rejection/lockout.", "violated": false, "note": "AC6 and T4 state the member is not locked out and can still unlock; no criterion or task blocks the badge."},
+  {"trap": "Must not invent an alert volume, sync interval or retry policy.", "violated": false, "note": "No volume or sync interval appears; AC14 is a proposed keep-and-resend behavior with no count or interval, labelled proposed."}
+ ],
+ "invented": [
+  {"key": "T3", "what": "Activity 'Associate each item taken with the member whose badge opened the door' asserts a mechanism for counting items, while question 'How does the kiosk know which items ... a member has taken?' is blocking and open.", "severity": "low"},
+  {"key": "T7", "what": "Task asserts a local queue that clears events only after upload success; the sources only require upload on reconnection.", "severity": "low"}
+ ],
+ "levels_ok": false,
+ "quality": {
+  "stories": "Stories are written in the 'As a member/volunteer' form, each keeps the explicit negative path (rejected badge, warning not blocking, offline use), and the fourth-item story is especially well framed.",
+  "criteria": "Criteria are precise on the 60-second threshold, the exact message and the no-lockout rule, and the negative cases are covered; the proposed AC7 and AC17 add useful boundaries without asserting them as confirmed.",
+  "tasks": "Tasks are concrete with verification steps; T3 slightly assumes how items are attributed to a member, which the blocking question still leaves open.",
+  "traceability": "Claims cite PRD quotes, every item links to its claims, and the blocking questions on the day definition and volunteer identity are raised."
+ },
+ "notes": "The backlog uses an enabler item (EN1) that is not in the requested levels, so levels_ok is false. The gold does not mention the blocking questions on the day definition and volunteer identification, which the backlog handles well. Gate G02 shows FAIL in the backlog, not scored here."
+}

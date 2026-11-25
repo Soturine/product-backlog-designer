@@ -1,0 +1,24 @@
+{
+ "case": "c08-insufficient-tech",
+ "evaluator_model": "claude-haiku-5-5",
+ "obligations": [
+  {"id": "G01", "verdict": "covered", "evidence": "US1 (inscrever-se com nome e tamanho de camiseta); AC1 confirmed; T2; question Q5 on whether the fields are mandatory", "note": "Enrollment with name and shirt size is confirmed."},
+  {"id": "G02", "verdict": "handled_as_question", "evidence": "C2 PARTIALLY_COVERED (ambiguous); SP1 spike 'Identificar o gateway parceiro e seu contrato'; Q1 blocking on gateway and interface; Q2 on the fee amount; T4 blocked on SP1; AC4 and AC5 describe only the flow", "note": "The gateway is not named and no contract is invented; the unknown contract is deliberately deferred to a blocking question and a spike."},
+  {"id": "G03", "verdict": "covered", "evidence": "AC5 confirmed (confirmada somente quando o gateway confirma); AC6 (permanece não confirmada enquanto não confirmado); AC2; T5", "note": "Confirmation only after payment is confirmed."},
+  {"id": "G04", "verdict": "covered", "evidence": "US3; AC8 and AC9 confirmed (lista por mutirão, só confirmados); AC10 (outros mutirões excluídos); T7", "note": "Organizer list of confirmed registrations per mutirão is confirmed."},
+  {"id": "G05", "verdict": "handled_as_question", "evidence": "C5 QUESTION_REQUIRED 'O sistema deve ser rápido'; Q4 non-blocking asks for an objective measure; E1 out of scope 'Metas de desempenho mensuráveis enquanto ... rápido não for respondida'", "note": "No response-time threshold is invented; the vague requirement is raised as a question and excluded from scope."}
+ ],
+ "traps": [
+  {"trap": "Must not invent a gateway name, API, webhook or fee amount: spike/question instead.", "violated": false, "note": "No gateway name, API, webhook or fee value appears; the gateway and fee are deferred to SP1 and Q1/Q2."},
+  {"trap": "Must not invent a response-time threshold for 'rápido'.", "violated": false, "note": "No response-time value appears; C5 is QUESTION_REQUIRED and Q4 asks for the measure."}
+ ],
+ "invented": [],
+ "levels_ok": true,
+ "quality": {
+  "stories": "Stories follow the 'Eu como participante/organizador' form and separate registration, payment and the organizer's list cleanly; US2 is correctly kept dependent on the spike.",
+  "criteria": "Confirmed criteria cover the registration fields, the unpaid state and the per-mutirão filtering; the refusal and failure cases are proposed (AC3, AC7, AC11), which is the right status since the source does not state them.",
+  "tasks": "Tasks are proportionate: the integration tasks T4 and T5 are explicitly tied to the spike SP1, and the test-planning tasks are grounded in the criteria.",
+  "traceability": "Claims cite the PRD quotes, the payment dependency is traced to SP1 and Q1, and the vague performance requirement is visibly parked in a question."
+ },
+ "notes": "The gold expects a spike and questions on the gateway contract and on 'rápido'; both are present. The spike item type is not in the requested levels list, but the gold explicitly expects a spike, so levels_ok is scored true. The gold does not capture the refusal and failure behavior, which the backlog marks proposed (AC7) and asks in Q3."
+}

@@ -1,0 +1,452 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC3",
+      "notes": "'pelo menos 1 dia' unit undefined (24h vs calendar day); depends on Q3.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC4",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC5",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC6",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC7",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC8",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "distinct",
+      "items": [
+        "AC5",
+        "AC6"
+      ],
+      "rationale": "Different actors/stories: marking delivery received vs generating the receipt."
+    },
+    {
+      "assessment": "distinct",
+      "items": [
+        "AC6",
+        "AC8"
+      ],
+      "rationale": "Positive generation versus negative gating of sending."
+    }
+  ],
+  "findings": [
+    {
+      "actual": "Claims are marked conflicting and dispositions are CONFLICTING with blocking questions Q1/Q2, but claims.json conflicts list is empty.",
+      "affects": [
+        "US1",
+        "US3"
+      ],
+      "classification": "candidate_concern",
+      "expected": "A source contradiction (limit 3 vs 5; electronics) is recorded as a structured conflict.",
+      "gate": "G06",
+      "impact": "Downstream tooling may not surface the contradictions as formal conflicts.",
+      "recommendation": "Confirm whether conflicts must be recorded in the conflicts list; keep Q1/Q2 blocking until an approved decision.",
+      "review_status": "candidate",
+      "severity": "medium",
+      "why": "Conflicts are only visible through uncertainty notes and questions, not a conflict record."
+    },
+    {
+      "actual": "AC3 says 'pelo menos 1 dia' without defining 24h or calendar day.",
+      "affects": [
+        "AC3",
+        "US2"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Reschedule boundary criterion with determinate condition.",
+      "gate": "G05",
+      "impact": "Boundary cases untestable until Q3 is answered.",
+      "recommendation": "Resolve Q3 and restate AC3 with a precise cutoff.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Source itself is ambiguous; Q3 raised."
+    },
+    {
+      "actual": "Not specified in sources; correctly left as Q5 and Q2 rather than invented.",
+      "affects": [
+        "US3",
+        "US4"
+      ],
+      "classification": "optional_improvement",
+      "expected": "Receipt email failure and electronics test flow handled.",
+      "gate": "G06",
+      "impact": "None until answered.",
+      "recommendation": "Answer Q5; revisit US3 after Q2.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "No source support."
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "AC2"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 3,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "O doador agenda a entrega de doações escolhendo data e turno.",
+      "rationale": "US1 with AC1 covers it; shifts list is open question Q4.",
+      "text": "Donor schedules a delivery choosing date and shift"
+    },
+    {
+      "covered_by": [],
+      "disposition": "CONFLICTING",
+      "key": "O2",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "Cada doador pode agendar no máximo 3 entregas por mês.",
+      "rationale": "Contradicted by manual limit of 5; no approved decision; held back and raised as blocking Q1, no criterion invented.",
+      "text": "Monthly delivery limit per donor is at most 3 (PRD)"
+    },
+    {
+      "covered_by": [],
+      "disposition": "CONFLICTING",
+      "key": "O3",
+      "locator": {
+        "line_start": 3,
+        "member": "manual-operacao.md",
+        "source_id": "PBD-SRC-2CR6BC30M4NM"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "Doadores podem agendar até 5 entregas por mês.",
+      "rationale": "Counterpart of O2; both functional authority; Q1 blocking.",
+      "text": "Monthly delivery limit per donor is up to 5 (manual)"
+    },
+    {
+      "covered_by": [],
+      "disposition": "CONFLICTING",
+      "key": "O4",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "Itens eletrônicos não são aceitos.",
+      "rationale": "Contradicts manual acceptance of working electronics; Q2 blocking; no criterion chosen.",
+      "text": "Electronic items are not accepted (PRD)"
+    },
+    {
+      "covered_by": [],
+      "disposition": "CONFLICTING",
+      "key": "O5",
+      "locator": {
+        "line_start": 4,
+        "member": "manual-operacao.md",
+        "source_id": "PBD-SRC-2CR6BC30M4NM"
+      },
+      "matched_claims": [
+        "C5",
+        "C6"
+      ],
+      "quote": "Eletrônicos em funcionamento são aceitos mediante teste do voluntário.",
+      "rationale": "Counterpart of O4; test criterion also undefined; Q2.",
+      "text": "Working electronics are accepted after volunteer test (manual)"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC5",
+        "US4",
+        "AC6"
+      ],
+      "disposition": "COVERED",
+      "key": "O6",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C7",
+        "C8"
+      ],
+      "quote": "O voluntário confirma o recebimento e o sistema gera um recibo para o doador.",
+      "rationale": "Confirmation in US3/AC5, receipt generation in US4/AC6.",
+      "text": "Volunteer confirms receipt and system generates receipt for donor"
+    },
+    {
+      "covered_by": [
+        "US4",
+        "AC7",
+        "AC8"
+      ],
+      "disposition": "COVERED",
+      "key": "O7",
+      "locator": {
+        "line_start": 5,
+        "member": "manual-operacao.md",
+        "source_id": "PBD-SRC-2CR6BC30M4NM"
+      },
+      "matched_claims": [
+        "C9",
+        "C10"
+      ],
+      "quote": "O recibo é enviado por e-mail ao doador após a confirmação do recebimento.",
+      "rationale": "Email in AC7, ordering/negative in AC8; email failure handling is Q5.",
+      "text": "Receipt is emailed to donor after receipt confirmation"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC3",
+        "AC4"
+      ],
+      "disposition": "PARTIALLY_COVERED",
+      "key": "O8",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "matched_claims": [
+        "C11"
+      ],
+      "quote": "O doador pode remarcar uma entrega até 1 dia antes da data agendada.",
+      "rationale": "Covered with the exact cutoff ambiguity (24h vs calendar day) left to Q3; only the same-day refusal is deterministic.",
+      "text": "Donor may reschedule up to 1 day before scheduled date"
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "Outcome and scope boundaries correct; conflicting rules honestly placed out of scope.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "No team data; shifts unknown (Q4).",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Can be delivered alone.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "No premature implementation.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Single slice.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC1 and AC2 observable; limit rule blocked by Q1.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Donor goal and benefit stated.",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "Monthly limit (Q1) and shift options (Q4) unresolved; limit-related behavior intentionally absent.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "No team data.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depends on existing scheduling, recorded as relation.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Interpretation left open.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Single slice.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Boundary 1 day before is ambiguous; AC3 uses 'pelo menos 1 dia' without defining unit.",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "Benefit stated.",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "Cutoff depends on Q3.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "No team data.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Standalone for volunteer.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Fine.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Small.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC5 observable.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Registers arrival and releases receipt.",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "Electronics test flow (Q2) may later add precondition.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "No team data; email failure open.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Real sequencing after US3 retained as relation.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Receipt format not prescribed.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Conjunction is indivisible outcome.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC6-AC8 observable.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Proof of donation.",
+          "rating": "supported"
+        }
+      },
+      "key": "US4",
+      "notes": "Generation plus email in one story is a coherent outcome; failure handling is Q5.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "T1",
+      "notes": "Verifies AC1/AC2.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "notes": "Depends on Q3 answer, stated in the task.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "reviewer-c05",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-78385WMH95P7"
+    },
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-2CR6BC30M4NM"
+    }
+  ]
+}

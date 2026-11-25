@@ -1,0 +1,28 @@
+{
+ "case": "c06-adr-supersession",
+ "evaluator_model": "claude-haiku-5-5",
+ "obligations": [
+  {"id": "G01", "verdict": "covered", "evidence": "US1; AC1 confirmed (inscrição confirmada imediatamente em encontro publicado); F1; T1", "note": "Enrollment in a published meeting is represented."},
+  {"id": "G02", "verdict": "handled_as_superseded", "evidence": "C2 SUPERSEDED; DEC1 ADR-002 approved supersedes C2; E1 out of scope 'Fluxo de aprovação de inscrições pelo moderador (eliminado pela ADR-002)'; AC2 confirmed (sem ação de aprovar ou recusar)", "note": "Moderator approval is marked superseded and excluded from scope, with the negative criterion AC2."},
+  {"id": "G03", "verdict": "covered", "evidence": "C3 COVERED; F1 rule 'Até 20 participantes por encontro'; AC3 and AC4 confirmed (19 to 20, no 21st); US1 observações; DEC2 ADR-003 proposed, Q2 non-blocking", "note": "Limit of 20 is kept as confirmed; ADR-003 is treated as a proposal."},
+  {"id": "G04", "verdict": "covered", "evidence": "C4; US2; AC7 confirmed (participante pode entrar na lista de espera quando lotado); F2; T4", "note": "Waitlist when full is confirmed."},
+  {"id": "G05", "verdict": "covered", "evidence": "C5, C6; AC10 and AC12 confirmed (primeira pessoa inscrita e avisada); US3; T5, T6", "note": "Promotion of the first waitlisted person with notice is confirmed."},
+  {"id": "G06", "verdict": "covered", "evidence": "C7 COVERED; ADR-002 decision DEC1; AC1 confirmed (confirmada imediatamente com menos de 20); F1; T1", "note": "Automatic confirmation while seats remain is confirmed and sourced from the approved ADR."},
+  {"id": "G07", "verdict": "handled_as_question", "evidence": "DEC2 status proposed (não aprovada); Q2 non-blocking 'A ADR-003 ... será aprovada?'; E1 out of scope 'Alteração do limite para 30 participantes (ADR-003 não aprovada)'; US1 observação", "note": "The proposal is not applied and is raised as a question while staying out of scope."}
+ ],
+ "traps": [
+  {"trap": "Manual moderator approval must not appear as active work.", "violated": true, "note": "T2 is an active task 'Remover a etapa de aprovação do moderador' with activities to identify, remove and document the approval step; it is borderline (it removes a superseded step rather than building it), but it still schedules work around the approval, and the sources describe no existing approval flow."},
+  {"trap": "Limit must remain 20; ADR-003 is a proposal (question or informative), not an approved decision.", "violated": false, "note": "The limit stays 20 in F1, US1, AC3, AC4 and T1; ADR-003 is DEC2 proposed and Q2 asks about it."}
+ ],
+ "invented": [
+  {"key": "T2", "what": "Task assumes an existing approval state, screens and rules ('Eliminar estados, telas e regras que deixavam a inscrição pendente') and an existing approval action to remove; the sources contain no implementation evidence for these.", "severity": "medium"}
+ ],
+ "levels_ok": true,
+ "quality": {
+  "stories": "Stories are clean and tied to the ADR-002 decision (confirmation without moderator), the 20-seat limit and the waitlist; the moderator approval is not turned into a story.",
+  "criteria": "Criteria use Dado/Quando/Então with boundary values 19, 20 and 21 and a negative criterion (AC2) for the superseded approval; criteria are strong on the limit and the automatic confirmation.",
+  "tasks": "Task T2 is the weak point: it schedules removal work for an approval flow the sources never describe, which reads as active work on a superseded rule; the rest of the task set is concrete.",
+  "traceability": "DEC1 and DEC2 are linked to the claims and to the epic scope, so the supersession and the proposal are both traceable."
+ },
+ "notes": "The gold's superseded and not-superseded expectations are both met. The T2 verdict on the moderator-approval trap is a judgment call; a reviewer could accept it as superseded-handling work, which is why violated is borderline."
+}

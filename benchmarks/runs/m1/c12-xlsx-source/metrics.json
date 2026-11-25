@@ -1,0 +1,77 @@
+{
+  "backlog_digest": "sha256:99b86383ffc1393264d04d423d0832f38de13f53e6845de68bde318cac160fde",
+  "claims": {
+    "by_disposition": {
+      "COVERED": 4,
+      "PARTIALLY_COVERED": 2
+    },
+    "total": 6
+  },
+  "coverage": {
+    "breakdown": {
+      "COVERED": 6,
+      "NOT_COVERED": 1,
+      "QUESTION_REQUIRED": 2
+    },
+    "covered": 6,
+    "note": "denominator = obligations the independent reviewer extracted from the sources",
+    "provenance": "independent reviewer inventory",
+    "total": 9
+  },
+  "criteria": {
+    "by_style": {
+      "list": 6
+    },
+    "proposed": 1,
+    "total": 6
+  },
+  "findings": {
+    "by_classification": {
+      "candidate_concern": 6
+    },
+    "by_severity": {
+      "low": 3,
+      "medium": 3
+    },
+    "total": 6
+  },
+  "gates": {
+    "BLOCKED": 1,
+    "FAIL": 1,
+    "NOT_APPLICABLE": 3,
+    "NOT_RUN": 1,
+    "PASS": 12
+  },
+  "items": {
+    "by_type": {
+      "epic": 1,
+      "feature": 3,
+      "story": 4,
+      "task": 4
+    },
+    "total": 12
+  },
+  "kind": "pbd.metrics",
+  "questions": {
+    "blocking": 0,
+    "open": 3
+  },
+  "review": {
+    "independence": "separate_agent",
+    "model": "claude-haiku-5-5",
+    "verdicts": {
+      "concern": 5,
+      "pass": 13
+    }
+  },
+  "sources": {
+    "members_read": 1,
+    "members_total": 1,
+    "sources": 1
+  },
+  "tasks_per_story": {
+    "max": 1,
+    "min": 1,
+    "stories": 4
+  }
+}
