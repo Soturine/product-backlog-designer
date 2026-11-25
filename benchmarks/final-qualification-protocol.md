@@ -3,7 +3,8 @@
 Registered and committed **before any run** of this phase. All cases, sources, baselines and gold are synthetic and invented for this repository. Original M1 results stay as recorded in `benchmarks/runs/m1`; results here belong to the frozen candidate only.
 
 ## Candidate
-- Runtime frozen at the commit that registers this protocol (no runtime change since `b16d1a7`), installed from a wheel into a dedicated virtual environment outside the repository; the skill installed with `pbd skill install` into each sandbox.
+- Candidate update recorded before any run: the native-first reading correction and the agent-first boundary fixes (`4b6f456`, `11018dd`) changed the runtime after registration, so the candidate is the commit that records this note; thresholds, cases and gold are unchanged.
+- Runtime frozen at that commit, installed from a wheel into a dedicated virtual environment outside the repository; the skill installed with `pbd skill install` into each sandbox.
 - Sandboxes contain only `sources/` (and `baseline/` for audit). Gold is never named in generation or review prompts. As in M1, blindness is enforced by scoping and instructions, not by OS access control (disclosed limitation).
 
 ## Budget and models (owner policy)
