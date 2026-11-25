@@ -193,6 +193,15 @@ def _section(label: str, value: Any) -> str:
     return f"<p><strong>{html.escape(label)}</strong>: {inline(value)}</p>"
 
 
+def _strip_label(text: str, label: str) -> str:
+    """Drop a leading prefix the agent already wrote (regression: 'Quando Quando', 'quero quero')."""
+    stripped = text.strip().rstrip(".").rstrip(",")
+    for candidate in (label, label.split()[0]):
+        if stripped.casefold().startswith(candidate.casefold() + " "):
+            return stripped[len(candidate) + 1 :].lstrip(" ,")
+    return stripped
+
+
 def description_html(content: dict[str, Any], language: str) -> str:
     errors = validate_content(content)
     if errors:
@@ -203,16 +212,19 @@ def description_html(content: dict[str, Any], language: str) -> str:
     parts: list[str] = []
     if kind == "role_goal_benefit":
         parts.append(
-            f"<p><strong>{html.escape(lab['as'])}</strong> {inline(c['actor'])}, "
-            f"<strong>{html.escape(lab['want'])}</strong> {inline(c['want'])}, "
-            f"<strong>{html.escape(lab['so'])}</strong> {inline(c['benefit'])}.</p>"
+            f"<p><strong>{html.escape(lab['as'])}</strong> {inline(_strip_label(c['actor'], lab['as']))}, "
+            f"<strong>{html.escape(lab['want'])}</strong> {inline(_strip_label(c['want'], lab['want']))}, "
+            f"<strong>{html.escape(lab['so'])}</strong> {inline(_strip_label(c['benefit'], lab['so']))}.</p>"
         )
         rest: tuple[str, ...] = ("context", "notes")
     elif kind == "job_story":
+        situation = inline(_strip_label(c["situation"], lab["when"]))
+        motivation = inline(_strip_label(c["motivation"], lab["job_want"]))
+        outcome = inline(_strip_label(c["outcome"], lab["so_that"]))
         parts.append(
-            f"<p><strong>{html.escape(lab['when'])}</strong> {inline(c['situation'])}, "
-            f"<strong>{html.escape(lab['job_want'])}</strong> {inline(c['motivation'])}, "
-            f"<strong>{html.escape(lab['so_that'])}</strong> {inline(c['outcome'])}.</p>"
+            f"<p><strong>{html.escape(lab['when'])}</strong> {situation}, "
+            f"<strong>{html.escape(lab['job_want'])}</strong> {motivation}, "
+            f"<strong>{html.escape(lab['so_that'])}</strong> {outcome}.</p>"
         )
         rest = ("context", "notes")
     else:

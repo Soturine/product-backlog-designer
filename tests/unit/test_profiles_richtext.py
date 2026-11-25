@@ -153,3 +153,29 @@ def test_criteria_styles_render_same_meaning() -> None:
         criterion_sentence(CRITS[0])
         == "canteiro livre, membro solicita: reserva criada; canteiro indisponível"
     )
+
+
+def test_duplicated_prefixes_are_not_repeated() -> None:
+    """Regression (dogfood c10/c09): agent text that already starts with the label is not prefixed twice."""
+    job = description_html(
+        {
+            "kind": "job_story",
+            "situation": "Quando um pedido fica sem resposta",
+            "motivation": "quero que ele seja cancelado",
+            "outcome": "para que o item volte.",
+        },
+        "pt-BR",
+    )
+    assert "Quando</strong> um pedido" in job and "Quando Quando" not in job
+    assert "quero</strong> que ele" in job and "quero quero" not in job
+    assert "para que</strong> o item volte." in job
+    story = description_html(
+        {
+            "kind": "role_goal_benefit",
+            "actor": "Eu como membro",
+            "want": "reservar",
+            "benefit": "para cultivar",
+        },
+        "pt-BR",
+    )
+    assert "<strong>Eu como</strong> membro," in story and "<strong>para</strong> cultivar." in story
