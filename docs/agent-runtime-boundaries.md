@@ -26,3 +26,17 @@ Not changed on purpose: no OCR, converters or document interpreters were added; 
 
 ## Measurements
 See [evidence M3–M6](evidence/M3-M6.md#native-first-and-boundary-audit-measurements): measured before/after on the same synthetic fixtures; agent-side token and time costs are only reported when the host exposes them.
+
+## Selective QE knowledge transfer (2026-11-25)
+
+The current native-first reader and independent reviewer already own the reading/design boundary. Do not introduce QE's extraction pipeline, project model, semantic provider or test generator. Extend the existing method only where evidence changes a backlog decision.
+
+- Source identity, read integrity, authority, freshness, confidence and importance are separate. Inventory and verified quotes do not prove that all visual content was understood or that a proposed story follows from it. Use original host-native reading where possible; use extracted text for exact citation verification and disclosed fallback. Prefer on-demand extraction if a later measured change preserves existing gate integrity.
+- Distinguish obligations from proposed improvements and risk hypotheses. A credible risk may justify a proposed work item or question; it does not create a mandatory acceptance criterion. Preserve conflicting claims and record who can resolve them. Never promote current implementation, historic backlog or model confidence into contract.
+- For existing/reused backlog, keep source identity, revision, relationships and prior history; review destination assumptions, dependencies, actor permissions and acceptance criteria before claiming reuse. Propose deltas without deleting or silently rewriting history. A stale source invalidates dependent conclusions until reviewed.
+- Treat project model concepts (actor vs auth role, state/transition/guard, interfaces, side effects, invariant) as optional semantic lenses rather than a second mandatory schema or template. Use the project's existing vocabulary. Do not turn the PBD into a functional test generator; handoff remains context/seeds and FTD independently reads its authority.
+- Measure atomic obligation/criterion coverage separately from work-item volume, missing-source errors, unsupported acceptance criteria, duplicate/redundant proposals and independent-review accuracy. Report unknowns and per-source limitations; never turn a gate pass into proof of semantic completeness.
+
+Qualification candidates (NOT_RUN): source with diagram-only obligation; equivalent paraphrases; conflicting authority vs implementation; reused story with changed target role; stale source invalidating a criterion; high-risk scenario with no normative threshold. Compare against independent gold; retain existing G01–G18 semantics, do not invent additional mechanical gates or claim current gates prove these cases.
+
+Concepts adapted from [QE Trust Model](https://github.com/Soturine/qe-engineering-skill/blob/main/docs/TRUST_MODEL.md), [Project Model](https://github.com/Soturine/qe-engineering-skill/blob/main/docs/PROJECT_MODEL.md), [Oracle Policy](https://github.com/Soturine/qe-engineering-skill/blob/main/docs/ORACLE_POLICY.md) and [Existing Asset Audit](https://github.com/Soturine/qe-engineering-skill/blob/main/docs/EXISTING_ASSET_AUDIT_POLICY.md). External reference: [Agent Skills specification](https://agentskills.io/specification) and [Anthropic effective agents](https://www.anthropic.com/research/building-effective-agents). Documentation and agent guidance only; no runtime changes.
