@@ -43,8 +43,18 @@ def add_parser(sub: Any, func: Any) -> None:
     p.add_argument("--receipt")
     p.add_argument("--transport", choices=["mock"], default="mock", help="only the in-memory mock exists")
     p.add_argument("--mock-state", help="local JSON file holding the mock target")
+    p.add_argument("--language", default="en", help="interface language of publication-report.html")
     p.add_argument("--out", required=True)
     p.set_defaults(func=func)
+
+
+def _report(out: Path, plan: dict[str, Any], receipt: dict[str, Any] | None, language: str) -> None:
+    from pbd import __version__
+    from pbd.persistence.atomic import atomic_write_bytes
+    from pbd.render.report_html import render_publication_report
+
+    html = render_publication_report(publish.preview(plan), receipt, __version__, language)
+    atomic_write_bytes(out / "publication-report.html", html.encode("utf-8"))
 
 
 def _need(args: argparse.Namespace, *names: str) -> None:
@@ -75,6 +85,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         atomic_write_json(out / "publication-plan.json", plan)
         prev = publish.preview(plan)
         atomic_write_json(out / "publication-preview.json", prev)
+        _report(out, plan, None, args.language)
         return {"plan_digest": plan["plan_digest"], "counts": prev["counts"], "approved": False}
     if args.action == "approve":
         _need(args, "plan", "target", "by")
@@ -92,12 +103,14 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         )
         fake.save(Path(args.mock_state))
         atomic_write_json(out / "publication-receipt.json", receipt)
+        _report(out, plan, receipt, args.language)
         return {"results": [r["outcome"] for r in receipt["results"]], "transport": "mock"}
     _need(args, "receipt", "package")
     verified = publish.verify(plan, load_json_file(Path(args.receipt)), fake)
     atomic_write_json(out / "publication-receipt.verified.json", verified)
     state = publish.published_state(plan, verified, load_json_file(Path(args.package)), fake)
     atomic_write_json(out / "published-state.json", state)
+    _report(out, plan, verified, args.language)
     return {"verification": verified["verification"], "transport": "mock"}
 
 

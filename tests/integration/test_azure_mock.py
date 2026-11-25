@@ -350,6 +350,8 @@ def test_cli_mock_round_trip(artifacts: Any, tmp_path: Path, capsys: pytest.Capt
     capsys.readouterr()
     verified = json.loads((tmp_path / "o" / "publication-receipt.verified.json").read_text(encoding="utf-8"))
     assert verified["verification"]["status"] == "MOCK_VERIFIED" and verified["transport"] == "mock"
+    page = (tmp_path / "o" / "publication-report.html").read_text(encoding="utf-8")
+    assert "Applied (mock)" in page and "Verified on the mock" in page and "PBD never deletes" in page
     with pytest.raises(SystemExit):
         main(["azure", "apply", "--plan", approved, "--transport", "live", "--mock-state", "x", "--out", out])
 

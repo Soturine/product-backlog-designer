@@ -165,6 +165,14 @@ def _claim_link(key: str) -> str:
     return f'<a href="#claim-{_e(key)}" class="mono">{_e(key)}</a>'
 
 
+def _ul(inner: str) -> str:
+    return f'<ul class="plain">{inner}</ul>' if inner else "—"
+
+
+def _en_p(text: Any) -> str:
+    return f'<p lang="en" class="d">{_e(text)}</p>' if text else ""
+
+
 def _en_li(text: str) -> str:
     """Runtime limitation messages are English data; mark them so assistive tech reads them right."""
     return f'<li lang="en">{_e(text)}</li>'
@@ -1403,3 +1411,84 @@ def render_comparison_report(
 def criteria_preview(crits: list[dict[str, Any]], style: str, language: str) -> str:
     """Native rendering of a work item's criteria (as written to the tracker field)."""
     return sanitize_html(criteria_html(crits, style, language))
+
+
+# ------------------------------------------------------------------------------------ publication
+ACTION_TONE = {
+    "CREATE": "info",
+    "UPDATE": "warn",
+    "UNCHANGED": "neutral",
+    "CONFLICT": "fail",
+    "DEFERRED": "neutral",
+}
+OUTCOME_TONE = {
+    "APPLIED": "pass",
+    "UNCHANGED": "neutral",
+    "FAILED": "fail",
+    "PARTIAL": "warn",
+    "AMBIGUOUS": "fail",
+    "SKIPPED": "neutral",
+}
+
+
+def render_publication_report(
+    preview: dict[str, Any], receipt: dict[str, Any] | None, version: str, ui_locale: str = "en"
+) -> str:
+    """Plan preview plus (optional) simulated results and read-back, in the shared report shell."""
+    r = R(resolve_locale(ui_locale))
+    results = {x["op_id"]: x for x in (receipt or {}).get("results", [])}
+    rows = []
+    for o in preview["operations"]:
+        res = results.get(o["op_id"])
+        fields = "".join(
+            f'<li><span class="fref">{_e(k)}</span> <div class="rich">{sanitize_html(str(v))}</div></li>'
+            for k, v in (o.get("values") or {}).items()
+        )
+        rows.append(
+            f'<tr data-row data-action="{_e(o["action"])}"><td class="mono">{_e(o["pbd_id"])}</td>'
+            f"<td>{r.pill('action', o['action'], ACTION_TONE.get(o['action'], 'neutral'))}</td>"
+            f'<td class="mono">{_e(o.get("remote_id") or (res or {}).get("external_ref", {}).get("native_id") or "—")}</td>'
+            f"<td>{_ul(fields)}{_en_p(o.get('reason'))}</td>"
+            f"<td>{r.pill('outcome', res['outcome'], OUTCOME_TONE.get(res['outcome'], 'neutral')) if res else '—'}"
+            f"{_en_p((res or {}).get('detail'))}</td></tr>"
+        )
+    actions = sorted({o["action"] for o in preview["operations"]})
+    counts = " · ".join(f"{r.t.enum('action', k)}: {v}" for k, v in preview["counts"].items())
+    ver = (receipt or {}).get("verification") or {}
+    ver_html = (
+        f"<p>{r.pill('verification', ver.get('status', 'NOT_RUN'), 'pass' if ver.get('status') == 'MOCK_VERIFIED' else 'warn')}</p>"
+        + "".join(f'<p lang="en" class="d">{_e(x)}</p>' for x in ver.get("deviations", []))
+        if receipt
+        else f'<p class="d">{r.T("pub.no_receipt")}</p>'
+    )
+    body = (
+        f'<div class="banner tone-warn">{icon("lock")}{r.T("pub.d")}</div>'
+        f'<dl class="kv"><dt>{r.T("pub.target")}</dt><dd><code>{_e(preview["target"]["namespace"])}</code></dd>'
+        f"<dt>{r.T('col.key')}</dt><dd><code>{_e(preview['plan_digest'])}</code></dd>"
+        f"<dt>{r.T('pub.operations')}</dt><dd>{_e(counts)} — {r.T('pub.deletes')}</dd>"
+        f"<dt>{r.T('pub.verification')}</dt><dd>{ver_html}</dd></dl>"
+        f'<section class="block"><div class="panel"><div class="toolbar">'
+        f"{_filter_select(r, 'pub-table', 'action', 'col.action', [(a, _e(r.t.enum('action', a))) for a in actions], 'pub-action')}</div>"
+        f'<div class="tablewrap"><table class="grid" id="pub-table"><thead><tr><th>{r.T("col.id")}</th><th>{r.T("col.action")}</th>'
+        f"<th>{r.T('pub.remote_id')}</th><th>{r.T('col.fields')}</th><th>{r.T('col.outcome')}</th></tr></thead>"
+        f"<tbody>{''.join(rows)}</tbody></table></div></div></section>"
+    )
+    view = _view("overview", r, "pub.title", None, body)
+    data = _data(
+        r, {"preview": preview, "receipt": receipt}, "canonical", "publication.json", "actions.download_json"
+    )
+    entries = [
+        ("overview", "pub.operations", "package", len(preview["operations"])),
+        ("data", "nav.data", "code", None),
+    ]
+    return _page(
+        r,
+        title=r.t("pub.title"),
+        mode="publish",
+        subtitle=f"{r.T('pub.target')} <code>{_e(preview['target']['namespace'])}</code>",
+        content_lang=ui_locale,
+        nav=_nav(r, entries),
+        views=view + data,
+        version=version,
+        synthetic=False,
+    )
