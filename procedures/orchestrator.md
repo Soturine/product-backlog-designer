@@ -44,3 +44,5 @@ Start a reviewer that did NOT design the backlog ([reviewer.md](reviewer.md)). I
 
 ## 7. Finalize and answer
 `pbd finalize --out <root>`, then tell the user: path of `output/report.html`, counts, gates that FAIL/BLOCKED/NOT_RUN and why, open questions and limitations. Never claim publication, approval, live validation or a passing gate the report does not show.
+
+Write every payload as UTF-8 (for example `open(path, 'w', encoding='utf-8')` or your file-writing tool); avoid shell heredocs for large JSON.

@@ -28,3 +28,5 @@ You read ONE source assignment and catalog what it says. You do not design work 
                  "quote": "Payments are not part"}]}
 ```
 Categories: functional, nonfunctional, integration, operational, security, data, accessibility, error, constraint, out_of_scope, other. Modality: must, should, may, must_not, informative. Uncertainty: confirmed, ambiguous, conflicting, unknown (there is no "proposed" or "inferred": readers record what the source states; an inference belongs in `ambiguities`, not in `obligations`).
+
+Write every payload as UTF-8 (for example `open(path, 'w', encoding='utf-8')` or your file-writing tool); avoid shell heredocs for large JSON.

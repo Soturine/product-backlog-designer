@@ -223,6 +223,19 @@
     "tests/pipeline/test_native_first.py"
    ],
    "state": "deferred_final_qualification"
+  },
+  {
+   "id": "QL-018",
+   "origin": "final qualification (F1, c06)",
+   "milestone": "final",
+   "severity": "low",
+   "issue": "Agents on Windows wrote payloads in cp1252 and got a raw codec error; three runs needed a retry.",
+   "evidence": "benchmarks/runs/final (agents log)",
+   "resolution": "Payloads stay UTF-8 only (fail closed); the error now states the offending byte, offset and how to save as UTF-8, and every procedure tells agents to write UTF-8 without shell heredocs.",
+   "tests": [
+    "tests/unit/test_canonical_utf8.py"
+   ],
+   "state": "fixed_pending_requalification"
   }
  ]
 }

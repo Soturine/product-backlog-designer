@@ -57,3 +57,5 @@ A conjunction is not automatically two stories; a valid nonstandard format need 
 ```
 
 Allowed values: `verdict` pass/concern/fail (concern and fail need `notes`); `source_support` supported/proposal_justified/unsupported; INVEST `rating` supported/concern/unknown/not_applicable; `task_sufficiency` sufficient/insufficient/not_applicable; `duplicates[].assessment` duplicate/distinct/overlap; finding `review_status` candidate/confirmed; `covered_by` lists only design item/criterion keys and `matched_claims` only claim keys.
+
+Write every payload as UTF-8 (for example `open(path, 'w', encoding='utf-8')` or your file-writing tool); avoid shell heredocs for large JSON.

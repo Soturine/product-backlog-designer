@@ -94,7 +94,14 @@ def loads_strict(data: bytes | str) -> Any:
     if isinstance(data, bytes):
         if data.startswith(b"\xef\xbb\xbf"):
             data = data[3:]
-        text = data.decode("utf-8")
+        try:
+            text = data.decode("utf-8")
+        except UnicodeDecodeError as exc:
+            # fail closed (guessing cp1252 could silently alter quotes) but say how to fix it
+            raise CanonicalError(
+                f"payload is not UTF-8 (byte 0x{data[exc.start]:02x} at offset {exc.start}; Windows tools "
+                "often write cp1252): save the file as UTF-8, e.g. open(path, 'w', encoding='utf-8')"
+            ) from exc
     else:
         text = data
     return json.loads(text, object_pairs_hook=_reject_duplicates, parse_constant=_reject_constant)
