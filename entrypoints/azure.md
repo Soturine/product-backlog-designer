@@ -1,7 +1,5 @@
 # /pbd-azure
 
-Design-stage agent procedure; the runtime CLI is not implemented. Follow [SKILL](../SKILL.md), [commands](../docs/commands.md) and [quality gates](../docs/quality-gates.md).
+**Mock only.** This build has no live transport: nothing authenticates to, reads from or writes to a real Azure DevOps organization, not even read-only or validateOnly. Inputs are local files the owner exported and authorized; the target is an in-memory mock saved to a local JSON file. A mock result never proves a live target.
 
-Map canonical backlog to discovered destination types and fields. Render native rich text, validate allowed values and relations; output local package, preview, unresolved mappings and manifest. No remote mutation.
-
-Follow [Azure safety protocol](../docs/azure.md). Use only authorized inputs and disclose unexecuted checks.
+Generation with `--formats azure` writes `output/azure/azure-import.json` (native fields, HTML description and acceptance kept separate, JSON Patch, proposed values never written) and a CSV subset with declared loss of fidelity. The publication workflow over that package is described in [/pbd-azure-publish](azure-publish.md); snapshots in [/pbd-azure-export](azure-export.md); read-back in [/pbd-azure-verify](azure-verify.md). Safety protocol: [docs/azure.md](../docs/azure.md).

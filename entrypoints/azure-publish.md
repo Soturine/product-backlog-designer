@@ -1,7 +1,7 @@
 # /pbd-azure-publish
 
-Design-stage agent procedure; the runtime CLI is not implemented. Follow [SKILL](../SKILL.md), [commands](../docs/commands.md) and [quality gates](../docs/quality-gates.md).
+**Mock only.** This build has no live transport: nothing authenticates to, reads from or writes to a real Azure DevOps organization, not even read-only or validateOnly. Inputs are local files the owner exported and authorized; the target is an in-memory mock saved to a local JSON file. A mock result never proves a live target.
 
-Prepare: freeze snapshot and compute exact operations, plan hash, revision preconditions and preview. Apply: require explicit approval of exact hash and target; use revision checks, journal, reconcile ambiguous creates, halt conflicts. No automatic deletion. Report actual operations and verification; never claim success without read-back.
-
-Follow [Azure safety protocol](../docs/azure.md). Use only authorized inputs and disclose unexecuted checks.
+1. `pbd azure prepare --backlog backlog.json --package azure-import.json --snapshot export.json --target O/P [--published published-state.json] --out dir` → `publication-plan.json` + `publication-preview.json`. Operations: CREATE, UPDATE (bound to the snapshot revision), UNCHANGED, CONFLICT (ambiguous identity, type change, re-parenting, forbidden fields, human edits since the last publication), DEFERRED (incomplete snapshot or parent not available). Identity is the `pbd-id:<ID>` tag, never the title. There is no DELETE.
+2. Show the preview to the owner. Only on their decision: `pbd azure approve --plan dir/publication-plan.json --target O/P --by <name> --out dir` binds the exact plan digest, target, approver and time.
+3. `pbd azure apply --plan dir/publication-plan.approved.json --mock-state mock.json --out dir` applies through the default-deny authority on the mock only, with a write-ahead journal: resumable and idempotent, ambiguous creates reconciled by identity before retrying, bounded retries for 429/5xx/timeouts, stop on 401/403, revision conflicts fail without overwriting, a failed parent link is PARTIAL. Nothing is deleted or reverted automatically; created items are listed for a person to review if compensation is needed.

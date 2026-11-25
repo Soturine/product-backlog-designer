@@ -1,4 +1,18 @@
-# Azure DevOps adapter (planned)
+# Azure DevOps integration
+
+## Implemented in M3 (mock only)
+| Capability | Where | State |
+|---|---|---|
+| Local snapshot import (pages, revisions, relations, truncation, unavailable vs absent) | `pbd azure snapshot`, `integrations/azure/snapshot.py` | implemented, tested |
+| Discovered profile from snapshot metadata (process, types, required fields, allowed values, read-only) | same | implemented, tested |
+| Batches of at most 200 for read-back | `snapshot.batches` | implemented, tested |
+| prepare → preview → approve → apply → verify | `pbd azure ...`, `integrations/azure/publish.py` | implemented on an in-memory mock only |
+| Journal, idempotent resume, reconciliation of lost responses, bounded retries | `publish.apply` | tested with injected 401/403/404/412/429/5xx, timeouts, incomplete responses, lost responses, parent-link failures |
+| Human edits since the last publication become CONFLICT | `published-state.json` | tested |
+| Live transport | — | **does not exist**; `LIVE_TRANSPORT_AVAILABLE = False`; G17/G18 remain BLOCKED/NOT_RUN |
+
+The rest of this page is the protocol a future, separately authorized live adapter must follow.
+
 
 Primary transport REST API; Azure CLI/Azure Identity for credentials, MCP as optional interactive adapter. Never embed tokens. Discover organization/project GUID, team, process, work item types, fields, required rules, allowed values, relation types, areas, iterations, dates, team capacity and backlog levels. See [official REST API](https://learn.microsoft.com/en-us/rest/api/azure/devops/) and [MCP](https://github.com/microsoft/azure-devops-mcp).
 

@@ -359,6 +359,17 @@ def cmd_refine(args: argparse.Namespace) -> int:
         return EXIT_REFUSED
 
 
+def cmd_azure(args: argparse.Namespace) -> int:
+    from pbd.integrations.azure import cli as azure_cli
+
+    try:
+        _emit(azure_cli.run(args))
+    except (ValueError, PermissionError, OSError, CanonicalError, KeyError) as exc:
+        _emit({"accepted": False, "errors": azure_cli.errors_of(exc)})
+        return EXIT_REFUSED
+    return EXIT_OK
+
+
 def cmd_skill(args: argparse.Namespace) -> int:
     from pbd.core.install import InstallError, install, target_dir
 
@@ -484,6 +495,10 @@ def build_parser() -> argparse.ArgumentParser:
         help="agent spending profile recorded in the work order (default balanced)",
     )
     p.set_defaults(func=cmd_start)
+
+    from pbd.integrations.azure.cli import add_parser as add_azure
+
+    add_azure(sub, cmd_azure)
 
     p = sub.add_parser("check", help="structural health of a backlog file (no sources: structure only)")
     p.add_argument("backlog")

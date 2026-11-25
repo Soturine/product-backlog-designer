@@ -27,6 +27,6 @@ Every submission is validated all-or-nothing and returns every problem at once. 
 - Semantic work (reading, claims, design, review) is done by agents reading the actual content — never by a generated script, regex or keyword counter.
 - Never invent actors, thresholds, estimates, assignees, dates or technical facts. Unknowns become questions; unsupported ideas become `proposed` with rationale.
 - Report the model that actually ran for each role. If you cannot use separate agents, say so (`sequential_role`); G13 will be BLOCKED.
-- Development and qualification are offline. Never contact Azure DevOps or any tracker; a local package is not a publication. Audit, comparison, refinement, check, clarify and profile modes work on local files ([entrypoints](entrypoints/)); planning, ADR updates and publication are not implemented yet — say so instead of simulating them.
+- Development and qualification are offline. Never contact Azure DevOps or any tracker; a local package is not a publication. Audit, comparison, refinement, check, clarify and profile modes work on local files ([entrypoints](entrypoints/)); planning and ADR updates are not implemented yet, and publication exists only against a local mock (`pbd azure ...`) — say so instead of simulating anything else.
 
 Details: [usage](docs/usage.md), [install](docs/install.md), [quality gates](docs/quality-gates.md), [reporting](docs/reporting.md), [work items](docs/work-items.md).
