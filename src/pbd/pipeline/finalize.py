@@ -181,6 +181,7 @@ def _checks(
         for i in backlog["items"]
         if native_type(profile, i["type"]) is None
     ]
+    g13 = _independence_evidence(run)
     return {
         "run_id": run.run_id,
         "validator_version": __version__,
@@ -197,10 +198,38 @@ def _checks(
         "G08": deps,
         "G11": integrity,
         "G15": change,
+        "G13": g13,
         "G16": privacy,
         "G17": compat,
         "artifact_digests": {k: bytes_digest(v) for k, v in sorted(rendered.items())},
     }
+
+
+def _independence_evidence(run: Run) -> list[str]:
+    """Deterministic evidence for G13 beyond the reviewer's own declaration."""
+    review = run.read("stages/review.json")
+    reviewer = str(review["reviewer"].get("agent"))
+    problems = []
+    builders = {
+        str(run.read("stages/design.json").get("designer", {}).get("agent")),
+        str(run.read("stages/claims.json").get("orchestrator", {}).get("agent")),
+    }
+    for src in run.inventory()["sources"]:
+        ledger = run.read(f"stages/reading/{src['id']}.json")
+        builders.add(str(ledger["reader"].get("agent")))
+        if ledger.get("obligations"):
+            cited = [
+                o
+                for o in review.get("independent_obligations", [])
+                if o.get("locator", {}).get("source_id") == src["id"]
+            ]
+            if not cited:
+                problems.append(
+                    f"reviewer inventory has no verified obligation from source {src['selector']}"
+                )
+    if reviewer in builders:
+        problems.append(f"reviewer {reviewer} also acted as reader, orchestrator or designer")
+    return problems
 
 
 def _metrics(

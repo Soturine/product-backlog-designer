@@ -230,13 +230,16 @@ def compute_gates(
         )
     elif total != len(items) + len(backlog["criteria"]) or not obligations:
         put("G13", "FAIL", "review does not cover every item and criterion", [rev])
+    elif checks["G13"]:
+        put("G13", "FAIL", "; ".join(checks["G13"]), [det, rev])
     else:
         put(
             "G13",
             "PASS",
-            f"separate reviewer re-read sources ({len(obligations)} obligations) and judged "
-            f"{total} items/criteria",
-            [rev],
+            f"reviewer distinct from every reader, orchestrator and designer; own verified-quote inventory "
+            f"({len(obligations)} obligations) cites every source that yielded obligations; judged {total} "
+            "items/criteria. Agent identities are self-reported by the host.",
+            [det, rev],
         )
     dups = [d for d in review.get("duplicates", []) if d["assessment"] == "duplicate"]
     put(

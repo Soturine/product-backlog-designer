@@ -265,3 +265,32 @@ def test_cli_drives_the_pipeline(tmp_path: Path, capsys: pytest.CaptureFixture[s
     capsys.readouterr()
     assert main(["finalize", "--out", out]) == 0
     assert json.loads(capsys.readouterr().out)["finalized"] is True
+
+
+def _g13(run: Run) -> dict[str, Any]:
+    gates = json.loads(run.path("output/gates.json").read_text(encoding="utf-8"))
+    return next(g for g in gates["gates"] if g["id"] == "G13")
+
+
+def test_g13_fails_when_reviewer_was_a_reader(run: Run) -> None:
+    submit_review(run, review_payload(run, agent="reader-prd"))
+    finalize(run)
+    g13 = _g13(run)
+    assert g13["status"] == "FAIL" and "also acted as reader" in g13["reason"]
+
+
+def test_g13_fails_when_reviewer_skipped_a_source(run: Run) -> None:
+    payload = review_payload(run)
+    payload["independent_obligations"] = [o for o in payload["independent_obligations"] if o["key"] != "O5"]
+    submit_review(run, payload)
+    finalize(run)
+    g13 = _g13(run)
+    assert g13["status"] == "FAIL" and "no verified obligation from source decisoes" in g13["reason"]
+
+
+def test_g13_pass_cites_deterministic_evidence(run: Run) -> None:
+    submit_review(run, review_payload(run))
+    finalize(run)
+    g13 = _g13(run)
+    assert g13["status"] == "PASS" and g13["verification"] == "verified"
+    assert {e["type"] for e in g13["evidence"]} == {"deterministic_check", "review"}
