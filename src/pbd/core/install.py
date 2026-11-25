@@ -35,7 +35,10 @@ def skill_source_root() -> Path:
     for parent in here.parents:
         if (parent / "SKILL.md").is_file() and (parent / "procedures").is_dir():
             return parent
-    raise InstallError("SKILL.md not found next to the runtime; install from a repository checkout")
+    packaged = Path(__file__).resolve().parents[1] / "skill_assets"
+    if (packaged / "SKILL.md").is_file() and (packaged / "procedures").is_dir():
+        return packaged  # wheel/sdist install: skill assets shipped with the package
+    raise InstallError("skill assets not found (neither a checkout nor packaged skill_assets)")
 
 
 def target_dir(scope: str, project: Path | None = None, home: Path | None = None) -> Path:

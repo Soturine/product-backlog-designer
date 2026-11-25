@@ -47,3 +47,26 @@ def test_cli_skill_install(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -
     out = json.loads(capsys.readouterr().out)
     assert Path(out["installed"]).name == "product-backlog-designer"
     assert main(["skill", "install", "--scope", "project", "--project", str(tmp_path)]) == 3
+
+
+def test_packaged_skill_assets_in_sync_with_repository() -> None:
+    """Drift guard: run tools/sync_skill_assets.py after editing SKILL.md, procedures, entrypoints or docs."""
+    from tools.sync_skill_assets import current, expected
+
+    assert current() == expected()
+
+
+def test_install_from_packaged_assets_without_checkout(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Regression (ledger QL-006): wheel installs have no checkout around the runtime."""
+    import pbd.core.install as inst
+
+    packaged = Path(inst.__file__).resolve().parents[1] / "skill_assets"
+    monkeypatch.setattr(inst, "skill_source_root", lambda: packaged)
+    copied = inst.install(tmp_path / "skill")
+    assert (
+        "SKILL.md" in copied
+        and "procedures" in copied
+        and (tmp_path / "skill" / "procedures" / "reader.md").is_file()
+    )

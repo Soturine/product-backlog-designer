@@ -8,7 +8,7 @@ from pathlib import Path
 from tests.conftest import REPO_ROOT
 
 LINK = re.compile(r"\[[^\]]*\]\(([^)\s]+)\)")
-SKIP_PARTS = {".git", ".venv", ".pbd", "node_modules", ".pytest_cache", ".hypothesis"}
+SKIP_PARTS = {".git", ".venv", ".pbd", "node_modules", ".pytest_cache", ".hypothesis", "skill_assets"}
 
 
 def markdown_files() -> list[Path]:

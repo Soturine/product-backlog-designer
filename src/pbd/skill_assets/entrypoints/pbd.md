@@ -1,0 +1,3 @@
+# /pbd
+
+Umbrella entrypoint; ordinary language is equally valid. Follow [SKILL](../SKILL.md) and [orchestrator procedure](../procedures/orchestrator.md): resolve intent and explicitly selected sources, run `pbd start`, coordinate one reader per source, reconcile claims, design, obtain an independent review, `pbd finalize`, then report the result with failing/blocked gates, questions and limitations. Generation is implemented; audit, compare, refine, planning, ADR and publication are not yet — say so instead of simulating. Never contact a tracker.

@@ -23,7 +23,8 @@ pbd = "pbd.cli:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-pbd = ["schemas/v1/*.json", "profiles/*.json"]
+pbd = ["schemas/v1/*.json", "profiles/*.json", "skill_assets/*.md", "skill_assets/procedures/*.md",
+       "skill_assets/entrypoints/*.md", "skill_assets/docs/*.md"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

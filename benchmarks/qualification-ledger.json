@@ -3,51 +3,133 @@
  "description": "Single ledger of open qualification items. States: open, fixed_pending_requalification, closed, blocked_environment, deferred_final_qualification. Closing an item requires the listed evidence; deferred semantic qualification is never an approval.",
  "policy": "Owner directive (2026-11-25): M2-M6 are implemented with the main agent only and local deterministic qualification; multi-agent/semantic requalification happens once, in the final integrated qualification.",
  "items": [
-  {"id": "QL-001", "origin": "M1 dogfood c02/c04/c05/c06", "milestone": "M2", "severity": "high",
+  {
+   "id": "QL-001",
+   "origin": "M1 dogfood c02/c04/c05/c06",
+   "milestone": "M2",
+   "severity": "high",
    "issue": "Generators confirmed one reading of an ambiguous rule (4 medium inventions).",
    "evidence": "docs/evidence/M1.md#gold-evaluation-results",
    "resolution": "Design contract rejects confirmed criteria/fields that trace only ambiguous, conflicting or unknown claims; designer and reviewer procedures require alternatives or questions.",
-   "tests": ["tests/pipeline/test_m1_fixes.py"], "state": "fixed_pending_requalification"},
-  {"id": "QL-002", "origin": "M1 dogfood c04", "milestone": "M2", "severity": "high",
+   "tests": [
+    "tests/pipeline/test_m1_fixes.py"
+   ],
+   "state": "fixed_pending_requalification"
+  },
+  {
+   "id": "QL-002",
+   "origin": "M1 dogfood c04",
+   "milestone": "M2",
+   "severity": "high",
    "issue": "Critical obligation represented only in a Feature rule, not verifiable (critical recall 7/8).",
    "evidence": "benchmarks/runs/m1/c04-code-tech/evaluation.json",
    "resolution": "Deterministic signal for effective claims covered only by epics/features when acceptance is requested, surfaced in checks, report and to the reviewer; reviewer procedure checks verifiable representation.",
-   "tests": ["tests/pipeline/test_m1_fixes.py"], "state": "fixed_pending_requalification"},
-  {"id": "QL-003", "origin": "M1 dogfood c06", "milestone": "M2", "severity": "medium",
+   "tests": [
+    "tests/pipeline/test_m1_fixes.py"
+   ],
+   "state": "fixed_pending_requalification"
+  },
+  {
+   "id": "QL-003",
+   "origin": "M1 dogfood c06",
+   "milestone": "M2",
+   "severity": "medium",
    "issue": "Task to remove a superseded mechanism without evidence that it exists (borderline trap). Original result preserved; adjudication separate.",
    "evidence": "benchmarks/runs/m1/c06-adr-supersession/evaluation.json",
    "resolution": "Designer procedure: removal/migration work for superseded behavior requires implementation evidence of that behavior, otherwise a question; reviewer checks it.",
-   "tests": ["tests/unit/test_procedures.py"], "state": "fixed_pending_requalification"},
-  {"id": "QL-004", "origin": "M1 dogfood c09/c10/c08", "milestone": "M2", "severity": "medium",
+   "tests": [
+    "tests/unit/test_procedures.py"
+   ],
+   "state": "fixed_pending_requalification"
+  },
+  {
+   "id": "QL-004",
+   "origin": "M1 dogfood c09/c10/c08",
+   "milestone": "M2",
+   "severity": "medium",
    "issue": "Criterion references by visible IDs that do not resolve; duplicated connector words ('que que').",
    "evidence": "benchmarks/runs/m1/c08-insufficient-tech/review.json",
    "resolution": "Design contract rejects visible-ID references in text (keys required); renderer strips any trailing part of a prefix the agent repeated.",
-   "tests": ["tests/pipeline/test_m1_fixes.py", "tests/unit/test_profiles_richtext.py"], "state": "fixed_pending_requalification"},
-  {"id": "QL-005", "origin": "M1 dogfood c12", "milestone": "M2", "severity": "medium",
+   "tests": [
+    "tests/pipeline/test_m1_fixes.py",
+    "tests/unit/test_profiles_richtext.py"
+   ],
+   "state": "fixed_pending_requalification"
+  },
+  {
+   "id": "QL-005",
+   "origin": "M1 dogfood c12",
+   "milestone": "M2",
+   "severity": "medium",
    "issue": "Sourced priority column not carried as a confirmed field.",
    "evidence": "benchmarks/runs/m1/c12-xlsx-source/review.json",
    "resolution": "Reader procedure catalogs field values stated by sources (priority, estimates) as data obligations; designer records them as confirmed fields citing claims.",
-   "tests": ["tests/unit/test_procedures.py"], "state": "fixed_pending_requalification"},
-  {"id": "QL-006", "origin": "M1 limitation", "milestone": "M2", "severity": "medium",
+   "tests": [
+    "tests/unit/test_procedures.py"
+   ],
+   "state": "fixed_pending_requalification"
+  },
+  {
+   "id": "QL-006",
+   "origin": "M1 limitation",
+   "milestone": "M2",
+   "severity": "medium",
    "issue": "pbd skill install works only from a checkout; skill assets missing from the wheel.",
-   "evidence": "docs/evidence/M1.md", "resolution": "Package skill assets with a drift test and a wheel content test.",
-   "tests": ["tests/unit/test_skill_install.py"], "state": "open"},
-  {"id": "QL-007", "origin": "M1 open item", "milestone": "final", "severity": "high",
+   "evidence": "docs/evidence/M1.md",
+   "resolution": "Package skill assets with a drift test and a wheel content test.",
+   "tests": [
+    "tests/unit/test_skill_install.py"
+   ],
+   "state": "closed",
+   "closed_by": "wheel built and installed in a clean venv; pbd skill install produced SKILL.md, procedures, entrypoints and docs outside any checkout; drift and wheel tests added"
+  },
+  {
+   "id": "QL-007",
+   "origin": "M1 open item",
+   "milestone": "final",
+   "severity": "high",
    "issue": "No end-to-end run of the installed skill in a new host session driven only by natural language.",
-   "evidence": "docs/evidence/M1.md#m1-exit-assessment", "resolution": "Final integrated qualification.",
-   "tests": [], "state": "deferred_final_qualification"},
-  {"id": "QL-008", "origin": "M1 environment", "milestone": "final", "severity": "low",
+   "evidence": "docs/evidence/M1.md#m1-exit-assessment",
+   "resolution": "Final integrated qualification.",
+   "tests": [],
+   "state": "deferred_final_qualification"
+  },
+  {
+   "id": "QL-008",
+   "origin": "M1 environment",
+   "milestone": "final",
+   "severity": "low",
    "issue": "Linux symlink tests not executed: WSL Python lacks venv/pip.",
-   "evidence": "docs/evidence/M1.md", "resolution": "Owner installs python3-venv in WSL, or another Linux host is provided.",
-   "tests": ["tests/security/test_scope.py"], "state": "blocked_environment"},
-  {"id": "QL-009", "origin": "M1 environment", "milestone": "final", "severity": "low",
+   "evidence": "docs/evidence/M1.md",
+   "resolution": "Owner installs python3-venv in WSL, or another Linux host is provided.",
+   "tests": [
+    "tests/security/test_scope.py"
+   ],
+   "state": "blocked_environment"
+  },
+  {
+   "id": "QL-009",
+   "origin": "M1 environment",
+   "milestone": "final",
+   "severity": "low",
    "issue": "Visual reading of PDF pages unavailable on this host (agent file reader lacks pdftoppm).",
-   "evidence": "benchmarks/runs/m1/c11-pdf-source/review.json", "resolution": "Requalify where the host can render pages; never fabricate transcriptions.",
-   "tests": ["tests/pipeline/test_formats.py"], "state": "blocked_environment"},
-  {"id": "QL-010", "origin": "M1 thresholds", "milestone": "final", "severity": "high",
+   "evidence": "benchmarks/runs/m1/c11-pdf-source/review.json",
+   "resolution": "Requalify where the host can render pages; never fabricate transcriptions.",
+   "tests": [
+    "tests/pipeline/test_formats.py"
+   ],
+   "state": "blocked_environment"
+  },
+  {
+   "id": "QL-010",
+   "origin": "M1 thresholds",
+   "milestone": "final",
+   "severity": "high",
    "issue": "Pre-registered thresholds missed: c04 critical recall, c06 trap.",
    "evidence": "docs/evidence/M1.md#gold-evaluation-results",
    "resolution": "Re-run affected cases under the frozen final candidate; original results stay as recorded.",
-   "tests": [], "state": "deferred_final_qualification"}
+   "tests": [],
+   "state": "deferred_final_qualification"
+  }
  ]
 }
