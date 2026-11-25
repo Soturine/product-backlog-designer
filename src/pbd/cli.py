@@ -410,6 +410,56 @@ def cmd_plan(args: argparse.Namespace) -> int:
     return EXIT_OK
 
 
+def cmd_evolve(args: argparse.Namespace) -> int:
+    from pbd import __version__
+    from pbd.persistence.atomic import atomic_write_bytes, atomic_write_json
+    from pbd.pipeline import refine
+    from pbd.pipeline.evolution import diff_sources, stale_artifacts, summarize
+    from pbd.pipeline.modes import load_json_backlog
+    from pbd.render.report_html import render_evolution_report
+
+    out = Path(args.out)
+    try:
+        if args.action == "diff":
+            if not (args.old and args.new and args.source):
+                print("refused: evolve diff needs --old, --new and --source", file=sys.stderr)
+                return EXIT_REFUSED
+            doc = diff_sources(Path(args.old), Path(args.new), args.source)
+            atomic_write_json(out / "source-diff.json", doc)
+            _emit({"summary": doc["summary"], "diff_digest": doc["diff_digest"]})
+            return EXIT_OK
+        backlog = load_json_backlog(Path(args.backlog))
+        backlog.pop("_digest", None)
+        if args.action == "stale":
+            report = stale_artifacts(Path(args.dir or "."), backlog)
+            _emit(report)
+            return EXIT_INVALID if report["stale"] else EXIT_OK
+        if args.action == "plan":
+            doc = refine.plan(backlog, load_json_file(Path(args.file)))
+            summary = summarize(backlog, doc)
+            diff = load_json_file(Path(args.diff)) if args.diff else None
+            atomic_write_json(out / "evolution-plan.json", doc)
+            atomic_write_json(out / "evolution-summary.json", summary)
+            atomic_write_bytes(out / "evolution-diff.md", refine.diff_markdown(doc, backlog).encode("utf-8"))
+            html = render_evolution_report(backlog, doc, summary, __version__, diff)
+            atomic_write_bytes(out / "evolution-report.html", html.encode("utf-8"))
+            _emit({"counts": summary["counts"], "plan_digest": doc["plan_digest"], "applied": False})
+            return EXIT_OK
+        res = refine.apply(
+            backlog, load_json_file(Path(args.plan)), args.approve.split(","), args.plan_digest
+        )
+        atomic_write_json(out / "backlog.evolved.json", res["backlog"])
+        atomic_write_json(out / "evolution-result.json", res["result"])
+        _emit(res["result"])
+        return EXIT_OK
+    except refine.RefineError as exc:
+        _emit({"accepted": False, "errors": exc.errors})
+        return EXIT_INVALID
+    except (OSError, ValueError, CanonicalError, AttributeError, TypeError) as exc:
+        print(f"refused: {exc}", file=sys.stderr)
+        return EXIT_REFUSED
+
+
 def cmd_skill(args: argparse.Namespace) -> int:
     from pbd.core.install import InstallError, install, target_dir
 
@@ -550,6 +600,21 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--title")
     p.add_argument("--out", default="pbd-plan")
     p.set_defaults(func=cmd_plan)
+
+    p = sub.add_parser("evolve", help="source diff, evolution plan/apply (lineage, decisions) and staleness")
+    p.add_argument("action", choices=["diff", "plan", "apply", "stale"])
+    p.add_argument("--old", help="diff: directory with the previous source versions")
+    p.add_argument("--new", help="diff: directory with the new source versions")
+    p.add_argument("--source", action="append", help="diff: selector relative to both directories")
+    p.add_argument("--backlog", help="plan/apply/stale: current canonical backlog.json")
+    p.add_argument("--file", help="plan: evolution proposal JSON")
+    p.add_argument("--diff", help="plan: source-diff.json to show in the report")
+    p.add_argument("--plan", help="apply: evolution-plan.json")
+    p.add_argument("--approve", help="apply: change keys or all (human-edit overwrites need their keys)")
+    p.add_argument("--plan-digest", help="apply: digest of the reviewed plan")
+    p.add_argument("--dir", help="stale: directory with plans, packages and approvals to check")
+    p.add_argument("--out", default="pbd-evolution")
+    p.set_defaults(func=cmd_evolve)
 
     p = sub.add_parser("check", help="structural health of a backlog file (no sources: structure only)")
     p.add_argument("backlog")

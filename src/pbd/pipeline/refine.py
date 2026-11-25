@@ -29,7 +29,14 @@ OPS = {
     "set_criterion_status",
     "add_item",
     "move_item",
+    # evolution (M5): lineage and decisions, never deletion
+    "split_item",
+    "merge_items",
+    "add_decision",
+    "supersede_item",
+    "retrace",
 }
+EVOLUTION_OPS = {"split_item", "merge_items", "add_decision", "supersede_item", "retrace"}
 FORBIDDEN_FIELDS = {
     "assigned_to",
     "completed_work",
@@ -59,6 +66,176 @@ def _index(backlog: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any], set
     return items, crits, claims
 
 
+def _norm_title(text: str) -> str:
+    return " ".join(str(text).casefold().split())
+
+
+def _human_edited(work: dict[str, Any], ch: dict[str, Any]) -> bool:
+    """True when the change touches something a person edited or accepted."""
+    items, crits, _ = _index(work)
+    targets = ch.get("targets") or [ch.get("target")]
+    for t in targets:
+        node = items.get(str(t)) or crits.get(str(t))
+        if node is None:
+            continue
+        if node.get("origin") == "human_edited":
+            return True
+        if ch.get("op") == "set_field":
+            fv = (node.get("fields") or {}).get(str(ch.get("field")))
+            if isinstance(fv, dict) and fv.get("review_status") in ("accepted", "changed"):
+                return True
+    return False
+
+
+def _supersede(item: dict[str, Any], by: list[str], reason: str) -> None:
+    item["temporal"] = {"status": "superseded", "superseded_by": by, "superseded_reason": reason}
+
+
+def _evolution_op(
+    work: dict[str, Any], ch: dict[str, Any], label: str, anchor: str
+) -> tuple[list[str], Any, Any, str]:
+    items, _, claims = _index(work)
+    op = ch["op"]
+    if op == "split_item":
+        source = items.get(str(ch.get("target")))
+        parts = ch.get("into") or []
+        if source is None or len(parts) < 2:
+            return (
+                [f"{label}: split_item needs an item target and at least two parts in 'into'"],
+                None,
+                None,
+                "",
+            )
+        new_ids = []
+        for n, part in enumerate(parts):
+            title = str(part.get("title", "")).strip()
+            if not title:
+                return [f"{label}: every part needs a title"], None, None, ""
+            refs = [r for r in part.get("claim_refs") or [] if r in claims]
+            new: dict[str, Any] = {
+                "id": derive(source["type"], {"refinement": anchor, "change": label, "part": str(n)}),
+                "type": part.get("type", source["type"]),
+                "title": title,
+                "parent": source["parent"],
+                "claim_refs": refs,
+                "origin": "human_edited",
+                "status": "draft",
+                "lineage": {"split_from": [source["id"]]},
+            }
+            if not refs:
+                new["technical_rationale"] = str(ch["rationale"])
+            work["items"].append(new)
+            new_ids.append(new["id"])
+        before = copy.deepcopy(source)
+        _supersede(source, new_ids, str(ch["rationale"]))
+        return [], before, {"split_into": new_ids}, source["id"]
+    if op == "merge_items":
+        targets = [items.get(str(t)) for t in ch.get("targets") or []]
+        if len(targets) < 2 or any(t is None for t in targets):
+            return [f"{label}: merge_items needs at least two existing item targets"], None, None, ""
+        sources = [t for t in targets if t is not None]
+        if len({t["type"] for t in sources}) != 1:
+            return [f"{label}: merged items must share one type"], None, None, ""
+        title = str(ch.get("title", "")).strip()
+        if not title:
+            return [f"{label}: title required"], None, None, ""
+        refs = sorted({r for t in sources for r in t["claim_refs"]})
+        merged: dict[str, Any] = {
+            "id": derive(sources[0]["type"], {"refinement": anchor, "change": label}),
+            "type": sources[0]["type"],
+            "title": title,
+            "parent": ch.get("parent", sources[0]["parent"]),
+            "claim_refs": refs,
+            "origin": "human_edited",
+            "status": "draft",
+            "lineage": {"merged_from": [t["id"] for t in sources]},
+        }
+        if not refs:
+            merged["technical_rationale"] = str(ch["rationale"])
+        work["items"].append(merged)
+        for t in sources:
+            _supersede(t, [merged["id"]], str(ch["rationale"]))
+        return [], [t["id"] for t in sources], merged, merged["id"]
+    if op == "retrace":
+        node = items.get(str(ch.get("target"))) or _index(work)[1].get(str(ch.get("target")))
+        new_refs = ch.get("claim_refs")
+        if node is None or not isinstance(new_refs, list) or any(r not in claims for r in new_refs):
+            return (
+                [f"{label}: retrace needs an item or criterion target and known claim_refs"],
+                None,
+                None,
+                "",
+            )
+        before = list(node["claim_refs"])
+        node["claim_refs"] = sorted(set(new_refs))
+        if not new_refs and "type" in node and not node.get("technical_rationale"):
+            node["technical_rationale"] = str(ch["rationale"])
+        if not new_refs and "type" not in node and node["status"] == "confirmed":
+            node["status"] = "proposed"
+            node["rationale"] = str(ch["rationale"])
+        return (
+            [],
+            before,
+            node["claim_refs"],
+            node.get("parent", node["id"]) if "type" not in node else node["id"],
+        )
+    if op == "supersede_item":
+        item = items.get(str(ch.get("target")))
+        created = work.get("_created", {})
+        wanted = [
+            created.get(b[7:], b) if str(b).startswith("change:") else b
+            for b in ch.get("superseded_by") or []
+        ]
+        by = [b for b in wanted if b in items or b in {d["id"] for d in work["decisions"]}]
+        if item is None or not by:
+            return (
+                [f"{label}: supersede_item needs an item target and superseded_by (items or decisions)"],
+                None,
+                None,
+                "",
+            )
+        before = copy.deepcopy(item)
+        _supersede(item, by, str(ch["rationale"]))
+        return [], before, item["temporal"], item["id"]
+    # add_decision
+    text = str(ch.get("text", "")).strip()
+    status = ch.get("status", "proposed")
+    evidence = ch.get("evidence")
+    sup = [c for c in ch.get("supersedes_claims") or []]
+    errs = []
+    if not text or status not in ("approved", "proposed"):
+        errs.append(f"{label}: add_decision needs text and status approved|proposed")
+    if not isinstance(evidence, list) or not evidence:
+        errs.append(f"{label}: a decision needs evidence (source locator or recorded user statement)")
+    if sup and status != "approved":
+        errs.append(f"{label}: only an approved decision may supersede claims")
+    unknown = [c for c in sup if c not in claims]
+    if unknown:
+        errs.append(f"{label}: unknown claims {unknown}")
+    if errs:
+        return errs, None, None, ""
+    decision: dict[str, Any] = {
+        "id": derive("decision", {"refinement": anchor, "change": label}),
+        "text": text,
+        "status": status,
+        "evidence": evidence,
+    }
+    if sup:
+        decision["supersedes_claims"] = sup
+    if ch.get("effective_version"):
+        decision["effective_version"] = str(ch["effective_version"])
+    work["decisions"].append(decision)
+    for claim in work["claims"]:
+        if claim["id"] in sup:
+            claim["temporal"] = {
+                "status": "superseded",
+                "superseded_by": [decision["id"]],
+                "superseded_reason": text,
+            }
+            claim["disposition"] = {"status": "SUPERSEDED", "rationale": f"superseded by decision: {text}"}
+    return [], None, decision, decision["id"]
+
+
 def _apply_one(
     work: dict[str, Any], ch: dict[str, Any], label: str, anchor: str
 ) -> tuple[list[str], Any, Any, str]:
@@ -76,6 +253,8 @@ def _apply_one(
         errs.append(f"{label}: unknown claim_refs {bad_refs}")
     if errs:
         return errs, None, None, ""
+    if op in EVOLUTION_OPS:
+        return _evolution_op(work, ch, label, anchor)
     if op in ("update_title", "update_description", "set_field", "move_item"):
         item = items.get(str(target))
         if item is None:
@@ -194,6 +373,25 @@ def _apply_one(
     title = str(ch.get("title", "")).strip()
     if not title:
         return [f"{label}: title required"], None, None, ""
+    twins = [
+        i["id"]
+        for i in work["items"]
+        if i["type"] == itype
+        and i["parent"] == parent_id
+        and _norm_title(i["title"]) == _norm_title(title)
+        and (i.get("temporal") or {}).get("status") != "superseded"
+    ]
+    if twins and not ch.get("new_identity_reason"):
+        return (
+            [
+                f"{label}: would recreate existing item {twins[0]} (same type, parent and title); "
+                "update it instead "
+                "or give new_identity_reason"
+            ],
+            None,
+            None,
+            "",
+        )
     new_item: dict[str, Any] = {
         "id": derive(itype, {"refinement": anchor, "change": label}),
         "type": itype,
@@ -232,8 +430,17 @@ def plan(backlog: dict[str, Any], proposal: Any) -> dict[str, Any]:
     if any(not k for k in keys) or len(set(keys)) != len(keys):
         errors.append("every change needs a unique key")
     for ch, key in zip(proposal["changes"], keys, strict=True):
+        human = _human_edited(work, ch)
+        if human and not ch.get("override_human_edit"):
+            errors.append(
+                f"{key}: target was edited or accepted by a person; set override_human_edit with a rationale "
+                "to propose overwriting it (it will need explicit approval)"
+            )
+            continue
         errs, before, after, target = _apply_one(work, ch, key, anchor)
         errors += errs
+        if not errs and isinstance(after, dict) and "id" in after:
+            work.setdefault("_created", {})[key] = after["id"]
         if not errs:
             entries.append(
                 {
@@ -243,8 +450,11 @@ def plan(backlog: dict[str, Any], proposal: Any) -> dict[str, Any]:
                     "rationale": ch["rationale"],
                     "before": before,
                     "after": after,
+                    "requires_explicit_approval": human,
+                    "noop": before == after,
                 }
             )
+    work.pop("_created", None)
     if not errors:
         issues = validate("backlog", work) or check_backlog(work)
         errors += [f"result: {i}" for i in issues]
@@ -276,7 +486,8 @@ def apply(
             "base backlog changed since the plan was made (conflict); plan again on the current backlog"
         )
     known = [c["key"] for c in plan_doc.get("changes", [])]
-    chosen = known if approved == ["all"] else approved
+    explicit = {c["key"] for c in plan_doc.get("changes", []) if c.get("requires_explicit_approval")}
+    chosen = [k for k in known if k not in explicit] if approved == ["all"] else approved
     unknown = sorted(set(chosen) - set(known))
     if unknown:
         errors.append(f"unknown change keys {unknown}")
@@ -291,11 +502,14 @@ def apply(
     for entry in plan_doc["changes"]:
         if entry["key"] not in chosen:
             continue
-        errs, _, _, target = _apply_one(work, source[entry["key"]], entry["key"], anchor)
+        errs, _, after, target = _apply_one(work, source[entry["key"]], entry["key"], anchor)
+        if isinstance(after, dict) and "id" in after:
+            work.setdefault("_created", {})[entry["key"]] = after["id"]
         if errs:
             raise RefineError("refinement not applied (a change no longer fits)", errs)
         applied.append(entry["key"])
         touched.add(target)
+    work.pop("_created", None)
     for item in work["items"]:
         if item["id"] in touched:
             item["status"] = "draft"

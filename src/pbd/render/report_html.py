@@ -1626,3 +1626,113 @@ def render_plan_report(
         version=version,
         synthetic=False,
     )
+
+
+# ------------------------------------------------------------------------------------ evolution
+EVO_TONE = {
+    "create": "info",
+    "update": "warn",
+    "unchanged": "neutral",
+    "conflict": "fail",
+    "deferred": "neutral",
+}
+SRC_TONE = {
+    "identical": "neutral",
+    "formatting_only": "info",
+    "content": "warn",
+    "added": "info",
+    "removed": "fail",
+}
+
+
+def _short(value: Any) -> str:
+    text = json.dumps(value, ensure_ascii=False, sort_keys=True) if not isinstance(value, str) else value
+    return text if len(text) <= 160 else text[:157] + "..."
+
+
+def render_evolution_report(
+    base: dict[str, Any],
+    plan_doc: dict[str, Any],
+    summary: dict[str, Any],
+    version: str,
+    source_diff: dict[str, Any] | None = None,
+) -> str:
+    language = base["language"]
+    r = R(resolve_locale(language))
+    titles = {i["id"]: i["title"] for i in base["items"]}
+    counts = " · ".join(f"{r.t.enum('evo_action', k)}: {v}" for k, v in sorted(summary["counts"].items()))
+    body = (
+        f'<div class="banner tone-info">{icon("info")}{r.T("evo.d")}</div>'
+        f'<p class="state">{_e(counts)} — {r.T("evo.deletions")}</p>'
+    )
+    rows = "".join(
+        f'<tr data-row data-action="{_e(x["action"])}"><td lang="{_e(language)}">{_e(x["title"] or titles.get(x["item"], ""))}</td>'
+        f'<td class="mono">{_e(x["item"])}</td><td>{r.pill("evo_action", x["action"], EVO_TONE.get(x["action"]))}</td>'
+        f'<td class="mono">{_e(", ".join(x["changes"])) or "—"}</td></tr>'
+        for x in summary["items"]
+    )
+    actions = sorted({x["action"] for x in summary["items"]})
+    body += (
+        f'<section class="block"><h3>{r.T("evo.summary")}</h3><div class="panel"><div class="toolbar">'
+        f"{_filter_select(r, 'evo-items', 'action', 'col.action', [(a, _e(r.t.enum('evo_action', a))) for a in actions], 'evo-action')}"
+        f'</div><div class="tablewrap"><table class="grid" id="evo-items"><thead><tr><th>{r.T("col.title")}</th>'
+        f"<th>{r.T('col.id')}</th><th>{r.T('col.action')}</th><th>{r.T('col.key')}</th></tr></thead>"
+        f"<tbody>{rows}</tbody></table></div></div></section>"
+    )
+    changes = []
+    for c in plan_doc["changes"]:
+        flags = ""
+        if c.get("requires_explicit_approval"):
+            flags += r.pill("evo_action", "conflict", "fail")
+        if c.get("noop"):
+            flags += f'<span class="tag">{r.T("evo.noop")}</span>'
+        changes.append(
+            f'<tr><td class="mono">{_e(c["key"])}</td><td><code>{_e(c["op"])}</code> {flags}</td>'
+            f'<td lang="{_e(language)}">{_e(titles.get(c["target"], c["target"]))}</td>'
+            f'<td lang="{_e(language)}">{_e(_short(c["before"])) if c["before"] is not None else "—"}</td>'
+            f'<td lang="{_e(language)}">{_e(_short(c["after"]))}</td><td lang="{_e(language)}">{_e(c["rationale"])}</td></tr>'
+        )
+    body += (
+        f'<section class="block"><h3>{r.T("evo.changes")}</h3><div class="panel tablewrap"><table class="grid"><thead><tr>'
+        f"<th>{r.T('col.key')}</th><th>{r.T('col.op')}</th><th>{r.T('col.target')}</th><th>{r.T('evo.before')}</th>"
+        f"<th>{r.T('evo.after')}</th><th>{r.T('col.rationale')}</th></tr></thead><tbody>{''.join(changes)}</tbody></table></div></section>"
+    )
+    timeline = [
+        f'<li>{r.pill("decision_status", d["status"], "info")} <span lang="{_e(language)}">{_e(d["text"])}</span></li>'
+        for d in base.get("decisions", [])
+    ] + [
+        f'<li>{r.pill("decision_status", d["status"], "warn")} <span lang="{_e(language)}">{_e(d["text"])}</span> '
+        f'<span class="tag">{r.T("evo.new")}</span></li>'
+        for d in summary["decisions"]
+    ]
+    body += f'<section class="block"><h3>{r.T("evo.timeline")}</h3><div class="panel">{_ul("".join(timeline))}</div></section>'
+    if source_diff:
+        lis = "".join(
+            f'<li><span class="mono">{_e(s["selector"])}/{_e(m["path"])}</span> {r.pill("src_change", m["change"], SRC_TONE.get(m["change"]))}</li>'
+            for s in source_diff["sources"]
+            for m in s["members"]
+        )
+        body += f'<section class="block"><h3>{r.T("evo.sources")}</h3><div class="panel">{_ul(lis)}</div></section>'
+    view = _view("overview", r, "evo.title", None, body)
+    data = _data(
+        r,
+        {"plan": plan_doc, "summary": summary, "source_diff": source_diff},
+        "canonical",
+        "evolution.json",
+        "actions.download_json",
+    )
+    entries = [
+        ("overview", "evo.title", "layers", len(plan_doc["changes"])),
+        ("data", "nav.data", "code", None),
+    ]
+    return _page(
+        r,
+        title=r.t("evo.title"),
+        mode="evolution",
+        subtitle=f"{r.T('pub.digest')} <code>{_e(plan_doc['plan_digest'][:19])}…</code>",
+        content_lang=language,
+        nav=_nav(r, entries),
+        views=view + data,
+        version=version,
+        synthetic=bool(base.get("synthetic")),
+    )
