@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import re
 from collections import Counter
+from dataclasses import dataclass, field
 from typing import Any
 
 from pbd import SCHEMA_VERSION, vocab
@@ -315,135 +316,144 @@ def _templated(texts: list[tuple[str, str]], label: str) -> list[str]:
     ]
 
 
-def compile_design(run: Run, payload: Any) -> tuple[list[str], dict[str, Any]]:
-    if not isinstance(payload, dict):
-        return ["design payload must be an object"], {}
-    errors: list[str] = []
-    request = run.request()
-    language = request["language"]
-    levels = set(request["levels"])
-    claims_doc = run.read("stages/claims.json")
-    claim_by_key = {c["key"]: c for c in claims_doc["claims"]}
-    designer = payload.get("designer")
-    if not isinstance(designer, dict) or not designer.get("agent") or not designer.get("model"):
-        errors.append("designer.agent and designer.model are required")
+@dataclass
+class _Ctx:
+    """State shared by the design compilation steps; every step appends to ``errors``."""
 
-    keys: dict[str, str] = {}
-    items_in = payload.get("items") or []
-    crits_in = payload.get("criteria") or []
+    run: Run
+    request: dict[str, Any]
+    claim_by_key: dict[str, dict[str, Any]]
+    claims_doc: dict[str, Any]
+    keys: dict[str, str] = field(default_factory=dict)
+    errors: list[str] = field(default_factory=list)
+
+    @property
+    def language(self) -> str:
+        return str(self.request["language"])
+
+    @property
+    def levels(self) -> set[str]:
+        return set(self.request["levels"])
+
+    def claim_ids(self, entry_key: str, refs: Any) -> list[str]:
+        out = []
+        for ref in refs or []:
+            if ref not in self.claim_by_key:
+                self.errors.append(f"{entry_key}: unknown claim key {ref}")
+            else:
+                out.append(self.claim_by_key[ref]["id"])
+        return out
+
+
+def _assign_keys(ctx: _Ctx, items_in: list[Any], crits_in: list[Any]) -> None:
     for coll, kind_of in ((items_in, None), (crits_in, "criterion")):
         for entry in coll:
             key = entry.get("key")
-            if not isinstance(key, str) or not _KEY.match(key) or key in keys or key in claim_by_key:
-                errors.append(f"invalid or duplicate key {key!r}")
+            if not isinstance(key, str) or not _KEY.match(key) or key in ctx.keys or key in ctx.claim_by_key:
+                ctx.errors.append(f"invalid or duplicate key {key!r}")
                 continue
             kind = kind_of or entry.get("type")
             if kind not in TYPE_LEVEL and kind != "criterion":
-                errors.append(f"{key}: unknown type {entry.get('type')!r}")
+                ctx.errors.append(f"{key}: unknown type {entry.get('type')!r}")
                 continue
-            keys[key] = derive(str(kind), {"run": run.run_id, "key": key})
-    if errors:
-        return errors, {}
+            # identity kinds share the canonical type names
+            ctx.keys[key] = derive(str(kind), {"run": ctx.run.run_id, "key": key})
 
-    def claim_ids(entry_key: str, refs: Any) -> list[str]:
-        out = []
-        for ref in refs or []:
-            if ref not in claim_by_key:
-                errors.append(f"{entry_key}: unknown claim key {ref}")
-            else:
-                out.append(claim_by_key[ref]["id"])
-        return out
 
-    items: list[dict[str, Any]] = []
-    for entry in items_in:
-        key, itype = entry["key"], entry["type"]
-        if TYPE_LEVEL[itype] not in levels:
-            errors.append(f"{key}: {itype} is outside the requested levels {sorted(levels)}")
-        content = entry.get("content")
-        content_errors = validate_content(content)
-        if content_errors:
-            errors.extend(f"{key}: {e}" for e in content_errors)
+def _compile_fields(ctx: _Ctx, key: str, fields: dict[str, Any]) -> dict[str, Any]:
+    bad = sorted(set(fields) & FORBIDDEN_FIELDS)
+    if bad:
+        ctx.errors.append(
+            f"{key}: fields {bad} are never generated (no invented assignments, dates or effort)"
+        )
+    unknown = sorted(set(fields) - ALLOWED_FIELDS - FORBIDDEN_FIELDS)
+    if unknown:
+        ctx.errors.append(f"{key}: unknown fields {unknown}")
+    out: dict[str, Any] = {}
+    for name, value in fields.items():
+        if name not in ALLOWED_FIELDS or not isinstance(value, dict):
             continue
-        if content["kind"] not in TYPE_CONTENT[itype]:
-            errors.append(f"{key}: content kind {content['kind']} does not fit a {itype}")
-            continue
-        parent = entry.get("parent")
-        if parent is not None and parent not in keys:
-            errors.append(f"{key}: parent {parent} is not a design key")
-        try:
-            html = description_html(content, language)
-        except RichTextError as exc:  # pragma: no cover - validated above
-            errors.append(f"{key}: {exc}")
-            continue
-        item: dict[str, Any] = {
-            "id": keys[key],
-            "key": key,
-            "type": itype,
-            "title": str(entry.get("title", "")).strip(),
-            "parent": keys.get(parent) if parent else None,
-            "claim_refs": claim_ids(key, entry.get("claims")),
-            "origin": entry.get("origin", "generated"),
-            "status": "draft",
-            "content": content,
-            "description": {"format": "html", "value": html, "language": language},
-        }
-        if not item["title"]:
-            errors.append(f"{key}: title is required")
-        if entry.get("technical_rationale"):
-            item["technical_rationale"] = str(entry["technical_rationale"])
-        if itype in ("story", "enabler", "spike", "bug"):
-            item["acceptance_style"] = entry.get("acceptance_style", request["acceptance_style"])
-        if content["kind"] in STORY_FORMAT:
-            item["story_format"] = STORY_FORMAT[content["kind"]]
-        fields = entry.get("fields") or {}
-        bad = sorted(set(fields) & FORBIDDEN_FIELDS)
-        if bad:
-            errors.append(
-                f"{key}: fields {bad} are never generated (no invented assignments, dates or effort)"
-            )
-        unknown = sorted(set(fields) - ALLOWED_FIELDS - FORBIDDEN_FIELDS)
-        if unknown:
-            errors.append(f"{key}: unknown fields {unknown}")
-        out_fields = {}
-        for name, value in fields.items():
-            if name not in ALLOWED_FIELDS or not isinstance(value, dict):
-                continue
-            fv = {k: v for k, v in value.items() if k in ("state", "value", "unit", "scale", "rationale")}
-            fv.setdefault("review_status", "unreviewed")
-            if value.get("claims"):
-                fv["evidence"] = [
-                    ev
-                    for ref in value["claims"]
-                    if ref in claim_by_key
-                    for ev in claim_by_key[ref]["evidence"]
-                ]
-            out_fields[name] = fv
-        if out_fields:
-            item["fields"] = out_fields
-        items.append(item)
+        fv = {k: v for k, v in value.items() if k in ("state", "value", "unit", "scale", "rationale")}
+        fv.setdefault("review_status", "unreviewed")
+        if value.get("claims"):
+            fv["evidence"] = [
+                ev
+                for ref in value["claims"]
+                if ref in ctx.claim_by_key
+                for ev in ctx.claim_by_key[ref]["evidence"]
+            ]
+        out[name] = fv
+    return out
 
-    item_type = {i["id"]: i["type"] for i in items}
+
+def _compile_item(ctx: _Ctx, entry: dict[str, Any]) -> dict[str, Any] | None:
+    key, itype = entry["key"], entry["type"]
+    if TYPE_LEVEL[itype] not in ctx.levels:
+        ctx.errors.append(f"{key}: {itype} is outside the requested levels {sorted(ctx.levels)}")
+    content = entry.get("content")
+    content_errors = validate_content(content)
+    if content_errors or not isinstance(content, dict):
+        ctx.errors.extend(f"{key}: {e}" for e in content_errors)
+        return None
+    if content["kind"] not in TYPE_CONTENT[itype]:
+        ctx.errors.append(f"{key}: content kind {content['kind']} does not fit a {itype}")
+        return None
+    parent = entry.get("parent")
+    if parent is not None and parent not in ctx.keys:
+        ctx.errors.append(f"{key}: parent {parent} is not a design key")
+    try:
+        html = description_html(content, ctx.language)
+    except RichTextError as exc:  # pragma: no cover - validated above
+        ctx.errors.append(f"{key}: {exc}")
+        return None
+    item: dict[str, Any] = {
+        "id": ctx.keys[key],
+        "key": key,
+        "type": itype,
+        "title": str(entry.get("title", "")).strip(),
+        "parent": ctx.keys.get(parent) if parent else None,
+        "claim_refs": ctx.claim_ids(key, entry.get("claims")),
+        "origin": entry.get("origin", "generated"),
+        "status": "draft",
+        "content": content,
+        "description": {"format": "html", "value": html, "language": ctx.language},
+    }
+    if not item["title"]:
+        ctx.errors.append(f"{key}: title is required")
+    if entry.get("technical_rationale"):
+        item["technical_rationale"] = str(entry["technical_rationale"])
+    if itype in ("story", "enabler", "spike", "bug"):
+        item["acceptance_style"] = entry.get("acceptance_style", ctx.request["acceptance_style"])
+    if content["kind"] in STORY_FORMAT:
+        item["story_format"] = STORY_FORMAT[content["kind"]]
+    fields = _compile_fields(ctx, key, entry.get("fields") or {})
+    if fields:
+        item["fields"] = fields
+    return item
+
+
+def _compile_criteria(ctx: _Ctx, crits_in: list[Any], item_ids: set[str]) -> list[dict[str, Any]]:
     criteria: list[dict[str, Any]] = []
     per_parent: Counter[str] = Counter()
-    prefix = AC_PREFIX.get(language.split("-")[0], "AC")
-    if crits_in and "acceptance" not in levels:
-        errors.append("acceptance criteria are outside the requested levels")
+    prefix = AC_PREFIX.get(ctx.language.split("-")[0], "AC")
+    if crits_in and "acceptance" not in ctx.levels:
+        ctx.errors.append("acceptance criteria are outside the requested levels")
     for entry in crits_in:
         key = entry["key"]
-        parent = keys.get(entry.get("parent", ""))
-        if parent is None or parent not in item_type:
-            errors.append(f"{key}: parent {entry.get('parent')} is not a design item")
+        parent = ctx.keys.get(entry.get("parent", ""))
+        if parent is None or parent not in item_ids:
+            ctx.errors.append(f"{key}: parent {entry.get('parent')} is not a design item")
             continue
         per_parent[parent] += 1
         crit: dict[str, Any] = {
-            "id": keys[key],
+            "id": ctx.keys[key],
             "key": key,
             "parent": parent,
             "visible_id": f"{prefix}-{per_parent[parent]:02d}",
             "order": per_parent[parent] - 1,
-            "style": entry.get("style", request["acceptance_style"]),
+            "style": entry.get("style", ctx.request["acceptance_style"]),
             "expected_outcomes": [str(o) for o in entry.get("expected_outcomes") or []],
-            "claim_refs": claim_ids(key, entry.get("claims")),
+            "claim_refs": ctx.claim_ids(key, entry.get("claims")),
             "origin": entry.get("origin", "generated"),
             "status": entry.get("status", "confirmed"),
         }
@@ -455,44 +465,48 @@ def compile_design(run: Run, payload: Any) -> tuple[list[str], dict[str, Any]]:
         if crit["status"] == "proposed" and crit["origin"] == "generated":
             crit["origin"] = "proposed"
         criteria.append(crit)
+    return criteria
 
+
+def _compile_relations(ctx: _Ctx, rels_in: list[Any]) -> list[dict[str, Any]]:
     relations = []
-    for i, rel in enumerate(payload.get("relations") or []):
-        src, tgt = keys.get(rel.get("source", "")), keys.get(rel.get("target", ""))
+    for i, rel in enumerate(rels_in):
+        src, tgt = ctx.keys.get(rel.get("source", "")), ctx.keys.get(rel.get("target", ""))
         if src is None or tgt is None:
-            errors.append(f"relations[{i}]: source/target must be design keys")
+            ctx.errors.append(f"relations[{i}]: source/target must be design keys")
             continue
-        if "dependencies" not in levels:
-            errors.append("relations are outside the requested levels (dependencies)")
+        if "dependencies" not in ctx.levels:
+            ctx.errors.append("relations are outside the requested levels (dependencies)")
             break
+        reason = str(rel.get("reason", "")).strip()
+        if not reason:
+            ctx.errors.append(f"relations[{i}]: reason is required")
+        anchor = f"{rel['source']}>{rel['target']}:{rel.get('type')}"
         relations.append(
             {
-                "id": derive(
-                    "relation",
-                    {"run": run.run_id, "key": f"{rel['source']}>{rel['target']}:{rel.get('type')}"},
-                ),
+                "id": derive("relation", {"run": ctx.run.run_id, "key": anchor}),
                 "type": rel.get("type", "predecessor"),
                 "source": src,
                 "target": tgt,
                 "status": rel.get("status", "proposed"),
                 "confidence": rel.get("confidence", "medium"),
-                "reason": str(rel.get("reason", "")).strip() or "missing reason",
+                "reason": reason or "missing reason",
             }
         )
-        if not str(rel.get("reason", "")).strip():
-            errors.append(f"relations[{i}]: reason is required")
+    return relations
 
-    all_keys = {**keys, **{k: v["id"] for k, v in claim_by_key.items()}, **claims_doc.get("keys", {})}
+
+def _compile_questions(ctx: _Ctx, questions_in: list[Any], all_keys: dict[str, str]) -> list[dict[str, Any]]:
     questions = []
-    for i, q in enumerate(payload.get("questions") or []):
+    for i, q in enumerate(questions_in):
         key = q.get("key") or f"Q{i + 1}"
         affects = [all_keys[a] for a in q.get("affects") or [] if a in all_keys]
         unknown_affects = [a for a in q.get("affects") or [] if a not in all_keys]
         if unknown_affects:
-            errors.append(f"questions[{i}]: unknown affected keys {unknown_affects}")
+            ctx.errors.append(f"questions[{i}]: unknown affected keys {unknown_affects}")
         questions.append(
             {
-                "id": derive("question", {"run": run.run_id, "key": key}),
+                "id": derive("question", {"run": ctx.run.run_id, "key": key}),
                 "key": key,
                 "text": str(q.get("text", "")),
                 "impact": str(q.get("impact", "")),
@@ -502,43 +516,40 @@ def compile_design(run: Run, payload: Any) -> tuple[list[str], dict[str, Any]]:
                 "status": "open",
             }
         )
+    return questions
 
-    # Dispositions: every effective claim exactly once.
-    dispositions = {d.get("claim"): d for d in payload.get("dispositions") or []}
-    for ckey, claim in claim_by_key.items():
+
+def _apply_dispositions(ctx: _Ctx, dispositions_in: list[Any]) -> None:
+    """Every effective claim gets exactly one disposition; superseded claims keep their decision's."""
+    dispositions = {d.get("claim"): d for d in dispositions_in}
+    for ckey, claim in ctx.claim_by_key.items():
         if claim["temporal"]["status"] == "superseded":
             if ckey in dispositions:
-                errors.append(f"{ckey}: superseded claims are dispositioned by their decision")
+                ctx.errors.append(f"{ckey}: superseded claims are dispositioned by their decision")
             continue
         disp = dispositions.get(ckey)
         if disp is None:
-            errors.append(
+            ctx.errors.append(
                 f"claim {ckey}: disposition required (COVERED, NOT_COVERED, QUESTION_REQUIRED, ...)"
             )
             continue
         status = disp.get("status")
         if status not in DISPOSITIONS:
-            errors.append(f"claim {ckey}: disposition status must be one of {sorted(DISPOSITIONS)}")
+            ctx.errors.append(f"claim {ckey}: disposition status must be one of {sorted(DISPOSITIONS)}")
             continue
-        covered = [keys[k] for k in disp.get("covered_by") or [] if k in keys]
+        covered = [ctx.keys[k] for k in disp.get("covered_by") or [] if k in ctx.keys]
         if len(covered) != len(disp.get("covered_by") or []):
-            errors.append(f"claim {ckey}: covered_by must reference design keys")
+            ctx.errors.append(f"claim {ckey}: covered_by must reference design keys")
         claim["disposition"] = {"status": status, "rationale": str(disp.get("rationale", "")).strip() or "—"}
         if covered:
             claim["disposition"]["covered_by"] = covered
-    extra = sorted(set(dispositions) - set(claim_by_key))
+    extra = sorted(set(dispositions) - set(ctx.claim_by_key))
     if extra:
-        errors.append(f"dispositions for unknown claims {extra}")
+        ctx.errors.append(f"dispositions for unknown claims {extra}")
 
-    errors += _templated(
-        [(i["key"], i["description"]["value"]) for i in items if i["type"] != "epic"], "items"
-    )
-    errors += _templated(
-        [(c["key"], " ".join(c["expected_outcomes"]) + c.get("text", "")) for c in criteria], "criteria"
-    )
-    if errors:
-        return errors, {}
 
+def _source_records(run: Run) -> list[dict[str, Any]]:
+    """Canonical source records with member statuses taken from the accepted reader ledgers."""
     sources = []
     for src in run.inventory()["sources"]:
         rec = {k: v for k, v in src.items() if k != "members_text"}
@@ -552,35 +563,63 @@ def compile_design(run: Run, payload: Any) -> tuple[list[str], dict[str, Any]]:
         all_read = rec.get("members") and all(m["status"] == "read" for m in rec["members"])
         rec["read_status"] = "complete" if all_read else ("partial" if statuses else "not_read")
         sources.append(rec)
+    return sources
+
+
+def _strip_keys(rows: list[dict[str, Any]], drop: tuple[str, ...] = ("key",)) -> list[dict[str, Any]]:
+    return [{k: v for k, v in r.items() if k not in drop} for r in rows]
+
+
+def compile_design(run: Run, payload: Any) -> tuple[list[str], dict[str, Any]]:
+    if not isinstance(payload, dict):
+        return ["design payload must be an object"], {}
+    claims_doc = run.read("stages/claims.json")
+    ctx = _Ctx(run, run.request(), {c["key"]: c for c in claims_doc["claims"]}, claims_doc)
+    designer = payload.get("designer")
+    if not isinstance(designer, dict) or not designer.get("agent") or not designer.get("model"):
+        ctx.errors.append("designer.agent and designer.model are required")
+    items_in, crits_in = payload.get("items") or [], payload.get("criteria") or []
+    _assign_keys(ctx, items_in, crits_in)
+    if ctx.errors:
+        return ctx.errors, {}
+    items = [i for i in (_compile_item(ctx, e) for e in items_in) if i is not None]
+    criteria = _compile_criteria(ctx, crits_in, {i["id"] for i in items})
+    relations = _compile_relations(ctx, payload.get("relations") or [])
+    all_keys = {**ctx.keys, **{k: v["id"] for k, v in ctx.claim_by_key.items()}, **claims_doc.get("keys", {})}
+    questions = _compile_questions(ctx, payload.get("questions") or [], all_keys)
+    _apply_dispositions(ctx, payload.get("dispositions") or [])
+    ctx.errors += _templated(
+        [(i["key"], i["description"]["value"]) for i in items if i["type"] != "epic"], "items"
+    )
+    ctx.errors += _templated(
+        [(c["key"], " ".join(c["expected_outcomes"]) + c.get("text", "")) for c in criteria], "criteria"
+    )
+    if ctx.errors:
+        return ctx.errors, {}
     backlog = {
         "schema_version": SCHEMA_VERSION,
         "kind": "pbd.backlog",
         "run_id": run.run_id,
-        "language": language,
-        "synthetic": bool(request.get("synthetic")),
-        "profile": request["profile"],
-        "sources": sources,
-        "claims": [
-            {k: v for k, v in c.items() if k not in ("key", "reader_refs")} for c in claim_by_key.values()
-        ],
-        "items": [{k: v for k, v in i.items() if k != "key"} for i in items],
-        "criteria": [{k: v for k, v in c.items() if k != "key"} for c in criteria],
+        "language": ctx.language,
+        "synthetic": bool(ctx.request.get("synthetic")),
+        "profile": ctx.request["profile"],
+        "sources": _source_records(run),
+        "claims": _strip_keys(list(ctx.claim_by_key.values()), ("key", "reader_refs")),
+        "items": _strip_keys(items),
+        "criteria": _strip_keys(criteria),
         "relations": relations,
-        "questions": [{k: v for k, v in q.items() if k != "key"} for q in questions],
-        "decisions": [{k: v for k, v in d.items() if k != "key"} for d in claims_doc["decisions"]],
+        "questions": _strip_keys(questions),
+        "decisions": _strip_keys(claims_doc["decisions"]),
         "findings": [],
     }
     issues = validate("backlog", backlog) or check_backlog(backlog)
     if issues:
         reverse = {v: k for k, v in all_keys.items()}
-
-        def humanize(text: str) -> str:
-            return re.sub(r"PBD-[A-Z]+-[0-9A-Z]{12}", lambda m: reverse.get(m.group(0), m.group(0)), text)
-
-        return [humanize(str(i)) for i in issues], {}
+        pattern = re.compile(r"PBD-[A-Z]+-[0-9A-Z]{12}")
+        return [pattern.sub(lambda m: reverse.get(m.group(0), m.group(0)), str(i)) for i in issues], {}
     backlog["keys"] = {
-        **{v: k for k, v in keys.items()},
-        **{c["id"]: k for k, c in claim_by_key.items()},
+        **{v: k for k, v in ctx.keys.items()},
+        **{c["id"]: k for k, c in ctx.claim_by_key.items()},
         **{q["id"]: q["key"] for q in questions},
         **{d["id"]: d["key"] for d in claims_doc["decisions"]},
     }
