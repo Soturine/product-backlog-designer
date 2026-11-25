@@ -106,3 +106,12 @@ def test_repeated_connector_words_are_not_duplicated(want: str, expected: str) -
         {"kind": "role_goal_benefit", "actor": "professor", "want": want, "benefit": "acompanhar"}, "pt-BR"
     )
     assert expected in html and "que que" not in html
+
+
+def test_criterion_keys_in_text_are_rejected(ambiguous_run: Run) -> None:
+    def mutate(p: dict[str, Any]) -> None:
+        p["criteria"][3].update(status="proposed", rationale="r")
+        p["items"][4]["content"]["verification"] = "Demonstrar AC2 com canteiro ocupado."
+
+    errors = _errors(ambiguous_run, mutate)
+    assert any("T1: mentions criterion key AC2" in e for e in errors), errors

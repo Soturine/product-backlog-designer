@@ -3,6 +3,7 @@
 Design only the requested levels from `stages/claims.json`. Write every item from its own claims; templated text (same sentence with swapped names/numbers) is rejected. Use [story engineering](../docs/story-engineering.md), [acceptance engineering](../docs/acceptance-engineering.md) and [planning](../docs/planning-engineering.md).
 
 ## Engineering rules
+- **Never reference a criterion in text** (neither its key such as `AC3` nor a visible ID such as `CA-02`): visible IDs restart per story and keys are not shown. Describe the behavior the task verifies; the runtime rejects such references.
 - **Ambiguity is not a choice you make.** When a claim is ambiguous, conflicting or unknown, do not confirm one reading in a criterion, field or task: write the alternatives, keep the criterion `proposed` with a rationale, and raise a question with its impact. The runtime rejects confirmed criteria and fields that trace only unresolved claims.
 - **Every effective obligation must be verifiable where it lives.** A value or rule written only in an Epic or Feature (a limit, a duration, a lockout) is not verifiable: carry it into a criterion, a verifiable rule of a story, or a task with a check. The runtime signals claims covered only by epics/features.
 - **Superseded behavior is not work.** Do not create tasks to remove or migrate a superseded mechanism unless implementation evidence shows it exists; otherwise ask whether it exists.

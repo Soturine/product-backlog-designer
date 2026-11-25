@@ -49,7 +49,7 @@
    "severity": "medium",
    "issue": "Criterion references by visible IDs that do not resolve; duplicated connector words ('que que').",
    "evidence": "benchmarks/runs/m1/c08-insufficient-tech/review.json",
-   "resolution": "Design contract rejects visible-ID references in text (keys required); renderer strips any trailing part of a prefix the agent repeated.",
+   "resolution": "Final qualification c08 showed tasks citing criterion design keys (AC1..AC7) that readers cannot resolve; the design contract now rejects criterion keys as well as visible IDs in free text, and the designer procedure says to describe the behavior instead. c08 is re-run in the correction round.",
    "tests": [
     "tests/pipeline/test_m1_fixes.py",
     "tests/unit/test_profiles_richtext.py"

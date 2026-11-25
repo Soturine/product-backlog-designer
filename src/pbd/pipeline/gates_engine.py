@@ -301,8 +301,8 @@ def compute_gates(
     put(
         "G18",
         "NOT_RUN",
-        "round-trip against a tracker (mock or live) belongs to M3; live qualification requires "
-        "separate authorization",
+        "no live round-trip: nothing was published from this run; a mock round-trip "
+        "(pbd azure apply/verify) never counts as live; live qualification requires separate authorization",
     )
     return {
         "schema_version": SCHEMA_VERSION,

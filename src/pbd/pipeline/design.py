@@ -329,14 +329,32 @@ def _only_unresolved(ctx: Any, refs: Any) -> bool:
     return bool(levels) and all(level in UNRESOLVED_LEVELS for level in levels)
 
 
-def _visible_id_refs(texts: list[tuple[str, str]]) -> list[str]:
-    """Visible criterion IDs restart per story; text must reference criteria by key (regression: c08/c10)."""
-    return [
-        f"{key}: references visible criterion ID {m.group(0)}; reference criteria by their design key"
+def _visible_id_refs(texts: list[tuple[str, str]], criterion_keys: set[str] | None = None) -> list[str]:
+    """Criteria are never referenced from free text (regressions: c08/c10 in M1, c08 in the final run).
+
+    Visible IDs (CA-01) restart per story and design keys (AC3) are never shown to readers, so
+    either form in prose leaves a reference nobody can resolve. Relate work to criteria through
+    claims and relations; describe the behavior instead of pointing at a criterion.
+    """
+    errors = [
+        f"{key}: references visible criterion ID {m.group(0)}; describe the behavior instead"
         for key, text in texts
         for m in [_VISIBLE_ID.search(text)]
         if m
     ]
+    if criterion_keys:
+        pattern = re.compile(
+            r"\b(" + "|".join(sorted(map(re.escape, criterion_keys), key=len, reverse=True)) + r")\b"
+        )
+        for key, text in texts:
+            m = pattern.search(text)
+            if m and m.group(1) != key:
+                errors.append(
+                    f"{key}: mentions criterion key {m.group(1)} in text; readers only see per-story "
+                    "visible IDs, "
+                    "so describe the behavior instead of referencing the criterion"
+                )
+    return errors
 
 
 def _templated(texts: list[tuple[str, str]], label: str) -> list[str]:
@@ -648,7 +666,7 @@ def compile_design(run: Run, payload: Any) -> tuple[list[str], dict[str, Any]]:
         )
         for c in criteria
     ]
-    ctx.errors += _visible_id_refs(texts)
+    ctx.errors += _visible_id_refs(texts, {c["key"] for c in criteria})
     ctx.errors += _templated(
         [(i["key"], i["description"]["value"]) for i in items if i["type"] != "epic"], "items"
     )
