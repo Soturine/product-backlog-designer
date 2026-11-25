@@ -2,9 +2,9 @@
 
 **From requirements to validated, traceable and actionable backlogs.**
 
-[Português (Brasil)](README.pt-BR.md) · [Documentation](docs/README.md) · [Roadmap](docs/roadmap.md) · [Example dashboard](examples/demo/report.html) · [Research and code audit](docs/upstream-code-audit.md)
+[Português (Brasil)](README.pt-BR.md) · [Documentation](docs/README.md) · [Roadmap](docs/roadmap.md) · [Example reports](examples/reports/README.md) · [Research and code audit](docs/upstream-code-audit.md)
 
-> **Development status:** pre-alpha. Agent-led generation from zero is implemented and was dogfooded on 12 synthetic cases (readers, generator and independent reviewer as separate agents; see [M1 evidence](docs/evidence/M1.md)): `pbd` runtime with verified reader ledgers, claims, design, independent review, verified quality gates, offline HTML report, JSON/Markdown/CSV/XLSX exports and a local Azure DevOps package. Audit, compare, refinement, planning, incremental ADR updates and any tracker publication are not implemented. Nothing contacts a tracker.
+> **Development status:** pre-alpha. Agent-led generation from zero was dogfooded on 12 synthetic cases ([M1 evidence](docs/evidence/M1.md)). Audit, comparison, refinement, check, clarify and profile modes work on local files and are covered by deterministic tests; their agent-led semantic qualification is deferred to the final integrated qualification ([ledger](benchmarks/qualification-ledger.json)). Planning, incremental evolution and the mock-only Azure publication flow are in progress. Nothing contacts a tracker.
 
 ## Why PBD?
 
@@ -61,14 +61,19 @@ The example assumes the behavior is in the fictional source. Unknown reservation
 
 ## See the report
 
-Screenshots of a real `report.html` produced by the agent-led dogfood of a synthetic PRD (case [c01-prd-only](benchmarks/runs/m1/c01-prd-only/)).
+`report.html` is a single offline file (double click, no server, no network) that opens on an executive overview and drills down into a master/detail backlog explorer, requirements traceability, findings and questions, quality gates with evidence, sources, the local integration package and the canonical data. The interface switches between Portuguese, English and Spanish offline; backlog content stays in the language it was written in.
 
-| Executive layer | Technical layer (work item detail) |
+![Report demo: overview, search, item detail, gates, language and theme switch](docs/images/report/report-demo.png)
+
+| Overview (pt-BR, light) | Backlog explorer with item detail (es, dark) |
 |---|---|
-| ![Executive summary](docs/images/report-summary.png) | ![Backlog tree with item detail](docs/images/report-backlog.png) |
-| ![Quality gates](docs/images/report-gates.png) | ![Dark theme](docs/images/report-dark.png) |
+| ![Overview](docs/images/report/overview-1440-light-pt.png) | ![Item detail](docs/images/report/item-1280-dark-es.png) |
+| **Audit of an existing backlog** | **Comparison of two backlogs** |
+| ![Audit overview](docs/images/report/audit-overview-1440-light-pt.png) | ![Comparison overview](docs/images/report/compare-overview-1440-light-pt.png) |
+| **Quality gates with evidence** | **Mobile (390 px)** |
+| ![Quality gates](docs/images/report/quality-1280-light-pt.png) | ![Mobile explorer](docs/images/report/backlog-390-light-pt.png) |
 
-Open the interactive file yourself: [benchmarks/runs/m1/c01-prd-only/report.html](benchmarks/runs/m1/c01-prd-only/report.html) (GitHub shows HTML as source: download it, or clone the repository, and open it in any browser; it is a single offline file with no external requests). Reports for all 12 dogfood cases are in [benchmarks/runs/m1](benchmarks/runs/m1/).
+More captures (1440/1280/768/390/320 px, light/dark, PT/EN/ES) are in [docs/images/report](docs/images/report/); the M1 renderer is kept for comparison in [docs/images/before-m2](docs/images/before-m2/). Open the synthetic examples yourself: [generation](examples/reports/generate/report.html), [audit](examples/reports/audit/report.html), [comparison](examples/reports/compare/report.html) (GitHub shows HTML as source: download or clone, then open in a browser). The 12 recorded M1 runs are re-rendered with the current renderer, clearly labelled, in [benchmarks/rerender/m1](benchmarks/rerender/m1/); the recorded originals in [benchmarks/runs/m1](benchmarks/runs/m1/) are unchanged.
 
 ## Output
 
@@ -122,7 +127,7 @@ Azure CLI authentication with REST/JSON Patch for lossless writes; optional CLI 
 |---|---|---|
 | M0 | foundation, schemas, runtime contracts, reuse decisions | runtime foundation done ([evidence](docs/evidence/M0.md)); profiles and gold fixtures moved to M1 |
 | M1 | generation and default report/package workflow | substantially complete ([evidence](docs/evidence/M1.md)); open: new-session end-to-end run, Linux symlink tests |
-| M2 | audit, compare and profiles | planned |
+| M2 | M1 fixes, audit, compare, refine, check, clarify, profile, report redesign with i18n | implemented; deterministic tests pass; semantic qualification deferred to the final qualification |
 | M3 | Azure export and verified publication | planned |
 | M4 | planning and capacity | planned |
 | M5 | incremental changes | planned |

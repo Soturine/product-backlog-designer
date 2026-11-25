@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — M2: M1 fixes, audit and comparison modes, premium report
+- M1 dogfood fixes: confirmed criteria/fields cannot trace only ambiguous, conflicting or unknown claims; container-only obligations are signalled; visible criterion IDs in text are rejected; source-stated field values are data obligations; skill assets ship in the wheel. One qualification ledger tracks open items.
+- Import of existing backlogs (PBD JSON, `pbd.import` JSON, CSV) with fail-closed type mapping; `audit` and `compare` modes over local baselines; `refine` (plan, diff, approve keys, apply; no deletion); `check`, `clarify`, `profile show|infer|execution`; execution profiles economical/balanced/rigorous.
+- Report rebuilt: sidebar and mobile drawer, routing and deep links, executive overview with readiness by concern and metrics with denominators, master/detail backlog explorer, requirements, findings, gates with evidence, sources, integration preview, comparison views; offline pt-BR/en/es interface; reduced-motion support; CSP by hash for style and script; core content without JavaScript; budgets at 1,060 items.
+- Examples, re-renders of the recorded M1 runs (labelled), 15 screenshots and an animated demo; evidence in docs/evidence/M2.md. Semantic requalification deferred to the final integrated qualification.
+
 ## Unreleased — M0 corrective round and M1 agent-led generation
 - Gate evidence is verified against artifact hashes, run and stage; coverage denominators carry hash-bound inventories and disposition breakdowns; G13 requires deterministic evidence of complete, independent review.
 - Agent-led pipeline: `pbd start`, verified reader ledgers (one reader per declared source, quotes checked against cited lines and pages), claims reconciliation, design, independent review, `pbd finalize`; work orders describe each next stage.

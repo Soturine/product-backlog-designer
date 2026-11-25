@@ -130,6 +130,60 @@
    "resolution": "Re-run affected cases under the frozen final candidate; original results stay as recorded.",
    "tests": [],
    "state": "deferred_final_qualification"
+  },
+  {
+   "id": "QL-011",
+   "origin": "M2 report redesign",
+   "milestone": "final",
+   "severity": "medium",
+   "issue": "No automated accessibility scanner (axe-core) on the host; WCAG 2.2 AA is a target, not verified.",
+   "evidence": "docs/reporting.md#accessibility",
+   "resolution": "Landmarks, skip link, labelled controls, keyboard tree, reduced motion and 320 px reflow are tested; a full accessibility review runs in the final qualification.",
+   "tests": [
+    "tests/e2e/test_report_browser.py"
+   ],
+   "state": "deferred_final_qualification"
+  },
+  {
+   "id": "QL-012",
+   "origin": "M2 report redesign",
+   "milestone": "M2",
+   "severity": "low",
+   "issue": "Playwright video recording needs an ffmpeg download that is not installed on the host.",
+   "evidence": "docs/reporting.md#screenshots-and-examples",
+   "resolution": "The demo is an animated PNG assembled from real Playwright frames without extra dependencies.",
+   "tests": [],
+   "state": "closed",
+   "closed_by": "docs/images/report/report-demo.png produced by tools/screenshot_report.py"
+  },
+  {
+   "id": "QL-013",
+   "origin": "M2 modes",
+   "milestone": "final",
+   "severity": "high",
+   "issue": "Audit, compare and refine contracts are qualified by deterministic fixtures only; no agent-led run of these modes yet.",
+   "evidence": "docs/evidence/M2.md",
+   "resolution": "Final integrated qualification exercises audit, comparison and refinement from natural-language requests with separate agents.",
+   "tests": [
+    "tests/pipeline/test_audit.py",
+    "tests/pipeline/test_compare.py",
+    "tests/pipeline/test_modes.py"
+   ],
+   "state": "deferred_final_qualification"
+  },
+  {
+   "id": "QL-014",
+   "origin": "M2 audit",
+   "milestone": "M2",
+   "severity": "low",
+   "issue": "G15 does not detect an imported criterion that still demands behaviour superseded by an approved decision (imported work has no claim references); only the reviewer finding shows it.",
+   "evidence": "tests/pipeline/test_audit.py",
+   "resolution": "Documented in the audit entrypoint: supersession in imported baselines is a reviewer finding; deterministic detection needs a trace the baseline does not carry.",
+   "tests": [
+    "tests/pipeline/test_audit.py"
+   ],
+   "state": "closed",
+   "closed_by": "accepted limitation documented in entrypoints/audit.md; no fabricated trace"
   }
  ]
 }

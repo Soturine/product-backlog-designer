@@ -2,9 +2,9 @@
 
 **De requisitos a um backlog validado, rastreável e pronto para revisão.**
 
-[English](README.md) · [Documentação](docs/README.md) · [Roadmap](docs/roadmap.md) · [Demonstração HTML](examples/demo/report.html)
+[English](README.md) · [Documentação](docs/README.md) · [Roadmap](docs/roadmap.md) · [Relatórios de exemplo](examples/reports/README.md)
 
-> **Estado atual:** planejamento / pré-alpha. As instruções e metodologia estão documentadas. Runtime, integrações, exportadores e benchmarks ainda não estão qualificados. A demonstração é fictícia e estática, não um resultado de execução da skill.
+> **Estado atual:** pré-alpha. A geração agent-led a partir do zero foi exercitada em 12 casos sintéticos ([evidência M1](docs/evidence/M1.md)). Os modos de auditoria, comparação, refinamento, check, clarify e profile funcionam sobre arquivos locais e têm testes determinísticos; a qualificação semântica agent-led desses modos fica para a qualificação integrada final ([ledger](benchmarks/qualification-ledger.json)). Planejamento, evolução incremental e o fluxo de publicação Azure somente com mocks estão em andamento. Nada contata um tracker.
 
 ## Para que serve?
 
@@ -51,9 +51,19 @@ Negritos, listas, parágrafos, acentos e links são preservados nos campos nativ
 
 ## Resultados
 
-O arquivo principal será `report.html`, um dashboard offline responsivo, em duas camadas: visão executiva simples e auditoria detalhada. A árvore inteira permite abrir cada item, descrição, critério, tarefa, campo e vínculo. Inclui filtros, busca, divergências lado a lado, rastreabilidade, fontes, perguntas, cobertura e planejamento. As métricas mostram escopo e limitações.
+`report.html` é um único arquivo offline (duplo clique, sem servidor e sem rede). Abre numa visão geral executiva e aprofunda em um explorador de backlog mestre/detalhe, rastreabilidade de requisitos, achados e perguntas, gates de qualidade com evidências, fontes, o pacote de integração local e os dados canônicos. A interface alterna entre português, inglês e espanhol sem rede; o conteúdo do backlog permanece no idioma em que foi escrito.
 
-`backlog.json` mantém a fonte canônica. O pacote `azure/azure-import.json` contém dados para o publicador, não um comando nativo do Azure CLI. CSV para importação manual no portal, Markdown, XLSX e integração FTD são opções. [Outputs](docs/reporting.md) · [Azure](docs/azure.md).
+![Demonstração: visão geral, busca, detalhe de item, gates, troca de idioma e tema](docs/images/report/report-demo.png)
+
+| Visão geral | Explorador com detalhe do item |
+|---|---|
+| ![Visão geral](docs/images/report/overview-1440-light-pt.png) | ![Detalhe](docs/images/report/backlog-1280-light-pt.png) |
+| **Auditoria de backlog existente** | **Comparação de dois backlogs** |
+| ![Auditoria](docs/images/report/audit-overview-1440-light-pt.png) | ![Comparação](docs/images/report/compare-overview-1440-light-pt.png) |
+
+Mais capturas (1440/1280/768/390/320 px, claro/escuro, PT/EN/ES) em [docs/images/report](docs/images/report/); o renderizador do M1 fica em [docs/images/before-m2](docs/images/before-m2/) para comparação. Exemplos sintéticos: [geração](examples/reports/generate/report.html), [auditoria](examples/reports/audit/report.html), [comparação](examples/reports/compare/report.html). As 12 execuções do M1 foram re-renderizadas, identificadas como re-render, em [benchmarks/rerender/m1](benchmarks/rerender/m1/); os originais em [benchmarks/runs/m1](benchmarks/runs/m1/) não mudaram.
+
+`backlog.json` mantém a fonte canônica. O pacote `azure/azure-import.json` contém dados para o publicador, não um comando nativo do Azure CLI. CSV, Markdown, XLSX e integração FTD são opções. [Outputs](docs/reporting.md) · [Azure](docs/azure.md).
 
 ## Arquitetura e qualidade
 
@@ -65,7 +75,7 @@ Os 18 gates planejados (13 originais e cinco extensões) preservam escopo, integ
 
 A base de engenharia considera componentes da FTD, Assertiva, Derivanta, HVE Core, Azure Prototype, Spec Kit, BMAD, OpenSpec, PM Skills e outros. [Auditoria de código](docs/upstream-code-audit.md) · [Pesquisa de mercado](docs/market-research.md). Reutilização depende de licença, testes e adaptação; não há código externo incorporado nesta fase.
 
-M0 Fundação → M1 Geração → M2 Auditoria → M3 Azure → M4 Planejamento → M5 Evolução → M6 Qualificação. A fundação de runtime do M0 (CLI `pbd`: schemas, validação, identidade, inventário de fontes, estado, bloqueio de rede) existe com evidência local ([evidência](docs/evidence/M0.md), [instalação](docs/install.md)); M1–M6 pendentes. [Roadmap](docs/roadmap.md) · [Benchmarks](benchmarks/README.md) · [Segurança](docs/security.md).
+M0 Fundação → M1 Geração → M2 Auditoria/comparação e relatório → M3 Azure (somente mock) → M4 Planejamento → M5 Evolução → M6 Integração. M0 e M1 concluídos com evidência ([M0](docs/evidence/M0.md), [M1](docs/evidence/M1.md)); M2 implementado com testes determinísticos ([M2](docs/evidence/M2.md)); M3–M6 em andamento. [Roadmap](docs/roadmap.md) · [Benchmarks](benchmarks/README.md) · [Segurança](docs/security.md).
 
 ## Implementação
 [Contrato agent-led](docs/agent-led-execution.md) · [Evidências e saúde do backlog](docs/evidence-and-backlog-health.md) · [Calibração](benchmarks/calibration.md) · [Prompt mestre](docs/PBD_AGENT_LED_MASTER_DIRECTIVE.md). Desenvolvimento e benchmarks exclusivamente offline, com snapshots locais e mocks; nenhuma consulta ou alteração em tracker real nesta fase.

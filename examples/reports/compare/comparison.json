@@ -1,0 +1,401 @@
+{
+  "criterion_reviews": [
+    {
+      "key": "L-A2.AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "L-A2.AC2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "R-B2.AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "R-B2.AC2",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "findings": [
+    {
+      "actual": "Sem critério.",
+      "affects": [
+        "L-A2"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "Rejeitar canteiro ocupado.",
+      "impact": "Reserva dupla.",
+      "recommendation": "Adicionar critério.",
+      "severity": "high",
+      "side": "left",
+      "why": "PRD 2.2."
+    },
+    {
+      "actual": "História de pagamento.",
+      "affects": [
+        "R-B4"
+      ],
+      "classification": "unsupported_assumption",
+      "expected": "Pagamentos fora.",
+      "impact": "Escopo extra.",
+      "recommendation": "Remover.",
+      "severity": "medium",
+      "side": "right",
+      "why": "PRD 3."
+    }
+  ],
+  "item_reviews": [
+    {
+      "key": "L-A1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "L-A2",
+      "source_support": "supported",
+      "task_sufficiency": "not_applicable",
+      "verdict": "pass"
+    },
+    {
+      "key": "R-A1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "R-B2",
+      "source_support": "supported",
+      "task_sufficiency": "not_applicable",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "R-B3",
+      "source_support": "supported",
+      "task_sufficiency": "not_applicable",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "R-B4",
+      "notes": "fora do escopo",
+      "source_support": "unsupported",
+      "task_sufficiency": "not_applicable",
+      "verdict": "fail"
+    }
+  ],
+  "kind": "pbd.comparison",
+  "language": "pt-BR",
+  "limitations": [],
+  "mapping_cardinality": {
+    "1:1": 1,
+    "1:N": 1
+  },
+  "mappings": [
+    {
+      "cardinality": "1:1",
+      "left": [
+        "L-A1"
+      ],
+      "rationale": "mesmo épico",
+      "relation": "equivalent",
+      "right": [
+        "R-A1"
+      ]
+    },
+    {
+      "cardinality": "1:N",
+      "differences": [
+        "rejeição só na direita"
+      ],
+      "left": [
+        "L-A2"
+      ],
+      "rationale": "uma história vs duas",
+      "relation": "split",
+      "right": [
+        "R-B2",
+        "R-B3"
+      ]
+    }
+  ],
+  "notes": [
+    "Neither baseline is treated as gold; coverage on both sides uses the same reviewer inventory.",
+    "Item counts are not a quality measure and no winner is computed.",
+    "Quality gates apply to a single backlog: audit each baseline to obtain its gates."
+  ],
+  "obligations": [
+    {
+      "agreement": "same",
+      "key": "O1",
+      "left": {
+        "covered_by": [
+          "L-A2.AC1"
+        ],
+        "disposition": "COVERED",
+        "rationale": "r"
+      },
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "quote": "pode reservar um canteiro livre",
+      "right": {
+        "covered_by": [
+          "R-B2.AC1"
+        ],
+        "disposition": "COVERED",
+        "rationale": "r"
+      },
+      "text": "pode reservar um canteiro livre"
+    },
+    {
+      "agreement": "differs",
+      "key": "O2",
+      "left": {
+        "covered_by": [],
+        "disposition": "NOT_COVERED",
+        "rationale": "r"
+      },
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "quote": "não aceita nova reserva",
+      "right": {
+        "covered_by": [
+          "R-B2.AC2"
+        ],
+        "disposition": "COVERED",
+        "rationale": "r"
+      },
+      "text": "não aceita nova reserva"
+    },
+    {
+      "agreement": "differs",
+      "key": "O3",
+      "left": {
+        "covered_by": [
+          "L-A2.AC2"
+        ],
+        "disposition": "COVERED",
+        "rationale": "r"
+      },
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-78385WMH95P7"
+      },
+      "quote": "Minhas reservas",
+      "right": {
+        "covered_by": [
+          "R-B3"
+        ],
+        "disposition": "PARTIALLY_COVERED",
+        "rationale": "r"
+      },
+      "text": "Minhas reservas"
+    },
+    {
+      "agreement": "same",
+      "key": "O5",
+      "left": {
+        "covered_by": [],
+        "disposition": "NOT_COVERED",
+        "rationale": "r"
+      },
+      "locator": {
+        "line_start": 3,
+        "member": "adr-001.md",
+        "source_id": "PBD-SRC-3Q116GNGMAKT"
+      },
+      "quote": "confirmadas automaticamente",
+      "right": {
+        "covered_by": [],
+        "disposition": "NOT_COVERED",
+        "rationale": "r"
+      },
+      "text": "confirmadas automaticamente"
+    }
+  ],
+  "reviewer": {
+    "agent": "comparer",
+    "independence": "separate_agent",
+    "model": "test-model"
+  },
+  "run_id": "PBD-RUN-FDD4T9GY151P",
+  "sides": {
+    "left": {
+      "baseline": {
+        "digest": "sha256:315562212dc7ab14d18e478c12964c425f07f2aea416e007f0b71591497b38fa",
+        "format": "pbd.import",
+        "source_file": "left.json"
+      },
+      "coverage": {
+        "breakdown": {
+          "COVERED": 2,
+          "NOT_COVERED": 2
+        },
+        "covered": 2,
+        "denominator": 4,
+        "not_covered": 2,
+        "partially_covered": 0,
+        "provenance": "independent reviewer inventory (shared by both sides)"
+      },
+      "criteria": 2,
+      "items": {
+        "by_type": {
+          "epic": 1,
+          "story": 1
+        },
+        "total": 2
+      },
+      "structural_issues": [],
+      "unmatched_items": [],
+      "unsupported": []
+    },
+    "right": {
+      "baseline": {
+        "digest": "sha256:a9596fb2acd46103f2bc874f9223ac6385dedcde4aad5a331b2a16d6a9401a4f",
+        "format": "pbd.import",
+        "source_file": "right.json"
+      },
+      "coverage": {
+        "breakdown": {
+          "COVERED": 2,
+          "NOT_COVERED": 1,
+          "PARTIALLY_COVERED": 1
+        },
+        "covered": 2,
+        "denominator": 4,
+        "not_covered": 1,
+        "partially_covered": 1,
+        "provenance": "independent reviewer inventory (shared by both sides)"
+      },
+      "criteria": 2,
+      "items": {
+        "by_type": {
+          "epic": 1,
+          "story": 3
+        },
+        "total": 4
+      },
+      "structural_issues": [],
+      "unmatched_items": [
+        "R-B4"
+      ],
+      "unsupported": [
+        "R-B4"
+      ]
+    }
+  },
+  "validator_version": "0.1.0.dev0"
+}

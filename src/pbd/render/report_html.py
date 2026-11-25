@@ -152,9 +152,12 @@ def _hash(text: str) -> str:
     return base64.b64encode(hashlib.sha256(text.encode("utf-8")).digest()).decode("ascii")
 
 
-def _json_block(value: Any) -> str:
+def _json_block(value: Any, compact: bool = False) -> str:
     """JSON safe to embed in <script type=application/json> or <pre> (no tag breakout)."""
-    text = json.dumps(value, ensure_ascii=False, sort_keys=True, indent=1)
+    if compact:
+        text = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    else:
+        text = json.dumps(value, ensure_ascii=False, sort_keys=True, indent=1)
     return text.replace("&", "\\u0026").replace("<", "\\u003c").replace(">", "\\u003e")
 
 
@@ -821,7 +824,7 @@ def _explorer(r: R, ctx: dict[str, Any]) -> str:
             )
         tech = (
             f'<details class="tech"><summary>{icon("chev", "sm")}{r.T("it.technical")}</summary><div>'
-            f'<pre class="json">{_json_block({"item": item, "criteria": crits})}</pre></div></details>'
+            f'<pre class="json">{_json_block({"item": item, "criteria": crits}, compact=True)}</pre></div></details>'
         )
         head = head.replace("<h3 ", '<h3 id="t-' + _e(item["id"]) + '" ', 1)
         return (
@@ -1192,7 +1195,7 @@ def _page(
 <p class="banner tone-info">{icon("shield")}{r.T("header.privacy")}</p>
 {views}</main></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script type="application/json" id="pbd-i18n">{_json_block(cats)}</script>
+<script type="application/json" id="pbd-i18n">{_json_block(cats, compact=True)}</script>
 <script>{js}</script></body></html>
 """
 
