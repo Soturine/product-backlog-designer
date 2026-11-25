@@ -184,6 +184,32 @@
    ],
    "state": "closed",
    "closed_by": "accepted limitation documented in entrypoints/audit.md; no fabricated trace"
+  },
+  {
+   "id": "QL-015",
+   "origin": "M6 portability",
+   "milestone": "final",
+   "severity": "medium",
+   "issue": "Skill discovery verified only in Claude Code; other hosts (for example Codex) use --target and are not verified.",
+   "evidence": "docs/install.md#hosts-and-portability",
+   "resolution": "Exercise discovery in another host during the final qualification if one is available; otherwise keep it documented as unverified.",
+   "tests": [
+    "tests/unit/test_skill_install.py"
+   ],
+   "state": "deferred_final_qualification"
+  },
+  {
+   "id": "QL-016",
+   "origin": "M3-M5",
+   "milestone": "final",
+   "severity": "high",
+   "issue": "Planning, evolution and the publication workflow are qualified by deterministic fixtures and mocks only; no agent-led run proposes plans, evolutions or packages from a natural-language request yet.",
+   "evidence": "docs/evidence/M3-M6.md",
+   "resolution": "Final integrated qualification exercises them in a new session from one request.",
+   "tests": [
+    "tests/integration/test_integrated_flow.py"
+   ],
+   "state": "deferred_final_qualification"
   }
  ]
 }

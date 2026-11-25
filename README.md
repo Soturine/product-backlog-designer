@@ -4,7 +4,7 @@
 
 [Português (Brasil)](README.pt-BR.md) · [Documentation](docs/README.md) · [Roadmap](docs/roadmap.md) · [Example reports](examples/reports/README.md) · [Research and code audit](docs/upstream-code-audit.md)
 
-> **Development status:** pre-alpha. Agent-led generation from zero was dogfooded on 12 synthetic cases ([M1 evidence](docs/evidence/M1.md)). Audit, comparison, refinement, check, clarify and profile modes work on local files and are covered by deterministic tests; their agent-led semantic qualification is deferred to the final integrated qualification ([ledger](benchmarks/qualification-ledger.json)). Planning, incremental evolution and the mock-only Azure publication flow are in progress. Nothing contacts a tracker.
+> **Development status:** pre-alpha. Agent-led generation from zero was dogfooded on 12 synthetic cases ([M1 evidence](docs/evidence/M1.md)). Audit, comparison, refinement, check, clarify and profile modes work on local files and are covered by deterministic tests; their agent-led semantic qualification is deferred to the final integrated qualification ([ledger](benchmarks/qualification-ledger.json)). Planning, incremental evolution, a mock-only Azure publication flow and the FTD handoff are implemented with deterministic tests; their semantic qualification and the new-session dogfood belong to the final integrated qualification. Nothing contacts a tracker.
 
 ## Why PBD?
 
@@ -128,10 +128,10 @@ Azure CLI authentication with REST/JSON Patch for lossless writes; optional CLI 
 | M0 | foundation, schemas, runtime contracts, reuse decisions | runtime foundation done ([evidence](docs/evidence/M0.md)); profiles and gold fixtures moved to M1 |
 | M1 | generation and default report/package workflow | substantially complete ([evidence](docs/evidence/M1.md)); open: new-session end-to-end run, Linux symlink tests |
 | M2 | M1 fixes, audit, compare, refine, check, clarify, profile, report redesign with i18n | implemented; deterministic tests pass; semantic qualification deferred to the final qualification |
-| M3 | Azure export and verified publication | planned |
-| M4 | planning and capacity | planned |
-| M5 | incremental changes | planned |
-| M6 | ecosystem and benchmark qualification | planned |
+| M3 | Azure local snapshots and mock-only publication workflow | implemented (mock); live NOT_RUN |
+| M4 | planning without invented capacity or dates | implemented; deterministic tests pass |
+| M5 | source diffs, decisions, lineage, staleness | implemented; deterministic tests pass |
+| M6 | FTD handoff, packaging, integrated flow, docs | implemented; final integrated qualification pending |
 
 See [roadmap](docs/roadmap.md), [skill](SKILL.md), [changelog](CHANGELOG.md), [attribution](ATTRIBUTION.md). Public examples must be synthetic; never commit private sources or credentials. Repository license selection is pending; no third-party implementation has been vendored. Contributions and runtime installation instructions will be qualified before release.
 

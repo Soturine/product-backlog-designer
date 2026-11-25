@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — M3–M6: mock Azure workflow, planning, evolution, FTD handoff
+- M3: local Azure snapshots and discovered profiles; prepare/preview/approve/apply/verify against an in-memory mock only, with journal, idempotency, reconciliation, bounded retries and read-back; publication report. No live transport exists.
+- M4: `pbd plan` — dependency order, MoSCoW/RICE/WSJF only with complete inputs, sprints only with known capacity, dates only from a user calendar, scenarios, checks, staleness; plan report.
+- M5: `pbd evolve` — source diffs (formatting-only vs content), decisions superseding claims, retrace, supersede, split/merge lineage, human-edit protection, no deletion, stale-artifact detection; evolution report.
+- M6: `pbd handoff ftd`; integrated flow test across every mode; wheel and sdist qualified in clean environments; install, hosts, troubleshooting and roadmap status tables; evidence in docs/evidence/M3-M6.md.
+
 ## Unreleased — M2: M1 fixes, audit and comparison modes, premium report
 - M1 dogfood fixes: confirmed criteria/fields cannot trace only ambiguous, conflicting or unknown claims; container-only obligations are signalled; visible criterion IDs in text are rejected; source-stated field values are data obligations; skill assets ship in the wheel. One qualification ledger tracks open items.
 - Import of existing backlogs (PBD JSON, `pbd.import` JSON, CSV) with fail-closed type mapping; `audit` and `compare` modes over local baselines; `refine` (plan, diff, approve keys, apply; no deletion); `check`, `clarify`, `profile show|infer|execution`; execution profiles economical/balanced/rigorous.

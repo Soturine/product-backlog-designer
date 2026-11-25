@@ -1,6 +1,18 @@
 # Roadmap
 
-Status: CP0/M0 met ([M0 evidence](evidence/M0.md)). CP1/M1 substantially complete ([M1 evidence](evidence/M1.md)): agent-led generation dogfooded on 12 synthetic cases with gold evaluation; open items are an end-to-end run in a new host session driven only by natural language and Linux symlink qualification; two pre-registered thresholds were missed (c04 critical recall, c06 trap). M2–M6 pending. Documentation does not count as runtime completion.
+Status per milestone (owner policy for M2–M6: main agent only, deterministic qualification per milestone, semantic requalification once at the end). Documentation does not count as runtime completion.
+
+| Milestone | implementation_status | deterministic_qualification | semantic_qualification | Evidence |
+|---|---|---|---|---|
+| M0 Foundation | implemented | pass | not_applicable | [M0](evidence/M0.md) |
+| M1 Generation | implemented | pass | partial: 2 pre-registered thresholds missed (c04, c06) | [M1](evidence/M1.md) |
+| M2 Audit, compare, report | implemented | pass | deferred (final qualification) | [M2](evidence/M2.md) |
+| M3 Azure (mock only) | implemented (mock) | pass | not_applicable; live NOT_RUN | [M3–M6](evidence/M3-M6.md) |
+| M4 Planning | implemented | pass | deferred (final qualification) | [M3–M6](evidence/M3-M6.md) |
+| M5 Evolution | implemented | pass | deferred (final qualification) | [M3–M6](evidence/M3-M6.md) |
+| M6 Ecosystem | implemented (FTD handoff, packaging, docs); GitHub/Jira not implemented | pass | deferred (final qualification) | [M3–M6](evidence/M3-M6.md) |
+
+Open items live in one [qualification ledger](../benchmarks/qualification-ledger.json).
 
 | Milestone | Deliverables | Exit evidence |
 |---|---|---|

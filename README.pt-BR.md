@@ -4,7 +4,7 @@
 
 [English](README.md) · [Documentação](docs/README.md) · [Roadmap](docs/roadmap.md) · [Relatórios de exemplo](examples/reports/README.md)
 
-> **Estado atual:** pré-alpha. A geração agent-led a partir do zero foi exercitada em 12 casos sintéticos ([evidência M1](docs/evidence/M1.md)). Os modos de auditoria, comparação, refinamento, check, clarify e profile funcionam sobre arquivos locais e têm testes determinísticos; a qualificação semântica agent-led desses modos fica para a qualificação integrada final ([ledger](benchmarks/qualification-ledger.json)). Planejamento, evolução incremental e o fluxo de publicação Azure somente com mocks estão em andamento. Nada contata um tracker.
+> **Estado atual:** pré-alpha. A geração agent-led a partir do zero foi exercitada em 12 casos sintéticos ([evidência M1](docs/evidence/M1.md)). Os modos de auditoria, comparação, refinamento, check, clarify e profile funcionam sobre arquivos locais e têm testes determinísticos; a qualificação semântica agent-led desses modos fica para a qualificação integrada final ([ledger](benchmarks/qualification-ledger.json)). Planejamento, evolução incremental, fluxo de publicação Azure somente com mock e handoff para a FTD estão implementados com testes determinísticos; a qualificação semântica e o dogfood em sessão nova ficam para a qualificação integrada final. Nada contata um tracker.
 
 ## Para que serve?
 
@@ -75,7 +75,7 @@ Os 18 gates planejados (13 originais e cinco extensões) preservam escopo, integ
 
 A base de engenharia considera componentes da FTD, Assertiva, Derivanta, HVE Core, Azure Prototype, Spec Kit, BMAD, OpenSpec, PM Skills e outros. [Auditoria de código](docs/upstream-code-audit.md) · [Pesquisa de mercado](docs/market-research.md). Reutilização depende de licença, testes e adaptação; não há código externo incorporado nesta fase.
 
-M0 Fundação → M1 Geração → M2 Auditoria/comparação e relatório → M3 Azure (somente mock) → M4 Planejamento → M5 Evolução → M6 Integração. M0 e M1 concluídos com evidência ([M0](docs/evidence/M0.md), [M1](docs/evidence/M1.md)); M2 implementado com testes determinísticos ([M2](docs/evidence/M2.md)); M3–M6 em andamento. [Roadmap](docs/roadmap.md) · [Benchmarks](benchmarks/README.md) · [Segurança](docs/security.md).
+M0 Fundação → M1 Geração → M2 Auditoria/comparação e relatório → M3 Azure (somente mock) → M4 Planejamento → M5 Evolução → M6 Integração. M0 e M1 concluídos com evidência ([M0](docs/evidence/M0.md), [M1](docs/evidence/M1.md)); M2–M6 implementados com testes determinísticos ([M2](docs/evidence/M2.md), [M3–M6](docs/evidence/M3-M6.md)); qualificação integrada final pendente. [Roadmap](docs/roadmap.md) · [Benchmarks](benchmarks/README.md) · [Segurança](docs/security.md).
 
 ## Implementação
 [Contrato agent-led](docs/agent-led-execution.md) · [Evidências e saúde do backlog](docs/evidence-and-backlog-health.md) · [Calibração](benchmarks/calibration.md) · [Prompt mestre](docs/PBD_AGENT_LED_MASTER_DIRECTIVE.md). Desenvolvimento e benchmarks exclusivamente offline, com snapshots locais e mocks; nenhuma consulta ou alteração em tracker real nesta fase.

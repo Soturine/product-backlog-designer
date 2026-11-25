@@ -460,6 +460,31 @@ def cmd_evolve(args: argparse.Namespace) -> int:
         return EXIT_REFUSED
 
 
+def cmd_handoff(args: argparse.Namespace) -> int:
+    from pbd.persistence.atomic import atomic_write_json
+    from pbd.pipeline.handoff import build_handoff
+    from pbd.pipeline.modes import load_json_backlog
+
+    try:
+        backlog = load_json_backlog(Path(args.backlog))
+        backlog.pop("_digest", None)
+        keys = load_json_file(Path(args.keys)) if args.keys else backlog.pop("keys", None)
+        doc = build_handoff(backlog, keys)
+    except (OSError, ValueError, CanonicalError, KeyError) as exc:
+        print(f"refused: {exc}", file=sys.stderr)
+        return EXIT_REFUSED
+    atomic_write_json(Path(args.out) / "ftd-handoff.json", doc)
+    _emit(
+        {
+            "handoff": str(Path(args.out) / "ftd-handoff.json"),
+            "sources": len(doc["sources"]),
+            "seeds": len(doc["ftd_request_draft"]["seeds"]),
+            "open_questions": len(doc["open_questions"]),
+        }
+    )
+    return EXIT_OK
+
+
 def cmd_skill(args: argparse.Namespace) -> int:
     from pbd.core.install import InstallError, install, target_dir
 
@@ -615,6 +640,13 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--dir", help="stale: directory with plans, packages and approvals to check")
     p.add_argument("--out", default="pbd-evolution")
     p.set_defaults(func=cmd_evolve)
+
+    p = sub.add_parser("handoff", help="versioned handoff to Functional Test Designer (no test cases)")
+    p.add_argument("target", choices=["ftd"])
+    p.add_argument("--backlog", required=True)
+    p.add_argument("--keys", help="optional id->key map (traceability.json keys) to show design keys")
+    p.add_argument("--out", default="pbd-handoff")
+    p.set_defaults(func=cmd_handoff)
 
     p = sub.add_parser("check", help="structural health of a backlog file (no sources: structure only)")
     p.add_argument("backlog")
