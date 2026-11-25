@@ -13,3 +13,6 @@ Use confirmed team, capacity, dates, availability, velocity where relevant, depe
 
 ## Audit
 Review every task for scope, sufficiency, actionable result, activity and parent/criterion linkage. Review capacity and estimates separately from functional coverage. Findings distinguish absence, legitimate unknown and optional improvement. No automatic correction of human plans. See [work items](work-items.md), [sources](research-references.md).
+
+## Implemented (M4)
+The planning engine (`src/pbd/pipeline/planning.py`, `pbd plan`) implements the rules above for local backlogs: dependency-safe ordering, optional MoSCoW/RICE/WSJF with complete inputs only, sprint allocation only with a known capacity and matching unit, dates only from a user calendar, scenarios, cycles/blockers/cross-team checks and staleness against the backlog digest. See [/pbd-plan](../entrypoints/plan.md).

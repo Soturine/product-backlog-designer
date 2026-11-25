@@ -18,7 +18,7 @@ pbd start --mode audit --baseline <backlog.json|.csv> [--type-map <map.json>] --
 pbd submit reading|claims|design|review|comparison --file <payload.json> --out <artifact-root>
 pbd finalize --out <artifact-root>          # → <run>/output/report.html + JSON/exports
 pbd work-order --out <artifact-root>        # what the next stage must account for
-pbd check <backlog> | pbd clarify <backlog.json> | pbd profile show|infer|execution ... | pbd refine plan|apply ...
+pbd plan --backlog <backlog.json> [--input planning.json] | pbd check <backlog> | pbd clarify <backlog.json> | pbd profile show|infer|execution ... | pbd refine plan|apply ...
 ```
 Every submission is validated all-or-nothing and returns every problem at once. The runtime verifies quotes against the cited lines, accounts for every source member and reader obligation, renders native rich text, computes gates G01–G18 from recorded evidence and re-verifies every PASS against artifact hashes. It never decides semantics.
 
@@ -27,6 +27,6 @@ Every submission is validated all-or-nothing and returns every problem at once. 
 - Semantic work (reading, claims, design, review) is done by agents reading the actual content — never by a generated script, regex or keyword counter.
 - Never invent actors, thresholds, estimates, assignees, dates or technical facts. Unknowns become questions; unsupported ideas become `proposed` with rationale.
 - Report the model that actually ran for each role. If you cannot use separate agents, say so (`sequential_role`); G13 will be BLOCKED.
-- Development and qualification are offline. Never contact Azure DevOps or any tracker; a local package is not a publication. Audit, comparison, refinement, check, clarify and profile modes work on local files ([entrypoints](entrypoints/)); planning and ADR updates are not implemented yet, and publication exists only against a local mock (`pbd azure ...`) — say so instead of simulating anything else.
+- Development and qualification are offline. Never contact Azure DevOps or any tracker; a local package is not a publication. Audit, comparison, refinement, check, clarify and profile modes work on local files ([entrypoints](entrypoints/)); ADR/version evolution is not implemented yet, and publication exists only against a local mock (`pbd azure ...`) — say so instead of simulating anything else.
 
 Details: [usage](docs/usage.md), [install](docs/install.md), [quality gates](docs/quality-gates.md), [reporting](docs/reporting.md), [work items](docs/work-items.md).

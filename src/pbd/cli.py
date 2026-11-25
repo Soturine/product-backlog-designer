@@ -370,6 +370,46 @@ def cmd_azure(args: argparse.Namespace) -> int:
     return EXIT_OK
 
 
+def cmd_plan(args: argparse.Namespace) -> int:
+    from pbd import __version__
+    from pbd.persistence.atomic import atomic_write_bytes, atomic_write_json
+    from pbd.pipeline.modes import load_json_backlog
+    from pbd.pipeline.planning import PlanningError, is_stale, plan, plan_markdown
+    from pbd.render.report_html import render_plan_report
+
+    out = Path(args.out)
+    try:
+        backlog = load_json_backlog(Path(args.backlog))
+        if args.action == "check":
+            if not args.plan:
+                print("refused: plan check needs --plan", file=sys.stderr)
+                return EXIT_REFUSED
+            stale = is_stale(load_json_file(Path(args.plan)), backlog)
+            _emit({"stale": stale, "plan": args.plan})
+            return EXIT_INVALID if stale else EXIT_OK
+        doc = plan(backlog, load_json_file(Path(args.input)) if args.input else None)
+    except PlanningError as exc:
+        _emit({"accepted": False, "errors": exc.errors})
+        return EXIT_INVALID
+    except (OSError, ValueError, CanonicalError) as exc:
+        print(f"refused: {exc}", file=sys.stderr)
+        return EXIT_REFUSED
+    atomic_write_json(out / "sprint-plan.json", doc)
+    atomic_write_bytes(out / "sprint-plan.md", plan_markdown(doc).encode("utf-8"))
+    html = render_plan_report(doc, args.title, backlog["language"], __version__)
+    atomic_write_bytes(out / "plan-report.html", html.encode("utf-8"))
+    _emit(
+        {
+            "sprints": len(doc["sprints"] or []),
+            "sequence": len(doc["sequence"]),
+            "unplanned": len(doc["unplanned"]),
+            "committed": False,
+            "notes": doc["notes"],
+        }
+    )
+    return EXIT_OK
+
+
 def cmd_skill(args: argparse.Namespace) -> int:
     from pbd.core.install import InstallError, install, target_dir
 
@@ -499,6 +539,17 @@ def build_parser() -> argparse.ArgumentParser:
     from pbd.integrations.azure.cli import add_parser as add_azure
 
     add_azure(sub, cmd_azure)
+
+    p = sub.add_parser(
+        "plan", help="dependency order and sprint proposal from confirmed fields and your inputs"
+    )
+    p.add_argument("action", nargs="?", choices=["make", "check"], default="make")
+    p.add_argument("--backlog", required=True)
+    p.add_argument("--input", help="planning input JSON (capacity, calendar, technique, scenarios)")
+    p.add_argument("--plan", help="check: a sprint-plan.json to test for staleness")
+    p.add_argument("--title")
+    p.add_argument("--out", default="pbd-plan")
+    p.set_defaults(func=cmd_plan)
 
     p = sub.add_parser("check", help="structural health of a backlog file (no sources: structure only)")
     p.add_argument("backlog")

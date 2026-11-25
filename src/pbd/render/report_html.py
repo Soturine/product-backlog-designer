@@ -1464,7 +1464,7 @@ def render_publication_report(
     body = (
         f'<div class="banner tone-warn">{icon("lock")}{r.T("pub.d")}</div>'
         f'<dl class="kv"><dt>{r.T("pub.target")}</dt><dd><code>{_e(preview["target"]["namespace"])}</code></dd>'
-        f"<dt>{r.T('col.key')}</dt><dd><code>{_e(preview['plan_digest'])}</code></dd>"
+        f"<dt>{r.T('pub.digest')}</dt><dd><code>{_e(preview['plan_digest'])}</code></dd>"
         f"<dt>{r.T('pub.operations')}</dt><dd>{_e(counts)} — {r.T('pub.deletes')}</dd>"
         f"<dt>{r.T('pub.verification')}</dt><dd>{ver_html}</dd></dl>"
         f'<section class="block"><div class="panel"><div class="toolbar">'
@@ -1487,6 +1487,140 @@ def render_publication_report(
         mode="publish",
         subtitle=f"{r.T('pub.target')} <code>{_e(preview['target']['namespace'])}</code>",
         content_lang=ui_locale,
+        nav=_nav(r, entries),
+        views=view + data,
+        version=version,
+        synthetic=False,
+    )
+
+
+# ------------------------------------------------------------------------------------ planning
+def _li(text: Any) -> str:
+    return f"<li>{_e(text)}</li>"
+
+
+def render_plan_report(
+    doc: dict[str, Any], title: str | None, language: str, version: str, stale: bool = False
+) -> str:
+    """Planning proposal: inputs and hypotheses, sprint board (only with capacity), sequence, checks."""
+    r = R(resolve_locale(language))
+    title = title or r.t("plan.title")
+    seq = {x["item"]: x for x in doc["sequence"]}
+    inputs = doc["inputs"]
+    cap = inputs.get("capacity") or {}
+
+    def prov(x: dict[str, Any]) -> str:
+        key = f"plan.prov.{x['provenance']['effort']}"
+        return r.T(key) if r.t.has(key) else f'<span lang="en">{_e(x["provenance"]["effort"])}</span>'
+
+    def num(value: Any) -> str:
+        return "—" if value is None else _e(value)
+
+    def card(iid: str) -> str:
+        x = seq[iid]
+        return (
+            f'<div class="card-item"><span class="meta">{r.type_tag(x["type"])}</span>'
+            f'<span lang="{_e(language)}">{_e(x["title"])}</span>'
+            f'<span class="meta">{r.T("plan.effort")}: {num(x["effort"])}</span></div>'
+        )
+
+    banner = f'<div class="banner tone-fail">{icon("alert")}{r.T("plan.stale")}</div>' if stale else ""
+    capacity = _e(cap["per_sprint"]) if cap.get("per_sprint") else r.T("plan.unknown_capacity")
+    kv = (
+        f'<dl class="kv"><dt>{r.T("plan.capacity")}</dt><dd>{capacity}</dd>'
+        f"<dt>{r.T('plan.unit')}</dt><dd><code>{_e(inputs['unit'])}</code></dd>"
+        f"<dt>{r.T('plan.technique')}</dt><dd><code>{_e(inputs['technique'])}</code></dd></dl>"
+    )
+    notes = "".join(_en_li(n) for n in doc["notes"])
+    body = (
+        f'{banner}<div class="banner tone-info">{icon("info")}{r.T("plan.d")}</div>'
+        f'<section class="block"><h3>{r.T("plan.inputs")}</h3><div class="panel pad">{kv}{_ul(notes) if notes else ""}'
+        "</div></section>"
+    )
+    if doc["sprints"]:
+        cols = []
+        for s in doc["sprints"]:
+            width = min(100.0, 100 * s["utilization"])
+            tone = "warn" if width > 95 else "pass"
+            dates = (
+                f'<span class="d">{_e(s["dates"]["start"])} → {_e(s["dates"]["end"])}</span>'
+                if s.get("dates")
+                else ""
+            )
+            load = r.T("plan.load", load=s["load"], cap=s["capacity"])
+            cols.append(
+                f'<section class="panel"><h4>{r.T("plan.sprint", n=s["index"])}<span>{load}</span></h4>{dates}'
+                f'<svg class="bar" viewBox="0 0 100 6" preserveAspectRatio="none" aria-hidden="true">'
+                f'<rect class="fill-{tone}" x="0" y="0" width="{width:.1f}" height="6"/></svg>'
+                + "".join(card(i) for i in s["items"])
+                + "</section>"
+            )
+        body += f'<section class="block"><h3>{r.T("plan.board")}</h3><div class="board">{"".join(cols)}</div></section>'
+    rows = "".join(
+        f'<tr><td>{n + 1}</td><td>{r.type_tag(x["type"])}</td><td lang="{_e(language)}">{_e(x["title"])}</td>'
+        f'<td>{num(x["priority"])}</td><td>{num(x["effort"])} <span class="d">{prov(x)}</span></td>'
+        f"<td>{num(x['score'])}</td><td>{len(x['waits_for']) or '—'}</td></tr>"
+        for n, x in enumerate(doc["sequence"])
+    )
+    body += (
+        f'<section class="block"><h3>{r.T("plan.sequence")}</h3><div class="panel tablewrap"><table class="grid">'
+        f"<thead><tr><th>#</th><th>{r.T('col.type')}</th><th>{r.T('col.title')}</th><th>{r.E('field', 'priority')}</th>"
+        f"<th>{r.T('plan.effort')}</th><th>{r.T('plan.score')}</th><th>{r.T('plan.waits')}</th></tr></thead>"
+        f"<tbody>{rows}</tbody></table></div></section>"
+    )
+    if doc["unplanned"]:
+        lis = "".join(
+            f'<li><span lang="{_e(language)}">{_e(seq[u["item"]]["title"])}</span> — {_en_p(u["reason"])}</li>'
+            for u in doc["unplanned"]
+        )
+        body += f'<section class="block"><h3>{r.T("plan.unplanned")}</h3><div class="panel">{_ul(lis)}</div></section>'
+    checks = doc["checks"]
+    groups = [
+        ("plan.cycles", [", ".join(checks["cycles"])] if checks["cycles"] else []),
+        (
+            "plan.blockers",
+            [
+                f"{seq.get(b['item'], {}).get('title', b['item'])} → {b['blocker']}"
+                for b in checks["external_blockers"]
+            ],
+        ),
+        (
+            "plan.cross",
+            [
+                f"{c['item']} ({c['team']}) → {c['waits_for']} ({c['other_team']})"
+                for c in checks["cross_team_dependencies"]
+            ],
+        ),
+        (
+            "plan.missing",
+            [
+                f"{seq.get(k, {}).get('title', k)}: {', '.join(v)}"
+                for k, v in doc["score_missing_inputs"].items()
+            ],
+        ),
+    ]
+    cards = "".join(
+        f'<div class="panel"><h4>{r.T(key)}<span>{len(values)}</span></h4>'
+        + (_ul("".join(_li(v) for v in values)) if values else f'<p class="empty">{r.T("common.none")}</p>')
+        + "</div>"
+        for key, values in groups
+    )
+    body += f'<section class="block"><h3>{r.T("plan.checks")}</h3><div class="cards">{cards}</div></section>'
+    if doc["scenarios"]:
+        lis = "".join(
+            _li(f"{s['name']}: {s['per_sprint']} → {s['sprints']} sprints, {s['unplanned']} unplanned")
+            for s in doc["scenarios"]
+        )
+        body += f'<section class="block"><h3>{r.T("plan.scenarios")}</h3><div class="panel">{_ul(lis)}</div></section>'
+    view = _view("overview", r, "plan.title", None, body)
+    data = _data(r, doc, "canonical", "sprint-plan.json", "actions.download_json")
+    entries = [("overview", "plan.title", "flag", len(doc["sequence"])), ("data", "nav.data", "code", None)]
+    return _page(
+        r,
+        title=title,
+        mode="plan",
+        subtitle=r.T("plan.sequence"),
+        content_lang=language,
         nav=_nav(r, entries),
         views=view + data,
         version=version,
