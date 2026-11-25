@@ -15,6 +15,7 @@ from pathlib import Path, PurePosixPath
 from typing import Any
 
 from pbd.core.canonical import digest, file_digest, load_json_file
+from pbd.core.execution import execution_profile
 from pbd.persistence.atomic import atomic_write_bytes, atomic_write_json
 from pbd.persistence.state import RunState, StateError
 from pbd.pipeline import extract
@@ -134,6 +135,7 @@ def normalize_request(
     title: str | None = None,
     acceptance_style: str = "list",
     synthetic: bool = False,
+    execution: str | None = None,
 ) -> dict[str, Any]:
     levels = list(levels or LEVELS)
     bad = sorted(set(levels) - set(LEVELS))
@@ -149,7 +151,12 @@ def normalize_request(
     if acceptance_style not in ("list", "table", "gherkin"):
         raise RunError("acceptance style must be list, table or gherkin")
     prof = load_profile(profile)
+    try:
+        exec_profile = execution_profile(execution)
+    except ValueError as exc:
+        raise RunError(str(exc)) from exc
     return {
+        "execution": exec_profile["id"],
         "mode": mode,
         "levels": [lv for lv in LEVELS if lv in levels],
         "omitted_levels": [lv for lv in LEVELS if lv not in levels],
@@ -361,6 +368,7 @@ def build_work_order(run: Run) -> dict[str, Any]:
         "run_dir": run.dir.name,
         "stages": stages,
         "request": run.request(),
+        "execution": execution_profile(run.request().get("execution")),
     }
     if stages["reading"] != "complete":
         order.update(

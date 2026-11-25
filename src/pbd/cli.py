@@ -189,6 +189,7 @@ def cmd_start(args: argparse.Namespace) -> int:
             title=args.title,
             acceptance_style=args.acceptance_style,
             synthetic=args.synthetic,
+            execution=args.execution,
         )
         run = start(
             _out_root(args),
@@ -259,6 +260,103 @@ def cmd_work_order(args: argparse.Namespace) -> int:
         return EXIT_INVALID
     _emit(run.write_work_order())
     return EXIT_OK
+
+
+def _type_map(args: argparse.Namespace) -> dict[str, str] | None:
+    return load_json_file(Path(args.type_map)) if getattr(args, "type_map", None) else None
+
+
+def cmd_check(args: argparse.Namespace) -> int:
+    from pbd.pipeline.importer import ImportError_
+    from pbd.pipeline.modes import check
+
+    try:
+        result = check(Path(args.backlog), _type_map(args))
+    except (ImportError_, OSError, ValueError, CanonicalError) as exc:
+        print(f"refused: {exc}", file=sys.stderr)
+        return EXIT_REFUSED
+    _emit(result)
+    return EXIT_INVALID if result["status"] == "fail" else EXIT_OK
+
+
+def cmd_clarify(args: argparse.Namespace) -> int:
+    from pbd.pipeline.importer import ImportError_
+    from pbd.pipeline.modes import clarify, clarify_markdown, load_json_backlog
+
+    try:
+        doc = clarify(load_json_backlog(Path(args.backlog)))
+    except (ImportError_, OSError, ValueError, CanonicalError, KeyError) as exc:
+        print(f"refused: {exc}", file=sys.stderr)
+        return EXIT_REFUSED
+    if args.format == "md":
+        sys.stdout.write(clarify_markdown(doc))
+    else:
+        _emit(doc)
+    return EXIT_OK
+
+
+def cmd_profile(args: argparse.Namespace) -> int:
+    from pbd.core.execution import execution_profile
+    from pbd.pipeline.importer import ImportError_
+    from pbd.pipeline.modes import infer_profile
+    from pbd.profiles import ProfileError, builtin_profiles, load_profile
+
+    try:
+        if args.action == "show":
+            _emit(load_profile(args.target) if args.target else {"builtin": sorted(builtin_profiles())})
+        elif args.action == "execution":
+            _emit(execution_profile(args.target))
+        else:
+            if not args.target:
+                print("refused: profile infer needs a backlog file", file=sys.stderr)
+                return EXIT_REFUSED
+            _emit(infer_profile(Path(args.target), _type_map(args), args.id))
+    except (ImportError_, ProfileError, OSError, ValueError, CanonicalError) as exc:
+        print(f"refused: {exc}", file=sys.stderr)
+        return EXIT_REFUSED
+    return EXIT_OK
+
+
+def cmd_refine(args: argparse.Namespace) -> int:
+    from pbd.persistence.atomic import atomic_write_bytes, atomic_write_json
+    from pbd.pipeline import refine
+    from pbd.pipeline.modes import load_json_backlog
+
+    out = Path(args.out)
+    try:
+        backlog = load_json_backlog(Path(args.backlog))
+        if args.action == "plan":
+            if not args.file:
+                print("refused: refine plan needs --file <proposal.json>", file=sys.stderr)
+                return EXIT_REFUSED
+            doc = refine.plan(backlog, load_json_file(Path(args.file)))
+            atomic_write_json(out / "refinement-plan.json", doc)
+            atomic_write_bytes(out / "refinement-diff.md", refine.diff_markdown(doc, backlog).encode("utf-8"))
+            _emit(
+                {
+                    "planned": len(doc["changes"]),
+                    "plan": str(out / "refinement-plan.json"),
+                    "plan_digest": doc["plan_digest"],
+                    "applied": False,
+                }
+            )
+            return EXIT_OK
+        if not (args.plan and args.approve and args.plan_digest):
+            print("refused: refine apply needs --plan, --approve and --plan-digest", file=sys.stderr)
+            return EXIT_REFUSED
+        res = refine.apply(
+            backlog, load_json_file(Path(args.plan)), args.approve.split(","), args.plan_digest
+        )
+        atomic_write_json(out / "backlog.refined.json", res["backlog"])
+        atomic_write_json(out / "refinement-result.json", res["result"])
+        _emit(res["result"])
+        return EXIT_OK
+    except refine.RefineError as exc:
+        _emit({"accepted": False, "errors": exc.errors})
+        return EXIT_INVALID
+    except (OSError, ValueError, CanonicalError) as exc:
+        print(f"refused: {exc}", file=sys.stderr)
+        return EXIT_REFUSED
 
 
 def cmd_skill(args: argparse.Namespace) -> int:
@@ -380,7 +478,39 @@ def build_parser() -> argparse.ArgumentParser:
         help="existing backlog file (.json pbd.backlog/pbd.import or .csv); repeat for compare",
     )
     p.add_argument("--type-map", help="audit: JSON object mapping native work-item types to PBD types")
+    p.add_argument(
+        "--execution",
+        choices=["economical", "balanced", "rigorous"],
+        help="agent spending profile recorded in the work order (default balanced)",
+    )
     p.set_defaults(func=cmd_start)
+
+    p = sub.add_parser("check", help="structural health of a backlog file (no sources: structure only)")
+    p.add_argument("backlog")
+    p.add_argument("--type-map")
+    p.set_defaults(func=cmd_check)
+
+    p = sub.add_parser("clarify", help="questions and decisions a canonical backlog is waiting for")
+    p.add_argument("backlog", help="PBD backlog.json")
+    p.add_argument("--format", choices=["json", "md"], default="json")
+    p.set_defaults(func=cmd_clarify)
+
+    p = sub.add_parser("profile", help="show a process profile or infer a draft one from a backlog file")
+    p.add_argument("action", choices=["show", "infer", "execution"])
+    p.add_argument("target", nargs="?", help="profile id (show/execution) or backlog file (infer)")
+    p.add_argument("--type-map")
+    p.add_argument("--id", default="inferred", help="infer: id for the draft profile")
+    p.set_defaults(func=cmd_profile)
+
+    p = sub.add_parser("refine", help="plan or apply a selective local refinement of a canonical backlog")
+    p.add_argument("action", choices=["plan", "apply"])
+    p.add_argument("--backlog", required=True, help="base PBD backlog.json")
+    p.add_argument("--file", help="plan: refinement proposal JSON")
+    p.add_argument("--plan", help="apply: refinement-plan.json produced by plan")
+    p.add_argument("--approve", help="apply: comma list of change keys, or all")
+    p.add_argument("--plan-digest", help="apply: digest of the reviewed plan")
+    p.add_argument("--out", required=True, help="directory for the plan/diff or the refined backlog")
+    p.set_defaults(func=cmd_refine)
 
     for name, func, helptext in (
         ("finalize", cmd_finalize, "checks, verified gates, projections, exports and report.html"),
