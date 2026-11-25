@@ -1,8 +1,8 @@
 """Evolution engine: what changed in the sources, what it means for the backlog, what is now stale.
 
 1. ``diff_sources`` compares two local versions of the selected sources member by member (after
-   the same text extraction readers use). It separates **identical**, **formatting-only** (same
-   text after whitespace/case/punctuation normalisation — an administrative change) and
+   the same text extraction readers use). It separates **identical**, **text-equivalent** (same
+   text after normalisation — NOT proof of an administrative change; an agent must compare the originals) and
    **content** changes with line hunks. Interpreting a content change is agent work.
 2. The agent writes an evolution proposal: the refinement operations plus lineage and decisions
    (``split_item``, ``merge_items``, ``add_decision`` superseding claims, ``supersede_item``).
@@ -78,8 +78,18 @@ def diff_sources(old: Path, new: Path, selectors: list[str]) -> dict[str, Any]:
                 entry["change"] = "identical"
             else:
                 ot, nt = _text(om[name]), _text(nm[name])
+                fmt = extract.extractor_for(name) or "unknown"
                 if _norm(ot) == _norm(nt):
-                    entry["change"] = "formatting_only"
+                    # equal normalised text proves only that: figures, layout, drawings, hidden
+                    # cells or punctuation-bearing values may still differ; an agent decides
+                    entry["change"] = "text_equivalent"
+                    entry["format"] = fmt
+                    entry["needs_agent_review"] = True
+                    entry["unverified"] = (
+                        "visual, layout and structural content of the original"
+                        if fmt != "text"
+                        else "whitespace, case and punctuation differences"
+                    )
                 else:
                     entry["change"] = "content"
                     hunks = []
@@ -105,7 +115,7 @@ def diff_sources(old: Path, new: Path, selectors: list[str]) -> dict[str, Any]:
                 "selector": sel,
                 "change": "content"
                 if changes & {"content", "added", "removed"}
-                else ("formatting_only" if "formatting_only" in changes else "identical"),
+                else ("text_equivalent" if "text_equivalent" in changes else "identical"),
                 "members": members,
             }
         )
@@ -114,12 +124,12 @@ def diff_sources(old: Path, new: Path, selectors: list[str]) -> dict[str, Any]:
         "sources": sources,
         "summary": {
             k: sum(1 for s in sources for m in s["members"] if m["change"] == k)
-            for k in ("identical", "formatting_only", "content", "added", "removed")
+            for k in ("identical", "text_equivalent", "content", "added", "removed")
         },
         "note": (
-            "formatting_only means the extracted text is equal after normalisation "
-            "(an administrative change); "
-            "what a content change means for the backlog is decided by an agent reading the new version."
+            "text_equivalent means the extracted text is equal after normalisation; it is NOT proof of a "
+            "formatting-only change (figures, layout, drawings and formats beyond text are not compared): "
+            "an agent reading both originals decides; what any change means is agent work."
         ),
     }
     doc["diff_digest"] = digest(sources)

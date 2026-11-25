@@ -104,7 +104,7 @@ def _audit_review(run: Run) -> dict[str, Any]:
         "dependencies_reviewed": True,
         "findings": [
             {
-                "gate": "G04",
+                "gate": "G15",
                 "classification": "confirmed_divergence",
                 "severity": "high",
                 "expected": "Reservas válidas confirmadas automaticamente (ADR-001).",
@@ -173,6 +173,7 @@ def test_audit_finalizes_with_honest_gates(tmp_path: Path) -> None:
     }
     assert gates["G02"] == "FAIL"  # baseline leaves obligations uncovered
     assert gates["G09"] == "FAIL"  # unsupported payment story
+    assert gates["G15"] == "FAIL"  # superseded manual approval still demanded (reviewer finding)
     backlog = json.loads(run.path("output/backlog.json").read_text("utf-8"))
     assert len(backlog["findings"]) == 2
     assert result["items"]["total"] == 3 and result["criteria"] == 2

@@ -1638,7 +1638,7 @@ EVO_TONE = {
 }
 SRC_TONE = {
     "identical": "neutral",
-    "formatting_only": "info",
+    "text_equivalent": "info",
     "content": "warn",
     "added": "info",
     "removed": "fail",

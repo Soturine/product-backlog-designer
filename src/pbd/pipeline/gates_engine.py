@@ -258,11 +258,24 @@ def compute_gates(
         else "duplicate candidates assessed",
         [rev],
     )
-    if backlog.get("decisions"):
+    change_findings = [
+        f
+        for f in review.get("findings") or []
+        if f.get("gate") == "G15" and f.get("review_status", "confirmed") == "confirmed"
+    ]
+    imported = any(i.get("origin") == "imported" and not i.get("claim_refs") for i in backlog["items"])
+    if backlog.get("decisions") or change_findings:
+        problems = checks["G15"] + [
+            f"reviewer: {f['actual']} (expected: {f['expected']})" for f in change_findings
+        ]
+        reason = "superseded claims not used by active work"
+        if imported and not problems:
+            # imported work carries no claim trace: only the reviewer's reading can see supersession
+            reason += "; imported work is assessed by the independent reviewer only (no claim trace)"
         put(
             "G15",
-            "PASS" if not checks["G15"] else "FAIL",
-            "superseded claims not used by active work" if not checks["G15"] else "; ".join(checks["G15"]),
+            "PASS" if not problems else "FAIL",
+            reason if not problems else "; ".join(problems),
             [det, rev],
         )
     else:

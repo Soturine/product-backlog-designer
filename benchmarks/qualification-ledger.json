@@ -178,12 +178,12 @@
    "severity": "low",
    "issue": "G15 does not detect an imported criterion that still demands behaviour superseded by an approved decision (imported work has no claim references); only the reviewer finding shows it.",
    "evidence": "tests/pipeline/test_audit.py",
-   "resolution": "Documented in the audit entrypoint: supersession in imported baselines is a reviewer finding; deterministic detection needs a trace the baseline does not carry.",
+   "resolution": "G15 now fails on confirmed reviewer findings tagged G15, and its PASS reason states that imported work is assessed by the reviewer only.",
    "tests": [
     "tests/pipeline/test_audit.py"
    ],
    "state": "closed",
-   "closed_by": "accepted limitation documented in entrypoints/audit.md; no fabricated trace"
+   "closed_by": "gates_engine G15 consumes confirmed G15 reviewer findings; tests/pipeline/test_audit.py asserts G15 FAIL"
   },
   {
    "id": "QL-015",
@@ -208,6 +208,19 @@
    "resolution": "Final integrated qualification exercises them in a new session from one request.",
    "tests": [
     "tests/integration/test_integrated_flow.py"
+   ],
+   "state": "deferred_final_qualification"
+  },
+  {
+   "id": "QL-017",
+   "origin": "native-first correction",
+   "milestone": "final",
+   "severity": "high",
+   "issue": "Native-first reading (originals primary, declared methods, transcription evidence) is enforced by contract and tests, but no agent has yet read real PDF/DOCX/XLSX/image members natively under it.",
+   "evidence": "docs/agent-runtime-boundaries.md",
+   "resolution": "Final integrated qualification: readers on c12 (XLSX) and the new-session run declare their reading methods; evaluators check that no member is certified read from a text layer alone.",
+   "tests": [
+    "tests/pipeline/test_native_first.py"
    ],
    "state": "deferred_final_qualification"
   }

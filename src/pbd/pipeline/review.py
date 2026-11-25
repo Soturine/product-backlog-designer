@@ -22,7 +22,7 @@ RATINGS = vocab.INVEST_RATINGS
 OB_DISPOSITIONS = vocab.review_dispositions()
 CLASSIFICATIONS = vocab.finding_classifications()
 SEVERITIES = vocab.finding_severities()
-GATES_REVIEWED = {"G02", "G04", "G05", "G06", "G07", "G08", "G09", "G13", "G14"}
+GATES_REVIEWED = {"G02", "G04", "G05", "G06", "G07", "G08", "G09", "G13", "G14", "G15"}
 
 
 def _source_lines(run: Run, review: dict[str, Any] | None = None) -> dict[tuple[str, str], list[str]]:

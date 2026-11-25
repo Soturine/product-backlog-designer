@@ -13,6 +13,8 @@
 - [Benchmarks](../benchmarks/README.md): reproducible qualification.
 - [Example](../examples/order-management.md): entirely synthetic.
 
+- [Agent / runtime boundaries](agent-runtime-boundaries.md)
+
 ## Detailed engineering playbooks
 - [Story engineering](story-engineering.md)
 - [Acceptance engineering](acceptance-engineering.md)

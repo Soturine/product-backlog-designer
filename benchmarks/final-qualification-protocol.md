@@ -21,6 +21,9 @@ Registered and committed **before any run** of this phase. All cases, sources, b
 
 Planning, evolution, mock publication and the FTD handoff (QL-016) are exercised on F1's output by the coordinator with the deterministic CLI; their semantic agent-led use stays recorded as not qualified unless a run exercises it.
 
+## Native-first (added before any run)
+Readers follow the native-first procedure: originals first, declared reading method/tool/limitations per member. Evaluators additionally check that no PDF/image member is certified `read` from extracted text alone and that transcription-only evidence is labelled (QL-017).
+
 ## Thresholds (unchanged from M1 for F2; fixed here for F1 and F3)
 - F1/F2: critical gold recall ≥ 0.90 per case (covered, or correctly question/conflict/blocked where gold expects it); zero critical trap violations; no gate PASS without verified evidence; c06 no active work on a superseded rule.
 - F1 also: the run completes from one request with `report.html` produced, without the user chaining commands.

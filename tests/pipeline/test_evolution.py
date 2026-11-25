@@ -50,14 +50,16 @@ def test_source_diff_separates_formatting_from_content(tmp_path: Path) -> None:
     doc = diff_sources(old, new, ["prd.md", "docs"])
     changes = {m["path"]: m["change"] for s in doc["sources"] for m in s["members"]}
     assert changes == {
-        "prd.md": "formatting_only",
+        "prd.md": "text_equivalent",
         "adr.md": "content",
         "same.md": "identical",
         "novo.md": "added",
     }
     hunk = next(m for s in doc["sources"] for m in s["members"] if m["path"] == "adr.md")["hunks"][0]
     assert hunk["old"] == ["Status: proposto", "Decisão: A"] and hunk["new_lines"] == [1, 2]
-    assert doc["sources"][0]["change"] == "formatting_only" and doc["sources"][1]["change"] == "content"
+    assert doc["sources"][0]["change"] == "text_equivalent" and doc["sources"][1]["change"] == "content"
+    prd = doc["sources"][0]["members"][0]
+    assert prd["needs_agent_review"] is True and "punctuation" in prd["unverified"]  # not proof of no change
     with pytest.raises(FileNotFoundError):
         diff_sources(old, new, ["missing.md"])
 
