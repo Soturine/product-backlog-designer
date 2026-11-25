@@ -272,11 +272,10 @@ def _g13(run: Run) -> dict[str, Any]:
     return next(g for g in gates["gates"] if g["id"] == "G13")
 
 
-def test_g13_fails_when_reviewer_was_a_reader(run: Run) -> None:
-    submit_review(run, review_payload(run, agent="reader-prd"))
-    finalize(run)
-    g13 = _g13(run)
-    assert g13["status"] == "FAIL" and "also acted as reader" in g13["reason"]
+def test_reviewer_that_was_a_reader_is_rejected(run: Run) -> None:
+    """Claiming separate_agent while having been a reader is rejected at submission (G13 also checks)."""
+    with pytest.raises(RunError, match="same agent that read"):
+        submit_review(run, review_payload(run, agent="reader-prd"))
 
 
 def test_g13_fails_when_reviewer_skipped_a_source(run: Run) -> None:
