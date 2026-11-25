@@ -77,6 +77,20 @@ DISPOSITIONS = {
     "OUT_OF_SCOPE",
     "DEFERRED",
 }
+UNCERTAINTY_LEVELS = {"confirmed", "inferred", "proposed", "ambiguous", "unknown", "conflicting"}
+CLAIM_CATEGORIES = {
+    "functional",
+    "nonfunctional",
+    "integration",
+    "operational",
+    "security",
+    "data",
+    "accessibility",
+    "error",
+    "constraint",
+    "out_of_scope",
+    "other",
+}
 _KEY = re.compile(r"^[A-Za-z][A-Za-z0-9_.-]{0,40}$")
 AC_PREFIX = {"pt": "CA", "es": "CA", "en": "AC"}
 
@@ -183,6 +197,21 @@ def compile_claims(run: Run, payload: Any) -> tuple[list[str], dict[str, Any]]:
         uncertainty = claim.get("uncertainty") or {"level": "confirmed"}
         if isinstance(uncertainty, str):
             uncertainty = {"level": uncertainty}
+        # Regression (dogfood c05): validate here, never store a shape the design stage will refuse.
+        extra = (
+            sorted(set(uncertainty) - {"level", "note"})
+            if isinstance(uncertainty, dict)
+            else ["<not an object>"]
+        )
+        if extra:
+            errors.append(f"{label} ({key}): uncertainty accepts only level and note; put {extra} in note")
+        elif uncertainty.get("level") not in UNCERTAINTY_LEVELS:
+            errors.append(f"{label} ({key}): uncertainty.level must be one of {sorted(UNCERTAINTY_LEVELS)}")
+        if claim.get("category", "functional") not in CLAIM_CATEGORIES:
+            errors.append(f"{label} ({key}): category must be one of {sorted(CLAIM_CATEGORIES)}")
+        unknown_fields = sorted(set(claim) - {"key", "text", "category", "sources", "uncertainty"})
+        if unknown_fields:
+            errors.append(f"{label} ({key}): unknown fields {unknown_fields}")
         claims_out.append(
             {
                 "id": cid,

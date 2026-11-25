@@ -159,3 +159,25 @@ def test_selective_levels_enforced(tmp_path: Path) -> None:
 def test_design_requires_claims_stage(read_run: Run) -> None:
     with pytest.raises(RunError, match="claims"):
         submit_design(read_run, design_payload())
+
+
+@pytest.mark.parametrize(
+    ("mutate", "message"),
+    [
+        (
+            lambda c: c.update(uncertainty={"level": "conflicting", "conflicts_with": ["C2"]}),
+            "only level and note",
+        ),
+        (lambda c: c.update(uncertainty={"level": "maybe"}), "uncertainty.level"),
+        (lambda c: c.update(category="wish"), "category"),
+        (lambda c: c.update(priority="high"), "unknown fields"),
+    ],
+)
+def test_claims_rejected_at_submission_not_later(read_run: Run, mutate: Any, message: str) -> None:
+    """Regression (dogfood c05): a claim shape the design stage refuses must be rejected at claims time."""
+    payload = claims_payload(read_run)
+    mutate(payload["claims"][0])
+    with pytest.raises(RunError) as exc:
+        submit_claims(read_run, payload)
+    assert any(message in e for e in exc.value.errors), exc.value.errors
+    assert read_run.stage_status("claims") == "pending"
