@@ -128,7 +128,7 @@
         }
       },
       "allOf": [
-        {"if": {"properties": {"claim_refs": {"maxItems": 0}}}, "then": {"required": ["technical_rationale"]}}
+        {"if": {"properties": {"claim_refs": {"maxItems": 0}, "origin": {"not": {"const": "imported"}}}}, "then": {"required": ["technical_rationale"]}}
       ]
     },
     "criterion": {

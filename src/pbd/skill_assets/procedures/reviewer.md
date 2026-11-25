@@ -16,6 +16,9 @@ Duplication · ambiguity (vague adjectives, missing thresholds) · underspecific
 - Work on a superseded mechanism without implementation evidence of that mechanism is a finding.
 - Values stated by the sources (priorities, estimates) missing from the fields are a gap.
 
+## Audit mode
+When the work order says AUDIT, the backlog is an imported baseline: it has no claim references by design. Judge it only against the sources: map each of your obligations to the baseline items/criteria that carry it (`covered_by`), set `source_support` per item and criterion, and record every divergence, gap, superseded requirement still demanded and out-of-scope item as a finding. Imported wording and formats are not defects by themselves.
+
 ## False-positive controls
 A conjunction is not automatically two stories; a valid nonstandard format need not be rewritten; an enabler without persona is legitimate; an optional field left empty is not a defect; unknown is not wrong. Distinguish confirmed divergence from candidate concern and optional improvement.
 

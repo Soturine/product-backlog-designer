@@ -126,8 +126,14 @@ def submit_claims(run: Run, payload: Any) -> dict[str, Any]:
         digest([run.artifact_digest(f"stages/reading/{s['id']}.json") for s in run.inventory()["sources"]]),
         str(run.artifact_digest("stages/claims.json")),
     )
+    baseline = None
+    if run.request()["mode"] == "audit":
+        from pbd.pipeline.audit import compile_baseline
+
+        baseline = compile_baseline(run)
     run.write_work_order()
     return {
+        **({"baseline_compiled": baseline} if baseline else {}),
         "claims": len(compiled["claims"]),
         "decisions": len(compiled["decisions"]),
         "rejected_obligations": len(compiled["rejected"]),

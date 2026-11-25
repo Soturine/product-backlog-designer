@@ -163,11 +163,27 @@ def start(
     selections: list[tuple[str, str]],
     request: dict[str, Any],
     host: str = "unknown",
+    baseline: str | None = None,
+    type_map: dict[str, str] | None = None,
 ) -> Run:
-    """Create a run: inventory, extraction, reader assignments and the first work order."""
+    """Create a run: inventory, extraction, reader assignments and the first work order.
+
+    ``baseline`` (audit mode) is a workspace-relative backlog file imported before the run exists,
+    so an unsupported or unmapped baseline refuses the run instead of leaving it half-built.
+    """
     if not selections:
         raise RunError("at least one explicitly selected source is required")
+    if (request["mode"] == "audit") != (baseline is not None):
+        raise RunError("audit mode requires --baseline, and --baseline is only valid in audit mode")
     scope = Scope(workspace)
+    imported = None
+    if baseline is not None:
+        from pbd.pipeline.importer import ImportError_, load_backlog
+
+        try:
+            imported = load_backlog(scope.resolve(baseline), type_map)
+        except ImportError_ as exc:
+            raise RunError(f"baseline refused: {exc}") from exc
     records = build_sources(scope, selections)
     root = Path(root)
     state = RunState.create(root, request["mode"], synthetic=bool(request.get("synthetic")), host=host)
@@ -274,6 +290,9 @@ def start(
     state.manifest["status"]["source_coverage"] = (
         "incomplete_reading" if unreadable or gapped else "not_assessed"
     )
+    if imported is not None:
+        run.write_artifact("stages/baseline.json", imported)
+        state.manifest["limitations"] += [f"baseline: {n}" for n in imported["notes"]]
     state.save()
     state.complete("inventory", digest([selections, request]), inv_digest)
     run.write_work_order()
@@ -372,6 +391,14 @@ def build_work_order(run: Run) -> dict[str, Any]:
             ),
             review_targets=_review_targets(run),
         )
+        if run.request()["mode"] == "audit":
+            order["instruction"] += (
+                ". AUDIT: the backlog under review is the imported baseline (origin imported, no "
+                "claim references); judge it against the sources, never against what you would have "
+                "designed. Every gap, divergence or unsupported item is a finding with expected, "
+                "actual, why, impact and recommendation"
+            )
+            order["baseline"] = run.read("stages/design.json").get("baseline")
     else:
         order.update(next_stage="finalize", instruction="Run: pbd finalize")
     return order

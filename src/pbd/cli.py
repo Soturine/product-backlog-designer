@@ -179,8 +179,9 @@ def cmd_start(args: argparse.Namespace) -> int:
     from pbd.pipeline.run import RunError, normalize_request, start
 
     try:
+        type_map = load_json_file(Path(args.type_map)) if args.type_map else None
         request = normalize_request(
-            mode="generate",
+            mode=args.mode,
             levels=args.levels.split(",") if args.levels else None,
             language=args.language,
             profile=args.profile,
@@ -189,8 +190,16 @@ def cmd_start(args: argparse.Namespace) -> int:
             acceptance_style=args.acceptance_style,
             synthetic=args.synthetic,
         )
-        run = start(_out_root(args), Path(args.workspace), args.source, request, host=doctor()["host"])
-    except (RunError, ScopeError, ValueError) as exc:
+        run = start(
+            _out_root(args),
+            Path(args.workspace),
+            args.source,
+            request,
+            host=doctor()["host"],
+            baseline=args.baseline,
+            type_map=type_map,
+        )
+    except (RunError, ScopeError, ValueError, OSError, CanonicalError) as exc:
         print(f"refused: {exc}", file=sys.stderr)
         return EXIT_REFUSED
     _emit({"run_id": run.run_id, "run_dir": str(run.dir), "work_order": str(run.path("work-order.json"))})
@@ -355,6 +364,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--acceptance-style", default="list", choices=["list", "table", "gherkin"])
     p.add_argument("--title")
     p.add_argument("--synthetic", action="store_true")
+    p.add_argument("--mode", default="generate", choices=["generate", "audit"], help="audit needs --baseline")
+    p.add_argument("--baseline", help="audit: existing backlog (.json pbd.backlog/pbd.import or .csv)")
+    p.add_argument("--type-map", help="audit: JSON object mapping native work-item types to PBD types")
     p.set_defaults(func=cmd_start)
 
     for name, func, helptext in (
