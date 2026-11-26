@@ -1,0 +1,458 @@
+{
+ "kind": "pbd.sprint-plan",
+ "backlog_digest": "sha256:b631a5b8738de5e1f9604d26b6deac386e15f79ed77ee7054413b2aabe6cc00a",
+ "input_digest": "sha256:233961c57cd42aab6179a2a31a1b2157001c7904e2c655fc9c41769428ae6aa7",
+ "committed": false,
+ "status": "proposal",
+ "inputs": {
+  "capacity": null,
+  "calendar": null,
+  "technique": "none",
+  "use_proposed_estimates": false,
+  "unit": "story_points"
+ },
+ "sequence": [
+  {
+   "item": "PBD-STORY-000000000001",
+   "type": "story",
+   "title": "PBD-STORY-000000000001",
+   "priority": null,
+   "effort": 3,
+   "provenance": {
+    "priority": "absent",
+    "effort": "confirmed"
+   },
+   "score": null,
+   "waits_for": [],
+   "readiness": "ready",
+   "backlog_position": 2
+  },
+  {
+   "item": "PBD-TASK-000000000001",
+   "type": "task",
+   "title": "PBD-TASK-000000000001",
+   "priority": null,
+   "effort": null,
+   "provenance": {
+    "priority": "absent",
+    "effort": "only original_estimate given (units are not converted)"
+   },
+   "score": null,
+   "waits_for": [],
+   "readiness": "ready",
+   "backlog_position": 3
+  },
+  {
+   "item": "PBD-TASK-000000000002",
+   "type": "task",
+   "title": "PBD-TASK-000000000002",
+   "priority": null,
+   "effort": null,
+   "provenance": {
+    "priority": "absent",
+    "effort": "only original_estimate given (units are not converted)"
+   },
+   "score": null,
+   "waits_for": [],
+   "readiness": "ready",
+   "backlog_position": 4
+  },
+  {
+   "item": "PBD-TASK-000000000003",
+   "type": "task",
+   "title": "PBD-TASK-000000000003",
+   "priority": null,
+   "effort": null,
+   "provenance": {
+    "priority": "absent",
+    "effort": "only original_estimate given (units are not converted)"
+   },
+   "score": null,
+   "waits_for": [],
+   "readiness": "ready",
+   "backlog_position": 5
+  },
+  {
+   "item": "PBD-STORY-000000000002",
+   "type": "story",
+   "title": "PBD-STORY-000000000002",
+   "priority": null,
+   "effort": 5,
+   "provenance": {
+    "priority": "absent",
+    "effort": "confirmed"
+   },
+   "score": null,
+   "waits_for": [
+    "PBD-STORY-000000000001"
+   ],
+   "readiness": "ready",
+   "backlog_position": 6
+  },
+  {
+   "item": "PBD-TASK-000000000004",
+   "type": "task",
+   "title": "PBD-TASK-000000000004",
+   "priority": null,
+   "effort": null,
+   "provenance": {
+    "priority": "absent",
+    "effort": "only original_estimate given (units are not converted)"
+   },
+   "score": null,
+   "waits_for": [],
+   "readiness": "ready",
+   "backlog_position": 7
+  },
+  {
+   "item": "PBD-TASK-000000000005",
+   "type": "task",
+   "title": "PBD-TASK-000000000005",
+   "priority": null,
+   "effort": null,
+   "provenance": {
+    "priority": "absent",
+    "effort": "only original_estimate given (units are not converted)"
+   },
+   "score": null,
+   "waits_for": [],
+   "readiness": "ready",
+   "backlog_position": 8
+  },
+  {
+   "item": "PBD-TASK-000000000006",
+   "type": "task",
+   "title": "PBD-TASK-000000000006",
+   "priority": null,
+   "effort": null,
+   "provenance": {
+    "priority": "absent",
+    "effort": "only original_estimate given (units are not converted)"
+   },
+   "score": null,
+   "waits_for": [],
+   "readiness": "ready",
+   "backlog_position": 9
+  },
+  {
+   "item": "PBD-TASK-000000000007",
+   "type": "task",
+   "title": "PBD-TASK-000000000007",
+   "priority": null,
+   "effort": null,
+   "provenance": {
+    "priority": "absent",
+    "effort": "only original_estimate given (units are not converted)"
+   },
+   "score": null,
+   "waits_for": [],
+   "readiness": "ready",
+   "backlog_position": 10
+  },
+  {
+   "item": "PBD-STORY-000000000003",
+   "type": "story",
+   "title": "PBD-STORY-000000000003",
+   "priority": null,
+   "effort": 8,
+   "provenance": {
+    "priority": "absent",
+    "effort": "confirmed"
+   },
+   "score": null,
+   "waits_for": [],
+   "readiness": "blocked",
+   "backlog_position": 11
+  },
+  {
+   "item": "PBD-TASK-000000000008",
+   "type": "task",
+   "title": "PBD-TASK-000000000008",
+   "priority": null,
+   "effort": null,
+   "provenance": {
+    "priority": "absent",
+    "effort": "only original_estimate given (units are not converted)"
+   },
+   "score": null,
+   "waits_for": [],
+   "readiness": "blocked",
+   "backlog_position": 12
+  }
+ ],
+ "score_missing_inputs": {},
+ "checks": {
+  "cycles": [],
+  "invalid_relations": [],
+  "external_blockers": [],
+  "cross_team_dependencies": [],
+  "unknown_estimates": [
+   "PBD-TASK-000000000001",
+   "PBD-TASK-000000000002",
+   "PBD-TASK-000000000003",
+   "PBD-TASK-000000000004",
+   "PBD-TASK-000000000005",
+   "PBD-TASK-000000000006",
+   "PBD-TASK-000000000007",
+   "PBD-TASK-000000000008"
+  ],
+  "zero_estimates": [],
+  "not_ready": [
+   {
+    "item": "PBD-STORY-000000000003",
+    "reason": "blocked by ['PBD-Q-000000000001']: partner contract unknown"
+   },
+   {
+    "item": "PBD-TASK-000000000008",
+    "reason": "blocked by ['PBD-Q-000000000001']: partner contract unknown"
+   }
+  ]
+ },
+ "sprints": null,
+ "unplanned": [],
+ "scenarios": [],
+ "notes": [],
+ "team_plan": {
+  "mode": "story_owner",
+  "members": [
+   {
+    "id": "dev-a",
+    "skills": [
+     "backend"
+    ],
+    "capacity": {
+     "unit": "hours",
+     "per_sprint": 30
+    }
+   },
+   {
+    "id": "dev-b",
+    "skills": [
+     "frontend",
+     "qa"
+    ],
+    "capacity": {
+     "unit": "hours",
+     "per_sprint": {
+      "1": 30,
+      "2": 20
+     }
+    }
+   }
+  ],
+  "sprints": [
+   {
+    "index": 1,
+    "goal": "Cadastro",
+    "working_days": 5,
+    "stories": [
+     "PBD-STORY-000000000001"
+    ]
+   },
+   {
+    "index": 2,
+    "goal": "Pagamento",
+    "working_days": 5,
+    "stories": [
+     "PBD-STORY-000000000002"
+    ]
+   }
+  ],
+  "stories": [
+   {
+    "story": "PBD-STORY-000000000001",
+    "sprint": 1,
+    "owner": "dev-a",
+    "owner_provenance": "proposed",
+    "actual_owner": null,
+    "story_points": 3,
+    "story_points_provenance": "confirmed",
+    "tasks": [
+     {
+      "task": "PBD-TASK-000000000001",
+      "sprint": 1,
+      "assignee": "dev-b",
+      "assignee_provenance": "proposed",
+      "actual_assignee": null,
+      "estimate_hours": 4,
+      "estimate_provenance": "confirmed",
+      "collaborator": true
+     },
+     {
+      "task": "PBD-TASK-000000000002",
+      "sprint": 1,
+      "assignee": "dev-a",
+      "assignee_provenance": "proposed",
+      "actual_assignee": null,
+      "estimate_hours": 6,
+      "estimate_provenance": "confirmed"
+     },
+     {
+      "task": "PBD-TASK-000000000003",
+      "sprint": 1,
+      "assignee": "dev-b",
+      "assignee_provenance": "proposed",
+      "actual_assignee": null,
+      "estimate_hours": 3,
+      "estimate_provenance": "confirmed",
+      "collaborator": true
+     }
+    ],
+    "rationale": null
+   },
+   {
+    "story": "PBD-STORY-000000000002",
+    "sprint": 2,
+    "owner": "dev-b",
+    "owner_provenance": "proposed",
+    "actual_owner": null,
+    "story_points": 5,
+    "story_points_provenance": "confirmed",
+    "tasks": [
+     {
+      "task": "PBD-TASK-000000000004",
+      "sprint": 1,
+      "assignee": "dev-a",
+      "assignee_provenance": "proposed",
+      "actual_assignee": null,
+      "estimate_hours": 2,
+      "estimate_provenance": "confirmed",
+      "collaborator": true,
+      "timing": "preparation"
+     },
+     {
+      "task": "PBD-TASK-000000000005",
+      "sprint": 2,
+      "assignee": "dev-b",
+      "assignee_provenance": "proposed",
+      "actual_assignee": "dev-a",
+      "estimate_hours": 8,
+      "estimate_provenance": "confirmed",
+      "discrepancy": "proposal differs from the actual assignee in the snapshot"
+     },
+     {
+      "task": "PBD-TASK-000000000006",
+      "sprint": 2,
+      "assignee": "dev-a",
+      "assignee_provenance": "proposed",
+      "actual_assignee": null,
+      "estimate_hours": 5,
+      "estimate_provenance": "confirmed",
+      "collaborator": true
+     },
+     {
+      "task": "PBD-TASK-000000000007",
+      "sprint": 2,
+      "assignee": null,
+      "assignee_provenance": "none",
+      "actual_assignee": null,
+      "estimate_hours": 4,
+      "estimate_provenance": "confirmed"
+     }
+    ],
+    "rationale": "Contract first so frontend and backend proceed in parallel."
+   },
+   {
+    "story": "PBD-STORY-000000000003",
+    "sprint": null,
+    "owner": null,
+    "owner_provenance": "none",
+    "actual_owner": null,
+    "story_points": 8,
+    "story_points_provenance": "confirmed",
+    "tasks": [
+     {
+      "task": "PBD-TASK-000000000008",
+      "sprint": null,
+      "assignee": null,
+      "assignee_provenance": "none",
+      "actual_assignee": null,
+      "estimate_hours": 6,
+      "estimate_provenance": "confirmed"
+     }
+    ],
+    "rationale": null
+   }
+  ],
+  "people": [
+   {
+    "member": "dev-a",
+    "sprint": 1,
+    "unit": "hours",
+    "capacity": 30.0,
+    "load": 8.0,
+    "remaining": 22.0,
+    "counted": [
+     "PBD-TASK-000000000002",
+     "PBD-TASK-000000000004"
+    ],
+    "unknown_estimates": [],
+    "unit_mismatch": []
+   },
+   {
+    "member": "dev-b",
+    "sprint": 1,
+    "unit": "hours",
+    "capacity": 30.0,
+    "load": 7.0,
+    "remaining": 23.0,
+    "counted": [
+     "PBD-TASK-000000000001",
+     "PBD-TASK-000000000003"
+    ],
+    "unknown_estimates": [],
+    "unit_mismatch": []
+   },
+   {
+    "member": "dev-a",
+    "sprint": 2,
+    "unit": "hours",
+    "capacity": 30.0,
+    "load": 5.0,
+    "remaining": 25.0,
+    "counted": [
+     "PBD-TASK-000000000006"
+    ],
+    "unknown_estimates": [],
+    "unit_mismatch": []
+   },
+   {
+    "member": "dev-b",
+    "sprint": 2,
+    "unit": "hours",
+    "capacity": 20.0,
+    "load": 8.0,
+    "remaining": 12.0,
+    "counted": [
+     "PBD-TASK-000000000005"
+    ],
+    "unknown_estimates": [],
+    "unit_mismatch": []
+   }
+  ],
+  "unassigned_tasks": [
+   "PBD-TASK-000000000007"
+  ],
+  "unallocated": [
+   {
+    "item": "PBD-STORY-000000000003",
+    "reason": "blocked by ['PBD-Q-000000000001']: partner contract unknown"
+   }
+  ],
+  "assessments": {
+   "PBD-STORY-000000000002": {
+    "complexity": "high",
+    "risk": "medium",
+    "confidence": "medium",
+    "rationale": "payment states"
+   }
+  },
+  "actual_source": "snapshot.json",
+  "violations": [],
+  "g10": {
+   "status": "PASS",
+   "reason": "placement respects readiness, dependencies and per-person capacity"
+  },
+  "notes": []
+ }
+}

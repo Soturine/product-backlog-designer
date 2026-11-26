@@ -22,6 +22,7 @@ proposal (``committed: false``) bound to the backlog digest; a changed backlog m
 
 from __future__ import annotations
 
+import copy
 import datetime as dt
 from collections import defaultdict
 from graphlib import CycleError, TopologicalSorter
@@ -48,6 +49,8 @@ def _value(item: dict[str, Any], name: str, use_proposed: bool) -> tuple[Any, st
     if not isinstance(fv, dict):
         return None, "absent"
     state = fv.get("state")
+    if fv.get("source") == "planning_input":
+        return fv["value"], "planning_input"
     if state == "confirmed" and "value" in fv:
         return fv["value"], "confirmed"
     if state == "proposed" and "value" in fv and use_proposed:
@@ -221,10 +224,45 @@ def _allocate(
     return out, unplanned
 
 
+def _with_user_estimates(backlog: dict[str, Any], inp: dict[str, Any]) -> tuple[dict[str, Any], list[str]]:
+    """Estimates the user states in the planning request (never written back to the backlog).
+
+    ``{"estimates": {"<item id>": {"unit": "hours", "value": 6}}}``. They are labelled
+    ``planning_input`` wherever they are used, and they override a field only inside this plan.
+    """
+    given = inp.get("estimates") or {}
+    if not given:
+        return backlog, []
+    items = {i["id"]: i for i in backlog["items"]}
+    errors = []
+    calc = copy.deepcopy(backlog)
+    by_id = {i["id"]: i for i in calc["items"]}
+    for iid, est in given.items():
+        if iid not in items:
+            errors.append(f"estimates: unknown item {iid}")
+            continue
+        value = est.get("value") if isinstance(est, dict) else None
+        unit = est.get("unit") if isinstance(est, dict) else None
+        if unit not in UNITS or not isinstance(value, int | float) or value < 0:
+            errors.append(
+                f"estimates: {iid} needs unit in {sorted(UNITS)} and a value >= 0 stated by the user"
+            )
+            continue
+        by_id[iid].setdefault("fields", {})[UNITS[unit]] = {
+            "state": "confirmed",
+            "value": value,
+            "source": "planning_input",
+        }
+    return calc, errors
+
+
 def plan(backlog: dict[str, Any], inp: dict[str, Any] | None = None) -> dict[str, Any]:
     inp = dict(inp or {})
+    original = backlog
     items = {i["id"]: i for i in backlog["items"]}
-    errors = _validate_input(inp, items) + _validate_team(inp, items)
+    backlog, est_errors = _with_user_estimates(backlog, inp)
+    items = {i["id"]: i for i in backlog["items"]}
+    errors = _validate_input(inp, items) + _validate_team(inp, items) + est_errors
     if errors:
         raise PlanningError("planning input rejected", errors)
     use_proposed = bool(inp.get("use_proposed_estimates"))
@@ -297,7 +335,7 @@ def plan(backlog: dict[str, Any], inp: dict[str, Any] | None = None) -> dict[str
     ]
     result: dict[str, Any] = {
         "kind": "pbd.sprint-plan",
-        "backlog_digest": digest({k: v for k, v in backlog.items() if k not in ("keys", "_digest")}),
+        "backlog_digest": digest({k: v for k, v in original.items() if k not in ("keys", "_digest")}),
         "input_digest": digest(inp),
         "committed": False,
         "status": "proposal",

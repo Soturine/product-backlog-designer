@@ -28,10 +28,12 @@ Team plans (only when the user supplies the team): the agent turns a request suc
  "proposal": {"placement": {"<story id>": 1, "<task id>": 1}, "owners": {"<story id>": "dev-a"},
               "assignees": {"<task id>": "dev-b"}, "rationale": {"<story id>": "why here"}},
  "actual": {"source": "snapshot.json", "assignees": {"<item id>": "dev-a"}},
+ "estimates": {"<item id>": {"unit": "hours", "value": 6}},
  "assessments": {"<item id>": {"complexity": "high", "risk": "medium", "confidence": "medium", "rationale": "..."}}}
 ```
 - `responsibility`: `story_owner` (one accountable owner per story; task assignees may differ and are shown as collaborators), `task_split`, or `whole_story_delegation` (tasks follow the owner, shown as *derived*, never as actual; a tracker does not change child assignments when a parent is assigned).
 - Members, availability, skills and dates come from the user; never invent people, velocity or estimates. Tasks follow their story's sprint unless placed explicitly (earlier = preparation, later = carryover).
 - Load is computed per person in that person's capacity unit only; unknown estimates and unit mismatches are listed, never counted as zero. Over-capacity, blocked placements, predecessors placed later and stories without the requested owner fail G10; unverifiable capacity is BLOCKED.
+- `estimates` holds only values the user stated in the request; they are labelled `planning_input` and never written to the backlog.
 - Actual assignments come only from a supplied local snapshot (`actual`) and are shown beside the proposal.
 - `pbd plan check --backlog backlog.json --plan plan/sprint-plan.json` exits 1 when the backlog changed after the plan (stale).

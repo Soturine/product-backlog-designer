@@ -605,6 +605,7 @@
  "plan.people": "Carga por persona y sprint",
  "plan.prov.absent": "no informada",
  "plan.prov.confirmed": "confirmada",
+ "plan.prov.planning_input": "indicada por el usuario en la solicitud",
  "plan.prov.proposed": "propuesta (usada por su elección)",
  "plan.remaining": "Restante",
  "plan.risk": "riesgo",

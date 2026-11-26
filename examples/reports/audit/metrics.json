@@ -1,5 +1,5 @@
 {
-  "backlog_digest": "sha256:1b4d7acc8da485d2db777aae8a8ade16d422d7df8d65cc03eb9a0c427f27ad8a",
+  "backlog_digest": "sha256:dec3e6eb2c75c47a24cb67b009a42ebf5c0d5e7e68b7c992aaa64a60756fc5ed",
   "claims": {
     "by_disposition": {
       "SUPERSEDED": 1,
@@ -37,10 +37,10 @@
     "total": 2
   },
   "gates": {
-    "FAIL": 5,
+    "FAIL": 6,
     "NOT_APPLICABLE": 3,
     "NOT_RUN": 1,
-    "PASS": 9
+    "PASS": 8
   },
   "items": {
     "by_type": {

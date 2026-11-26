@@ -19,6 +19,8 @@ One skill owns functional and technical backlog planning. [Functional Test Desig
 3. Open the HTML report, inspect the complete work-item tree, criteria, questions, findings and coverage. Resolve only material ambiguities.
 4. If publication is desired, review the exact destination and proposed changes, then approve that plan. The runtime will apply and read back the results.
 
+A short walkthrough in one conversation: ask for the backlog; open the report and look at *Ready for development?* and *Needs a decision*; click a blocking question's item to see why it is blocked; switch the appearance to Azure DevOps or Jira and the interface to English; open *Quality & evidence* and expand G02 to read covered vs handled; then ask "plan two one-week sprints with two developers, one owner per story" for a local team plan, "the PRD changed, update the backlog" for an evolution, "prepare the Azure DevOps package and simulate the publication" for a local package and mock read-back (never a real tracker), and "hand this over to FTD" for the test-design handoff.
+
 No need to invoke separate commands for source analysis, story writing, tasks, quality checks and rendering. They are internal stages. The preferred future agent entrypoint is `/pbd`; ordinary language is equally valid. Existing specialized entrypoints remain optional power-user controls. See [interaction contract](docs/usage.md).
 
 ### Minimal private instructions
@@ -63,7 +65,21 @@ The example assumes the behavior is in the fictional source. Unknown reservation
 
 `report.html` is a single offline file (double click, no server, no network) that opens on an executive overview and drills down into a master/detail backlog explorer, requirements traceability, findings and questions, quality gates with evidence, sources, the local integration package and the canonical data. The interface switches between Portuguese, English and Spanish offline; backlog content stays in the language it was written in.
 
-![Report demo: overview, search, item detail, gates, language and theme switch](docs/images/report/report-demo.png)
+![Report demo: overview, blocked work, item detail, Azure DevOps and Jira appearance, gate explanation, language and theme switch](docs/images/report/report-demo.png)
+
+**Is it ready to build?** Confirmed by a source is not the same as ready: every buildable item says whether it can be built now, and work that needs an open blocking question is marked blocked and linked to that question (a bounded spike or a mock contract may stay actionable, with why). The overview counts ready / partial / blocked work and names what each blocking question holds up; the reviewer agrees or disputes every readiness and gate G08 shows it.
+
+| Development readiness and decisions (pt-BR) | A blocked task and the question it waits for |
+|---|---|
+| ![Readiness overview](docs/images/report/readiness-overview-1440-light-pt.png) | ![Blocked item](docs/images/report/readiness-blocked-item-1280-light-pt.png) |
+| **Azure DevOps appearance (presentation only)** | **Jira appearance, dark** |
+| ![Azure DevOps look](docs/images/report/readiness-tree-azure-1280-light-pt.png) | ![Jira look](docs/images/report/readiness-tree-jira-1280-dark-pt.png) |
+| **Every gate explained (G02: covered vs handled)** | **Sortable work-item table** |
+| ![Gate explanation](docs/images/report/gate-explained-1280-light-pt.png) | ![Table](docs/images/report/readiness-table-1280-light-en.png) |
+| **Team sprint plan: owner vs assignee, load per person** | **Mobile: blocked item (390 px)** |
+| ![Team plan](docs/images/report/plan-team-1280-light-pt.png) | ![Mobile blocked item](docs/images/report/readiness-blocked-item-390-light-pt.png) |
+
+The appearance selector (Generic / Azure DevOps / Jira) only changes original, license-clean pictograms and colors; it never changes the hierarchy, the target profile or any data, and it does not imply Jira support or affiliation with either vendor.
 
 | Overview (pt-BR, light) | Backlog explorer with item detail (es, dark) |
 |---|---|
@@ -73,7 +89,7 @@ The example assumes the behavior is in the fictional source. Unknown reservation
 | **Quality gates with evidence** | **Mobile (390 px)** |
 | ![Quality gates](docs/images/report/quality-1280-light-pt.png) | ![Mobile explorer](docs/images/report/backlog-390-light-pt.png) |
 
-More captures (1440/1280/768/390/320 px, light/dark, PT/EN/ES) are in [docs/images/report](docs/images/report/); the M1 renderer is kept for comparison in [docs/images/before-m2](docs/images/before-m2/). Open the synthetic examples yourself: [generation](examples/reports/generate/report.html), [audit](examples/reports/audit/report.html), [comparison](examples/reports/compare/report.html) (GitHub shows HTML as source: download or clone, then open in a browser). The 12 recorded M1 runs are re-rendered with the current renderer, clearly labelled, in [benchmarks/rerender/m1](benchmarks/rerender/m1/); the recorded originals in [benchmarks/runs/m1](benchmarks/runs/m1/) are unchanged.
+More captures (1440/1280/768/390/320 px, light/dark, PT/EN/ES) are in [docs/images/report](docs/images/report/); the M1 renderer is kept for comparison in [docs/images/before-m2](docs/images/before-m2/) and the report before this round in [docs/images/before-corrective](docs/images/before-corrective/). Open the synthetic examples yourself: [generation](examples/reports/generate/report.html), [audit](examples/reports/audit/report.html), [comparison](examples/reports/compare/report.html), [blocking question and readiness](examples/reports/readiness/report.html), [team sprint plan](examples/reports/plan/plan-report.html) (GitHub shows HTML as source: download or clone, then open in a browser). The 12 recorded M1 runs are re-rendered with the current renderer, clearly labelled, in [benchmarks/rerender/m1](benchmarks/rerender/m1/); the recorded originals in [benchmarks/runs/m1](benchmarks/runs/m1/) are unchanged.
 
 ## Output
 

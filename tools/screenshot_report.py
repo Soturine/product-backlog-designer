@@ -35,6 +35,15 @@ SHOTS: list[tuple[str, str, int, int, str, str, str]] = [
     ("backlog-390-light-pt", "generate", 390, 844, "#backlog", "light", "pt-BR"),
     ("item-390-dark-en", "generate", 390, 844, "#item", "dark", "en"),
     ("overview-320-light-es", "generate", 320, 640, "", "light", "es"),
+    # corrective round: readiness, gate explanations, appearance, table and team plan
+    ("readiness-overview-1440-light-pt", "readiness", 1440, 1000, "", "light", "pt-BR"),
+    ("readiness-blocked-item-1280-light-pt", "readiness", 1280, 900, "#blocked", "light", "pt-BR"),
+    ("readiness-tree-azure-1280-light-pt", "readiness", 1280, 900, "#backlog@azure", "light", "pt-BR"),
+    ("readiness-tree-jira-1280-dark-pt", "readiness", 1280, 900, "#backlog@jira", "dark", "pt-BR"),
+    ("readiness-table-1280-light-en", "readiness", 1280, 900, "#table", "light", "en"),
+    ("gate-explained-1280-light-pt", "readiness", 1280, 900, "#gate-G02", "light", "pt-BR"),
+    ("readiness-blocked-item-390-light-pt", "readiness", 390, 844, "#blocked", "light", "pt-BR"),
+    ("plan-team-1280-light-pt", "plan", 1280, 2200, "", "light", "pt-BR"),
 ]
 
 
@@ -56,12 +65,22 @@ def _guard(route: Any) -> None:
 
 def _prepare(page: Any, report: Path, hash_: str, theme: str, locale: str) -> None:
     page.route("**/*", _guard)
-    page.goto(report.resolve().as_uri() + ("" if hash_ == "#item" else hash_))
+    hash_, _, appearance = hash_.partition("@")
+    special = hash_ in ("#item", "#blocked", "#table")
+    page.goto(report.resolve().as_uri() + ("" if special else hash_))
     page.select_option("#lang-sel", locale)
     page.evaluate(f"document.documentElement.setAttribute('data-theme', '{theme}')")
+    if appearance:
+        page.select_option("#appearance-sel", appearance)
     if hash_ == "#item":
         page.goto(report.resolve().as_uri() + "#backlog")
         page.locator("#tree li[data-type=story] a.lbl").first.click()
+    if hash_ == "#blocked":
+        page.goto(report.resolve().as_uri() + "#backlog")
+        page.locator("#tree li[data-readiness=blocked] a.lbl").first.click()
+    if hash_ == "#table":
+        page.goto(report.resolve().as_uri() + "#backlog")
+        page.click(".seg [data-xview=table]")
     page.wait_for_timeout(450)
     page.evaluate("document.getElementById('toast').hidden = true")
 
@@ -75,10 +94,11 @@ def _demo_frames(browser: Any, report: Path) -> list[bytes]:
     frames = [page.screenshot()]
     steps = [
         lambda: page.click(".side a[data-view=backlog]"),
-        lambda: page.fill("#q", "reserva"),
-        lambda: page.locator("#tree li[data-type=story] a.lbl").first.click(),
-        lambda: page.click(".side a[data-view=quality]"),
-        lambda: page.locator("details.gate").nth(1).locator("summary").click(),
+        lambda: page.select_option("#f-readiness", "blocked"),
+        lambda: page.locator("#tree li[data-readiness=blocked] a.lbl").first.click(),
+        lambda: page.select_option("#appearance-sel", "azure"),
+        lambda: page.select_option("#appearance-sel", "jira"),
+        lambda: page.goto(report.resolve().as_uri() + "#gate-G08"),
         lambda: (
             page.select_option("#lang-sel", "en"),
             page.evaluate("document.getElementById('toast').hidden = true"),
@@ -141,10 +161,11 @@ def main(examples: Path, out: Path) -> None:
         browser = _launch(pw)
         for name, example, w, h, hash_, theme, locale in SHOTS:
             page = browser.new_page(viewport={"width": w, "height": h}, device_scale_factor=1)
-            _prepare(page, examples / example / "report.html", hash_, theme, locale)
+            name_html = "plan-report.html" if example == "plan" else "report.html"
+            _prepare(page, examples / example / name_html, hash_, theme, locale)
             page.screenshot(path=str(out / f"{name}.png"))
             page.close()
-        frames = _demo_frames(browser, examples / "generate" / "report.html")
+        frames = _demo_frames(browser, examples / "readiness" / "report.html")
         (out / "report-demo.png").write_bytes(apng(frames, delay_ms=1300))
         browser.close()
     print(f"{len(SHOTS)} screenshots and the report-demo.png animation written to {out}")

@@ -1,0 +1,93 @@
+{
+ "kind": "pbd.benchmark-gold",
+ "synthetic": true,
+ "case": "h2-compare",
+ "mode": "compare",
+ "case_dir": "h2-court-booking",
+ "language": "pt-BR",
+ "sources": [
+  {
+   "selector": "prd.md",
+   "authority": "functional"
+  }
+ ],
+ "baselines": [
+  "baselines/left.json",
+  "baselines/right.json"
+ ],
+ "planted": [
+  {
+   "id": "P1",
+   "side": "left",
+   "defect": "gap: the 2-future-bookings limit (H02) is missing",
+   "critical": true
+  },
+  {
+   "id": "P2",
+   "side": "left",
+   "defect": "invented rule: cancellation 'até 24 horas antes' while the source leaves the notice undefined",
+   "critical": true
+  },
+  {
+   "id": "P3",
+   "side": "right",
+   "defect": "invented integration detail: QR code via the vendor's REST API while the API is undocumented",
+   "critical": true
+  },
+  {
+   "id": "P4",
+   "side": "right",
+   "defect": "out-of-scope work: billing (QR-13) although billing is excluded",
+   "critical": true
+  },
+  {
+   "id": "P5",
+   "side": "right",
+   "defect": "gap: front-desk daily agenda (H05) is missing",
+   "critical": false
+  }
+ ],
+ "correct_controls": [
+  {
+   "side": "left",
+   "item": "QL-4",
+   "note": "agenda story is correct"
+  },
+  {
+   "side": "right",
+   "item": "QR-11",
+   "note": "booking with the 2-booking limit is correct"
+  }
+ ],
+ "expected_mappings": [
+  {
+   "left": [
+    "QL-2"
+   ],
+   "right": [
+    "QR-11"
+   ],
+   "note": "booking: right merges the limit into the same story (overlap or merge, not equivalent)"
+  },
+  {
+   "left": [
+    "QL-5"
+   ],
+   "right": [
+    "QR-12"
+   ],
+   "note": "turnstile entry: divergent or conflicting (right invents QR/REST)"
+  },
+  {
+   "left": [
+    "QL-3"
+   ],
+   "right": [
+    "QR-14"
+   ],
+   "note": "cancel: overlapping; left adds an invented 24h rule"
+  }
+ ],
+ "no_winner": true,
+ "refine_expectation": "Refinement proposes targeted changes; only the changes the request approves are applied (the request approves only adding the 2-booking limit criterion), nothing is deleted."
+}

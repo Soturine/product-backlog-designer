@@ -8,7 +8,7 @@
           "partially_covered": 0
         },
         "examined": 2,
-        "inventory_digest": "sha256:53d217a859a31d21efb6fb312bc8f477b57eaa9a2d52238671b9824852c8528f",
+        "inventory_digest": "sha256:c3491b624ddff07457c6a5693a1a79d950c410679e2c6b3d3e62c13f957f109d",
         "inventory_ref": "sources/inventory.json",
         "provenance": "independent_inventory",
         "reading_complete": true,
@@ -16,24 +16,24 @@
       },
       "evidence": [
         {
-          "digest": "sha256:f8432a1cf1ede8d022055e3b01dc3cd9100f8777b58912f962ad523b2bf5e14a",
+          "digest": "sha256:83500ec24a0edf2b51d11d216d5c678194cc90fd56c9e839f2e0bcc8d35765fe",
           "ref": "output/checks.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "checks",
           "summary": "runtime deterministic checks",
           "type": "deterministic_check"
         },
         {
-          "digest": "sha256:8d91fd8bed9d47b48b2f30f593cdd15608cc1310434b7714ac09e800e08d9596",
+          "digest": "sha256:e3fa88240b91eaf28387ee8d5542e3082fe3588a8069d84c7151281d72fa9074",
           "ref": "stages/review.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "independent_review",
           "summary": "independent source-first review",
           "type": "review"
         }
       ],
       "id": "G01",
-      "reason": "every inventoried member was read and re-read by the reviewer",
+      "reason": "every inventoried member was read and re-read by the reviewer (reading methods: native: 2)",
       "scope": "Source Integrity",
       "status": "PASS",
       "validator_version": "0.1.0.dev0",
@@ -47,7 +47,7 @@
           "superseded": 1
         },
         "examined": 5,
-        "inventory_digest": "sha256:8d91fd8bed9d47b48b2f30f593cdd15608cc1310434b7714ac09e800e08d9596",
+        "inventory_digest": "sha256:e3fa88240b91eaf28387ee8d5542e3082fe3588a8069d84c7151281d72fa9074",
         "inventory_ref": "stages/review.json",
         "provenance": "independent_inventory",
         "reading_complete": true,
@@ -55,17 +55,17 @@
       },
       "evidence": [
         {
-          "digest": "sha256:f8432a1cf1ede8d022055e3b01dc3cd9100f8777b58912f962ad523b2bf5e14a",
+          "digest": "sha256:83500ec24a0edf2b51d11d216d5c678194cc90fd56c9e839f2e0bcc8d35765fe",
           "ref": "output/checks.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "checks",
           "summary": "runtime deterministic checks",
           "type": "deterministic_check"
         },
         {
-          "digest": "sha256:8d91fd8bed9d47b48b2f30f593cdd15608cc1310434b7714ac09e800e08d9596",
+          "digest": "sha256:e3fa88240b91eaf28387ee8d5542e3082fe3588a8069d84c7151281d72fa9074",
           "ref": "stages/review.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "independent_review",
           "summary": "independent source-first review",
           "type": "review"
@@ -80,9 +80,9 @@
     {
       "evidence": [
         {
-          "digest": "sha256:f8432a1cf1ede8d022055e3b01dc3cd9100f8777b58912f962ad523b2bf5e14a",
+          "digest": "sha256:83500ec24a0edf2b51d11d216d5c678194cc90fd56c9e839f2e0bcc8d35765fe",
           "ref": "output/checks.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "checks",
           "summary": "runtime deterministic checks",
           "type": "deterministic_check"
@@ -98,17 +98,17 @@
     {
       "evidence": [
         {
-          "digest": "sha256:f8432a1cf1ede8d022055e3b01dc3cd9100f8777b58912f962ad523b2bf5e14a",
+          "digest": "sha256:83500ec24a0edf2b51d11d216d5c678194cc90fd56c9e839f2e0bcc8d35765fe",
           "ref": "output/checks.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "checks",
           "summary": "runtime deterministic checks",
           "type": "deterministic_check"
         },
         {
-          "digest": "sha256:8d91fd8bed9d47b48b2f30f593cdd15608cc1310434b7714ac09e800e08d9596",
+          "digest": "sha256:e3fa88240b91eaf28387ee8d5542e3082fe3588a8069d84c7151281d72fa9074",
           "ref": "stages/review.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "independent_review",
           "summary": "independent source-first review",
           "type": "review"
@@ -123,9 +123,9 @@
     {
       "evidence": [
         {
-          "digest": "sha256:8d91fd8bed9d47b48b2f30f593cdd15608cc1310434b7714ac09e800e08d9596",
+          "digest": "sha256:e3fa88240b91eaf28387ee8d5542e3082fe3588a8069d84c7151281d72fa9074",
           "ref": "stages/review.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "independent_review",
           "summary": "independent source-first review",
           "type": "review"
@@ -140,17 +140,17 @@
     {
       "evidence": [
         {
-          "digest": "sha256:f8432a1cf1ede8d022055e3b01dc3cd9100f8777b58912f962ad523b2bf5e14a",
+          "digest": "sha256:83500ec24a0edf2b51d11d216d5c678194cc90fd56c9e839f2e0bcc8d35765fe",
           "ref": "output/checks.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "checks",
           "summary": "runtime deterministic checks",
           "type": "deterministic_check"
         },
         {
-          "digest": "sha256:8d91fd8bed9d47b48b2f30f593cdd15608cc1310434b7714ac09e800e08d9596",
+          "digest": "sha256:e3fa88240b91eaf28387ee8d5542e3082fe3588a8069d84c7151281d72fa9074",
           "ref": "stages/review.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "independent_review",
           "summary": "independent source-first review",
           "type": "review"
@@ -165,9 +165,9 @@
     {
       "evidence": [
         {
-          "digest": "sha256:8d91fd8bed9d47b48b2f30f593cdd15608cc1310434b7714ac09e800e08d9596",
+          "digest": "sha256:e3fa88240b91eaf28387ee8d5542e3082fe3588a8069d84c7151281d72fa9074",
           "ref": "stages/review.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "independent_review",
           "summary": "independent source-first review",
           "type": "review"
@@ -183,17 +183,17 @@
     {
       "evidence": [
         {
-          "digest": "sha256:f8432a1cf1ede8d022055e3b01dc3cd9100f8777b58912f962ad523b2bf5e14a",
+          "digest": "sha256:83500ec24a0edf2b51d11d216d5c678194cc90fd56c9e839f2e0bcc8d35765fe",
           "ref": "output/checks.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "checks",
           "summary": "runtime deterministic checks",
           "type": "deterministic_check"
         },
         {
-          "digest": "sha256:8d91fd8bed9d47b48b2f30f593cdd15608cc1310434b7714ac09e800e08d9596",
+          "digest": "sha256:e3fa88240b91eaf28387ee8d5542e3082fe3588a8069d84c7151281d72fa9074",
           "ref": "stages/review.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "independent_review",
           "summary": "independent source-first review",
           "type": "review"
@@ -209,9 +209,9 @@
     {
       "evidence": [
         {
-          "digest": "sha256:8d91fd8bed9d47b48b2f30f593cdd15608cc1310434b7714ac09e800e08d9596",
+          "digest": "sha256:e3fa88240b91eaf28387ee8d5542e3082fe3588a8069d84c7151281d72fa9074",
           "ref": "stages/review.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "independent_review",
           "summary": "independent source-first review",
           "type": "review"
@@ -234,9 +234,9 @@
     {
       "evidence": [
         {
-          "digest": "sha256:f8432a1cf1ede8d022055e3b01dc3cd9100f8777b58912f962ad523b2bf5e14a",
+          "digest": "sha256:83500ec24a0edf2b51d11d216d5c678194cc90fd56c9e839f2e0bcc8d35765fe",
           "ref": "output/checks.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "checks",
           "summary": "runtime deterministic checks",
           "type": "deterministic_check"
@@ -260,17 +260,17 @@
     {
       "evidence": [
         {
-          "digest": "sha256:f8432a1cf1ede8d022055e3b01dc3cd9100f8777b58912f962ad523b2bf5e14a",
+          "digest": "sha256:83500ec24a0edf2b51d11d216d5c678194cc90fd56c9e839f2e0bcc8d35765fe",
           "ref": "output/checks.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "checks",
           "summary": "runtime deterministic checks",
           "type": "deterministic_check"
         },
         {
-          "digest": "sha256:8d91fd8bed9d47b48b2f30f593cdd15608cc1310434b7714ac09e800e08d9596",
+          "digest": "sha256:e3fa88240b91eaf28387ee8d5542e3082fe3588a8069d84c7151281d72fa9074",
           "ref": "stages/review.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "independent_review",
           "summary": "independent source-first review",
           "type": "review"
@@ -286,9 +286,9 @@
     {
       "evidence": [
         {
-          "digest": "sha256:8d91fd8bed9d47b48b2f30f593cdd15608cc1310434b7714ac09e800e08d9596",
+          "digest": "sha256:e3fa88240b91eaf28387ee8d5542e3082fe3588a8069d84c7151281d72fa9074",
           "ref": "stages/review.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "independent_review",
           "summary": "independent source-first review",
           "type": "review"
@@ -304,35 +304,34 @@
     {
       "evidence": [
         {
-          "digest": "sha256:f8432a1cf1ede8d022055e3b01dc3cd9100f8777b58912f962ad523b2bf5e14a",
+          "digest": "sha256:83500ec24a0edf2b51d11d216d5c678194cc90fd56c9e839f2e0bcc8d35765fe",
           "ref": "output/checks.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "checks",
           "summary": "runtime deterministic checks",
           "type": "deterministic_check"
         },
         {
-          "digest": "sha256:8d91fd8bed9d47b48b2f30f593cdd15608cc1310434b7714ac09e800e08d9596",
+          "digest": "sha256:e3fa88240b91eaf28387ee8d5542e3082fe3588a8069d84c7151281d72fa9074",
           "ref": "stages/review.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "independent_review",
           "summary": "independent source-first review",
           "type": "review"
         }
       ],
       "id": "G15",
-      "reason": "superseded claims not used by active work",
+      "reason": "reviewer: Critério exige aprovação manual. (expected: Reservas válidas confirmadas automaticamente (ADR-001).)",
       "scope": "Change Safety",
-      "status": "PASS",
-      "validator_version": "0.1.0.dev0",
-      "verification": "verified"
+      "status": "FAIL",
+      "validator_version": "0.1.0.dev0"
     },
     {
       "evidence": [
         {
-          "digest": "sha256:f8432a1cf1ede8d022055e3b01dc3cd9100f8777b58912f962ad523b2bf5e14a",
+          "digest": "sha256:83500ec24a0edf2b51d11d216d5c678194cc90fd56c9e839f2e0bcc8d35765fe",
           "ref": "output/checks.json",
-          "run_id": "PBD-RUN-XPF8R9GWFSF0",
+          "run_id": "PBD-RUN-5EH49FGA6SBD",
           "stage": "checks",
           "summary": "runtime deterministic checks",
           "type": "deterministic_check"
@@ -356,13 +355,13 @@
     {
       "evidence": [],
       "id": "G18",
-      "reason": "round-trip against a tracker (mock or live) belongs to M3; live qualification requires separate authorization",
+      "reason": "no live round-trip: nothing was published from this run; a mock round-trip (pbd azure apply/verify) never counts as live; live qualification requires separate authorization",
       "scope": "Round-trip Fidelity",
       "status": "NOT_RUN",
       "validator_version": "0.1.0.dev0"
     }
   ],
   "kind": "pbd.gate-report",
-  "run_id": "PBD-RUN-XPF8R9GWFSF0",
-  "schema_version": "1.1.0"
+  "run_id": "PBD-RUN-5EH49FGA6SBD",
+  "schema_version": "1.2.0"
 }

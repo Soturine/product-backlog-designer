@@ -1,0 +1,37 @@
+{
+ "kind": "pbd.import",
+ "items": [
+  {
+   "id": "QR-10",
+   "type": "Epic",
+   "title": "Quadras"
+  },
+  {
+   "id": "QR-11",
+   "type": "User Story",
+   "title": "Reservar quadra com limite de reservas",
+   "parent": "QR-10",
+   "acceptance_criteria": "- Reserva em blocos de 1 hora entre 7h e 22h\n- No máximo 2 reservas futuras por sócio"
+  },
+  {
+   "id": "QR-12",
+   "type": "User Story",
+   "title": "Entrar com QR code na catraca",
+   "parent": "QR-10",
+   "acceptance_criteria": "- A catraca lê o QR code da reserva pela API REST do fornecedor"
+  },
+  {
+   "id": "QR-13",
+   "type": "User Story",
+   "title": "Cobrar a reserva",
+   "parent": "QR-10",
+   "acceptance_criteria": "- Valor da reserva cobrado no cartão do sócio"
+  },
+  {
+   "id": "QR-14",
+   "type": "User Story",
+   "title": "Cancelar reserva",
+   "parent": "QR-10"
+  }
+ ]
+}

@@ -18,15 +18,17 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from tests.pipeline import test_audit, test_compare  # noqa: E402
+from tests.pipeline import library_fixture, test_audit, test_compare, test_team_planning  # noqa: E402
 from tests.pipeline.helpers import claims_payload, designed_run, make_workspace, read_all  # noqa: E402
 from tests.pipeline.test_review_finalize import review_payload  # noqa: E402
 
 from pbd.pipeline.compare import finalize_comparison, submit_comparison  # noqa: E402
 from pbd.pipeline.design import submit_claims  # noqa: E402
 from pbd.pipeline.finalize import finalize  # noqa: E402
+from pbd.pipeline.planning import plan  # noqa: E402
 from pbd.pipeline.review import submit_review  # noqa: E402
 from pbd.pipeline.run import normalize_request, start  # noqa: E402
+from pbd.render.report_html import render_plan_report  # noqa: E402
 
 KEEP = (
     "report.html",
@@ -85,12 +87,33 @@ def main(out: Path) -> None:
     submit_comparison(cmp_, test_compare.payload(cmp_))
     finalize_comparison(cmp_)
     _copy(cmp_.path("output"), out / "compare")
+    lib = library_fixture.designed_run(
+        tmp / "lib", formats=["md", "azure"], profile="azure-agile", title="Biblioteca do bairro"
+    )
+    submit_review(lib, library_fixture.review_payload(lib))
+    finalize(lib)
+    _copy(lib.path("output"), out / "readiness")
+
+    team = test_team_planning._input()
+    team["actual"] = {"source": "snapshot.json", "assignees": {test_team_planning.T[5]: "dev-a"}}
+    doc = plan(test_team_planning._backlog(), team)
+    (out / "plan").mkdir(parents=True, exist_ok=True)
+    (out / "plan" / "sprint-plan.json").write_text(
+        json.dumps(doc, ensure_ascii=False, indent=1) + "\n", encoding="utf-8"
+    )
+    (out / "plan" / "plan-report.html").write_text(
+        render_plan_report(doc, "Plano de sprints (sintético)", "pt-BR", "examples"), encoding="utf-8"
+    )
     (out / "README.md").write_text(
         "# Example reports (synthetic)\n\n"
         "Fixture reproductions built by `python tools/build_examples.py` from the test-suite payloads of a\n"
-        "fictional community-garden domain. They are not agent-led executions and carry no real data.\n\n"
+        "fictional community-garden domain (plus a fictional neighbourhood library and a two-developer team\n"
+        "plan for the readiness and planning views). They are not agent-led executions and carry no\n"
+        "real data.\n\n"
         "- [generation](generate/report.html)\n- [audit of an existing backlog](audit/report.html)\n"
-        "- [comparison of two backlogs](compare/report.html)\n\n"
+        "- [comparison of two backlogs](compare/report.html)\n"
+        "- [generation with a blocking question and development readiness](readiness/report.html)\n"
+        "- [team sprint plan: owners, assignees, load by person](plan/plan-report.html)\n\n"
         "Open a `report.html` with a double click: it works offline from `file://`.\n",
         encoding="utf-8",
     )

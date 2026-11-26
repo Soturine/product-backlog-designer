@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — corrective round: readiness, report review tool, team planning
+- Backlog schema 1.2.0 (additive): agent-judged item readiness with typed `blocked_by`/`independent_of` links; runtime rejects readiness contradictions; reviewer `readiness_check`; G08 reflects readiness; planning never schedules blocked work (QL-019). Pre-1.2.0 artifacts stay valid and show as not assessed.
+- Reviewer prose may cite design keys (rendered as links) but not per-story visible criterion IDs (QL-004 residual); the designer procedure no longer suggests citing criterion keys in text; the orchestrator procedure routes audit/compare/refine/plan/evolve/mock publish.
+- Report: development readiness on the overview and per item, readiness filter, per-gate purpose/why/evidence type/status meaning/affected work/next step and a glossary, plain G02/G08 counts, presentation-only Generic/Azure DevOps/Jira appearance with original pictograms, sortable table with column visibility.
+- `pbd plan` team plans: user-supplied team and capacity per person and unit, responsibility modes, agent-proposed placement/owners/assignees checked by the runtime, actual snapshot kept separate, plan-level G10; parent and child estimates never added. Plan report with sprint goals, owner/assignee board, load by person, story → tasks, unassigned/unallocated work and build order vs backlog position.
+
 ## Unreleased — M3–M6: mock Azure workflow, planning, evolution, FTD handoff
 - M3: local Azure snapshots and discovered profiles; prepare/preview/approve/apply/verify against an in-memory mock only, with journal, idempotency, reconciliation, bounded retries and read-back; publication report. No live transport exists.
 - M4: `pbd plan` — dependency order, MoSCoW/RICE/WSJF only with complete inputs, sprints only with known capacity, dates only from a user calendar, scenarios, checks, staleness; plan report.

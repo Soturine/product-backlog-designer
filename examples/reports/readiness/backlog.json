@@ -1,0 +1,1005 @@
+{
+  "claims": [
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-CFJG10WJE8TY",
+          "PBD-AC-7D8MFK0C79VJ",
+          "PBD-TASK-B03M89G4XBG0"
+        ],
+        "rationale": "Limite verificado.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "prd.md",
+            "quote_digest": "sha256:4ab5275a95e8c9aca900f7ff1d4248676b248f80b0a39e79319405391bf9bd46",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "124a40a12a03af49"
+          },
+          "summary": "até 3 livros ao mesmo tempo",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-X6BDAS7PZ67G",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Um leitor pode ter até 3 empréstimos ativos.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-CFJG10WJE8TY",
+          "PBD-AC-Y2RRYMHXVVTE",
+          "PBD-TASK-9EFZCXJF6ET7"
+        ],
+        "rationale": "Prazo verificado.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 5,
+            "line_start": 5,
+            "member": "prd.md",
+            "quote_digest": "sha256:648650c6808c44388ae0e4679a57f76974b70e67603291e1a3c1a6eded5d7d9b",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "124a40a12a03af49"
+          },
+          "summary": "prazo de empréstimo é de 14 dias",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-38FK6BWZNBTN",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O prazo de empréstimo é de 14 dias.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-2DVGB62J6NBB",
+          "PBD-AC-VXYW03KA02TZ",
+          "PBD-AC-HS73F7EVE714",
+          "PBD-TASK-G524XWR2WQBW"
+        ],
+        "rationale": "Renovação verificada.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 6,
+            "line_start": 6,
+            "member": "prd.md",
+            "quote_digest": "sha256:aeabb4bb91dbcc5aee48eca51a5736c78f35ee5999bcde3366d80c8a85269902",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "124a40a12a03af49"
+          },
+          "summary": "renovar um empréstimo uma vez",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-612R97A5W5ZP",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Um empréstimo pode ser renovado uma vez se o livro não estiver reservado.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-68WXA0TWX6G6",
+          "PBD-AC-YYJA50NHRF5D",
+          "PBD-TASK-3V5TWDKK57WQ"
+        ],
+        "rationale": "Lista verificada.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 7,
+            "line_start": 7,
+            "member": "prd.md",
+            "quote_digest": "sha256:6ab7e37262fdee196029d666413b3476c1a7cf4c8e2431f010d491731bf9af7d",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "124a40a12a03af49"
+          },
+          "summary": "vê seus empréstimos e as datas de devolução",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-3T1ETZBPXBC6",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O leitor vê seus empréstimos e as datas de devolução.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-Y2G59AESDQYC",
+          "PBD-AC-T40V25CK58TH",
+          "PBD-TASK-2A8T8MYBTDWK"
+        ],
+        "rationale": "Fluxo do quiosque.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 9,
+            "line_start": 9,
+            "member": "prd.md",
+            "quote_digest": "sha256:93456475bc6c2c334957b5d2643b125495391969bb402d66d874d2d39a4a1b8b",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "124a40a12a03af49"
+          },
+          "summary": "lendo o cartão do leitor",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-YZM4925E7NX5",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O empréstimo pode ser feito no quiosque com a leitura do cartão do leitor.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "integration",
+      "disposition": {
+        "rationale": "Modelo indefinido: pergunta bloqueante e spike.",
+        "status": "QUESTION_REQUIRED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 10,
+            "line_start": 10,
+            "member": "prd.md",
+            "quote_digest": "sha256:2436278bb69a0a03e677e59199426f6576ba240b2f4955629b7884cce79d783a",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "124a40a12a03af49"
+          },
+          "summary": "ainda não foi escolhido",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-BM1VH63GJGT7",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O modelo do leitor de cartões do quiosque não foi escolhido.",
+      "uncertainty": {
+        "level": "unknown"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-6DWQ9Y1QNDVP",
+          "PBD-AC-Y372FH2GMKXC",
+          "PBD-TASK-XQ9RARSCVA8P"
+        ],
+        "rationale": "Antecedência em aberto.",
+        "status": "PARTIALLY_COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 12,
+            "line_start": 12,
+            "member": "prd.md",
+            "quote_digest": "sha256:0951602bd977b724ab44b35bf5a636110aef3b6083f42081a85f68f6715bde89",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "124a40a12a03af49"
+          },
+          "summary": "aviso rápido antes do vencimento",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-FMEVD0K6S75G",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O leitor recebe um aviso rápido antes do vencimento.",
+      "uncertainty": {
+        "level": "ambiguous"
+      }
+    },
+    {
+      "category": "out_of_scope",
+      "disposition": {
+        "rationale": "Exclusão explícita da fonte.",
+        "status": "OUT_OF_SCOPE"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 14,
+            "line_start": 14,
+            "member": "prd.md",
+            "quote_digest": "sha256:1d3d454811379d05490c02bcd5e1845de63673f5abb82a80307bcfc67e63c016",
+            "source_id": "PBD-SRC-78385WMH95P7",
+            "source_version": "124a40a12a03af49"
+          },
+          "summary": "Multas por atraso não fazem parte",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-1ARG2BGF20EM",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Multas por atraso estão fora do escopo.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    }
+  ],
+  "criteria": [
+    {
+      "claim_refs": [
+        "PBD-CLM-X6BDAS7PZ67G"
+      ],
+      "condition": "um leitor com 3 empréstimos ativos",
+      "expected_outcomes": [
+        "o empréstimo é recusado"
+      ],
+      "id": "PBD-AC-7D8MFK0C79VJ",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-CFJG10WJE8TY",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "ele tenta emprestar outro livro",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-38FK6BWZNBTN"
+      ],
+      "condition": "um empréstimo registrado hoje",
+      "expected_outcomes": [
+        "a devolução fica em 14 dias"
+      ],
+      "id": "PBD-AC-Y2RRYMHXVVTE",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-CFJG10WJE8TY",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o sistema calcula a devolução",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-612R97A5W5ZP"
+      ],
+      "condition": "um empréstimo sem reserva e sem renovação",
+      "expected_outcomes": [
+        "o empréstimo é renovado"
+      ],
+      "id": "PBD-AC-VXYW03KA02TZ",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-2DVGB62J6NBB",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o leitor pede a renovação",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-612R97A5W5ZP"
+      ],
+      "condition": "um empréstimo já renovado",
+      "expected_outcomes": [
+        "a renovação é recusada"
+      ],
+      "id": "PBD-AC-HS73F7EVE714",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-2DVGB62J6NBB",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o leitor pede outra renovação",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-3T1ETZBPXBC6"
+      ],
+      "expected_outcomes": [
+        "livros e datas listados"
+      ],
+      "id": "PBD-AC-YYJA50NHRF5D",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-68WXA0TWX6G6",
+      "status": "confirmed",
+      "style": "list",
+      "text": "A lista mostra cada livro emprestado com sua data de devolução.",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-YZM4925E7NX5"
+      ],
+      "condition": "um cartão de leitor válido no quiosque",
+      "expected_outcomes": [
+        "o empréstimo é registrado para o leitor"
+      ],
+      "id": "PBD-AC-T40V25CK58TH",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-Y2G59AESDQYC",
+      "status": "confirmed",
+      "style": "list",
+      "trigger": "o cartão é lido",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-FMEVD0K6S75G"
+      ],
+      "expected_outcomes": [
+        "aviso enviado antes do vencimento"
+      ],
+      "id": "PBD-AC-Y372FH2GMKXC",
+      "order": 0,
+      "origin": "proposed",
+      "parent": "PBD-STORY-6DWQ9Y1QNDVP",
+      "rationale": "A fonte não define quanto tempo antes é 'rápido'.",
+      "status": "proposed",
+      "style": "list",
+      "text": "O aviso chega antes do vencimento com a antecedência definida.",
+      "visible_id": "CA-01"
+    }
+  ],
+  "decisions": [],
+  "findings": [
+    {
+      "actual": "A fonte diz apenas 'rápido'.",
+      "affects": [
+        "PBD-AC-Y372FH2GMKXC",
+        "PBD-STORY-6DWQ9Y1QNDVP"
+      ],
+      "classification": "ambiguous_source",
+      "evidence": [
+        {
+          "ref": "stages/review.json",
+          "summary": "independent review",
+          "type": "review"
+        }
+      ],
+      "expected": "Antecedência do aviso definida pela fonte.",
+      "gate": "G06",
+      "id": "PBD-FND-G9K1H2SAGBZ9",
+      "impact": "O aviso pode chegar tarde demais.",
+      "recommendation": "Responder Q2 e atualizar AC7.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "AC7 não pode ser verificado sem um valor."
+    }
+  ],
+  "items": [
+    {
+      "claim_refs": [
+        "PBD-CLM-X6BDAS7PZ67G",
+        "PBD-CLM-38FK6BWZNBTN",
+        "PBD-CLM-612R97A5W5ZP",
+        "PBD-CLM-3T1ETZBPXBC6",
+        "PBD-CLM-YZM4925E7NX5",
+        "PBD-CLM-BM1VH63GJGT7",
+        "PBD-CLM-FMEVD0K6S75G"
+      ],
+      "content": {
+        "kind": "epic",
+        "objective": "Leitores emprestam, renovam e acompanham livros.",
+        "out_scope": [
+          "Multas por atraso"
+        ]
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Leitores emprestam, renovam e acompanham livros.</p><p><strong>Fora do escopo</strong></p><ul><li>Multas por atraso</li></ul>"
+      },
+      "id": "PBD-EPIC-JJBBNJM0G3HW",
+      "origin": "generated",
+      "parent": null,
+      "status": "reviewed",
+      "title": "Empréstimos da biblioteca do bairro",
+      "type": "epic"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-X6BDAS7PZ67G",
+        "PBD-CLM-38FK6BWZNBTN",
+        "PBD-CLM-612R97A5W5ZP",
+        "PBD-CLM-3T1ETZBPXBC6"
+      ],
+      "content": {
+        "capability": "Emprestar, renovar e consultar empréstimos no balcão.",
+        "kind": "feature"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Emprestar, renovar e consultar empréstimos no balcão.</p>"
+      },
+      "id": "PBD-FEAT-BB1Q3N8BCTVS",
+      "origin": "generated",
+      "parent": "PBD-EPIC-JJBBNJM0G3HW",
+      "status": "reviewed",
+      "title": "Empréstimo e renovação",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-YZM4925E7NX5",
+        "PBD-CLM-BM1VH63GJGT7"
+      ],
+      "content": {
+        "capability": "Emprestar sem atendente, lendo o cartão do leitor.",
+        "kind": "feature"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Emprestar sem atendente, lendo o cartão do leitor.</p>"
+      },
+      "id": "PBD-FEAT-HDPFHDPRPJ8D",
+      "origin": "generated",
+      "parent": "PBD-EPIC-JJBBNJM0G3HW",
+      "status": "reviewed",
+      "title": "Quiosque de autoatendimento",
+      "type": "feature"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-FMEVD0K6S75G"
+      ],
+      "content": {
+        "capability": "Avisar o leitor antes do vencimento.",
+        "kind": "feature"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Avisar o leitor antes do vencimento.</p>"
+      },
+      "id": "PBD-FEAT-261409PP108H",
+      "origin": "generated",
+      "parent": "PBD-EPIC-JJBBNJM0G3HW",
+      "status": "reviewed",
+      "title": "Avisos de vencimento",
+      "type": "feature"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-X6BDAS7PZ67G",
+        "PBD-CLM-38FK6BWZNBTN"
+      ],
+      "content": {
+        "actor": "leitor",
+        "benefit": "levar os livros para casa",
+        "kind": "role_goal_benefit",
+        "want": "o sistema registrasse o empréstimo com a data de devolução"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> leitor, <strong>gostaria que</strong> o sistema registrasse o empréstimo com a data de devolução, <strong>para</strong> levar os livros para casa.</p>"
+      },
+      "fields": {
+        "story_points": {
+          "rationale": "Proposta; o time estima.",
+          "review_status": "unreviewed",
+          "scale": "fibonacci",
+          "state": "proposed",
+          "value": 3
+        }
+      },
+      "id": "PBD-STORY-CFJG10WJE8TY",
+      "origin": "generated",
+      "parent": "PBD-FEAT-BB1Q3N8BCTVS",
+      "readiness": {
+        "rationale": "Limite e prazo estão definidos pela fonte.",
+        "status": "ready"
+      },
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Emprestar livros no balcão",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-612R97A5W5ZP"
+      ],
+      "content": {
+        "actor": "leitor",
+        "benefit": "ficar mais tempo com o livro",
+        "kind": "role_goal_benefit",
+        "want": "o sistema renovasse meu empréstimo uma vez"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> leitor, <strong>gostaria que</strong> o sistema renovasse meu empréstimo uma vez, <strong>para</strong> ficar mais tempo com o livro.</p>"
+      },
+      "fields": {
+        "story_points": {
+          "rationale": "Proposta; o time estima.",
+          "review_status": "unreviewed",
+          "scale": "fibonacci",
+          "state": "proposed",
+          "value": 2
+        }
+      },
+      "id": "PBD-STORY-2DVGB62J6NBB",
+      "origin": "generated",
+      "parent": "PBD-FEAT-BB1Q3N8BCTVS",
+      "readiness": {
+        "rationale": "A regra de renovação está definida.",
+        "status": "ready"
+      },
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Renovar um empréstimo",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-3T1ETZBPXBC6"
+      ],
+      "content": {
+        "actor": "leitor",
+        "benefit": "devolver no prazo",
+        "kind": "role_goal_benefit",
+        "want": "o sistema mostrasse meus empréstimos e as datas"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> leitor, <strong>gostaria que</strong> o sistema mostrasse meus empréstimos e as datas, <strong>para</strong> devolver no prazo.</p>"
+      },
+      "fields": {
+        "story_points": {
+          "rationale": "Proposta; o time estima.",
+          "review_status": "unreviewed",
+          "scale": "fibonacci",
+          "state": "proposed",
+          "value": 2
+        }
+      },
+      "id": "PBD-STORY-68WXA0TWX6G6",
+      "origin": "generated",
+      "parent": "PBD-FEAT-BB1Q3N8BCTVS",
+      "readiness": {
+        "rationale": "Depende só dos empréstimos registrados.",
+        "status": "ready"
+      },
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Ver meus empréstimos",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-YZM4925E7NX5",
+        "PBD-CLM-BM1VH63GJGT7"
+      ],
+      "content": {
+        "actor": "leitor",
+        "benefit": "emprestar sem esperar atendimento",
+        "kind": "role_goal_benefit",
+        "want": "o quiosque registrasse o empréstimo ao ler meu cartão"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> leitor, <strong>gostaria que</strong> o quiosque registrasse o empréstimo ao ler meu cartão, <strong>para</strong> emprestar sem esperar atendimento.</p>"
+      },
+      "fields": {
+        "story_points": {
+          "rationale": "Proposta; o time estima.",
+          "review_status": "unreviewed",
+          "scale": "fibonacci",
+          "state": "proposed",
+          "value": 5
+        }
+      },
+      "id": "PBD-STORY-Y2G59AESDQYC",
+      "origin": "generated",
+      "parent": "PBD-FEAT-HDPFHDPRPJ8D",
+      "readiness": {
+        "independent_of": [
+          {
+            "rationale": "Só a tarefa do driver precisa do modelo escolhido.",
+            "ref": "PBD-Q-Z94KDZGK3HVT"
+          }
+        ],
+        "rationale": "O fluxo pode ser construído sobre um contrato simulado; o driver espera a escolha do leitor de cartões.",
+        "status": "partial"
+      },
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Emprestar pelo quiosque",
+      "type": "story"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-FMEVD0K6S75G"
+      ],
+      "content": {
+        "actor": "leitor",
+        "benefit": "não atrasar a devolução",
+        "kind": "role_goal_benefit",
+        "want": "o sistema me avisasse antes do vencimento"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> leitor, <strong>gostaria que</strong> o sistema me avisasse antes do vencimento, <strong>para</strong> não atrasar a devolução.</p>"
+      },
+      "fields": {
+        "story_points": {
+          "rationale": "Proposta; o time estima.",
+          "review_status": "unreviewed",
+          "scale": "fibonacci",
+          "state": "proposed",
+          "value": 2
+        }
+      },
+      "id": "PBD-STORY-6DWQ9Y1QNDVP",
+      "origin": "generated",
+      "parent": "PBD-FEAT-261409PP108H",
+      "readiness": {
+        "rationale": "O agendamento do aviso independe do momento exato, que fica parametrizado até a resposta à pergunta sobre 'rápido'.",
+        "status": "ready"
+      },
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Receber aviso antes do vencimento",
+      "type": "story"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-X6BDAS7PZ67G"
+      ],
+      "content": {
+        "kind": "task",
+        "summary": "Recusar um quarto empréstimo ativo.",
+        "verification": "Teste com leitor que já tem 3 empréstimos."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Recusar um quarto empréstimo ativo.</p><p><strong>Verificação</strong>: Teste com leitor que já tem 3 empréstimos.</p>"
+      },
+      "id": "PBD-TASK-B03M89G4XBG0",
+      "origin": "generated",
+      "parent": "PBD-STORY-CFJG10WJE8TY",
+      "readiness": {
+        "rationale": "Regra confirmada.",
+        "status": "ready"
+      },
+      "status": "reviewed",
+      "title": "Validar o limite de empréstimos ativos",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-38FK6BWZNBTN"
+      ],
+      "content": {
+        "kind": "task",
+        "summary": "Calcular a data de devolução.",
+        "verification": "Teste da data calculada."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Calcular a data de devolução.</p><p><strong>Verificação</strong>: Teste da data calculada.</p>"
+      },
+      "id": "PBD-TASK-9EFZCXJF6ET7",
+      "origin": "generated",
+      "parent": "PBD-STORY-CFJG10WJE8TY",
+      "readiness": {
+        "rationale": "Prazo confirmado.",
+        "status": "ready"
+      },
+      "status": "reviewed",
+      "title": "Registrar o empréstimo com devolução em 14 dias",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-612R97A5W5ZP"
+      ],
+      "content": {
+        "kind": "task",
+        "summary": "Permitir uma renovação e recusar livro reservado.",
+        "verification": "Testes de segunda renovação e de livro reservado."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir uma renovação e recusar livro reservado.</p><p><strong>Verificação</strong>: Testes de segunda renovação e de livro reservado.</p>"
+      },
+      "id": "PBD-TASK-G524XWR2WQBW",
+      "origin": "generated",
+      "parent": "PBD-STORY-2DVGB62J6NBB",
+      "readiness": {
+        "rationale": "Regra confirmada.",
+        "status": "ready"
+      },
+      "status": "reviewed",
+      "title": "Renovar uma vez quando não houver reserva",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-3T1ETZBPXBC6"
+      ],
+      "content": {
+        "kind": "task",
+        "summary": "Consultar empréstimos ativos do leitor.",
+        "verification": "Teste com dois empréstimos ativos."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Consultar empréstimos ativos do leitor.</p><p><strong>Verificação</strong>: Teste com dois empréstimos ativos.</p>"
+      },
+      "id": "PBD-TASK-3V5TWDKK57WQ",
+      "origin": "generated",
+      "parent": "PBD-STORY-68WXA0TWX6G6",
+      "readiness": {
+        "rationale": "Depende só dos dados de empréstimo.",
+        "status": "ready"
+      },
+      "status": "reviewed",
+      "title": "Listar empréstimos com as datas de devolução",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-BM1VH63GJGT7"
+      ],
+      "content": {
+        "kind": "task",
+        "summary": "Ler o cartão pelo driver do modelo escolhido.",
+        "verification": "Teste com o leitor físico escolhido."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Ler o cartão pelo driver do modelo escolhido.</p><p><strong>Verificação</strong>: Teste com o leitor físico escolhido.</p>"
+      },
+      "id": "PBD-TASK-EYZQ67WBBK24",
+      "origin": "generated",
+      "parent": "PBD-STORY-Y2G59AESDQYC",
+      "readiness": {
+        "blocked_by": [
+          {
+            "rationale": "O driver e o protocolo dependem do modelo escolhido.",
+            "ref": "PBD-Q-Z94KDZGK3HVT"
+          }
+        ],
+        "rationale": "Sem o modelo não há driver nem protocolo para integrar.",
+        "status": "blocked"
+      },
+      "status": "reviewed",
+      "title": "Integrar o driver do leitor de cartões",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-YZM4925E7NX5"
+      ],
+      "content": {
+        "kind": "task",
+        "summary": "Construir o fluxo sobre um contrato simulado do leitor.",
+        "verification": "Teste do fluxo com o simulador de cartão."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Construir o fluxo sobre um contrato simulado do leitor.</p><p><strong>Verificação</strong>: Teste do fluxo com o simulador de cartão.</p>"
+      },
+      "id": "PBD-TASK-2A8T8MYBTDWK",
+      "origin": "generated",
+      "parent": "PBD-STORY-Y2G59AESDQYC",
+      "readiness": {
+        "independent_of": [
+          {
+            "rationale": "O fluxo usa o contrato simulado, não o driver real.",
+            "ref": "PBD-Q-Z94KDZGK3HVT"
+          }
+        ],
+        "rationale": "O contrato simulado separa o fluxo do hardware.",
+        "status": "ready"
+      },
+      "status": "reviewed",
+      "title": "Fluxo do quiosque com leitura de cartão simulada",
+      "type": "task"
+    },
+    {
+      "acceptance_style": "list",
+      "claim_refs": [
+        "PBD-CLM-BM1VH63GJGT7"
+      ],
+      "content": {
+        "decision": "Recomendação para a escolha do modelo.",
+        "kind": "spike",
+        "question": "Quais modelos atendem ao quiosque e com que protocolo?"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Pergunta a responder</strong>: Quais modelos atendem ao quiosque e com que protocolo?</p><p><strong>Decisão esperada</strong>: Recomendação para a escolha do modelo.</p>"
+      },
+      "id": "PBD-SPIKE-948DDGYCFXHB",
+      "origin": "generated",
+      "parent": "PBD-STORY-Y2G59AESDQYC",
+      "readiness": {
+        "independent_of": [
+          {
+            "rationale": "O resultado alimenta a resposta, não depende dela.",
+            "ref": "PBD-Q-Z94KDZGK3HVT"
+          }
+        ],
+        "rationale": "Investigação limitada que informa a decisão.",
+        "status": "ready"
+      },
+      "status": "reviewed",
+      "story_format": "spike",
+      "title": "Comparar os modelos candidatos de leitor de cartões",
+      "type": "spike"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-FMEVD0K6S75G"
+      ],
+      "content": {
+        "kind": "task",
+        "summary": "Agendar o aviso com antecedência parametrizada.",
+        "verification": "Teste do agendamento com antecedência configurada."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Agendar o aviso com antecedência parametrizada.</p><p><strong>Verificação</strong>: Teste do agendamento com antecedência configurada.</p>"
+      },
+      "id": "PBD-TASK-XQ9RARSCVA8P",
+      "origin": "generated",
+      "parent": "PBD-STORY-6DWQ9Y1QNDVP",
+      "readiness": {
+        "rationale": "A antecedência é um parâmetro até a resposta.",
+        "status": "ready"
+      },
+      "status": "reviewed",
+      "title": "Agendar o aviso de vencimento",
+      "type": "task"
+    }
+  ],
+  "kind": "pbd.backlog",
+  "language": "pt-BR",
+  "profile": "azure-agile",
+  "questions": [
+    {
+      "affects": [
+        "PBD-SPIKE-948DDGYCFXHB",
+        "PBD-STORY-Y2G59AESDQYC",
+        "PBD-TASK-2A8T8MYBTDWK",
+        "PBD-TASK-EYZQ67WBBK24"
+      ],
+      "alternatives": [
+        "Escolher entre os modelos avaliados no spike"
+      ],
+      "blocking": true,
+      "id": "PBD-Q-Z94KDZGK3HVT",
+      "impact": "Sem o modelo, o driver não pode ser integrado.",
+      "status": "open",
+      "text": "Qual modelo de leitor de cartões o quiosque usará?"
+    },
+    {
+      "affects": [
+        "PBD-AC-Y372FH2GMKXC",
+        "PBD-STORY-6DWQ9Y1QNDVP"
+      ],
+      "alternatives": [],
+      "blocking": false,
+      "id": "PBD-Q-19M033AKDNR6",
+      "impact": "Define a antecedência do aviso.",
+      "status": "open",
+      "text": "Quanto tempo antes do vencimento o aviso deve chegar?"
+    }
+  ],
+  "relations": [
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-W8NP028JE7WW",
+      "reason": "Só se renova um empréstimo existente.",
+      "source": "PBD-STORY-CFJG10WJE8TY",
+      "status": "confirmed",
+      "target": "PBD-STORY-2DVGB62J6NBB",
+      "type": "predecessor"
+    },
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-N23PYQ4NCS7R",
+      "reason": "O driver substitui o simulador no fluxo pronto.",
+      "source": "PBD-TASK-2A8T8MYBTDWK",
+      "status": "proposed",
+      "target": "PBD-TASK-EYZQ67WBBK24",
+      "type": "predecessor"
+    }
+  ],
+  "run_id": "PBD-RUN-R3C50QRRHV1P",
+  "schema_version": "1.2.0",
+  "sources": [
+    {
+      "authority": "functional",
+      "digest": "sha256:124a40a12a03af49565302195e0fd60c616ec5fd41d4142403cd65ae5fe1a62d",
+      "id": "PBD-SRC-78385WMH95P7",
+      "kind": "file",
+      "members": [
+        {
+          "bytes": 659,
+          "digest": "sha256:4ad5c3dcb873e8953d556e41043521fae59e66afc81e2f79157deab258d190f4",
+          "media_type": "application/octet-stream",
+          "path": "prd.md",
+          "status": "read"
+        }
+      ],
+      "read_status": "complete",
+      "selector": "prd.md",
+      "version": "124a40a12a03af49"
+    }
+  ],
+  "synthetic": true
+}

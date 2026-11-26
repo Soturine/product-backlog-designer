@@ -336,9 +336,11 @@ def _legend_bar(r: R, rows: list[tuple[str, str, int, str]], total: int, goto: s
         return f'<p class="empty">{r.T("chart.empty")}</p>'
     x = 0.0
     rects = []
-    for _, _, n, color in rows:
+    for group, code, n, color in rows:
         w = 1000 * n / total
-        rects.append(f'<rect class="fill-{color}" x="{x:.2f}" y="0" width="{w:.2f}" height="12"/>')
+        # work-item types follow the selected appearance (same color as the type icon)
+        cls = f"tyfill ty-{_e(code)}" if group == "type" else f"fill-{color}"
+        rects.append(f'<rect class="{cls}" x="{x:.2f}" y="0" width="{w:.2f}" height="12"/>')
         x += w
     summary = ", ".join(f"{r.t.enum(g, c)}: {n}" for g, c, n, _ in rows)
     svg = (
@@ -347,10 +349,12 @@ def _legend_bar(r: R, rows: list[tuple[str, str, int, str]], total: int, goto: s
     )
     items = []
     for group, code, n, color in rows:
-        inner = (
-            f'<span class="sw bg-{color}" aria-hidden="true"></span>{r.E(group, code)}'
-            f'<span class="n">{n}</span>'
+        swatch = (
+            type_icon(code, r.appearance)
+            if group == "type"
+            else f'<span class="sw bg-{color}" aria-hidden="true"></span>'
         )
+        inner = f'{swatch}{r.E(group, code)}<span class="n">{n}</span>'
         if goto:
             items.append(f'<li><button type="button" data-goto="{_e(goto)}|{_e(code)}">{inner}</button></li>')
         else:
@@ -1613,7 +1617,8 @@ def _page(
         for loc in LOCALES
     )
     theme_opts = "".join(
-        f'<option value="{v}">{_e(r.t("theme." + v))}</option>' for v in ("system", "light", "dark")
+        f'<option value="{v}" data-i18n="theme.{v}">{_e(r.t("theme." + v))}</option>'
+        for v in ("system", "light", "dark")
     )
     synth = (
         f'<span class="pill tone-warn hide-sm">{icon("alert")}{r.T("header.synthetic")}</span>'

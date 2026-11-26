@@ -8,7 +8,11 @@ You are the host agent. You interpret the request, run the deterministic runtime
 | generate / create / build a backlog from these sources (default) | `generate`, all levels |
 | only stories and criteria / only epics and features / tasks for … | `generate` with `--levels` |
 | prepare for Azure DevOps (local) | `generate` with `--formats ...,azure --profile azure-<process>` |
-| audit / compare / refine / plan / ADR update / publish | not available in the runtime yet: say so; do not simulate |
+| audit an existing backlog | `audit` ([entrypoints/audit.md](../entrypoints/audit.md)) |
+| compare two backlogs / refine with approved changes | `compare` ([compare](../entrypoints/compare.md)), then `pbd refine` ([refine](../entrypoints/refine.md)) |
+| plan sprints, order, owners | `pbd plan` on a finalized backlog ([plan](../entrypoints/plan.md)); team, capacity and dates only as the user gives them |
+| sources or ADRs changed | `pbd evolve` ([adr](../entrypoints/adr.md), [diff](../entrypoints/diff.md)) |
+| prepare / publish to Azure DevOps | local package, then only the local mock (`pbd azure ...`, [azure](../entrypoints/azure.md)); never a live tracker |
 
 - Sources are only what the user explicitly selected. Each declared file, directory or archive is ONE source. Assign an authority: `functional`, `technical`, `decision`, `implementation_evidence`, `existing_backlog`, `corroboration`, `instructions`, `other`. Ask one concise question only if an authority role is materially ambiguous.
 - Language: explicit request > language of the functional source > request language. Profile: as requested, else `generic`.
@@ -43,6 +47,6 @@ Run the designer role ([designer.md](designer.md)) — yourself or a subagent �
 Start a reviewer that did NOT design the backlog ([reviewer.md](reviewer.md)). It re-reads the original sources first, then the design. Submit: `pbd submit review --file review.json`. If no separate agent is available, record `independence: sequential_role`; gate G13 will be BLOCKED and the report says so.
 
 ## 7. Finalize and answer
-`pbd finalize --out <root>`, then tell the user: path of `output/report.html`, counts, gates that FAIL/BLOCKED/NOT_RUN and why, open questions and limitations. Never claim publication, approval, live validation or a passing gate the report does not show.
+`pbd finalize --out <root>`, then tell the user: path of `output/report.html`, counts, what is ready to build and what is blocked by which open question, gates that FAIL/BLOCKED/NOT_RUN and why, open questions and limitations. Never claim publication, approval, live validation or a passing gate the report does not show.
 
 Write every payload as UTF-8 (for example `open(path, 'w', encoding='utf-8')` or your file-writing tool); avoid shell heredocs for large JSON.

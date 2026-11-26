@@ -16,10 +16,11 @@
             "source_version": "eca2c5d70b16bd45"
           },
           "summary": "pode reservar um canteiro livre",
-          "type": "source_locator"
+          "type": "source_locator",
+          "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-6KEJBEYHQKXK",
+      "id": "PBD-CLM-FGQXZN91WCJ1",
       "temporal": {
         "status": "effective"
       },
@@ -44,10 +45,11 @@
             "source_version": "eca2c5d70b16bd45"
           },
           "summary": "não aceita nova reserva",
-          "type": "source_locator"
+          "type": "source_locator",
+          "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-4ZF1077KMZVP",
+      "id": "PBD-CLM-1B748KS51HJC",
       "temporal": {
         "status": "effective"
       },
@@ -72,10 +74,11 @@
             "source_version": "eca2c5d70b16bd45"
           },
           "summary": "Minhas reservas",
-          "type": "source_locator"
+          "type": "source_locator",
+          "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-88AEBK52QYSH",
+      "id": "PBD-CLM-Q87YJ42FSQRS",
       "temporal": {
         "status": "effective"
       },
@@ -101,14 +104,15 @@
             "source_version": "eca2c5d70b16bd45"
           },
           "summary": "aprovadas manualmente",
-          "type": "source_locator"
+          "type": "source_locator",
+          "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-XQA7N2HHTYYD",
+      "id": "PBD-CLM-ZST1F3WDERH4",
       "temporal": {
         "status": "superseded",
         "superseded_by": [
-          "PBD-DEC-TZ986PYM1146"
+          "PBD-DEC-QPXZF6E3K1XG"
         ],
         "superseded_reason": "Confirmação automática substitui aprovação manual."
       },
@@ -133,10 +137,11 @@
             "source_version": "c1a7c3e37875c796"
           },
           "summary": "Status: aprovado Decisão: reservas válidas são confirmadas automaticamente",
-          "type": "source_locator"
+          "type": "source_locator",
+          "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-JEMFB4S3NK0H",
+      "id": "PBD-CLM-XR9WBK354RQQ",
       "temporal": {
         "status": "effective"
       },
@@ -161,10 +166,11 @@
             "source_version": "eca2c5d70b16bd45"
           },
           "summary": "Pagamentos não fazem parte",
-          "type": "source_locator"
+          "type": "source_locator",
+          "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-6PPYJ4FA4BPB",
+      "id": "PBD-CLM-JEMCGZV88SJY",
       "temporal": {
         "status": "effective"
       },
@@ -221,13 +227,14 @@
             "source_version": "c1a7c3e37875c796"
           },
           "summary": "Status: aprovado Decisão: reservas válidas são confirmadas automaticamente",
-          "type": "source_locator"
+          "type": "source_locator",
+          "verification": "mechanical"
         }
       ],
-      "id": "PBD-DEC-TZ986PYM1146",
+      "id": "PBD-DEC-QPXZF6E3K1XG",
       "status": "approved",
       "supersedes_claims": [
-        "PBD-CLM-XQA7N2HHTYYD"
+        "PBD-CLM-ZST1F3WDERH4"
       ],
       "text": "Confirmação automática substitui aprovação manual."
     }
@@ -237,7 +244,7 @@
       "actual": "Critério exige aprovação manual.",
       "affects": [
         "PBD-AC-DHQHTDGD6X40",
-        "PBD-CLM-JEMFB4S3NK0H"
+        "PBD-CLM-XR9WBK354RQQ"
       ],
       "classification": "confirmed_divergence",
       "evidence": [
@@ -248,8 +255,8 @@
         }
       ],
       "expected": "Reservas válidas confirmadas automaticamente (ADR-001).",
-      "gate": "G04",
-      "id": "PBD-FND-ZSFM4F31C0ZF",
+      "gate": "G15",
+      "id": "PBD-FND-Z1VD48KK8358",
       "impact": "Fluxo implementado contraria a decisão vigente.",
       "recommendation": "Substituir o critério pela confirmação automática.",
       "review_status": "confirmed",
@@ -271,7 +278,7 @@
       ],
       "expected": "Pagamentos fora do escopo.",
       "gate": "G09",
-      "id": "PBD-FND-A8HTXE25NS8F",
+      "id": "PBD-FND-8SG45D4WZSSQ",
       "impact": "Escopo indevido.",
       "recommendation": "Remover ou mover para fora do escopo após decisão.",
       "review_status": "confirmed",
@@ -347,8 +354,8 @@
   "profile": "generic",
   "questions": [],
   "relations": [],
-  "run_id": "PBD-RUN-XPF8R9GWFSF0",
-  "schema_version": "1.1.0",
+  "run_id": "PBD-RUN-5EH49FGA6SBD",
+  "schema_version": "1.2.0",
   "sources": [
     {
       "authority": "functional",

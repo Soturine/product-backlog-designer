@@ -53,7 +53,13 @@ Negritos, listas, parágrafos, acentos e links são preservados nos campos nativ
 
 `report.html` é um único arquivo offline (duplo clique, sem servidor e sem rede). Abre numa visão geral executiva e aprofunda em um explorador de backlog mestre/detalhe, rastreabilidade de requisitos, achados e perguntas, gates de qualidade com evidências, fontes, o pacote de integração local e os dados canônicos. A interface alterna entre português, inglês e espanhol sem rede; o conteúdo do backlog permanece no idioma em que foi escrito.
 
-![Demonstração: visão geral, busca, detalhe de item, gates, troca de idioma e tema](docs/images/report/report-demo.png)
+![Demonstração: visão geral, trabalho bloqueado, detalhe do item, aparência Azure DevOps e Jira, explicação de gate, idioma e tema](docs/images/report/report-demo.png)
+
+**Está pronto para construir?** Confirmado pela fonte não é o mesmo que pronto: cada item construível diz se pode ser feito agora, e o trabalho que depende de uma pergunta bloqueante em aberto fica bloqueado e ligado a ela. A visão geral conta o que está pronto, parcial ou bloqueado e mostra o que cada pergunta bloqueante segura; o revisor concorda ou contesta e o gate G08 mostra o resultado. Cada gate tem explicação (o que verifica, por que importa, tipo de evidência, trabalho afetado). A aparência Genérica / Azure DevOps / Jira só muda ícones originais e cores, nunca a hierarquia, o destino ou os dados. O `pbd plan` mostra plano do time com responsável pela história, executor da task e carga por pessoa.
+
+| Prontidão e decisões | Plano do time |
+|---|---|
+| ![Prontidão](docs/images/report/readiness-overview-1440-light-pt.png) | ![Plano do time](docs/images/report/plan-team-1280-light-pt.png) |
 
 | Visão geral | Explorador com detalhe do item |
 |---|---|

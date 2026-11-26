@@ -276,3 +276,20 @@ def test_plan_report_shows_owners_assignees_and_counts_from_json() -> None:
     assert "proposta difere do snapshot" in html
     assert 'data-i18n="plan.unknown_capacity"' not in html  # capacity is per person, not unknown
     assert "<script>window" not in html
+
+
+def test_user_stated_estimates_are_labelled_and_never_written_back() -> None:
+    backlog = _backlog()
+    for i in backlog["items"]:
+        if i["id"] == T[3]:
+            i["fields"] = {}
+    inp = _input()
+    inp["estimates"] = {T[3]: {"unit": "hours", "value": 2}}
+    doc = plan(backlog, inp)
+    row = next(t for r in doc["team_plan"]["stories"] for t in r["tasks"] if t["task"] == T[3])
+    assert row["estimate_hours"] == 2 and row["estimate_provenance"] == "planning_input"
+    assert next(i for i in backlog["items"] if i["id"] == T[3])["fields"] == {}
+    assert not is_stale(doc, backlog)
+    inp["estimates"] = {T[3]: {"unit": "days", "value": 1}}
+    with pytest.raises(PlanningError):
+        plan(backlog, inp)

@@ -605,6 +605,7 @@
  "plan.people": "Load by person and sprint",
  "plan.prov.absent": "not given",
  "plan.prov.confirmed": "confirmed",
+ "plan.prov.planning_input": "stated by the user in the request",
  "plan.prov.proposed": "proposed (used by your choice)",
  "plan.remaining": "Remaining",
  "plan.risk": "risk",

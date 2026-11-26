@@ -469,3 +469,4 @@ details.tech-gate{margin-top:10px}details.tech-gate>summary{cursor:pointer;color
 .explorer.wide .detail:not(.has-selection){display:none}}
 .tablenote{font-size:var(--fs-xs);color:var(--muted);padding:0 var(--s-3) var(--s-2);margin:0}
 .gate-sum{font-weight:600}
+.bar rect.tyfill{fill:var(--tc,var(--faint))}

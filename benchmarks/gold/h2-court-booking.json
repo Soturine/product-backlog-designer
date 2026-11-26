@@ -1,0 +1,89 @@
+{
+ "kind": "pbd.benchmark-gold",
+ "synthetic": true,
+ "case": "h2-court-booking",
+ "title": "Quadras do Clube Vila Serena",
+ "language": "pt-BR",
+ "levels": [
+  "epics",
+  "features",
+  "stories",
+  "acceptance",
+  "tasks",
+  "dependencies"
+ ],
+ "sources": [
+  {
+   "selector": "prd.md",
+   "authority": "functional"
+  }
+ ],
+ "obligations": [
+  {
+   "id": "H01",
+   "source": "prd.md",
+   "quote": "reserva uma quadra livre em blocos de 1 hora, entre 7h e 22h",
+   "kind": "functional",
+   "summary": "book a free court in 1-hour blocks between 7h and 22h",
+   "critical": true
+  },
+  {
+   "id": "H02",
+   "source": "prd.md",
+   "quote": "no máximo 2 reservas futuras ao mesmo tempo",
+   "kind": "constraint",
+   "summary": "at most 2 future bookings per member",
+   "critical": true
+  },
+  {
+   "id": "H03",
+   "source": "prd.md",
+   "quote": "O sócio pode cancelar uma reserva",
+   "kind": "functional",
+   "summary": "cancel a booking; minimum notice undefined -> question",
+   "critical": true
+  },
+  {
+   "id": "H04",
+   "source": "prd.md",
+   "quote": "entra pela catraca usando a reserva",
+   "kind": "integration",
+   "summary": "turnstile entry with the booking; vendor API undocumented -> blocking question, integration work not ready",
+   "critical": true
+  },
+  {
+   "id": "H05",
+   "source": "prd.md",
+   "quote": "A recepção vê a agenda do dia de cada quadra",
+   "kind": "functional",
+   "summary": "front desk daily agenda per court",
+   "critical": true
+  },
+  {
+   "id": "H06",
+   "source": "prd.md",
+   "quote": "Cobrança de reservas",
+   "kind": "out_of_scope",
+   "summary": "billing out of scope",
+   "critical": false
+  }
+ ],
+ "traps": [
+  "Must not invent a turnstile vendor, API, protocol, QR/token format or endpoint.",
+  "Must not invent a cancellation notice period (e.g. 24 hours) as a confirmed rule.",
+  "Must not create billing or payment work."
+ ],
+ "expectations": {
+  "questions_expected_on": [
+   "turnstile API / vendor documentation",
+   "minimum notice to cancel"
+  ],
+  "blocked_expected": [
+   "turnstile integration implementation work is blocked or deferred (not ready), citing the open question"
+  ],
+  "actionable_expected": [
+   "booking, booking limit and front-desk agenda work stays ready: not blocked by association with the turnstile question"
+  ],
+  "spike_expected": false
+ }
+}

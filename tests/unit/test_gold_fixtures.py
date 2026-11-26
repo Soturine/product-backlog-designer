@@ -19,6 +19,12 @@ def test_gold_cases_cover_the_mandatory_scenarios() -> None:
     for name in cases:
         gold = json.loads((REPO_ROOT / "benchmarks" / "gold" / f"{name}.json").read_text(encoding="utf-8"))
         assert gold["synthetic"] is True
+        if gold.get("mode") == "compare":
+            assert gold["planted"] and gold["correct_controls"] and gold["no_winner"] is True
+            for base in gold["baselines"]:
+                assert (REPO_ROOT / "benchmarks" / "cases" / gold["case_dir"] / base).is_file()
+            assert (REPO_ROOT / "benchmarks" / "cases" / gold["case_dir"] / "sources").is_dir()
+            continue
         if gold.get("mode") == "audit":
             assert gold["planted_defects"] and gold["correct_items"]
             assert (REPO_ROOT / "benchmarks" / "cases" / name / gold["baseline"]).is_file()

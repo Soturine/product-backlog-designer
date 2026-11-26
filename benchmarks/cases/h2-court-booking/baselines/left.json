@@ -1,0 +1,38 @@
+{
+ "kind": "pbd.import",
+ "items": [
+  {
+   "id": "QL-1",
+   "type": "Epic",
+   "title": "Reservas de quadras"
+  },
+  {
+   "id": "QL-2",
+   "type": "User Story",
+   "title": "Reservar quadra por hora",
+   "parent": "QL-1",
+   "acceptance_criteria": "- Reserva em blocos de 1 hora\n- Horário entre 7h e 22h"
+  },
+  {
+   "id": "QL-3",
+   "type": "User Story",
+   "title": "Cancelar reserva",
+   "parent": "QL-1",
+   "acceptance_criteria": "- Cancelamento permitido até 24 horas antes do horário"
+  },
+  {
+   "id": "QL-4",
+   "type": "User Story",
+   "title": "Agenda do dia na recepção",
+   "parent": "QL-1",
+   "acceptance_criteria": "- Recepção vê as reservas do dia por quadra"
+  },
+  {
+   "id": "QL-5",
+   "type": "User Story",
+   "title": "Entrar pela catraca",
+   "parent": "QL-1",
+   "description": "Integração com a catraca aguardando documentação do fornecedor."
+  }
+ ]
+}
