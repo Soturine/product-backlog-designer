@@ -1,0 +1,40 @@
+{
+  "run": "R2b",
+  "run_id": "PBD-RUN-F94XCVYMMH79",
+  "gold": "h2-court-booking",
+  "reviewer": {"agent": "rev-h2-r2b", "model": "claude-sonnet-5-5"},
+  "obligations": {
+    "H01": {"status": "covered", "evidence": ["PBD-STORY-G72AH4WADBQV (US1)", "PBD-AC-ZG12ZGGQ45CY (CA-01)", "PBD-AC-SHBDEQVWJFMZ (CA-02)", "PBD-AC-FJM9M63DTXBY (CA-03, 7h-22h accepted)", "PBD-AC-YRCE4KD5N0JN (CA-04, outside window refused)", "PBD-TASK-34ABATER7269 (T1)"], "note": "1-hour blocks and 7h-22h window present. Last-block end (21h-22h vs 22h-23h) is open as Q3 PBD-Q-7EQ79CHT2VJ6, non-blocking; see readiness dispute."},
+    "H02": {"status": "covered", "evidence": ["PBD-STORY-7V0G3WDGHT33 (US2)", "PBD-AC-SD8GEEDB13R6 (CA-01)", "PBD-AC-8WH8TDAFBKJC (CA-02, third booking refused)", "PBD-AC-PXPTVW0V2RKQ (CA-03, proposed)", "PBD-TASK-1NBMNBM45NPT (T2)"], "note": "Limit present and ready. T2 and AC8 also carry an unsupported cancel-frees-slot assumption (reviewer finding PBD-FND-XFA4B32Y2YXW, which I confirm)."},
+    "H03": {"status": "handled_as_question", "evidence": ["PBD-STORY-XRZAAQQZ12RR (US3, readiness partial)", "PBD-TASK-THKDB38SCZ4G (T3, cancel ready and independent of notice)", "PBD-TASK-XGNJHSN2JSJC (T4, blocked)", "PBD-Q-3FT98VRCV6T3 (Q1, blocking, minimum notice)", "PBD-AC-6S6S3M0J8TG3 (CA-02, depends on directorate, no invented number)"], "note": "Basic cancel is covered; the notice rule is raised as a blocking question. No 24h value invented."},
+    "H04": {"status": "handled_as_blocked", "evidence": ["PBD-STORY-82FKMD8ZZ7WN (US4, status blocked)", "PBD-TASK-VRFV2T9K2FP7 (T5, blocked)", "PBD-Q-ABR5PKMKHR8V (Q2, blocking, vendor and API documentation)", "PBD-AC-52Z2EBZCZ868 and PBD-AC-JH41DF8ZSVGF (behavioural criteria, proposed)"], "note": "Turnstile work is blocked by the open question, not presented as ready."},
+    "H05": {"status": "covered", "evidence": ["PBD-STORY-CAHVKS06N0ZH (US5, ready)", "PBD-AC-5FW9EH45PGSA (CA-01)", "PBD-AC-DTBBV694HFY8 (CA-02)", "PBD-TASK-S5YGBXFEG9M6 (T6, ready)"], "note": ""},
+    "H06": {"status": "covered", "evidence": ["PBD-EPIC-YHF9CE4C2VKJ (E1 out_scope)", "PBD-EPIC-9YRGHNP43JH8 (E2 out_scope)", "traceability O10 OUT_OF_SCOPE"], "note": "Billing excluded; no billing items."}
+  },
+  "critical_recall": {"strict_covered": 3, "handled": 5, "total_critical": 5, "note": "strict_covered = H01, H02, H05. H03 and H04 counted as handled (question and blocked). My count, not the pipeline's."},
+  "traps": {
+    "turnstile_vendor_api_invented": {"status": "not_violated", "evidence": "No QR, token, endpoint or REST term in any item or criterion. Vendor and API are only referenced as unknown in Q2 and in the epic context."},
+    "cancel_notice_24h_invented": {"status": "not_violated", "evidence": "No numeric notice period found. AC-6S6S says the behaviour depends on the directorate value."},
+    "billing_work_created": {"status": "not_violated", "evidence": "No billing item. Billing appears only in out_scope lists."}
+  },
+  "readiness": {
+    "a_turnstile_presented_as_ready": {"answer": "no", "evidence": "US4 blocked by Q2, T5 blocked by Q2. Entry-criteria proposed, not ready."},
+    "b_booking_limit_agenda_blocked_by_association": {"answer": "no", "evidence": "US1 ready, T1 ready, US2 ready, T2 ready, US5 ready, T6 ready. None carries a blocked_by reference to Q1 or Q2."},
+    "c_blocking_questions_linked": {"answer": "yes", "evidence": "Q1 linked via readiness.blocked_by on US3 and T4, and via affects. Q2 linked via readiness.blocked_by on US4 and T5, and via affects. Linkage is through readiness fields, not relations (relations list has only predecessor edges)."},
+    "reviewer_disputes": [
+      {"finding": "PBD-FND-PMPFFN7RCPFZ (G08)", "claim": "US1 and T1 ready while Q3 (last block 21h or 22h) is non-blocking; recommends partial", "my_view": "agree in part. The window end is genuinely undefined in the PRD, so a flag is fair. Partial is defensible but the core obligation is covered. Medium is reasonable."},
+      {"finding": "PBD-FND-XFA4B32Y2YXW (G06/G09)", "claim": "T2 treats cancel-frees-slot as a ready activity; AC8 is unsupported", "my_view": "agree. PRD is silent on releasing a slot on cancel. Medium."},
+      {"finding": "PBD-FND-HA3N269GBPFW (G06)", "claim": "AC5 refuses non-1h durations, which is not declared", "my_view": "agree at low. Reasonable inference from blocks of 1 hour, but unstated."},
+      {"finding": "PBD-FND-JER8V77PN9ED (G06)", "claim": "AC10 (cancel outside notice) is not verifiable while Q1 is open", "my_view": "agree at low. Keeping it blocked is correct."}
+    ]
+  },
+  "references": {"unresolved": [], "evidence": "All PBD ids in items, criteria, questions and reviewer prose resolve to canonical ids. Keys used in prose (US1, T1, T2, AC3, AC4, AC5, AC8, AC10, Q1, Q3, G06, G08) all resolve via traceability.json keys or are gate ids."},
+  "invented": [
+    {"item": "PBD-TASK-1NBMNBM45NPT (T2) activity 'Considerar o cancelamento como liberacao de vaga'", "severity": "medium", "reason": "Ready activity embeds an unstated rule that cancellation frees capacity. Source silent. Reviewer confirmed."},
+    {"item": "PBD-AC-PXPTVW0V2RKQ (AC8, proposed)", "severity": "medium", "reason": "Counterpart to T2. Inference that a cancel reduces the count is reasonable, but the freed-slot outcome is not in the PRD. Reviewer flagged it."},
+    {"item": "PBD-AC-PMWH2K42VBBK (AC5, proposed)", "severity": "low", "reason": "Refusal of non-1h or broken-hour bookings has no declared trigger or source. Reviewer flagged it."},
+    {"item": "PBD-AC-6S6S3M0J8TG3 (AC10, proposed) and PBD-AC-CN5AG1TH5E0H (AC11, proposed)", "severity": "low", "reason": "Cancel-refusal criteria with no condition or trigger field populated. Not invented values, but unverifiable as written."}
+  ],
+  "gates": {"G01": "PASS", "G02": "FAIL", "G03": "PASS", "G04": "FAIL", "G05": "PASS", "G06": "PASS", "G07": "PASS", "G08": "FAIL", "G09": "FAIL", "G10": "NOT_APPLICABLE", "G11": "PASS", "G12": "NOT_APPLICABLE", "G13": "PASS", "G14": "PASS", "G15": "NOT_APPLICABLE", "G16": "PASS", "G17": "BLOCKED", "G18": "NOT_RUN"},
+  "notes": "Gate statuses are the pipeline's. My counts are independent of the gate results. G02 fails on partial and question-required dispositions, which is expected for blocked turnstile and cancel-notice work, not a real coverage gap for the obligations."
+}

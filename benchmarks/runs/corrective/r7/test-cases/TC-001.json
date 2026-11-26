@@ -1,0 +1,111 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-001",
+  "title": "Reservar uma quadra de tênis livre pelo aplicativo",
+  "status": "READY",
+  "priority": "CRITICAL",
+  "type": "FUNCTIONAL",
+  "objective": "Confirmar que o sócio consegue reservar uma quadra de tênis pelo aplicativo do clube.",
+  "requirement_refs": [
+    "REQ-001"
+  ],
+  "scenario_refs": [
+    "SCN-001"
+  ],
+  "coverage_point_refs": [
+    "CP-001"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Objetivo (linha 4)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Objetivo (linha 4) e Requisitos, item 1 (linha 7)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A está cadastrado como sócio ativo e com sessão aberta no aplicativo do clube",
+    "SOCIO_A não tem nenhuma reserva futura ativa",
+    "QUADRA_TENIS_A está livre no bloco BLOCO_15H, dentro da janela de 7h às 22h, em uma data futura"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio ativo do clube, com sessão aberta no aplicativo e sem reservas futuras"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis do clube, sem reservas no bloco BLOCO_15H"
+    },
+    {
+      "name": "BLOCO_15H",
+      "description": "bloco de 1 hora, das 15h às 16h, de uma data futura"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo do clube, o sócio SOCIO_A abre a lista de quadras e seleciona QUADRA_TENIS_A para a data futura escolhida.",
+      "expected_result": "QUADRA_TENIS_A mostra BLOCO_15H como livre.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A escolhe BLOCO_15H e confirma a reserva.",
+      "expected_result": "O aplicativo conclui a confirmação da reserva de QUADRA_TENIS_A para BLOCO_15H.",
+      "needs_clarification": false
+    },
+    {
+      "step": 3,
+      "action": "SOCIO_A abre a lista das suas reservas.",
+      "expected_result": "A reserva da quadra de tênis QUADRA_TENIS_A no bloco BLOCO_15H está criada e visível como reserva ativa do sócio SOCIO_A.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "SOCIO_A tem 1 reserva futura ativa em QUADRA_TENIS_A"
+  ],
+  "cleanup": [
+    "Cancelar a reserva criada para devolver BLOCO_15H ao estado livre"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "MISSING_SELECTOR: O PRD não descreve telas nem rótulos do aplicativo; os controles precisam ser mapeados antes de automatizar."
+  ],
+  "test_basis": "ACCEPTANCE",
+  "primary_type": "FUNCTIONAL",
+  "secondary_tags": [],
+  "execution_status": "READY",
+  "question_refs": [],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "PLAYWRIGHT",
+  "deterministic": true,
+  "priority_reason": "É o fluxo principal do produto; sem ele nenhuma quadra de tênis pode ser reservada.",
+  "automation_suitability": "HIGH",
+  "automation_readiness": "NEEDS_SELECTOR",
+  "readiness_blockers": [
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "reserva de quadra de tênis",
+  "source_identifiers": [],
+  "claim_exercise_map": [
+    {
+      "claim_id": "CLAIM-001",
+      "coverage_point_id": "CP-001",
+      "test_case_id": "TC-001",
+      "step_refs": [
+        3
+      ],
+      "assertion_refs": [
+        "expected"
+      ],
+      "primary_type": "FUNCTIONAL"
+    }
+  ]
+}

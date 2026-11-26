@@ -1,0 +1,100 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-007",
+  "title": "Aceitar bloco dentro da janela de 7h a 22h",
+  "status": "READY",
+  "priority": "HIGH",
+  "type": "FUNCTIONAL",
+  "objective": "Verificar que um bloco típico no meio da janela de funcionamento é aceito.",
+  "requirement_refs": [
+    "REQ-002"
+  ],
+  "scenario_refs": [
+    "SCN-002"
+  ],
+  "coverage_point_refs": [
+    "CP-007"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7): entre 7h e 22h"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta e sem reservas futuras",
+    "QUADRA_FUTSAL_A está livre das 15h às 16h em uma data futura"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio ativo sem reservas futuras"
+    },
+    {
+      "name": "QUADRA_FUTSAL_A",
+      "description": "quadra de futsal livre das 15h às 16h"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A seleciona QUADRA_FUTSAL_A e escolhe o bloco das 15h às 16h.",
+      "expected_result": "O bloco das 15h às 16h é oferecido como livre.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A confirma a reserva do bloco das 15h às 16h.",
+      "expected_result": "A reserva do bloco das 15h às 16h é aceita e aparece como ativa na lista de reservas de SOCIO_A.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "Reserva ativa das 15h às 16h"
+  ],
+  "cleanup": [
+    "Cancelar a reserva"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "MISSING_SELECTOR: Telas e rótulos não constam do PRD."
+  ],
+  "test_basis": "ACCEPTANCE",
+  "primary_type": "FUNCTIONAL",
+  "secondary_tags": [],
+  "execution_status": "READY",
+  "question_refs": [],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "PLAYWRIGHT",
+  "deterministic": true,
+  "priority_reason": "Reservas dentro do horário de funcionamento são o uso normal do clube.",
+  "automation_suitability": "HIGH",
+  "automation_readiness": "NEEDS_SELECTOR",
+  "readiness_blockers": [
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "bloco dentro da janela",
+  "source_identifiers": [],
+  "claim_exercise_map": [
+    {
+      "claim_id": "CLAIM-007",
+      "coverage_point_id": "CP-007",
+      "test_case_id": "TC-007",
+      "step_refs": [
+        2
+      ],
+      "assertion_refs": [
+        "expected"
+      ],
+      "primary_type": "FUNCTIONAL"
+    }
+  ]
+}

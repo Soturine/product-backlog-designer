@@ -1,0 +1,108 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-045",
+  "title": "Reserva criada aparece na agenda da quadra para a recepção",
+  "status": "NEEDS_REVIEW",
+  "priority": "HIGH",
+  "type": "DATA_INTEGRITY",
+  "objective": "Verificar a ligação entre a reserva do sócio e a agenda do dia consultada pela recepção.",
+  "requirement_refs": [
+    "REQ-002",
+    "REQ-006"
+  ],
+  "scenario_refs": [
+    "SCN-006"
+  ],
+  "coverage_point_refs": [
+    "CP-003",
+    "CP-017"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 5 (linha 11)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, itens 1 e 5 (linhas 7 e 11)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta e sem reservas futuras",
+    "RECEPCAO_A tem acesso ao aplicativo",
+    "QUADRA_FUTSAL_A está livre das 18h às 19h no dia consultado"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio ativo sem reservas futuras"
+    },
+    {
+      "name": "RECEPCAO_A",
+      "description": "usuário da recepção com sessão aberta"
+    },
+    {
+      "name": "QUADRA_FUTSAL_A",
+      "description": "quadra de futsal livre das 18h às 19h"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A reserva QUADRA_FUTSAL_A das 18h às 19h e confirma.",
+      "expected_result": "A reserva das 18h às 19h é confirmada.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "RECEPCAO_A abre a agenda do dia e localiza QUADRA_FUTSAL_A.",
+      "expected_result": "A agenda do dia exibe QUADRA_FUTSAL_A.",
+      "needs_clarification": false
+    },
+    {
+      "step": 3,
+      "action": "RECEPCAO_A lê as reservas listadas para QUADRA_FUTSAL_A.",
+      "expected_result": "A agenda da quadra de futsal lista a reserva do sócio no bloco das 18h às 19h.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "Reserva visível na agenda"
+  ],
+  "cleanup": [
+    "Cancelar a reserva"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "UNRESOLVED_PERMISSION: O perfil de acesso da recepção não está descrito.",
+    "MISSING_SELECTOR: A tela de agenda não está descrita."
+  ],
+  "test_basis": "DERIVED",
+  "primary_type": "DATA_INTEGRITY",
+  "secondary_tags": [],
+  "execution_status": "NEEDS_REVIEW",
+  "question_refs": [
+    "Q-009"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "PLAYWRIGHT",
+  "deterministic": true,
+  "priority_reason": "Agenda sem a reserva leva a recepção a decisões erradas no dia.",
+  "automation_suitability": "MEDIUM",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "UNRESOLVED_PERMISSION",
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "reserva refletida na agenda da quadra",
+  "source_identifiers": [],
+  "expansion_dimension": "CROSS_REQUIREMENT"
+}

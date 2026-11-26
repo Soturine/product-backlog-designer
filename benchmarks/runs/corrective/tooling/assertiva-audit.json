@@ -1,0 +1,561 @@
+{
+  "report_version": "1",
+  "workflow": "audit",
+  "run_id": "1416c90c330e4f9e",
+  "status": "FINDINGS",
+  "project": {
+    "name": "pbd-export",
+    "root": "C:\\Users\\<user>\\AppData\\Local\\Temp\\claude\\fefba0163490ed81\\c44f6e34-aa8e-4099-a88a-2ed23e3600aa\\scratchpad\\pbd-export",
+    "revision": null,
+    "dirty": null,
+    "digest": "29ffe32fc48acc5e28d89241d9eb5954e20540a467b9ec2d263731520ca5b04c",
+    "technologies": {
+      "language": {
+        "id": "python",
+        "name": "Python",
+        "basis": "SOURCE",
+        "evidence": "118/119"
+      },
+      "technologies": [],
+      "stack": [],
+      "omitted": 0
+    },
+    "version": {
+      "value": "0.1.0.dev0",
+      "source": "pyproject.toml"
+    }
+  },
+  "generated_at": "2026-11-26T15:55:10+00:00",
+  "states": {
+    "current": {
+      "label": "current",
+      "observed_in": "static-analysis",
+      "metrics": {
+        "weak_oracle_tests": {
+          "value": 1,
+          "direction": "LOWER_IS_BETTER",
+          "unit": null,
+          "evidence_tier": "E3"
+        },
+        "broad_error_expectations": {
+          "value": 0,
+          "direction": "LOWER_IS_BETTER",
+          "unit": null,
+          "evidence_tier": "E3"
+        },
+        "error_status_only_tests": {
+          "value": 0,
+          "direction": "LOWER_IS_BETTER",
+          "unit": null,
+          "evidence_tier": "E3"
+        },
+        "expected_error_contracts": {
+          "value": 64,
+          "direction": "CONTEXTUAL",
+          "unit": null,
+          "evidence_tier": "E3"
+        },
+        "negative_path_tests": {
+          "value": 64,
+          "direction": "CONTEXTUAL",
+          "unit": null,
+          "evidence_tier": "E3"
+        },
+        "negative_paths_without_contract_detail": {
+          "value": 18,
+          "direction": "LOWER_IS_BETTER",
+          "unit": null,
+          "evidence_tier": "E3"
+        },
+        "negative_paths_with_state_after_rejection": {
+          "value": 33,
+          "direction": "HIGHER_IS_BETTER",
+          "unit": null,
+          "evidence_tier": "E3"
+        }
+      },
+      "runs": [],
+      "negative_controls": [],
+      "mutation": [],
+      "artifacts": [],
+      "negative_paths": {},
+      "coverage": [],
+      "limitations": []
+    },
+    "baseline": null,
+    "candidate": null,
+    "applied": null
+  },
+  "findings": [
+    {
+      "code": "CI_PYTEST_NOT_OBSERVED",
+      "summary": "Pytest-style test evidence exists, but no pytest invocation was observed in CI configuration.",
+      "evidence": {
+        "direct_test_count": 276,
+        "static_materialization_count": 0
+      },
+      "severity": "medium",
+      "recommendation": "Add the test suite to the delivery pipeline or record where it is enforced.",
+      "id": "CI_PYTEST_NOT_OBSERVED",
+      "origin": "engine",
+      "priority": "medium"
+    },
+    {
+      "code": "WEAK_ORACLE_SIGNAL",
+      "summary": "Some direct test definitions expose weak deterministic oracle signals.",
+      "evidence": {
+        "count": 1,
+        "tests": [
+          "tests/security/test_offline_privacy_authority.py::test_valid_mock_authorization_passes"
+        ],
+        "signals": {
+          "tests/security/test_offline_privacy_authority.py::test_valid_mock_authorization_passes": [
+            "NO_ASSERTION"
+          ]
+        }
+      },
+      "severity": "medium",
+      "recommendation": null,
+      "id": "WEAK_ORACLE_SIGNAL",
+      "origin": "engine",
+      "priority": "medium"
+    },
+    {
+      "code": "ERROR_CONTRACT_FIELD_NOT_OBSERVED",
+      "summary": "Other tests assert a machine code, field or context of these errors; these tests do not (what each one asserts about the error is listed).",
+      "evidence": {
+        "count": 15,
+        "tests": [
+          "tests/integration/test_azure_mock.py::test_cli_mock_round_trip",
+          "tests/pipeline/test_audit.py::test_audit_requires_baseline_and_rejects_unmapped_types",
+          "tests/pipeline/test_audit.py::test_audit_compiles_baseline_without_inventing_trace",
+          "tests/pipeline/test_claims_design.py::test_design_requires_claims_stage",
+          "tests/pipeline/test_compare.py::test_compare_requires_two_baselines",
+          "tests/pipeline/test_evolution.py::test_title_change_keeps_identity_and_recreation_is_refused",
+          "tests/pipeline/test_evolution.py::test_human_edits_are_conflicts_needing_explicit_approval",
+          "tests/pipeline/test_evolution.py::test_noop_is_unchanged_and_replay_is_refused",
+          "tests/pipeline/test_modes.py::test_execution_profiles_are_portable",
+          "tests/pipeline/test_planning.py::test_invalid_inputs_and_scenarios_and_staleness",
+          "tests/pipeline/test_review_finalize.py::test_finalize_once_and_requires_review",
+          "tests/pipeline/test_review_finalize.py::test_reviewer_that_was_a_reader_is_rejected",
+          "tests/pipeline/test_start_reading.py::test_reading_closed_after_completion",
+          "tests/pipeline/test_start_reading.py::test_start_requires_sources_and_valid_request",
+          "tests/pipeline/test_team_planning.py::test_user_stated_estimates_are_labelled_and_never_written_back"
+        ],
+        "error_types": [
+          "PlanningError",
+          "RefineError",
+          "RunError",
+          "SystemExit"
+        ],
+        "asserted": {},
+        "detail_asserted_elsewhere": [
+          "MACHINE_CODE",
+          "STRUCTURED_CONTEXT"
+        ]
+      },
+      "severity": "medium",
+      "recommendation": null,
+      "id": "ERROR_CONTRACT_FIELD_NOT_OBSERVED",
+      "origin": "engine",
+      "priority": "medium"
+    },
+    {
+      "code": "STATE_AFTER_REJECTION_NOT_EVIDENCED",
+      "summary": "Some tests check state after a rejection; these do not, so partial writes would go unnoticed (static E3 signal).",
+      "evidence": {
+        "count": 31,
+        "tests": [
+          "tests/integration/test_azure_mock.py::test_discovered_profile_and_batches",
+          "tests/integration/test_azure_mock.py::test_cli_mock_round_trip",
+          "tests/pipeline/test_answer_question.py::test_only_an_approved_decision_answers_and_unknown_fields_are_refused",
+          "tests/pipeline/test_claims_design.py::test_design_requires_claims_stage",
+          "tests/pipeline/test_compare.py::test_compare_requires_two_baselines",
+          "tests/pipeline/test_evolution.py::test_source_diff_separates_formatting_from_content",
+          "tests/pipeline/test_evolution.py::test_superseding_a_claim_still_traced_by_active_work_is_refused",
+          "tests/pipeline/test_evolution.py::test_title_change_keeps_identity_and_recreation_is_refused",
+          "tests/pipeline/test_evolution.py::test_noop_is_unchanged_and_replay_is_refused",
+          "tests/pipeline/test_formats.py::test_pdf_malformed_is_reported_not_guessed",
+          "tests/pipeline/test_formats.py::test_binary_text_rejected",
+          "tests/pipeline/test_importer.py::test_duplicate_ids_and_unsupported_format_refused",
+          "tests/pipeline/test_modes.py::test_execution_profiles_are_portable",
+          "tests/pipeline/test_review_finalize.py::test_finalize_once_and_requires_review",
+          "tests/pipeline/test_review_finalize.py::test_reviewer_that_was_a_reader_is_rejected",
+          "tests/pipeline/test_start_reading.py::test_reading_closed_after_completion",
+          "tests/pipeline/test_team_planning.py::test_user_stated_estimates_are_labelled_and_never_written_back",
+          "tests/security/test_offline_privacy_authority.py::test_offline_blocks_raw_socket_connect",
+          "tests/security/test_scope.py::test_selected_symlink_rejected",
+          "tests/security/test_scope.py::test_windows_junction_member_and_selector_rejected"
+        ]
+      },
+      "severity": "info",
+      "recommendation": null,
+      "id": "STATE_AFTER_REJECTION_NOT_EVIDENCED",
+      "origin": "engine",
+      "priority": "info"
+    },
+    {
+      "code": "NO_DELIVERY_PIPELINE_OBSERVED",
+      "summary": "No CI/CD configuration was recognized. Delivery-path verification is UNKNOWN, not absent.",
+      "evidence": {
+        "recognized_local_checks": 0
+      },
+      "severity": "info",
+      "recommendation": null,
+      "id": "NO_DELIVERY_PIPELINE_OBSERVED",
+      "origin": "engine",
+      "priority": "info"
+    }
+  ],
+  "recommendations": [
+    {
+      "finding": "CI_PYTEST_NOT_OBSERVED",
+      "finding_id": "CI_PYTEST_NOT_OBSERVED",
+      "recommendation": "Add the test suite to the delivery pipeline or record where it is enforced.",
+      "status": "PROPOSED"
+    },
+    {
+      "finding": "WEAK_ORACLE_SIGNAL",
+      "finding_id": "WEAK_ORACLE_SIGNAL",
+      "recommendation": "Strengthen the listed tests to assert values, state or effects rather than existence or success status.",
+      "status": "PROPOSED"
+    },
+    {
+      "finding": "ERROR_CONTRACT_FIELD_NOT_OBSERVED",
+      "finding_id": "ERROR_CONTRACT_FIELD_NOT_OBSERVED",
+      "recommendation": "Assert the machine code/field the error contract carries, as the other tests for the same error do.",
+      "status": "PROPOSED"
+    },
+    {
+      "finding": "STATE_AFTER_REJECTION_NOT_EVIDENCED",
+      "finding_id": "STATE_AFTER_REJECTION_NOT_EVIDENCED",
+      "recommendation": "After the expected rejection, assert that no partial write or forbidden side effect happened.",
+      "status": "PROPOSED"
+    }
+  ],
+  "verification_surface": [],
+  "evidence_delta": null,
+  "change_set": null,
+  "candidate_qualification": null,
+  "claim_boundary": {
+    "observed": [
+      "static oracle signals (E3 heuristics, not execution)"
+    ],
+    "not_evidenced": [
+      "no tests were executed; test outcomes are UNKNOWN",
+      "coverage",
+      "mutation / negative-control strength",
+      "build, package and installed-artifact behavior",
+      "startup, health and deployment behavior"
+    ],
+    "limitations": [
+      "pytest-native: static inventory is bounded source analysis, not native collection",
+      "tests were not executed; --execute collects native evidence by running project code in an isolated copy",
+      "credential-like environment variables were withheld from executed project code: CLAUDE_CODE_CHILD_SESSION, CLAUDE_CODE_MESSAGING_TOKEN, CLAUDE_CODE_SESSION_ATTENDED, CLAUDE_CODE_SESSION_ID, SESSIONNAME"
+    ]
+  },
+  "remaining_unknowns": [
+    "no tests were executed; test outcomes are UNKNOWN",
+    "coverage",
+    "mutation / negative-control strength",
+    "build, package and installed-artifact behavior",
+    "startup, health and deployment behavior"
+  ],
+  "provenance": {
+    "assertiva_version": "1.0.0",
+    "runtime": {
+      "version": "1.0.0",
+      "install": "installed-package",
+      "revision": null,
+      "dirty": null
+    },
+    "adapters": [
+      "pytest-native"
+    ],
+    "read_only_verified": true,
+    "read_only_scope": {
+      "measured": "every entry of the project tree, including ignored files and caches, fingerprinted by content before and after (links by their target, never followed)",
+      "not_measured": [
+        "files outside the project tree (home directory, temporary directories, Assertiva's own state)",
+        "targets of links that leave the project",
+        "network effects and external services"
+      ]
+    },
+    "trace": "C:\\Users\\<user>\\.assertiva\\traces\\pbd-export-7a198563cf116823\\audit-20261126T155504841386Z.jsonl"
+  },
+  "execution_budget": {
+    "level": "static",
+    "depth": 0,
+    "max_depth": 2,
+    "decisions": [
+      {
+        "stage": "tests",
+        "decision": "NOT_RUN",
+        "reason": "not executed by this call: test outcomes, coverage and artifact behavior stay UNKNOWN; audit --execute measures them in a disposable copy"
+      },
+      {
+        "stage": "artifact",
+        "decision": "NOT_RUN",
+        "reason": "not executed by this call: test outcomes, coverage and artifact behavior stay UNKNOWN; audit --execute measures them in a disposable copy"
+      }
+    ]
+  },
+  "test_selection": null,
+  "delivery": {
+    "matrix": {
+      "declared": {
+        "python": {
+          "values": [
+            "3.11"
+          ],
+          "source": "pyproject.toml requires-python >=3.11"
+        }
+      },
+      "ci": {}
+    },
+    "artifact_lineage": []
+  },
+  "review_candidates": [
+    {
+      "kind": "SHARED_ORACLE_HELPER",
+      "subject": "_approved",
+      "tests": 9,
+      "examples": [
+        "tests/integration/test_azure_mock.py::test_auth_failure_stops_the_run",
+        "tests/integration/test_azure_mock.py::test_failed_parent_link_is_partial_and_verification_mismatches",
+        "tests/integration/test_azure_mock.py::test_full_mock_flow_is_verified_and_idempotent",
+        "tests/integration/test_azure_mock.py::test_incomplete_readback_is_a_mismatch",
+        "tests/integration/test_azure_mock.py::test_lost_response_is_reconciled_without_duplicates"
+      ],
+      "note": "review candidate: shared is not duplicate; nothing is removed"
+    },
+    {
+      "kind": "SHARED_ORACLE_HELPER",
+      "subject": "assert_denied",
+      "tests": 6,
+      "examples": [
+        "tests/security/test_offline_privacy_authority.py::test_denied_for_wrong_target",
+        "tests/security/test_offline_privacy_authority.py::test_denied_when_approval_is_for_other_digest",
+        "tests/security/test_offline_privacy_authority.py::test_denied_when_plan_edited_after_approval",
+        "tests/security/test_offline_privacy_authority.py::test_denied_when_unapproved",
+        "tests/security/test_offline_privacy_authority.py::test_denied_with_unresolved_conflict"
+      ],
+      "note": "review candidate: shared is not duplicate; nothing is removed"
+    },
+    {
+      "kind": "SHARED_ORACLE_HELPER",
+      "subject": "_audit_run",
+      "tests": 2,
+      "examples": [
+        "tests/pipeline/test_audit.py::test_audit_compiles_baseline_without_inventing_trace",
+        "tests/pipeline/test_audit.py::test_audit_finalizes_with_honest_gates"
+      ],
+      "note": "review candidate: shared is not duplicate; nothing is removed"
+    }
+  ],
+  "declared_checks": [],
+  "ci_runs": [],
+  "environment": {
+    "isolation": "STATIC_ONLY",
+    "isolation_limits": [],
+    "requirements": [
+      {
+        "ecosystem": "python",
+        "requires_python": ">=3.11",
+        "distributions": [
+          "jsonschema",
+          "pytest",
+          "hypothesis",
+          "ruff",
+          "mypy",
+          "types-jsonschema",
+          "coverage"
+        ],
+        "files": [],
+        "interpreter": {
+          "version": "3.12.10",
+          "executable": "C:\\Users\\<user>\\AppData\\Local\\Temp\\claude\\fefba0163490ed81\\c44f6e34-aa8e-4099-a88a-2ed23e3600aa\\scratchpad\\toolsenv\\Scripts\\python.exe"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "step_id": "python-env",
+        "ecosystem": "python",
+        "action": "create a virtual environment with Python 3.12.10 and install jsonschema, pytest, hypothesis, ruff, mypy, types-jsonschema, coverage",
+        "reason": "7 declared distributions are not installed",
+        "downloads": [
+          "PyPI (pip)"
+        ],
+        "runs_third_party_code": true,
+        "status": "NOT_RUN",
+        "detail": "static audit: nothing is prepared (audit --execute --provision would)",
+        "divergences": [],
+        "duration_s": null
+      }
+    ],
+    "services": [],
+    "tools": {},
+    "interpreter": null,
+    "workspace": null
+  },
+  "test_effectiveness": {
+    "languages": {
+      "python": {
+        "tests": 276,
+        "limitations": [
+          "Python tests are read from their syntax tree: helpers in other modules, fixtures and plugins are not followed"
+        ]
+      }
+    },
+    "dimensions": {
+      "oracle_strength": {
+        "oracles": {
+          "VALUE": 252,
+          "EXISTENCE": 1,
+          "SPECIFIC_ERROR": 64,
+          "HELPER": 18
+        },
+        "without_explicit_oracle": 1,
+        "note": "no explicit oracle can still be a valid contract (must not raise, a guard double): read the test",
+        "oracle_basis": {
+          "contract": 3,
+          "characterization": 2,
+          "both": 0,
+          "undetermined": 270,
+          "signals": {
+            "GOLDEN_FILE": 2,
+            "PROPERTY": 3
+          },
+          "characterization_tests": [
+            "tests/integration/test_azure_mock.py::test_cli_mock_round_trip",
+            "tests/integration/test_azure_mock.py::test_package_from_an_existing_backlog_then_mock_round_trip"
+          ],
+          "note": "characterization pins today's behavior, bugs included, and fails on any change; a contract states what must hold. Literal expected values are undetermined: read where the value comes from (a requirement, a calculation, or the code's own output)"
+        }
+      },
+      "behavioral_surfaces": {
+        "RETURN": 181,
+        "PERSISTENCE": 21,
+        "RESPONSE_BODY": 5,
+        "EXCEPTION": 64,
+        "RESPONSE_STATUS": 2
+      },
+      "negative_and_boundary_paths": {
+        "error_expectations": 64,
+        "broad": 0
+      },
+      "fidelity": {
+        "ladder": {
+          "rungs": [
+            "DOUBLE",
+            "INTERCEPTED",
+            "SIMULATOR",
+            "IN_PROCESS",
+            "DISPOSABLE_REAL",
+            "REAL"
+          ],
+          "boundaries": {
+            "BROWSER": {
+              "REAL": 21
+            },
+            "DATABASE": {
+              "REAL": 1
+            },
+            "FILESYSTEM": {
+              "REAL": 61
+            },
+            "NETWORK": {
+              "REAL": 4
+            },
+            "PROCESS": {
+              "REAL": 1
+            }
+          },
+          "note": "read from test code: a rung says how the boundary is exercised, not that the run reached it (a browser test that was not executed proves nothing); REAL for a device means an emulator or a device"
+        },
+        "declared_levels": {
+          "CONTRACT": 7,
+          "E2E": 22,
+          "INTEGRATION": 16,
+          "UNDECLARED": 149,
+          "UNIT": 82
+        },
+        "boundaries_crossed": {
+          "BROWSER": 21,
+          "FILESYSTEM": 61,
+          "NETWORK": 4,
+          "PROCESS": 1,
+          "DATABASE": 1
+        },
+        "boundaries_simulated": {}
+      },
+      "double_fidelity": {
+        "tests_with_doubles": 3,
+        "most_replaced": [
+          [
+            "builtins",
+            1
+          ],
+          [
+            "atomic.os",
+            1
+          ],
+          [
+            "inst",
+            1
+          ]
+        ]
+      },
+      "distinct_contribution": {
+        "redundancy_candidates": 0,
+        "tests_in_redundancy_candidates": 0,
+        "distinct_oracle_signatures": 248
+      },
+      "mutation_sensitivity": {
+        "available": false,
+        "reason": "no mutation report names the tests that killed each mutant"
+      },
+      "determinism": {
+        "SLEEP": 0,
+        "FIXED_WAIT": 0,
+        "RETRY": 0,
+        "UNAWAITED_ASYNC": 0
+      },
+      "maintainability": {}
+    },
+    "candidates": [],
+    "affected_tests": {},
+    "note": "candidates are leads with their basis; none is a verdict, and no score combines them"
+  },
+  "execution_manifest": {
+    "started_at": "2026-11-26T15:55:04.843+00:00",
+    "ended_at": "2026-11-26T15:55:10.060+00:00",
+    "code": {
+      "tree_digest": "29ffe32fc48acc5e28d89241d9eb5954e20540a467b9ec2d263731520ca5b04c",
+      "files": 519,
+      "vcs_revision": null,
+      "local_changes": null,
+      "note": "no version control: the tree digest identifies the code"
+    },
+    "engine": {
+      "assertiva_version": "1.0.0",
+      "runtime_version": "3.12.10",
+      "platform": "Windows-11"
+    },
+    "runs": [],
+    "comparison": [],
+    "read": [],
+    "environment": {
+      "withheld": [
+        "CLAUDE_CODE_CHILD_SESSION",
+        "CLAUDE_CODE_MESSAGING_TOKEN",
+        "CLAUDE_CODE_SESSION_ATTENDED",
+        "CLAUDE_CODE_SESSION_ID",
+        "SESSIONNAME"
+      ],
+      "passed_through": []
+    }
+  },
+  "history": null
+}

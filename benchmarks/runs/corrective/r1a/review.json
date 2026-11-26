@@ -1,0 +1,322 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "notes": "Comportamento proposto, nao presente no PRD; marcado como proposto.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC3",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC4",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC5",
+      "notes": "Comportamento proposto, nao presente no PRD; marcado como proposto.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC6",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [],
+  "findings": [
+    {
+      "actual": "US1 marcada ready assumindo lista configuravel",
+      "affects": [
+        "US1",
+        "T1"
+      ],
+      "classification": "unsupported_assumption",
+      "expected": "Tamanhos de camiseta validos permanecem em aberto",
+      "gate": "G06",
+      "impact": "Formulario pode ser construido com premissa nao confirmada",
+      "recommendation": "Registrar a premissa explicitamente ou tratar tamanho como texto ate Q3",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "Resolve ambiguidade que a fonte deixa aberta"
+    },
+    {
+      "actual": "AC2 (obrigatoriedade) e AC5 (falha de pagamento) sao propostas",
+      "affects": [
+        "AC2",
+        "AC5"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Criterios propostos AC2/AC5 distinguidos das fontes",
+      "gate": "G06",
+      "impact": "Risco de tratar como requisito",
+      "recommendation": "Manter status proposto",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Nao ha base no PRD"
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "T1",
+        "AC2"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 3,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "O participante se inscreve em um mutirão informando nome e tamanho de camiseta.",
+      "rationale": "US1/AC1/T1 carregam a regra; valores de tamanho nao definidos (Q3).",
+      "text": "Participante se inscreve informando nome e tamanho de camiseta"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC4",
+        "T2"
+      ],
+      "disposition": "PARTIALLY_COVERED",
+      "key": "O2",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "A taxa simbólica de inscrição é paga pelo gateway de pagamentos parceiro.",
+      "rationale": "Coberta, mas bloqueada: gateway nao identificado (Q1).",
+      "text": "Taxa paga pelo gateway parceiro"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC3",
+        "AC4",
+        "T3"
+      ],
+      "disposition": "COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "A inscrição só é confirmada após a confirmação do pagamento.",
+      "rationale": "AC3/AC4 verificam a regra; mecanismo depende de Q1.",
+      "text": "Confirmacao so apos pagamento"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC6",
+        "T4"
+      ],
+      "disposition": "COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "O organizador vê a lista de inscritos confirmados por mutirão.",
+      "rationale": "Criterio e tarefa verificaveis.",
+      "text": "Organizador ve lista de confirmados por mutirao"
+    },
+    {
+      "covered_by": [],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O5",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C5"
+      ],
+      "quote": "O sistema deve ser rápido.",
+      "rationale": "Sem limiar nem operacao; pergunta Q4 registrada, sem item construivel.",
+      "text": "Sistema deve ser rapido"
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados de equipe",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "Readiness 'ready' assume lista configuravel de tamanhos; fontes nao definem valores validos (Q3).",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados de equipe",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados de equipe",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "T1",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T3",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T4",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "rev-c08-r1a",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+    }
+  ]
+}

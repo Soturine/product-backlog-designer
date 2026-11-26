@@ -1,0 +1,103 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-030",
+  "title": "Pedido com vários motivos de recusa ao mesmo tempo",
+  "status": "NEEDS_REVIEW",
+  "priority": "MEDIUM",
+  "type": "NEGATIVE",
+  "objective": "Verificar que combinar regras violadas continua sem criar reserva nem alterar o limite.",
+  "requirement_refs": [
+    "REQ-002",
+    "REQ-003"
+  ],
+  "scenario_refs": [
+    "SCN-001"
+  ],
+  "coverage_point_refs": [
+    "CP-005",
+    "CP-008",
+    "CP-011"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 2 (linha 8)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, itens 1 e 2 (linhas 7 e 8)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta e 2 reservas futuras ativas",
+    "SOCIO_B tem uma reserva ativa em QUADRA_FUTSAL_A no bloco das 23h",
+    "O bloco das 23h está fora da janela e já reservado: a reserva de SOCIO_B existe por preparação de dados do ambiente"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio no limite de 2 reservas"
+    },
+    {
+      "name": "SOCIO_B",
+      "description": "sócio titular da reserva existente"
+    },
+    {
+      "name": "QUADRA_FUTSAL_A",
+      "description": "quadra de futsal com reserva fora da janela"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A tenta reservar QUADRA_FUTSAL_A no bloco das 23h e confirma.",
+      "expected_result": "O aplicativo não conclui a reserva de SOCIO_A.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A abre a lista das suas reservas e SOCIO_B abre a sua.",
+      "expected_result": "Nenhuma reserva nova foi criada, SOCIO_A mantém 2 reservas futuras e a reserva de SOCIO_B não foi alterada.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "Estados inalterados"
+  ],
+  "cleanup": [
+    "Cancelar as reservas criadas na preparação"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "UNKNOWN_SETUP_PATH: Não se sabe como existir uma reserva fora da janela, pois o próprio aplicativo a recusaria.",
+    "AMBIGUOUS_POLICY: Mensagem de recusa não definida."
+  ],
+  "test_basis": "DERIVED",
+  "primary_type": "NEGATIVE",
+  "secondary_tags": [],
+  "execution_status": "NEEDS_REVIEW",
+  "question_refs": [
+    "Q-004"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": false,
+  "automation_layer": "UI",
+  "automation_tool_hint": "NONE",
+  "deterministic": true,
+  "priority_reason": "Cada regra tem teste isolado; a combinação revela interferência entre validações.",
+  "automation_suitability": "LOW",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "UNKNOWN_SETUP_PATH",
+    "AMBIGUOUS_POLICY"
+  ],
+  "failure_domain": "combinação de regras de recusa",
+  "source_identifiers": [],
+  "expansion_dimension": "DECISION_TABLE"
+}

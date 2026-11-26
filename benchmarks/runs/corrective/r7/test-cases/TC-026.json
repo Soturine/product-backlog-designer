@@ -1,0 +1,108 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-026",
+  "title": "Confirmar bloco exibido como livre que outro sócio já reservou",
+  "status": "NEEDS_REVIEW",
+  "priority": "HIGH",
+  "type": "NEGATIVE",
+  "objective": "Verificar a recusa quando a tela do sócio está desatualizada.",
+  "requirement_refs": [
+    "REQ-002"
+  ],
+  "scenario_refs": [
+    "SCN-001"
+  ],
+  "coverage_point_refs": [
+    "CP-005"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A e SOCIO_B são sócios ativos sem reservas futuras, cada um com sessão aberta em seu aparelho",
+    "QUADRA_TENIS_A está livre em BLOCO_12H de uma data futura"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "primeiro sócio, com a lista de horários aberta e desatualizada"
+    },
+    {
+      "name": "SOCIO_B",
+      "description": "segundo sócio, que reserva antes"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis disputada"
+    },
+    {
+      "name": "BLOCO_12H",
+      "description": "bloco das 12h às 13h de uma data futura"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A abre a lista de QUADRA_TENIS_A e deixa a tela aberta sem confirmar.",
+      "expected_result": "BLOCO_12H aparece como livre na tela de SOCIO_A.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "No outro aparelho, SOCIO_B reserva BLOCO_12H de QUADRA_TENIS_A e confirma.",
+      "expected_result": "A reserva de SOCIO_B para BLOCO_12H é criada.",
+      "needs_clarification": false
+    },
+    {
+      "step": 3,
+      "action": "Sem atualizar a tela, SOCIO_A confirma a reserva de BLOCO_12H.",
+      "expected_result": "O aplicativo não conclui a reserva de SOCIO_A.",
+      "needs_clarification": false
+    },
+    {
+      "step": 4,
+      "action": "SOCIO_A e SOCIO_B abrem suas listas de reservas.",
+      "expected_result": "A reserva do primeiro sócio não é criada e a reserva do segundo sócio continua a única de BLOCO_12H.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "BLOCO_12H reservado somente por SOCIO_B"
+  ],
+  "cleanup": [
+    "Cancelar a reserva de SOCIO_B"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "AMBIGUOUS_POLICY: A mensagem de recusa não é definida.",
+    "MISSING_SELECTOR: Telas e rótulos não constam do PRD."
+  ],
+  "test_basis": "DERIVED",
+  "primary_type": "NEGATIVE",
+  "secondary_tags": [],
+  "execution_status": "NEEDS_REVIEW",
+  "question_refs": [
+    "Q-004"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "NONE",
+  "deterministic": true,
+  "priority_reason": "Cenário real quando vários sócios disputam o mesmo horário.",
+  "automation_suitability": "MEDIUM",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "AMBIGUOUS_POLICY",
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "operação sobre disponibilidade desatualizada",
+  "source_identifiers": [],
+  "expansion_dimension": "OPERATOR_ERROR",
+  "expansion_checklist_item": "STALE_OPERATION"
+}

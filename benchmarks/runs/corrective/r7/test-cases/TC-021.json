@@ -1,0 +1,93 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-021",
+  "title": "Primeira reserva de um sócio sem reservas futuras",
+  "status": "READY",
+  "priority": "MEDIUM",
+  "type": "BOUNDARY",
+  "objective": "Verificar o limite inferior do contador de reservas futuras, com zero reservas.",
+  "requirement_refs": [
+    "REQ-003"
+  ],
+  "scenario_refs": [
+    "SCN-003"
+  ],
+  "coverage_point_refs": [
+    "CP-010"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 2 (linha 8)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_D é sócio ativo com sessão aberta e nenhuma reserva futura",
+    "QUADRA_FUTSAL_A está livre no bloco BLOCO_13H de uma data futura"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_D",
+      "description": "sócio ativo com 0 reservas futuras"
+    },
+    {
+      "name": "QUADRA_FUTSAL_A",
+      "description": "quadra de futsal livre em BLOCO_13H"
+    },
+    {
+      "name": "BLOCO_13H",
+      "description": "bloco das 13h às 14h de uma data futura"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_D confere que a lista das suas reservas futuras está vazia.",
+      "expected_result": "SOCIO_D não tem reservas futuras.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_D reserva BLOCO_13H em QUADRA_FUTSAL_A e confirma.",
+      "expected_result": "A reserva de BLOCO_13H é confirmada.",
+      "needs_clarification": false
+    },
+    {
+      "step": 3,
+      "action": "SOCIO_D reabre a lista das suas reservas futuras.",
+      "expected_result": "A reserva é criada e SOCIO_D passa a ter 1 reserva futura ativa.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "SOCIO_D com 1 reserva futura"
+  ],
+  "cleanup": [
+    "Cancelar a reserva"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "MISSING_SELECTOR: Telas e rótulos não constam do PRD."
+  ],
+  "test_basis": "DERIVED",
+  "primary_type": "BOUNDARY",
+  "secondary_tags": [],
+  "execution_status": "READY",
+  "question_refs": [],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "PLAYWRIGHT",
+  "deterministic": true,
+  "priority_reason": "É o caso mais comum, com baixo risco de defeito.",
+  "automation_suitability": "HIGH",
+  "automation_readiness": "NEEDS_SELECTOR",
+  "readiness_blockers": [
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "contador de reservas futuras em zero",
+  "source_identifiers": [],
+  "expansion_dimension": "BOUNDARY"
+}

@@ -1,0 +1,128 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-048",
+  "title": "Jornada: reservar e entrar pela catraca no horário",
+  "status": "BLOCKED_EXTERNAL_DEPENDENCY",
+  "priority": "CRITICAL",
+  "type": "E2E",
+  "objective": "Verificar o acesso físico ligado à reserva, dependente da integração com a catraca.",
+  "requirement_refs": [
+    "REQ-001",
+    "REQ-005"
+  ],
+  "scenario_refs": [
+    "SCN-007"
+  ],
+  "coverage_point_refs": [
+    "CP-002",
+    "CP-015"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Objetivo (linha 4)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 4 (linha 10)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, itens 1 e 4 (linhas 7 e 10)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta e sem reservas futuras",
+    "QUADRA_FUTSAL_A está livre no bloco em andamento no momento do teste",
+    "CATRACA_A está em operação e a API do fornecedor não tem documentação"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio ativo sem reservas futuras"
+    },
+    {
+      "name": "QUADRA_FUTSAL_A",
+      "description": "quadra de futsal livre no bloco em andamento"
+    },
+    {
+      "name": "CATRACA_A",
+      "description": "catraca de acesso às quadras"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "SOCIO_A escolhe QUADRA_FUTSAL_A e o bloco em andamento e confirma a reserva no aplicativo.",
+      "expected_result": "A reserva da quadra de futsal é criada e fica visível como reserva ativa do sócio.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A chega a CATRACA_A no horário e usa a reserva da forma que o fornecedor documentar.",
+      "expected_result": "CATRACA_A recebe o uso da reserva de SOCIO_A.",
+      "needs_clarification": false
+    },
+    {
+      "step": 3,
+      "action": "SOCIO_A tenta passar por CATRACA_A.",
+      "expected_result": "A catraca libera a passagem do sócio; a reserva foi criada e a passagem foi liberada.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "SOCIO_A dentro da área das quadras"
+  ],
+  "cleanup": [
+    "Cancelar a reserva"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "EXTERNAL_DEPENDENCY_UNAVAILABLE: API de catracas sem documentação.",
+    "MISSING_EXECUTION_SURFACE: Forma de usar a reserva na catraca desconhecida."
+  ],
+  "test_basis": "E2E",
+  "primary_type": "E2E",
+  "secondary_tags": [],
+  "execution_status": "BLOCKED_EXTERNAL_DEPENDENCY",
+  "question_refs": [
+    "Q-002"
+  ],
+  "finding_refs": [],
+  "composes": [
+    "TC-002",
+    "TC-013"
+  ],
+  "automation_candidate": false,
+  "automation_layer": "HARDWARE",
+  "automation_tool_hint": "NONE",
+  "deterministic": true,
+  "priority_reason": "É o caminho completo do sócio até a quadra; depende da API da catraca ainda não documentada.",
+  "automation_suitability": "MANUAL_ONLY",
+  "automation_readiness": "NOT_APPLICABLE",
+  "readiness_blockers": [
+    "EXTERNAL_DEPENDENCY_UNAVAILABLE",
+    "MISSING_EXECUTION_SURFACE",
+    "BLOCKING_QUESTION"
+  ],
+  "failure_domain": "acesso à quadra a partir da reserva",
+  "source_identifiers": [],
+  "expansion_dimension": "E2E",
+  "e2e_stage_map": [
+    {
+      "atomic_test_ref": "TC-002",
+      "trigger": "o sócio escolhe a quadra de futsal e o bloco livre e confirma a reserva",
+      "assertion_refs": [
+        "a reserva da quadra de futsal é criada e fica visível como reserva ativa do sócio"
+      ]
+    },
+    {
+      "atomic_test_ref": "TC-013",
+      "trigger": "o sócio chega e usa a reserva na catraca",
+      "assertion_refs": [
+        "a catraca libera a passagem do sócio"
+      ]
+    }
+  ]
+}

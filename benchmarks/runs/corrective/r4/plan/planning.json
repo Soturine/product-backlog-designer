@@ -1,0 +1,88 @@
+{
+ "team": [
+  {
+   "id": "dev-a",
+   "skills": [
+    "backend"
+   ],
+   "capacity": {
+    "unit": "hours",
+    "per_sprint": 30
+   }
+  },
+  {
+   "id": "dev-b",
+   "skills": [
+    "frontend",
+    "qa"
+   ],
+   "capacity": {
+    "unit": "hours",
+    "per_sprint": {
+     "1": 30,
+     "2": 20
+    }
+   }
+  }
+ ],
+ "sprints": [
+  {
+   "index": 1,
+   "working_days": 5,
+   "goal": "Reserva de quadra"
+  },
+  {
+   "index": 2,
+   "working_days": 5,
+   "goal": "Cancelamento e agenda"
+  }
+ ],
+ "responsibility": "story_owner",
+ "proposal": {
+  "placement": {
+   "PBD-STORY-4X88S366NF8G": 1,
+   "PBD-TASK-9VA5GAQ2325G": 1,
+   "PBD-TASK-Z3N04AENGRMH": 1,
+   "PBD-TASK-MGTQV3XG91HS": 1,
+   "PBD-STORY-BXMPBBR7YK7S": 2,
+   "PBD-TASK-19PG31SNXTC6": 2,
+   "PBD-STORY-Y4VZXDY0KX4H": 2,
+   "PBD-TASK-BA4TXN7R3R6H": 2
+  },
+  "owners": {
+   "PBD-STORY-4X88S366NF8G": "dev-a",
+   "PBD-STORY-BXMPBBR7YK7S": "dev-a",
+   "PBD-STORY-Y4VZXDY0KX4H": "dev-b"
+  },
+  "assignees": {
+   "PBD-TASK-9VA5GAQ2325G": "dev-a",
+   "PBD-TASK-Z3N04AENGRMH": "dev-a",
+   "PBD-TASK-MGTQV3XG91HS": "dev-b",
+   "PBD-TASK-19PG31SNXTC6": "dev-a",
+   "PBD-TASK-BA4TXN7R3R6H": "dev-b"
+  },
+  "rationale": {
+   "PBD-STORY-4X88S366NF8G": "Predecessora de cancelamento e agenda; vai primeiro.",
+   "PBD-STORY-BXMPBBR7YK7S": "Depende da reserva; sprint 2.",
+   "PBD-STORY-Y4VZXDY0KX4H": "Depende da reserva; frontend; sprint 2."
+  }
+ },
+ "estimates": {
+  "PBD-TASK-9VA5GAQ2325G": {
+   "unit": "hours",
+   "value": 6
+  },
+  "PBD-TASK-Z3N04AENGRMH": {
+   "unit": "hours",
+   "value": 4
+  },
+  "PBD-TASK-BA4TXN7R3R6H": {
+   "unit": "hours",
+   "value": 5
+  },
+  "PBD-TASK-19PG31SNXTC6": {
+   "unit": "hours",
+   "value": 3
+  }
+ }
+}

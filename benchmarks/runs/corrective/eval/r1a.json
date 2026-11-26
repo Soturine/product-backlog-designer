@@ -1,0 +1,116 @@
+{
+  "run": "R1a",
+  "run_id": "PBD-RUN-ABXFB9P5X1HZ",
+  "gold": "benchmarks/gold/c08-insufficient-tech.json",
+  "evaluator": "eval-corrective-1",
+  "obligations": [
+    {
+      "id": "G01",
+      "critical": true,
+      "verdict": "covered",
+      "evidence": "PBD-STORY-PM64KVKTYDGN 'Inscrever-se em um mutirão' (ready); PBD-AC-F557JEHE8FF0 CA-01 (registers name and shirt size); PBD-TASK-QTXSX6PTVNMT 'Formulário e registro de inscrição com nome e tamanho' (ready). Caveat: readiness rests on an unconfirmed configurable size list (see invented)."
+    },
+    {
+      "id": "G02",
+      "critical": true,
+      "verdict": "handled_as_blocked",
+      "evidence": "PBD-STORY-N28NZC84RNGM 'Pagar a taxa e ter a inscrição confirmada' is blocked, blocked_by PBD-Q-1G5RE9JM5KNG (blocking: gateway identity and integration contract). PBD-TASK-V1BCEDWKXXSF 'Integração de cobrança da taxa com o gateway parceiro' is blocked by the same question. No gateway name, fee amount or API invented; fee value is asked in PBD-Q-YZ6RJNE821HE (non-blocking)."
+    },
+    {
+      "id": "G03",
+      "critical": true,
+      "verdict": "covered",
+      "evidence": "PBD-AC-0CCH5QFPNBY1 CA-01 (stays unconfirmed while pending) and PBD-AC-MPP86QZ8YV4M CA-02 (confirmed when payment confirmed). PBD-TASK-07JPCCNVJ9DT 'Confirmar a inscrição ao receber a confirmação de pagamento' is blocked by PBD-Q-1G5RE9JM5KNG. Covered at criterion level; the signal mechanism is blocked."
+    },
+    {
+      "id": "G04",
+      "critical": true,
+      "verdict": "covered",
+      "evidence": "PBD-STORY-6SNJRH7RJ01J 'Consultar inscritos confirmados de um mutirão' (ready); PBD-AC-H1X7NEP97EGJ CA-01 (only confirmed registrations shown per mutirão); PBD-TASK-FF9J3GGTC6VZ 'Listagem de inscritos confirmados por mutirão' (ready)."
+    },
+    {
+      "id": "G05",
+      "critical": false,
+      "verdict": "handled_as_question",
+      "evidence": "PBD-Q-VVXNT12Y1GN3 ('o que significa rápido', non-blocking); PBD-CLM-HE5XKM9MFQT1 is QUESTION_REQUIRED. No performance criterion or task invented."
+    }
+  ],
+  "critical_recall": {
+    "strict_covered": 3,
+    "handled": 1,
+    "total_critical": 4
+  },
+  "traps": [
+    {
+      "trap": "Must not invent a gateway name, API, webhook or fee amount",
+      "verdict": "not_violated",
+      "evidence": "No gateway name, endpoint, webhook or fee value in items or criteria. Fee value and contract are asked in PBD-Q-YZ6RJNE821HE and PBD-Q-1G5RE9JM5KNG."
+    },
+    {
+      "trap": "Must not invent a response-time threshold for 'rapido'",
+      "verdict": "not_violated",
+      "evidence": "No threshold anywhere. PBD-Q-VVXNT12Y1GN3 asks for operation and threshold; PBD-FND-913Q7T7BQANT is about sizes, not speed."
+    }
+  ],
+  "readiness": {
+    "a_gateway_dependent_work_ready": {
+      "violated": false,
+      "evidence": "Gateway-dependent items are blocked: PBD-STORY-N28NZC84RNGM, PBD-TASK-V1BCEDWKXXSF, PBD-TASK-07JPCCNVJ9DT. None is ready."
+    },
+    "b_unrelated_work_blocked_by_association": {
+      "violated": false,
+      "evidence": "Organizer list PBD-STORY-6SNJRH7RJ01J and PBD-TASK-FF9J3GGTC6VZ are ready and carry independent_of PBD-Q-1G5RE9JM5KNG. Enrollment PBD-STORY-PM64KVKTYDGN and PBD-TASK-QTXSX6PTVNMT are ready. Minor inconsistency: PBD-REL-AJ749QE8A2YB (status proposed, medium confidence) is a predecessor link from the blocked payment story to the list story, which contradicts the independent_of field. Not a blocker."
+    },
+    "c_blocking_question_linked": {
+      "linked": true,
+      "evidence": "PBD-Q-1G5RE9JM5KNG has blocking=true and is referenced by blocked_by on PBD-STORY-N28NZC84RNGM, PBD-TASK-V1BCEDWKXXSF and PBD-TASK-07JPCCNVJ9DT."
+    }
+  },
+  "references": [
+    "Canonical backlog: no unresolved references in item or criterion text. CA-01, CA-02 and CA-03 are bare visible ids, but they are scoped by parent story and are not globally unique.",
+    "Reviewer (stages/review.json): short keys US1, T1, AC2, AC5 and C1-C5 are used in findings and independent_obligations instead of PBD ids. Gate G09 reason also lists US1 and T1.",
+    "Reviewer: Q1, Q3 and Q4 are cited in findings and rationales (for example 'ate Q3', 'pergunta Q4', 'gateway nao identificado (Q1)'). No question in the backlog carries these labels, so they are unresolved."
+  ],
+  "invented": [
+    {
+      "item": "PBD-STORY-PM64KVKTYDGN and PBD-TASK-QTXSX6PTVNMT",
+      "severity": "medium",
+      "reason": "Ready status assumes the shirt-size list is configurable. The PRD does not define valid sizes. Reviewer flagged it (PBD-FND-913Q7T7BQANT) and gate G09 FAILs on unsupported scope US1 and T1."
+    },
+    {
+      "item": "PBD-AC-GNF8M06HJ9ZS (CA-02)",
+      "severity": "low",
+      "reason": "Missing name or size is rejected and the participant is told the field. Marked proposed; not in PRD."
+    },
+    {
+      "item": "PBD-AC-HVKK41BXGBP2 (CA-03)",
+      "severity": "low",
+      "reason": "Refused or expired payment leaves registration unconfirmed and the participant is informed. Marked proposed; not in PRD."
+    },
+    {
+      "item": "PBD-TASK-V1BCEDWKXXSF",
+      "severity": "low",
+      "reason": "Mentions a gateway test environment. Generic, not in PRD."
+    }
+  ],
+  "gates": {
+    "G01": "PASS",
+    "G02": "FAIL",
+    "G03": "PASS",
+    "G04": "PASS",
+    "G05": "PASS",
+    "G06": "PASS",
+    "G07": "PASS",
+    "G08": "PASS",
+    "G09": "FAIL",
+    "G10": "NOT_APPLICABLE",
+    "G11": "PASS",
+    "G12": "NOT_APPLICABLE",
+    "G13": "PASS",
+    "G14": "PASS",
+    "G15": "NOT_APPLICABLE",
+    "G16": "PASS",
+    "G17": "NOT_APPLICABLE",
+    "G18": "NOT_RUN"
+  }
+}

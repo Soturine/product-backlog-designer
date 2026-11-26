@@ -1,0 +1,1249 @@
+{
+  "claims": [
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-644FSAZTZEY1",
+          "PBD-AC-PPB9NF32HNCK",
+          "PBD-TASK-ZRJGNEPYX4T5"
+        ],
+        "rationale": "A reserva de tênis está representada na história, no comportamento observável e na tarefa.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "prd.md",
+            "quote_digest": "sha256:5057f4b563651d2fba2d1d134fb2fdc8f335295080c9f65e7b51655cf960db77",
+            "section": "Objetivo",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "31aa9f3b713e6fb9"
+          },
+          "summary": "Sócios reservam quadras de tênis e de futsal pelo aplicativo do clube.",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-3JWNNC2M7ECW",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Sócios devem poder reservar quadras de tênis pelo aplicativo do clube.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-644FSAZTZEY1",
+          "PBD-AC-T28JD54A6VP8",
+          "PBD-TASK-ZRJGNEPYX4T5"
+        ],
+        "rationale": "A reserva de futsal está representada na história, no comportamento observável e na tarefa.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 4,
+            "line_start": 4,
+            "member": "prd.md",
+            "quote_digest": "sha256:5057f4b563651d2fba2d1d134fb2fdc8f335295080c9f65e7b51655cf960db77",
+            "section": "Objetivo",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "31aa9f3b713e6fb9"
+          },
+          "summary": "Sócios reservam quadras de tênis e de futsal pelo aplicativo do clube.",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-F7QZAM29KRQH",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Sócios devem poder reservar quadras de futsal pelo aplicativo do clube.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-644FSAZTZEY1",
+          "PBD-AC-PPB9NF32HNCK",
+          "PBD-AC-T28JD54A6VP8",
+          "PBD-AC-F8AFCWQPGYDB",
+          "PBD-TASK-ZRJGNEPYX4T5"
+        ],
+        "rationale": "A disponibilidade é verificada nos caminhos positivo e negativo.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 7,
+            "line_start": 7,
+            "member": "prd.md",
+            "quote_digest": "sha256:bf4002081acf14d661a5d783a41561b0dffe08a6ae629a28c37f92d575a43170",
+            "section": "Requisitos",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "31aa9f3b713e6fb9"
+          },
+          "summary": "O sócio reserva uma quadra livre",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-D53593ZRYRPV",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Uma reserva somente pode ser feita para uma quadra livre.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-644FSAZTZEY1",
+          "PBD-AC-SWYV9S2PG9XB",
+          "PBD-TASK-0NQ1M5GW3VEK"
+        ],
+        "rationale": "O bloco de 1 hora é verificável no critério e na tarefa.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 7,
+            "line_start": 7,
+            "member": "prd.md",
+            "quote_digest": "sha256:adc2bc5e581d2cd07da661653dbd4a5e22b11898cebeb16d1d878d2395699b07",
+            "section": "Requisitos",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "31aa9f3b713e6fb9"
+          },
+          "summary": "em blocos de 1 hora",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-PD6YS0AMYQ3G",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "As reservas devem usar blocos de 1 hora.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-644FSAZTZEY1",
+          "PBD-AC-4RF9JDHB0HTX",
+          "PBD-TASK-0NQ1M5GW3VEK"
+        ],
+        "rationale": "A janela entre 7h e 22h é verificável no critério e na tarefa.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 7,
+            "line_start": 7,
+            "member": "prd.md",
+            "quote_digest": "sha256:5acda053ed7682a62dec0213c32d8344d99f95a101f914489c6799bffb93c914",
+            "section": "Requisitos",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "31aa9f3b713e6fb9"
+          },
+          "summary": "entre 7h e 22h",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-AAYG5JACK6JN",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "As reservas devem ocorrer entre 7h e 22h.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-644FSAZTZEY1",
+          "PBD-AC-YCGW9KEJ6XHZ",
+          "PBD-TASK-QVD7AC2476YG"
+        ],
+        "rationale": "O limite de 2 reservas futuras possui caminho negativo verificável.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 8,
+            "line_start": 8,
+            "member": "prd.md",
+            "quote_digest": "sha256:9ef9aebcc39feb94ef2164d711281c3e1a71affea26c82c042c0bfb9eb765446",
+            "section": "Requisitos",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "31aa9f3b713e6fb9"
+          },
+          "summary": "Cada sócio pode ter no máximo 2 reservas futuras ao mesmo tempo.",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-DQ9W99BE9XWY",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Cada sócio pode manter no máximo 2 reservas futuras simultaneamente.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-81Q6AS6FZPYB",
+          "PBD-AC-JHPC061E7DD0",
+          "PBD-TASK-CTN3GEBV44MY"
+        ],
+        "rationale": "A capacidade de cancelar está representada, embora a implementação aguarde a regra temporal.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 9,
+            "line_start": 9,
+            "member": "prd.md",
+            "quote_digest": "sha256:9beaa463eeac41e37a96cda7edfa3e4cf89cce2db6c8e68d35a83c0d3adb0cbf",
+            "section": "Requisitos",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "31aa9f3b713e6fb9"
+          },
+          "summary": "O sócio pode cancelar uma reserva",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-W13F7JR7X36V",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O sócio deve poder cancelar uma reserva.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "constraint",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-81Q6AS6FZPYB",
+          "PBD-AC-8WJ107CGNF4E",
+          "PBD-TASK-CTN3GEBV44MY"
+        ],
+        "rationale": "A obrigação está mapeada, mas a antecedência mínima precisa ser definida pela diretoria.",
+        "status": "QUESTION_REQUIRED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 9,
+            "line_start": 9,
+            "member": "prd.md",
+            "quote_digest": "sha256:782076e1965c7d485fc8c88c383bab0e1e21791851db3dc2ab038487a22f30ea",
+            "section": "Requisitos",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "31aa9f3b713e6fb9"
+          },
+          "summary": "a antecedência mínima para cancelar ainda será definida pela diretoria",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-XGB7F6VTPB6G",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "O cancelamento deve respeitar uma antecedência mínima, cujo valor ainda será definido pela diretoria.",
+      "uncertainty": {
+        "level": "unknown",
+        "note": "A diretoria ainda não definiu a antecedência mínima."
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-D6Q7YJE3WFJB",
+          "PBD-AC-J6G6QKDYSKB3",
+          "PBD-TASK-237WYW4M8WK8"
+        ],
+        "rationale": "O uso da reserva na entrada está especificado e permanece bloqueado pela integração.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 10,
+            "line_start": 10,
+            "member": "prd.md",
+            "quote_digest": "sha256:171f69033ce05c730253a608962401df8a132c7d7ebf479cfdd46ff3d3f5fb7d",
+            "section": "Requisitos",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "31aa9f3b713e6fb9"
+          },
+          "summary": "Ao chegar, o sócio entra pela catraca usando a reserva.",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-SZ8K47J9K0KF",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "Ao chegar, o sócio deve entrar pela catraca usando a reserva.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    },
+    {
+      "category": "integration",
+      "disposition": {
+        "covered_by": [
+          "PBD-ENAB-0N0SHXA0WPKY",
+          "PBD-STORY-D6Q7YJE3WFJB",
+          "PBD-TASK-331HZ5R8AM2V",
+          "PBD-TASK-237WYW4M8WK8"
+        ],
+        "rationale": "A integração está planejada, mas seu contrato depende da documentação do fornecedor.",
+        "status": "QUESTION_REQUIRED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 10,
+            "line_start": 10,
+            "member": "prd.md",
+            "quote_digest": "sha256:261f08f3d5123dd5c14aea6e6d2bd6e86055532ef4f327c5c7dc7e68c593dfae",
+            "section": "Requisitos",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "31aa9f3b713e6fb9"
+          },
+          "summary": "A integração com o sistema de catracas depende do fornecedor",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-K1BA0SWBYJ4X",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "A entrada com a reserva depende de integração com o sistema de catracas do fornecedor.",
+      "uncertainty": {
+        "level": "unknown",
+        "note": "O contrato e o comportamento da integração não estão documentados."
+      }
+    },
+    {
+      "category": "integration",
+      "disposition": {
+        "covered_by": [
+          "PBD-ENAB-0N0SHXA0WPKY",
+          "PBD-TASK-331HZ5R8AM2V"
+        ],
+        "rationale": "A ausência da documentação é registrada como bloqueador explícito.",
+        "status": "QUESTION_REQUIRED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 10,
+            "line_start": 10,
+            "member": "prd.md",
+            "quote_digest": "sha256:35708df937c144377e15df6926780badf15e0c41e87cebe765a2d800cbd4a4d4",
+            "section": "Requisitos",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "31aa9f3b713e6fb9"
+          },
+          "summary": "o fornecedor, que ainda não enviou a documentação da API",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-VJXRATNHW0X5",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "A documentação da API do sistema de catracas ainda não foi fornecida.",
+      "uncertainty": {
+        "level": "unknown",
+        "note": "O fornecedor ainda não enviou a documentação da API."
+      }
+    },
+    {
+      "category": "functional",
+      "disposition": {
+        "covered_by": [
+          "PBD-STORY-AR2VZ3JPTN26",
+          "PBD-AC-MXS0G4PVQN8T",
+          "PBD-TASK-FJ9T5SDTJZJ8"
+        ],
+        "rationale": "A consulta diária por quadra está representada na história, no critério e na tarefa.",
+        "status": "COVERED"
+      },
+      "evidence": [
+        {
+          "locator": {
+            "line_end": 11,
+            "line_start": 11,
+            "member": "prd.md",
+            "quote_digest": "sha256:a5afe2a9cdeb8f045660ca47d02001bd7cd503bafa9873abda6ed6ffb483f5e7",
+            "section": "Requisitos",
+            "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+            "source_version": "31aa9f3b713e6fb9"
+          },
+          "summary": "A recepção vê a agenda do dia de cada quadra.",
+          "type": "source_locator",
+          "verification": "mechanical"
+        }
+      ],
+      "id": "PBD-CLM-3SRNYDAEHTAE",
+      "temporal": {
+        "status": "effective"
+      },
+      "text": "A recepção deve poder consultar a agenda do dia de cada quadra.",
+      "uncertainty": {
+        "level": "confirmed"
+      }
+    }
+  ],
+  "criteria": [
+    {
+      "claim_refs": [
+        "PBD-CLM-3JWNNC2M7ECW",
+        "PBD-CLM-D53593ZRYRPV"
+      ],
+      "condition": "uma quadra de tênis está livre em um horário reservável",
+      "expected_outcomes": [
+        "a reserva da quadra de tênis é criada para o sócio"
+      ],
+      "id": "PBD-AC-PPB9NF32HNCK",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-644FSAZTZEY1",
+      "status": "confirmed",
+      "style": "gherkin",
+      "trigger": "o sócio solicita sua reserva pelo aplicativo",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-F7QZAM29KRQH",
+        "PBD-CLM-D53593ZRYRPV"
+      ],
+      "condition": "uma quadra de futsal está livre em um horário reservável",
+      "expected_outcomes": [
+        "a reserva da quadra de futsal é criada para o sócio"
+      ],
+      "id": "PBD-AC-T28JD54A6VP8",
+      "order": 1,
+      "origin": "generated",
+      "parent": "PBD-STORY-644FSAZTZEY1",
+      "status": "confirmed",
+      "style": "gherkin",
+      "trigger": "o sócio solicita sua reserva pelo aplicativo",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-D53593ZRYRPV"
+      ],
+      "condition": "a quadra solicitada não está livre",
+      "expected_outcomes": [
+        "nenhuma reserva é criada para essa solicitação"
+      ],
+      "id": "PBD-AC-F8AFCWQPGYDB",
+      "order": 2,
+      "origin": "generated",
+      "parent": "PBD-STORY-644FSAZTZEY1",
+      "status": "confirmed",
+      "style": "gherkin",
+      "trigger": "o sócio tenta reservá-la pelo aplicativo",
+      "visible_id": "CA-03"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-PD6YS0AMYQ3G"
+      ],
+      "condition": "o sócio escolhe um horário disponível",
+      "expected_outcomes": [
+        "a reserva ocupa um bloco de 1 hora"
+      ],
+      "id": "PBD-AC-SWYV9S2PG9XB",
+      "order": 3,
+      "origin": "generated",
+      "parent": "PBD-STORY-644FSAZTZEY1",
+      "status": "confirmed",
+      "style": "gherkin",
+      "trigger": "a reserva é criada",
+      "visible_id": "CA-04"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-AAYG5JACK6JN"
+      ],
+      "condition": "o sócio solicita uma reserva",
+      "expected_outcomes": [
+        "a reserva somente é criada quando seu horário permanece dentro da janela entre 7h e 22h"
+      ],
+      "id": "PBD-AC-4RF9JDHB0HTX",
+      "order": 4,
+      "origin": "generated",
+      "parent": "PBD-STORY-644FSAZTZEY1",
+      "status": "confirmed",
+      "style": "gherkin",
+      "trigger": "o aplicativo avalia o horário solicitado",
+      "visible_id": "CA-05"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-DQ9W99BE9XWY"
+      ],
+      "condition": "o sócio já possui 2 reservas futuras",
+      "expected_outcomes": [
+        "a nova reserva não é criada"
+      ],
+      "id": "PBD-AC-YCGW9KEJ6XHZ",
+      "order": 5,
+      "origin": "generated",
+      "parent": "PBD-STORY-644FSAZTZEY1",
+      "status": "confirmed",
+      "style": "gherkin",
+      "trigger": "ele solicita outra reserva futura",
+      "visible_id": "CA-06"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-W13F7JR7X36V"
+      ],
+      "condition": "uma reserva atende à política de cancelamento vigente",
+      "expected_outcomes": [
+        "a reserva é cancelada"
+      ],
+      "id": "PBD-AC-JHPC061E7DD0",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-81Q6AS6FZPYB",
+      "status": "confirmed",
+      "style": "gherkin",
+      "trigger": "o sócio solicita seu cancelamento",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-XGB7F6VTPB6G"
+      ],
+      "condition": "uma reserva não atende à antecedência mínima que vier a ser definida pela diretoria",
+      "expected_outcomes": [
+        "a reserva não é cancelada"
+      ],
+      "id": "PBD-AC-8WJ107CGNF4E",
+      "order": 1,
+      "origin": "proposed",
+      "parent": "PBD-STORY-81Q6AS6FZPYB",
+      "rationale": "O PRD exige antecedência mínima, mas a diretoria ainda precisa definir seu valor.",
+      "status": "proposed",
+      "style": "gherkin",
+      "trigger": "o sócio tenta cancelá-la",
+      "visible_id": "CA-02"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-SZ8K47J9K0KF"
+      ],
+      "condition": "o sócio chega ao clube com uma reserva utilizável para acesso",
+      "expected_outcomes": [
+        "a entrada pela catraca é realizada usando a reserva"
+      ],
+      "id": "PBD-AC-J6G6QKDYSKB3",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-D6Q7YJE3WFJB",
+      "status": "confirmed",
+      "style": "gherkin",
+      "trigger": "ele usa a reserva na catraca",
+      "visible_id": "CA-01"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-3SRNYDAEHTAE"
+      ],
+      "condition": "a recepção seleciona uma quadra",
+      "expected_outcomes": [
+        "o sistema exibe a agenda do dia da quadra selecionada"
+      ],
+      "id": "PBD-AC-MXS0G4PVQN8T",
+      "order": 0,
+      "origin": "generated",
+      "parent": "PBD-STORY-AR2VZ3JPTN26",
+      "status": "confirmed",
+      "style": "gherkin",
+      "trigger": "ela consulta a agenda do dia",
+      "visible_id": "CA-01"
+    }
+  ],
+  "decisions": [],
+  "findings": [],
+  "items": [
+    {
+      "claim_refs": [
+        "PBD-CLM-3JWNNC2M7ECW",
+        "PBD-CLM-F7QZAM29KRQH",
+        "PBD-CLM-D53593ZRYRPV",
+        "PBD-CLM-PD6YS0AMYQ3G",
+        "PBD-CLM-AAYG5JACK6JN",
+        "PBD-CLM-DQ9W99BE9XWY",
+        "PBD-CLM-W13F7JR7X36V",
+        "PBD-CLM-XGB7F6VTPB6G",
+        "PBD-CLM-SZ8K47J9K0KF",
+        "PBD-CLM-K1BA0SWBYJ4X",
+        "PBD-CLM-VJXRATNHW0X5",
+        "PBD-CLM-3SRNYDAEHTAE"
+      ],
+      "content": {
+        "context": "O aplicativo do clube concentra a reserva de quadras de tênis e futsal; o acesso depende do sistema de catracas do fornecedor.",
+        "in_scope": [
+          "Reserva de quadras de tênis e futsal",
+          "Cancelamento de reservas",
+          "Entrada pela catraca com a reserva",
+          "Agenda diária por quadra para a recepção"
+        ],
+        "kind": "epic",
+        "objective": "Permitir que sócios reservem quadras e usem a reserva no acesso, com visibilidade operacional para a recepção.",
+        "out_scope": [
+          "Cobrança de reservas"
+        ],
+        "outcome": "Sócios administram suas reservas e a recepção acompanha a ocupação diária das quadras."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Permitir que sócios reservem quadras e usem a reserva no acesso, com visibilidade operacional para a recepção.</p><p><strong>Contexto</strong>: O aplicativo do clube concentra a reserva de quadras de tênis e futsal; o acesso depende do sistema de catracas do fornecedor.</p><p><strong>No escopo</strong></p><ul><li>Reserva de quadras de tênis e futsal</li><li>Cancelamento de reservas</li><li>Entrada pela catraca com a reserva</li><li>Agenda diária por quadra para a recepção</li></ul><p><strong>Fora do escopo</strong></p><ul><li>Cobrança de reservas</li></ul><p><strong>Resultado esperado</strong>: Sócios administram suas reservas e a recepção acompanha a ocupação diária das quadras.</p>"
+      },
+      "id": "PBD-EPIC-SMZFHCX903NC",
+      "origin": "generated",
+      "parent": null,
+      "status": "reviewed",
+      "title": "Gestão de quadras e acesso do clube",
+      "type": "epic"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-3JWNNC2M7ECW",
+        "PBD-CLM-F7QZAM29KRQH",
+        "PBD-CLM-D53593ZRYRPV",
+        "PBD-CLM-PD6YS0AMYQ3G",
+        "PBD-CLM-AAYG5JACK6JN",
+        "PBD-CLM-DQ9W99BE9XWY"
+      ],
+      "content": {
+        "capability": "Reservar quadras livres de tênis e futsal pelo aplicativo.",
+        "kind": "feature",
+        "rules": [
+          "A quadra precisa estar livre.",
+          "Cada reserva ocupa um bloco de 1 hora.",
+          "Os horários ficam entre 7h e 22h.",
+          "Cada sócio mantém no máximo 2 reservas futuras simultâneas."
+        ],
+        "value": "Oferecer ao sócio uma forma direta de garantir um horário de uso da quadra."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Reservar quadras livres de tênis e futsal pelo aplicativo.</p><p><strong>Valor</strong>: Oferecer ao sócio uma forma direta de garantir um horário de uso da quadra.</p><p><strong>Regras relacionadas</strong></p><ul><li>A quadra precisa estar livre.</li><li>Cada reserva ocupa um bloco de 1 hora.</li><li>Os horários ficam entre 7h e 22h.</li><li>Cada sócio mantém no máximo 2 reservas futuras simultâneas.</li></ul>"
+      },
+      "id": "PBD-FEAT-37HV79K2C2KF",
+      "origin": "generated",
+      "parent": "PBD-EPIC-SMZFHCX903NC",
+      "status": "reviewed",
+      "title": "Reserva de quadras pelo aplicativo",
+      "type": "feature"
+    },
+    {
+      "acceptance_style": "gherkin",
+      "claim_refs": [
+        "PBD-CLM-3JWNNC2M7ECW",
+        "PBD-CLM-F7QZAM29KRQH",
+        "PBD-CLM-D53593ZRYRPV",
+        "PBD-CLM-PD6YS0AMYQ3G",
+        "PBD-CLM-AAYG5JACK6JN",
+        "PBD-CLM-DQ9W99BE9XWY"
+      ],
+      "content": {
+        "actor": "sócio",
+        "benefit": "garantir um horário para usar a quadra",
+        "kind": "role_goal_benefit",
+        "want": "o aplicativo reservasse uma quadra livre de tênis ou futsal"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> sócio, <strong>gostaria que</strong> o aplicativo reservasse uma quadra livre de tênis ou futsal, <strong>para</strong> garantir um horário para usar a quadra.</p>"
+      },
+      "id": "PBD-STORY-644FSAZTZEY1",
+      "origin": "generated",
+      "parent": "PBD-FEAT-37HV79K2C2KF",
+      "readiness": {
+        "rationale": "Modalidades, disponibilidade, duração, janela diária e limite de reservas futuras estão definidos no PRD.",
+        "status": "ready"
+      },
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Reservar uma quadra livre",
+      "type": "story"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-3JWNNC2M7ECW",
+        "PBD-CLM-F7QZAM29KRQH",
+        "PBD-CLM-D53593ZRYRPV"
+      ],
+      "content": {
+        "activities": [
+          "Permitir a seleção da modalidade e de uma quadra livre.",
+          "Criar a reserva somente enquanto a quadra permanecer livre.",
+          "Impedir a criação quando a quadra não estiver livre."
+        ],
+        "kind": "task",
+        "outcome": "Reservas de ambas as modalidades são criadas apenas para quadras livres.",
+        "summary": "Disponibilizar no aplicativo a criação de reserva para uma quadra livre de tênis ou futsal.",
+        "verification": "Demonstrar a criação de uma reserva de tênis e outra de futsal em quadras livres e a ausência de criação para uma quadra ocupada."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Disponibilizar no aplicativo a criação de reserva para uma quadra livre de tênis ou futsal.</p><p><strong>Atividades</strong></p><ul><li>Permitir a seleção da modalidade e de uma quadra livre.</li><li>Criar a reserva somente enquanto a quadra permanecer livre.</li><li>Impedir a criação quando a quadra não estiver livre.</li></ul><p><strong>Resultado esperado</strong>: Reservas de ambas as modalidades são criadas apenas para quadras livres.</p><p><strong>Verificação</strong>: Demonstrar a criação de uma reserva de tênis e outra de futsal em quadras livres e a ausência de criação para uma quadra ocupada.</p>"
+      },
+      "id": "PBD-TASK-ZRJGNEPYX4T5",
+      "origin": "generated",
+      "parent": "PBD-STORY-644FSAZTZEY1",
+      "readiness": {
+        "rationale": "As modalidades e a condição de disponibilidade estão confirmadas.",
+        "status": "ready"
+      },
+      "status": "reviewed",
+      "title": "Entregar o fluxo de reserva para tênis e futsal",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-PD6YS0AMYQ3G",
+        "PBD-CLM-AAYG5JACK6JN"
+      ],
+      "content": {
+        "activities": [
+          "Representar os horários reserváveis em blocos de 1 hora.",
+          "Impedir que uma reserva fique fora da janela entre 7h e 22h."
+        ],
+        "kind": "task",
+        "outcome": "Toda reserva respeita a duração e a janela diária informadas.",
+        "summary": "Restringir as reservas a blocos de 1 hora dentro da janela entre 7h e 22h.",
+        "verification": "Inspecionar reservas nos horários disponíveis e confirmar duração de 1 hora e permanência integral dentro da janela entre 7h e 22h."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Restringir as reservas a blocos de 1 hora dentro da janela entre 7h e 22h.</p><p><strong>Atividades</strong></p><ul><li>Representar os horários reserváveis em blocos de 1 hora.</li><li>Impedir que uma reserva fique fora da janela entre 7h e 22h.</li></ul><p><strong>Resultado esperado</strong>: Toda reserva respeita a duração e a janela diária informadas.</p><p><strong>Verificação</strong>: Inspecionar reservas nos horários disponíveis e confirmar duração de 1 hora e permanência integral dentro da janela entre 7h e 22h.</p>"
+      },
+      "id": "PBD-TASK-0NQ1M5GW3VEK",
+      "origin": "generated",
+      "parent": "PBD-STORY-644FSAZTZEY1",
+      "readiness": {
+        "rationale": "A duração e a janela diária estão definidas pelo PRD.",
+        "status": "ready"
+      },
+      "status": "reviewed",
+      "title": "Aplicar duração e janela de funcionamento",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-DQ9W99BE9XWY"
+      ],
+      "content": {
+        "activities": [
+          "Contabilizar as reservas futuras do sócio no momento da solicitação.",
+          "Impedir nova reserva quando já existirem 2 reservas futuras."
+        ],
+        "kind": "task",
+        "outcome": "Nenhum sócio mantém mais de 2 reservas futuras ao mesmo tempo.",
+        "summary": "Aplicar por sócio o limite de 2 reservas futuras simultâneas.",
+        "verification": "Confirmar que a terceira solicitação futura não cria reserva quando o sócio já possui 2 reservas futuras."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Aplicar por sócio o limite de 2 reservas futuras simultâneas.</p><p><strong>Atividades</strong></p><ul><li>Contabilizar as reservas futuras do sócio no momento da solicitação.</li><li>Impedir nova reserva quando já existirem 2 reservas futuras.</li></ul><p><strong>Resultado esperado</strong>: Nenhum sócio mantém mais de 2 reservas futuras ao mesmo tempo.</p><p><strong>Verificação</strong>: Confirmar que a terceira solicitação futura não cria reserva quando o sócio já possui 2 reservas futuras.</p>"
+      },
+      "id": "PBD-TASK-QVD7AC2476YG",
+      "origin": "generated",
+      "parent": "PBD-STORY-644FSAZTZEY1",
+      "readiness": {
+        "rationale": "O limite máximo está definido pelo PRD.",
+        "status": "ready"
+      },
+      "status": "reviewed",
+      "title": "Controlar o limite de reservas futuras",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-W13F7JR7X36V",
+        "PBD-CLM-XGB7F6VTPB6G"
+      ],
+      "content": {
+        "capability": "Cancelar uma reserva conforme a política de antecedência do clube.",
+        "kind": "feature",
+        "rules": [
+          "O cancelamento deve respeitar uma antecedência mínima.",
+          "A diretoria ainda precisa definir o valor da antecedência mínima."
+        ],
+        "value": "Permitir que o sócio desista de um horário reservado."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Cancelar uma reserva conforme a política de antecedência do clube.</p><p><strong>Valor</strong>: Permitir que o sócio desista de um horário reservado.</p><p><strong>Regras relacionadas</strong></p><ul><li>O cancelamento deve respeitar uma antecedência mínima.</li><li>A diretoria ainda precisa definir o valor da antecedência mínima.</li></ul>"
+      },
+      "id": "PBD-FEAT-8AJJGZGDMGZJ",
+      "origin": "generated",
+      "parent": "PBD-EPIC-SMZFHCX903NC",
+      "status": "reviewed",
+      "title": "Cancelamento de reserva",
+      "type": "feature"
+    },
+    {
+      "acceptance_style": "gherkin",
+      "claim_refs": [
+        "PBD-CLM-W13F7JR7X36V",
+        "PBD-CLM-XGB7F6VTPB6G"
+      ],
+      "content": {
+        "actor": "sócio",
+        "benefit": "liberar o horário que não será utilizado",
+        "kind": "role_goal_benefit",
+        "want": "o aplicativo cancelasse uma reserva elegível"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> sócio, <strong>gostaria que</strong> o aplicativo cancelasse uma reserva elegível, <strong>para</strong> liberar o horário que não será utilizado.</p>"
+      },
+      "id": "PBD-STORY-81Q6AS6FZPYB",
+      "origin": "generated",
+      "parent": "PBD-FEAT-8AJJGZGDMGZJ",
+      "readiness": {
+        "blocked_by": [
+          {
+            "rationale": "A diretoria precisa definir a antecedência mínima que separa cancelamentos permitidos e não permitidos.",
+            "ref": "PBD-Q-KA7QKTHJNKSP"
+          }
+        ],
+        "rationale": "A elegibilidade do cancelamento não pode ser implementada sem o valor da antecedência mínima.",
+        "status": "blocked"
+      },
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Cancelar uma reserva",
+      "type": "story"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-W13F7JR7X36V",
+        "PBD-CLM-XGB7F6VTPB6G"
+      ],
+      "content": {
+        "activities": [
+          "Incorporar a decisão formal sobre a antecedência mínima.",
+          "Cancelar reservas que atendam à política.",
+          "Preservar reservas que não atendam à política."
+        ],
+        "kind": "task",
+        "outcome": "O cancelamento segue exatamente a política de antecedência aprovada.",
+        "summary": "Disponibilizar o cancelamento e aplicar a antecedência mínima decidida pela diretoria.",
+        "verification": "Após a decisão da diretoria, verificar um cancelamento permitido e uma tentativa que não atenda à antecedência definida."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Disponibilizar o cancelamento e aplicar a antecedência mínima decidida pela diretoria.</p><p><strong>Atividades</strong></p><ul><li>Incorporar a decisão formal sobre a antecedência mínima.</li><li>Cancelar reservas que atendam à política.</li><li>Preservar reservas que não atendam à política.</li></ul><p><strong>Resultado esperado</strong>: O cancelamento segue exatamente a política de antecedência aprovada.</p><p><strong>Verificação</strong>: Após a decisão da diretoria, verificar um cancelamento permitido e uma tentativa que não atenda à antecedência definida.</p>"
+      },
+      "id": "PBD-TASK-CTN3GEBV44MY",
+      "origin": "generated",
+      "parent": "PBD-STORY-81Q6AS6FZPYB",
+      "readiness": {
+        "blocked_by": [
+          {
+            "rationale": "Sem a antecedência mínima, não é possível determinar quais reservas são elegíveis para cancelamento.",
+            "ref": "PBD-Q-KA7QKTHJNKSP"
+          }
+        ],
+        "rationale": "O comportamento depende de um valor de antecedência ainda desconhecido.",
+        "status": "blocked"
+      },
+      "status": "reviewed",
+      "title": "Implementar o cancelamento conforme a política aprovada",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-SZ8K47J9K0KF",
+        "PBD-CLM-K1BA0SWBYJ4X",
+        "PBD-CLM-VJXRATNHW0X5"
+      ],
+      "content": {
+        "capability": "Usar a reserva para entrar pela catraca ao chegar ao clube.",
+        "kind": "feature",
+        "rules": [
+          "O acesso usa a reserva.",
+          "A solução depende da integração com o sistema de catracas do fornecedor.",
+          "A documentação da API ainda não foi recebida."
+        ],
+        "value": "Vincular o acesso do sócio à reserva de quadra."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Usar a reserva para entrar pela catraca ao chegar ao clube.</p><p><strong>Valor</strong>: Vincular o acesso do sócio à reserva de quadra.</p><p><strong>Regras relacionadas</strong></p><ul><li>O acesso usa a reserva.</li><li>A solução depende da integração com o sistema de catracas do fornecedor.</li><li>A documentação da API ainda não foi recebida.</li></ul>"
+      },
+      "id": "PBD-FEAT-C4P1M8MMBHGW",
+      "origin": "generated",
+      "parent": "PBD-EPIC-SMZFHCX903NC",
+      "status": "reviewed",
+      "title": "Entrada pela catraca com a reserva",
+      "type": "feature"
+    },
+    {
+      "acceptance_style": "gherkin",
+      "claim_refs": [
+        "PBD-CLM-K1BA0SWBYJ4X",
+        "PBD-CLM-VJXRATNHW0X5"
+      ],
+      "content": {
+        "capability": "Conhecer e preparar o contrato necessário para integrar a reserva ao sistema de catracas do fornecedor.",
+        "kind": "enabler",
+        "outcome": "O comportamento de integração fica definido a partir da documentação oficial da API."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade técnica</strong>: Conhecer e preparar o contrato necessário para integrar a reserva ao sistema de catracas do fornecedor.</p><p><strong>Resultado esperado</strong>: O comportamento de integração fica definido a partir da documentação oficial da API.</p>"
+      },
+      "id": "PBD-ENAB-0N0SHXA0WPKY",
+      "origin": "generated",
+      "parent": "PBD-FEAT-C4P1M8MMBHGW",
+      "readiness": {
+        "blocked_by": [
+          {
+            "rationale": "O contrato, as operações e os resultados da integração dependem da documentação oficial.",
+            "ref": "PBD-Q-4ACQNZ2AGJB1"
+          }
+        ],
+        "rationale": "O fornecedor ainda não enviou a documentação da API.",
+        "status": "blocked"
+      },
+      "status": "reviewed",
+      "story_format": "enabler",
+      "title": "Estabelecer o contrato de integração com as catracas",
+      "type": "enabler"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-K1BA0SWBYJ4X",
+        "PBD-CLM-VJXRATNHW0X5"
+      ],
+      "content": {
+        "activities": [
+          "Obter a documentação oficial do fornecedor.",
+          "Identificar as operações e os dados necessários para usar uma reserva na catraca.",
+          "Registrar as decisões e dúvidas de integração para a implementação."
+        ],
+        "kind": "task",
+        "outcome": "Existe um contrato de integração documentado e rastreável à documentação do fornecedor.",
+        "summary": "Analisar a documentação enviada pelo fornecedor e registrar o contrato necessário à integração.",
+        "verification": "Revisar o contrato registrado contra a documentação oficial recebida e confirmar que as operações necessárias ao uso da reserva estão identificadas."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Analisar a documentação enviada pelo fornecedor e registrar o contrato necessário à integração.</p><p><strong>Atividades</strong></p><ul><li>Obter a documentação oficial do fornecedor.</li><li>Identificar as operações e os dados necessários para usar uma reserva na catraca.</li><li>Registrar as decisões e dúvidas de integração para a implementação.</li></ul><p><strong>Resultado esperado</strong>: Existe um contrato de integração documentado e rastreável à documentação do fornecedor.</p><p><strong>Verificação</strong>: Revisar o contrato registrado contra a documentação oficial recebida e confirmar que as operações necessárias ao uso da reserva estão identificadas.</p>"
+      },
+      "id": "PBD-TASK-331HZ5R8AM2V",
+      "origin": "generated",
+      "parent": "PBD-ENAB-0N0SHXA0WPKY",
+      "readiness": {
+        "blocked_by": [
+          {
+            "rationale": "O fornecedor precisa disponibilizar a documentação oficial antes da análise.",
+            "ref": "PBD-Q-4ACQNZ2AGJB1"
+          }
+        ],
+        "rationale": "A análise não pode começar sem a documentação da API.",
+        "status": "blocked"
+      },
+      "status": "reviewed",
+      "title": "Analisar e registrar o contrato da API de catracas",
+      "type": "task"
+    },
+    {
+      "acceptance_style": "gherkin",
+      "claim_refs": [
+        "PBD-CLM-SZ8K47J9K0KF",
+        "PBD-CLM-K1BA0SWBYJ4X"
+      ],
+      "content": {
+        "actor": "sócio",
+        "benefit": "entrar no clube ao chegar para o horário reservado",
+        "kind": "role_goal_benefit",
+        "want": "a catraca usasse sua reserva para permitir a entrada"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> sócio, <strong>gostaria que</strong> a catraca usasse sua reserva para permitir a entrada, <strong>para</strong> entrar no clube ao chegar para o horário reservado.</p>"
+      },
+      "id": "PBD-STORY-D6Q7YJE3WFJB",
+      "origin": "generated",
+      "parent": "PBD-FEAT-C4P1M8MMBHGW",
+      "readiness": {
+        "blocked_by": [
+          {
+            "rationale": "Sem a documentação do fornecedor, não há contrato conhecido para fazer a catraca usar a reserva.",
+            "ref": "PBD-Q-4ACQNZ2AGJB1"
+          }
+        ],
+        "rationale": "A entrada depende do contrato ainda desconhecido da integração com as catracas.",
+        "status": "blocked"
+      },
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Entrar pela catraca usando a reserva",
+      "type": "story"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-SZ8K47J9K0KF",
+        "PBD-CLM-K1BA0SWBYJ4X"
+      ],
+      "content": {
+        "activities": [
+          "Consumir o contrato aprovado da integração.",
+          "Associar o uso da reserva ao processo de entrada pela catraca.",
+          "Verificar o fluxo completo de chegada e entrada."
+        ],
+        "kind": "task",
+        "outcome": "A reserva é usada no acesso pela catraca conforme o contrato do fornecedor.",
+        "summary": "Implementar, conforme o contrato oficial, o uso da reserva no sistema de catracas.",
+        "verification": "Após a definição do contrato, demonstrar a entrada de um sócio pela catraca usando sua reserva."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Implementar, conforme o contrato oficial, o uso da reserva no sistema de catracas.</p><p><strong>Atividades</strong></p><ul><li>Consumir o contrato aprovado da integração.</li><li>Associar o uso da reserva ao processo de entrada pela catraca.</li><li>Verificar o fluxo completo de chegada e entrada.</li></ul><p><strong>Resultado esperado</strong>: A reserva é usada no acesso pela catraca conforme o contrato do fornecedor.</p><p><strong>Verificação</strong>: Após a definição do contrato, demonstrar a entrada de um sócio pela catraca usando sua reserva.</p>"
+      },
+      "id": "PBD-TASK-237WYW4M8WK8",
+      "origin": "generated",
+      "parent": "PBD-STORY-D6Q7YJE3WFJB",
+      "readiness": {
+        "blocked_by": [
+          {
+            "rationale": "As operações e os dados da integração são desconhecidos sem a documentação do fornecedor.",
+            "ref": "PBD-Q-4ACQNZ2AGJB1"
+          }
+        ],
+        "rationale": "A implementação depende do contrato da API ainda não recebido.",
+        "status": "blocked"
+      },
+      "status": "reviewed",
+      "title": "Integrar o uso da reserva ao acesso pela catraca",
+      "type": "task"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-3SRNYDAEHTAE"
+      ],
+      "content": {
+        "capability": "Consultar a agenda do dia de cada quadra.",
+        "kind": "feature",
+        "rules": [
+          "A consulta é por quadra e corresponde ao dia."
+        ],
+        "value": "Dar à recepção visibilidade das reservas diárias."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Capacidade</strong>: Consultar a agenda do dia de cada quadra.</p><p><strong>Valor</strong>: Dar à recepção visibilidade das reservas diárias.</p><p><strong>Regras relacionadas</strong></p><ul><li>A consulta é por quadra e corresponde ao dia.</li></ul>"
+      },
+      "id": "PBD-FEAT-2NX8M7XCQYJP",
+      "origin": "generated",
+      "parent": "PBD-EPIC-SMZFHCX903NC",
+      "status": "reviewed",
+      "title": "Agenda diária das quadras",
+      "type": "feature"
+    },
+    {
+      "acceptance_style": "gherkin",
+      "claim_refs": [
+        "PBD-CLM-3SRNYDAEHTAE"
+      ],
+      "content": {
+        "actor": "recepção",
+        "benefit": "acompanhar as reservas previstas para o dia",
+        "kind": "role_goal_benefit",
+        "want": "o sistema exibisse a agenda do dia de cada quadra"
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Eu como</strong> recepção, <strong>gostaria que</strong> o sistema exibisse a agenda do dia de cada quadra, <strong>para</strong> acompanhar as reservas previstas para o dia.</p>"
+      },
+      "id": "PBD-STORY-AR2VZ3JPTN26",
+      "origin": "generated",
+      "parent": "PBD-FEAT-2NX8M7XCQYJP",
+      "readiness": {
+        "rationale": "O ator, o período diário e a consulta por quadra estão definidos.",
+        "status": "ready"
+      },
+      "status": "reviewed",
+      "story_format": "role_goal_benefit",
+      "title": "Consultar a agenda diária de uma quadra",
+      "type": "story"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-3SRNYDAEHTAE"
+      ],
+      "content": {
+        "activities": [
+          "Permitir que a recepção selecione uma quadra.",
+          "Apresentar as reservas correspondentes ao dia dessa quadra."
+        ],
+        "kind": "task",
+        "outcome": "A recepção visualiza a agenda diária de cada quadra.",
+        "summary": "Disponibilizar à recepção a agenda do dia da quadra selecionada.",
+        "verification": "Selecionar quadras distintas e confirmar que cada consulta apresenta a respectiva agenda do dia."
+      },
+      "description": {
+        "format": "html",
+        "language": "pt-BR",
+        "value": "<p><strong>Objetivo</strong>: Disponibilizar à recepção a agenda do dia da quadra selecionada.</p><p><strong>Atividades</strong></p><ul><li>Permitir que a recepção selecione uma quadra.</li><li>Apresentar as reservas correspondentes ao dia dessa quadra.</li></ul><p><strong>Resultado esperado</strong>: A recepção visualiza a agenda diária de cada quadra.</p><p><strong>Verificação</strong>: Selecionar quadras distintas e confirmar que cada consulta apresenta a respectiva agenda do dia.</p>"
+      },
+      "id": "PBD-TASK-FJ9T5SDTJZJ8",
+      "origin": "generated",
+      "parent": "PBD-STORY-AR2VZ3JPTN26",
+      "readiness": {
+        "rationale": "A consulta diária por quadra está definida pelo PRD.",
+        "status": "ready"
+      },
+      "status": "reviewed",
+      "title": "Entregar a consulta da agenda diária por quadra",
+      "type": "task"
+    }
+  ],
+  "kind": "pbd.backlog",
+  "language": "pt-BR",
+  "profile": "generic",
+  "questions": [
+    {
+      "affects": [
+        "PBD-CLM-XGB7F6VTPB6G",
+        "PBD-STORY-81Q6AS6FZPYB",
+        "PBD-TASK-CTN3GEBV44MY"
+      ],
+      "alternatives": [
+        "Definir a antecedência como uma duração antes do início da reserva.",
+        "Definir outra regra temporal explícita para a elegibilidade do cancelamento."
+      ],
+      "blocking": true,
+      "id": "PBD-Q-KA7QKTHJNKSP",
+      "impact": "Sem esse valor não é possível determinar se uma tentativa de cancelamento deve ser aceita ou recusada.",
+      "status": "open",
+      "text": "Qual antecedência mínima a diretoria aprova para o cancelamento de uma reserva?"
+    },
+    {
+      "affects": [
+        "PBD-CLM-K1BA0SWBYJ4X",
+        "PBD-CLM-VJXRATNHW0X5",
+        "PBD-ENAB-0N0SHXA0WPKY",
+        "PBD-STORY-D6Q7YJE3WFJB",
+        "PBD-TASK-237WYW4M8WK8",
+        "PBD-TASK-331HZ5R8AM2V"
+      ],
+      "alternatives": [
+        "O fornecedor envia a documentação da API prevista.",
+        "O fornecedor formaliza outro contrato de integração compatível com o uso da reserva."
+      ],
+      "blocking": true,
+      "id": "PBD-Q-4ACQNZ2AGJB1",
+      "impact": "Sem a documentação não é possível definir operações, dados e resultados da integração nem implementar o acesso.",
+      "status": "open",
+      "text": "Qual é o contrato oficial da API do fornecedor para usar uma reserva na catraca?"
+    }
+  ],
+  "relations": [
+    {
+      "confidence": "medium",
+      "id": "PBD-REL-WTK1XWK9B2YM",
+      "reason": "A história de entrada pela catraca depende do contrato da integração exigida pelo PRD.",
+      "source": "PBD-ENAB-0N0SHXA0WPKY",
+      "status": "confirmed",
+      "target": "PBD-STORY-D6Q7YJE3WFJB",
+      "type": "predecessor"
+    }
+  ],
+  "run_id": "PBD-RUN-JHNV15GG7XTX",
+  "schema_version": "1.2.0",
+  "sources": [
+    {
+      "authority": "functional",
+      "digest": "sha256:31aa9f3b713e6fb96ff5c15a838850e1ed18695d9ee0b8a0ef7c8f22284d5912",
+      "id": "PBD-SRC-0AW4Q3WGMK5A",
+      "kind": "file",
+      "members": [
+        {
+          "bytes": 673,
+          "digest": "sha256:a15a16334fe3e33762ae0d89e03fbea9f041267e82aa3881c4847ac5a5301fd9",
+          "media_type": "application/octet-stream",
+          "path": "prd.md",
+          "status": "read"
+        }
+      ],
+      "read_status": "complete",
+      "selector": "sources/prd.md",
+      "version": "31aa9f3b713e6fb9"
+    }
+  ],
+  "synthetic": false
+}

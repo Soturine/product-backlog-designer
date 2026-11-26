@@ -1,0 +1,13 @@
+Assertiva audit: FINDINGS (<scratchpad>\pbd-export)
+[MEDIUM] CI_PYTEST_NOT_OBSERVED: Pytest-style test evidence exists, but no pytest invocation was observed in CI configuration.
+[MEDIUM] WEAK_ORACLE_SIGNAL: Some direct test definitions expose weak deterministic oracle signals.
+[MEDIUM] ERROR_CONTRACT_FIELD_NOT_OBSERVED: Other tests assert a machine code, field or context of these errors; these tests do not (what each one asserts about the error is listed).
+[INFO] STATE_AFTER_REJECTION_NOT_EVIDENCED: Some tests check state after a rejection; these do not, so partial writes would go unnoticed (static E3 signal).
+[INFO] NO_DELIVERY_PIPELINE_OBSERVED: No CI/CD configuration was recognized. Delivery-path verification is UNKNOWN, not absent.
+Not evidenced:
+  - no tests were executed; test outcomes are UNKNOWN
+  - coverage
+  - mutation / negative-control strength
+  - build, package and installed-artifact behavior
+  - startup, health and deployment behavior
+Report: <home>\.assertiva\reports\pbd-export-7a198563cf116823\audit.html

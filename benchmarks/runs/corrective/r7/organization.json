@@ -1,0 +1,805 @@
+{
+  "schema_version": "1",
+  "functional_grouping": "SCENARIO_FAMILY",
+  "groups": [
+    {
+      "id": "FAMILY:SCN-001",
+      "kind": "FUNCTIONAL",
+      "label": "SCN-001",
+      "identifier": null,
+      "flow_reference": null,
+      "order_source": "CANONICAL_ORDER",
+      "members": [
+        {
+          "case": "TC-001",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 1
+        },
+        {
+          "case": "TC-002",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 2
+        },
+        {
+          "case": "TC-003",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 3
+        },
+        {
+          "case": "TC-004",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 4
+        },
+        {
+          "case": "TC-005",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 5
+        },
+        {
+          "case": "TC-006",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 6
+        },
+        {
+          "case": "TC-015",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 7
+        },
+        {
+          "case": "TC-023",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 8
+        },
+        {
+          "case": "TC-026",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 9
+        },
+        {
+          "case": "TC-027",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 10
+        },
+        {
+          "case": "TC-030",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 11
+        },
+        {
+          "case": "TC-031",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 12
+        },
+        {
+          "case": "TC-033",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 13
+        },
+        {
+          "case": "TC-037",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 14
+        },
+        {
+          "case": "TC-040",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 15
+        },
+        {
+          "case": "TC-041",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 16
+        },
+        {
+          "case": "TC-044",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 17
+        }
+      ]
+    },
+    {
+      "id": "FAMILY:SCN-002",
+      "kind": "FUNCTIONAL",
+      "label": "SCN-002",
+      "identifier": null,
+      "flow_reference": null,
+      "order_source": "CANONICAL_ORDER",
+      "members": [
+        {
+          "case": "TC-007",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 1
+        },
+        {
+          "case": "TC-008",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 2
+        },
+        {
+          "case": "TC-017",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 3
+        },
+        {
+          "case": "TC-018",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 4
+        },
+        {
+          "case": "TC-019",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 5
+        },
+        {
+          "case": "TC-020",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 6
+        }
+      ]
+    },
+    {
+      "id": "FAMILY:SCN-003",
+      "kind": "FUNCTIONAL",
+      "label": "SCN-003",
+      "identifier": null,
+      "flow_reference": null,
+      "order_source": "CANONICAL_ORDER",
+      "members": [
+        {
+          "case": "TC-009",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 1
+        },
+        {
+          "case": "TC-010",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 2
+        },
+        {
+          "case": "TC-021",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 3
+        },
+        {
+          "case": "TC-022",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 4
+        },
+        {
+          "case": "TC-028",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 5
+        },
+        {
+          "case": "TC-029",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 6
+        },
+        {
+          "case": "TC-032",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 7
+        }
+      ]
+    },
+    {
+      "id": "FAMILY:SCN-004",
+      "kind": "FUNCTIONAL",
+      "label": "SCN-004",
+      "identifier": null,
+      "flow_reference": null,
+      "order_source": "CANONICAL_ORDER",
+      "members": [
+        {
+          "case": "TC-011",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 1
+        },
+        {
+          "case": "TC-012",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 2
+        },
+        {
+          "case": "TC-025",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 3
+        },
+        {
+          "case": "TC-034",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 4
+        },
+        {
+          "case": "TC-043",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "FAMILY:SCN-005",
+      "kind": "FUNCTIONAL",
+      "label": "SCN-005",
+      "identifier": null,
+      "flow_reference": null,
+      "order_source": "CANONICAL_ORDER",
+      "members": [
+        {
+          "case": "TC-013",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 1
+        },
+        {
+          "case": "TC-016",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 2
+        },
+        {
+          "case": "TC-035",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 3
+        },
+        {
+          "case": "TC-036",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 4
+        },
+        {
+          "case": "TC-038",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 5
+        },
+        {
+          "case": "TC-039",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 6
+        }
+      ]
+    },
+    {
+      "id": "FAMILY:SCN-006",
+      "kind": "FUNCTIONAL",
+      "label": "SCN-006",
+      "identifier": null,
+      "flow_reference": null,
+      "order_source": "CANONICAL_ORDER",
+      "members": [
+        {
+          "case": "TC-014",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 1
+        },
+        {
+          "case": "TC-024",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 2
+        },
+        {
+          "case": "TC-042",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 3
+        },
+        {
+          "case": "TC-045",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 4
+        },
+        {
+          "case": "TC-046",
+          "origin": "CANONICAL",
+          "via": "FAMILY",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "E2E",
+      "kind": "EXECUTION_VIEW",
+      "label": "Casos de uso ponta a ponta (E2E)",
+      "identifier": null,
+      "flow_reference": null,
+      "order_source": "EXECUTION_ORDER",
+      "members": [
+        {
+          "case": "TC-047",
+          "origin": "CANONICAL",
+          "via": "BASIS",
+          "order": 1
+        },
+        {
+          "case": "TC-048",
+          "origin": "CANONICAL",
+          "via": "BASIS",
+          "order": 2
+        }
+      ]
+    },
+    {
+      "id": "LOAD_CONCURRENCY",
+      "kind": "EXECUTION_VIEW",
+      "label": "Carga e concorrência",
+      "identifier": null,
+      "flow_reference": null,
+      "order_source": "EXECUTION_ORDER",
+      "members": [
+        {
+          "case": "TC-031",
+          "origin": "CANONICAL",
+          "via": "CATEGORY",
+          "order": 1
+        },
+        {
+          "case": "TC-032",
+          "origin": "CANONICAL",
+          "via": "CATEGORY",
+          "order": 2
+        }
+      ]
+    },
+    {
+      "id": "PHYSICAL_DEVICE",
+      "kind": "EXECUTION_VIEW",
+      "label": "Físicos / dispositivos",
+      "identifier": null,
+      "flow_reference": null,
+      "order_source": "EXECUTION_ORDER",
+      "members": [
+        {
+          "case": "TC-013",
+          "origin": "CANONICAL",
+          "via": "CATEGORY",
+          "order": 1
+        },
+        {
+          "case": "TC-016",
+          "origin": "CANONICAL",
+          "via": "CATEGORY",
+          "order": 2
+        },
+        {
+          "case": "TC-035",
+          "origin": "CANONICAL",
+          "via": "CATEGORY",
+          "order": 3
+        },
+        {
+          "case": "TC-036",
+          "origin": "CANONICAL",
+          "via": "CATEGORY",
+          "order": 4
+        },
+        {
+          "case": "TC-039",
+          "origin": "CANONICAL",
+          "via": "CATEGORY",
+          "order": 5
+        },
+        {
+          "case": "TC-048",
+          "origin": "CANONICAL",
+          "via": "CATEGORY",
+          "order": 6
+        }
+      ]
+    },
+    {
+      "id": "CHAOS_RESILIENCE",
+      "kind": "EXECUTION_VIEW",
+      "label": "Chaos / resiliência",
+      "identifier": null,
+      "flow_reference": null,
+      "order_source": "EXECUTION_ORDER",
+      "members": [
+        {
+          "case": "TC-037",
+          "origin": "CANONICAL",
+          "via": "CATEGORY",
+          "order": 1
+        },
+        {
+          "case": "TC-041",
+          "origin": "CANONICAL",
+          "via": "CATEGORY",
+          "order": 2
+        },
+        {
+          "case": "TC-038",
+          "origin": "CANONICAL",
+          "via": "CATEGORY",
+          "order": 3
+        }
+      ]
+    }
+  ],
+  "memberships": {
+    "TC-001": [
+      {
+        "group": "FAMILY:SCN-001",
+        "order": 1
+      }
+    ],
+    "TC-002": [
+      {
+        "group": "FAMILY:SCN-001",
+        "order": 2
+      }
+    ],
+    "TC-003": [
+      {
+        "group": "FAMILY:SCN-001",
+        "order": 3
+      }
+    ],
+    "TC-004": [
+      {
+        "group": "FAMILY:SCN-001",
+        "order": 4
+      }
+    ],
+    "TC-005": [
+      {
+        "group": "FAMILY:SCN-001",
+        "order": 5
+      }
+    ],
+    "TC-006": [
+      {
+        "group": "FAMILY:SCN-001",
+        "order": 6
+      }
+    ],
+    "TC-015": [
+      {
+        "group": "FAMILY:SCN-001",
+        "order": 7
+      }
+    ],
+    "TC-023": [
+      {
+        "group": "FAMILY:SCN-001",
+        "order": 8
+      }
+    ],
+    "TC-026": [
+      {
+        "group": "FAMILY:SCN-001",
+        "order": 9
+      }
+    ],
+    "TC-027": [
+      {
+        "group": "FAMILY:SCN-001",
+        "order": 10
+      }
+    ],
+    "TC-030": [
+      {
+        "group": "FAMILY:SCN-001",
+        "order": 11
+      }
+    ],
+    "TC-031": [
+      {
+        "group": "FAMILY:SCN-001",
+        "order": 12
+      },
+      {
+        "group": "LOAD_CONCURRENCY",
+        "order": 1
+      }
+    ],
+    "TC-033": [
+      {
+        "group": "FAMILY:SCN-001",
+        "order": 13
+      }
+    ],
+    "TC-037": [
+      {
+        "group": "FAMILY:SCN-001",
+        "order": 14
+      },
+      {
+        "group": "CHAOS_RESILIENCE",
+        "order": 1
+      }
+    ],
+    "TC-040": [
+      {
+        "group": "FAMILY:SCN-001",
+        "order": 15
+      }
+    ],
+    "TC-041": [
+      {
+        "group": "FAMILY:SCN-001",
+        "order": 16
+      },
+      {
+        "group": "CHAOS_RESILIENCE",
+        "order": 2
+      }
+    ],
+    "TC-044": [
+      {
+        "group": "FAMILY:SCN-001",
+        "order": 17
+      }
+    ],
+    "TC-007": [
+      {
+        "group": "FAMILY:SCN-002",
+        "order": 1
+      }
+    ],
+    "TC-008": [
+      {
+        "group": "FAMILY:SCN-002",
+        "order": 2
+      }
+    ],
+    "TC-017": [
+      {
+        "group": "FAMILY:SCN-002",
+        "order": 3
+      }
+    ],
+    "TC-018": [
+      {
+        "group": "FAMILY:SCN-002",
+        "order": 4
+      }
+    ],
+    "TC-019": [
+      {
+        "group": "FAMILY:SCN-002",
+        "order": 5
+      }
+    ],
+    "TC-020": [
+      {
+        "group": "FAMILY:SCN-002",
+        "order": 6
+      }
+    ],
+    "TC-009": [
+      {
+        "group": "FAMILY:SCN-003",
+        "order": 1
+      }
+    ],
+    "TC-010": [
+      {
+        "group": "FAMILY:SCN-003",
+        "order": 2
+      }
+    ],
+    "TC-021": [
+      {
+        "group": "FAMILY:SCN-003",
+        "order": 3
+      }
+    ],
+    "TC-022": [
+      {
+        "group": "FAMILY:SCN-003",
+        "order": 4
+      }
+    ],
+    "TC-028": [
+      {
+        "group": "FAMILY:SCN-003",
+        "order": 5
+      }
+    ],
+    "TC-029": [
+      {
+        "group": "FAMILY:SCN-003",
+        "order": 6
+      }
+    ],
+    "TC-032": [
+      {
+        "group": "FAMILY:SCN-003",
+        "order": 7
+      },
+      {
+        "group": "LOAD_CONCURRENCY",
+        "order": 2
+      }
+    ],
+    "TC-011": [
+      {
+        "group": "FAMILY:SCN-004",
+        "order": 1
+      }
+    ],
+    "TC-012": [
+      {
+        "group": "FAMILY:SCN-004",
+        "order": 2
+      }
+    ],
+    "TC-025": [
+      {
+        "group": "FAMILY:SCN-004",
+        "order": 3
+      }
+    ],
+    "TC-034": [
+      {
+        "group": "FAMILY:SCN-004",
+        "order": 4
+      }
+    ],
+    "TC-043": [
+      {
+        "group": "FAMILY:SCN-004",
+        "order": 5
+      }
+    ],
+    "TC-013": [
+      {
+        "group": "FAMILY:SCN-005",
+        "order": 1
+      },
+      {
+        "group": "PHYSICAL_DEVICE",
+        "order": 1
+      }
+    ],
+    "TC-016": [
+      {
+        "group": "FAMILY:SCN-005",
+        "order": 2
+      },
+      {
+        "group": "PHYSICAL_DEVICE",
+        "order": 2
+      }
+    ],
+    "TC-035": [
+      {
+        "group": "FAMILY:SCN-005",
+        "order": 3
+      },
+      {
+        "group": "PHYSICAL_DEVICE",
+        "order": 3
+      }
+    ],
+    "TC-036": [
+      {
+        "group": "FAMILY:SCN-005",
+        "order": 4
+      },
+      {
+        "group": "PHYSICAL_DEVICE",
+        "order": 4
+      }
+    ],
+    "TC-038": [
+      {
+        "group": "FAMILY:SCN-005",
+        "order": 5
+      },
+      {
+        "group": "CHAOS_RESILIENCE",
+        "order": 3
+      }
+    ],
+    "TC-039": [
+      {
+        "group": "FAMILY:SCN-005",
+        "order": 6
+      },
+      {
+        "group": "PHYSICAL_DEVICE",
+        "order": 5
+      }
+    ],
+    "TC-014": [
+      {
+        "group": "FAMILY:SCN-006",
+        "order": 1
+      }
+    ],
+    "TC-024": [
+      {
+        "group": "FAMILY:SCN-006",
+        "order": 2
+      }
+    ],
+    "TC-042": [
+      {
+        "group": "FAMILY:SCN-006",
+        "order": 3
+      }
+    ],
+    "TC-045": [
+      {
+        "group": "FAMILY:SCN-006",
+        "order": 4
+      }
+    ],
+    "TC-046": [
+      {
+        "group": "FAMILY:SCN-006",
+        "order": 5
+      }
+    ],
+    "TC-047": [
+      {
+        "group": "E2E",
+        "order": 1
+      }
+    ],
+    "TC-048": [
+      {
+        "group": "E2E",
+        "order": 2
+      },
+      {
+        "group": "PHYSICAL_DEVICE",
+        "order": 6
+      }
+    ]
+  },
+  "diagnostics": {
+    "canonical_cases": 48,
+    "post_suite_cases": 0,
+    "groups": 6,
+    "execution_views": 4,
+    "placements": 59,
+    "multi_membership_cases": 11,
+    "cloned_cases": 0
+  },
+  "post_suite_runs": [],
+  "post_suite_cases": []
+}

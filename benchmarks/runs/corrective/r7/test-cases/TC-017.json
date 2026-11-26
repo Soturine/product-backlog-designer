@@ -1,0 +1,87 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-017",
+  "title": "Aceitar o primeiro bloco da janela, das 7h às 8h",
+  "status": "READY",
+  "priority": "HIGH",
+  "type": "BOUNDARY",
+  "objective": "Verificar o limite inferior da janela de reservas.",
+  "requirement_refs": [
+    "REQ-002"
+  ],
+  "scenario_refs": [
+    "SCN-002"
+  ],
+  "coverage_point_refs": [
+    "CP-007"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7): entre 7h e 22h"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta e sem reservas futuras",
+    "QUADRA_FUTSAL_A está livre das 7h às 8h de uma data futura"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio ativo sem reservas futuras"
+    },
+    {
+      "name": "QUADRA_FUTSAL_A",
+      "description": "quadra de futsal livre das 7h às 8h"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A reserva o bloco das 7h às 8h de QUADRA_FUTSAL_A e confirma.",
+      "expected_result": "O aplicativo conclui a reserva do primeiro bloco do dia.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A abre a lista das suas reservas.",
+      "expected_result": "A reserva das 7h às 8h é criada e consta como ativa.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "Reserva ativa das 7h às 8h"
+  ],
+  "cleanup": [
+    "Cancelar a reserva"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "MISSING_SELECTOR: Telas e rótulos não constam do PRD."
+  ],
+  "test_basis": "DERIVED",
+  "primary_type": "BOUNDARY",
+  "secondary_tags": [],
+  "execution_status": "READY",
+  "question_refs": [],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "PLAYWRIGHT",
+  "deterministic": true,
+  "priority_reason": "Erro de uma hora no limite exclui ou admite horários indevidos.",
+  "automation_suitability": "HIGH",
+  "automation_readiness": "NEEDS_SELECTOR",
+  "readiness_blockers": [
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "limite inferior da janela",
+  "source_identifiers": [],
+  "expansion_dimension": "BOUNDARY"
+}

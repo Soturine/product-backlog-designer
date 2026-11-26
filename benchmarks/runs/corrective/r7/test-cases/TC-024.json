@@ -1,0 +1,88 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-024",
+  "title": "Agenda do dia de quadra sem reservas aparece vazia",
+  "status": "NEEDS_REVIEW",
+  "priority": "MEDIUM",
+  "type": "BOUNDARY",
+  "objective": "Verificar que cada quadra tem agenda, mesmo sem reservas no dia.",
+  "requirement_refs": [
+    "REQ-006"
+  ],
+  "scenario_refs": [
+    "SCN-006"
+  ],
+  "coverage_point_refs": [
+    "CP-017"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 5 (linha 11)"
+    }
+  ],
+  "preconditions": [
+    "RECEPCAO_A é usuário da recepção com acesso ao aplicativo",
+    "QUADRA_TENIS_A tem reservas no dia",
+    "QUADRA_FUTSAL_B não tem nenhuma reserva no mesmo dia"
+  ],
+  "test_data": [
+    {
+      "name": "RECEPCAO_A",
+      "description": "usuário da recepção com sessão aberta"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis com reservas no dia"
+    },
+    {
+      "name": "QUADRA_FUTSAL_B",
+      "description": "quadra de futsal sem reservas no dia"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, RECEPCAO_A abre a agenda do dia.",
+      "expected_result": "A agenda do dia lista QUADRA_TENIS_A e QUADRA_FUTSAL_B.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "RECEPCAO_A observa a agenda de QUADRA_FUTSAL_B.",
+      "expected_result": "QUADRA_FUTSAL_B aparece com a agenda do dia vazia, ao lado de QUADRA_TENIS_A, que tem reservas.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [],
+  "cleanup": [],
+  "state_contract": "REQUIRES_FIXTURE_RESET",
+  "tags": [],
+  "notes": [
+    "UNRESOLVED_PERMISSION: O perfil de acesso da recepção não está descrito.",
+    "MISSING_SELECTOR: A tela de agenda não está descrita."
+  ],
+  "test_basis": "DERIVED",
+  "primary_type": "BOUNDARY",
+  "secondary_tags": [],
+  "execution_status": "NEEDS_REVIEW",
+  "question_refs": [
+    "Q-009"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "PLAYWRIGHT",
+  "deterministic": true,
+  "priority_reason": "Quadra livre omitida da agenda confunde a recepção.",
+  "automation_suitability": "MEDIUM",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "UNRESOLVED_PERMISSION",
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "agenda sem reservas",
+  "source_identifiers": [],
+  "expansion_dimension": "BOUNDARY"
+}

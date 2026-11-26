@@ -1,0 +1,460 @@
+{
+  "backlog_digest": "sha256:dcf5dbb35beefdc095599e55ca7dc6cdee05c9199d919347f45171d05985d3b8",
+  "checks": {
+    "cross_team_dependencies": [],
+    "cycles": [],
+    "external_blockers": [],
+    "invalid_relations": [],
+    "not_ready": [
+      {
+        "item": "PBD-STORY-4EWDDBCKYQJW",
+        "reason": "blocked by ['PBD-Q-C2JMP86KF60D']: Sem a documentação da API do fornecedor não há contrato de integração para implementar."
+      },
+      {
+        "item": "PBD-TASK-5WXXY9D3SK6J",
+        "reason": "blocked by ['PBD-Q-C2JMP86KF60D']: Não há documentação da API do fornecedor."
+      },
+      {
+        "item": "PBD-TASK-RQMNRV5S88MB",
+        "reason": "blocked by ['PBD-Q-G2KAAP9NXDEP']: O valor da antecedência mínima ainda não foi definido."
+      }
+    ],
+    "unknown_estimates": [
+      "PBD-STORY-4X88S366NF8G",
+      "PBD-TASK-9VA5GAQ2325G",
+      "PBD-TASK-Z3N04AENGRMH",
+      "PBD-TASK-MGTQV3XG91HS",
+      "PBD-STORY-BXMPBBR7YK7S",
+      "PBD-TASK-19PG31SNXTC6",
+      "PBD-TASK-RQMNRV5S88MB",
+      "PBD-STORY-4EWDDBCKYQJW",
+      "PBD-TASK-5WXXY9D3SK6J",
+      "PBD-STORY-Y4VZXDY0KX4H",
+      "PBD-TASK-BA4TXN7R3R6H"
+    ],
+    "zero_estimates": []
+  },
+  "committed": false,
+  "input_digest": "sha256:5d16dc6f96286b1efc587d5caf4f931dad72ea044b340964ab0b6f252e603c2e",
+  "inputs": {
+    "calendar": null,
+    "capacity": null,
+    "technique": "none",
+    "unit": "story_points",
+    "use_proposed_estimates": false
+  },
+  "kind": "pbd.sprint-plan",
+  "notes": [],
+  "scenarios": [],
+  "score_missing_inputs": {},
+  "sequence": [
+    {
+      "backlog_position": 3,
+      "effort": null,
+      "item": "PBD-STORY-4X88S366NF8G",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "readiness": "ready",
+      "score": null,
+      "title": "Reservar uma quadra livre em bloco de 1 hora",
+      "type": "story",
+      "waits_for": []
+    },
+    {
+      "backlog_position": 4,
+      "effort": null,
+      "item": "PBD-TASK-9VA5GAQ2325G",
+      "priority": null,
+      "provenance": {
+        "effort": "only original_estimate given (units are not converted)",
+        "priority": "absent"
+      },
+      "readiness": "ready",
+      "score": null,
+      "title": "Implementar a criação de reserva em bloco de 1 hora para quadra livre",
+      "type": "task",
+      "waits_for": []
+    },
+    {
+      "backlog_position": 5,
+      "effort": null,
+      "item": "PBD-TASK-Z3N04AENGRMH",
+      "priority": null,
+      "provenance": {
+        "effort": "only original_estimate given (units are not converted)",
+        "priority": "absent"
+      },
+      "readiness": "ready",
+      "score": null,
+      "title": "Impedir a terceira reserva futura simultânea do sócio",
+      "type": "task",
+      "waits_for": []
+    },
+    {
+      "backlog_position": 6,
+      "effort": null,
+      "item": "PBD-TASK-MGTQV3XG91HS",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "readiness": "ready",
+      "score": null,
+      "title": "Restringir a reserva à janela de horário do clube",
+      "type": "task",
+      "waits_for": []
+    },
+    {
+      "backlog_position": 8,
+      "effort": null,
+      "item": "PBD-STORY-BXMPBBR7YK7S",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "readiness": "partial",
+      "score": null,
+      "title": "Cancelar uma reserva",
+      "type": "story",
+      "waits_for": [
+        "PBD-STORY-4X88S366NF8G"
+      ]
+    },
+    {
+      "backlog_position": 9,
+      "effort": null,
+      "item": "PBD-TASK-19PG31SNXTC6",
+      "priority": null,
+      "provenance": {
+        "effort": "only original_estimate given (units are not converted)",
+        "priority": "absent"
+      },
+      "readiness": "ready",
+      "score": null,
+      "title": "Implementar o cancelamento de reserva pelo sócio",
+      "type": "task",
+      "waits_for": []
+    },
+    {
+      "backlog_position": 10,
+      "effort": null,
+      "item": "PBD-TASK-RQMNRV5S88MB",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "readiness": "blocked",
+      "score": null,
+      "title": "Validar a antecedência mínima para cancelar",
+      "type": "task",
+      "waits_for": []
+    },
+    {
+      "backlog_position": 12,
+      "effort": null,
+      "item": "PBD-STORY-4EWDDBCKYQJW",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "readiness": "blocked",
+      "score": null,
+      "title": "Entrar pela catraca usando a reserva",
+      "type": "story",
+      "waits_for": [
+        "PBD-STORY-4X88S366NF8G"
+      ]
+    },
+    {
+      "backlog_position": 13,
+      "effort": null,
+      "item": "PBD-TASK-5WXXY9D3SK6J",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "readiness": "blocked",
+      "score": null,
+      "title": "Integrar a liberação da catraca com a reserva do sócio",
+      "type": "task",
+      "waits_for": []
+    },
+    {
+      "backlog_position": 15,
+      "effort": null,
+      "item": "PBD-STORY-Y4VZXDY0KX4H",
+      "priority": null,
+      "provenance": {
+        "effort": "absent",
+        "priority": "absent"
+      },
+      "readiness": "ready",
+      "score": null,
+      "title": "Consultar a agenda do dia de cada quadra",
+      "type": "story",
+      "waits_for": [
+        "PBD-STORY-4X88S366NF8G"
+      ]
+    },
+    {
+      "backlog_position": 16,
+      "effort": null,
+      "item": "PBD-TASK-BA4TXN7R3R6H",
+      "priority": null,
+      "provenance": {
+        "effort": "only original_estimate given (units are not converted)",
+        "priority": "absent"
+      },
+      "readiness": "ready",
+      "score": null,
+      "title": "Implementar a visão diária de agenda por quadra",
+      "type": "task",
+      "waits_for": []
+    }
+  ],
+  "sprints": null,
+  "status": "proposal",
+  "team_plan": {
+    "actual_source": null,
+    "assessments": {},
+    "g10": {
+      "reason": "capacity cannot be verified: unknown estimates, unit mismatches or unknown capacity for ['dev-b']",
+      "status": "BLOCKED"
+    },
+    "members": [
+      {
+        "capacity": {
+          "per_sprint": 30,
+          "unit": "hours"
+        },
+        "id": "dev-a",
+        "skills": [
+          "backend"
+        ]
+      },
+      {
+        "capacity": {
+          "per_sprint": {
+            "1": 30,
+            "2": 20
+          },
+          "unit": "hours"
+        },
+        "id": "dev-b",
+        "skills": [
+          "frontend",
+          "qa"
+        ]
+      }
+    ],
+    "mode": "story_owner",
+    "notes": [],
+    "people": [
+      {
+        "capacity": 30.0,
+        "counted": [
+          "PBD-TASK-9VA5GAQ2325G",
+          "PBD-TASK-Z3N04AENGRMH"
+        ],
+        "load": 10.0,
+        "member": "dev-a",
+        "remaining": 20.0,
+        "sprint": 1,
+        "unit": "hours",
+        "unit_mismatch": [],
+        "unknown_estimates": []
+      },
+      {
+        "capacity": 30.0,
+        "counted": [],
+        "load": null,
+        "member": "dev-b",
+        "remaining": null,
+        "sprint": 1,
+        "unit": "hours",
+        "unit_mismatch": [],
+        "unknown_estimates": [
+          "PBD-TASK-MGTQV3XG91HS"
+        ]
+      },
+      {
+        "capacity": 30.0,
+        "counted": [
+          "PBD-TASK-19PG31SNXTC6"
+        ],
+        "load": 3.0,
+        "member": "dev-a",
+        "remaining": 27.0,
+        "sprint": 2,
+        "unit": "hours",
+        "unit_mismatch": [],
+        "unknown_estimates": []
+      },
+      {
+        "capacity": 20.0,
+        "counted": [
+          "PBD-TASK-BA4TXN7R3R6H"
+        ],
+        "load": 5.0,
+        "member": "dev-b",
+        "remaining": 15.0,
+        "sprint": 2,
+        "unit": "hours",
+        "unit_mismatch": [],
+        "unknown_estimates": []
+      }
+    ],
+    "sprints": [
+      {
+        "goal": "Reserva de quadra",
+        "index": 1,
+        "stories": [
+          "PBD-STORY-4X88S366NF8G"
+        ],
+        "working_days": 5
+      },
+      {
+        "goal": "Cancelamento e agenda",
+        "index": 2,
+        "stories": [
+          "PBD-STORY-BXMPBBR7YK7S",
+          "PBD-STORY-Y4VZXDY0KX4H"
+        ],
+        "working_days": 5
+      }
+    ],
+    "stories": [
+      {
+        "actual_owner": null,
+        "owner": "dev-a",
+        "owner_provenance": "proposed",
+        "rationale": "Predecessora de cancelamento e agenda; vai primeiro.",
+        "sprint": 1,
+        "story": "PBD-STORY-4X88S366NF8G",
+        "story_points": null,
+        "story_points_provenance": "absent",
+        "tasks": [
+          {
+            "actual_assignee": null,
+            "assignee": "dev-a",
+            "assignee_provenance": "proposed",
+            "estimate_hours": 6,
+            "estimate_provenance": "planning_input",
+            "sprint": 1,
+            "task": "PBD-TASK-9VA5GAQ2325G"
+          },
+          {
+            "actual_assignee": null,
+            "assignee": "dev-a",
+            "assignee_provenance": "proposed",
+            "estimate_hours": 4,
+            "estimate_provenance": "planning_input",
+            "sprint": 1,
+            "task": "PBD-TASK-Z3N04AENGRMH"
+          },
+          {
+            "actual_assignee": null,
+            "assignee": "dev-b",
+            "assignee_provenance": "proposed",
+            "collaborator": true,
+            "estimate_hours": null,
+            "estimate_provenance": "absent",
+            "sprint": 1,
+            "task": "PBD-TASK-MGTQV3XG91HS"
+          }
+        ]
+      },
+      {
+        "actual_owner": null,
+        "owner": "dev-a",
+        "owner_provenance": "proposed",
+        "rationale": "Depende da reserva; sprint 2.",
+        "sprint": 2,
+        "story": "PBD-STORY-BXMPBBR7YK7S",
+        "story_points": null,
+        "story_points_provenance": "absent",
+        "tasks": [
+          {
+            "actual_assignee": null,
+            "assignee": "dev-a",
+            "assignee_provenance": "proposed",
+            "estimate_hours": 3,
+            "estimate_provenance": "planning_input",
+            "sprint": 2,
+            "task": "PBD-TASK-19PG31SNXTC6"
+          },
+          {
+            "actual_assignee": null,
+            "assignee": null,
+            "assignee_provenance": "none",
+            "estimate_hours": null,
+            "estimate_provenance": "absent",
+            "sprint": 2,
+            "task": "PBD-TASK-RQMNRV5S88MB"
+          }
+        ]
+      },
+      {
+        "actual_owner": null,
+        "owner": null,
+        "owner_provenance": "none",
+        "rationale": null,
+        "sprint": null,
+        "story": "PBD-STORY-4EWDDBCKYQJW",
+        "story_points": null,
+        "story_points_provenance": "absent",
+        "tasks": [
+          {
+            "actual_assignee": null,
+            "assignee": null,
+            "assignee_provenance": "none",
+            "estimate_hours": null,
+            "estimate_provenance": "absent",
+            "sprint": null,
+            "task": "PBD-TASK-5WXXY9D3SK6J"
+          }
+        ]
+      },
+      {
+        "actual_owner": null,
+        "owner": "dev-b",
+        "owner_provenance": "proposed",
+        "rationale": "Depende da reserva; frontend; sprint 2.",
+        "sprint": 2,
+        "story": "PBD-STORY-Y4VZXDY0KX4H",
+        "story_points": null,
+        "story_points_provenance": "absent",
+        "tasks": [
+          {
+            "actual_assignee": null,
+            "assignee": "dev-b",
+            "assignee_provenance": "proposed",
+            "estimate_hours": 5,
+            "estimate_provenance": "planning_input",
+            "sprint": 2,
+            "task": "PBD-TASK-BA4TXN7R3R6H"
+          }
+        ]
+      }
+    ],
+    "unallocated": [
+      {
+        "item": "PBD-STORY-4EWDDBCKYQJW",
+        "reason": "blocked by ['PBD-Q-C2JMP86KF60D']: Sem a documentação da API do fornecedor não há contrato de integração para implementar."
+      }
+    ],
+    "unassigned_tasks": [
+      "PBD-TASK-RQMNRV5S88MB"
+    ],
+    "violations": []
+  },
+  "unplanned": []
+}

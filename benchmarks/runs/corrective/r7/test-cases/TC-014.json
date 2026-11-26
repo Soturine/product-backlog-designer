@@ -1,0 +1,100 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-014",
+  "title": "Recepção vê a agenda do dia de cada quadra",
+  "status": "NEEDS_REVIEW",
+  "priority": "HIGH",
+  "type": "FUNCTIONAL",
+  "objective": "Confirmar que a recepção consulta a agenda do dia separada por quadra, com as reservas de cada uma.",
+  "requirement_refs": [
+    "REQ-006"
+  ],
+  "scenario_refs": [
+    "SCN-006"
+  ],
+  "coverage_point_refs": [
+    "CP-017"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 5 (linha 11)"
+    }
+  ],
+  "preconditions": [
+    "RECEPCAO_A é um usuário da recepção com acesso ao aplicativo",
+    "Existem reservas no mesmo dia: uma em QUADRA_TENIS_A às 9h e outra em QUADRA_FUTSAL_A às 20h"
+  ],
+  "test_data": [
+    {
+      "name": "RECEPCAO_A",
+      "description": "usuário da recepção com sessão aberta"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis com uma reserva às 9h"
+    },
+    {
+      "name": "QUADRA_FUTSAL_A",
+      "description": "quadra de futsal com uma reserva às 20h"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, RECEPCAO_A abre a agenda do dia.",
+      "expected_result": "A agenda do dia exibe QUADRA_TENIS_A e QUADRA_FUTSAL_A.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "RECEPCAO_A observa a agenda de QUADRA_TENIS_A e, depois, a de QUADRA_FUTSAL_A.",
+      "expected_result": "Cada quadra aparece com sua própria agenda do dia, listando apenas as reservas daquela quadra: a das 9h em tênis e a das 20h em futsal.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [],
+  "cleanup": [],
+  "state_contract": "REQUIRES_FIXTURE_RESET",
+  "tags": [],
+  "notes": [
+    "UNRESOLVED_PERMISSION: O PRD não diz como a recepção acessa o aplicativo nem seu perfil de acesso.",
+    "MISSING_SELECTOR: A tela de agenda não está descrita."
+  ],
+  "test_basis": "ACCEPTANCE",
+  "primary_type": "FUNCTIONAL",
+  "secondary_tags": [],
+  "execution_status": "NEEDS_REVIEW",
+  "question_refs": [
+    "Q-009"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "PLAYWRIGHT",
+  "deterministic": true,
+  "priority_reason": "A recepção opera o dia do clube a partir dessa agenda.",
+  "automation_suitability": "MEDIUM",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "UNRESOLVED_PERMISSION",
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "consulta da agenda por quadra",
+  "source_identifiers": [],
+  "claim_exercise_map": [
+    {
+      "claim_id": "CLAIM-017",
+      "coverage_point_id": "CP-017",
+      "test_case_id": "TC-014",
+      "step_refs": [
+        2
+      ],
+      "assertion_refs": [
+        "expected"
+      ],
+      "primary_type": "FUNCTIONAL"
+    }
+  ]
+}

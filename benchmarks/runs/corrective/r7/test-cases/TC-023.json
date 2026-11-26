@@ -1,0 +1,92 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-023",
+  "title": "Caracterizar pedido com início fora da hora cheia",
+  "status": "EXPLORATORY",
+  "priority": "MEDIUM",
+  "type": "BOUNDARY",
+  "objective": "Registrar como o aplicativo trata um bloco de 1 hora que começa às 10h30.",
+  "requirement_refs": [
+    "REQ-002"
+  ],
+  "scenario_refs": [
+    "SCN-001"
+  ],
+  "coverage_point_refs": [
+    "CP-006"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7): blocos de 1 hora"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta e sem reservas futuras",
+    "QUADRA_FUTSAL_A está livre das 10h às 12h de uma data futura",
+    "O PRD não define se o início do bloco precisa estar na hora cheia"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio ativo sem reservas futuras"
+    },
+    {
+      "name": "QUADRA_FUTSAL_A",
+      "description": "quadra de futsal livre das 10h às 12h"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A tenta reservar QUADRA_FUTSAL_A das 10h30 às 11h30 e registra a resposta recebida.",
+      "expected_result": "A resposta do aplicativo ao pedido fica registrada literalmente.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A consulta a disponibilidade de QUADRA_FUTSAL_A entre 10h e 12h e a lista das suas reservas.",
+      "expected_result": "A ocupação da quadra entre 10h e 12h fica coerente com a resposta recebida, sem sobreposição de reservas.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "Estado registrado"
+  ],
+  "cleanup": [
+    "Cancelar a reserva, se tiver sido criada"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "MISSING_ORACLE: Não está definido se início fora da hora cheia é permitido.",
+    "MISSING_EXECUTION_SURFACE: Não se sabe se o aplicativo permite escolher um início fora da hora cheia."
+  ],
+  "test_basis": "EXPLORATORY",
+  "primary_type": "BOUNDARY",
+  "secondary_tags": [],
+  "execution_status": "EXPLORATORY",
+  "question_refs": [
+    "Q-005"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": false,
+  "automation_layer": "UI",
+  "automation_tool_hint": "NONE",
+  "deterministic": false,
+  "priority_reason": "A regra de alinhamento é indefinida, mas blocos desalinhados poderiam sobrepor reservas.",
+  "automation_suitability": "LOW",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "MISSING_ORACLE",
+    "MISSING_EXECUTION_SURFACE"
+  ],
+  "failure_domain": "alinhamento do início do bloco",
+  "source_identifiers": [],
+  "expansion_dimension": "BOUNDARY"
+}

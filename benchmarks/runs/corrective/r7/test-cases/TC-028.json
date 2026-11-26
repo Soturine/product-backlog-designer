@@ -1,0 +1,100 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-028",
+  "title": "Limite de 2 vale somando tênis e futsal",
+  "status": "NEEDS_REVIEW",
+  "priority": "HIGH",
+  "type": "NEGATIVE",
+  "objective": "Verificar que o limite é por sócio e não por tipo de quadra.",
+  "requirement_refs": [
+    "REQ-003"
+  ],
+  "scenario_refs": [
+    "SCN-003"
+  ],
+  "coverage_point_refs": [
+    "CP-011"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 2 (linha 8)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta",
+    "SOCIO_A tem 1 reserva futura em QUADRA_TENIS_A e 1 em QUADRA_FUTSAL_A",
+    "QUADRA_TENIS_B está livre em BLOCO_21H de uma data futura"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio ativo com uma reserva de cada tipo de quadra"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis da primeira reserva"
+    },
+    {
+      "name": "QUADRA_FUTSAL_A",
+      "description": "quadra de futsal da segunda reserva"
+    },
+    {
+      "name": "QUADRA_TENIS_B",
+      "description": "outra quadra de tênis, livre em BLOCO_21H"
+    },
+    {
+      "name": "BLOCO_21H",
+      "description": "bloco das 21h às 22h de uma data futura"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A tenta reservar QUADRA_TENIS_B em BLOCO_21H e confirma.",
+      "expected_result": "O aplicativo não conclui a reserva em QUADRA_TENIS_B.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A confere a lista das suas reservas futuras.",
+      "expected_result": "A terceira reserva não é criada e o sócio continua com 2 reservas futuras, uma de cada tipo de quadra.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "SOCIO_A com 2 reservas futuras"
+  ],
+  "cleanup": [
+    "Cancelar as 2 reservas"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "AMBIGUOUS_POLICY: A mensagem de recusa não é definida.",
+    "MISSING_SELECTOR: Telas e rótulos não constam do PRD."
+  ],
+  "test_basis": "DERIVED",
+  "primary_type": "NEGATIVE",
+  "secondary_tags": [],
+  "execution_status": "NEEDS_REVIEW",
+  "question_refs": [
+    "Q-004"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "PLAYWRIGHT",
+  "deterministic": true,
+  "priority_reason": "Contar o limite por tipo de quadra permitiria até 4 reservas.",
+  "automation_suitability": "HIGH",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "AMBIGUOUS_POLICY",
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "contagem do limite entre tipos de quadra",
+  "source_identifiers": [],
+  "expansion_dimension": "MISUSE"
+}

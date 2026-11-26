@@ -1,0 +1,16 @@
+{
+  "applied": [
+    "R1"
+  ],
+  "base_digest": "sha256:6e7bc6cc3b9d09740d9325c50be3f8bdac96b6a8bc01a945c8279bff98db0c96",
+  "invalidated": [
+    "independent review",
+    "gates",
+    "plans and packages derived from the base backlog"
+  ],
+  "kind": "pbd.refinement-result",
+  "note": "Changed items are back to draft: run a new review/finalize before relying on gates.",
+  "plan_digest": "sha256:2c12913f3cbbff7aa4789fda142a4eee8d5e9272428dc5bdb2bf65a8425bd412",
+  "result_digest": "sha256:fff0e83bb4b8044d83fc76d8c27d7bf803aebce588b4b7424a18c33c441ff38e",
+  "skipped": []
+}

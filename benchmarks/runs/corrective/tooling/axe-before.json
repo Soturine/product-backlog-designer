@@ -1,0 +1,2018 @@
+[
+ {
+  "report": "readiness",
+  "theme": "light",
+  "width": 1280,
+  "view": "overview",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 7,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "a[data-view=\"backlog\"] > .count"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "a[href$=\"#integration\"] > .count"
+   ],
+   [
+    "p:nth-child(1) > span[data-i18n=\"header.local_only\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "readiness",
+  "theme": "light",
+  "width": 1280,
+  "view": "overview",
+  "id": "link-in-text-block",
+  "impact": "serious",
+  "nodes": 2,
+  "targets": [
+   [
+    "li:nth-child(1) > a[href$=\"#gate-G17\"]"
+   ],
+   [
+    "li:nth-child(2) > a[href$=\"#gate-G18\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  The link has insufficient color contrast of 1.7:1 with the surrounding text. (Minimum contrast is 3:1, link text: #4f46e5, surrounding text: #3d3d47)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+ },
+ {
+  "report": "readiness",
+  "theme": "light",
+  "width": 1280,
+  "view": "overview",
+  "id": "target-size",
+  "impact": "serious",
+  "nodes": 13,
+  "targets": [
+   [
+    "a[href$=\"#gate-G02\"]"
+   ],
+   [
+    "a[href$=\"#gate-G03\"]"
+   ],
+   [
+    "a[href$=\"#gate-G04\"]"
+   ],
+   [
+    "a[href$=\"#gate-G05\"]"
+   ],
+   [
+    ".mono[href$=\"#gate-G06\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Target has insufficient size (17.3px by 11px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 17.2px instead of at least 24px."
+ },
+ {
+  "report": "readiness",
+  "theme": "light",
+  "width": 1280,
+  "view": "backlog",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 28,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "a[data-view=\"backlog\"] > .count"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "a[href$=\"#integration\"] > .count"
+   ],
+   [
+    "p:nth-child(1) > span[data-i18n=\"header.local_only\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "readiness",
+  "theme": "light",
+  "width": 1280,
+  "view": "requirements",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 7,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "a[data-view=\"backlog\"] > .count"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "a[href$=\"#integration\"] > .count"
+   ],
+   [
+    "p:nth-child(1) > span[data-i18n=\"header.local_only\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "readiness",
+  "theme": "light",
+  "width": 1280,
+  "view": "requirements",
+  "id": "target-size",
+  "impact": "serious",
+  "nodes": 21,
+  "targets": [
+   [
+    "#ob-O-R3 > td:nth-child(5) > .mono[href$=\"#crit-PBD-AC-D4F58FHR3CW8\"]"
+   ],
+   [
+    "#ob-O-R3 > td:nth-child(5) > .mono[href$=\"#crit-PBD-AC-QTRHTFDYX77Z\"]"
+   ],
+   [
+    "#claim-C1 > td:nth-child(5) > .mono[href=\"#item-PBD-STORY-274KBTF4A97P\"]"
+   ],
+   [
+    "#claim-C1 > td:nth-child(5) > .mono[href$=\"#crit-PBD-AC-1MD9BF60K5AB\"]"
+   ],
+   [
+    "td:nth-child(5) > .mono[href=\"#item-PBD-TASK-2P12P5S7X8HZ\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Target has insufficient size (18.8px by 12px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 20.6px instead of at least 24px."
+ },
+ {
+  "report": "readiness",
+  "theme": "light",
+  "width": 1280,
+  "view": "findings",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 12,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "a[data-view=\"backlog\"] > .count"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "a[href$=\"#integration\"] > .count"
+   ],
+   [
+    "p:nth-child(1) > span[data-i18n=\"header.local_only\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "readiness",
+  "theme": "light",
+  "width": 1280,
+  "view": "quality",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 7,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "a[data-view=\"backlog\"] > .count"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "a[href$=\"#integration\"] > .count"
+   ],
+   [
+    "p:nth-child(1) > span[data-i18n=\"header.local_only\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "readiness",
+  "theme": "light",
+  "width": 1280,
+  "view": "sources",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 7,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "a[data-view=\"backlog\"] > .count"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "a[href$=\"#integration\"] > .count"
+   ],
+   [
+    "p:nth-child(1) > span[data-i18n=\"header.local_only\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "readiness",
+  "theme": "light",
+  "width": 1280,
+  "view": "integration",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 7,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "a[data-view=\"backlog\"] > .count"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "a[href$=\"#integration\"] > .count"
+   ],
+   [
+    "p:nth-child(1) > span[data-i18n=\"header.local_only\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "readiness",
+  "theme": "light",
+  "width": 1280,
+  "view": "data",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 7,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "a[data-view=\"backlog\"] > .count"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "a[href$=\"#integration\"] > .count"
+   ],
+   [
+    "p:nth-child(1) > span[data-i18n=\"header.local_only\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "readiness",
+  "theme": "light",
+  "width": 390,
+  "view": "overview",
+  "id": "link-in-text-block",
+  "impact": "serious",
+  "nodes": 2,
+  "targets": [
+   [
+    "li:nth-child(1) > a[href$=\"#gate-G17\"]"
+   ],
+   [
+    "li:nth-child(2) > a[href$=\"#gate-G18\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  The link has insufficient color contrast of 1.7:1 with the surrounding text. (Minimum contrast is 3:1, link text: #4f46e5, surrounding text: #3d3d47)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+ },
+ {
+  "report": "readiness",
+  "theme": "light",
+  "width": 390,
+  "view": "overview",
+  "id": "target-size",
+  "impact": "serious",
+  "nodes": 12,
+  "targets": [
+   [
+    "a[href$=\"#gate-G02\"]"
+   ],
+   [
+    "a[href$=\"#gate-G03\"]"
+   ],
+   [
+    "a[href$=\"#gate-G04\"]"
+   ],
+   [
+    "a[href$=\"#gate-G05\"]"
+   ],
+   [
+    ".mono[href$=\"#gate-G06\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Target has insufficient size (17.3px by 11px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 17.2px instead of at least 24px."
+ },
+ {
+  "report": "readiness",
+  "theme": "light",
+  "width": 390,
+  "view": "backlog",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 4,
+  "targets": [
+   [
+    "#item-PBD-EPIC-TR7HPM2D2HHX > .sec:nth-child(2) > h4 > span[data-i18n=\"it.description\"]"
+   ],
+   [
+    "#item-PBD-EPIC-TR7HPM2D2HHX > .sec:nth-child(3) > h4 > span[data-i18n=\"it.children\"]"
+   ],
+   [
+    "#item-PBD-EPIC-TR7HPM2D2HHX > .sec:nth-child(4) > h4 > span[data-i18n=\"it.trace\"]"
+   ],
+   [
+    "#item-PBD-EPIC-TR7HPM2D2HHX > .sec:nth-child(5) > h4 > span[data-i18n=\"it.review\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.78 (foreground color: #9a9aa5, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "readiness",
+  "theme": "light",
+  "width": 390,
+  "view": "requirements",
+  "id": "target-size",
+  "impact": "serious",
+  "nodes": 21,
+  "targets": [
+   [
+    "#ob-O-R3 > td:nth-child(5) > .mono[href$=\"#crit-PBD-AC-D4F58FHR3CW8\"]"
+   ],
+   [
+    "#ob-O-R3 > td:nth-child(5) > .mono[href$=\"#crit-PBD-AC-QTRHTFDYX77Z\"]"
+   ],
+   [
+    "#claim-C1 > td:nth-child(5) > .mono[href=\"#item-PBD-STORY-274KBTF4A97P\"]"
+   ],
+   [
+    "#claim-C1 > td:nth-child(5) > .mono[href$=\"#crit-PBD-AC-1MD9BF60K5AB\"]"
+   ],
+   [
+    "td:nth-child(5) > .mono[href=\"#item-PBD-TASK-2P12P5S7X8HZ\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Target has insufficient size (18.8px by 12px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 20.6px instead of at least 24px."
+ },
+ {
+  "report": "readiness",
+  "theme": "light",
+  "width": 390,
+  "view": "findings",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 5,
+  "targets": [
+   [
+    "span[data-i18n=\"fd.expected\"]"
+   ],
+   [
+    "span[data-i18n=\"fd.actual\"]"
+   ],
+   [
+    "span[data-i18n=\"fd.why\"]"
+   ],
+   [
+    "span[data-i18n=\"fd.impact\"]"
+   ],
+   [
+    "span[data-i18n=\"fd.recommendation\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.78 (foreground color: #9a9aa5, background color: #ffffff, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "readiness",
+  "theme": "dark",
+  "width": 1280,
+  "view": "overview",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 7,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "a[data-view=\"backlog\"] > .count"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "a[href$=\"#integration\"] > .count"
+   ],
+   [
+    "p:nth-child(1) > span[data-i18n=\"header.local_only\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "readiness",
+  "theme": "dark",
+  "width": 1280,
+  "view": "overview",
+  "id": "link-in-text-block",
+  "impact": "serious",
+  "nodes": 2,
+  "targets": [
+   [
+    "li:nth-child(1) > a[href$=\"#gate-G17\"]"
+   ],
+   [
+    "li:nth-child(2) > a[href$=\"#gate-G18\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  The link has insufficient color contrast of 1.79:1 with the surrounding text. (Minimum contrast is 3:1, link text: #8b85ff, surrounding text: #c6c6cf)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+ },
+ {
+  "report": "readiness",
+  "theme": "dark",
+  "width": 1280,
+  "view": "overview",
+  "id": "target-size",
+  "impact": "serious",
+  "nodes": 13,
+  "targets": [
+   [
+    "a[href$=\"#gate-G02\"]"
+   ],
+   [
+    "a[href$=\"#gate-G03\"]"
+   ],
+   [
+    "a[href$=\"#gate-G04\"]"
+   ],
+   [
+    "a[href$=\"#gate-G05\"]"
+   ],
+   [
+    ".mono[href$=\"#gate-G06\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Target has insufficient size (17.3px by 11px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 17.2px instead of at least 24px."
+ },
+ {
+  "report": "readiness",
+  "theme": "dark",
+  "width": 1280,
+  "view": "backlog",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 28,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "a[data-view=\"backlog\"] > .count"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "a[href$=\"#integration\"] > .count"
+   ],
+   [
+    "p:nth-child(1) > span[data-i18n=\"header.local_only\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "readiness",
+  "theme": "dark",
+  "width": 1280,
+  "view": "requirements",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 7,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "a[data-view=\"backlog\"] > .count"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "a[href$=\"#integration\"] > .count"
+   ],
+   [
+    "p:nth-child(1) > span[data-i18n=\"header.local_only\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "readiness",
+  "theme": "dark",
+  "width": 1280,
+  "view": "requirements",
+  "id": "target-size",
+  "impact": "serious",
+  "nodes": 21,
+  "targets": [
+   [
+    "#ob-O-R3 > td:nth-child(5) > .mono[href$=\"#crit-PBD-AC-D4F58FHR3CW8\"]"
+   ],
+   [
+    "#ob-O-R3 > td:nth-child(5) > .mono[href$=\"#crit-PBD-AC-QTRHTFDYX77Z\"]"
+   ],
+   [
+    "#claim-C1 > td:nth-child(5) > .mono[href=\"#item-PBD-STORY-274KBTF4A97P\"]"
+   ],
+   [
+    "#claim-C1 > td:nth-child(5) > .mono[href$=\"#crit-PBD-AC-1MD9BF60K5AB\"]"
+   ],
+   [
+    "td:nth-child(5) > .mono[href=\"#item-PBD-TASK-2P12P5S7X8HZ\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Target has insufficient size (18.8px by 12px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 20.6px instead of at least 24px."
+ },
+ {
+  "report": "readiness",
+  "theme": "dark",
+  "width": 1280,
+  "view": "findings",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 12,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "a[data-view=\"backlog\"] > .count"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "a[href$=\"#integration\"] > .count"
+   ],
+   [
+    "p:nth-child(1) > span[data-i18n=\"header.local_only\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "readiness",
+  "theme": "dark",
+  "width": 1280,
+  "view": "quality",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 7,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "a[data-view=\"backlog\"] > .count"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "a[href$=\"#integration\"] > .count"
+   ],
+   [
+    "p:nth-child(1) > span[data-i18n=\"header.local_only\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "readiness",
+  "theme": "dark",
+  "width": 1280,
+  "view": "sources",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 7,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "a[data-view=\"backlog\"] > .count"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "a[href$=\"#integration\"] > .count"
+   ],
+   [
+    "p:nth-child(1) > span[data-i18n=\"header.local_only\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "readiness",
+  "theme": "dark",
+  "width": 1280,
+  "view": "integration",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 7,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "a[data-view=\"backlog\"] > .count"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "a[href$=\"#integration\"] > .count"
+   ],
+   [
+    "p:nth-child(1) > span[data-i18n=\"header.local_only\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "readiness",
+  "theme": "dark",
+  "width": 1280,
+  "view": "data",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 7,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "a[data-view=\"backlog\"] > .count"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "a[href$=\"#integration\"] > .count"
+   ],
+   [
+    "p:nth-child(1) > span[data-i18n=\"header.local_only\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "readiness",
+  "theme": "dark",
+  "width": 390,
+  "view": "overview",
+  "id": "link-in-text-block",
+  "impact": "serious",
+  "nodes": 2,
+  "targets": [
+   [
+    "li:nth-child(1) > a[href$=\"#gate-G17\"]"
+   ],
+   [
+    "li:nth-child(2) > a[href$=\"#gate-G18\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  The link has insufficient color contrast of 1.79:1 with the surrounding text. (Minimum contrast is 3:1, link text: #8b85ff, surrounding text: #c6c6cf)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+ },
+ {
+  "report": "readiness",
+  "theme": "dark",
+  "width": 390,
+  "view": "overview",
+  "id": "target-size",
+  "impact": "serious",
+  "nodes": 12,
+  "targets": [
+   [
+    "a[href$=\"#gate-G02\"]"
+   ],
+   [
+    "a[href$=\"#gate-G03\"]"
+   ],
+   [
+    "a[href$=\"#gate-G04\"]"
+   ],
+   [
+    "a[href$=\"#gate-G05\"]"
+   ],
+   [
+    ".mono[href$=\"#gate-G06\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Target has insufficient size (17.3px by 11px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 17.2px instead of at least 24px."
+ },
+ {
+  "report": "readiness",
+  "theme": "dark",
+  "width": 390,
+  "view": "backlog",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 4,
+  "targets": [
+   [
+    "#item-PBD-EPIC-TR7HPM2D2HHX > .sec:nth-child(2) > h4 > span[data-i18n=\"it.description\"]"
+   ],
+   [
+    "#item-PBD-EPIC-TR7HPM2D2HHX > .sec:nth-child(3) > h4 > span[data-i18n=\"it.children\"]"
+   ],
+   [
+    "#item-PBD-EPIC-TR7HPM2D2HHX > .sec:nth-child(4) > h4 > span[data-i18n=\"it.trace\"]"
+   ],
+   [
+    "#item-PBD-EPIC-TR7HPM2D2HHX > .sec:nth-child(5) > h4 > span[data-i18n=\"it.review\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.7 (foreground color: #6f6f7a, background color: #141418, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "readiness",
+  "theme": "dark",
+  "width": 390,
+  "view": "requirements",
+  "id": "target-size",
+  "impact": "serious",
+  "nodes": 21,
+  "targets": [
+   [
+    "#ob-O-R3 > td:nth-child(5) > .mono[href$=\"#crit-PBD-AC-D4F58FHR3CW8\"]"
+   ],
+   [
+    "#ob-O-R3 > td:nth-child(5) > .mono[href$=\"#crit-PBD-AC-QTRHTFDYX77Z\"]"
+   ],
+   [
+    "#claim-C1 > td:nth-child(5) > .mono[href=\"#item-PBD-STORY-274KBTF4A97P\"]"
+   ],
+   [
+    "#claim-C1 > td:nth-child(5) > .mono[href$=\"#crit-PBD-AC-1MD9BF60K5AB\"]"
+   ],
+   [
+    "td:nth-child(5) > .mono[href=\"#item-PBD-TASK-2P12P5S7X8HZ\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Target has insufficient size (18.8px by 12px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 20.6px instead of at least 24px."
+ },
+ {
+  "report": "readiness",
+  "theme": "dark",
+  "width": 390,
+  "view": "findings",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 5,
+  "targets": [
+   [
+    "span[data-i18n=\"fd.expected\"]"
+   ],
+   [
+    "span[data-i18n=\"fd.actual\"]"
+   ],
+   [
+    "span[data-i18n=\"fd.why\"]"
+   ],
+   [
+    "span[data-i18n=\"fd.impact\"]"
+   ],
+   [
+    "span[data-i18n=\"fd.recommendation\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.7 (foreground color: #6f6f7a, background color: #141418, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "audit",
+  "theme": "light",
+  "width": 1280,
+  "view": "overview",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 5,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "audit",
+  "theme": "light",
+  "width": 1280,
+  "view": "overview",
+  "id": "link-in-text-block",
+  "impact": "serious",
+  "nodes": 1,
+  "targets": [
+   [
+    "li > a[href$=\"#gate-G18\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  The link has insufficient color contrast of 1.7:1 with the surrounding text. (Minimum contrast is 3:1, link text: #4f46e5, surrounding text: #3d3d47)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+ },
+ {
+  "report": "audit",
+  "theme": "light",
+  "width": 1280,
+  "view": "overview",
+  "id": "target-size",
+  "impact": "serious",
+  "nodes": 12,
+  "targets": [
+   [
+    "a[href$=\"#gate-G02\"]"
+   ],
+   [
+    "a[href$=\"#gate-G03\"]"
+   ],
+   [
+    "a[href$=\"#gate-G04\"]"
+   ],
+   [
+    "a[href$=\"#gate-G05\"]"
+   ],
+   [
+    "a[href$=\"#gate-G06\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Target has insufficient size (17.3px by 11px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 17.2px instead of at least 24px."
+ },
+ {
+  "report": "audit",
+  "theme": "light",
+  "width": 1280,
+  "view": "backlog",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 11,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "audit",
+  "theme": "light",
+  "width": 1280,
+  "view": "requirements",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 5,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "audit",
+  "theme": "light",
+  "width": 1280,
+  "view": "findings",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 15,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "audit",
+  "theme": "light",
+  "width": 1280,
+  "view": "quality",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 5,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "audit",
+  "theme": "light",
+  "width": 1280,
+  "view": "sources",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 5,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "audit",
+  "theme": "light",
+  "width": 1280,
+  "view": "data",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 5,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "audit",
+  "theme": "light",
+  "width": 390,
+  "view": "overview",
+  "id": "link-in-text-block",
+  "impact": "serious",
+  "nodes": 1,
+  "targets": [
+   [
+    "li > a[href$=\"#gate-G18\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  The link has insufficient color contrast of 1.7:1 with the surrounding text. (Minimum contrast is 3:1, link text: #4f46e5, surrounding text: #3d3d47)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+ },
+ {
+  "report": "audit",
+  "theme": "light",
+  "width": 390,
+  "view": "overview",
+  "id": "target-size",
+  "impact": "serious",
+  "nodes": 12,
+  "targets": [
+   [
+    "a[href$=\"#gate-G02\"]"
+   ],
+   [
+    "a[href$=\"#gate-G03\"]"
+   ],
+   [
+    "a[href$=\"#gate-G04\"]"
+   ],
+   [
+    "a[href$=\"#gate-G05\"]"
+   ],
+   [
+    "a[href$=\"#gate-G06\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Target has insufficient size (17.3px by 11px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 17.2px instead of at least 24px."
+ },
+ {
+  "report": "audit",
+  "theme": "light",
+  "width": 390,
+  "view": "backlog",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 3,
+  "targets": [
+   [
+    "span[data-i18n=\"it.children\"]"
+   ],
+   [
+    ".sec:nth-child(3) > h4 > span[data-i18n=\"it.trace\"]"
+   ],
+   [
+    ".sec:nth-child(4) > h4 > span[data-i18n=\"it.review\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.78 (foreground color: #9a9aa5, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "audit",
+  "theme": "light",
+  "width": 390,
+  "view": "requirements",
+  "id": "scrollable-region-focusable",
+  "impact": "serious",
+  "nodes": 1,
+  "targets": [
+   [
+    ".block:nth-child(3) > .panel > .tablewrap"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+ },
+ {
+  "report": "audit",
+  "theme": "light",
+  "width": 390,
+  "view": "findings",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 10,
+  "targets": [
+   [
+    "#f-PBD-FND-19TS31T1FRR7 > .ea > div:nth-child(1) > h5 > span[data-i18n=\"fd.expected\"]"
+   ],
+   [
+    "#f-PBD-FND-19TS31T1FRR7 > .ea > div:nth-child(2) > h5 > span[data-i18n=\"fd.actual\"]"
+   ],
+   [
+    "#f-PBD-FND-19TS31T1FRR7 > .more > div:nth-child(1) > h5 > span[data-i18n=\"fd.why\"]"
+   ],
+   [
+    "#f-PBD-FND-19TS31T1FRR7 > .more > div:nth-child(2) > h5 > span[data-i18n=\"fd.impact\"]"
+   ],
+   [
+    "#f-PBD-FND-19TS31T1FRR7 > .more > div:nth-child(3) > h5 > span[data-i18n=\"fd.recommendation\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.78 (foreground color: #9a9aa5, background color: #ffffff, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "audit",
+  "theme": "dark",
+  "width": 1280,
+  "view": "overview",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 5,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "audit",
+  "theme": "dark",
+  "width": 1280,
+  "view": "overview",
+  "id": "link-in-text-block",
+  "impact": "serious",
+  "nodes": 1,
+  "targets": [
+   [
+    "li > a[href$=\"#gate-G18\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  The link has insufficient color contrast of 1.79:1 with the surrounding text. (Minimum contrast is 3:1, link text: #8b85ff, surrounding text: #c6c6cf)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+ },
+ {
+  "report": "audit",
+  "theme": "dark",
+  "width": 1280,
+  "view": "overview",
+  "id": "target-size",
+  "impact": "serious",
+  "nodes": 12,
+  "targets": [
+   [
+    "a[href$=\"#gate-G02\"]"
+   ],
+   [
+    "a[href$=\"#gate-G03\"]"
+   ],
+   [
+    "a[href$=\"#gate-G04\"]"
+   ],
+   [
+    "a[href$=\"#gate-G05\"]"
+   ],
+   [
+    "a[href$=\"#gate-G06\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Target has insufficient size (17.3px by 11px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 17.2px instead of at least 24px."
+ },
+ {
+  "report": "audit",
+  "theme": "dark",
+  "width": 1280,
+  "view": "backlog",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 11,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "audit",
+  "theme": "dark",
+  "width": 1280,
+  "view": "requirements",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 5,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "audit",
+  "theme": "dark",
+  "width": 1280,
+  "view": "findings",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 15,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "audit",
+  "theme": "dark",
+  "width": 1280,
+  "view": "quality",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 5,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "audit",
+  "theme": "dark",
+  "width": 1280,
+  "view": "sources",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 5,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "audit",
+  "theme": "dark",
+  "width": 1280,
+  "view": "data",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 5,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "audit",
+  "theme": "dark",
+  "width": 390,
+  "view": "overview",
+  "id": "link-in-text-block",
+  "impact": "serious",
+  "nodes": 1,
+  "targets": [
+   [
+    "li > a[href$=\"#gate-G18\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  The link has insufficient color contrast of 1.79:1 with the surrounding text. (Minimum contrast is 3:1, link text: #8b85ff, surrounding text: #c6c6cf)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+ },
+ {
+  "report": "audit",
+  "theme": "dark",
+  "width": 390,
+  "view": "overview",
+  "id": "target-size",
+  "impact": "serious",
+  "nodes": 12,
+  "targets": [
+   [
+    "a[href$=\"#gate-G02\"]"
+   ],
+   [
+    "a[href$=\"#gate-G03\"]"
+   ],
+   [
+    "a[href$=\"#gate-G04\"]"
+   ],
+   [
+    "a[href$=\"#gate-G05\"]"
+   ],
+   [
+    "a[href$=\"#gate-G06\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Target has insufficient size (17.3px by 11px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 17.2px instead of at least 24px."
+ },
+ {
+  "report": "audit",
+  "theme": "dark",
+  "width": 390,
+  "view": "backlog",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 3,
+  "targets": [
+   [
+    "span[data-i18n=\"it.children\"]"
+   ],
+   [
+    ".sec:nth-child(3) > h4 > span[data-i18n=\"it.trace\"]"
+   ],
+   [
+    ".sec:nth-child(4) > h4 > span[data-i18n=\"it.review\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.7 (foreground color: #6f6f7a, background color: #141418, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "audit",
+  "theme": "dark",
+  "width": 390,
+  "view": "requirements",
+  "id": "scrollable-region-focusable",
+  "impact": "serious",
+  "nodes": 1,
+  "targets": [
+   [
+    ".block:nth-child(3) > .panel > .tablewrap"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+ },
+ {
+  "report": "audit",
+  "theme": "dark",
+  "width": 390,
+  "view": "findings",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 10,
+  "targets": [
+   [
+    "#f-PBD-FND-19TS31T1FRR7 > .ea > div:nth-child(1) > h5 > span[data-i18n=\"fd.expected\"]"
+   ],
+   [
+    "#f-PBD-FND-19TS31T1FRR7 > .ea > div:nth-child(2) > h5 > span[data-i18n=\"fd.actual\"]"
+   ],
+   [
+    "#f-PBD-FND-19TS31T1FRR7 > .more > div:nth-child(1) > h5 > span[data-i18n=\"fd.why\"]"
+   ],
+   [
+    "#f-PBD-FND-19TS31T1FRR7 > .more > div:nth-child(2) > h5 > span[data-i18n=\"fd.impact\"]"
+   ],
+   [
+    "#f-PBD-FND-19TS31T1FRR7 > .more > div:nth-child(3) > h5 > span[data-i18n=\"fd.recommendation\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.7 (foreground color: #6f6f7a, background color: #141418, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "compare",
+  "theme": "light",
+  "width": 1280,
+  "view": "overview",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 5,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "compare",
+  "theme": "light",
+  "width": 1280,
+  "view": "alignment",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 5,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "compare",
+  "theme": "light",
+  "width": 1280,
+  "view": "mappings",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 5,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "compare",
+  "theme": "light",
+  "width": 1280,
+  "view": "findings",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 15,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "compare",
+  "theme": "light",
+  "width": 1280,
+  "view": "data",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 5,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "compare",
+  "theme": "light",
+  "width": 390,
+  "view": "alignment",
+  "id": "scrollable-region-focusable",
+  "impact": "serious",
+  "nodes": 1,
+  "targets": [
+   [
+    "#alignment > .panel > .tablewrap"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+ },
+ {
+  "report": "compare",
+  "theme": "light",
+  "width": 390,
+  "view": "mappings",
+  "id": "scrollable-region-focusable",
+  "impact": "serious",
+  "nodes": 1,
+  "targets": [
+   [
+    "#mappings > .panel > .tablewrap"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+ },
+ {
+  "report": "compare",
+  "theme": "light",
+  "width": 390,
+  "view": "findings",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 10,
+  "targets": [
+   [
+    "#f-cmp-0 > .ea > div:nth-child(1) > h5 > span[data-i18n=\"fd.expected\"]"
+   ],
+   [
+    "#f-cmp-0 > .ea > div:nth-child(2) > h5 > span[data-i18n=\"fd.actual\"]"
+   ],
+   [
+    "#f-cmp-0 > .more > div:nth-child(1) > h5 > span[data-i18n=\"fd.why\"]"
+   ],
+   [
+    "#f-cmp-0 > .more > div:nth-child(2) > h5 > span[data-i18n=\"fd.impact\"]"
+   ],
+   [
+    "#f-cmp-0 > .more > div:nth-child(3) > h5 > span[data-i18n=\"fd.recommendation\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.78 (foreground color: #9a9aa5, background color: #ffffff, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "compare",
+  "theme": "dark",
+  "width": 1280,
+  "view": "overview",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 5,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "compare",
+  "theme": "dark",
+  "width": 1280,
+  "view": "alignment",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 5,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "compare",
+  "theme": "dark",
+  "width": 1280,
+  "view": "mappings",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 5,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "compare",
+  "theme": "dark",
+  "width": 1280,
+  "view": "findings",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 15,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "compare",
+  "theme": "dark",
+  "width": 1280,
+  "view": "data",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 5,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ],
+   [
+    "span[data-i18n=\"print.technical\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "compare",
+  "theme": "dark",
+  "width": 390,
+  "view": "alignment",
+  "id": "scrollable-region-focusable",
+  "impact": "serious",
+  "nodes": 1,
+  "targets": [
+   [
+    "#alignment > .panel > .tablewrap"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+ },
+ {
+  "report": "compare",
+  "theme": "dark",
+  "width": 390,
+  "view": "mappings",
+  "id": "scrollable-region-focusable",
+  "impact": "serious",
+  "nodes": 1,
+  "targets": [
+   [
+    "#mappings > .panel > .tablewrap"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+ },
+ {
+  "report": "compare",
+  "theme": "dark",
+  "width": 390,
+  "view": "findings",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 10,
+  "targets": [
+   [
+    "#f-cmp-0 > .ea > div:nth-child(1) > h5 > span[data-i18n=\"fd.expected\"]"
+   ],
+   [
+    "#f-cmp-0 > .ea > div:nth-child(2) > h5 > span[data-i18n=\"fd.actual\"]"
+   ],
+   [
+    "#f-cmp-0 > .more > div:nth-child(1) > h5 > span[data-i18n=\"fd.why\"]"
+   ],
+   [
+    "#f-cmp-0 > .more > div:nth-child(2) > h5 > span[data-i18n=\"fd.impact\"]"
+   ],
+   [
+    "#f-cmp-0 > .more > div:nth-child(3) > h5 > span[data-i18n=\"fd.recommendation\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.7 (foreground color: #6f6f7a, background color: #141418, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "plan",
+  "theme": "light",
+  "width": 1280,
+  "view": "overview",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 6,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    ".count"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "plan",
+  "theme": "light",
+  "width": 1280,
+  "view": "data",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 6,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    ".count"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.67 (foreground color: #9a9aa5, background color: #fafafb, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "plan",
+  "theme": "light",
+  "width": 390,
+  "view": "overview",
+  "id": "scrollable-region-focusable",
+  "impact": "serious",
+  "nodes": 1,
+  "targets": [
+   [
+    ".board"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+ },
+ {
+  "report": "plan",
+  "theme": "dark",
+  "width": 1280,
+  "view": "overview",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 6,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    ".count"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "plan",
+  "theme": "dark",
+  "width": 1280,
+  "view": "data",
+  "id": "color-contrast",
+  "impact": "serious",
+  "nodes": 6,
+  "targets": [
+   [
+    "span[data-i18n=\"nav.group.product\"]"
+   ],
+   [
+    ".count"
+   ],
+   [
+    "span[data-i18n=\"nav.group.technical\"]"
+   ],
+   [
+    "span[data-i18n=\"header.local_only\"]"
+   ],
+   [
+    "span[data-i18n=\"header.generated_by\"]"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6f6f7a, background color: #18181d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+ },
+ {
+  "report": "plan",
+  "theme": "dark",
+  "width": 390,
+  "view": "overview",
+  "id": "scrollable-region-focusable",
+  "impact": "serious",
+  "nodes": 1,
+  "targets": [
+   [
+    ".board"
+   ]
+  ],
+  "summary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+ }
+]

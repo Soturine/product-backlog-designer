@@ -1,0 +1,150 @@
+{
+  "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+  "source_digest": "sha256:31aa9f3b713e6fb96ff5c15a838850e1ed18695d9ee0b8a0ef7c8f22284d5912",
+  "reader": {
+    "agent": "reader_prd",
+    "model": "gpt-5",
+    "independence": "separate_agent"
+  },
+  "members": [
+    {
+      "path": "prd.md",
+      "status": "read",
+      "lines_read": [[1, 14]],
+      "reading": {
+        "method": "native",
+        "tool": "host file reader (Get-Content UTF-8)",
+        "limitations": []
+      }
+    }
+  ],
+  "obligations": [
+    {
+      "key": "R1",
+      "text": "Sócios reservam quadras de tênis pelo aplicativo do clube.",
+      "category": "functional",
+      "modality": "must",
+      "uncertainty": "confirmed",
+      "locator": {"member": "prd.md", "line_start": 4, "line_end": 4, "section": "Objetivo"},
+      "quote": "Sócios reservam quadras de tênis e de futsal pelo aplicativo do clube."
+    },
+    {
+      "key": "R2",
+      "text": "Sócios reservam quadras de futsal pelo aplicativo do clube.",
+      "category": "functional",
+      "modality": "must",
+      "uncertainty": "confirmed",
+      "locator": {"member": "prd.md", "line_start": 4, "line_end": 4, "section": "Objetivo"},
+      "quote": "Sócios reservam quadras de tênis e de futsal pelo aplicativo do clube."
+    },
+    {
+      "key": "R3",
+      "text": "O sócio reserva somente uma quadra livre.",
+      "category": "functional",
+      "modality": "must",
+      "uncertainty": "confirmed",
+      "locator": {"member": "prd.md", "line_start": 7, "line_end": 7, "section": "Requisitos"},
+      "quote": "O sócio reserva uma quadra livre"
+    },
+    {
+      "key": "R4",
+      "text": "A reserva de quadra é feita em blocos de 1 hora.",
+      "category": "constraint",
+      "modality": "must",
+      "uncertainty": "confirmed",
+      "locator": {"member": "prd.md", "line_start": 7, "line_end": 7, "section": "Requisitos"},
+      "quote": "em blocos de 1 hora"
+    },
+    {
+      "key": "R5",
+      "text": "A reserva de quadra ocorre entre 7h e 22h.",
+      "category": "constraint",
+      "modality": "must",
+      "uncertainty": "confirmed",
+      "locator": {"member": "prd.md", "line_start": 7, "line_end": 7, "section": "Requisitos"},
+      "quote": "entre 7h e 22h"
+    },
+    {
+      "key": "R6",
+      "text": "Cada sócio pode ter no máximo 2 reservas futuras ao mesmo tempo.",
+      "category": "constraint",
+      "modality": "must",
+      "uncertainty": "confirmed",
+      "locator": {"member": "prd.md", "line_start": 8, "line_end": 8, "section": "Requisitos"},
+      "quote": "Cada sócio pode ter no máximo 2 reservas futuras ao mesmo tempo."
+    },
+    {
+      "key": "R7",
+      "text": "O sócio pode cancelar uma reserva.",
+      "category": "functional",
+      "modality": "must",
+      "uncertainty": "confirmed",
+      "locator": {"member": "prd.md", "line_start": 9, "line_end": 9, "section": "Requisitos"},
+      "quote": "O sócio pode cancelar uma reserva"
+    },
+    {
+      "key": "R8",
+      "text": "O cancelamento deve observar uma antecedência mínima que será definida pela diretoria.",
+      "category": "constraint",
+      "modality": "must",
+      "uncertainty": "unknown",
+      "locator": {"member": "prd.md", "line_start": 9, "line_end": 9, "section": "Requisitos"},
+      "quote": "a antecedência mínima para cancelar ainda será definida pela diretoria"
+    },
+    {
+      "key": "R9",
+      "text": "Ao chegar, o sócio entra pela catraca usando a reserva.",
+      "category": "functional",
+      "modality": "must",
+      "uncertainty": "confirmed",
+      "locator": {"member": "prd.md", "line_start": 10, "line_end": 10, "section": "Requisitos"},
+      "quote": "Ao chegar, o sócio entra pela catraca usando a reserva."
+    },
+    {
+      "key": "R10",
+      "text": "A entrada pela catraca requer integração com o sistema de catracas do fornecedor.",
+      "category": "integration",
+      "modality": "must",
+      "uncertainty": "unknown",
+      "locator": {"member": "prd.md", "line_start": 10, "line_end": 10, "section": "Requisitos"},
+      "quote": "A integração com o sistema de catracas depende do fornecedor"
+    },
+    {
+      "key": "R11",
+      "text": "A documentação da API do sistema de catracas ainda não foi enviada pelo fornecedor.",
+      "category": "integration",
+      "modality": "informative",
+      "uncertainty": "unknown",
+      "locator": {"member": "prd.md", "line_start": 10, "line_end": 10, "section": "Requisitos"},
+      "quote": "o fornecedor, que ainda não enviou a documentação da API"
+    },
+    {
+      "key": "R12",
+      "text": "A recepção vê a agenda do dia de cada quadra.",
+      "category": "functional",
+      "modality": "must",
+      "uncertainty": "confirmed",
+      "locator": {"member": "prd.md", "line_start": 11, "line_end": 11, "section": "Requisitos"},
+      "quote": "A recepção vê a agenda do dia de cada quadra."
+    }
+  ],
+  "ambiguities": [
+    {
+      "text": "A antecedência mínima exigida para cancelar uma reserva não está definida; a diretoria ainda a definirá.",
+      "locator": {"member": "prd.md", "line_start": 9, "line_end": 9, "section": "Requisitos"},
+      "quote": "a antecedência mínima para cancelar ainda será definida pela diretoria"
+    },
+    {
+      "text": "O contrato e o comportamento da integração com as catracas não podem ser determinados porque o fornecedor ainda não enviou a documentação da API.",
+      "locator": {"member": "prd.md", "line_start": 10, "line_end": 10, "section": "Requisitos"},
+      "quote": "ainda não enviou a documentação da API"
+    }
+  ],
+  "exclusions": [
+    {
+      "text": "Cobrança de reservas está fora do escopo.",
+      "locator": {"member": "prd.md", "line_start": 14, "line_end": 14, "section": "Fora do escopo"},
+      "quote": "Cobrança de reservas."
+    }
+  ]
+}

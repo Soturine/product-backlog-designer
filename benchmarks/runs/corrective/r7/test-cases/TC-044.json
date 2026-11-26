@@ -1,0 +1,95 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-044",
+  "title": "Blocos adjacentes da mesma quadra não se sobrepõem",
+  "status": "READY",
+  "priority": "MEDIUM",
+  "type": "DATA_INTEGRITY",
+  "objective": "Verificar que a recusa por bloco ocupado não alcança o bloco vizinho livre.",
+  "requirement_refs": [
+    "REQ-002"
+  ],
+  "scenario_refs": [
+    "SCN-001"
+  ],
+  "coverage_point_refs": [
+    "CP-005",
+    "CP-006"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A tem reserva ativa em QUADRA_TENIS_A das 10h às 11h de uma data futura",
+    "SOCIO_B é sócio ativo com sessão aberta e sem reservas futuras",
+    "QUADRA_TENIS_A está livre das 11h às 12h"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "titular da reserva das 10h às 11h"
+    },
+    {
+      "name": "SOCIO_B",
+      "description": "sócio que reservará o bloco vizinho"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis com blocos vizinhos"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_B reserva o bloco das 11h às 12h de QUADRA_TENIS_A e confirma.",
+      "expected_result": "A reserva das 11h às 12h é confirmada.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_B abre a lista das suas reservas e SOCIO_A abre a sua.",
+      "expected_result": "SOCIO_B tem a reserva das 11h às 12h e SOCIO_A mantém a das 10h às 11h.",
+      "needs_clarification": false
+    },
+    {
+      "step": 3,
+      "action": "SOCIO_B consulta a ocupação de QUADRA_TENIS_A entre 10h e 12h.",
+      "expected_result": "As duas reservas existem, a primeira das 10h às 11h e a segunda das 11h às 12h, sem sobreposição.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "Duas reservas adjacentes"
+  ],
+  "cleanup": [
+    "Cancelar as duas reservas"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "MISSING_SELECTOR: Telas e rótulos não constam do PRD."
+  ],
+  "test_basis": "DERIVED",
+  "primary_type": "DATA_INTEGRITY",
+  "secondary_tags": [],
+  "execution_status": "READY",
+  "question_refs": [],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "PLAYWRIGHT",
+  "deterministic": true,
+  "priority_reason": "Erro de fronteira recusaria reservas válidas ou sobreporia horários.",
+  "automation_suitability": "HIGH",
+  "automation_readiness": "NEEDS_SELECTOR",
+  "readiness_blockers": [
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "blocos adjacentes na mesma quadra",
+  "source_identifiers": [],
+  "expansion_dimension": "DATA_INTEGRITY"
+}

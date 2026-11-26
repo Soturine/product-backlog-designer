@@ -1,0 +1,369 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "notes": "Proposed validation behavior; marked proposed, not in PRD.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC5",
+      "notes": "Retry and failure notice resolve what PRD and Q3 leave open (status proposed, claim C2 referenced).",
+      "source_support": "unsupported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC6",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [],
+  "findings": [
+    {
+      "actual": "AC5 states payment failure leaves registration unconfirmed and the participant may retry",
+      "affects": [
+        "AC5",
+        "US2"
+      ],
+      "classification": "unsupported_assumption",
+      "expected": "Failure handling left to Q3 until decided",
+      "gate": "G06",
+      "impact": "Retry behavior may be built before a decision",
+      "recommendation": "Keep only 'remains unconfirmed' (derivable from C3); move retry to Q3 outcome",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "PRD silent on refusal/retry; Q3 lists retry as an alternative"
+    },
+    {
+      "actual": "AC2 invents rejection and field indication",
+      "affects": [
+        "AC2",
+        "T1"
+      ],
+      "classification": "unsupported_assumption",
+      "expected": "Missing-field behavior from sources",
+      "gate": "G06",
+      "impact": "Minor; flagged proposed",
+      "recommendation": "Keep as proposed, confirm with owner",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "PRD only says name and size are informed"
+    },
+    {
+      "actual": "US1/T1 ready while Q4 (sizes offered) is open and defines field validation",
+      "affects": [
+        "US1",
+        "T1"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Size options decided or field validation scoped",
+      "gate": "G08",
+      "impact": "Rework risk on validation",
+      "recommendation": "State that T1 validates presence only",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Presence validation is buildable, option list is not"
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 3,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "O participante se inscreve em um mutirão informando nome e tamanho de camiseta.",
+      "rationale": "Story, criterion and task carry it.",
+      "text": "Inscrição com nome e tamanho"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "T2"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O2",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "A taxa simbólica de inscrição é paga pelo gateway de pagamentos parceiro.",
+      "rationale": "Gateway, fee value and failures undefined; Q1/Q3 raised.",
+      "text": "Taxa paga via gateway parceiro"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC3",
+        "AC4",
+        "T3"
+      ],
+      "disposition": "COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "A inscrição só é confirmada após a confirmação do pagamento.",
+      "rationale": "Carried by AC3, AC4 and T3.",
+      "text": "Confirmação só após pagamento"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC6",
+        "T4"
+      ],
+      "disposition": "COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "O organizador vê a lista de inscritos confirmados por mutirão.",
+      "rationale": "Carried by AC6 and T4.",
+      "text": "Lista de confirmados por mutirão"
+    },
+    {
+      "covered_by": [
+        "SP1"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O5",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C5"
+      ],
+      "quote": "O sistema deve ser rápido.",
+      "rationale": "No threshold; spike and Q2 capture it.",
+      "text": "Sistema rápido"
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F4",
+      "notes": "Feature has a single spike child; acceptable placeholder for an unquantified NFR.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "depends on Q1 and T1",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "payment integration plus confirmation",
+          "rating": "concern"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "Mixes payment and confirmation; AC5 adds unsupported retry behavior. Confirmation-state logic (AC3/AC4) is arguably not gateway-dependent.",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "no team data",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "SP1",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "T1",
+      "notes": "Persists a 'pending' state and rejects missing fields; the rejection is from proposed AC2 and size options (Q4) are open.",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "T2",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T3",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T4",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "rev-c08-r1b",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+    }
+  ]
+}

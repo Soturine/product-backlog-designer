@@ -1,0 +1,113 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-010",
+  "title": "Recusar terceira reserva futura do sócio",
+  "status": "NEEDS_REVIEW",
+  "priority": "CRITICAL",
+  "type": "BOUNDARY",
+  "objective": "Garantir que o teto de 2 reservas futuras é respeitado.",
+  "requirement_refs": [
+    "REQ-003"
+  ],
+  "scenario_refs": [
+    "SCN-003"
+  ],
+  "coverage_point_refs": [
+    "CP-011"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 2 (linha 8)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta",
+    "SOCIO_A tem exatamente 2 reservas futuras ativas, uma em QUADRA_TENIS_A e outra em QUADRA_FUTSAL_A",
+    "QUADRA_TENIS_B está livre no bloco BLOCO_14H de uma data futura"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio ativo com 2 reservas futuras ativas"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis da primeira reserva"
+    },
+    {
+      "name": "QUADRA_FUTSAL_A",
+      "description": "quadra de futsal da segunda reserva"
+    },
+    {
+      "name": "QUADRA_TENIS_B",
+      "description": "terceira quadra, livre em BLOCO_14H"
+    },
+    {
+      "name": "BLOCO_14H",
+      "description": "bloco das 14h às 15h de uma data futura"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A tenta reservar QUADRA_TENIS_B em BLOCO_14H e confirma.",
+      "expected_result": "O aplicativo não conclui a terceira reserva.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A abre a lista das suas reservas futuras.",
+      "expected_result": "A terceira reserva não foi criada e SOCIO_A continua com 2 reservas futuras ativas.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "SOCIO_A com 2 reservas futuras"
+  ],
+  "cleanup": [
+    "Cancelar as 2 reservas de SOCIO_A"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "AMBIGUOUS_POLICY: A forma de informar o limite ao sócio não está definida.",
+    "MISSING_SELECTOR: Telas e rótulos não constam do PRD."
+  ],
+  "test_basis": "ACCEPTANCE",
+  "primary_type": "BOUNDARY",
+  "secondary_tags": [],
+  "execution_status": "NEEDS_REVIEW",
+  "question_refs": [
+    "Q-004"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "PLAYWRIGHT",
+  "deterministic": true,
+  "priority_reason": "É regra de negócio explícita que protege a oferta de quadras entre os sócios.",
+  "automation_suitability": "HIGH",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "AMBIGUOUS_POLICY",
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "limite de reservas futuras no teto",
+  "source_identifiers": [],
+  "claim_exercise_map": [
+    {
+      "claim_id": "CLAIM-011",
+      "coverage_point_id": "CP-011",
+      "test_case_id": "TC-010",
+      "step_refs": [
+        2
+      ],
+      "assertion_refs": [
+        "expected"
+      ],
+      "primary_type": "BOUNDARY"
+    }
+  ]
+}

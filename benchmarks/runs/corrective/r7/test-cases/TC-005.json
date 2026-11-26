@@ -1,0 +1,119 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-005",
+  "title": "Recusar reserva de bloco já reservado na quadra",
+  "status": "NEEDS_REVIEW",
+  "priority": "CRITICAL",
+  "type": "NEGATIVE",
+  "objective": "Impedir que dois sócios fiquem com a mesma quadra no mesmo bloco.",
+  "requirement_refs": [
+    "REQ-002"
+  ],
+  "scenario_refs": [
+    "SCN-001"
+  ],
+  "coverage_point_refs": [
+    "CP-005"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7): reserva de quadra livre"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A e SOCIO_B são sócios ativos sem reservas futuras",
+    "SOCIO_A já reservou QUADRA_FUTSAL_A em BLOCO_20H de uma data futura",
+    "SOCIO_B tem sessão aberta no aplicativo"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "titular da reserva original"
+    },
+    {
+      "name": "SOCIO_B",
+      "description": "segundo sócio, sem reservas futuras, que tentará reservar o mesmo bloco"
+    },
+    {
+      "name": "QUADRA_FUTSAL_A",
+      "description": "quadra de futsal já reservada em BLOCO_20H"
+    },
+    {
+      "name": "BLOCO_20H",
+      "description": "bloco das 20h às 21h de uma data futura"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_B tenta reservar QUADRA_FUTSAL_A em BLOCO_20H e confirma.",
+      "expected_result": "O aplicativo não conclui a reserva de SOCIO_B para o bloco já ocupado.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_B abre a lista das suas reservas.",
+      "expected_result": "A lista de SOCIO_B não contém nenhuma reserva de QUADRA_FUTSAL_A em BLOCO_20H.",
+      "needs_clarification": false
+    },
+    {
+      "step": 3,
+      "action": "SOCIO_A abre a lista das suas reservas.",
+      "expected_result": "Nenhuma segunda reserva existe e a reserva original de SOCIO_A continua a única de BLOCO_20H em QUADRA_FUTSAL_A.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "BLOCO_20H segue ocupado apenas pela reserva de SOCIO_A"
+  ],
+  "cleanup": [
+    "Cancelar a reserva de SOCIO_A"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "AMBIGUOUS_POLICY: O PRD não define a mensagem ao sócio na recusa; o teste verifica apenas que a reserva não é criada.",
+    "MISSING_SELECTOR: Telas e rótulos não constam do PRD."
+  ],
+  "test_basis": "ACCEPTANCE",
+  "primary_type": "NEGATIVE",
+  "secondary_tags": [],
+  "execution_status": "NEEDS_REVIEW",
+  "question_refs": [
+    "Q-004"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "PLAYWRIGHT",
+  "deterministic": true,
+  "priority_reason": "Reserva dupla causa conflito físico na quadra e quebra a regra de quadra livre.",
+  "automation_suitability": "HIGH",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "AMBIGUOUS_POLICY",
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "bloco já ocupado",
+  "source_identifiers": [],
+  "claim_exercise_map": [
+    {
+      "claim_id": "CLAIM-005",
+      "coverage_point_id": "CP-005",
+      "test_case_id": "TC-005",
+      "step_refs": [
+        3
+      ],
+      "assertion_refs": [
+        "expected"
+      ],
+      "primary_type": "NEGATIVE"
+    }
+  ]
+}

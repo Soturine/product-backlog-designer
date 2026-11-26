@@ -1,0 +1,413 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "notes": "",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC3",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC4",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC5",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC6",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC7",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC8",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "distinct",
+      "items": [
+        "US3",
+        "US4"
+      ],
+      "rationale": "Regra de confirmacao vs consulta de lista."
+    }
+  ],
+  "findings": [
+    {
+      "actual": "F1 e US4 afirmam 'planejar camisetas/participacao' e US2 'garantir vaga', sem base no PRD",
+      "affects": [
+        "F1",
+        "US4",
+        "US2"
+      ],
+      "classification": "unsupported_assumption",
+      "expected": "Beneficios derivados do PRD",
+      "gate": "G06",
+      "impact": "Baixo; texto de valor, sem comportamento",
+      "recommendation": "Neutralizar o beneficio ou marcar como proposta",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "O PRD nao diz o proposito da lista nem fala de vagas"
+    },
+    {
+      "actual": "US1/AC1 prontos sem lista de tamanhos validos nem identidade do participante",
+      "affects": [
+        "US1",
+        "AC2"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Opcoes de tamanho de camiseta e dados do participante definidos",
+      "gate": "G06",
+      "impact": "Pode gerar duvida na implementacao",
+      "recommendation": "Registrar pergunta nao bloqueante sobre tamanhos validos",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Fonte nao define; AC2 cobre ausencia mas nao valor invalido"
+    },
+    {
+      "actual": "Disposicao do designer marca C3 COVERED embora T5 esteja bloqueada",
+      "affects": [
+        "US3",
+        "T5"
+      ],
+      "classification": "candidate_concern",
+      "expected": "C3 marcado como parcialmente coberto",
+      "gate": "G06",
+      "impact": "Cobertura superestimada",
+      "recommendation": "Usar PARTIALLY_COVERED",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "Parte da obrigacao depende de Q1"
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 3,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "O participante se inscreve em um mutirão informando nome e tamanho de camiseta.",
+      "rationale": "Coberto por historia, criterio e tarefa.",
+      "text": "Participante se inscreve informando nome e tamanho de camiseta"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC3",
+        "T3"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O2",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "A taxa simbólica de inscrição é paga pelo gateway de pagamentos parceiro.",
+      "rationale": "Gateway/valor/contrato indefinidos; bloqueio por Q1 correto.",
+      "text": "Taxa simbolica paga pelo gateway parceiro (gateway, valor, contrato nao definidos)"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC5",
+        "AC6",
+        "T2",
+        "T5"
+      ],
+      "disposition": "PARTIALLY_COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "A inscrição só é confirmada após a confirmação do pagamento.",
+      "rationale": "Regra de estados coberta; consumo do sinal real (T5) bloqueado por Q1, entao a cobertura e parcial.",
+      "text": "Inscricao so confirmada apos confirmacao do pagamento"
+    },
+    {
+      "covered_by": [
+        "US4",
+        "AC7",
+        "AC8",
+        "T4"
+      ],
+      "disposition": "COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "O organizador vê a lista de inscritos confirmados por mutirão.",
+      "rationale": "Coberto.",
+      "text": "Organizador ve lista de confirmados por mutirao"
+    },
+    {
+      "covered_by": [],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O5",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C5"
+      ],
+      "quote": "O sistema deve ser rápido.",
+      "rationale": "Sem limiar; Q2 registrada, nenhum item confirmado; correto.",
+      "text": "Sistema deve ser rapido (sem limiar)"
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "O valor 'planejar camisetas' nao esta no PRD (assuncao de beneficio).",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "F2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Ordem de construcao possivel; relacoes declaradas.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Descreve necessidade, nao solucao.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo unico.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Criterios verificaveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Valor ao participante/organizador.",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Ordem de construcao possivel; relacoes declaradas.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Descreve necessidade, nao solucao.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo unico.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Criterios verificaveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Valor ao participante/organizador.",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Ordem de construcao possivel; relacoes declaradas.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Descreve necessidade, nao solucao.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo unico.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Criterios verificaveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Valor ao participante/organizador.",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Ordem de construcao possivel; relacoes declaradas.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Descreve necessidade, nao solucao.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo unico.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Criterios verificaveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Valor ao participante/organizador.",
+          "rating": "supported"
+        }
+      },
+      "key": "US4",
+      "notes": "Beneficio 'planejar a participacao e as camisetas' nao esta no PRD; funcionalidade suportada.",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "key": "T1",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "notes": "Pronta so com sinal simulado; o contrato simulado e premissa do designer, nao da fonte. Aceitavel porque a regra de estados e independente do formato.",
+      "readiness_check": "agree",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "T3",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T4",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T5",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "rev-c08-r1c",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+    }
+  ]
+}

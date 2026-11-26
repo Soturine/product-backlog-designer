@@ -1,0 +1,71 @@
+{
+  "backlog_digest": "sha256:cd4b173ccff74018e465400bad9479e9048c5e611dd1ce1c11da12c89323f9f6",
+  "claims": {
+    "by_disposition": {
+      "COVERED": 9,
+      "QUESTION_REQUIRED": 3
+    },
+    "total": 12
+  },
+  "coverage": {
+    "breakdown": {
+      "COVERED": 9,
+      "OUT_OF_SCOPE": 1,
+      "QUESTION_REQUIRED": 3
+    },
+    "covered": 9,
+    "note": "denominator = obligations the independent reviewer extracted from the sources",
+    "provenance": "independent reviewer inventory",
+    "total": 13
+  },
+  "criteria": {
+    "by_style": {
+      "gherkin": 10
+    },
+    "proposed": 1,
+    "total": 10
+  },
+  "findings": {
+    "by_classification": {},
+    "by_severity": {},
+    "total": 0
+  },
+  "gates": {
+    "BLOCKED": 1,
+    "NOT_APPLICABLE": 3,
+    "NOT_RUN": 1,
+    "PASS": 13
+  },
+  "items": {
+    "by_type": {
+      "enabler": 1,
+      "epic": 1,
+      "feature": 4,
+      "story": 4,
+      "task": 7
+    },
+    "total": 17
+  },
+  "kind": "pbd.metrics",
+  "questions": {
+    "blocking": 2,
+    "open": 2
+  },
+  "review": {
+    "independence": "separate_agent",
+    "model": "gpt-5",
+    "verdicts": {
+      "pass": 27
+    }
+  },
+  "sources": {
+    "members_read": 1,
+    "members_total": 1,
+    "sources": 1
+  },
+  "tasks_per_story": {
+    "max": 3,
+    "min": 1,
+    "stories": 4
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-037",
+  "title": "Conexão perdida ao confirmar e restabelecida em seguida",
+  "status": "EXPLORATORY",
+  "priority": "MEDIUM",
+  "type": "RECOVERY",
+  "objective": "Verificar que, depois de voltar a conexão, o sócio vê um estado coerente: a reserva existe uma vez ou não existe.",
+  "requirement_refs": [
+    "REQ-002"
+  ],
+  "scenario_refs": [
+    "SCN-001"
+  ],
+  "coverage_point_refs": [
+    "CP-003"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta e sem reservas futuras",
+    "QUADRA_TENIS_A está livre em BLOCO_15H de uma data futura",
+    "A forma de interromper e restabelecer a conexão do aparelho não é conhecida"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio ativo sem reservas futuras"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis livre em BLOCO_15H"
+    },
+    {
+      "name": "BLOCO_15H",
+      "description": "bloco das 15h às 16h de uma data futura"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A confirma a reserva de BLOCO_15H em QUADRA_TENIS_A e, durante a confirmação, a conexão do aparelho é interrompida.",
+      "expected_result": "SOCIO_A não recebe a confirmação da reserva.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "A conexão do aparelho é restabelecida e SOCIO_A reabre o aplicativo.",
+      "expected_result": "O aplicativo volta a carregar os dados de SOCIO_A.",
+      "needs_clarification": false
+    },
+    {
+      "step": 3,
+      "action": "SOCIO_A abre a lista das suas reservas e a disponibilidade de BLOCO_15H.",
+      "expected_result": "A lista de reservas e a disponibilidade do bloco mostram o mesmo estado, sem reserva duplicada.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "Estado coerente"
+  ],
+  "cleanup": [
+    "Cancelar a reserva, se existir"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "UNKNOWN_SETUP_PATH: Técnica para interromper a conexão no meio da confirmação desconhecida.",
+    "MISSING_ORACLE: Política para queda de rede não definida."
+  ],
+  "test_basis": "EXPLORATORY",
+  "primary_type": "RECOVERY",
+  "secondary_tags": [],
+  "execution_status": "EXPLORATORY",
+  "question_refs": [
+    "Q-007"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": false,
+  "automation_layer": "MIXED",
+  "automation_tool_hint": "NONE",
+  "deterministic": false,
+  "priority_reason": "Estados divergentes após queda de rede levam a duplicidade e horários presos.",
+  "automation_suitability": "LOW",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "UNKNOWN_SETUP_PATH",
+    "MISSING_ORACLE"
+  ],
+  "failure_domain": "recuperação após queda de rede na confirmação",
+  "source_identifiers": [],
+  "expansion_dimension": "RECOVERY",
+  "expansion_checklist_item": "NETWORK"
+}

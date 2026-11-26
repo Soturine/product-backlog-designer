@@ -1,0 +1,114 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-012",
+  "title": "Bloco cancelado volta a ficar disponível",
+  "status": "READY",
+  "priority": "HIGH",
+  "type": "STATE_TRANSITION",
+  "objective": "Verificar que o cancelamento devolve o bloco ao conjunto de horários livres da quadra.",
+  "requirement_refs": [
+    "REQ-004"
+  ],
+  "scenario_refs": [
+    "SCN-004"
+  ],
+  "coverage_point_refs": [
+    "CP-013"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 3 (linha 9)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 3 (linha 9) e item 1 (linha 7)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A cancelou a sua reserva de QUADRA_FUTSAL_A em BLOCO_18H de uma data futura, com grande antecedência",
+    "SOCIO_B é sócio ativo com sessão aberta e sem reservas futuras"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio que cancelou a reserva"
+    },
+    {
+      "name": "SOCIO_B",
+      "description": "outro sócio ativo sem reservas futuras"
+    },
+    {
+      "name": "QUADRA_FUTSAL_A",
+      "description": "quadra de futsal cujo bloco foi liberado"
+    },
+    {
+      "name": "BLOCO_18H",
+      "description": "bloco das 18h às 19h de uma data futura"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_B consulta a disponibilidade de QUADRA_FUTSAL_A na data do bloco cancelado.",
+      "expected_result": "BLOCO_18H consta como livre.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_B reserva BLOCO_18H em QUADRA_FUTSAL_A e confirma.",
+      "expected_result": "A reserva de BLOCO_18H é confirmada para SOCIO_B.",
+      "needs_clarification": false
+    },
+    {
+      "step": 3,
+      "action": "SOCIO_B abre a lista das suas reservas.",
+      "expected_result": "O bloco consta como livre antes da reserva e a reserva do outro sócio é criada para ele, em nome de SOCIO_B.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "BLOCO_18H reservado por SOCIO_B"
+  ],
+  "cleanup": [
+    "Cancelar a reserva de SOCIO_B"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "MISSING_SELECTOR: Telas e rótulos não constam do PRD."
+  ],
+  "test_basis": "ACCEPTANCE",
+  "primary_type": "STATE_TRANSITION",
+  "secondary_tags": [],
+  "execution_status": "READY",
+  "question_refs": [],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "PLAYWRIGHT",
+  "deterministic": true,
+  "priority_reason": "Sem a liberação o horário fica perdido para o clube.",
+  "automation_suitability": "HIGH",
+  "automation_readiness": "NEEDS_SELECTOR",
+  "readiness_blockers": [
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "liberação do bloco após cancelar",
+  "source_identifiers": [],
+  "claim_exercise_map": [
+    {
+      "claim_id": "CLAIM-013",
+      "coverage_point_id": "CP-013",
+      "test_case_id": "TC-012",
+      "step_refs": [
+        3
+      ],
+      "assertion_refs": [
+        "expected"
+      ],
+      "primary_type": "STATE_TRANSITION"
+    }
+  ]
+}

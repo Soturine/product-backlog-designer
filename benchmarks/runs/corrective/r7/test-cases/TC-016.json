@@ -1,0 +1,88 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-016",
+  "title": "Catraca não libera sócio que não reservou a quadra",
+  "status": "EXPLORATORY",
+  "priority": "HIGH",
+  "type": "HARDWARE_INTEGRATION",
+  "objective": "Caracterizar que a entrada só acontece com reserva, protegendo o acesso físico às quadras.",
+  "requirement_refs": [
+    "REQ-005"
+  ],
+  "scenario_refs": [
+    "SCN-005"
+  ],
+  "coverage_point_refs": [
+    "CP-015"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 4 (linha 10)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_C é sócio ativo sem nenhuma reserva para o bloco em andamento",
+    "CATRACA_A está em operação",
+    "O contrato da API do fornecedor de catracas não foi entregue"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_C",
+      "description": "sócio ativo sem reserva para o horário atual"
+    },
+    {
+      "name": "CATRACA_A",
+      "description": "catraca de acesso às quadras"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "SOCIO_C chega a CATRACA_A e tenta entrar sem ter feito reserva, usando o meio de identificação que o fornecedor documentar.",
+      "expected_result": "CATRACA_A não recebe nenhuma reserva válida de SOCIO_C.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_C tenta passar por CATRACA_A e depois confere as suas reservas no aplicativo.",
+      "expected_result": "A passagem permanece bloqueada e nenhuma reserva é criada para o sócio SOCIO_C.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "SOCIO_C fora da área das quadras, sem reservas"
+  ],
+  "cleanup": [],
+  "state_contract": "REQUIRES_FIXTURE_RESET",
+  "tags": [],
+  "notes": [
+    "EXTERNAL_DEPENDENCY_UNAVAILABLE: API de catracas sem documentação.",
+    "MISSING_EXECUTION_SURFACE: Não se sabe como o sócio se identifica na catraca."
+  ],
+  "test_basis": "EXPLORATORY",
+  "primary_type": "HARDWARE_INTEGRATION",
+  "secondary_tags": [],
+  "execution_status": "EXPLORATORY",
+  "question_refs": [
+    "Q-002"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": false,
+  "automation_layer": "HARDWARE",
+  "automation_tool_hint": "NONE",
+  "deterministic": false,
+  "priority_reason": "Liberar sócio sem reserva anula o controle de uso das quadras.",
+  "automation_suitability": "MANUAL_ONLY",
+  "automation_readiness": "NOT_APPLICABLE",
+  "readiness_blockers": [
+    "EXTERNAL_DEPENDENCY_UNAVAILABLE",
+    "MISSING_EXECUTION_SURFACE",
+    "BLOCKING_QUESTION"
+  ],
+  "failure_domain": "acesso sem reserva na catraca",
+  "source_identifiers": [],
+  "expansion_dimension": "NEGATIVE",
+  "expansion_checklist_item": "OMITTED_ACTION"
+}

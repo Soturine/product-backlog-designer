@@ -1,0 +1,324 @@
+{
+  "approval": {
+    "approved_at": "2026-11-26T15:55:48Z",
+    "approved_by": "user-via-evo-r4b",
+    "approved_plan_digest": "sha256:15468306bae5894dfb53873b07b697e7544baf8f54a526cd63b4fb2eefa9f4a7",
+    "approved_target_namespace": "clube/quadras",
+    "state": "approved"
+  },
+  "backlog_digest": "sha256:fff0e83bb4b8044d83fc76d8c27d7bf803aebce588b4b7424a18c33c441ff38e",
+  "kind": "pbd.publication-plan",
+  "operations": [
+    {
+      "action": "CREATE",
+      "emitted_digest": "sha256:642d2bf3385d1d59185e236a4ab0640304d008796a33ebecb1ddf2522170ff6c",
+      "fields": {
+        "System.Description": "<p><strong>Objetivo</strong>: Permitir que sócios do Clube Vila Serena reservem e cancelem quadras de tênis e de futsal pelo aplicativo do clube.</p><p><strong>Contexto</strong>: Hoje a reserva é o ponto de partida de todo o uso das quadras; o PRD define blocos, janela de horário e um limite por sócio.</p><p><strong>No escopo</strong></p><ul><li>Reserva de quadra livre em blocos de 1 hora entre 7h e 22h</li><li>Limite de 2 reservas futuras por sócio</li><li>Cancelamento de reserva pelo sócio</li></ul><p><strong>Fora do escopo</strong></p><ul><li>Cobrança de reservas</li></ul><p><strong>Resultado esperado</strong>: Sócios conseguem garantir e liberar horários de quadra sem depender de atendimento presencial, respeitando as regras do clube.</p>",
+        "System.Tags": "pbd-id:PBD-EPIC-YHF9CE4C2VKJ",
+        "System.Title": "Reserva de quadras pelo aplicativo",
+        "System.WorkItemType": "Epic"
+      },
+      "links": [],
+      "op_id": "PBD-OP-PPV4085SEF50",
+      "pbd_id": "PBD-EPIC-YHF9CE4C2VKJ"
+    },
+    {
+      "action": "CREATE",
+      "emitted_digest": "sha256:b94974bbee521aba9d4e1a81f63b8d9a6630c7ee20a7d524b2f2eec398bd9b2f",
+      "fields": {
+        "System.Description": "<p><strong>Objetivo</strong>: Apoiar o dia de uso das quadras: entrada do sócio pela catraca com base na reserva e visão da agenda pela recepção.</p><p><strong>Contexto</strong>: A entrada pela catraca depende de integração com um fornecedor externo cuja documentação de API ainda não foi enviada.</p><p><strong>No escopo</strong></p><ul><li>Entrada pela catraca usando a reserva</li><li>Agenda do dia de cada quadra para a recepção</li></ul><p><strong>Fora do escopo</strong></p><ul><li>Cobrança de reservas</li></ul><p><strong>Resultado esperado</strong>: A recepção enxerga a ocupação do dia e o sócio com reserva acessa a quadra sem intervenção manual.</p>",
+        "System.Tags": "pbd-id:PBD-EPIC-9YRGHNP43JH8",
+        "System.Title": "Acesso e operação das quadras no dia",
+        "System.WorkItemType": "Epic"
+      },
+      "links": [],
+      "op_id": "PBD-OP-FHTYJT15RVTX",
+      "pbd_id": "PBD-EPIC-9YRGHNP43JH8"
+    },
+    {
+      "action": "CREATE",
+      "emitted_digest": "sha256:1e7c7d13b3c65e22d414e86159e22e503d3b7cffbf8347faa4788f33b7a7efaa",
+      "fields": {
+        "System.Description": "<p><strong>Capacidade</strong>: Escolher uma quadra livre de tênis ou de futsal e reservá-la por um bloco de 1 hora dentro da janela de funcionamento.</p><p><strong>Valor</strong>: O sócio garante o horário desejado pelo aplicativo.</p><p><strong>Regras relacionadas</strong></p><ul><li>Blocos de 1 hora</li><li>Janela entre 7h e 22h</li><li>Máximo de 2 reservas futuras simultâneas por sócio</li></ul>",
+        "System.Tags": "pbd-id:PBD-FEAT-PEGSAAHXWWCZ",
+        "System.Title": "Reservar quadra",
+        "System.WorkItemType": "Feature"
+      },
+      "links": [
+        {
+          "parent_pbd_id": "PBD-EPIC-YHF9CE4C2VKJ",
+          "rel": "System.LinkTypes.Hierarchy-Reverse"
+        }
+      ],
+      "op_id": "PBD-OP-B213BH4KFD7A",
+      "pbd_id": "PBD-FEAT-PEGSAAHXWWCZ"
+    },
+    {
+      "action": "CREATE",
+      "emitted_digest": "sha256:e958785d0c318a5bdc8712845d3e170696f3da5e5ff6234c48adf6529602f408",
+      "fields": {
+        "System.Description": "<p><strong>Capacidade</strong>: O sócio cancela uma reserva sua, liberando o horário.</p><p><strong>Valor</strong>: Horários não usados voltam a ficar disponíveis para outros sócios.</p><p><strong>Regras relacionadas</strong></p><ul><li>A antecedência mínima para cancelar será definida pela diretoria</li></ul>",
+        "System.Tags": "pbd-id:PBD-FEAT-22S5XS6TF0CT",
+        "System.Title": "Cancelar reserva",
+        "System.WorkItemType": "Feature"
+      },
+      "links": [
+        {
+          "parent_pbd_id": "PBD-EPIC-YHF9CE4C2VKJ",
+          "rel": "System.LinkTypes.Hierarchy-Reverse"
+        }
+      ],
+      "op_id": "PBD-OP-HVZXESNDCRWC",
+      "pbd_id": "PBD-FEAT-22S5XS6TF0CT"
+    },
+    {
+      "action": "CREATE",
+      "emitted_digest": "sha256:62059fb10d18a6b4d4b747248a6164c0e5e1323f44d73326502d16ee0c6aad67",
+      "fields": {
+        "System.Description": "<p><strong>Capacidade</strong>: O sócio que chega para o horário reservado passa pela catraca usando a reserva.</p><p><strong>Valor</strong>: O acesso à quadra acontece sem conferência manual.</p><p><strong>Regras relacionadas</strong></p><ul><li>Depende da API do fornecedor de catracas, ainda sem documentação</li></ul>",
+        "System.Tags": "pbd-id:PBD-FEAT-MZZ4XT36XVHR",
+        "System.Title": "Entrada pela catraca com a reserva",
+        "System.WorkItemType": "Feature"
+      },
+      "links": [
+        {
+          "parent_pbd_id": "PBD-EPIC-9YRGHNP43JH8",
+          "rel": "System.LinkTypes.Hierarchy-Reverse"
+        }
+      ],
+      "op_id": "PBD-OP-GWX02058837K",
+      "pbd_id": "PBD-FEAT-MZZ4XT36XVHR"
+    },
+    {
+      "action": "CREATE",
+      "emitted_digest": "sha256:f662979328b11c5490a2aa0313d91236f117f81847b1d1f12e50a31a95ccd07e",
+      "fields": {
+        "System.Description": "<p><strong>Capacidade</strong>: A recepção consulta a agenda do dia de cada quadra.</p><p><strong>Valor</strong>: A recepção sabe quem usa cada quadra e quando.</p><p><strong>Regras relacionadas</strong></p><ul><li>Uma agenda por quadra, referente ao dia</li></ul>",
+        "System.Tags": "pbd-id:PBD-FEAT-BSWDRAADVAJH",
+        "System.Title": "Agenda do dia para a recepção",
+        "System.WorkItemType": "Feature"
+      },
+      "links": [
+        {
+          "parent_pbd_id": "PBD-EPIC-9YRGHNP43JH8",
+          "rel": "System.LinkTypes.Hierarchy-Reverse"
+        }
+      ],
+      "op_id": "PBD-OP-J8XYFHQJEKMB",
+      "pbd_id": "PBD-FEAT-BSWDRAADVAJH"
+    },
+    {
+      "action": "CREATE",
+      "emitted_digest": "sha256:c4b13a7109242afb99aab14a3d1048fd340e6bdb7485f9aaffcda6ee71e0543e",
+      "fields": {
+        "Microsoft.VSTS.Common.AcceptanceCriteria": "<ul><li><strong>CA-01</strong> Uma quadra de tênis ou de futsal está livre no bloco escolhido, O sócio reserva esse bloco de 1 hora: A reserva é criada em nome do sócio para a quadra e o bloco escolhidos; O bloco deixa de aparecer como livre</li><li><strong>CA-02</strong> Já existe reserva para a quadra no bloco escolhido, O sócio tenta reservar esse bloco: A reserva não é criada; O sócio é informado de que a quadra não está livre</li><li><strong>CA-03</strong> O bloco solicitado está dentro da janela de 7h a 22h, O sócio reserva um bloco de 1 hora nessa janela: A reserva é aceita</li><li><strong>CA-04</strong> O bloco solicitado está fora da janela de 7h a 22h, O sócio tenta reservar esse bloco: A reserva não é criada; O sócio é informado do horário permitido</li><li><strong>CA-05</strong> Reserva de duração diferente de 1 hora ou iniciada em horário quebrado é recusada → O aplicativo só oferece e aceita blocos inteiros de 1 hora</li></ul>",
+        "System.Description": "<p><strong>Eu como</strong> sócio do clube, <strong>gostaria que</strong> reservasse uma quadra livre de tênis ou de futsal por um bloco de 1 hora no aplicativo, <strong>para</strong> garantir o horário em que quero jogar.</p>",
+        "System.Tags": "pbd-id:PBD-STORY-G72AH4WADBQV",
+        "System.Title": "Reservar uma quadra livre em bloco de 1 hora",
+        "System.WorkItemType": "User Story"
+      },
+      "links": [
+        {
+          "parent_pbd_id": "PBD-FEAT-PEGSAAHXWWCZ",
+          "rel": "System.LinkTypes.Hierarchy-Reverse"
+        }
+      ],
+      "op_id": "PBD-OP-26KZFYCTNJC0",
+      "pbd_id": "PBD-STORY-G72AH4WADBQV"
+    },
+    {
+      "action": "CREATE",
+      "emitted_digest": "sha256:a8657e9097a50dd7b630ed642161adb833b06ef47364deb3445d2ef3a62e3b4d",
+      "fields": {
+        "Microsoft.VSTS.Common.AcceptanceCriteria": "<ul><li><strong>CA-01</strong> O sócio possui menos de 2 reservas futuras, O sócio cria uma nova reserva válida: A reserva é criada</li><li><strong>CA-02</strong> O sócio já possui 2 reservas futuras, O sócio tenta criar uma terceira reserva: A reserva não é criada; O sócio é informado do limite de 2 reservas futuras</li><li><strong>CA-03</strong> O sócio possui 2 reservas futuras e cancela uma delas, O sócio cria uma nova reserva válida: A reserva é criada</li></ul>",
+        "System.Description": "<p><strong>Eu como</strong> sócio do clube, <strong>gostaria que</strong> o aplicativo limitasse cada sócio a 2 reservas futuras ao mesmo tempo, <strong>para</strong> que as quadras sejam distribuídas de forma justa entre os sócios.</p>",
+        "System.Tags": "pbd-id:PBD-STORY-7V0G3WDGHT33",
+        "System.Title": "Respeitar o limite de 2 reservas futuras por sócio",
+        "System.WorkItemType": "User Story"
+      },
+      "links": [
+        {
+          "parent_pbd_id": "PBD-FEAT-PEGSAAHXWWCZ",
+          "rel": "System.LinkTypes.Hierarchy-Reverse"
+        }
+      ],
+      "op_id": "PBD-OP-JDNN0XMNFG8B",
+      "pbd_id": "PBD-STORY-7V0G3WDGHT33"
+    },
+    {
+      "action": "CREATE",
+      "emitted_digest": "sha256:75c7f953be4eff42d44da60c1c2f95bec4979436423c573c56b0280ebcf1ba2c",
+      "fields": {
+        "Microsoft.VSTS.Common.AcceptanceCriteria": "<ul><li><strong>CA-01</strong> O sócio possui uma reserva futura, O sócio cancela essa reserva: A reserva deixa de estar ativa; O bloco volta a ficar livre para outros sócios</li><li><strong>CA-02</strong> Cancelamento solicitado com menos de 12 horas de antecedência do horário reservado é recusado → O cancelamento é recusado e a reserva permanece ativa; O sócio é informado do prazo de 12 horas</li><li><strong>CA-03</strong> Sócio não consegue cancelar a reserva de outro sócio → A ação é recusada e a reserva permanece ativa</li></ul>",
+        "System.Description": "<p><strong>Eu como</strong> sócio do clube, <strong>gostaria que</strong> cancelasse uma reserva minha pelo aplicativo, <strong>para</strong> liberar o horário quando não puder comparecer.</p>",
+        "System.Tags": "pbd-id:PBD-STORY-XRZAAQQZ12RR",
+        "System.Title": "Cancelar uma reserva",
+        "System.WorkItemType": "User Story"
+      },
+      "links": [
+        {
+          "parent_pbd_id": "PBD-FEAT-22S5XS6TF0CT",
+          "rel": "System.LinkTypes.Hierarchy-Reverse"
+        }
+      ],
+      "op_id": "PBD-OP-5Q3DX76NC06P",
+      "pbd_id": "PBD-STORY-XRZAAQQZ12RR"
+    },
+    {
+      "action": "CREATE",
+      "emitted_digest": "sha256:5c6f203953b225d26e23643b43f92e6cc64625a9244ee35e9f81d8598f816ff1",
+      "fields": {
+        "Microsoft.VSTS.Common.AcceptanceCriteria": "<ul><li><strong>CA-01</strong> O sócio possui reserva para a quadra no horário atual, O sócio chega e usa a reserva na catraca: A catraca libera a passagem do sócio</li><li><strong>CA-02</strong> Sócio sem reserva válida para o horário não é liberado pela catraca → A catraca mantém a passagem bloqueada</li></ul>",
+        "System.Description": "<p><strong>Eu como</strong> sócio do clube, <strong>gostaria que</strong> entrasse pela catraca usando minha reserva ao chegar, <strong>para</strong> acessar a quadra sem precisar de conferência manual.</p>",
+        "System.Tags": "pbd-id:PBD-STORY-82FKMD8ZZ7WN",
+        "System.Title": "Entrar pela catraca usando a reserva",
+        "System.WorkItemType": "User Story"
+      },
+      "links": [
+        {
+          "parent_pbd_id": "PBD-FEAT-MZZ4XT36XVHR",
+          "rel": "System.LinkTypes.Hierarchy-Reverse"
+        }
+      ],
+      "op_id": "PBD-OP-RG4TEC93PD2D",
+      "pbd_id": "PBD-STORY-82FKMD8ZZ7WN"
+    },
+    {
+      "action": "CREATE",
+      "emitted_digest": "sha256:edc611d526ad37d70e4f5c6ea6d0656b4c8608bbd2e4293d40ce4174c0457209",
+      "fields": {
+        "Microsoft.VSTS.Common.AcceptanceCriteria": "<ul><li><strong>CA-01</strong> Existem reservas no dia para mais de uma quadra, A recepção abre a agenda do dia: A recepção vê a agenda do dia de cada quadra, com as reservas e seus horários</li><li><strong>CA-02</strong> Uma quadra não tem reservas no dia, A recepção abre a agenda do dia: A quadra aparece com a agenda vazia</li></ul>",
+        "System.Description": "<p><strong>Eu como</strong> recepção, <strong>gostaria que</strong> visse a agenda do dia de cada quadra, <strong>para</strong> saber quais reservas esperar e atender os sócios que chegam.</p>",
+        "System.Tags": "pbd-id:PBD-STORY-CAHVKS06N0ZH",
+        "System.Title": "Consultar a agenda do dia de cada quadra",
+        "System.WorkItemType": "User Story"
+      },
+      "links": [
+        {
+          "parent_pbd_id": "PBD-FEAT-BSWDRAADVAJH",
+          "rel": "System.LinkTypes.Hierarchy-Reverse"
+        }
+      ],
+      "op_id": "PBD-OP-PHZ7H79239Z5",
+      "pbd_id": "PBD-STORY-CAHVKS06N0ZH"
+    },
+    {
+      "action": "CREATE",
+      "emitted_digest": "sha256:13deb223f8156dd9f35bdc02f2d5db0bd3c025e25e31ac6f8b476299b3d61dc2",
+      "fields": {
+        "System.Description": "<p><strong>Objetivo</strong>: Implementar a criação de reserva que só aceita quadra livre, blocos de 1 hora e horários entre 7h e 22h.</p><p><strong>Atividades</strong></p><ul><li>Modelar a reserva por quadra, data e bloco horário</li><li>Recusar quadra já reservada no mesmo bloco</li><li>Recusar blocos fora da janela de 7h a 22h</li></ul><p><strong>Resultado esperado</strong>: Reserva criada para uma quadra livre; tentativas inválidas são recusadas com mensagem clara.</p><p><strong>Verificação</strong>: Testes cobrindo reserva válida, quadra ocupada e bloco fora da janela de horário.</p>",
+        "System.Tags": "pbd-id:PBD-TASK-34ABATER7269",
+        "System.Title": "Criar a regra de disponibilidade e a criação de reserva por bloco de 1 hora",
+        "System.WorkItemType": "Task"
+      },
+      "links": [
+        {
+          "parent_pbd_id": "PBD-STORY-G72AH4WADBQV",
+          "rel": "System.LinkTypes.Hierarchy-Reverse"
+        }
+      ],
+      "op_id": "PBD-OP-1EVA4JHG2FYQ",
+      "pbd_id": "PBD-TASK-34ABATER7269"
+    },
+    {
+      "action": "CREATE",
+      "emitted_digest": "sha256:89a61496be5b967040c27c7b0445b28eee40c5338215871893af1ab69592bc58",
+      "fields": {
+        "System.Description": "<p><strong>Objetivo</strong>: Contar as reservas futuras ativas do sócio e recusar a criação de uma terceira.</p><p><strong>Atividades</strong></p><ul><li>Consultar reservas futuras ativas do sócio</li><li>Recusar a criação quando já houver 2</li><li>Considerar o cancelamento como liberação de vaga no limite</li></ul><p><strong>Resultado esperado</strong>: O sócio nunca possui mais de 2 reservas futuras simultâneas.</p><p><strong>Verificação</strong>: Testes com 1, 2 e tentativa de 3 reservas futuras, e nova reserva após cancelamento.</p>",
+        "System.Tags": "pbd-id:PBD-TASK-1NBMNBM45NPT",
+        "System.Title": "Aplicar o limite de 2 reservas futuras na criação de reserva",
+        "System.WorkItemType": "Task"
+      },
+      "links": [
+        {
+          "parent_pbd_id": "PBD-STORY-7V0G3WDGHT33",
+          "rel": "System.LinkTypes.Hierarchy-Reverse"
+        }
+      ],
+      "op_id": "PBD-OP-7F6NDPGJVMNC",
+      "pbd_id": "PBD-TASK-1NBMNBM45NPT"
+    },
+    {
+      "action": "CREATE",
+      "emitted_digest": "sha256:c2880a31f85870fb0fc331a5571e6733ff6ef80e0a41fd5011496a781abae345",
+      "fields": {
+        "System.Description": "<p><strong>Objetivo</strong>: Permitir que o sócio cancele uma reserva própria e devolva o bloco à disponibilidade.</p><p><strong>Atividades</strong></p><ul><li>Expor a ação de cancelar nas reservas do sócio</li><li>Impedir cancelar reserva de outro sócio</li><li>Liberar o bloco para novas reservas</li></ul><p><strong>Resultado esperado</strong>: A reserva cancelada deixa de existir como ativa e o horário volta a aparecer livre.</p><p><strong>Verificação</strong>: Testes de cancelamento da própria reserva, tentativa sobre reserva de terceiro e reserva do bloco liberado.</p>",
+        "System.Tags": "pbd-id:PBD-TASK-THKDB38SCZ4G",
+        "System.Title": "Implementar o cancelamento de reserva pelo sócio e a liberação do horário",
+        "System.WorkItemType": "Task"
+      },
+      "links": [
+        {
+          "parent_pbd_id": "PBD-STORY-XRZAAQQZ12RR",
+          "rel": "System.LinkTypes.Hierarchy-Reverse"
+        }
+      ],
+      "op_id": "PBD-OP-M1CJFCWZZ3PG",
+      "pbd_id": "PBD-TASK-THKDB38SCZ4G"
+    },
+    {
+      "action": "CREATE",
+      "emitted_digest": "sha256:d1a52241f3d54bde45b8dcd51eeeba52abbd67663a3897160acb6d5bc04ef03c",
+      "fields": {
+        "System.Description": "<p><strong>Objetivo</strong>: Recusar o cancelamento que ocorrer com menos antecedência do que a mínima definida pela diretoria.</p><p><strong>Atividades</strong></p><ul><li>Tornar a antecedência mínima um parâmetro configurável</li><li>Aplicar a validação no cancelamento</li></ul><p><strong>Resultado esperado</strong>: Cancelamentos fora do prazo mínimo são recusados e dentro do prazo são aceitos.</p><p><strong>Verificação</strong>: Testes nos limites do prazo, após a diretoria informar o valor.</p>",
+        "System.Tags": "pbd-id:PBD-TASK-XGNJHSN2JSJC",
+        "System.Title": "Validar a antecedência mínima no cancelamento",
+        "System.WorkItemType": "Task"
+      },
+      "links": [
+        {
+          "parent_pbd_id": "PBD-STORY-XRZAAQQZ12RR",
+          "rel": "System.LinkTypes.Hierarchy-Reverse"
+        }
+      ],
+      "op_id": "PBD-OP-WVT4WD1YQAVK",
+      "pbd_id": "PBD-TASK-XGNJHSN2JSJC"
+    },
+    {
+      "action": "CREATE",
+      "emitted_digest": "sha256:8b6b146d4501756655e5b7f6f0a0c55fbba3288de68b2c05cf74162d8e5afe16",
+      "fields": {
+        "System.Description": "<p><strong>Objetivo</strong>: Integrar com o sistema de catracas para liberar a passagem do sócio que possui reserva.</p><p><strong>Atividades</strong></p><ul><li>Estudar o contrato da API do fornecedor</li><li>Implementar a consulta de reserva na entrada</li><li>Tratar falha de comunicação com a catraca</li></ul><p><strong>Resultado esperado</strong>: O sócio com reserva do horário passa pela catraca.</p><p><strong>Verificação</strong>: Teste de integração contra a API (ou ambiente de homologação) do fornecedor.</p>",
+        "System.Tags": "pbd-id:PBD-TASK-VRFV2T9K2FP7",
+        "System.Title": "Liberar a entrada na catraca com base na reserva do sócio",
+        "System.WorkItemType": "Task"
+      },
+      "links": [
+        {
+          "parent_pbd_id": "PBD-STORY-82FKMD8ZZ7WN",
+          "rel": "System.LinkTypes.Hierarchy-Reverse"
+        }
+      ],
+      "op_id": "PBD-OP-71VAT98VB2S8",
+      "pbd_id": "PBD-TASK-VRFV2T9K2FP7"
+    },
+    {
+      "action": "CREATE",
+      "emitted_digest": "sha256:59b92055f2dea1b1344b4e18f60233ff3dfae986e93ee4b4c3a4d36cc588e968",
+      "fields": {
+        "System.Description": "<p><strong>Objetivo</strong>: Listar, para cada quadra, as reservas do dia ordenadas por horário, acessível à recepção.</p><p><strong>Atividades</strong></p><ul><li>Consultar reservas do dia por quadra</li><li>Exibir a agenda por quadra</li><li>Restringir o acesso ao perfil da recepção</li></ul><p><strong>Resultado esperado</strong>: A recepção vê a agenda do dia de cada quadra.</p><p><strong>Verificação</strong>: Teste com reservas em mais de uma quadra, verificando horários e a exibição por quadra.</p>",
+        "System.Tags": "pbd-id:PBD-TASK-S5YGBXFEG9M6",
+        "System.Title": "Construir a visão de agenda do dia por quadra para a recepção",
+        "System.WorkItemType": "Task"
+      },
+      "links": [
+        {
+          "parent_pbd_id": "PBD-STORY-CAHVKS06N0ZH",
+          "rel": "System.LinkTypes.Hierarchy-Reverse"
+        }
+      ],
+      "op_id": "PBD-OP-M4AHJBSQG5H7",
+      "pbd_id": "PBD-TASK-S5YGBXFEG9M6"
+    }
+  ],
+  "plan_digest": "sha256:15468306bae5894dfb53873b07b697e7544baf8f54a526cd63b4fb2eefa9f4a7",
+  "plan_id": "PBD-PLAN-7S2E3JSZ7RCJ",
+  "run_id": "PBD-RUN-F94XCVYMMH79",
+  "schema_version": "1.2.0",
+  "snapshot_digest": "sha256:b8fcfb32fae6ed029aa0f4003f64f98ca6a56d2722c2c2b5d318fc47582b30d4",
+  "target": {
+    "namespace": "clube/quadras",
+    "profile": "azure-agile",
+    "system": "azure-devops"
+  }
+}

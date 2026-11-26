@@ -1,0 +1,207 @@
+{
+  "ambiguities": [
+    {
+      "locator": {
+        "line_start": 9,
+        "member": "prd.md"
+      },
+      "quote": "ainda será definida pela diretoria",
+      "text": "Antecedência mínima de cancelamento indefinida"
+    },
+    {
+      "locator": {
+        "line_start": 8,
+        "member": "prd.md"
+      },
+      "quote": "reservas futuras",
+      "text": "Não é dito o que ocorre ao exceder 2 reservas, nem se reservas passadas contam"
+    },
+    {
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md"
+      },
+      "quote": "entre 7h e 22h",
+      "text": "Não é dito se 22h é o início do último bloco ou o fim do horário"
+    }
+  ],
+  "exclusions": [
+    {
+      "locator": {
+        "line_start": 14,
+        "member": "prd.md"
+      },
+      "quote": "Cobrança de reservas",
+      "text": "Cobrança de reservas fora do escopo"
+    }
+  ],
+  "members": [
+    {
+      "lines_read": [
+        [
+          1,
+          14
+        ]
+      ],
+      "path": "prd.md",
+      "reading": {
+        "limitations": [],
+        "method": "native",
+        "tool": "host file reader"
+      },
+      "status": "read"
+    }
+  ],
+  "obligations": [
+    {
+      "category": "functional",
+      "key": "R1",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "section": "Objetivo"
+      },
+      "modality": "must",
+      "quote": "Sócios reservam quadras de tênis e de futsal pelo aplicativo do clube",
+      "text": "Sócios reservam quadras de tênis e de futsal pelo aplicativo do clube",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R2",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "section": "Requisitos"
+      },
+      "modality": "must",
+      "quote": "O sócio reserva uma quadra livre",
+      "text": "O sócio reserva uma quadra livre",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "data",
+      "key": "R3",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "section": "Requisitos"
+      },
+      "modality": "must",
+      "quote": "em blocos de 1 hora",
+      "text": "A reserva é feita em blocos de 1 hora",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "constraint",
+      "key": "R4",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "section": "Requisitos"
+      },
+      "modality": "must",
+      "quote": "entre 7h e 22h",
+      "text": "As reservas só podem ocorrer entre 7h e 22h",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "constraint",
+      "key": "R5",
+      "locator": {
+        "line_start": 8,
+        "member": "prd.md",
+        "section": "Requisitos"
+      },
+      "modality": "must",
+      "quote": "no máximo 2 reservas futuras ao mesmo tempo",
+      "text": "Cada sócio pode ter no máximo 2 reservas futuras ao mesmo tempo",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R6",
+      "locator": {
+        "line_start": 9,
+        "member": "prd.md",
+        "section": "Requisitos"
+      },
+      "modality": "may",
+      "quote": "O sócio pode cancelar uma reserva",
+      "text": "O sócio pode cancelar uma reserva",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "constraint",
+      "key": "R7",
+      "locator": {
+        "line_start": 9,
+        "member": "prd.md",
+        "section": "Requisitos"
+      },
+      "modality": "must",
+      "quote": "a antecedência mínima para cancelar ainda será definida pela diretoria",
+      "text": "Existe uma antecedência mínima para cancelar, ainda a ser definida pela diretoria",
+      "uncertainty": "unknown"
+    },
+    {
+      "category": "functional",
+      "key": "R8",
+      "locator": {
+        "line_start": 10,
+        "member": "prd.md",
+        "section": "Requisitos"
+      },
+      "modality": "must",
+      "quote": "o sócio entra pela catraca usando a reserva",
+      "text": "Ao chegar, o sócio entra pela catraca usando a reserva",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "integration",
+      "key": "R9",
+      "locator": {
+        "line_start": 10,
+        "member": "prd.md",
+        "section": "Requisitos"
+      },
+      "modality": "must",
+      "quote": "ainda não enviou a documentação da API",
+      "text": "A integração com o sistema de catracas depende do fornecedor, que ainda não enviou a documentação da API",
+      "uncertainty": "unknown"
+    },
+    {
+      "category": "functional",
+      "key": "R10",
+      "locator": {
+        "line_start": 11,
+        "member": "prd.md",
+        "section": "Requisitos"
+      },
+      "modality": "must",
+      "quote": "A recepção vê a agenda do dia de cada quadra",
+      "text": "A recepção vê a agenda do dia de cada quadra",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "out_of_scope",
+      "key": "R11",
+      "locator": {
+        "line_start": 14,
+        "member": "prd.md",
+        "section": "Fora do escopo"
+      },
+      "modality": "must_not",
+      "quote": "Cobrança de reservas",
+      "text": "Cobrança de reservas está fora do escopo",
+      "uncertainty": "confirmed"
+    }
+  ],
+  "reader": {
+    "agent": "gen-h2-r2-reader",
+    "independence": "sequential_role",
+    "model": "claude-sonnet-5-5"
+  },
+  "source_digest": "sha256:31aa9f3b713e6fb96ff5c15a838850e1ed18695d9ee0b8a0ef7c8f22284d5912",
+  "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+}

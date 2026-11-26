@@ -1,0 +1,127 @@
+{
+  "epics": [
+    {"id": "E1", "title": "Reserva de quadras", "description": "Permitir que sócios reservem quadras de tênis e futsal em blocos de 1 hora, respeitando horário de funcionamento e limite de reservas futuras."},
+    {"id": "E2", "title": "Cancelamento de reservas", "description": "Permitir que o sócio cancele reservas, liberando o horário, conforme regra de antecedência mínima a ser definida pela diretoria."},
+    {"id": "E3", "title": "Acesso por catraca", "description": "Permitir a entrada do sócio pela catraca usando a reserva, via integração com o sistema do fornecedor."},
+    {"id": "E4", "title": "Agenda da recepção", "description": "Dar à recepção a visão da agenda diária de cada quadra."}
+  ],
+  "features": [
+    {"id": "F1", "epic": "E1", "title": "Consulta de disponibilidade"},
+    {"id": "F2", "epic": "E1", "title": "Criação de reserva com regras de negócio"},
+    {"id": "F3", "epic": "E2", "title": "Cancelamento pelo sócio"},
+    {"id": "F4", "epic": "E3", "title": "Integração com catracas"},
+    {"id": "F5", "epic": "E3", "title": "Validação de entrada pela reserva"},
+    {"id": "F6", "epic": "E4", "title": "Visualização da agenda diária"}
+  ],
+  "stories": [
+    {"id": "S1", "feature": "F1", "title": "Ver horários livres por quadra",
+     "story": "Como sócio, quero ver os horários livres de cada quadra de tênis e futsal por data, para escolher quando jogar.",
+     "acceptance_criteria": [
+       "Dado que escolho uma data e um esporte, então vejo as quadras desse esporte e seus blocos de 1 hora entre 7h e 22h com status livre ou ocupado.",
+       "Dado um bloco já reservado, então ele aparece como indisponível e não pode ser selecionado.",
+       "O último bloco selecionável é o das 21h às 22h; não há blocos fora de 7h–22h."
+     ], "ready_to_build": true, "readiness_note": "Pronto. Premissas: janela de dias futuros e fuso horário assumidos (ver Q4 e A3)."},
+    {"id": "S2", "feature": "F2", "title": "Reservar uma quadra livre em bloco de 1 hora",
+     "story": "Como sócio, quero reservar uma quadra livre em um bloco de 1 hora, para garantir meu horário de jogo.",
+     "acceptance_criteria": [
+       "Dado um bloco livre entre 7h e 22h, quando confirmo a reserva, então ela é criada com sócio, quadra, data e hora e o bloco passa a ocupado.",
+       "Dado um bloco já reservado, quando tento reservá-lo, então o sistema recusa e informa que não está mais disponível.",
+       "Dadas duas tentativas simultâneas no mesmo bloco, então apenas uma é confirmada.",
+       "Não é possível reservar fora de 7h–22h nem durações diferentes de 1 hora.",
+       "Nenhuma cobrança é gerada (fora do escopo)."
+     ], "ready_to_build": true, "readiness_note": "Pronto. Autenticação do sócio e reservas em horário passado seguem premissas (A1, A4)."},
+    {"id": "S3", "feature": "F2", "title": "Limitar a 2 reservas futuras por sócio",
+     "story": "Como diretoria do clube, quero que cada sócio tenha no máximo 2 reservas futuras ao mesmo tempo, para distribuir o uso das quadras.",
+     "acceptance_criteria": [
+       "Dado um sócio com 2 reservas futuras, quando tenta criar uma terceira, então o sistema recusa com mensagem explicando o limite.",
+       "Dado um sócio com 2 reservas futuras que cancela uma, então ele pode reservar novamente.",
+       "Reservas já realizadas (passadas) não contam para o limite.",
+       "A verificação ocorre de forma atômica com a criação, evitando burlar o limite com requisições simultâneas."
+     ], "ready_to_build": true, "readiness_note": "Pronto com premissa: o limite vale para o total entre tênis e futsal (A2); reserva em andamento hoje conta como futura até o fim do bloco (A5, Q5 não bloqueante)."},
+    {"id": "S4", "feature": "F3", "title": "Cancelar uma reserva",
+     "story": "Como sócio, quero cancelar uma reserva minha, para liberar o horário quando não puder comparecer.",
+     "acceptance_criteria": [
+       "Dado uma reserva minha futura, quando cancelo dentro da regra de antecedência, então ela fica cancelada e o bloco volta a ficar livre.",
+       "Dado que a antecedência mínima definida pela diretoria não foi respeitada, então o cancelamento é recusado com mensagem informando o prazo.",
+       "Só o próprio sócio cancela suas reservas.",
+       "A antecedência mínima é um parâmetro configurável, não valor fixo no código."
+     ], "ready_to_build": false, "readiness_note": "Bloqueada em parte: a antecedência mínima ainda não foi definida (Q1). Cancelamento sem regra de prazo e o parâmetro configurável podem ser construídos; a validação do prazo depende da decisão."},
+    {"id": "S5", "feature": "F4", "title": "Integrar com o sistema de catracas do fornecedor",
+     "story": "Como clube, quero integrar o aplicativo ao sistema de catracas, para que a catraca reconheça reservas válidas.",
+     "acceptance_criteria": [
+       "A integração segue a documentação oficial da API do fornecedor (contrato, autenticação, erros).",
+       "Falhas ou indisponibilidade da catraca são registradas e tratadas sem corromper reservas.",
+       "Há ambiente de teste ou simulador da API para validação."
+     ], "ready_to_build": false, "readiness_note": "Bloqueada: o fornecedor ainda não enviou a documentação da API (Q2). Critérios deverão ser refinados após o recebimento."},
+    {"id": "S6", "feature": "F5", "title": "Entrar pela catraca usando a reserva",
+     "story": "Como sócio, quero entrar pela catraca ao chegar usando minha reserva, para acessar a quadra sem passar pela recepção.",
+     "acceptance_criteria": [
+       "Dado que tenho reserva ativa para a quadra e o horário atual está dentro da janela permitida, então a catraca libera a entrada.",
+       "Dado que não tenho reserva válida ou ela foi cancelada, então a entrada é negada.",
+       "A tolerância de chegada antecipada ou atrasada é definida e aplicada (Q3).",
+       "Cada tentativa de acesso é registrada."
+     ], "ready_to_build": false, "readiness_note": "Bloqueada: depende de S5 (API do fornecedor) e da definição do método de identificação do sócio e da janela de tolerância (Q2, Q3)."},
+    {"id": "S7", "feature": "F6", "title": "Ver a agenda do dia de cada quadra na recepção",
+     "story": "Como recepcionista, quero ver a agenda do dia de cada quadra, para saber quem usa cada quadra e em que horário.",
+     "acceptance_criteria": [
+       "Dado o dia atual, então vejo cada quadra com seus blocos de 7h a 22h, mostrando o sócio da reserva ou livre.",
+       "Reservas criadas ou canceladas aparecem atualizadas sem recarregamento manual excessivo (em até 1 minuto).",
+       "Posso escolher outra data para consulta.",
+       "Apenas perfis da recepção acessam essa visão."
+     ], "ready_to_build": true, "readiness_note": "Pronto. Perfil de recepção e meio de acesso (app ou web) assumidos (A6, Q6 não bloqueante)."}
+  ],
+  "tasks": [
+    {"id": "T1", "story": "S1", "title": "Modelar quadras (tipo, nome), horários e consulta de disponibilidade (API)", "ready_to_build": true},
+    {"id": "T2", "story": "S1", "title": "Tela de disponibilidade por data e esporte no app", "ready_to_build": true},
+    {"id": "T3", "story": "S2", "title": "Modelar reserva e endpoint de criação com validação de janela 7h–22h e bloco de 1h", "ready_to_build": true},
+    {"id": "T4", "story": "S2", "title": "Garantir unicidade de reserva por quadra/horário (restrição e tratamento de concorrência)", "ready_to_build": true},
+    {"id": "T5", "story": "S2", "title": "Fluxo de reserva no app com confirmação e mensagens de erro", "ready_to_build": true},
+    {"id": "T6", "story": "S3", "title": "Regra de máximo 2 reservas futuras, aplicada de forma atômica", "ready_to_build": true},
+    {"id": "T7", "story": "S3", "title": "Mensagem de limite atingido no app", "ready_to_build": true},
+    {"id": "T8", "story": "S4", "title": "Endpoint de cancelamento (status cancelada, liberação do bloco, checagem de dono)", "ready_to_build": true},
+    {"id": "T9", "story": "S4", "title": "Parâmetro configurável de antecedência mínima", "ready_to_build": true},
+    {"id": "T10", "story": "S4", "title": "Validação do prazo de antecedência para cancelar", "ready_to_build": false},
+    {"id": "T11", "story": "S4", "title": "Ação de cancelar no app", "ready_to_build": true},
+    {"id": "T12", "story": "S5", "title": "Spike: obter e analisar a documentação da API de catracas", "ready_to_build": false},
+    {"id": "T13", "story": "S5", "title": "Implementar cliente da API e tratamento de falhas", "ready_to_build": false},
+    {"id": "T14", "story": "S6", "title": "Regra de autorização de acesso por reserva e janela de tolerância", "ready_to_build": false},
+    {"id": "T15", "story": "S6", "title": "Registro de tentativas de acesso", "ready_to_build": false},
+    {"id": "T16", "story": "S7", "title": "Endpoint de agenda diária por quadra com controle de acesso por perfil", "ready_to_build": true},
+    {"id": "T17", "story": "S7", "title": "Tela de agenda diária para a recepção", "ready_to_build": true}
+  ],
+  "dependencies": [
+    {"from": "S2", "to": "S1", "reason": "A reserva parte da consulta de disponibilidade e do modelo de quadras/horários."},
+    {"from": "S3", "to": "S2", "reason": "O limite de reservas incide sobre a criação de reservas."},
+    {"from": "S4", "to": "S2", "reason": "É preciso existir reserva para cancelá-la."},
+    {"from": "S4", "to": "Q1", "reason": "A validação do prazo depende da decisão da diretoria sobre a antecedência mínima."},
+    {"from": "S5", "to": "Q2", "reason": "Integração depende da documentação da API do fornecedor."},
+    {"from": "S6", "to": "S5", "reason": "A liberação na catraca usa a integração."},
+    {"from": "S6", "to": "S2", "reason": "A entrada é autorizada com base na reserva."},
+    {"from": "S6", "to": "S4", "reason": "Reserva cancelada deve negar a entrada."},
+    {"from": "S7", "to": "S2", "reason": "A agenda exibe as reservas criadas."},
+    {"from": "T10", "to": "T9", "reason": "A validação usa o parâmetro configurável."},
+    {"from": "T13", "to": "T12", "reason": "A implementação depende da análise da documentação."},
+    {"from": "T4", "to": "T3", "reason": "A unicidade protege o modelo e endpoint de reserva."},
+    {"from": "T6", "to": "T3", "reason": "A regra do limite se apoia na criação de reservas."}
+  ],
+  "open_questions": [
+    {"id": "Q1", "question": "Qual a antecedência mínima para cancelar uma reserva (a diretoria ainda definirá)? Há exceções, por exemplo mau tempo ou manutenção da quadra?", "blocking": true, "affects": ["S4", "T10"]},
+    {"id": "Q2", "question": "Quando o fornecedor enviará a documentação da API de catracas, e há ambiente de teste? Qual o prazo e quem acompanha?", "blocking": true, "affects": ["S5", "S6", "T12", "T13", "T14", "T15"]},
+    {"id": "Q3", "question": "Como o sócio se identifica na catraca (QR code, biometria, cartão) e qual a tolerância de horário para entrar antes ou depois do início da reserva?", "blocking": true, "affects": ["S6", "T14"]},
+    {"id": "Q4", "question": "Com quantos dias de antecedência é possível reservar? Existe antecedência mínima para reservar (ex.: não reservar bloco já iniciado)?", "blocking": false, "affects": ["S1", "S2"]},
+    {"id": "Q5", "question": "O limite de 2 reservas futuras vale somando tênis e futsal, ou por esporte? Reserva em andamento conta?", "blocking": false, "affects": ["S3"]},
+    {"id": "Q6", "question": "A recepção usa o aplicativo ou um painel web? Pode criar ou cancelar reservas em nome do sócio?", "blocking": false, "affects": ["S7"]},
+    {"id": "Q7", "question": "Quantas quadras existem de cada esporte e há bloqueio por manutenção ou eventos?", "blocking": false, "affects": ["S1", "S2"]},
+    {"id": "Q8", "question": "Quem é considerado sócio apto (adimplência, status ativo) e como é feita a autenticação?", "blocking": false, "affects": ["S2"]}
+  ],
+  "assumptions": [
+    "A1: O sócio já está autenticado no aplicativo existente do clube; login e cadastro de sócios estão fora deste backlog.",
+    "A2: O limite de 2 reservas futuras é global por sócio (tênis e futsal somados).",
+    "A3: Todos os horários usam o fuso horário do clube; 22h é o fim do último bloco (21h–22h).",
+    "A4: Não se reserva bloco que já passou.",
+    "A5: Reserva futura é aquela cujo bloco ainda não terminou.",
+    "A6: A recepção tem perfil próprio e acesso somente leitura à agenda neste escopo.",
+    "A7: Cobrança de reservas está fora do escopo e nada no backlog gera pagamento.",
+    "A8: Cancelar libera imediatamente o bloco para outros sócios."
+  ]
+}

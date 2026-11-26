@@ -1,0 +1,95 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-035",
+  "title": "Caracterizar a entrada na catraca antes do horário reservado",
+  "status": "EXPLORATORY",
+  "priority": "MEDIUM",
+  "type": "HARDWARE_INTEGRATION",
+  "objective": "Registrar como a catraca trata a chegada antes do início do bloco da reserva.",
+  "requirement_refs": [
+    "REQ-005"
+  ],
+  "scenario_refs": [
+    "SCN-005"
+  ],
+  "coverage_point_refs": [
+    "CP-015"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 4 (linha 10)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com reserva ativa em QUADRA_TENIS_A que só começa daqui a 3 horas",
+    "CATRACA_A está em operação",
+    "A tolerância de horário da catraca e o contrato da API não são conhecidos"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio titular de reserva que começa em 3 horas"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis da reserva futura"
+    },
+    {
+      "name": "CATRACA_A",
+      "description": "catraca de acesso às quadras"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "SOCIO_A chega a CATRACA_A cerca de 3 horas antes do bloco e usa a reserva da forma que o fornecedor documentar.",
+      "expected_result": "A resposta de CATRACA_A ao uso antecipado fica registrada.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A consulta a reserva no aplicativo.",
+      "expected_result": "O estado da reserva permanece inalterado e a resposta da catraca fica registrada para a decisão da política de tolerância.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "Reserva ainda ativa"
+  ],
+  "cleanup": [
+    "Cancelar a reserva"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "MISSING_ORACLE: Tolerância de horário na catraca não definida.",
+    "EXTERNAL_DEPENDENCY_UNAVAILABLE: API sem documentação."
+  ],
+  "test_basis": "EXPLORATORY",
+  "primary_type": "HARDWARE_INTEGRATION",
+  "secondary_tags": [],
+  "execution_status": "EXPLORATORY",
+  "question_refs": [
+    "Q-002",
+    "Q-008"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": false,
+  "automation_layer": "HARDWARE",
+  "automation_tool_hint": "NONE",
+  "deterministic": false,
+  "priority_reason": "A tolerância é indefinida, mas liberar horas antes permitiria usar a quadra de outro sócio.",
+  "automation_suitability": "MANUAL_ONLY",
+  "automation_readiness": "NOT_APPLICABLE",
+  "readiness_blockers": [
+    "MISSING_ORACLE",
+    "EXTERNAL_DEPENDENCY_UNAVAILABLE",
+    "BLOCKING_QUESTION"
+  ],
+  "failure_domain": "uso da reserva fora do horário do bloco",
+  "source_identifiers": [],
+  "expansion_dimension": "INTEGRATION",
+  "expansion_checklist_item": "WRONG_SEQUENCE"
+}

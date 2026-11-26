@@ -1,0 +1,90 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-020",
+  "title": "Caracterizar o bloco que começa às 22h",
+  "status": "EXPLORATORY",
+  "priority": "MEDIUM",
+  "type": "BOUNDARY",
+  "objective": "Registrar como o aplicativo trata o bloco das 22h às 23h, enquanto a ambiguidade do limite não é resolvida.",
+  "requirement_refs": [
+    "REQ-002"
+  ],
+  "scenario_refs": [
+    "SCN-002"
+  ],
+  "coverage_point_refs": [
+    "CP-008"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7): entre 7h e 22h"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta e sem reservas futuras",
+    "QUADRA_TENIS_A não tem reservas às 22h de uma data futura",
+    "O PRD não define se um bloco que começa às 22h é permitido"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio ativo sem reservas futuras"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis sem reservas das 22h às 23h"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A tenta reservar o bloco das 22h às 23h de QUADRA_TENIS_A e registra a resposta recebida.",
+      "expected_result": "A resposta do aplicativo ao pedido fica registrada literalmente para análise.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A consulta a disponibilidade de QUADRA_TENIS_A para o bloco das 22h às 23h e a lista das suas reservas.",
+      "expected_result": "A disponibilidade do bloco das 22h às 23h fica coerente com a resposta recebida, sem reserva parcial.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "Estado do bloco das 22h registrado"
+  ],
+  "cleanup": [
+    "Cancelar a reserva, se tiver sido criada"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "MISSING_ORACLE: Não está definido se o bloco que começa às 22h é válido."
+  ],
+  "test_basis": "EXPLORATORY",
+  "primary_type": "BOUNDARY",
+  "secondary_tags": [],
+  "execution_status": "EXPLORATORY",
+  "question_refs": [
+    "Q-003"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": false,
+  "automation_layer": "UI",
+  "automation_tool_hint": "NONE",
+  "deterministic": false,
+  "priority_reason": "A política é indefinida; o teste só protege a integridade até a definição.",
+  "automation_suitability": "LOW",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "MISSING_ORACLE"
+  ],
+  "failure_domain": "bloco que começa no limite superior",
+  "source_identifiers": [],
+  "expansion_dimension": "BOUNDARY"
+}

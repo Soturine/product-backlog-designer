@@ -1,0 +1,251 @@
+{
+  "author": {
+    "agent": "plan-evo-r4",
+    "model": "claude-sonnet-5-5"
+  },
+  "base_digest": "sha256:dcf5dbb35beefdc095599e55ca7dc6cdee05c9199d919347f45171d05985d3b8",
+  "changes": [
+    {
+      "after": {
+        "evidence": [
+          {
+            "summary": "Pedido do usuário: o PRD v2 (sources/v2/prd.md, linha 9) registra a decisão da diretoria de 2026-11-20: cancelar até 12 horas antes.",
+            "type": "user_statement"
+          }
+        ],
+        "id": "PBD-DEC-AVY0NSKMBRX4",
+        "status": "approved",
+        "supersedes_claims": [
+          "PBD-CLM-G12AFEAVFPDE"
+        ],
+        "text": "A diretoria decidiu (2026-11-20): o sócio pode cancelar uma reserva até 12 horas antes do horário reservado."
+      },
+      "before": null,
+      "key": "D1",
+      "noop": false,
+      "op": "add_decision",
+      "rationale": "Decisão aprovada na v2 do PRD, linha 9.",
+      "requires_explicit_approval": false,
+      "target": "PBD-DEC-AVY0NSKMBRX4"
+    },
+    {
+      "after": [
+        "PBD-CLM-DNCNVSQN20MW"
+      ],
+      "before": [
+        "PBD-CLM-G12AFEAVFPDE"
+      ],
+      "key": "R1",
+      "noop": false,
+      "op": "retrace",
+      "rationale": "Remove a afirmação superada (prazo desconhecido).",
+      "requires_explicit_approval": false,
+      "target": "PBD-TASK-RQMNRV5S88MB"
+    },
+    {
+      "after": [
+        "PBD-CLM-DNCNVSQN20MW"
+      ],
+      "before": [
+        "PBD-CLM-G12AFEAVFPDE"
+      ],
+      "key": "R2",
+      "noop": false,
+      "op": "retrace",
+      "rationale": "Remove a afirmação superada (prazo desconhecido).",
+      "requires_explicit_approval": false,
+      "target": "PBD-STORY-BXMPBBR7YK7S"
+    },
+    {
+      "after": [
+        "PBD-CLM-DNCNVSQN20MW"
+      ],
+      "before": [
+        "PBD-CLM-DNCNVSQN20MW",
+        "PBD-CLM-G12AFEAVFPDE"
+      ],
+      "key": "R3",
+      "noop": false,
+      "op": "retrace",
+      "rationale": "Remove a afirmação superada (prazo desconhecido).",
+      "requires_explicit_approval": false,
+      "target": "PBD-FEAT-7FXX1BX92T4R"
+    },
+    {
+      "after": [
+        "PBD-CLM-DNCNVSQN20MW"
+      ],
+      "before": [
+        "PBD-CLM-DNCNVSQN20MW",
+        "PBD-CLM-G12AFEAVFPDE"
+      ],
+      "key": "R4",
+      "noop": false,
+      "op": "retrace",
+      "rationale": "Remove a afirmação superada (prazo desconhecido).",
+      "requires_explicit_approval": false,
+      "target": "PBD-STORY-BXMPBBR7YK7S"
+    },
+    {
+      "after": {
+        "claim_refs": [
+          "PBD-CLM-DNCNVSQN20MW"
+        ],
+        "expected_outcomes": [
+          "cancelamento com menos de 12 horas de antecedência é recusado",
+          "cancelamento com 12 horas ou mais de antecedência é aceito"
+        ],
+        "id": "PBD-AC-NCR8Y4GZZD8N",
+        "order": 1,
+        "origin": "proposed",
+        "parent": "PBD-STORY-BXMPBBR7YK7S",
+        "rationale": "O prazo mínimo é desconhecido (Q1); critério fica proposto até a definição.",
+        "status": "proposed",
+        "style": "list",
+        "text": "Cancelamento com menos de 12 horas de antecedência do horário reservado é recusado (decisão da diretoria de 2026-11-20); a mensagem de recusa ainda não foi definida.",
+        "visible_id": "CA-02"
+      },
+      "before": {
+        "claim_refs": [
+          "PBD-CLM-DNCNVSQN20MW"
+        ],
+        "expected_outcomes": [
+          "cancelamento fora do prazo é recusado após o prazo ser definido"
+        ],
+        "id": "PBD-AC-NCR8Y4GZZD8N",
+        "order": 1,
+        "origin": "proposed",
+        "parent": "PBD-STORY-BXMPBBR7YK7S",
+        "rationale": "O prazo mínimo é desconhecido (Q1); critério fica proposto até a definição.",
+        "status": "proposed",
+        "style": "list",
+        "text": "Cancelamento com menos antecedência que o mínimo definido pela diretoria é recusado; o valor do prazo e a mensagem ainda não existem.",
+        "visible_id": "CA-02"
+      },
+      "key": "R5",
+      "noop": false,
+      "op": "update_criterion",
+      "rationale": "Aplica a decisão D1 ao critério que dependia do prazo.",
+      "requires_explicit_approval": false,
+      "target": "PBD-STORY-BXMPBBR7YK7S"
+    },
+    {
+      "after": {
+        "evidence": [
+          {
+            "locator": {
+              "line_end": 9,
+              "line_start": 9,
+              "member": "prd.md",
+              "quote_digest": "sha256:9beaa463eeac41e37a96cda7edfa3e4cf89cce2db6c8e68d35a83c0d3adb0cbf",
+              "section": "Requisitos",
+              "source_id": "PBD-SRC-0AW4Q3WGMK5A",
+              "source_version": "31aa9f3b713e6fb9"
+            },
+            "summary": "O sócio pode cancelar uma reserva",
+            "type": "source_locator",
+            "verification": "mechanical"
+          }
+        ],
+        "rationale": "A pergunta que bloqueava a tarefa foi respondida.",
+        "review_status": "unreviewed",
+        "state": "confirmed",
+        "value": {
+          "rationale": "A diretoria definiu o prazo: 12 horas (decisão D1); a pergunta de antecedência foi respondida.",
+          "status": "ready"
+        }
+      },
+      "before": null,
+      "key": "R6",
+      "noop": false,
+      "op": "set_field",
+      "rationale": "A pergunta que bloqueava a tarefa foi respondida.",
+      "requires_explicit_approval": false,
+      "target": "PBD-TASK-RQMNRV5S88MB"
+    }
+  ],
+  "kind": "pbd.refinement-plan",
+  "note": "Nothing is applied until the owner approves change keys with: pbd refine apply.",
+  "plan_digest": "sha256:d882731cc6eede3257743e7792c5e2b01bdaf8b78f158df406f28a3c3fd9a90c",
+  "source_changes": [
+    {
+      "evidence": [
+        {
+          "summary": "Pedido do usuário: o PRD v2 (sources/v2/prd.md, linha 9) registra a decisão da diretoria de 2026-11-20: cancelar até 12 horas antes.",
+          "type": "user_statement"
+        }
+      ],
+      "key": "D1",
+      "op": "add_decision",
+      "rationale": "Decisão aprovada na v2 do PRD, linha 9.",
+      "status": "approved",
+      "supersedes_claims": [
+        "PBD-CLM-G12AFEAVFPDE"
+      ],
+      "text": "A diretoria decidiu (2026-11-20): o sócio pode cancelar uma reserva até 12 horas antes do horário reservado."
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-DNCNVSQN20MW"
+      ],
+      "key": "R1",
+      "op": "retrace",
+      "rationale": "Remove a afirmação superada (prazo desconhecido).",
+      "target": "PBD-TASK-RQMNRV5S88MB"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-DNCNVSQN20MW"
+      ],
+      "key": "R2",
+      "op": "retrace",
+      "rationale": "Remove a afirmação superada (prazo desconhecido).",
+      "target": "PBD-AC-NCR8Y4GZZD8N"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-DNCNVSQN20MW"
+      ],
+      "key": "R3",
+      "op": "retrace",
+      "rationale": "Remove a afirmação superada (prazo desconhecido).",
+      "target": "PBD-FEAT-7FXX1BX92T4R"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-DNCNVSQN20MW"
+      ],
+      "key": "R4",
+      "op": "retrace",
+      "rationale": "Remove a afirmação superada (prazo desconhecido).",
+      "target": "PBD-STORY-BXMPBBR7YK7S"
+    },
+    {
+      "expected_outcomes": [
+        "cancelamento com menos de 12 horas de antecedência é recusado",
+        "cancelamento com 12 horas ou mais de antecedência é aceito"
+      ],
+      "key": "R5",
+      "op": "update_criterion",
+      "rationale": "Aplica a decisão D1 ao critério que dependia do prazo.",
+      "target": "PBD-AC-NCR8Y4GZZD8N",
+      "text": "Cancelamento com menos de 12 horas de antecedência do horário reservado é recusado (decisão da diretoria de 2026-11-20); a mensagem de recusa ainda não foi definida."
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-DNCNVSQN20MW"
+      ],
+      "field": "readiness",
+      "key": "R6",
+      "op": "set_field",
+      "rationale": "A pergunta que bloqueava a tarefa foi respondida.",
+      "state": "confirmed",
+      "target": "PBD-TASK-RQMNRV5S88MB",
+      "value": {
+        "rationale": "A diretoria definiu o prazo: 12 horas (decisão D1); a pergunta de antecedência foi respondida.",
+        "status": "ready"
+      }
+    }
+  ],
+  "status": "proposed"
+}

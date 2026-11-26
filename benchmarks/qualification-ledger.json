@@ -51,14 +51,14 @@
    "milestone": "M2",
    "severity": "medium",
    "issue": "Criterion references by visible IDs that do not resolve; duplicated connector words ('que que').",
-   "evidence": "docs/evidence/final-qualification.md",
+   "evidence": "docs/evidence/corrective-round.md",
    "resolution": "Final qualification c08 showed tasks citing criterion design keys (AC1..AC7) that readers cannot resolve; the design contract now rejects criterion keys as well as visible IDs in free text, and the designer procedure says to describe the behavior instead. c08 is re-run in the correction round.",
    "tests": [
     "tests/pipeline/test_m1_fixes.py",
     "tests/unit/test_profiles_richtext.py"
    ],
    "state": "closed",
-   "closed_by": "c08 re-run (e8938d0): 0 unresolvable criterion references in item/criterion texts; reviewer-prose references remain a residual noted in the evidence."
+   "closed_by": "Original scope (item/criterion text) closed in the final qualification. Residual reviewer prose: visible per-story criterion IDs are now rejected in reviewer prose (generate mode) and design keys in prose render as links with story context (8-27 per corrective report). Remaining limit: the canonical backlog.json carries no key map (it is in traceability.json), so a reader of backlog.json alone cannot resolve prose keys."
   },
   {
    "id": "QL-005",
@@ -119,12 +119,13 @@
    "milestone": "final",
    "severity": "low",
    "issue": "Visual reading of PDF pages unavailable on this host (agent file reader lacks pdftoppm).",
-   "evidence": "benchmarks/runs/m1/c11-pdf-source/review.json",
+   "evidence": "docs/evidence/corrective-round.md",
    "resolution": "Requalify where the host can render pages; never fabricate transcriptions.",
    "tests": [
     "tests/pipeline/test_formats.py"
    ],
-   "state": "blocked_environment"
+   "state": "closed",
+   "closed_by": "R6b (9cfb3c4): the host rendered the PDF pages natively (whole-file read; page ranges still need pdftoppm) and the runtime accepted a native_vision reading with a visual transcription after D3."
   },
   {
    "id": "QL-010",
@@ -144,12 +145,13 @@
    "milestone": "final",
    "severity": "medium",
    "issue": "No automated accessibility scanner (axe-core) on the host; WCAG 2.2 AA is a target, not verified.",
-   "evidence": "docs/reporting.md#accessibility",
-   "resolution": "Landmarks, skip link, labelled controls, keyboard tree, reduced motion and 320 px reflow are tested; a full accessibility review runs in the final qualification.",
+   "evidence": "docs/evidence/corrective-round.md",
+   "resolution": "axe-core 4.10.2 scan (local tooling): 82 violation groups fixed, 0 remaining on every view of five example reports in light/dark at 1280/390 px; repeatable test tests/e2e/test_report_axe.py. Manual screen-reader and full keyboard review not performed, so WCAG 2.2 AA is not claimed.",
    "tests": [
+    "tests/e2e/test_report_axe.py",
     "tests/e2e/test_report_browser.py"
    ],
-   "state": "deferred_final_qualification"
+   "state": "open"
   },
   {
    "id": "QL-012",
@@ -169,14 +171,15 @@
    "milestone": "final",
    "severity": "high",
    "issue": "Audit, compare and refine contracts are qualified by deterministic fixtures only; no agent-led run of these modes yet.",
-   "evidence": "docs/evidence/final-qualification.md",
-   "resolution": "Audit qualified agent-led (F3: 4/4 defects, 0 false positives); compare and refine not yet run agent-led.",
+   "evidence": "docs/evidence/corrective-round.md",
+   "resolution": "Compare and refine run agent-led from natural language.",
    "tests": [
     "tests/pipeline/test_audit.py",
     "tests/pipeline/test_compare.py",
     "tests/pipeline/test_modes.py"
    ],
-   "state": "open"
+   "state": "closed",
+   "closed_by": "R3 (9cfb3c4): compare from one request, planted 5/5 detected on the correct side, 0 false positives on the 2 controls, mappings 2 exact + 1 partial, no winner (reader and comparer as sequential roles). R4b (f512dea): refine plan then apply of exactly the one change the user approved. Audit remains qualified by F3."
   },
   {
    "id": "QL-014",
@@ -198,12 +201,12 @@
    "milestone": "final",
    "severity": "medium",
    "issue": "Skill discovery verified only in Claude Code; other hosts (for example Codex) use --target and are not verified.",
-   "evidence": "docs/install.md#hosts-and-portability",
-   "resolution": "Exercise discovery in another host during the final qualification if one is available; otherwise keep it documented as unverified.",
+   "evidence": "docs/evidence/corrective-round.md",
+   "resolution": "R8: Codex CLI 0.170.0 ran the installed skill end to end from one request (report produced, separate collab agents, honest G17/G18). Not proven: automatic discovery (the prompt named the skill path); role payloads reported model 'gpt-5' while the session ran gpt-5.6-sol.",
    "tests": [
     "tests/unit/test_skill_install.py"
    ],
-   "state": "deferred_final_qualification"
+   "state": "open"
   },
   {
    "id": "QL-016",
@@ -211,12 +214,15 @@
    "milestone": "final",
    "severity": "high",
    "issue": "Planning, evolution and the publication workflow are qualified by deterministic fixtures and mocks only; no agent-led run proposes plans, evolutions or packages from a natural-language request yet.",
-   "evidence": "docs/evidence/final-qualification.md",
-   "resolution": "Downstream modes exercised deterministically on F1's agent output (plan, handoff, mock publication MOCK_VERIFIED); no agent-led planning/evolution run.",
+   "evidence": "docs/evidence/corrective-round.md",
+   "resolution": "Agent-led planning, evolution and local package + mock publication; defects D4-D9 found by these runs fixed with tests.",
    "tests": [
-    "tests/integration/test_integrated_flow.py"
+    "tests/pipeline/test_team_planning.py",
+    "tests/pipeline/test_answer_question.py",
+    "tests/integration/test_azure_mock.py"
    ],
-   "state": "open"
+   "state": "closed",
+   "closed_by": "R4 (9cfb3c4): team plan G10 BLOCKED honestly (unknown estimates), blocked story unallocated; evolution kept identities, 0 deletions, stale plan flagged. R4b (f512dea): question answered by the approved decision and readiness recomputed, refine of one approved change, pbd azure package -> prepare 17 CREATE -> approve -> mock apply 17 APPLIED -> verify MOCK_VERIFIED. D9 (normalized snapshot input) is covered by deterministic tests only. Mock is never live."
   },
   {
    "id": "QL-017",
@@ -224,8 +230,8 @@
    "milestone": "final",
    "severity": "high",
    "issue": "Native-first reading (originals primary, declared methods, transcription evidence) is enforced by contract and tests, but no agent has yet read real PDF/DOCX/XLSX/image members natively under it.",
-   "evidence": "docs/evidence/final-qualification.md",
-   "resolution": "Native-first exercised on text (native) and XLSX (honest declared fallback); agent-native PDF/image reading not exercised (c10/c11 not run).",
+   "evidence": "docs/evidence/corrective-round.md",
+   "resolution": "PDF and image originals read natively: R6 (PNG native_vision), R6b after D3 (PDF native_vision, 7/7 critical obligations at reading stage). DOCX (and XLSX in the final qualification): the Claude Code host refuses binary originals, readers declare an extracted_text fallback with limitations.",
    "tests": [
     "tests/pipeline/test_native_first.py"
    ],
@@ -237,12 +243,13 @@
    "milestone": "final",
    "severity": "low",
    "issue": "Agents on Windows wrote payloads in cp1252 and got a raw codec error; three runs needed a retry.",
-   "evidence": "benchmarks/runs/final (agents log)",
+   "evidence": "docs/evidence/corrective-round.md",
    "resolution": "Payloads stay UTF-8 only (fail closed); the error now states the offending byte, offset and how to save as UTF-8, and every procedure tells agents to write UTF-8 without shell heredocs.",
    "tests": [
     "tests/unit/test_canonical_utf8.py"
    ],
-   "state": "fixed_pending_requalification"
+   "state": "closed",
+   "closed_by": "Corrective round: 15 agent payload runs on the Windows host wrote UTF-8 through file-writing tools; 0 encoding rejections (one shell-quoting failure unrelated to encoding)."
   },
   {
    "id": "QL-019",
@@ -250,10 +257,47 @@
    "milestone": "next round",
    "severity": "medium",
    "issue": "c08 re-run missed critical recall (3/4): the gateway question was raised but an integration task was still presented as ready to build; 2 medium inventions.",
-   "evidence": "docs/evidence/final-qualification.md",
-   "resolution": "Designer procedure: work that depends on an open blocking question is proposed or deferred, never ready to build; re-measure c08 with several runs to report variance.",
+   "evidence": "docs/evidence/corrective-round.md",
+   "resolution": "Schema 1.2.0 readiness with typed blocked_by/independent_of links; runtime rejects readiness contradictions; reviewer readiness_check drives G08; planning never schedules blocked work.",
+   "tests": [
+    "tests/pipeline/test_readiness.py",
+    "tests/e2e/test_report_readiness_ui.py"
+   ],
+   "state": "closed",
+   "closed_by": "Corrective R1a-c on c9c5634: c08 critical 4/4 handled (3 strict) in all 3 runs, 0 trap violations, gateway work blocked and linked to the blocking question in every run, unrelated work ready, 1 medium invention per run; R2 and R2b (new h2 domain) 5/5, 0 traps. Residual generator variance on classifying blocking questions is tracked as QL-020."
+  },
+  {
+   "id": "QL-020",
+   "origin": "corrective R2, R2b",
+   "milestone": "next round",
+   "severity": "medium",
+   "issue": "Generator variance in classifying whether an open question blocks work: in both h2 generations the 22h boundary question was marked non-blocking and booking work ready; both independent reviewers disputed it (G08 FAIL). Not fixable by domain rules.",
+   "evidence": "docs/evidence/corrective-round.md",
+   "resolution": "Kept as an agent judgment; the reviewer readiness_check surfaces disagreements and fails G08. Measure across more domains before changing procedures.",
    "tests": [],
    "state": "open"
+  },
+  {
+   "id": "QL-021",
+   "origin": "corrective R7",
+   "milestone": "next round",
+   "severity": "low",
+   "issue": "Functional Test Designer outputs carry no PBD IDs; the link from Test Cases back to PBD items/criteria exists only through instructions seed anchors and repeated question text.",
+   "evidence": "docs/evidence/corrective-round.md",
+   "resolution": "Cross-repository interface decision (FTD field or a documented mapping); not changed in this round.",
+   "tests": [],
+   "state": "open"
+  },
+  {
+   "id": "QL-022",
+   "origin": "corrective Derivanta Engine inspection",
+   "milestone": "next round",
+   "severity": "low",
+   "issue": "Maintainability drivers: compute_gates (96 decision paths) and _team_plan (95) are refactoring candidates (INFO hypotheses, no defect).",
+   "evidence": "benchmarks/runs/corrective/tooling/derivanta-inspect.json",
+   "resolution": "Refactor behind the existing tests and mutants when next touched.",
+   "tests": [],
+   "state": "deferred_final_qualification"
   }
  ]
 }

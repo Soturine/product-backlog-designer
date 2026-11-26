@@ -1,0 +1,102 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-036",
+  "title": "Catraca não libera quem usa uma reserva cancelada",
+  "status": "EXPLORATORY",
+  "priority": "HIGH",
+  "type": "HARDWARE_INTEGRATION",
+  "objective": "Caracterizar que a reserva cancelada deixa de dar acesso.",
+  "requirement_refs": [
+    "REQ-004",
+    "REQ-005"
+  ],
+  "scenario_refs": [
+    "SCN-005"
+  ],
+  "coverage_point_refs": [
+    "CP-012",
+    "CP-015"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 3 (linha 9)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 4 (linha 10)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, itens 3 e 4 (linhas 9 e 10)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo que cancelou a reserva do bloco em andamento",
+    "CATRACA_A está em operação",
+    "A API do fornecedor de catracas não está documentada"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio cuja reserva foi cancelada"
+    },
+    {
+      "name": "CATRACA_A",
+      "description": "catraca de acesso às quadras"
+    },
+    {
+      "name": "RESERVA_CANCELADA_A",
+      "description": "reserva do bloco atual, cancelada pelo titular"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "SOCIO_A chega a CATRACA_A e tenta entrar com RESERVA_CANCELADA_A da forma que o fornecedor documentar.",
+      "expected_result": "CATRACA_A recebe o uso de uma reserva cancelada.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A tenta passar por CATRACA_A e confere a reserva no aplicativo.",
+      "expected_result": "A passagem permanece bloqueada e a reserva continua cancelada.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "SOCIO_A fora da área das quadras"
+  ],
+  "cleanup": [],
+  "state_contract": "REQUIRES_FIXTURE_RESET",
+  "tags": [],
+  "notes": [
+    "EXTERNAL_DEPENDENCY_UNAVAILABLE: API de catracas sem documentação.",
+    "MISSING_EXECUTION_SURFACE: Forma de apresentar a reserva na catraca desconhecida."
+  ],
+  "test_basis": "EXPLORATORY",
+  "primary_type": "HARDWARE_INTEGRATION",
+  "secondary_tags": [],
+  "execution_status": "EXPLORATORY",
+  "question_refs": [
+    "Q-002"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": false,
+  "automation_layer": "HARDWARE",
+  "automation_tool_hint": "NONE",
+  "deterministic": false,
+  "priority_reason": "Reserva cancelada que libera a catraca expõe uma quadra já oferecida a outro sócio.",
+  "automation_suitability": "MANUAL_ONLY",
+  "automation_readiness": "NOT_APPLICABLE",
+  "readiness_blockers": [
+    "EXTERNAL_DEPENDENCY_UNAVAILABLE",
+    "MISSING_EXECUTION_SURFACE",
+    "BLOCKING_QUESTION"
+  ],
+  "failure_domain": "acesso com reserva cancelada",
+  "source_identifiers": [],
+  "expansion_dimension": "INTEGRATION",
+  "expansion_checklist_item": "WRONG_STATE"
+}

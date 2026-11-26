@@ -1,0 +1,101 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-022",
+  "title": "Reservas passadas não consomem o limite de futuras",
+  "status": "NEEDS_REVIEW",
+  "priority": "HIGH",
+  "type": "BOUNDARY",
+  "objective": "Verificar que apenas reservas futuras entram no limite de 2.",
+  "requirement_refs": [
+    "REQ-003"
+  ],
+  "scenario_refs": [
+    "SCN-003"
+  ],
+  "coverage_point_refs": [
+    "CP-010"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 2 (linha 8)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 2 (linha 8): reservas futuras"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_E é sócio ativo com sessão aberta",
+    "SOCIO_E tem 2 reservas cujo horário já passou e nenhuma reserva futura",
+    "QUADRA_TENIS_A está livre em BLOCO_17H de uma data futura",
+    "A criação das reservas passadas depende de massa de dados do ambiente de teste, cuja forma não é conhecida"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_E",
+      "description": "sócio ativo com 2 reservas já realizadas e 0 futuras"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis livre em BLOCO_17H"
+    },
+    {
+      "name": "BLOCO_17H",
+      "description": "bloco das 17h às 18h de uma data futura"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_E abre o histórico e confere que as 2 reservas anteriores constam como já realizadas.",
+      "expected_result": "As 2 reservas anteriores constam como passadas e SOCIO_E não tem reservas futuras.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_E reserva BLOCO_17H em QUADRA_TENIS_A e confirma.",
+      "expected_result": "A reserva de BLOCO_17H é confirmada.",
+      "needs_clarification": false
+    },
+    {
+      "step": 3,
+      "action": "SOCIO_E abre a lista das suas reservas futuras.",
+      "expected_result": "A nova reserva é criada, pois o sócio não tinha reservas futuras, e passa a ser a única futura.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "SOCIO_E com 1 reserva futura"
+  ],
+  "cleanup": [
+    "Cancelar a nova reserva"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "UNKNOWN_SETUP_PATH: Não se sabe como obter um sócio com reservas já realizadas no ambiente de teste.",
+    "MISSING_SELECTOR: Telas e rótulos não constam do PRD."
+  ],
+  "test_basis": "DERIVED",
+  "primary_type": "BOUNDARY",
+  "secondary_tags": [],
+  "execution_status": "NEEDS_REVIEW",
+  "question_refs": [],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "NONE",
+  "deterministic": true,
+  "priority_reason": "Contar o histórico bloquearia sócios antigos indevidamente.",
+  "automation_suitability": "MEDIUM",
+  "automation_readiness": "NEEDS_FIXTURE",
+  "readiness_blockers": [
+    "UNKNOWN_SETUP_PATH",
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "distinção entre reserva passada e futura",
+  "source_identifiers": [],
+  "expansion_dimension": "BOUNDARY"
+}

@@ -1,0 +1,2484 @@
+{
+  "schema_version": "2.2",
+  "generated_at": "2026-11-26T15:59:00.621670Z",
+  "output_locale": "pt-BR",
+  "locale_source": "EXPLICIT",
+  "sources": [
+    {
+      "path": "sources/prd.md",
+      "role": "FUNCTIONAL_AUTHORITY",
+      "status": "READ",
+      "reason": "UTF-8 text",
+      "content_digest": "a15a16334fe3e33762ae0d89e03fbea9f041267e82aa3881c4847ac5a5301fd9",
+      "authority": "NORMATIVE_PRIMARY"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "REQ-001",
+      "statement": "Sócios reservam quadras de tênis e de futsal pelo aplicativo do clube.",
+      "status": "TESTABLE",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Objetivo (linha 4)"
+        }
+      ],
+      "source_identifier": null,
+      "source_title": null,
+      "source_statement": "Sócios reservam quadras de tênis e de futsal pelo aplicativo do clube.",
+      "kind": "GENERIC"
+    },
+    {
+      "id": "REQ-002",
+      "statement": "O sócio reserva uma quadra livre em blocos de 1 hora, entre 7h e 22h.",
+      "status": "NEEDS_CLARIFICATION",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 1 (linha 7)"
+        }
+      ],
+      "source_identifier": null,
+      "source_title": null,
+      "source_statement": "O sócio reserva uma quadra livre em blocos de 1 hora, entre 7h e 22h.",
+      "kind": "GENERIC"
+    },
+    {
+      "id": "REQ-003",
+      "statement": "Cada sócio pode ter no máximo 2 reservas futuras ao mesmo tempo.",
+      "status": "TESTABLE",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 2 (linha 8)"
+        }
+      ],
+      "source_identifier": null,
+      "source_title": null,
+      "source_statement": "Cada sócio pode ter no máximo 2 reservas futuras ao mesmo tempo.",
+      "kind": "GENERIC"
+    },
+    {
+      "id": "REQ-004",
+      "statement": "O sócio pode cancelar uma reserva; a antecedência mínima para cancelar ainda será definida pela diretoria.",
+      "status": "NEEDS_CLARIFICATION",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 3 (linha 9)"
+        }
+      ],
+      "source_identifier": null,
+      "source_title": null,
+      "source_statement": "O sócio pode cancelar uma reserva; a antecedência mínima para cancelar ainda será definida pela diretoria.",
+      "kind": "GENERIC"
+    },
+    {
+      "id": "REQ-005",
+      "statement": "Ao chegar, o sócio entra pela catraca usando a reserva. A integração com o sistema de catracas depende do fornecedor, que ainda não enviou a documentação da API.",
+      "status": "NEEDS_CLARIFICATION",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 4 (linha 10)"
+        }
+      ],
+      "source_identifier": null,
+      "source_title": null,
+      "source_statement": "Ao chegar, o sócio entra pela catraca usando a reserva. A integração com o sistema de catracas depende do fornecedor, que ainda não enviou a documentação da API.",
+      "kind": "GENERIC"
+    },
+    {
+      "id": "REQ-006",
+      "statement": "A recepção vê a agenda do dia de cada quadra.",
+      "status": "TESTABLE",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 5 (linha 11)"
+        }
+      ],
+      "source_identifier": null,
+      "source_title": null,
+      "source_statement": "A recepção vê a agenda do dia de cada quadra.",
+      "kind": "GENERIC"
+    }
+  ],
+  "normative_clauses": [
+    {
+      "id": "CLAUSE-001",
+      "requirement_ref": "REQ-001",
+      "normalized_claim": "O sócio consegue reservar uma quadra de tênis pelo aplicativo do clube.",
+      "authority": "FUNCTIONAL_AUTHORITY",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Objetivo (linha 4)"
+        }
+      ],
+      "destination_type": "COVERAGE_POINT",
+      "destination_id": "CP-001"
+    },
+    {
+      "id": "CLAUSE-002",
+      "requirement_ref": "REQ-001",
+      "normalized_claim": "O sócio consegue reservar uma quadra de futsal pelo aplicativo do clube.",
+      "authority": "FUNCTIONAL_AUTHORITY",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Objetivo (linha 4)"
+        }
+      ],
+      "destination_type": "COVERAGE_POINT",
+      "destination_id": "CP-002"
+    },
+    {
+      "id": "CLAUSE-003",
+      "requirement_ref": "REQ-002",
+      "normalized_claim": "A reserva de uma quadra livre fica registrada em nome do sócio que a fez.",
+      "authority": "FUNCTIONAL_AUTHORITY",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 1 (linha 7)"
+        }
+      ],
+      "destination_type": "COVERAGE_POINT",
+      "destination_id": "CP-003"
+    },
+    {
+      "id": "CLAUSE-004",
+      "requirement_ref": "REQ-002",
+      "normalized_claim": "Depois de reservado, o bloco deixa de constar como livre para aquela quadra.",
+      "authority": "FUNCTIONAL_AUTHORITY",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 1 (linha 7)"
+        }
+      ],
+      "destination_type": "COVERAGE_POINT",
+      "destination_id": "CP-004"
+    },
+    {
+      "id": "CLAUSE-005",
+      "requirement_ref": "REQ-002",
+      "normalized_claim": "Um bloco que já tem reserva na quadra não pode ser reservado de novo, porque a quadra não está livre.",
+      "authority": "FUNCTIONAL_AUTHORITY",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 1 (linha 7)"
+        }
+      ],
+      "destination_type": "COVERAGE_POINT",
+      "destination_id": "CP-005"
+    },
+    {
+      "id": "CLAUSE-006",
+      "requirement_ref": "REQ-002",
+      "normalized_claim": "Cada reserva ocupa um bloco com duração de exatamente 1 hora.",
+      "authority": "FUNCTIONAL_AUTHORITY",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 1 (linha 7)"
+        }
+      ],
+      "destination_type": "COVERAGE_POINT",
+      "destination_id": "CP-006"
+    },
+    {
+      "id": "CLAUSE-007",
+      "requirement_ref": "REQ-002",
+      "normalized_claim": "Um bloco de 1 hora dentro da janela entre 7h e 22h é aceito.",
+      "authority": "FUNCTIONAL_AUTHORITY",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 1 (linha 7)"
+        }
+      ],
+      "destination_type": "COVERAGE_POINT",
+      "destination_id": "CP-007"
+    },
+    {
+      "id": "CLAUSE-008",
+      "requirement_ref": "REQ-002",
+      "normalized_claim": "Um bloco de 1 hora fora da janela entre 7h e 22h é recusado.",
+      "authority": "FUNCTIONAL_AUTHORITY",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 1 (linha 7)"
+        }
+      ],
+      "destination_type": "COVERAGE_POINT",
+      "destination_id": "CP-008"
+    },
+    {
+      "id": "CLAUSE-009",
+      "requirement_ref": "REQ-002",
+      "normalized_claim": "Não está definido se o último bloco reservável começa às 21h ou pode começar às 22h.",
+      "authority": "FUNCTIONAL_AUTHORITY",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 1 (linha 7)"
+        }
+      ],
+      "destination_type": "QUESTION",
+      "destination_id": "Q-003"
+    },
+    {
+      "id": "CLAUSE-010",
+      "requirement_ref": "REQ-003",
+      "normalized_claim": "O sócio com menos de 2 reservas futuras consegue criar uma nova reserva válida.",
+      "authority": "FUNCTIONAL_AUTHORITY",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 2 (linha 8)"
+        }
+      ],
+      "destination_type": "COVERAGE_POINT",
+      "destination_id": "CP-010"
+    },
+    {
+      "id": "CLAUSE-011",
+      "requirement_ref": "REQ-003",
+      "normalized_claim": "O sócio que já tem 2 reservas futuras não consegue criar uma terceira.",
+      "authority": "FUNCTIONAL_AUTHORITY",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 2 (linha 8)"
+        }
+      ],
+      "destination_type": "COVERAGE_POINT",
+      "destination_id": "CP-011"
+    },
+    {
+      "id": "CLAUSE-012",
+      "requirement_ref": "REQ-004",
+      "normalized_claim": "O sócio cancela uma reserva sua e ela deixa de estar ativa.",
+      "authority": "FUNCTIONAL_AUTHORITY",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 3 (linha 9)"
+        }
+      ],
+      "destination_type": "COVERAGE_POINT",
+      "destination_id": "CP-012"
+    },
+    {
+      "id": "CLAUSE-013",
+      "requirement_ref": "REQ-004",
+      "normalized_claim": "Depois do cancelamento, o bloco da quadra volta a poder ser reservado por outro sócio.",
+      "authority": "FUNCTIONAL_AUTHORITY",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 3 (linha 9)"
+        }
+      ],
+      "destination_type": "COVERAGE_POINT",
+      "destination_id": "CP-013"
+    },
+    {
+      "id": "CLAUSE-014",
+      "requirement_ref": "REQ-004",
+      "normalized_claim": "A antecedência mínima para cancelar ainda não foi definida pela diretoria.",
+      "authority": "FUNCTIONAL_AUTHORITY",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 3 (linha 9)"
+        }
+      ],
+      "destination_type": "QUESTION",
+      "destination_id": "Q-001"
+    },
+    {
+      "id": "CLAUSE-015",
+      "requirement_ref": "REQ-005",
+      "normalized_claim": "O sócio que chega no horário da sua reserva usa essa reserva na catraca e a catraca libera a passagem.",
+      "authority": "FUNCTIONAL_AUTHORITY",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 4 (linha 10)"
+        }
+      ],
+      "destination_type": "COVERAGE_POINT",
+      "destination_id": "CP-015"
+    },
+    {
+      "id": "CLAUSE-016",
+      "requirement_ref": "REQ-005",
+      "normalized_claim": "A integração com a catraca depende de um fornecedor que ainda não enviou a documentação da API.",
+      "authority": "FUNCTIONAL_AUTHORITY",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 4 (linha 10)"
+        }
+      ],
+      "destination_type": "QUESTION",
+      "destination_id": "Q-002"
+    },
+    {
+      "id": "CLAUSE-017",
+      "requirement_ref": "REQ-006",
+      "normalized_claim": "A recepção consegue ver a agenda do dia de cada quadra, com as reservas daquela quadra.",
+      "authority": "FUNCTIONAL_AUTHORITY",
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 5 (linha 11)"
+        }
+      ],
+      "destination_type": "COVERAGE_POINT",
+      "destination_id": "CP-017"
+    }
+  ],
+  "findings": [
+    {
+      "id": "FND-001",
+      "type": "INFORMATION",
+      "statement": "A cobrança de reservas está fora do escopo do PRD; nenhum Test Case cobre pagamento, preço ou cobrança.",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Fora do escopo (linha 14)"
+        }
+      ],
+      "related_test_cases": [],
+      "coverage_disposition": "COVERED_BY_EXISTING_SCENARIO",
+      "question_refs": []
+    }
+  ],
+  "coverage_points": [
+    {
+      "id": "CP-001",
+      "requirement_ref": "REQ-001",
+      "statement": "O sócio consegue reservar uma quadra de tênis pelo aplicativo do clube.",
+      "clause_refs": [
+        "CLAUSE-001"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Objetivo (linha 4)"
+        }
+      ],
+      "disposition": "TEST_CASE",
+      "target_refs": [
+        "TC-001",
+        "TC-047"
+      ]
+    },
+    {
+      "id": "CP-002",
+      "requirement_ref": "REQ-001",
+      "statement": "O sócio consegue reservar uma quadra de futsal pelo aplicativo do clube.",
+      "clause_refs": [
+        "CLAUSE-002"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Objetivo (linha 4)"
+        }
+      ],
+      "disposition": "TEST_CASE",
+      "target_refs": [
+        "TC-002",
+        "TC-048"
+      ]
+    },
+    {
+      "id": "CP-003",
+      "requirement_ref": "REQ-002",
+      "statement": "A reserva de uma quadra livre fica registrada em nome do sócio que a fez.",
+      "clause_refs": [
+        "CLAUSE-003"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 1 (linha 7)"
+        }
+      ],
+      "disposition": "TEST_CASE",
+      "target_refs": [
+        "TC-003",
+        "TC-037",
+        "TC-041",
+        "TC-045",
+        "TC-047"
+      ]
+    },
+    {
+      "id": "CP-004",
+      "requirement_ref": "REQ-002",
+      "statement": "Depois de reservado, o bloco deixa de constar como livre para aquela quadra.",
+      "clause_refs": [
+        "CLAUSE-004"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 1 (linha 7)"
+        }
+      ],
+      "disposition": "TEST_CASE",
+      "target_refs": [
+        "TC-004",
+        "TC-027",
+        "TC-040"
+      ]
+    },
+    {
+      "id": "CP-005",
+      "requirement_ref": "REQ-002",
+      "statement": "Um bloco que já tem reserva na quadra não pode ser reservado de novo, porque a quadra não está livre.",
+      "clause_refs": [
+        "CLAUSE-005"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 1 (linha 7)"
+        }
+      ],
+      "disposition": "TEST_CASE",
+      "target_refs": [
+        "TC-005",
+        "TC-026",
+        "TC-030",
+        "TC-031",
+        "TC-033",
+        "TC-044"
+      ]
+    },
+    {
+      "id": "CP-006",
+      "requirement_ref": "REQ-002",
+      "statement": "Cada reserva ocupa um bloco com duração de exatamente 1 hora.",
+      "clause_refs": [
+        "CLAUSE-006"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 1 (linha 7)"
+        }
+      ],
+      "disposition": "TEST_CASE",
+      "target_refs": [
+        "TC-006",
+        "TC-015",
+        "TC-023",
+        "TC-044"
+      ]
+    },
+    {
+      "id": "CP-007",
+      "requirement_ref": "REQ-002",
+      "statement": "Um bloco de 1 hora dentro da janela entre 7h e 22h é aceito.",
+      "clause_refs": [
+        "CLAUSE-007"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 1 (linha 7)"
+        }
+      ],
+      "disposition": "TEST_CASE",
+      "target_refs": [
+        "TC-007",
+        "TC-017",
+        "TC-018"
+      ]
+    },
+    {
+      "id": "CP-008",
+      "requirement_ref": "REQ-002",
+      "statement": "Um bloco de 1 hora fora da janela entre 7h e 22h é recusado.",
+      "clause_refs": [
+        "CLAUSE-008"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 1 (linha 7)"
+        }
+      ],
+      "disposition": "TEST_CASE",
+      "target_refs": [
+        "TC-008",
+        "TC-019",
+        "TC-020",
+        "TC-030"
+      ]
+    },
+    {
+      "id": "CP-009",
+      "requirement_ref": "REQ-002",
+      "statement": "Não está definido se o último bloco reservável começa às 21h ou pode começar às 22h.",
+      "clause_refs": [
+        "CLAUSE-009"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 1 (linha 7)"
+        }
+      ],
+      "disposition": "QUESTION",
+      "target_refs": [
+        "Q-003"
+      ]
+    },
+    {
+      "id": "CP-010",
+      "requirement_ref": "REQ-003",
+      "statement": "O sócio com menos de 2 reservas futuras consegue criar uma nova reserva válida.",
+      "clause_refs": [
+        "CLAUSE-010"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 2 (linha 8)"
+        }
+      ],
+      "disposition": "TEST_CASE",
+      "target_refs": [
+        "TC-009",
+        "TC-021",
+        "TC-022"
+      ]
+    },
+    {
+      "id": "CP-011",
+      "requirement_ref": "REQ-003",
+      "statement": "O sócio que já tem 2 reservas futuras não consegue criar uma terceira.",
+      "clause_refs": [
+        "CLAUSE-011"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 2 (linha 8)"
+        }
+      ],
+      "disposition": "TEST_CASE",
+      "target_refs": [
+        "TC-010",
+        "TC-028",
+        "TC-029",
+        "TC-030",
+        "TC-032"
+      ]
+    },
+    {
+      "id": "CP-012",
+      "requirement_ref": "REQ-004",
+      "statement": "O sócio cancela uma reserva sua e ela deixa de estar ativa.",
+      "clause_refs": [
+        "CLAUSE-012"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 3 (linha 9)"
+        }
+      ],
+      "disposition": "TEST_CASE",
+      "target_refs": [
+        "TC-011",
+        "TC-025",
+        "TC-029",
+        "TC-034",
+        "TC-036",
+        "TC-043",
+        "TC-046",
+        "TC-047"
+      ]
+    },
+    {
+      "id": "CP-013",
+      "requirement_ref": "REQ-004",
+      "statement": "Depois do cancelamento, o bloco da quadra volta a poder ser reservado por outro sócio.",
+      "clause_refs": [
+        "CLAUSE-013"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 3 (linha 9)"
+        }
+      ],
+      "disposition": "TEST_CASE",
+      "target_refs": [
+        "TC-012",
+        "TC-047"
+      ]
+    },
+    {
+      "id": "CP-014",
+      "requirement_ref": "REQ-004",
+      "statement": "A antecedência mínima para cancelar ainda não foi definida pela diretoria.",
+      "clause_refs": [
+        "CLAUSE-014"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 3 (linha 9)"
+        }
+      ],
+      "disposition": "QUESTION",
+      "target_refs": [
+        "Q-001"
+      ]
+    },
+    {
+      "id": "CP-015",
+      "requirement_ref": "REQ-005",
+      "statement": "O sócio que chega no horário da sua reserva usa essa reserva na catraca e a catraca libera a passagem.",
+      "clause_refs": [
+        "CLAUSE-015"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 4 (linha 10)"
+        }
+      ],
+      "disposition": "TEST_CASE",
+      "target_refs": [
+        "TC-013",
+        "TC-016",
+        "TC-035",
+        "TC-036",
+        "TC-038",
+        "TC-039",
+        "TC-048"
+      ]
+    },
+    {
+      "id": "CP-016",
+      "requirement_ref": "REQ-005",
+      "statement": "A integração com a catraca depende de um fornecedor que ainda não enviou a documentação da API.",
+      "clause_refs": [
+        "CLAUSE-016"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 4 (linha 10)"
+        }
+      ],
+      "disposition": "QUESTION",
+      "target_refs": [
+        "Q-002"
+      ]
+    },
+    {
+      "id": "CP-017",
+      "requirement_ref": "REQ-006",
+      "statement": "A recepção consegue ver a agenda do dia de cada quadra, com as reservas daquela quadra.",
+      "clause_refs": [
+        "CLAUSE-017"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 5 (linha 11)"
+        }
+      ],
+      "disposition": "TEST_CASE",
+      "target_refs": [
+        "TC-014",
+        "TC-024",
+        "TC-042",
+        "TC-045",
+        "TC-046",
+        "TC-047"
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "SCN-001",
+      "title": "Reserva de quadra",
+      "type": "SCENARIO_FAMILY",
+      "requirement_refs": [
+        "REQ-001",
+        "REQ-002",
+        "REQ-003"
+      ],
+      "coverage_point_refs": [
+        "CP-001",
+        "CP-002",
+        "CP-003",
+        "CP-004",
+        "CP-005",
+        "CP-006",
+        "CP-008",
+        "CP-011"
+      ],
+      "test_case_refs": [
+        "TC-001",
+        "TC-002",
+        "TC-003",
+        "TC-004",
+        "TC-005",
+        "TC-006",
+        "TC-015",
+        "TC-023",
+        "TC-026",
+        "TC-027",
+        "TC-030",
+        "TC-031",
+        "TC-033",
+        "TC-037",
+        "TC-040",
+        "TC-041",
+        "TC-044"
+      ]
+    },
+    {
+      "id": "SCN-002",
+      "title": "Janela de horário",
+      "type": "SCENARIO_FAMILY",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "coverage_point_refs": [
+        "CP-007",
+        "CP-008"
+      ],
+      "test_case_refs": [
+        "TC-007",
+        "TC-008",
+        "TC-017",
+        "TC-018",
+        "TC-019",
+        "TC-020"
+      ]
+    },
+    {
+      "id": "SCN-003",
+      "title": "Limite de reservas futuras",
+      "type": "SCENARIO_FAMILY",
+      "requirement_refs": [
+        "REQ-003",
+        "REQ-004"
+      ],
+      "coverage_point_refs": [
+        "CP-010",
+        "CP-011",
+        "CP-012"
+      ],
+      "test_case_refs": [
+        "TC-009",
+        "TC-010",
+        "TC-021",
+        "TC-022",
+        "TC-028",
+        "TC-029",
+        "TC-032"
+      ]
+    },
+    {
+      "id": "SCN-004",
+      "title": "Cancelamento",
+      "type": "SCENARIO_FAMILY",
+      "requirement_refs": [
+        "REQ-004"
+      ],
+      "coverage_point_refs": [
+        "CP-012",
+        "CP-013"
+      ],
+      "test_case_refs": [
+        "TC-011",
+        "TC-012",
+        "TC-025",
+        "TC-034",
+        "TC-043"
+      ]
+    },
+    {
+      "id": "SCN-005",
+      "title": "Acesso pela catraca",
+      "type": "SCENARIO_FAMILY",
+      "requirement_refs": [
+        "REQ-005",
+        "REQ-004"
+      ],
+      "coverage_point_refs": [
+        "CP-015",
+        "CP-012"
+      ],
+      "test_case_refs": [
+        "TC-013",
+        "TC-016",
+        "TC-035",
+        "TC-036",
+        "TC-038",
+        "TC-039"
+      ]
+    },
+    {
+      "id": "SCN-006",
+      "title": "Agenda do dia",
+      "type": "SCENARIO_FAMILY",
+      "requirement_refs": [
+        "REQ-006",
+        "REQ-002",
+        "REQ-004"
+      ],
+      "coverage_point_refs": [
+        "CP-017",
+        "CP-003",
+        "CP-012"
+      ],
+      "test_case_refs": [
+        "TC-014",
+        "TC-024",
+        "TC-042",
+        "TC-045",
+        "TC-046"
+      ]
+    },
+    {
+      "id": "SCN-007",
+      "title": "Jornadas",
+      "type": "SCENARIO_FAMILY",
+      "requirement_refs": [
+        "REQ-001",
+        "REQ-002",
+        "REQ-006",
+        "REQ-004",
+        "REQ-005"
+      ],
+      "coverage_point_refs": [
+        "CP-001",
+        "CP-003",
+        "CP-017",
+        "CP-012",
+        "CP-013",
+        "CP-002",
+        "CP-015"
+      ],
+      "test_case_refs": [
+        "TC-047",
+        "TC-048"
+      ]
+    }
+  ],
+  "test_cases": [
+    {
+      "id": "TC-001",
+      "title": "Reservar uma quadra de tênis livre pelo aplicativo",
+      "status": "READY",
+      "requirement_refs": [
+        "REQ-001"
+      ],
+      "scenario_refs": [
+        "SCN-001"
+      ],
+      "coverage_point_refs": [
+        "CP-001"
+      ],
+      "file": "test-cases/TC-001.json",
+      "markdown_file": "test-cases-md/TC-001.md",
+      "test_basis": "ACCEPTANCE",
+      "primary_type": "FUNCTIONAL",
+      "execution_status": "READY",
+      "question_refs": [],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-002",
+      "title": "Reservar uma quadra de futsal livre pelo aplicativo",
+      "status": "READY",
+      "requirement_refs": [
+        "REQ-001"
+      ],
+      "scenario_refs": [
+        "SCN-001"
+      ],
+      "coverage_point_refs": [
+        "CP-002"
+      ],
+      "file": "test-cases/TC-002.json",
+      "markdown_file": "test-cases-md/TC-002.md",
+      "test_basis": "ACCEPTANCE",
+      "primary_type": "FUNCTIONAL",
+      "execution_status": "READY",
+      "question_refs": [],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-003",
+      "title": "Reserva criada em nome do sócio que reservou",
+      "status": "READY",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "scenario_refs": [
+        "SCN-001"
+      ],
+      "coverage_point_refs": [
+        "CP-003"
+      ],
+      "file": "test-cases/TC-003.json",
+      "markdown_file": "test-cases-md/TC-003.md",
+      "test_basis": "ACCEPTANCE",
+      "primary_type": "DATA_INTEGRITY",
+      "execution_status": "READY",
+      "question_refs": [],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-004",
+      "title": "Bloco reservado deixa de aparecer como livre",
+      "status": "READY",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "scenario_refs": [
+        "SCN-001"
+      ],
+      "coverage_point_refs": [
+        "CP-004"
+      ],
+      "file": "test-cases/TC-004.json",
+      "markdown_file": "test-cases-md/TC-004.md",
+      "test_basis": "ACCEPTANCE",
+      "primary_type": "STATE_TRANSITION",
+      "execution_status": "READY",
+      "question_refs": [],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-005",
+      "title": "Recusar reserva de bloco já reservado na quadra",
+      "status": "NEEDS_REVIEW",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "scenario_refs": [
+        "SCN-001"
+      ],
+      "coverage_point_refs": [
+        "CP-005"
+      ],
+      "file": "test-cases/TC-005.json",
+      "markdown_file": "test-cases-md/TC-005.md",
+      "test_basis": "ACCEPTANCE",
+      "primary_type": "NEGATIVE",
+      "execution_status": "NEEDS_REVIEW",
+      "question_refs": [
+        "Q-004"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-006",
+      "title": "Reserva ocupa exatamente 1 hora",
+      "status": "READY",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "scenario_refs": [
+        "SCN-001"
+      ],
+      "coverage_point_refs": [
+        "CP-006"
+      ],
+      "file": "test-cases/TC-006.json",
+      "markdown_file": "test-cases-md/TC-006.md",
+      "test_basis": "ACCEPTANCE",
+      "primary_type": "BOUNDARY",
+      "execution_status": "READY",
+      "question_refs": [],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-007",
+      "title": "Aceitar bloco dentro da janela de 7h a 22h",
+      "status": "READY",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "scenario_refs": [
+        "SCN-002"
+      ],
+      "coverage_point_refs": [
+        "CP-007"
+      ],
+      "file": "test-cases/TC-007.json",
+      "markdown_file": "test-cases-md/TC-007.md",
+      "test_basis": "ACCEPTANCE",
+      "primary_type": "FUNCTIONAL",
+      "execution_status": "READY",
+      "question_refs": [],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-008",
+      "title": "Recusar bloco fora da janela de 7h a 22h",
+      "status": "NEEDS_REVIEW",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "scenario_refs": [
+        "SCN-002"
+      ],
+      "coverage_point_refs": [
+        "CP-008"
+      ],
+      "file": "test-cases/TC-008.json",
+      "markdown_file": "test-cases-md/TC-008.md",
+      "test_basis": "ACCEPTANCE",
+      "primary_type": "NEGATIVE",
+      "execution_status": "NEEDS_REVIEW",
+      "question_refs": [
+        "Q-004"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-009",
+      "title": "Criar reserva quando o sócio tem menos de 2 futuras",
+      "status": "READY",
+      "requirement_refs": [
+        "REQ-003"
+      ],
+      "scenario_refs": [
+        "SCN-003"
+      ],
+      "coverage_point_refs": [
+        "CP-010"
+      ],
+      "file": "test-cases/TC-009.json",
+      "markdown_file": "test-cases-md/TC-009.md",
+      "test_basis": "ACCEPTANCE",
+      "primary_type": "BOUNDARY",
+      "execution_status": "READY",
+      "question_refs": [],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-010",
+      "title": "Recusar terceira reserva futura do sócio",
+      "status": "NEEDS_REVIEW",
+      "requirement_refs": [
+        "REQ-003"
+      ],
+      "scenario_refs": [
+        "SCN-003"
+      ],
+      "coverage_point_refs": [
+        "CP-011"
+      ],
+      "file": "test-cases/TC-010.json",
+      "markdown_file": "test-cases-md/TC-010.md",
+      "test_basis": "ACCEPTANCE",
+      "primary_type": "BOUNDARY",
+      "execution_status": "NEEDS_REVIEW",
+      "question_refs": [
+        "Q-004"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-011",
+      "title": "Sócio cancela a própria reserva futura",
+      "status": "NEEDS_REVIEW",
+      "requirement_refs": [
+        "REQ-004"
+      ],
+      "scenario_refs": [
+        "SCN-004"
+      ],
+      "coverage_point_refs": [
+        "CP-012"
+      ],
+      "file": "test-cases/TC-011.json",
+      "markdown_file": "test-cases-md/TC-011.md",
+      "test_basis": "ACCEPTANCE",
+      "primary_type": "STATE_TRANSITION",
+      "execution_status": "NEEDS_REVIEW",
+      "question_refs": [
+        "Q-001"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-012",
+      "title": "Bloco cancelado volta a ficar disponível",
+      "status": "READY",
+      "requirement_refs": [
+        "REQ-004"
+      ],
+      "scenario_refs": [
+        "SCN-004"
+      ],
+      "coverage_point_refs": [
+        "CP-013"
+      ],
+      "file": "test-cases/TC-012.json",
+      "markdown_file": "test-cases-md/TC-012.md",
+      "test_basis": "ACCEPTANCE",
+      "primary_type": "STATE_TRANSITION",
+      "execution_status": "READY",
+      "question_refs": [],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-013",
+      "title": "Catraca libera o sócio que usa a reserva do horário",
+      "status": "BLOCKED_EXTERNAL_DEPENDENCY",
+      "requirement_refs": [
+        "REQ-005"
+      ],
+      "scenario_refs": [
+        "SCN-005"
+      ],
+      "coverage_point_refs": [
+        "CP-015"
+      ],
+      "file": "test-cases/TC-013.json",
+      "markdown_file": "test-cases-md/TC-013.md",
+      "test_basis": "ACCEPTANCE",
+      "primary_type": "HARDWARE_INTEGRATION",
+      "execution_status": "BLOCKED_EXTERNAL_DEPENDENCY",
+      "question_refs": [
+        "Q-002"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": false
+    },
+    {
+      "id": "TC-014",
+      "title": "Recepção vê a agenda do dia de cada quadra",
+      "status": "NEEDS_REVIEW",
+      "requirement_refs": [
+        "REQ-006"
+      ],
+      "scenario_refs": [
+        "SCN-006"
+      ],
+      "coverage_point_refs": [
+        "CP-017"
+      ],
+      "file": "test-cases/TC-014.json",
+      "markdown_file": "test-cases-md/TC-014.md",
+      "test_basis": "ACCEPTANCE",
+      "primary_type": "FUNCTIONAL",
+      "execution_status": "NEEDS_REVIEW",
+      "question_refs": [
+        "Q-009"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-015",
+      "title": "Recusar pedido único de reserva com 2 horas de duração",
+      "status": "NEEDS_REVIEW",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "scenario_refs": [
+        "SCN-001"
+      ],
+      "coverage_point_refs": [
+        "CP-006"
+      ],
+      "file": "test-cases/TC-015.json",
+      "markdown_file": "test-cases-md/TC-015.md",
+      "test_basis": "DERIVED",
+      "primary_type": "NEGATIVE",
+      "execution_status": "NEEDS_REVIEW",
+      "question_refs": [
+        "Q-004"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-016",
+      "title": "Catraca não libera sócio que não reservou a quadra",
+      "status": "EXPLORATORY",
+      "requirement_refs": [
+        "REQ-005"
+      ],
+      "scenario_refs": [
+        "SCN-005"
+      ],
+      "coverage_point_refs": [
+        "CP-015"
+      ],
+      "file": "test-cases/TC-016.json",
+      "markdown_file": "test-cases-md/TC-016.md",
+      "test_basis": "EXPLORATORY",
+      "primary_type": "HARDWARE_INTEGRATION",
+      "execution_status": "EXPLORATORY",
+      "question_refs": [
+        "Q-002"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": false
+    },
+    {
+      "id": "TC-017",
+      "title": "Aceitar o primeiro bloco da janela, das 7h às 8h",
+      "status": "READY",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "scenario_refs": [
+        "SCN-002"
+      ],
+      "coverage_point_refs": [
+        "CP-007"
+      ],
+      "file": "test-cases/TC-017.json",
+      "markdown_file": "test-cases-md/TC-017.md",
+      "test_basis": "DERIVED",
+      "primary_type": "BOUNDARY",
+      "execution_status": "READY",
+      "question_refs": [],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-018",
+      "title": "Aceitar o bloco que termina às 22h",
+      "status": "READY",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "scenario_refs": [
+        "SCN-002"
+      ],
+      "coverage_point_refs": [
+        "CP-007"
+      ],
+      "file": "test-cases/TC-018.json",
+      "markdown_file": "test-cases-md/TC-018.md",
+      "test_basis": "DERIVED",
+      "primary_type": "BOUNDARY",
+      "execution_status": "READY",
+      "question_refs": [],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-019",
+      "title": "Recusar bloco que começa uma hora antes da abertura",
+      "status": "NEEDS_REVIEW",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "scenario_refs": [
+        "SCN-002"
+      ],
+      "coverage_point_refs": [
+        "CP-008"
+      ],
+      "file": "test-cases/TC-019.json",
+      "markdown_file": "test-cases-md/TC-019.md",
+      "test_basis": "DERIVED",
+      "primary_type": "BOUNDARY",
+      "execution_status": "NEEDS_REVIEW",
+      "question_refs": [
+        "Q-004"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-020",
+      "title": "Caracterizar o bloco que começa às 22h",
+      "status": "EXPLORATORY",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "scenario_refs": [
+        "SCN-002"
+      ],
+      "coverage_point_refs": [
+        "CP-008"
+      ],
+      "file": "test-cases/TC-020.json",
+      "markdown_file": "test-cases-md/TC-020.md",
+      "test_basis": "EXPLORATORY",
+      "primary_type": "BOUNDARY",
+      "execution_status": "EXPLORATORY",
+      "question_refs": [
+        "Q-003"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": false
+    },
+    {
+      "id": "TC-021",
+      "title": "Primeira reserva de um sócio sem reservas futuras",
+      "status": "READY",
+      "requirement_refs": [
+        "REQ-003"
+      ],
+      "scenario_refs": [
+        "SCN-003"
+      ],
+      "coverage_point_refs": [
+        "CP-010"
+      ],
+      "file": "test-cases/TC-021.json",
+      "markdown_file": "test-cases-md/TC-021.md",
+      "test_basis": "DERIVED",
+      "primary_type": "BOUNDARY",
+      "execution_status": "READY",
+      "question_refs": [],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-022",
+      "title": "Reservas passadas não consomem o limite de futuras",
+      "status": "NEEDS_REVIEW",
+      "requirement_refs": [
+        "REQ-003"
+      ],
+      "scenario_refs": [
+        "SCN-003"
+      ],
+      "coverage_point_refs": [
+        "CP-010"
+      ],
+      "file": "test-cases/TC-022.json",
+      "markdown_file": "test-cases-md/TC-022.md",
+      "test_basis": "DERIVED",
+      "primary_type": "BOUNDARY",
+      "execution_status": "NEEDS_REVIEW",
+      "question_refs": [],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-023",
+      "title": "Caracterizar pedido com início fora da hora cheia",
+      "status": "EXPLORATORY",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "scenario_refs": [
+        "SCN-001"
+      ],
+      "coverage_point_refs": [
+        "CP-006"
+      ],
+      "file": "test-cases/TC-023.json",
+      "markdown_file": "test-cases-md/TC-023.md",
+      "test_basis": "EXPLORATORY",
+      "primary_type": "BOUNDARY",
+      "execution_status": "EXPLORATORY",
+      "question_refs": [
+        "Q-005"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": false
+    },
+    {
+      "id": "TC-024",
+      "title": "Agenda do dia de quadra sem reservas aparece vazia",
+      "status": "NEEDS_REVIEW",
+      "requirement_refs": [
+        "REQ-006"
+      ],
+      "scenario_refs": [
+        "SCN-006"
+      ],
+      "coverage_point_refs": [
+        "CP-017"
+      ],
+      "file": "test-cases/TC-024.json",
+      "markdown_file": "test-cases-md/TC-024.md",
+      "test_basis": "DERIVED",
+      "primary_type": "BOUNDARY",
+      "execution_status": "NEEDS_REVIEW",
+      "question_refs": [
+        "Q-009"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-025",
+      "title": "Cancelar uma de duas reservas preserva a outra",
+      "status": "NEEDS_REVIEW",
+      "requirement_refs": [
+        "REQ-004"
+      ],
+      "scenario_refs": [
+        "SCN-004"
+      ],
+      "coverage_point_refs": [
+        "CP-012"
+      ],
+      "file": "test-cases/TC-025.json",
+      "markdown_file": "test-cases-md/TC-025.md",
+      "test_basis": "DERIVED",
+      "primary_type": "STATE_TRANSITION",
+      "execution_status": "NEEDS_REVIEW",
+      "question_refs": [
+        "Q-001"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-026",
+      "title": "Confirmar bloco exibido como livre que outro sócio já reservou",
+      "status": "NEEDS_REVIEW",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "scenario_refs": [
+        "SCN-001"
+      ],
+      "coverage_point_refs": [
+        "CP-005"
+      ],
+      "file": "test-cases/TC-026.json",
+      "markdown_file": "test-cases-md/TC-026.md",
+      "test_basis": "DERIVED",
+      "primary_type": "NEGATIVE",
+      "execution_status": "NEEDS_REVIEW",
+      "question_refs": [
+        "Q-004"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-027",
+      "title": "Reserva abandonada sem confirmar não ocupa o bloco",
+      "status": "READY",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "scenario_refs": [
+        "SCN-001"
+      ],
+      "coverage_point_refs": [
+        "CP-004"
+      ],
+      "file": "test-cases/TC-027.json",
+      "markdown_file": "test-cases-md/TC-027.md",
+      "test_basis": "DERIVED",
+      "primary_type": "STATE_TRANSITION",
+      "execution_status": "READY",
+      "question_refs": [],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-028",
+      "title": "Limite de 2 vale somando tênis e futsal",
+      "status": "NEEDS_REVIEW",
+      "requirement_refs": [
+        "REQ-003"
+      ],
+      "scenario_refs": [
+        "SCN-003"
+      ],
+      "coverage_point_refs": [
+        "CP-011"
+      ],
+      "file": "test-cases/TC-028.json",
+      "markdown_file": "test-cases-md/TC-028.md",
+      "test_basis": "DERIVED",
+      "primary_type": "NEGATIVE",
+      "execution_status": "NEEDS_REVIEW",
+      "question_refs": [
+        "Q-004"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-029",
+      "title": "Cancelamento devolve ao sócio uma vaga no limite de reservas",
+      "status": "NEEDS_REVIEW",
+      "requirement_refs": [
+        "REQ-003",
+        "REQ-004"
+      ],
+      "scenario_refs": [
+        "SCN-003"
+      ],
+      "coverage_point_refs": [
+        "CP-011",
+        "CP-012"
+      ],
+      "file": "test-cases/TC-029.json",
+      "markdown_file": "test-cases-md/TC-029.md",
+      "test_basis": "DERIVED",
+      "primary_type": "STATE_TRANSITION",
+      "execution_status": "NEEDS_REVIEW",
+      "question_refs": [
+        "Q-001"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-030",
+      "title": "Pedido com vários motivos de recusa ao mesmo tempo",
+      "status": "NEEDS_REVIEW",
+      "requirement_refs": [
+        "REQ-002",
+        "REQ-003"
+      ],
+      "scenario_refs": [
+        "SCN-001"
+      ],
+      "coverage_point_refs": [
+        "CP-005",
+        "CP-008",
+        "CP-011"
+      ],
+      "file": "test-cases/TC-030.json",
+      "markdown_file": "test-cases-md/TC-030.md",
+      "test_basis": "DERIVED",
+      "primary_type": "NEGATIVE",
+      "execution_status": "NEEDS_REVIEW",
+      "question_refs": [
+        "Q-004"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": false
+    },
+    {
+      "id": "TC-031",
+      "title": "Dois sócios disputam o mesmo bloco ao mesmo tempo",
+      "status": "NEEDS_REVIEW",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "scenario_refs": [
+        "SCN-001"
+      ],
+      "coverage_point_refs": [
+        "CP-005"
+      ],
+      "file": "test-cases/TC-031.json",
+      "markdown_file": "test-cases-md/TC-031.md",
+      "test_basis": "DERIVED",
+      "primary_type": "CONCURRENCY",
+      "execution_status": "NEEDS_REVIEW",
+      "question_refs": [
+        "Q-004"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": false
+    },
+    {
+      "id": "TC-032",
+      "title": "Pedidos simultâneos não furam o limite de 2 reservas",
+      "status": "NEEDS_REVIEW",
+      "requirement_refs": [
+        "REQ-003"
+      ],
+      "scenario_refs": [
+        "SCN-003"
+      ],
+      "coverage_point_refs": [
+        "CP-011"
+      ],
+      "file": "test-cases/TC-032.json",
+      "markdown_file": "test-cases-md/TC-032.md",
+      "test_basis": "DERIVED",
+      "primary_type": "RACE_CONDITION",
+      "execution_status": "NEEDS_REVIEW",
+      "question_refs": [
+        "Q-004"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": false
+    },
+    {
+      "id": "TC-033",
+      "title": "Confirmar duas vezes a mesma reserva gera uma só",
+      "status": "NEEDS_REVIEW",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "scenario_refs": [
+        "SCN-001"
+      ],
+      "coverage_point_refs": [
+        "CP-005"
+      ],
+      "file": "test-cases/TC-033.json",
+      "markdown_file": "test-cases-md/TC-033.md",
+      "test_basis": "DERIVED",
+      "primary_type": "IDEMPOTENCY",
+      "execution_status": "NEEDS_REVIEW",
+      "question_refs": [
+        "Q-004"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-034",
+      "title": "Caracterizar o cancelamento de uma reserva já cancelada",
+      "status": "EXPLORATORY",
+      "requirement_refs": [
+        "REQ-004"
+      ],
+      "scenario_refs": [
+        "SCN-004"
+      ],
+      "coverage_point_refs": [
+        "CP-012"
+      ],
+      "file": "test-cases/TC-034.json",
+      "markdown_file": "test-cases-md/TC-034.md",
+      "test_basis": "EXPLORATORY",
+      "primary_type": "IDEMPOTENCY",
+      "execution_status": "EXPLORATORY",
+      "question_refs": [
+        "Q-007"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": false
+    },
+    {
+      "id": "TC-035",
+      "title": "Caracterizar a entrada na catraca antes do horário reservado",
+      "status": "EXPLORATORY",
+      "requirement_refs": [
+        "REQ-005"
+      ],
+      "scenario_refs": [
+        "SCN-005"
+      ],
+      "coverage_point_refs": [
+        "CP-015"
+      ],
+      "file": "test-cases/TC-035.json",
+      "markdown_file": "test-cases-md/TC-035.md",
+      "test_basis": "EXPLORATORY",
+      "primary_type": "HARDWARE_INTEGRATION",
+      "execution_status": "EXPLORATORY",
+      "question_refs": [
+        "Q-002",
+        "Q-008"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": false
+    },
+    {
+      "id": "TC-036",
+      "title": "Catraca não libera quem usa uma reserva cancelada",
+      "status": "EXPLORATORY",
+      "requirement_refs": [
+        "REQ-004",
+        "REQ-005"
+      ],
+      "scenario_refs": [
+        "SCN-005"
+      ],
+      "coverage_point_refs": [
+        "CP-012",
+        "CP-015"
+      ],
+      "file": "test-cases/TC-036.json",
+      "markdown_file": "test-cases-md/TC-036.md",
+      "test_basis": "EXPLORATORY",
+      "primary_type": "HARDWARE_INTEGRATION",
+      "execution_status": "EXPLORATORY",
+      "question_refs": [
+        "Q-002"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": false
+    },
+    {
+      "id": "TC-037",
+      "title": "Conexão perdida ao confirmar e restabelecida em seguida",
+      "status": "EXPLORATORY",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "scenario_refs": [
+        "SCN-001"
+      ],
+      "coverage_point_refs": [
+        "CP-003"
+      ],
+      "file": "test-cases/TC-037.json",
+      "markdown_file": "test-cases-md/TC-037.md",
+      "test_basis": "EXPLORATORY",
+      "primary_type": "RECOVERY",
+      "execution_status": "EXPLORATORY",
+      "question_refs": [
+        "Q-007"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": false
+    },
+    {
+      "id": "TC-038",
+      "title": "API de catracas indisponível não altera reservas nem agenda",
+      "status": "EXPLORATORY",
+      "requirement_refs": [
+        "REQ-005"
+      ],
+      "scenario_refs": [
+        "SCN-005"
+      ],
+      "coverage_point_refs": [
+        "CP-015"
+      ],
+      "file": "test-cases/TC-038.json",
+      "markdown_file": "test-cases-md/TC-038.md",
+      "test_basis": "EXPLORATORY",
+      "primary_type": "CHAOS",
+      "execution_status": "EXPLORATORY",
+      "question_refs": [
+        "Q-002",
+        "Q-010"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": false
+    },
+    {
+      "id": "TC-039",
+      "title": "Catraca com defeito não perde a reserva do sócio",
+      "status": "EXPLORATORY",
+      "requirement_refs": [
+        "REQ-005"
+      ],
+      "scenario_refs": [
+        "SCN-005"
+      ],
+      "coverage_point_refs": [
+        "CP-015"
+      ],
+      "file": "test-cases/TC-039.json",
+      "markdown_file": "test-cases-md/TC-039.md",
+      "test_basis": "EXPLORATORY",
+      "primary_type": "HARDWARE_INTEGRATION",
+      "execution_status": "EXPLORATORY",
+      "question_refs": [
+        "Q-010"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": false
+    },
+    {
+      "id": "TC-040",
+      "title": "Falha parcial na confirmação não deixa bloco preso sem reserva",
+      "status": "EXPLORATORY",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "scenario_refs": [
+        "SCN-001"
+      ],
+      "coverage_point_refs": [
+        "CP-004"
+      ],
+      "file": "test-cases/TC-040.json",
+      "markdown_file": "test-cases-md/TC-040.md",
+      "test_basis": "EXPLORATORY",
+      "primary_type": "DATA_INTEGRITY",
+      "execution_status": "EXPLORATORY",
+      "question_refs": [
+        "Q-007"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": false
+    },
+    {
+      "id": "TC-041",
+      "title": "Sessão expirada durante a reserva não deixa reserva sem titular",
+      "status": "EXPLORATORY",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "scenario_refs": [
+        "SCN-001"
+      ],
+      "coverage_point_refs": [
+        "CP-003"
+      ],
+      "file": "test-cases/TC-041.json",
+      "markdown_file": "test-cases-md/TC-041.md",
+      "test_basis": "EXPLORATORY",
+      "primary_type": "RESILIENCE",
+      "execution_status": "EXPLORATORY",
+      "question_refs": [
+        "Q-007"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": false
+    },
+    {
+      "id": "TC-042",
+      "title": "Sócio comum tentando abrir a agenda da recepção",
+      "status": "EXPLORATORY",
+      "requirement_refs": [
+        "REQ-006"
+      ],
+      "scenario_refs": [
+        "SCN-006"
+      ],
+      "coverage_point_refs": [
+        "CP-017"
+      ],
+      "file": "test-cases/TC-042.json",
+      "markdown_file": "test-cases-md/TC-042.md",
+      "test_basis": "EXPLORATORY",
+      "primary_type": "SECURITY",
+      "execution_status": "EXPLORATORY",
+      "question_refs": [
+        "Q-009"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-043",
+      "title": "Sócio tenta cancelar a reserva de outro sócio",
+      "status": "EXPLORATORY",
+      "requirement_refs": [
+        "REQ-004"
+      ],
+      "scenario_refs": [
+        "SCN-004"
+      ],
+      "coverage_point_refs": [
+        "CP-012"
+      ],
+      "file": "test-cases/TC-043.json",
+      "markdown_file": "test-cases-md/TC-043.md",
+      "test_basis": "EXPLORATORY",
+      "primary_type": "AUTHORIZATION",
+      "execution_status": "EXPLORATORY",
+      "question_refs": [
+        "Q-006"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-044",
+      "title": "Blocos adjacentes da mesma quadra não se sobrepõem",
+      "status": "READY",
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "scenario_refs": [
+        "SCN-001"
+      ],
+      "coverage_point_refs": [
+        "CP-005",
+        "CP-006"
+      ],
+      "file": "test-cases/TC-044.json",
+      "markdown_file": "test-cases-md/TC-044.md",
+      "test_basis": "DERIVED",
+      "primary_type": "DATA_INTEGRITY",
+      "execution_status": "READY",
+      "question_refs": [],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-045",
+      "title": "Reserva criada aparece na agenda da quadra para a recepção",
+      "status": "NEEDS_REVIEW",
+      "requirement_refs": [
+        "REQ-002",
+        "REQ-006"
+      ],
+      "scenario_refs": [
+        "SCN-006"
+      ],
+      "coverage_point_refs": [
+        "CP-003",
+        "CP-017"
+      ],
+      "file": "test-cases/TC-045.json",
+      "markdown_file": "test-cases-md/TC-045.md",
+      "test_basis": "DERIVED",
+      "primary_type": "DATA_INTEGRITY",
+      "execution_status": "NEEDS_REVIEW",
+      "question_refs": [
+        "Q-009"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-046",
+      "title": "Reserva cancelada some da agenda do dia",
+      "status": "NEEDS_REVIEW",
+      "requirement_refs": [
+        "REQ-004",
+        "REQ-006"
+      ],
+      "scenario_refs": [
+        "SCN-006"
+      ],
+      "coverage_point_refs": [
+        "CP-012",
+        "CP-017"
+      ],
+      "file": "test-cases/TC-046.json",
+      "markdown_file": "test-cases-md/TC-046.md",
+      "test_basis": "DERIVED",
+      "primary_type": "DATA_INTEGRITY",
+      "execution_status": "NEEDS_REVIEW",
+      "question_refs": [
+        "Q-001",
+        "Q-009"
+      ],
+      "finding_refs": [],
+      "composes": [],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-047",
+      "title": "Jornada: reservar, conferir na agenda, cancelar e liberar o bloco",
+      "status": "NEEDS_REVIEW",
+      "requirement_refs": [
+        "REQ-001",
+        "REQ-002",
+        "REQ-006",
+        "REQ-004"
+      ],
+      "scenario_refs": [
+        "SCN-007"
+      ],
+      "coverage_point_refs": [
+        "CP-001",
+        "CP-003",
+        "CP-017",
+        "CP-012",
+        "CP-013"
+      ],
+      "file": "test-cases/TC-047.json",
+      "markdown_file": "test-cases-md/TC-047.md",
+      "test_basis": "E2E",
+      "primary_type": "E2E",
+      "execution_status": "NEEDS_REVIEW",
+      "question_refs": [
+        "Q-001"
+      ],
+      "finding_refs": [],
+      "composes": [
+        "TC-001",
+        "TC-045",
+        "TC-011",
+        "TC-012"
+      ],
+      "automation_candidate": true
+    },
+    {
+      "id": "TC-048",
+      "title": "Jornada: reservar e entrar pela catraca no horário",
+      "status": "BLOCKED_EXTERNAL_DEPENDENCY",
+      "requirement_refs": [
+        "REQ-001",
+        "REQ-005"
+      ],
+      "scenario_refs": [
+        "SCN-007"
+      ],
+      "coverage_point_refs": [
+        "CP-002",
+        "CP-015"
+      ],
+      "file": "test-cases/TC-048.json",
+      "markdown_file": "test-cases-md/TC-048.md",
+      "test_basis": "E2E",
+      "primary_type": "E2E",
+      "execution_status": "BLOCKED_EXTERNAL_DEPENDENCY",
+      "question_refs": [
+        "Q-002"
+      ],
+      "finding_refs": [],
+      "composes": [
+        "TC-002",
+        "TC-013"
+      ],
+      "automation_candidate": false
+    }
+  ],
+  "merge_candidates": [],
+  "quality_gates": [
+    {
+      "gate": "SCOPE_VALID",
+      "status": "PASS",
+      "evidence": "1 physical source record(s); roles and digests locked at start."
+    },
+    {
+      "gate": "SOURCE_COVERAGE_VALID",
+      "status": "PASS",
+      "evidence": "0 authority identifier(s), all dispositioned: "
+    },
+    {
+      "gate": "NORMATIVE_BASELINE_VALID",
+      "status": "PASS",
+      "evidence": "14 atomic Acceptance Test Case(s) frozen and unchanged."
+    },
+    {
+      "gate": "ADDITIVE_EXPANSION_VALID",
+      "status": "PASS",
+      "evidence": "17/17 dimensions evaluated, 34 candidate(s), 0 test asset behavior(s) challenged."
+    },
+    {
+      "gate": "PROCEDURE_QUALITY_VALID",
+      "status": "PASS",
+      "evidence": "48 procedure(s) validated in pt-BR."
+    },
+    {
+      "gate": "EVIDENCE_AND_REFERENCE_VALID",
+      "status": "PASS",
+      "evidence": "Every evidence reference is inside the selected scope; Questions/Findings link back."
+    },
+    {
+      "gate": "PIPELINE_INTEGRITY_VALID",
+      "status": "PASS",
+      "evidence": "Manifest hash chain verified through PROCEDURES before canonical assembly."
+    },
+    {
+      "gate": "PUBLICATION_VALID",
+      "status": "PASS",
+      "evidence": "Canonical state validated against the public schemas before rendering."
+    }
+  ],
+  "identifier_dispositions": [],
+  "expansion_summary": [
+    {
+      "dimension": "NEGATIVE",
+      "evaluated": true,
+      "candidates_considered": 2,
+      "materialized": 2,
+      "already_covered": 0,
+      "question_required": 0,
+      "not_applicable": 0
+    },
+    {
+      "dimension": "BOUNDARY",
+      "evaluated": true,
+      "candidates_considered": 8,
+      "materialized": 8,
+      "already_covered": 0,
+      "question_required": 0,
+      "not_applicable": 0
+    },
+    {
+      "dimension": "OPERATOR_ERROR",
+      "evaluated": true,
+      "candidates_considered": 3,
+      "materialized": 3,
+      "already_covered": 0,
+      "question_required": 0,
+      "not_applicable": 0
+    },
+    {
+      "dimension": "MISUSE",
+      "evaluated": true,
+      "candidates_considered": 1,
+      "materialized": 1,
+      "already_covered": 0,
+      "question_required": 0,
+      "not_applicable": 0
+    },
+    {
+      "dimension": "STATE_TRANSITION",
+      "evaluated": true,
+      "candidates_considered": 1,
+      "materialized": 1,
+      "already_covered": 0,
+      "question_required": 0,
+      "not_applicable": 0
+    },
+    {
+      "dimension": "DECISION_TABLE",
+      "evaluated": true,
+      "candidates_considered": 1,
+      "materialized": 1,
+      "already_covered": 0,
+      "question_required": 0,
+      "not_applicable": 0
+    },
+    {
+      "dimension": "CONCURRENCY",
+      "evaluated": true,
+      "candidates_considered": 1,
+      "materialized": 1,
+      "already_covered": 0,
+      "question_required": 0,
+      "not_applicable": 0
+    },
+    {
+      "dimension": "RACE_CONDITION",
+      "evaluated": true,
+      "candidates_considered": 1,
+      "materialized": 1,
+      "already_covered": 0,
+      "question_required": 0,
+      "not_applicable": 0
+    },
+    {
+      "dimension": "IDEMPOTENCY",
+      "evaluated": true,
+      "candidates_considered": 2,
+      "materialized": 2,
+      "already_covered": 0,
+      "question_required": 0,
+      "not_applicable": 0
+    },
+    {
+      "dimension": "INTEGRATION",
+      "evaluated": true,
+      "candidates_considered": 2,
+      "materialized": 2,
+      "already_covered": 0,
+      "question_required": 0,
+      "not_applicable": 0
+    },
+    {
+      "dimension": "RECOVERY",
+      "evaluated": true,
+      "candidates_considered": 1,
+      "materialized": 1,
+      "already_covered": 0,
+      "question_required": 0,
+      "not_applicable": 0
+    },
+    {
+      "dimension": "CHAOS",
+      "evaluated": true,
+      "candidates_considered": 4,
+      "materialized": 4,
+      "already_covered": 0,
+      "question_required": 0,
+      "not_applicable": 0
+    },
+    {
+      "dimension": "SECURITY",
+      "evaluated": true,
+      "candidates_considered": 1,
+      "materialized": 1,
+      "already_covered": 0,
+      "question_required": 0,
+      "not_applicable": 0
+    },
+    {
+      "dimension": "AUTHORIZATION",
+      "evaluated": true,
+      "candidates_considered": 1,
+      "materialized": 1,
+      "already_covered": 0,
+      "question_required": 0,
+      "not_applicable": 0
+    },
+    {
+      "dimension": "DATA_INTEGRITY",
+      "evaluated": true,
+      "candidates_considered": 1,
+      "materialized": 1,
+      "already_covered": 0,
+      "question_required": 0,
+      "not_applicable": 0
+    },
+    {
+      "dimension": "CROSS_REQUIREMENT",
+      "evaluated": true,
+      "candidates_considered": 2,
+      "materialized": 2,
+      "already_covered": 0,
+      "question_required": 0,
+      "not_applicable": 0
+    },
+    {
+      "dimension": "E2E",
+      "evaluated": true,
+      "candidates_considered": 2,
+      "materialized": 2,
+      "already_covered": 0,
+      "question_required": 0,
+      "not_applicable": 0
+    }
+  ],
+  "gap_metrics": {
+    "unmapped_extracted_claims": 0,
+    "unaccounted_normative_units": 0,
+    "uncovered_use_case_flows": 0,
+    "unresolved_business_test_assets": 0,
+    "unresolved_questions": 10,
+    "blocked_normative_tests": 1
+  },
+  "baseline_comparison": {
+    "status": "NOT_APPLIED"
+  },
+  "guidance_dispositions": [
+    {
+      "item": "instructions.md#guidance-001",
+      "text": "Derive test cases from the functional authority; PBD criteria are seeds, not coverage evidence.",
+      "disposition": "USED_FOR_ORDERING",
+      "test_refs": [],
+      "question_ref": null,
+      "reason": "Foi aplicada como método: os casos nasceram dos itens do PRD e os critérios do PBD só provocaram a análise."
+    },
+    {
+      "item": "instructions.md#guidance-002",
+      "text": "Write test cases in pt-BR.",
+      "disposition": "NOT_APPLICABLE_WITH_REASON",
+      "test_refs": [],
+      "question_ref": null,
+      "reason": "É restrição de idioma, já aplicada pelo locale pt-BR da execução; não gera Test Case."
+    },
+    {
+      "item": "instructions.md#seed-001",
+      "text": "[CA-01] Uma quadra de tênis ou de futsal está livre no bloco escolhido — O sócio reserva esse bloco de 1 hora — A reserva é criada em nome do sócio para a quadra e o bloco escolhidos — O bloco deixa de aparecer como livre",
+      "disposition": "ALREADY_COVERED",
+      "test_refs": [
+        "TC-003",
+        "TC-004"
+      ],
+      "question_ref": null,
+      "reason": "Titularidade e atualização da disponibilidade."
+    },
+    {
+      "item": "instructions.md#seed-002",
+      "text": "[CA-02] Já existe reserva para a quadra no bloco escolhido — O sócio tenta reservar esse bloco — A reserva não é criada — O sócio é informado de que a quadra não está livre",
+      "disposition": "ALREADY_COVERED",
+      "test_refs": [
+        "TC-005",
+        "TC-031"
+      ],
+      "question_ref": null,
+      "reason": null
+    },
+    {
+      "item": "instructions.md#seed-003",
+      "text": "[CA-03] O bloco solicitado está dentro da janela de 7h a 22h — O sócio reserva um bloco de 1 hora nessa janela — A reserva é aceita",
+      "disposition": "ALREADY_COVERED",
+      "test_refs": [
+        "TC-007",
+        "TC-017",
+        "TC-018"
+      ],
+      "question_ref": null,
+      "reason": null
+    },
+    {
+      "item": "instructions.md#seed-004",
+      "text": "[CA-04] O bloco solicitado está fora da janela de 7h a 22h — O sócio tenta reservar esse bloco — A reserva não é criada — O sócio é informado do horário permitido",
+      "disposition": "ALREADY_COVERED",
+      "test_refs": [
+        "TC-008",
+        "TC-019"
+      ],
+      "question_ref": null,
+      "reason": null
+    },
+    {
+      "item": "instructions.md#seed-005",
+      "text": "[CA-05] Reserva de duração diferente de 1 hora ou iniciada em horário quebrado é recusada",
+      "disposition": "MATERIALIZED",
+      "test_refs": [
+        "TC-015",
+        "TC-023"
+      ],
+      "question_ref": null,
+      "reason": null
+    },
+    {
+      "item": "instructions.md#seed-006",
+      "text": "[CA-01] O sócio possui menos de 2 reservas futuras — O sócio cria uma nova reserva válida — A reserva é criada",
+      "disposition": "ALREADY_COVERED",
+      "test_refs": [
+        "TC-009",
+        "TC-021"
+      ],
+      "question_ref": null,
+      "reason": null
+    },
+    {
+      "item": "instructions.md#seed-007",
+      "text": "[CA-02] O sócio já possui 2 reservas futuras — O sócio tenta criar uma terceira reserva — A reserva não é criada — O sócio é informado do limite de 2 reservas futuras",
+      "disposition": "ALREADY_COVERED",
+      "test_refs": [
+        "TC-010",
+        "TC-032"
+      ],
+      "question_ref": null,
+      "reason": null
+    },
+    {
+      "item": "instructions.md#seed-008",
+      "text": "[CA-03] O sócio possui 2 reservas futuras e cancela uma delas — O sócio cria uma nova reserva válida — A reserva é criada",
+      "disposition": "MATERIALIZED",
+      "test_refs": [
+        "TC-029"
+      ],
+      "question_ref": null,
+      "reason": null
+    },
+    {
+      "item": "instructions.md#seed-009",
+      "text": "[CA-01] O sócio possui uma reserva futura — O sócio cancela essa reserva — A reserva deixa de estar ativa — O bloco volta a ficar livre para outros sócios",
+      "disposition": "ALREADY_COVERED",
+      "test_refs": [
+        "TC-011",
+        "TC-012"
+      ],
+      "question_ref": null,
+      "reason": null
+    },
+    {
+      "item": "instructions.md#seed-010",
+      "text": "[CA-02] Cancelamento fora da antecedência mínima definida pela diretoria é recusado",
+      "disposition": "QUESTION_REQUIRED",
+      "test_refs": [],
+      "question_ref": "Q-001",
+      "reason": null
+    },
+    {
+      "item": "instructions.md#seed-011",
+      "text": "[CA-03] Sócio não consegue cancelar a reserva de outro sócio",
+      "disposition": "MATERIALIZED",
+      "test_refs": [
+        "TC-043"
+      ],
+      "question_ref": null,
+      "reason": null
+    },
+    {
+      "item": "instructions.md#seed-012",
+      "text": "[CA-01] O sócio possui reserva para a quadra no horário atual — O sócio chega e usa a reserva na catraca — A catraca libera a passagem do sócio",
+      "disposition": "ALREADY_COVERED",
+      "test_refs": [
+        "TC-013"
+      ],
+      "question_ref": null,
+      "reason": null
+    },
+    {
+      "item": "instructions.md#seed-013",
+      "text": "[CA-02] Sócio sem reserva válida para o horário não é liberado pela catraca",
+      "disposition": "MATERIALIZED",
+      "test_refs": [
+        "TC-016"
+      ],
+      "question_ref": null,
+      "reason": null
+    },
+    {
+      "item": "instructions.md#seed-014",
+      "text": "[CA-01] Existem reservas no dia para mais de uma quadra — A recepção abre a agenda do dia — A recepção vê a agenda do dia de cada quadra, com as reservas e seus horários",
+      "disposition": "ALREADY_COVERED",
+      "test_refs": [
+        "TC-014",
+        "TC-045"
+      ],
+      "question_ref": null,
+      "reason": null
+    },
+    {
+      "item": "instructions.md#seed-015",
+      "text": "[CA-02] Uma quadra não tem reservas no dia — A recepção abre a agenda do dia — A quadra aparece com a agenda vazia",
+      "disposition": "MATERIALIZED",
+      "test_refs": [
+        "TC-024"
+      ],
+      "question_ref": null,
+      "reason": null
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "run": "R1c",
+  "run_id": "PBD-RUN-PPTEA2HJS9RC",
+  "gold": "benchmarks/gold/c08-insufficient-tech.json",
+  "evaluator": "eval-corrective-1",
+  "obligations": [
+    {
+      "id": "G01",
+      "critical": true,
+      "verdict": "covered",
+      "evidence": "PBD-STORY-JRRBFBT2PJDA 'Inscrever-me em um mutirão' (ready); PBD-AC-QP9NMNNA47NQ CA-01 (name and shirt size registered); PBD-TASK-RWMRKN1VN1NQ 'Formulário e registro de inscrição com nome e camiseta' (ready)."
+    },
+    {
+      "id": "G02",
+      "critical": true,
+      "verdict": "handled_as_blocked",
+      "evidence": "PBD-STORY-8RZWVM4C9JHF 'Pagar a taxa de inscrição pelo gateway' is blocked, blocked_by PBD-Q-KK113K7JJE1A (blocking: gateway, fee value and integration contract). PBD-TASK-33GK4064NM13 'Integrar cobrança da taxa com o gateway parceiro' is blocked by the same question. No gateway name, API or fee invented."
+    },
+    {
+      "id": "G03",
+      "critical": true,
+      "verdict": "covered",
+      "evidence": "PBD-AC-RH4A8ZXWBZFY CA-01 (not confirmed while pending) and PBD-AC-65RQ96KGYM1P CA-02 (confirmed on payment); PBD-TASK-FV4CR6SWM8AA 'Estado pendente e regra de confirmacao' is ready; PBD-TASK-0BTT4E56ZRN6 (real signal consumption) is blocked by PBD-Q-KK113K7JJE1A. Caveat: the reviewer (PBD-FND-1W0Z0NJNWCQK) judged the disposition should be PARTIALLY_COVERED, while claim PBD-CLM-24HQ8TV68ZQZ remains COVERED. Counted as covered here, with this caveat; a strict reader could count it as partial."
+    },
+    {
+      "id": "G04",
+      "critical": true,
+      "verdict": "covered",
+      "evidence": "PBD-STORY-0YD2RBCWAEGT 'Ver os inscritos confirmados de um mutirão' (ready); PBD-AC-QBJ93A45RJVZ CA-01 (organizer sees confirmed list for one mutirão); PBD-TASK-ENW1N7WRHFHD 'Consulta de confirmados por mutirão' (ready)."
+    },
+    {
+      "id": "G05",
+      "critical": false,
+      "verdict": "handled_as_question",
+      "evidence": "PBD-Q-K6AQ3DZNEXZ4 (non-blocking, what 'rapido' means); PBD-CLM-ZDEY24YD9XEN is QUESTION_REQUIRED. No performance item created."
+    }
+  ],
+  "critical_recall": {
+    "strict_covered": 3,
+    "handled": 1,
+    "total_critical": 4
+  },
+  "traps": [
+    {
+      "trap": "Must not invent a gateway name, API, webhook or fee amount",
+      "verdict": "not_violated",
+      "evidence": "No gateway name, API, webhook or fee value stated. Borderline: PBD-TASK-FV4CR6SWM8AA and PBD-STORY-Q6J53Y8GSW0F build on a 'sinal de pagamento simulado' / 'contrato simulado' premise (see invented). This is a stand-in, not a named API or fee."
+    },
+    {
+      "trap": "Must not invent a response-time threshold for 'rapido'",
+      "verdict": "not_violated",
+      "evidence": "No threshold stated; PBD-Q-K6AQ3DZNEXZ4 asks for it."
+    }
+  ],
+  "readiness": {
+    "a_gateway_dependent_work_ready": {
+      "violated": false,
+      "evidence": "Gateway integration items PBD-STORY-8RZWVM4C9JHF, PBD-TASK-33GK4064NM13 and PBD-TASK-0BTT4E56ZRN6 are blocked. Borderline: PBD-TASK-FV4CR6SWM8AA is ready but builds the state rule only, against a simulated signal; it does not integrate with the gateway. Reviewer T2 notes the simulated contract is a designer premise, not source-supported."
+    },
+    "b_unrelated_work_blocked_by_association": {
+      "violated": false,
+      "evidence": "PBD-STORY-JRRBFBT2PJDA, PBD-TASK-RWMRKN1VN1NQ, PBD-STORY-0YD2RBCWAEGT and PBD-TASK-ENW1N7WRHFHD are ready. Each carries an explicit independent_of PBD-Q-KK113K7JJE1A."
+    },
+    "c_blocking_question_linked": {
+      "linked": true,
+      "evidence": "PBD-Q-KK113K7JJE1A has blocking=true and is referenced by blocked_by on PBD-STORY-8RZWVM4C9JHF, PBD-TASK-33GK4064NM13 and PBD-TASK-0BTT4E56ZRN6. PBD-STORY-Q6J53Y8GSW0F is partial with no blocked_by on the story, only on its child task."
+    }
+  },
+  "references": [
+    "Canonical backlog: bare labels 'Q1', 'Q2', 'Q3' in text, unresolved because questions carry no visible label. Examples: rationale of criterion PBD-AC-RW378JN9YHB6 '(Q1)', rationale of PBD-AC-JGW5SZNF35VX '(Q3)', claim disposition rationales 'trabalho bloqueado por Q1' and 'ate Q2 ser respondida'.",
+    "Canonical backlog: 'tarefa T5' in the independent_of rationale of PBD-STORY-Q6J53Y8GSW0F. No T5 exists; the intended task is PBD-TASK-0BTT4E56ZRN6. Unresolved.",
+    "Reviewer (stages/review.json): short keys F1, US1, US2, US4, AC2, C3, T5, Q1, Q2 used in findings and notes instead of PBD ids. Gate G02 reason uses counts only."
+  ],
+  "invented": [
+    {
+      "item": "PBD-TASK-FV4CR6SWM8AA, PBD-STORY-Q6J53Y8GSW0F, PBD-REL-4F1XJ6RK9VZW",
+      "severity": "medium",
+      "reason": "A simulated payment signal and simulated contract are used to mark the confirmation-rule task ready and to justify a relation. The PRD gives no such contract. Reviewer T2 calls it a designer premise, not a source fact. Not a named API, but a stand-in for the unknown contract."
+    },
+    {
+      "item": "PBD-STORY-0YD2RBCWAEGT, PBD-FEAT-S0RT2F6P17AW (benefit text)",
+      "severity": "low",
+      "reason": "Benefit 'planejar a participacao e as camisetas' is not in PRD (reviewer notes it under F1 and US4)."
+    },
+    {
+      "item": "PBD-STORY-8RZWVM4C9JHF (benefit text)",
+      "severity": "low",
+      "reason": "Benefit 'garantir minha vaga' is not in PRD (reviewer note under US2)."
+    },
+    {
+      "item": "PBD-AC-J7DYN6KDX463 (CA-02) and PBD-AC-JGW5SZNF35VX (CA-02)",
+      "severity": "low",
+      "reason": "Missing name or size rejection, and refused or incomplete payment behaviour. Both marked proposed; not in PRD."
+    }
+  ],
+  "gates": {
+    "G01": "PASS",
+    "G02": "FAIL",
+    "G03": "PASS",
+    "G04": "PASS",
+    "G05": "PASS",
+    "G06": "PASS",
+    "G07": "PASS",
+    "G08": "PASS",
+    "G09": "PASS",
+    "G10": "NOT_APPLICABLE",
+    "G11": "PASS",
+    "G12": "NOT_APPLICABLE",
+    "G13": "PASS",
+    "G14": "PASS",
+    "G15": "NOT_APPLICABLE",
+    "G16": "PASS",
+    "G17": "NOT_APPLICABLE",
+    "G18": "NOT_RUN"
+  }
+}

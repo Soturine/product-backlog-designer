@@ -1,0 +1,113 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-032",
+  "title": "Pedidos simultâneos não furam o limite de 2 reservas",
+  "status": "NEEDS_REVIEW",
+  "priority": "HIGH",
+  "type": "RACE_CONDITION",
+  "objective": "Verificar que a checagem do limite resiste a pedidos em paralelo.",
+  "requirement_refs": [
+    "REQ-003"
+  ],
+  "scenario_refs": [
+    "SCN-003"
+  ],
+  "coverage_point_refs": [
+    "CP-011"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 2 (linha 8)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com 1 reserva futura ativa e sessão aberta em dois aparelhos, DISPOSITIVO_1 e DISPOSITIVO_2",
+    "QUADRA_TENIS_A e QUADRA_FUTSAL_A têm blocos livres distintos em uma data futura",
+    "A forma de disparar os dois pedidos ao mesmo tempo não é conhecida"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio com 1 reserva futura"
+    },
+    {
+      "name": "DISPOSITIVO_1",
+      "description": "primeiro aparelho do sócio, apontando para um bloco de QUADRA_TENIS_A"
+    },
+    {
+      "name": "DISPOSITIVO_2",
+      "description": "segundo aparelho do sócio, apontando para um bloco de QUADRA_FUTSAL_A"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis com bloco livre"
+    },
+    {
+      "name": "QUADRA_FUTSAL_A",
+      "description": "quadra de futsal com bloco livre"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "Em DISPOSITIVO_1, SOCIO_A seleciona um bloco livre de QUADRA_TENIS_A sem confirmar.",
+      "expected_result": "O bloco aparece selecionado em DISPOSITIVO_1.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "Em DISPOSITIVO_2, SOCIO_A seleciona um bloco livre de QUADRA_FUTSAL_A sem confirmar.",
+      "expected_result": "O bloco aparece selecionado em DISPOSITIVO_2.",
+      "needs_clarification": false
+    },
+    {
+      "step": 3,
+      "action": "SOCIO_A confirma as duas reservas ao mesmo tempo nos dois aparelhos.",
+      "expected_result": "O aplicativo responde aos dois pedidos.",
+      "needs_clarification": false
+    },
+    {
+      "step": 4,
+      "action": "SOCIO_A abre a lista das suas reservas futuras.",
+      "expected_result": "Ao final o sócio tem no máximo 2 reservas futuras ativas, nunca 3.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "SOCIO_A com no máximo 2 reservas futuras"
+  ],
+  "cleanup": [
+    "Cancelar todas as reservas de SOCIO_A"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "UNKNOWN_SETUP_PATH: Técnica de disparo simultâneo desconhecida.",
+    "AMBIGUOUS_POLICY: Qual dos dois pedidos vence não é definido; o teste verifica só o teto."
+  ],
+  "test_basis": "DERIVED",
+  "primary_type": "RACE_CONDITION",
+  "secondary_tags": [],
+  "execution_status": "NEEDS_REVIEW",
+  "question_refs": [
+    "Q-004"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": false,
+  "automation_layer": "MIXED",
+  "automation_tool_hint": "NONE",
+  "deterministic": true,
+  "priority_reason": "Furar o limite quebra uma regra explícita de negócio.",
+  "automation_suitability": "LOW",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "UNKNOWN_SETUP_PATH",
+    "AMBIGUOUS_POLICY"
+  ],
+  "failure_domain": "corrida na contagem do limite",
+  "source_identifiers": [],
+  "expansion_dimension": "RACE_CONDITION",
+  "expansion_checklist_item": "RACE_CONDITION"
+}

@@ -1,0 +1,89 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-019",
+  "title": "Recusar bloco que começa uma hora antes da abertura",
+  "status": "NEEDS_REVIEW",
+  "priority": "MEDIUM",
+  "type": "BOUNDARY",
+  "objective": "Verificar que o bloco imediatamente anterior à janela não é aceito.",
+  "requirement_refs": [
+    "REQ-002"
+  ],
+  "scenario_refs": [
+    "SCN-002"
+  ],
+  "coverage_point_refs": [
+    "CP-008"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7): entre 7h e 22h"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta e sem reservas futuras",
+    "QUADRA_FUTSAL_A não tem reservas entre 6h e 7h de uma data futura"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio ativo sem reservas futuras"
+    },
+    {
+      "name": "QUADRA_FUTSAL_A",
+      "description": "quadra de futsal sem reservas de manhã cedo"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A tenta reservar o bloco das 6h às 7h de QUADRA_FUTSAL_A.",
+      "expected_result": "O aplicativo não conclui a reserva do bloco anterior à abertura.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A consulta a lista das suas reservas.",
+      "expected_result": "Nenhuma reserva foi criada para o bloco das 6h às 7h.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "SOCIO_A sem reservas futuras"
+  ],
+  "cleanup": [],
+  "state_contract": "REQUIRES_FIXTURE_RESET",
+  "tags": [],
+  "notes": [
+    "AMBIGUOUS_POLICY: A mensagem de horário permitido não está definida.",
+    "MISSING_SELECTOR: Não se sabe se o aplicativo oferece o bloco das 6h."
+  ],
+  "test_basis": "DERIVED",
+  "primary_type": "BOUNDARY",
+  "secondary_tags": [],
+  "execution_status": "NEEDS_REVIEW",
+  "question_refs": [
+    "Q-004"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "PLAYWRIGHT",
+  "deterministic": true,
+  "priority_reason": "Erro de um bloco no limite inferior é plausível, com impacto moderado.",
+  "automation_suitability": "HIGH",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "AMBIGUOUS_POLICY",
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "bloco imediatamente antes da janela",
+  "source_identifiers": [],
+  "expansion_dimension": "BOUNDARY"
+}

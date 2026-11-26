@@ -1,0 +1,30 @@
+{
+  "run": "r3",
+  "run_id": "PBD-RUN-HKWDBGFZ3SE6",
+  "gold": "h2-compare",
+  "reviewer": {"agent": "cmp-r3-reviewer", "independence": "sequential_role (same agent, reduced independence, per comparison.json limitations)", "model": "claude-sonnet-5-5"},
+  "planted": {
+    "P1": {"expected_side": "left", "status": "detected", "correct_side": true, "critical": true, "evidence": "finding confirmed_gap, severity high, side left, affects L-QL-2: 2-future-bookings criterion absent. Obligation O2 left NOT_COVERED."},
+    "P2": {"expected_side": "left", "status": "detected", "correct_side": true, "critical": true, "evidence": "finding unsupported_assumption, severity medium, side left, affects L-QL-3.AC1: '24 horas' fixed, PRD leaves it to the directorate. Criterion review fail."},
+    "P3": {"expected_side": "right", "status": "detected", "correct_side": true, "critical": true, "evidence": "finding unsupported_assumption, severity high, side right, affects R-QR-12.AC1: QR code and vendor REST API asserted. Criterion review fail."},
+    "P4": {"expected_side": "right", "status": "detected", "correct_side": true, "critical": true, "evidence": "finding confirmed_divergence, severity high, side right, affects R-QR-13 and R-QR-13.AC1: billing story contrary to the explicit exclusion. Obligation O6 CONFLICTING."},
+    "P5": {"expected_side": "right", "status": "detected", "correct_side": true, "critical": false, "evidence": "finding confirmed_gap, severity high, side right, affects R-QR-10: front-desk daily agenda missing. Obligation O5 right NOT_COVERED. Severity is high, above the gold's non-critical label; I count detection regardless."}
+  },
+  "controls": {
+    "QL-4": {"correct": "agenda story is correct", "false_positive": "no", "evidence": "item review pass, source_support supported, criterion L-QL-4.AC1 pass. No finding against it. Caveat: it appears under side.left.unmatched_items because the right side has no counterpart; that is a mapping gap (P5), not a false positive."},
+    "QR-11": {"correct": "booking with the 2-booking limit is correct", "false_positive": "no", "evidence": "item review pass, source_support supported, criteria R-QR-11.AC1 and AC2 pass. No finding against it."}
+  },
+  "mappings": {
+    "QL-2 <-> QR-11": {"status": "found", "relation": "overlap", "expected": "overlap or merge, not equivalent", "match": true, "evidence": "mappings[1] relation overlap; differences: limit only on the right."},
+    "QL-5 <-> QR-12": {"status": "found", "relation": "divergent", "expected": "divergent or conflicting", "match": true, "evidence": "mappings[3] relation divergent; rationale: right invents QR and REST."},
+    "QL-3 <-> QR-14": {"status": "found", "relation": "divergent", "expected": "overlapping", "match": "partial", "evidence": "mappings[2] relation divergent, not overlapping as expected. Left 24h rule and right without criteria are both noted, so the pairing is found, but the relation label differs from the gold."}
+  },
+  "winner_declared": "no",
+  "winner_evidence": "No winner field in comparison.json. Notes state 'Item counts are not a quality measure and no winner is computed'. comparison.md contains no winner or preference wording.",
+  "other_false_positives": [],
+  "other_false_positives_notes": "None found against PRD-supported content. Borderline items I checked and did not count: (1) R-QR-14 'historia sem criterios' (medium): the cancel capability is in the PRD and the empty story is a real gap, so not a false positive. (2) Criterion concerns on L-QL-5 and R-QR-14 in item_reviews (testable concern) are not findings and do not contradict the PRD. (3) L-QL-4 in unmatched_items is a mapping label, not a finding.",
+  "other_observations": [
+    "Planted defects: 2 on left (P1, P2) and 3 on right (P3, P4, P5). All 5 detected on the correct side.",
+    "The findings list has 6 items: 5 map to planted defects and 1 (R-QR-14 cancel with no criteria) is a real gap outside the plant list. Not counted as a false positive."
+  ]
+}

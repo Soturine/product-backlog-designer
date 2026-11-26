@@ -1,0 +1,93 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-034",
+  "title": "Caracterizar o cancelamento de uma reserva já cancelada",
+  "status": "EXPLORATORY",
+  "priority": "MEDIUM",
+  "type": "IDEMPOTENCY",
+  "objective": "Registrar o comportamento do aplicativo ao receber um segundo cancelamento e proteger o estado das outras reservas.",
+  "requirement_refs": [
+    "REQ-004"
+  ],
+  "scenario_refs": [
+    "SCN-004"
+  ],
+  "coverage_point_refs": [
+    "CP-012"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 3 (linha 9)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta",
+    "SOCIO_A cancelou RESERVA_CANCELADA_A e tem outra reserva futura ativa, RESERVA_ATIVA_A",
+    "O PRD não define a resposta a um segundo cancelamento"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio titular das duas reservas"
+    },
+    {
+      "name": "RESERVA_CANCELADA_A",
+      "description": "reserva já cancelada pelo titular"
+    },
+    {
+      "name": "RESERVA_ATIVA_A",
+      "description": "outra reserva futura ativa de SOCIO_A"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A tenta cancelar novamente RESERVA_CANCELADA_A, a partir de uma tela que ainda a mostra e registra a resposta.",
+      "expected_result": "A resposta do aplicativo ao segundo cancelamento fica registrada literalmente.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A abre a lista das suas reservas.",
+      "expected_result": "A reserva já cancelada continua inativa e a outra reserva do sócio continua ativa.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "RESERVA_ATIVA_A ativa"
+  ],
+  "cleanup": [
+    "Cancelar RESERVA_ATIVA_A"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "MISSING_ORACLE: Resposta ao cancelamento repetido não definida.",
+    "MISSING_EXECUTION_SURFACE: Não se sabe como reenviar o cancelamento de uma reserva já cancelada."
+  ],
+  "test_basis": "EXPLORATORY",
+  "primary_type": "IDEMPOTENCY",
+  "secondary_tags": [],
+  "execution_status": "EXPLORATORY",
+  "question_refs": [
+    "Q-007"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": false,
+  "automation_layer": "UI",
+  "automation_tool_hint": "NONE",
+  "deterministic": false,
+  "priority_reason": "Efeito colateral em outra reserva seria grave; a resposta em si é indefinida.",
+  "automation_suitability": "LOW",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "MISSING_ORACLE",
+    "MISSING_EXECUTION_SURFACE"
+  ],
+  "failure_domain": "segundo cancelamento da mesma reserva",
+  "source_identifiers": [],
+  "expansion_dimension": "IDEMPOTENCY",
+  "expansion_checklist_item": "WRONG_STATE"
+}

@@ -1,0 +1,32 @@
+{
+  "ambiguities": [],
+  "exclusions": [],
+  "members": [
+    {
+      "path": "prd.pdf",
+      "reading": {
+        "limitations": [
+          "Runtime has no text layer for this PDF (pypdf extra missing), so no line numbers: citations use page only and are agent transcriptions, not mechanically verified",
+          "Page 3 shows only a solid gray rectangle and a horizontal rule with no legible text or labels"
+        ],
+        "method": "native_vision",
+        "tool": "host file reader (Read) opening the original PDF, pages rendered as images with vision"
+      },
+      "reason": "Runtime rejects any status other than unreadable: no text layer (pypdf extra missing). Host opened the original natively with vision and transcribed it, but this cannot be mechanically verified",
+      "status": "unreadable",
+      "visual_transcription": {
+        "method": "agent_vision",
+        "model": "claude-sonnet-5-5",
+        "text": "Page 1: PRD - Mutirão de Vacinação de Animais (fictício). 1. O tutor agenda a vacinação informando espécie e idade do animal. 2. Cada horário atende no máximo 10 animais. 3. O voluntário registra a vacina aplicada e o lote. 4. O tutor recebe o comprovante de vacinação. Page 2: Tabela de regras por espécie. Espécie / Idade mínima / Vacina. Cão / 3 meses / Antirrábica. Gato / 3 meses / Antirrábica. 5. Animais abaixo da idade mínima não podem ser agendados. Page 3: a solid gray rectangle and a horizontal black line, no text."
+      }
+    }
+  ],
+  "obligations": [],
+  "reader": {
+    "agent": "reader-r6",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "source_digest": "sha256:8f69e9c0f74cac64293b2b4812426f247c743c1cd2606d0d2f574bd3a85a8c5e",
+  "source_id": "PBD-SRC-TQZARCVE5PAF"
+}

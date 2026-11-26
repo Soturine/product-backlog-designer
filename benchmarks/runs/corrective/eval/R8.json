@@ -1,0 +1,34 @@
+{
+  "run": "R8",
+  "run_id": "PBD-RUN-JHNV15GG7XTX",
+  "gold": "h2-court-booking",
+  "reviewer": {"agent": "independent_reviewer", "model": "gpt-5"},
+  "obligations": {
+    "H01": {"status": "covered", "evidence": ["PBD-STORY-644FSAZTZEY1 (US1, ready)", "PBD-AC-PPB9NF32HNCK (CA-01)", "PBD-AC-T28JD54A6VP8 (CA-02)", "PBD-AC-SWYV9S2PG9XB (CA-04, 1-hour block)", "PBD-AC-4RF9JDHB0HTX (CA-05, outside 7h-22h refused)", "PBD-TASK-ZRJGNEPYX4T5 (T1)", "PBD-TASK-0NQ1M5GW3VEK (T2, duration and window)"], "note": "Window end is not questioned, so the 21h or 22h ambiguity is not raised."},
+    "H02": {"status": "covered", "evidence": ["PBD-AC-YCGW9KEJ6XHZ (CA-06, 2 future bookings, new refused)", "PBD-TASK-QVD7AC2476YG (T3, limit control, ready)"], "note": "Limit sits inside US1 rather than a separate story. Only the negative criterion is written; the under-limit success case is not explicit."},
+    "H03": {"status": "handled_as_question", "evidence": ["PBD-STORY-81Q6AS6FZPYB (US2, blocked)", "PBD-Q-KA7QKTHJNKSP (Q1, blocking, minimum notice)", "PBD-AC-JHPC061E7DD0 (CA-01)", "PBD-AC-8WJ107CGNF4E (CA-02, proposed)", "PBD-TASK-CTN3GEBV44MY (T4, blocked)"], "note": "Notice rule is a blocking question. Over-blocking: the whole cancel story is blocked, including basic cancel, which does not depend on the notice value. Not a gold trap, but the gold's readiness expectation for cancel is partial."},
+    "H04": {"status": "handled_as_blocked", "evidence": ["PBD-STORY-D6Q7YJE3WFJB (US3, blocked)", "PBD-Q-4ACQNZ2AGJB1 (Q2, blocking, official API contract)", "PBD-ENAB-0N0SHXA0WPKY (EN1, blocked)", "PBD-TASK-331HZ5R8AM2V (T5, blocked)", "PBD-TASK-237WYW4M8WK8 (T6, blocked)", "PBD-AC-J6G6QKDYSKB3 (CA-01)"], "note": "Turnstile work blocked by Q2. EN1 and T5 are a discovery or analysis enabler, which the gold does not expect (spike_expected false)."},
+    "H05": {"status": "covered", "evidence": ["PBD-STORY-AR2VZ3JPTN26 (US4, ready)", "PBD-AC-MXS0G4PVQN8T (CA-01)", "PBD-TASK-FJ9T5SDTJZJ8 (T7, ready)"], "note": ""},
+    "H06": {"status": "covered", "evidence": ["PBD-EPIC-SMZFHCX903NC (E1 out_scope)", "traceability O13 OUT_OF_SCOPE"], "note": "Billing excluded; no billing items."}
+  },
+  "critical_recall": {"strict_covered": 3, "handled": 5, "total_critical": 5, "note": "strict_covered = H01, H02, H05. H03 and H04 counted as handled. My count."},
+  "traps": {
+    "turnstile_vendor_api_invented": {"status": "not_violated", "evidence": "No vendor, QR, token, endpoint or protocol. T5 is to analyse the contract once the documentation exists. Q2 asks for the official contract."},
+    "cancel_notice_24h_invented": {"status": "not_violated", "evidence": "No numeric notice period in any item or criterion."},
+    "billing_work_created": {"status": "not_violated", "evidence": "No billing item."}
+  },
+  "readiness": {
+    "a_turnstile_presented_as_ready": {"answer": "no", "evidence": "US3, EN1, T5, T6 all blocked by Q2."},
+    "b_booking_limit_agenda_blocked_by_association": {"answer": "no", "evidence": "US1, T1, T2, T3 ready (booking and limit). US4, T7 ready (agenda). No blocked_by reference to Q1 or Q2 on these."},
+    "c_blocking_questions_linked": {"answer": "yes", "evidence": "Q1 linked via readiness.blocked_by on US2 and T4. Q2 linked via readiness.blocked_by on US3, EN1, T5, T6, and via affects."},
+    "reviewer_disputes": [],
+    "reviewer_disputes_note": "Reviewer raised no findings (findings list empty). Gate G08 PASS with readiness agreed by the reviewer. I agree with the readiness outcome. The only concern is over-blocking of basic cancel, which the reviewer did not raise."
+  },
+  "references": {"unresolved": [], "evidence": "All PBD ids resolve. No key-like tokens in item, criterion or reviewer prose."},
+  "invented": [
+    {"item": "PBD-ENAB-0N0SHXA0WPKY (EN1) and PBD-TASK-331HZ5R8AM2V (T5)", "severity": "low", "reason": "Discovery or analysis enabler for the turnstile contract. Blocked, and the outcome is documentation-traceable, so no invented API. Spike-like work the gold does not expect (spike_expected false)."},
+    {"item": "PBD-STORY-81Q6AS6FZPYB (US2) and PBD-TASK-CTN3GEBV44MY (T4) as fully blocked", "severity": "low", "reason": "Over-blocking, not invention. Basic cancel is blocked by Q1 although it does not depend on the notice value."}
+  ],
+  "gates": {"G01": "PASS", "G02": "PASS", "G03": "PASS", "G04": "PASS", "G05": "PASS", "G06": "PASS", "G07": "PASS", "G08": "PASS", "G09": "PASS", "G10": "NOT_APPLICABLE", "G11": "PASS", "G12": "NOT_APPLICABLE", "G13": "PASS", "G14": "PASS", "G15": "NOT_APPLICABLE", "G16": "PASS", "G17": "BLOCKED", "G18": "NOT_RUN"},
+  "notes": "Gate statuses are the pipeline's. My counts are independent. Output has no findings, so no dispute to adjudicate."
+}

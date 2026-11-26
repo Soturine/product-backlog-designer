@@ -1,0 +1,134 @@
+{
+  "ambiguities": [
+    {
+      "locator": {
+        "member": "prd.pdf",
+        "page": 3
+      },
+      "quote": "sem texto legível; apenas um retângulo cinza sólido e uma linha horizontal",
+      "text": "A página 3 traz apenas um retângulo cinza e uma linha, sem texto legível; seu conteúdo e significado são desconhecidos (possível figura ou imagem sem conteúdo extraível)"
+    }
+  ],
+  "exclusions": [],
+  "members": [
+    {
+      "path": "prd.pdf",
+      "reading": {
+        "limitations": [
+          "Page 3 contains only a solid gray rectangle and a horizontal rule with no legible text or labels; its meaning is unknown and no obligation was recorded from it",
+          "The runtime has no PDF text layer, so no line numbers exist; all evidence is cited by page and is an agent transcription, not mechanically verified"
+        ],
+        "method": "native_vision",
+        "tool": "host file reader (Read tool) on the original PDF: returned page text plus page images for pages 1-3; the pages-range render failed because pdftoppm is not installed, the whole-file read worked"
+      },
+      "status": "read",
+      "visual_transcription": {
+        "method": "agent_vision",
+        "model": "claude-sonnet-5-5",
+        "text": "Pagina 1: PRD - Mutirão de Vacinação de Animais (fictício)\n1. O tutor agenda a vacinação informando espécie e idade do animal.\n2. Cada horário atende no máximo 10 animais.\n3. O voluntário registra a vacina aplicada e o lote.\n4. O tutor recebe o comprovante de vacinação.\nPagina 2: Tabela de regras por espécie\nEspécie | Idade mínima | Vacina\nCão | 3 meses | Antirrábica\nGato | 3 meses | Antirrábica\n5. Animais abaixo da idade mínima não podem ser agendados.\nPagina 3: sem texto legível; apenas um retângulo cinza sólido e uma linha horizontal."
+      }
+    }
+  ],
+  "obligations": [
+    {
+      "category": "functional",
+      "key": "R1",
+      "locator": {
+        "member": "prd.pdf",
+        "page": 1,
+        "section": "item 1"
+      },
+      "modality": "must",
+      "quote": "O tutor agenda a vacinação informando espécie e idade do animal.",
+      "text": "O tutor agenda a vacinação informando espécie e idade do animal",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "constraint",
+      "key": "R2",
+      "locator": {
+        "member": "prd.pdf",
+        "page": 1,
+        "section": "item 2"
+      },
+      "modality": "must_not",
+      "quote": "Cada horário atende no máximo 10 animais.",
+      "text": "Cada horário atende no máximo 10 animais",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R3",
+      "locator": {
+        "member": "prd.pdf",
+        "page": 1,
+        "section": "item 3"
+      },
+      "modality": "must",
+      "quote": "O voluntário registra a vacina aplicada e o lote.",
+      "text": "O voluntário registra a vacina aplicada e o lote",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R4",
+      "locator": {
+        "member": "prd.pdf",
+        "page": 1,
+        "section": "item 4"
+      },
+      "modality": "must",
+      "quote": "O tutor recebe o comprovante de vacinação.",
+      "text": "O tutor recebe o comprovante de vacinação",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "data",
+      "key": "R5",
+      "locator": {
+        "member": "prd.pdf",
+        "page": 2,
+        "row": 1,
+        "table": "Tabela de regras por espécie"
+      },
+      "modality": "must",
+      "quote": "Cão | 3 meses | Antirrábica",
+      "text": "Cão: idade mínima de 3 meses; vacina Antirrábica",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "data",
+      "key": "R6",
+      "locator": {
+        "member": "prd.pdf",
+        "page": 2,
+        "row": 2,
+        "table": "Tabela de regras por espécie"
+      },
+      "modality": "must",
+      "quote": "Gato | 3 meses | Antirrábica",
+      "text": "Gato: idade mínima de 3 meses; vacina Antirrábica",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "error",
+      "key": "R7",
+      "locator": {
+        "member": "prd.pdf",
+        "page": 2,
+        "section": "item 5"
+      },
+      "modality": "must_not",
+      "quote": "Animais abaixo da idade mínima não podem ser agendados.",
+      "text": "Animais abaixo da idade mínima não podem ser agendados",
+      "uncertainty": "confirmed"
+    }
+  ],
+  "reader": {
+    "agent": "reader-r6b",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "source_digest": "sha256:8f69e9c0f74cac64293b2b4812426f247c743c1cd2606d0d2f574bd3a85a8c5e",
+  "source_id": "PBD-SRC-TQZARCVE5PAF"
+}

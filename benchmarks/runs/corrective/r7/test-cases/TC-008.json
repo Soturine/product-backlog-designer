@@ -1,0 +1,102 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-008",
+  "title": "Recusar bloco fora da janela de 7h a 22h",
+  "status": "NEEDS_REVIEW",
+  "priority": "HIGH",
+  "type": "NEGATIVE",
+  "objective": "Verificar que o aplicativo não aceita reserva de bloco claramente fora do horário permitido.",
+  "requirement_refs": [
+    "REQ-002"
+  ],
+  "scenario_refs": [
+    "SCN-002"
+  ],
+  "coverage_point_refs": [
+    "CP-008"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7): entre 7h e 22h"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta e sem reservas futuras",
+    "QUADRA_TENIS_A não tem reservas às 5h de uma data futura"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio ativo sem reservas futuras"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis sem reservas no período das 5h às 6h"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A tenta reservar QUADRA_TENIS_A no bloco das 5h às 6h.",
+      "expected_result": "O aplicativo não conclui a reserva do bloco das 5h às 6h.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A consulta as suas reservas e a disponibilidade de QUADRA_TENIS_A na mesma data.",
+      "expected_result": "Nenhuma reserva foi criada e o bloco das 5h às 6h não passa a constar como ocupado.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "SOCIO_A segue sem reservas futuras"
+  ],
+  "cleanup": [],
+  "state_contract": "REQUIRES_FIXTURE_RESET",
+  "tags": [],
+  "notes": [
+    "AMBIGUOUS_POLICY: A mensagem de horário permitido não está definida no PRD.",
+    "MISSING_SELECTOR: O PRD não descreve se o aplicativo sequer oferece blocos fora da janela."
+  ],
+  "test_basis": "ACCEPTANCE",
+  "primary_type": "NEGATIVE",
+  "secondary_tags": [],
+  "execution_status": "NEEDS_REVIEW",
+  "question_refs": [
+    "Q-004"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "PLAYWRIGHT",
+  "deterministic": true,
+  "priority_reason": "Reserva fora do horário do clube geraria uso da quadra sem funcionamento.",
+  "automation_suitability": "HIGH",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "AMBIGUOUS_POLICY",
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "bloco fora da janela",
+  "source_identifiers": [],
+  "claim_exercise_map": [
+    {
+      "claim_id": "CLAIM-008",
+      "coverage_point_id": "CP-008",
+      "test_case_id": "TC-008",
+      "step_refs": [
+        2
+      ],
+      "assertion_refs": [
+        "expected"
+      ],
+      "primary_type": "NEGATIVE"
+    }
+  ]
+}

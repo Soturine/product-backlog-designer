@@ -1,0 +1,134 @@
+{
+  "base_digest": "sha256:dcf5dbb35beefdc095599e55ca7dc6cdee05c9199d919347f45171d05985d3b8",
+  "counts": {
+    "unchanged": 13,
+    "update": 3
+  },
+  "decisions": [
+    {
+      "evidence": [
+        {
+          "summary": "Pedido do usuário: o PRD v2 (sources/v2/prd.md, linha 9) registra a decisão da diretoria de 2026-11-20: cancelar até 12 horas antes.",
+          "type": "user_statement"
+        }
+      ],
+      "id": "PBD-DEC-AVY0NSKMBRX4",
+      "status": "approved",
+      "supersedes_claims": [
+        "PBD-CLM-G12AFEAVFPDE"
+      ],
+      "text": "A diretoria decidiu (2026-11-20): o sócio pode cancelar uma reserva até 12 horas antes do horário reservado."
+    }
+  ],
+  "deletions": 0,
+  "items": [
+    {
+      "action": "unchanged",
+      "changes": [],
+      "item": "PBD-EPIC-XW0PE4TYAW98",
+      "title": "Reserva de quadras do clube pelo aplicativo"
+    },
+    {
+      "action": "unchanged",
+      "changes": [],
+      "item": "PBD-FEAT-RHWYXB1RYVJW",
+      "title": "Reserva de quadra livre"
+    },
+    {
+      "action": "update",
+      "changes": [
+        "R3"
+      ],
+      "item": "PBD-FEAT-7FXX1BX92T4R",
+      "title": "Cancelamento de reserva"
+    },
+    {
+      "action": "unchanged",
+      "changes": [],
+      "item": "PBD-FEAT-ZCNCN2FQ2Z6D",
+      "title": "Acesso pela catraca com a reserva"
+    },
+    {
+      "action": "unchanged",
+      "changes": [],
+      "item": "PBD-FEAT-3DTA23TXT17G",
+      "title": "Agenda diária das quadras para a recepção"
+    },
+    {
+      "action": "unchanged",
+      "changes": [],
+      "item": "PBD-STORY-4X88S366NF8G",
+      "title": "Reservar uma quadra livre em bloco de 1 hora"
+    },
+    {
+      "action": "update",
+      "changes": [
+        "R2",
+        "R4",
+        "R5"
+      ],
+      "item": "PBD-STORY-BXMPBBR7YK7S",
+      "title": "Cancelar uma reserva"
+    },
+    {
+      "action": "unchanged",
+      "changes": [],
+      "item": "PBD-STORY-4EWDDBCKYQJW",
+      "title": "Entrar pela catraca usando a reserva"
+    },
+    {
+      "action": "unchanged",
+      "changes": [],
+      "item": "PBD-STORY-Y4VZXDY0KX4H",
+      "title": "Consultar a agenda do dia de cada quadra"
+    },
+    {
+      "action": "unchanged",
+      "changes": [],
+      "item": "PBD-TASK-9VA5GAQ2325G",
+      "title": "Implementar a criação de reserva em bloco de 1 hora para quadra livre"
+    },
+    {
+      "action": "unchanged",
+      "changes": [],
+      "item": "PBD-TASK-Z3N04AENGRMH",
+      "title": "Impedir a terceira reserva futura simultânea do sócio"
+    },
+    {
+      "action": "unchanged",
+      "changes": [],
+      "item": "PBD-TASK-MGTQV3XG91HS",
+      "title": "Restringir a reserva à janela de horário do clube"
+    },
+    {
+      "action": "unchanged",
+      "changes": [],
+      "item": "PBD-TASK-19PG31SNXTC6",
+      "title": "Implementar o cancelamento de reserva pelo sócio"
+    },
+    {
+      "action": "update",
+      "changes": [
+        "R1",
+        "R6"
+      ],
+      "item": "PBD-TASK-RQMNRV5S88MB",
+      "title": "Validar a antecedência mínima para cancelar"
+    },
+    {
+      "action": "unchanged",
+      "changes": [],
+      "item": "PBD-TASK-5WXXY9D3SK6J",
+      "title": "Integrar a liberação da catraca com a reserva do sócio"
+    },
+    {
+      "action": "unchanged",
+      "changes": [],
+      "item": "PBD-TASK-BA4TXN7R3R6H",
+      "title": "Implementar a visão diária de agenda por quadra"
+    }
+  ],
+  "kind": "pbd.evolution-summary",
+  "note": "No item is deleted; superseded items stay visible with their lineage.",
+  "plan_digest": "sha256:d882731cc6eede3257743e7792c5e2b01bdaf8b78f158df406f28a3c3fd9a90c"
+}

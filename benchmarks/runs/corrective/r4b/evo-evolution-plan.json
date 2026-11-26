@@ -1,0 +1,391 @@
+{
+  "author": {
+    "agent": "evo-r4b",
+    "model": "claude-sonnet-5-5"
+  },
+  "base_digest": "sha256:758855bd15a89396c77acc109ecd926c526a864d68da71f2164ddf84a88d4acb",
+  "changes": [
+    {
+      "after": {
+        "evidence": [
+          {
+            "summary": "Usuário informou que o PRD v2 (sources/v2/prd.md, requisito 3, linha 9) registra a decisão da diretoria de 2026-11-20: cancelar até 12 horas antes do horário reservado; usuário aprovou as mudanças decorrentes.",
+            "type": "user_statement"
+          }
+        ],
+        "id": "PBD-DEC-PF1MZKRF657Z",
+        "status": "approved",
+        "supersedes_claims": [
+          "PBD-CLM-0DB5831NMEAJ"
+        ],
+        "text": "A diretoria decidiu que o sócio pode cancelar uma reserva até 12 horas antes do horário reservado (decisão de 2026-11-20)."
+      },
+      "before": null,
+      "key": "D1",
+      "noop": false,
+      "op": "add_decision",
+      "rationale": "O PRD v2 registra a decisão da diretoria sobre a antecedência de cancelamento.",
+      "requires_explicit_approval": false,
+      "target": "PBD-DEC-PF1MZKRF657Z"
+    },
+    {
+      "after": {
+        "affects": [
+          "PBD-CLM-0DB5831NMEAJ",
+          "PBD-STORY-XRZAAQQZ12RR",
+          "PBD-TASK-XGNJHSN2JSJC"
+        ],
+        "alternatives": [
+          "Prazo em horas antes do início do bloco",
+          "Prazo em dias",
+          "Sem prazo mínimo"
+        ],
+        "answer_decision": "PBD-DEC-PF1MZKRF657Z",
+        "blocking": true,
+        "evidence": [
+          {
+            "ref": "PBD-DEC-PF1MZKRF657Z",
+            "summary": "A diretoria decidiu que o sócio pode cancelar uma reserva até 12 horas antes do horário reservado (decisão de 2026-11-20).",
+            "type": "decision"
+          }
+        ],
+        "id": "PBD-Q-3FT98VRCV6T3",
+        "impact": "Sem o prazo não é possível implementar nem testar a validação do cancelamento.",
+        "status": "answered",
+        "text": "Qual é a antecedência mínima para cancelar uma reserva (valor e unidade) definida pela diretoria?"
+      },
+      "before": {
+        "affects": [
+          "PBD-CLM-0DB5831NMEAJ",
+          "PBD-STORY-XRZAAQQZ12RR",
+          "PBD-TASK-XGNJHSN2JSJC"
+        ],
+        "alternatives": [
+          "Prazo em horas antes do início do bloco",
+          "Prazo em dias",
+          "Sem prazo mínimo"
+        ],
+        "blocking": true,
+        "id": "PBD-Q-3FT98VRCV6T3",
+        "impact": "Sem o prazo não é possível implementar nem testar a validação do cancelamento.",
+        "status": "open",
+        "text": "Qual é a antecedência mínima para cancelar uma reserva (valor e unidade) definida pela diretoria?"
+      },
+      "key": "Q1",
+      "noop": false,
+      "op": "answer_question",
+      "rationale": "Responde valor e unidade da antecedência mínima: 12 horas antes do horário reservado.",
+      "requires_explicit_approval": false,
+      "target": "PBD-Q-3FT98VRCV6T3"
+    },
+    {
+      "after": [
+        "PBD-CLM-BGW3APDMVCJH"
+      ],
+      "before": [
+        "PBD-CLM-0DB5831NMEAJ"
+      ],
+      "key": "RT1",
+      "noop": false,
+      "op": "retrace",
+      "rationale": "A afirmação antiga (prazo indefinido) foi substituída.",
+      "requires_explicit_approval": false,
+      "target": "PBD-STORY-XRZAAQQZ12RR"
+    },
+    {
+      "after": [
+        "PBD-CLM-BGW3APDMVCJH"
+      ],
+      "before": [
+        "PBD-CLM-0DB5831NMEAJ"
+      ],
+      "key": "RT2",
+      "noop": false,
+      "op": "retrace",
+      "rationale": "A afirmação antiga (prazo indefinido) foi substituída.",
+      "requires_explicit_approval": false,
+      "target": "PBD-TASK-XGNJHSN2JSJC"
+    },
+    {
+      "after": [
+        "PBD-CLM-BGW3APDMVCJH"
+      ],
+      "before": [
+        "PBD-CLM-BGW3APDMVCJH",
+        "PBD-CLM-0DB5831NMEAJ"
+      ],
+      "key": "RT3",
+      "noop": false,
+      "op": "retrace",
+      "rationale": "A afirmação antiga (prazo indefinido) foi substituída.",
+      "requires_explicit_approval": false,
+      "target": "PBD-STORY-XRZAAQQZ12RR"
+    },
+    {
+      "after": [
+        "PBD-CLM-BGW3APDMVCJH"
+      ],
+      "before": [
+        "PBD-CLM-BGW3APDMVCJH",
+        "PBD-CLM-0DB5831NMEAJ"
+      ],
+      "key": "RT5",
+      "noop": false,
+      "op": "retrace",
+      "rationale": "Remove a afirmação substituída; as demais permanecem.",
+      "requires_explicit_approval": false,
+      "target": "PBD-FEAT-22S5XS6TF0CT"
+    },
+    {
+      "after": [
+        "PBD-CLM-2JF8ZVGNKZJE",
+        "PBD-CLM-BGW3APDMVCJH",
+        "PBD-CLM-C0DA7M46A9VW",
+        "PBD-CLM-CYQSWBFNZ7R5",
+        "PBD-CLM-P0AN0NQ589NZ"
+      ],
+      "before": [
+        "PBD-CLM-CYQSWBFNZ7R5",
+        "PBD-CLM-C0DA7M46A9VW",
+        "PBD-CLM-2JF8ZVGNKZJE",
+        "PBD-CLM-P0AN0NQ589NZ",
+        "PBD-CLM-BGW3APDMVCJH",
+        "PBD-CLM-0DB5831NMEAJ"
+      ],
+      "key": "RT4",
+      "noop": false,
+      "op": "retrace",
+      "rationale": "Remove a afirmação substituída; as demais permanecem.",
+      "requires_explicit_approval": false,
+      "target": "PBD-EPIC-YHF9CE4C2VKJ"
+    },
+    {
+      "after": {
+        "rationale": "A antecedência mínima de 12 horas foi decidida pela diretoria; a pergunta foi respondida e nada mais bloqueia a história.",
+        "status": "ready"
+      },
+      "before": {
+        "blocked_by": [
+          {
+            "rationale": "A parte que valida a antecedência mínima precisa do prazo definido pela diretoria.",
+            "ref": "PBD-Q-3FT98VRCV6T3"
+          }
+        ],
+        "rationale": "O cancelamento em si pode ser construído; a regra de antecedência mínima aguarda a definição da diretoria.",
+        "status": "partial"
+      },
+      "key": "S1",
+      "noop": false,
+      "op": "set_readiness",
+      "rationale": "A antecedência mínima de 12 horas foi decidida pela diretoria; a pergunta foi respondida e nada mais bloqueia a história.",
+      "requires_explicit_approval": false,
+      "target": "PBD-STORY-XRZAAQQZ12RR"
+    },
+    {
+      "after": {
+        "rationale": "O prazo de 12 horas antes do horário reservado está decidido.",
+        "status": "ready"
+      },
+      "before": {
+        "blocked_by": [
+          {
+            "rationale": "Sem o prazo não há o que validar.",
+            "ref": "PBD-Q-3FT98VRCV6T3"
+          }
+        ],
+        "rationale": "O valor da antecedência mínima ainda não foi definido.",
+        "status": "blocked"
+      },
+      "key": "S2",
+      "noop": false,
+      "op": "set_readiness",
+      "rationale": "O prazo de 12 horas antes do horário reservado está decidido.",
+      "requires_explicit_approval": false,
+      "target": "PBD-TASK-XGNJHSN2JSJC"
+    },
+    {
+      "after": {
+        "rationale": "O cancelamento básico independe do valor do prazo e nada o bloqueia.",
+        "status": "ready"
+      },
+      "before": {
+        "independent_of": [
+          {
+            "rationale": "A ação de cancelar e a liberação do horário não usam o valor da antecedência mínima.",
+            "ref": "PBD-Q-3FT98VRCV6T3"
+          }
+        ],
+        "rationale": "O cancelamento básico independe do prazo de antecedência.",
+        "status": "ready"
+      },
+      "key": "S3",
+      "noop": false,
+      "op": "set_readiness",
+      "rationale": "O cancelamento básico independe do valor do prazo e nada o bloqueia.",
+      "requires_explicit_approval": false,
+      "target": "PBD-TASK-THKDB38SCZ4G"
+    },
+    {
+      "after": {
+        "claim_refs": [
+          "PBD-CLM-BGW3APDMVCJH"
+        ],
+        "expected_outcomes": [
+          "O cancelamento é recusado e a reserva permanece ativa",
+          "O sócio é informado do prazo de 12 horas"
+        ],
+        "id": "PBD-AC-6S6S3M0J8TG3",
+        "order": 1,
+        "origin": "proposed",
+        "parent": "PBD-STORY-XRZAAQQZ12RR",
+        "rationale": "A antecedência mínima ainda não foi definida; não há valor a confirmar (ver pergunta aberta).",
+        "status": "proposed",
+        "style": "list",
+        "text": "Cancelamento solicitado com menos de 12 horas de antecedência do horário reservado é recusado",
+        "visible_id": "CA-02"
+      },
+      "before": {
+        "claim_refs": [
+          "PBD-CLM-BGW3APDMVCJH"
+        ],
+        "expected_outcomes": [
+          "O comportamento exato depende do prazo e do tratamento definidos pela diretoria"
+        ],
+        "id": "PBD-AC-6S6S3M0J8TG3",
+        "order": 1,
+        "origin": "proposed",
+        "parent": "PBD-STORY-XRZAAQQZ12RR",
+        "rationale": "A antecedência mínima ainda não foi definida; não há valor a confirmar (ver pergunta aberta).",
+        "status": "proposed",
+        "style": "list",
+        "text": "Cancelamento fora da antecedência mínima definida pela diretoria é recusado",
+        "visible_id": "CA-02"
+      },
+      "key": "U1",
+      "noop": false,
+      "op": "update_criterion",
+      "rationale": "Aplica a decisão da diretoria de 12 horas ao critério que dependia do prazo.",
+      "requires_explicit_approval": false,
+      "target": "PBD-STORY-XRZAAQQZ12RR"
+    }
+  ],
+  "kind": "pbd.refinement-plan",
+  "note": "Nothing is applied until the owner approves change keys with: pbd refine apply.",
+  "plan_digest": "sha256:f2987dd98e7c4cdc7e378762d313c0b4d92c16a5f4f6fc59aeb36f2613cb8a76",
+  "source_changes": [
+    {
+      "evidence": [
+        {
+          "summary": "Usuário informou que o PRD v2 (sources/v2/prd.md, requisito 3, linha 9) registra a decisão da diretoria de 2026-11-20: cancelar até 12 horas antes do horário reservado; usuário aprovou as mudanças decorrentes.",
+          "type": "user_statement"
+        }
+      ],
+      "key": "D1",
+      "op": "add_decision",
+      "rationale": "O PRD v2 registra a decisão da diretoria sobre a antecedência de cancelamento.",
+      "status": "approved",
+      "supersedes_claims": [
+        "PBD-CLM-0DB5831NMEAJ"
+      ],
+      "text": "A diretoria decidiu que o sócio pode cancelar uma reserva até 12 horas antes do horário reservado (decisão de 2026-11-20)."
+    },
+    {
+      "decision": "change:D1",
+      "key": "Q1",
+      "op": "answer_question",
+      "rationale": "Responde valor e unidade da antecedência mínima: 12 horas antes do horário reservado.",
+      "target": "PBD-Q-3FT98VRCV6T3"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-BGW3APDMVCJH"
+      ],
+      "key": "RT1",
+      "op": "retrace",
+      "rationale": "A afirmação antiga (prazo indefinido) foi substituída.",
+      "target": "PBD-AC-6S6S3M0J8TG3"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-BGW3APDMVCJH"
+      ],
+      "key": "RT2",
+      "op": "retrace",
+      "rationale": "A afirmação antiga (prazo indefinido) foi substituída.",
+      "target": "PBD-TASK-XGNJHSN2JSJC"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-BGW3APDMVCJH"
+      ],
+      "key": "RT3",
+      "op": "retrace",
+      "rationale": "A afirmação antiga (prazo indefinido) foi substituída.",
+      "target": "PBD-STORY-XRZAAQQZ12RR"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-BGW3APDMVCJH"
+      ],
+      "key": "RT5",
+      "op": "retrace",
+      "rationale": "Remove a afirmação substituída; as demais permanecem.",
+      "target": "PBD-FEAT-22S5XS6TF0CT"
+    },
+    {
+      "claim_refs": [
+        "PBD-CLM-CYQSWBFNZ7R5",
+        "PBD-CLM-C0DA7M46A9VW",
+        "PBD-CLM-2JF8ZVGNKZJE",
+        "PBD-CLM-P0AN0NQ589NZ",
+        "PBD-CLM-BGW3APDMVCJH"
+      ],
+      "key": "RT4",
+      "op": "retrace",
+      "rationale": "Remove a afirmação substituída; as demais permanecem.",
+      "target": "PBD-EPIC-YHF9CE4C2VKJ"
+    },
+    {
+      "key": "S1",
+      "op": "set_readiness",
+      "rationale": "A antecedência mínima de 12 horas foi decidida pela diretoria; a pergunta foi respondida e nada mais bloqueia a história.",
+      "readiness": {
+        "rationale": "A antecedência mínima de 12 horas foi decidida pela diretoria; a pergunta foi respondida e nada mais bloqueia a história.",
+        "status": "ready"
+      },
+      "target": "PBD-STORY-XRZAAQQZ12RR"
+    },
+    {
+      "key": "S2",
+      "op": "set_readiness",
+      "rationale": "O prazo de 12 horas antes do horário reservado está decidido.",
+      "readiness": {
+        "rationale": "O prazo de 12 horas antes do horário reservado está decidido.",
+        "status": "ready"
+      },
+      "target": "PBD-TASK-XGNJHSN2JSJC"
+    },
+    {
+      "key": "S3",
+      "op": "set_readiness",
+      "rationale": "O cancelamento básico independe do valor do prazo e nada o bloqueia.",
+      "readiness": {
+        "rationale": "O cancelamento básico independe do valor do prazo e nada o bloqueia.",
+        "status": "ready"
+      },
+      "target": "PBD-TASK-THKDB38SCZ4G"
+    },
+    {
+      "expected_outcomes": [
+        "O cancelamento é recusado e a reserva permanece ativa",
+        "O sócio é informado do prazo de 12 horas"
+      ],
+      "key": "U1",
+      "op": "update_criterion",
+      "rationale": "Aplica a decisão da diretoria de 12 horas ao critério que dependia do prazo.",
+      "target": "PBD-AC-6S6S3M0J8TG3",
+      "text": "Cancelamento solicitado com menos de 12 horas de antecedência do horário reservado é recusado"
+    }
+  ],
+  "status": "proposed"
+}

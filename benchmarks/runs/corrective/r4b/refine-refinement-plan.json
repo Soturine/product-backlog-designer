@@ -1,0 +1,32 @@
+{
+  "author": {
+    "agent": "refiner-1",
+    "model": "claude-sonnet-5-5"
+  },
+  "base_digest": "sha256:6e7bc6cc3b9d09740d9325c50be3f8bdac96b6a8bc01a945c8279bff98db0c96",
+  "changes": [
+    {
+      "after": "Consultar a agenda do dia de cada quadra",
+      "before": "Ver a agenda do dia de cada quadra",
+      "key": "R1",
+      "noop": false,
+      "op": "update_title",
+      "rationale": "Renomeação pedida pelo usuário.",
+      "requires_explicit_approval": false,
+      "target": "PBD-STORY-CAHVKS06N0ZH"
+    }
+  ],
+  "kind": "pbd.refinement-plan",
+  "note": "Nothing is applied until the owner approves change keys with: pbd refine apply.",
+  "plan_digest": "sha256:2c12913f3cbbff7aa4789fda142a4eee8d5e9272428dc5bdb2bf65a8425bd412",
+  "source_changes": [
+    {
+      "key": "R1",
+      "op": "update_title",
+      "rationale": "Renomeação pedida pelo usuário.",
+      "target": "PBD-STORY-CAHVKS06N0ZH",
+      "value": "Consultar a agenda do dia de cada quadra"
+    }
+  ],
+  "status": "proposed"
+}

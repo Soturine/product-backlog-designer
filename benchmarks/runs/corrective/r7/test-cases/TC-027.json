@@ -1,0 +1,94 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-027",
+  "title": "Reserva abandonada sem confirmar não ocupa o bloco",
+  "status": "READY",
+  "priority": "MEDIUM",
+  "type": "STATE_TRANSITION",
+  "objective": "Verificar que escolher um bloco sem confirmar não o bloqueia nem consome o limite do sócio.",
+  "requirement_refs": [
+    "REQ-002"
+  ],
+  "scenario_refs": [
+    "SCN-001"
+  ],
+  "coverage_point_refs": [
+    "CP-004"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta e 1 reserva futura ativa",
+    "QUADRA_FUTSAL_A está livre em BLOCO_08H de uma data futura"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio ativo com 1 reserva futura"
+    },
+    {
+      "name": "QUADRA_FUTSAL_A",
+      "description": "quadra de futsal livre em BLOCO_08H"
+    },
+    {
+      "name": "BLOCO_08H",
+      "description": "bloco das 8h às 9h de uma data futura"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A seleciona BLOCO_08H em QUADRA_FUTSAL_A e para na tela de confirmação, sem confirmar.",
+      "expected_result": "A tela de confirmação da reserva está aberta.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A fecha o aplicativo sem confirmar e o reabre.",
+      "expected_result": "O aplicativo reabre sem reserva nova em andamento.",
+      "needs_clarification": false
+    },
+    {
+      "step": 3,
+      "action": "SOCIO_A consulta a disponibilidade de QUADRA_FUTSAL_A e a lista das suas reservas.",
+      "expected_result": "BLOCO_08H continua livre para outros sócios e SOCIO_A segue com 1 reserva futura.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "SOCIO_A com 1 reserva futura"
+  ],
+  "cleanup": [
+    "Cancelar a reserva existente"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "MISSING_SELECTOR: Não se sabe se existe uma tela de confirmação separada."
+  ],
+  "test_basis": "DERIVED",
+  "primary_type": "STATE_TRANSITION",
+  "secondary_tags": [],
+  "execution_status": "READY",
+  "question_refs": [],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "NONE",
+  "deterministic": true,
+  "priority_reason": "Bloqueio por reserva incompleta esconderia horários livres.",
+  "automation_suitability": "MEDIUM",
+  "automation_readiness": "NEEDS_SELECTOR",
+  "readiness_blockers": [
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "operação de reserva não concluída",
+  "source_identifiers": [],
+  "expansion_dimension": "OPERATOR_ERROR",
+  "expansion_checklist_item": "ABANDONED_OPERATION"
+}

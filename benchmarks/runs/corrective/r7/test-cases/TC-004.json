@@ -1,0 +1,104 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-004",
+  "title": "Bloco reservado deixa de aparecer como livre",
+  "status": "READY",
+  "priority": "HIGH",
+  "type": "STATE_TRANSITION",
+  "objective": "Garantir que o aplicativo atualiza a disponibilidade da quadra após a reserva.",
+  "requirement_refs": [
+    "REQ-002"
+  ],
+  "scenario_refs": [
+    "SCN-001"
+  ],
+  "coverage_point_refs": [
+    "CP-004"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta",
+    "QUADRA_TENIS_A tem livres os blocos BLOCO_09H e BLOCO_10H de uma data futura"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio ativo sem reservas futuras"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis com os blocos BLOCO_09H e BLOCO_10H livres"
+    },
+    {
+      "name": "BLOCO_09H",
+      "description": "bloco das 9h às 10h, que será reservado"
+    },
+    {
+      "name": "BLOCO_10H",
+      "description": "bloco das 10h às 11h, que permanece livre"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A reserva BLOCO_09H em QUADRA_TENIS_A e confirma.",
+      "expected_result": "A reserva de BLOCO_09H é confirmada.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A consulta novamente a disponibilidade de QUADRA_TENIS_A para a mesma data.",
+      "expected_result": "BLOCO_09H consta como ocupado e não consta mais como livre, enquanto BLOCO_10H continua livre.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "BLOCO_09H ocupado e BLOCO_10H livre"
+  ],
+  "cleanup": [
+    "Cancelar a reserva de BLOCO_09H"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "MISSING_SELECTOR: O PRD não descreve como a disponibilidade é exibida."
+  ],
+  "test_basis": "ACCEPTANCE",
+  "primary_type": "STATE_TRANSITION",
+  "secondary_tags": [],
+  "execution_status": "READY",
+  "question_refs": [],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "PLAYWRIGHT",
+  "deterministic": true,
+  "priority_reason": "Disponibilidade desatualizada permite reservas duplicadas no mesmo bloco.",
+  "automation_suitability": "HIGH",
+  "automation_readiness": "NEEDS_SELECTOR",
+  "readiness_blockers": [
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "atualização da disponibilidade após reservar",
+  "source_identifiers": [],
+  "claim_exercise_map": [
+    {
+      "claim_id": "CLAIM-004",
+      "coverage_point_id": "CP-004",
+      "test_case_id": "TC-004",
+      "step_refs": [
+        2
+      ],
+      "assertion_refs": [
+        "expected"
+      ],
+      "primary_type": "STATE_TRANSITION"
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "ambiguities": [
+    {
+      "locator": {
+        "line_start": 4,
+        "member": "validacoes.docx"
+      },
+      "quote": "formato válido",
+      "text": "'formato válido' de e-mail não é definido; 'cadastro' e 'pendente' não são definidos e não aparecem no PRD (que trata de agendamento de vacinação)"
+    }
+  ],
+  "exclusions": [],
+  "members": [
+    {
+      "lines_read": [
+        [
+          1,
+          6
+        ]
+      ],
+      "path": "validacoes.docx",
+      "reading": {
+        "limitations": [
+          "Original .docx could not be opened natively by this host",
+          "Structural extraction omits drawings, images and text boxes, so such content, if any, was not seen"
+        ],
+        "method": "extracted_text",
+        "tool": "Read of runtime structural extraction (text_ref); host file reader refused the original .docx as binary"
+      },
+      "status": "read"
+    }
+  ],
+  "obligations": [
+    {
+      "category": "data",
+      "key": "R1",
+      "locator": {
+        "line_start": 3,
+        "member": "validacoes.docx",
+        "table": "Anexo A"
+      },
+      "modality": "must",
+      "quote": "Obrigatório",
+      "text": "Nome é obrigatório",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "data",
+      "key": "R2",
+      "locator": {
+        "line_start": 3,
+        "member": "validacoes.docx",
+        "table": "Anexo A"
+      },
+      "modality": "must",
+      "quote": "entre 3 e 80 caracteres",
+      "text": "Nome deve ter entre 3 e 80 caracteres",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "data",
+      "key": "R3",
+      "locator": {
+        "line_start": 4,
+        "member": "validacoes.docx",
+        "table": "Anexo A"
+      },
+      "modality": "must",
+      "quote": "Obrigatório; formato válido",
+      "text": "E-mail é obrigatório e deve ter formato válido",
+      "uncertainty": "ambiguous"
+    },
+    {
+      "category": "data",
+      "key": "R4",
+      "locator": {
+        "line_start": 4,
+        "member": "validacoes.docx",
+        "table": "Anexo A"
+      },
+      "modality": "must_not",
+      "quote": "não pode repetir um e-mail já cadastrado",
+      "text": "E-mail não pode repetir um e-mail já cadastrado",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "data",
+      "key": "R5",
+      "locator": {
+        "line_start": 5,
+        "member": "validacoes.docx",
+        "table": "Anexo A"
+      },
+      "modality": "may",
+      "quote": "Opcional",
+      "text": "Telefone é opcional",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "data",
+      "key": "R6",
+      "locator": {
+        "line_start": 5,
+        "member": "validacoes.docx",
+        "table": "Anexo A"
+      },
+      "modality": "must",
+      "quote": "somente dígitos; 10 ou 11 dígitos quando informado",
+      "text": "Telefone, quando informado, só aceita dígitos, com 10 ou 11 dígitos",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "operational",
+      "key": "R7",
+      "locator": {
+        "line_start": 6,
+        "member": "validacoes.docx"
+      },
+      "modality": "must",
+      "quote": "Cadastros pendentes há mais de 30 dias são arquivados automaticamente",
+      "text": "Cadastros pendentes há mais de 30 dias são arquivados automaticamente",
+      "uncertainty": "confirmed"
+    }
+  ],
+  "reader": {
+    "agent": "reader-r6",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "source_digest": "sha256:d5748d737f0868e8d8e5137436ff85d8427dbdcf7c853e39d8940461687f2481",
+  "source_id": "PBD-SRC-6KFZY88QJ0Z6"
+}

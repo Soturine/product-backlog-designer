@@ -1,0 +1,107 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-025",
+  "title": "Cancelar uma de duas reservas preserva a outra",
+  "status": "NEEDS_REVIEW",
+  "priority": "HIGH",
+  "type": "STATE_TRANSITION",
+  "objective": "Verificar que o cancelamento afeta somente a reserva escolhida.",
+  "requirement_refs": [
+    "REQ-004"
+  ],
+  "scenario_refs": [
+    "SCN-004"
+  ],
+  "coverage_point_refs": [
+    "CP-012"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 3 (linha 9)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta",
+    "SOCIO_A tem 2 reservas futuras ativas: RESERVA_TENIS_A em QUADRA_TENIS_A e RESERVA_FUTSAL_A em QUADRA_FUTSAL_A, ambas com grande antecedência"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio titular das duas reservas"
+    },
+    {
+      "name": "RESERVA_TENIS_A",
+      "description": "reserva futura ativa em QUADRA_TENIS_A"
+    },
+    {
+      "name": "RESERVA_FUTSAL_A",
+      "description": "reserva futura ativa em QUADRA_FUTSAL_A"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis da primeira reserva"
+    },
+    {
+      "name": "QUADRA_FUTSAL_A",
+      "description": "quadra de futsal da segunda reserva"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A abre a lista das suas reservas e seleciona RESERVA_TENIS_A.",
+      "expected_result": "RESERVA_TENIS_A é exibida como reserva ativa de QUADRA_TENIS_A.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A cancela somente RESERVA_TENIS_A.",
+      "expected_result": "O aplicativo conclui o cancelamento de RESERVA_TENIS_A.",
+      "needs_clarification": false
+    },
+    {
+      "step": 3,
+      "action": "SOCIO_A reabre a lista das suas reservas.",
+      "expected_result": "A reserva da quadra de tênis deixa de estar ativa e a reserva da quadra de futsal continua ativa.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "Apenas RESERVA_FUTSAL_A ativa"
+  ],
+  "cleanup": [
+    "Cancelar RESERVA_FUTSAL_A"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "AMBIGUOUS_POLICY: O prazo mínimo de cancelamento não é definido; usa-se grande antecedência.",
+    "MISSING_SELECTOR: Telas e rótulos não constam do PRD."
+  ],
+  "test_basis": "DERIVED",
+  "primary_type": "STATE_TRANSITION",
+  "secondary_tags": [],
+  "execution_status": "NEEDS_REVIEW",
+  "question_refs": [
+    "Q-001"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "PLAYWRIGHT",
+  "deterministic": true,
+  "priority_reason": "Cancelar a reserva errada faz o sócio perder um horário que queria manter.",
+  "automation_suitability": "HIGH",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "AMBIGUOUS_POLICY",
+    "MISSING_SELECTOR",
+    "BLOCKING_QUESTION"
+  ],
+  "failure_domain": "seleção da reserva cancelada",
+  "source_identifiers": [],
+  "expansion_dimension": "OPERATOR_ERROR",
+  "expansion_checklist_item": "WRONG_RESOURCE"
+}

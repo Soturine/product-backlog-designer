@@ -1,0 +1,88 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-039",
+  "title": "Catraca com defeito não perde a reserva do sócio",
+  "status": "EXPLORATORY",
+  "priority": "MEDIUM",
+  "type": "HARDWARE_INTEGRATION",
+  "objective": "Caracterizar o efeito de um equipamento sem resposta sobre a reserva do sócio.",
+  "requirement_refs": [
+    "REQ-005"
+  ],
+  "scenario_refs": [
+    "SCN-005"
+  ],
+  "coverage_point_refs": [
+    "CP-015"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 4 (linha 10)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A tem reserva ativa para o bloco em andamento",
+    "CATRACA_A está sem resposta por defeito físico; a técnica para reproduzir esse defeito não é conhecida"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio titular da reserva em andamento"
+    },
+    {
+      "name": "CATRACA_A",
+      "description": "catraca da quadra, com defeito e sem responder"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "SOCIO_A usa a reserva em CATRACA_A, que não responde.",
+      "expected_result": "CATRACA_A não libera nem bloqueia nada; a ausência de resposta fica registrada.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A abre a lista das suas reservas no aplicativo.",
+      "expected_result": "A reserva do sócio continua ativa e inalterada na lista de reservas.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "Reserva ativa"
+  ],
+  "cleanup": [
+    "Reparar CATRACA_A"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "UNKNOWN_SETUP_PATH: Técnica para reproduzir o defeito da catraca desconhecida.",
+    "MISSING_ORACLE: Fluxo alternativo para defeito não definido."
+  ],
+  "test_basis": "EXPLORATORY",
+  "primary_type": "HARDWARE_INTEGRATION",
+  "secondary_tags": [],
+  "execution_status": "EXPLORATORY",
+  "question_refs": [
+    "Q-010"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": false,
+  "automation_layer": "HARDWARE",
+  "automation_tool_hint": "NONE",
+  "deterministic": false,
+  "priority_reason": "Defeito físico é provável em campo; o PRD não define fluxo alternativo.",
+  "automation_suitability": "MANUAL_ONLY",
+  "automation_readiness": "NOT_APPLICABLE",
+  "readiness_blockers": [
+    "UNKNOWN_SETUP_PATH",
+    "MISSING_ORACLE"
+  ],
+  "failure_domain": "equipamento de catraca sem resposta",
+  "source_identifiers": [],
+  "expansion_dimension": "CHAOS",
+  "expansion_checklist_item": "DEVICE_HARDWARE"
+}

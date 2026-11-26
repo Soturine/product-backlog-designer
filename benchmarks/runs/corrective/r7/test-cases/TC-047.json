@@ -1,0 +1,175 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-047",
+  "title": "Jornada: reservar, conferir na agenda, cancelar e liberar o bloco",
+  "status": "NEEDS_REVIEW",
+  "priority": "HIGH",
+  "type": "E2E",
+  "objective": "Verificar o ciclo de vida completo de uma reserva ligando reserva, agenda e cancelamento.",
+  "requirement_refs": [
+    "REQ-001",
+    "REQ-002",
+    "REQ-006",
+    "REQ-004"
+  ],
+  "scenario_refs": [
+    "SCN-007"
+  ],
+  "coverage_point_refs": [
+    "CP-001",
+    "CP-003",
+    "CP-017",
+    "CP-012",
+    "CP-013"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Objetivo (linha 4)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 5 (linha 11)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, itens 1 e 5 (linhas 7 e 11)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 3 (linha 9)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, itens 1, 3 e 5 (linhas 7, 9 e 11)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A e SOCIO_B são sócios ativos sem reservas futuras",
+    "RECEPCAO_A tem acesso ao aplicativo",
+    "QUADRA_TENIS_A está livre em BLOCO_16H de uma data futura"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio que reserva e cancela"
+    },
+    {
+      "name": "SOCIO_B",
+      "description": "outro sócio que reserva o bloco liberado"
+    },
+    {
+      "name": "RECEPCAO_A",
+      "description": "usuário da recepção"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis livre em BLOCO_16H"
+    },
+    {
+      "name": "BLOCO_16H",
+      "description": "bloco das 16h às 17h de uma data futura, com grande antecedência"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "SOCIO_A escolhe QUADRA_TENIS_A e BLOCO_16H e confirma a reserva no aplicativo.",
+      "expected_result": "A reserva da quadra de tênis é criada e fica visível como reserva ativa do sócio.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "RECEPCAO_A abre a agenda do dia da quadra reservada.",
+      "expected_result": "A agenda da quadra lista a reserva do sócio no bloco reservado.",
+      "needs_clarification": false
+    },
+    {
+      "step": 3,
+      "action": "SOCIO_A cancela a reserva.",
+      "expected_result": "A reserva deixa de constar como ativa na lista de reservas do sócio.",
+      "needs_clarification": false
+    },
+    {
+      "step": 4,
+      "action": "SOCIO_B consulta a disponibilidade da quadra e tenta reservar o bloco liberado.",
+      "expected_result": "A reserva é criada, aparece na agenda e é cancelada, e o bloco volta a ficar livre; o bloco consta como livre e a reserva de SOCIO_B é criada para ele.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "BLOCO_16H reservado por SOCIO_B"
+  ],
+  "cleanup": [
+    "Cancelar a reserva de SOCIO_B"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "AMBIGUOUS_POLICY: O prazo mínimo de cancelamento não é definido.",
+    "MISSING_SELECTOR: Telas e rótulos não constam do PRD."
+  ],
+  "test_basis": "E2E",
+  "primary_type": "E2E",
+  "secondary_tags": [],
+  "execution_status": "NEEDS_REVIEW",
+  "question_refs": [
+    "Q-001"
+  ],
+  "finding_refs": [],
+  "composes": [
+    "TC-001",
+    "TC-045",
+    "TC-011",
+    "TC-012"
+  ],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "NONE",
+  "deterministic": true,
+  "priority_reason": "É a jornada principal do produto, atravessando três requisitos.",
+  "automation_suitability": "MEDIUM",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "AMBIGUOUS_POLICY",
+    "MISSING_SELECTOR",
+    "BLOCKING_QUESTION"
+  ],
+  "failure_domain": "ciclo de vida da reserva",
+  "source_identifiers": [],
+  "expansion_dimension": "E2E",
+  "e2e_stage_map": [
+    {
+      "atomic_test_ref": "TC-001",
+      "trigger": "o sócio escolhe a quadra de tênis e o bloco livre e confirma a reserva no aplicativo",
+      "assertion_refs": [
+        "a reserva da quadra de tênis é criada e fica visível como reserva ativa do sócio"
+      ]
+    },
+    {
+      "atomic_test_ref": "TC-045",
+      "trigger": "a recepção abre a agenda do dia da quadra reservada",
+      "assertion_refs": [
+        "a agenda da quadra lista a reserva do sócio no bloco reservado"
+      ]
+    },
+    {
+      "atomic_test_ref": "TC-011",
+      "trigger": "o sócio cancela a reserva",
+      "assertion_refs": [
+        "a reserva deixa de constar como ativa na lista de reservas do sócio"
+      ]
+    },
+    {
+      "atomic_test_ref": "TC-012",
+      "trigger": "outro sócio consulta a disponibilidade da quadra e tenta reservar o bloco liberado",
+      "assertion_refs": [
+        "o bloco consta como livre e a reserva do outro sócio é criada para ele"
+      ]
+    }
+  ]
+}

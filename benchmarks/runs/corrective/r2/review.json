@@ -1,0 +1,521 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC3",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC4",
+      "notes": "Deixa a fronteira das 22h condicionada a Q3; adequado como proposta, mas então US1/T3 não são ready.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC5",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC6",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC7",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC8",
+      "notes": "Comportamento sem reserva e em falha não está na fonte; corretamente proposto, depende de Q2.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC9",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "distinct",
+      "items": [
+        "T1",
+        "T3"
+      ],
+      "rationale": "criação vs janela de horário"
+    }
+  ],
+  "findings": [
+    {
+      "actual": "US1 e T3 ready; Q3 não bloqueante.",
+      "affects": [
+        "US1",
+        "T3",
+        "AC4"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "US1 e T3 partial/dependentes de Q3 ou Q3 bloqueante, já que a fronteira das 22h define o último bloco reservável.",
+      "gate": "G08",
+      "impact": "Implementação pode aceitar ou recusar o bloco das 21h/22h incorretamente.",
+      "recommendation": "Marcar US1/T3 como partial ou tornar Q3 bloqueante para T3.",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "A fonte não resolve se 22h é fim ou início do último bloco."
+    },
+    {
+      "actual": "T6 afirma que sem reserva a catraca não libera e trata indisponibilidade.",
+      "affects": [
+        "T6"
+      ],
+      "classification": "unsupported_assumption",
+      "expected": "Verificação de T6 limitada à fonte.",
+      "gate": "G06",
+      "impact": "Baixo; tarefa já bloqueada.",
+      "recommendation": "Marcar como proposto até Q2.",
+      "review_status": "candidate",
+      "severity": "low",
+      "why": "Comportamento não presente no PRD e dependente do contrato do fornecedor."
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "AC2",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "O sócio reserva uma quadra livre em blocos de 1 hora, entre 7h e 22h.",
+      "rationale": "Reserva de quadra livre tem história, critérios e tarefa.",
+      "text": "Sócios reservam quadras de tênis e futsal pelo aplicativo; reserva de quadra livre"
+    },
+    {
+      "covered_by": [
+        "AC1",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O2",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "em blocos de 1 hora",
+      "rationale": "Bloco de 1 hora no critério e na tarefa.",
+      "text": "Blocos de 1 hora"
+    },
+    {
+      "covered_by": [
+        "AC4",
+        "T3"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O3",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "entre 7h e 22h",
+      "rationale": "A fronteira das 22h é indefinida (último início 21h ou 22h); Q3 está marcada não bloqueante e US1/T3 como ready, o que contesto.",
+      "text": "Horário entre 7h e 22h; fronteira final ambígua"
+    },
+    {
+      "covered_by": [
+        "AC3",
+        "T2"
+      ],
+      "disposition": "COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 8,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "Cada sócio pode ter no máximo 2 reservas futuras ao mesmo tempo.",
+      "rationale": "Critério e tarefa.",
+      "text": "Máximo de 2 reservas futuras simultâneas"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC6",
+        "T4"
+      ],
+      "disposition": "COVERED",
+      "key": "O5",
+      "locator": {
+        "line_start": 9,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C5"
+      ],
+      "quote": "O sócio pode cancelar uma reserva;",
+      "rationale": "Coberto.",
+      "text": "Sócio pode cancelar reserva"
+    },
+    {
+      "covered_by": [
+        "AC7",
+        "T5"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O6",
+      "locator": {
+        "line_start": 9,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C6"
+      ],
+      "quote": "a antecedência mínima para cancelar ainda será definida pela diretoria.",
+      "rationale": "Q1 bloqueante para a validação; cancelamento básico separado.",
+      "text": "Antecedência mínima de cancelamento indefinida"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC8",
+        "T6"
+      ],
+      "disposition": "BLOCKED",
+      "key": "O7",
+      "locator": {
+        "line_start": 10,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C7"
+      ],
+      "quote": "Ao chegar, o sócio entra pela catraca usando a reserva.",
+      "rationale": "Intenção coberta, construção bloqueada pela API (Q2).",
+      "text": "Entrada pela catraca usando a reserva"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "T6",
+        "AC8"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O8",
+      "locator": {
+        "line_start": 10,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C8"
+      ],
+      "quote": "A integração com o sistema de catracas depende do fornecedor, que ainda não enviou a documentação da API.",
+      "rationale": "Q2 bloqueante registrada.",
+      "text": "Integração depende do fornecedor sem documentação"
+    },
+    {
+      "covered_by": [
+        "US4",
+        "AC9",
+        "T7"
+      ],
+      "disposition": "COVERED",
+      "key": "O9",
+      "locator": {
+        "line_start": 11,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C9"
+      ],
+      "quote": "A recepção vê a agenda do dia de cada quadra.",
+      "rationale": "Coberto.",
+      "text": "Recepção vê a agenda do dia de cada quadra"
+    },
+    {
+      "covered_by": [
+        "E1"
+      ],
+      "disposition": "OUT_OF_SCOPE",
+      "key": "O10",
+      "locator": {
+        "line_start": 14,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C10"
+      ],
+      "quote": "Cobrança de reservas.",
+      "rationale": "Registrado como fora de escopo no épico; nada construído.",
+      "text": "Cobrança fora do escopo"
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados de equipe",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Primeira da cadeia.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC4 depende de Q3 para a fronteira.",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "Marcada ready, mas a fronteira das 22h (último bloco às 21h ou 22h) está indefinida e afeta o conjunto de blocos reserváveis.",
+      "readiness_check": "dispute",
+      "readiness_notes": "O PRD deixa em aberto se 22h é fim ou início do último bloco; apresentar como ready decide por suposição. Deveria ser partial até Q3.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC7 proposto aguarda Q1",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem API",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depende do fornecedor.",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "contrato desconhecido",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US4",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "T1",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T3",
+      "notes": "Marcada ready, mas a própria verificação delega a fronteira das 22h a Q3, que está aberta.",
+      "readiness_check": "dispute",
+      "readiness_notes": "Trabalho cuja regra (último bloco) a fonte deixa indefinida apresentado como ready; Q3 marcada não bloqueante embora impeça concluir/verificar a tarefa. Parametrizar atenua, mas não decide.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "T4",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T5",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T6",
+      "notes": "Verificação 'sem reserva, não libera' e 'tratar indisponibilidade' não constam da fonte.",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "T7",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "rev-h2-r2",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+    }
+  ]
+}

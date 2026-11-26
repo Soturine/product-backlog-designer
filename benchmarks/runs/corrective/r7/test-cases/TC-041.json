@@ -1,0 +1,99 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-041",
+  "title": "Sessão expirada durante a reserva não deixa reserva sem titular",
+  "status": "EXPLORATORY",
+  "priority": "MEDIUM",
+  "type": "RESILIENCE",
+  "objective": "Verificar que, se a sessão acaba antes de confirmar, nenhuma reserva fica sem titular.",
+  "requirement_refs": [
+    "REQ-002"
+  ],
+  "scenario_refs": [
+    "SCN-001"
+  ],
+  "coverage_point_refs": [
+    "CP-003"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com 1 reserva futura ativa e sessão aberta no aplicativo",
+    "QUADRA_TENIS_A está livre em BLOCO_11H de uma data futura",
+    "A forma de expirar a sessão antes da confirmação é desconhecida"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio ativo com 1 reserva futura"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis livre em BLOCO_11H"
+    },
+    {
+      "name": "BLOCO_11H",
+      "description": "bloco das 11h às 12h de uma data futura"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "SOCIO_A seleciona BLOCO_11H em QUADRA_TENIS_A e a sessão expira antes da confirmação.",
+      "expected_result": "O aplicativo pede novo acesso de SOCIO_A.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A tenta confirmar a reserva com a sessão expirada.",
+      "expected_result": "O aplicativo não conclui a confirmação sem sessão válida.",
+      "needs_clarification": false
+    },
+    {
+      "step": 3,
+      "action": "SOCIO_A entra novamente e abre a lista das suas reservas.",
+      "expected_result": "Nenhuma reserva sem titular foi criada e o sócio vê apenas as reservas que já tinha.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "SOCIO_A com 1 reserva futura"
+  ],
+  "cleanup": [
+    "Cancelar a reserva existente"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "UNKNOWN_SETUP_PATH: Técnica para expirar a sessão desconhecida.",
+    "MISSING_ORACLE: Política de sessão expirada não definida."
+  ],
+  "test_basis": "EXPLORATORY",
+  "primary_type": "RESILIENCE",
+  "secondary_tags": [],
+  "execution_status": "EXPLORATORY",
+  "question_refs": [
+    "Q-007"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": false,
+  "automation_layer": "UI",
+  "automation_tool_hint": "NONE",
+  "deterministic": false,
+  "priority_reason": "Reserva sem titular não pode ser cancelada nem usada e prende o bloco.",
+  "automation_suitability": "LOW",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "UNKNOWN_SETUP_PATH",
+    "MISSING_ORACLE"
+  ],
+  "failure_domain": "sessão interrompida durante a reserva",
+  "source_identifiers": [],
+  "expansion_dimension": "CHAOS",
+  "expansion_checklist_item": "SESSION_INTERRUPTION"
+}

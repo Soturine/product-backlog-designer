@@ -1,0 +1,116 @@
+{
+  "run": "R1b",
+  "run_id": "PBD-RUN-ZAG5GRPJBHZK",
+  "gold": "benchmarks/gold/c08-insufficient-tech.json",
+  "evaluator": "eval-corrective-1",
+  "obligations": [
+    {
+      "id": "G01",
+      "critical": true,
+      "verdict": "covered",
+      "evidence": "PBD-STORY-SYC2HYW3AYRV 'Inscrever-se em um mutirão' (ready); PBD-AC-YQFATDAJCY9Q CA-01 (registers name and shirt size for chosen mutirão); PBD-TASK-8BAG10N57FFG 'Implementar o registro de inscrição com nome e tamanho de camiseta' (ready)."
+    },
+    {
+      "id": "G02",
+      "critical": true,
+      "verdict": "handled_as_blocked",
+      "evidence": "PBD-STORY-TYT2RZD4KR12 'Pagar a taxa e ter a inscrição confirmada' is blocked, blocked_by PBD-Q-0YMJT05VF9F7 (blocking: gateway and integration contract). PBD-TASK-WRHP6PGXZQ08 'Integrar a cobrança da taxa com o gateway parceiro' is blocked by the same question. No gateway name or fee amount invented; PBD-Q-BFCRMXVAKR7T asks fee value (non-blocking)."
+    },
+    {
+      "id": "G03",
+      "critical": true,
+      "verdict": "covered",
+      "evidence": "PBD-AC-38W1YZXZ16H0 CA-01 (confirmed when payment confirmed); PBD-AC-SDCY5HMR4YDF CA-02 (not confirmed before payment); PBD-TASK-PZCSW3BZZHJY 'Confirmar a inscrição somente após pagamento confirmado' is blocked by PBD-Q-0YMJT05VF9F7."
+    },
+    {
+      "id": "G04",
+      "critical": true,
+      "verdict": "covered",
+      "evidence": "PBD-STORY-6JNJHTE02HHP 'Ver inscritos confirmados por mutirão' (ready); PBD-AC-XQNM7Z4H9FPP CA-01 (only confirmed shown per mutirão); PBD-TASK-EV4DYA4TA8M0 'Listar inscritos confirmados agrupados por mutirão' (ready)."
+    },
+    {
+      "id": "G05",
+      "critical": false,
+      "verdict": "handled_as_question",
+      "evidence": "PBD-SPIKE-TM8ZF736M2AE 'Definir o limiar de desempenho do sistema' (ready) plus PBD-Q-B6TEPNB0R66Q (non-blocking, asks response time). No threshold invented."
+    }
+  ],
+  "critical_recall": {
+    "strict_covered": 3,
+    "handled": 1,
+    "total_critical": 4
+  },
+  "traps": [
+    {
+      "trap": "Must not invent a gateway name, API, webhook or fee amount",
+      "verdict": "not_violated",
+      "evidence": "No gateway name, API, webhook or fee value in items or criteria. Fee value asked in PBD-Q-BFCRMXVAKR7T; gateway and contract asked in PBD-Q-0YMJT05VF9F7."
+    },
+    {
+      "trap": "Must not invent a response-time threshold for 'rapido'",
+      "verdict": "not_violated",
+      "evidence": "PBD-FEAT-YEM4WX860B6K says the threshold depends on a decision; the spike PBD-SPIKE-TM8ZF736M2AE is open. No threshold stated."
+    }
+  ],
+  "readiness": {
+    "a_gateway_dependent_work_ready": {
+      "violated": false,
+      "evidence": "PBD-TASK-WRHP6PGXZQ08, PBD-TASK-PZCSW3BZZHJY and PBD-STORY-TYT2RZD4KR12 are all blocked. None is ready."
+    },
+    "b_unrelated_work_blocked_by_association": {
+      "violated": false,
+      "evidence": "PBD-STORY-6JNJHTE02HHP and PBD-TASK-EV4DYA4TA8M0 are ready; PBD-STORY-6JNJHTE02HHP carries independent_of PBD-Q-0YMJT05VF9F7. Enrollment PBD-STORY-SYC2HYW3AYRV and PBD-TASK-8BAG10N57FFG are ready."
+    },
+    "c_blocking_question_linked": {
+      "linked": true,
+      "evidence": "PBD-Q-0YMJT05VF9F7 has blocking=true and is referenced by blocked_by on PBD-STORY-TYT2RZD4KR12, PBD-TASK-WRHP6PGXZQ08 and PBD-TASK-PZCSW3BZZHJY."
+    }
+  },
+  "references": [
+    "Canonical backlog: criteria CA-01, CA-02, CA-03 are bare visible ids (parent-scoped). Rationale texts cite bare labels 'Q1', 'Q2', 'Q3' ('ver Q1 e Q3' in PBD-CLM-... disposition; 'alternativas dependem de Q3' in PBD-AC-PCYR3SFF6Y44). Questions carry no visible label, so these are unresolved.",
+    "Reviewer (stages/review.json): short keys AC2, AC5, US1, US2, T1, SP1, C2, C3 used in findings and notes. Gate G09 reason lists AC5 and US2; G04 lists AC5.",
+    "Reviewer: 'Q3' (failure handling) and 'Q4' (sizes offered) are cited in findings, e.g. PBD-FND-DDQEXPS7FREB 'Q4 (sizes offered)'. No matching labels in the backlog; Q4 is not resolvable to PBD-Q-WMBJ7BDRW79W without inference."
+  ],
+  "invented": [
+    {
+      "item": "PBD-AC-PCYR3SFF6Y44 (CA-03)",
+      "severity": "medium",
+      "reason": "Payment refused or failing lets the participant retry. PRD is silent. Marked proposed, but the reviewer (PBD-FND-ZJ1QBNE4R0FB) flagged it as unsupported and gates G04 and G09 FAIL on AC5."
+    },
+    {
+      "item": "PBD-AC-1S7536BBY13B (CA-02)",
+      "severity": "low",
+      "reason": "Missing name or size rejects the registration and indicates the field. Proposed; not in PRD."
+    },
+    {
+      "item": "PBD-TASK-8BAG10N57FFG",
+      "severity": "low",
+      "reason": "Activity 'Validar presenca de nome e tamanho' and rejection behaviour follow proposed CA-02. Not in PRD."
+    },
+    {
+      "item": "PBD-FEAT-YEM4WX860B6K",
+      "severity": "low",
+      "reason": "Value text 'Experiencia fluida na inscricao e na consulta' is a benefit not in PRD."
+    }
+  ],
+  "gates": {
+    "G01": "PASS",
+    "G02": "PASS",
+    "G03": "PASS",
+    "G04": "FAIL",
+    "G05": "PASS",
+    "G06": "PASS",
+    "G07": "PASS",
+    "G08": "PASS",
+    "G09": "FAIL",
+    "G10": "NOT_APPLICABLE",
+    "G11": "PASS",
+    "G12": "NOT_APPLICABLE",
+    "G13": "PASS",
+    "G14": "PASS",
+    "G15": "NOT_APPLICABLE",
+    "G16": "PASS",
+    "G17": "NOT_APPLICABLE",
+    "G18": "NOT_RUN"
+  }
+}

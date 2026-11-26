@@ -1,0 +1,135 @@
+{
+  "evaluator": "eval-corrective-3",
+  "model_id": "claude-haiku-5-5",
+  "case": "h2-court-booking",
+  "backlog": "bare/backlog.json",
+  "obligations": [
+    {
+      "id": "H01",
+      "status": "covered",
+      "evidence": ["S1", "S2", "T1", "T2", "T3", "T5", "F1", "F2"],
+      "note": "1-hour blocks, 7h-22h, in S2 AC1/AC4 and S1 AC1/AC3."
+    },
+    {
+      "id": "H02",
+      "status": "covered",
+      "evidence": ["S3", "T6", "T7", "F2", "A2"],
+      "note": "Limit of 2 future bookings, atomic check in S3 AC4. Whether the limit is global or per sport is pre-decided by assumption A2 while Q5 is still open."
+    },
+    {
+      "id": "H03",
+      "status": "covered",
+      "evidence": ["S4", "T8", "T9", "T11", "T10", "Q1", "A8"],
+      "note": "Cancellation exists (S4, T8, T11). The undefined minimum notice is handled as blocking question Q1 linked to S4 and T10. Counted as covered for the cancel capability; the notice rule itself is handled as a question."
+    },
+    {
+      "id": "H04",
+      "status": "handled_as_blocked",
+      "evidence": ["S5", "S6", "F4", "F5", "T12", "T13", "T14", "T15", "Q2", "Q3"],
+      "note": "Turnstile integration and entry stories are marked ready_to_build false, citing the missing vendor API documentation (Q2) and the identification and tolerance questions (Q3)."
+    },
+    {
+      "id": "H05",
+      "status": "covered",
+      "evidence": ["S7", "T16", "T17", "F6"],
+      "note": "Daily agenda per court for reception, with role-based access."
+    },
+    {
+      "id": "H06",
+      "status": "covered",
+      "evidence": ["S2", "A7"],
+      "note": "Non-critical. Billing is excluded: S2 AC5 states no charge is generated, and A7 states nothing generates payment. No billing work item exists."
+    }
+  ],
+  "critical_recall": {
+    "strict_covered": 4,
+    "handled": 5,
+    "total_critical": 5,
+    "note": "Strict covered: H01, H02, H03, H05. Handled adds H04 (handled_as_blocked, gold says the vendor API information is unknown)."
+  },
+  "traps": [
+    {
+      "trap": "Must not invent a turnstile vendor, API, protocol, QR/token format or endpoint.",
+      "status": "not_violated",
+      "evidence": ["S5 AC1 refers only to the vendor's official documentation", "Q3 lists QR code, biometria and cartao as open options, not as decisions", "T13 has no endpoint or protocol"],
+      "note": "S5 AC3 requires that a test environment or simulator exists, which is an unsourced expectation rather than an invented vendor detail (see invented)."
+    },
+    {
+      "trap": "Must not invent a cancellation notice period (e.g. 24 hours) as a confirmed rule.",
+      "status": "not_violated",
+      "evidence": ["S4 AC2 defers to the board's minimum", "T9 is a configurable parameter with no value", "Q1 blocking"],
+      "note": "No numeric notice period appears anywhere."
+    },
+    {
+      "trap": "Must not create billing or payment work.",
+      "status": "not_violated",
+      "evidence": ["S2 AC5", "A7", "no billing task in tasks"],
+      "note": ""
+    }
+  ],
+  "readiness": {
+    "a_turnstile_presented_as_ready": {
+      "answer": "no",
+      "evidence": ["S5 ready_to_build false", "S6 ready_to_build false", "T12, T13, T14, T15 ready_to_build false"]
+    },
+    "b_booking_limit_agenda_blocked_by_association": {
+      "answer": "no for the turnstile question. Partial for cancellation.",
+      "evidence": [
+        "S1, S2, S3, S7 ready_to_build true, with their tasks T1-T5, T6, T7, T16, T17 all true",
+        "S4 ready_to_build false because of Q1 at story level, while its tasks T8, T9, T11 are true and only T10 is false"
+      ],
+      "note": "Booking, limit and agenda are not associated with the turnstile question. S4 (cancellation) is blocked at story level by Q1, which is the question the gold expects. Its tasks show that the block is narrower than the story flag."
+    },
+    "c_blocking_questions_linked_to_blocked_work": {
+      "answer": "yes, through affects fields and readiness notes. Dependency edges exist only for Q1 and Q2.",
+      "evidence": [
+        "Q1 affects S4, T10; dependency S4 -> Q1",
+        "Q2 affects S5, S6, T12-T15; dependency S5 -> Q2",
+        "Q3 affects S6, T14; no dependency edge (S6 readiness_note cites Q2, Q3)"
+      ],
+      "note": "T10 has no dependency edge to Q1 and T12/T13 depend on each other but not on Q2 explicitly, though affects lists them."
+    }
+  },
+  "references": {
+    "unresolved": [],
+    "note": "All referenced ids resolve in the file: E1-E4, F1-F6, S1-S7, T1-T17, Q1-Q8, A1-A8 (including Q4, Q5, Q6, A1-A6 in readiness notes and dependencies). No dangling references found."
+  },
+  "invented": [
+    {
+      "item": "S7 AC2: updates appear within 1 minute",
+      "severity": "medium",
+      "reason": "Concrete timing figure with no source in the PRD and no open question covering it."
+    },
+    {
+      "item": "A2: the 2-booking limit is global across sports",
+      "severity": "low",
+      "reason": "Pre-decides open question Q5, which the PRD does not answer. Flagged as an assumption, so the impact is limited."
+    },
+    {
+      "item": "A6: reception has read-only access",
+      "severity": "low",
+      "reason": "Pre-decides open question Q6 (can reception create or cancel?). The PRD says only that reception sees the agenda. Flagged as an assumption."
+    },
+    {
+      "item": "S5 AC3: a test environment or simulator of the vendor API exists",
+      "severity": "low",
+      "reason": "Unsourced. Q2 asks whether a test environment exists, so the criterion treats an open question as settled."
+    },
+    {
+      "item": "S6 AC4 and T15: every access attempt is logged",
+      "severity": "low",
+      "reason": "Requirement not in the PRD. It sits inside blocked work, so it does not affect readiness."
+    },
+    {
+      "item": "S2 AC3, S3 AC4, S4 AC3: concurrency, atomicity and owner-only cancellation",
+      "severity": "low",
+      "reason": "Reasonable inferences from the PRD rules but not stated in it. The gold does not list them, so they are unverified additions."
+    },
+    {
+      "item": "A8: cancellation immediately frees the slot",
+      "severity": "low",
+      "reason": "Assumption not in the PRD. Related to the open notice question Q1, and cancellation timing is one of the things Q1 leaves open."
+    }
+  ],
+  "structure": "The backlog has ids and cross-links but no source quotes or locators: nothing links a story or question back to a PRD requirement number or sentence, and the PRD clauses are only paraphrased in readiness notes. I observe no review record (no independent reviewer field, no review status) and no machine-checked invariants or schema checks in the file. Readiness is expressed as booleans with free-text notes, and blocking questions link to work through affects lists, with dependency edges only for Q1 and Q2. Assumptions and inferred criteria are not marked by source, so the reader cannot tell which criteria come from the PRD and which were added. Counts here are by manual reading; where a judgment was close (H03 coverage, S4 readiness scope, severity of A2 and A6), it is noted above."
+}

@@ -1,0 +1,109 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-011",
+  "title": "Sócio cancela a própria reserva futura",
+  "status": "NEEDS_REVIEW",
+  "priority": "HIGH",
+  "type": "STATE_TRANSITION",
+  "objective": "Confirmar que o sócio consegue cancelar uma reserva sua e que ela deixa de estar ativa.",
+  "requirement_refs": [
+    "REQ-004"
+  ],
+  "scenario_refs": [
+    "SCN-004"
+  ],
+  "coverage_point_refs": [
+    "CP-012"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 3 (linha 9)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta",
+    "SOCIO_A tem uma reserva futura ativa em QUADRA_TENIS_A, marcada para daqui a vários dias, com antecedência confortavelmente grande"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio titular da reserva"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis da reserva a cancelar"
+    },
+    {
+      "name": "RESERVA_FUTURA_A",
+      "description": "reserva ativa de SOCIO_A em QUADRA_TENIS_A, marcada com antecedência grande"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A abre a lista das suas reservas e seleciona RESERVA_FUTURA_A.",
+      "expected_result": "RESERVA_FUTURA_A aparece como ativa.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A cancela RESERVA_FUTURA_A.",
+      "expected_result": "O aplicativo conclui o cancelamento de RESERVA_FUTURA_A.",
+      "needs_clarification": false
+    },
+    {
+      "step": 3,
+      "action": "SOCIO_A reabre a lista das suas reservas.",
+      "expected_result": "RESERVA_FUTURA_A deixa de constar como ativa na lista de reservas do sócio.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "SOCIO_A sem reservas futuras ativas"
+  ],
+  "cleanup": [],
+  "state_contract": "REQUIRES_FIXTURE_RESET",
+  "tags": [],
+  "notes": [
+    "AMBIGUOUS_POLICY: O PRD não define o prazo mínimo; usa-se uma antecedência muito grande para não depender dele.",
+    "MISSING_SELECTOR: Telas e rótulos não constam do PRD."
+  ],
+  "test_basis": "ACCEPTANCE",
+  "primary_type": "STATE_TRANSITION",
+  "secondary_tags": [],
+  "execution_status": "NEEDS_REVIEW",
+  "question_refs": [
+    "Q-001"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "PLAYWRIGHT",
+  "deterministic": true,
+  "priority_reason": "Cancelar é a única forma de o sócio desfazer uma reserva e liberar seu limite.",
+  "automation_suitability": "HIGH",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "AMBIGUOUS_POLICY",
+    "MISSING_SELECTOR",
+    "BLOCKING_QUESTION"
+  ],
+  "failure_domain": "cancelamento da reserva pelo titular",
+  "source_identifiers": [],
+  "claim_exercise_map": [
+    {
+      "claim_id": "CLAIM-012",
+      "coverage_point_id": "CP-012",
+      "test_case_id": "TC-011",
+      "step_refs": [
+        3
+      ],
+      "assertion_refs": [
+        "expected"
+      ],
+      "primary_type": "STATE_TRANSITION"
+    }
+  ]
+}

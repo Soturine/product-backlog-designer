@@ -1,0 +1,89 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-015",
+  "title": "Recusar pedido único de reserva com 2 horas de duração",
+  "status": "NEEDS_REVIEW",
+  "priority": "HIGH",
+  "type": "NEGATIVE",
+  "objective": "Verificar que o aplicativo não cria uma reserva única maior que o bloco de 1 hora.",
+  "requirement_refs": [
+    "REQ-002"
+  ],
+  "scenario_refs": [
+    "SCN-001"
+  ],
+  "coverage_point_refs": [
+    "CP-006"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7): blocos de 1 hora"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta e sem reservas futuras",
+    "QUADRA_TENIS_A está livre das 10h às 12h de uma data futura"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio ativo sem reservas futuras"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis livre das 10h às 12h"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A tenta criar uma única reserva em QUADRA_TENIS_A cobrindo das 10h às 12h.",
+      "expected_result": "O aplicativo não cria uma reserva de 2 horas.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A consulta as suas reservas e a disponibilidade de QUADRA_TENIS_A.",
+      "expected_result": "Nenhuma reserva de 2 horas foi criada e os blocos das 10h às 12h seguem livres.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "SOCIO_A sem reservas futuras"
+  ],
+  "cleanup": [],
+  "state_contract": "REQUIRES_FIXTURE_RESET",
+  "tags": [],
+  "notes": [
+    "MISSING_EXECUTION_SURFACE: Não se sabe se o aplicativo permite informar uma duração diferente de 1 hora; se não permitir, o caso só pode ser exercido por outro meio.",
+    "AMBIGUOUS_POLICY: A mensagem de recusa não está definida."
+  ],
+  "test_basis": "DERIVED",
+  "primary_type": "NEGATIVE",
+  "secondary_tags": [],
+  "execution_status": "NEEDS_REVIEW",
+  "question_refs": [
+    "Q-004"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "NONE",
+  "deterministic": true,
+  "priority_reason": "Duração maior ocuparia a quadra além do bloco definido pelo clube.",
+  "automation_suitability": "MEDIUM",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "MISSING_EXECUTION_SURFACE",
+    "AMBIGUOUS_POLICY"
+  ],
+  "failure_domain": "duração acima do bloco de 1 hora",
+  "source_identifiers": [],
+  "expansion_dimension": "NEGATIVE"
+}

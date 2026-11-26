@@ -1,0 +1,548 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC3",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC4",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC5",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC6",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC7",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC8",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC9",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC10",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [],
+  "findings": [],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "Sócios reservam quadras de tênis e de futsal pelo aplicativo do clube.",
+      "rationale": "A modalidade tênis, o uso do aplicativo e o resultado da reserva estão representados e verificáveis.",
+      "text": "Sócios reservam quadras de tênis pelo aplicativo do clube."
+    },
+    {
+      "covered_by": [
+        "US1",
+        "AC2",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O2",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C2"
+      ],
+      "quote": "Sócios reservam quadras de tênis e de futsal pelo aplicativo do clube.",
+      "rationale": "A modalidade futsal, o uso do aplicativo e o resultado da reserva estão representados e verificáveis.",
+      "text": "Sócios reservam quadras de futsal pelo aplicativo do clube."
+    },
+    {
+      "covered_by": [
+        "AC1",
+        "AC2",
+        "AC3",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "O sócio reserva uma quadra livre em blocos de 1 hora, entre 7h e 22h.",
+      "rationale": "Há caminhos positivos para quadra livre e caminho negativo para quadra indisponível.",
+      "text": "Uma reserva somente pode ser criada para uma quadra livre."
+    },
+    {
+      "covered_by": [
+        "AC4",
+        "T2"
+      ],
+      "disposition": "COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "O sócio reserva uma quadra livre em blocos de 1 hora, entre 7h e 22h.",
+      "rationale": "A duração de 1 hora aparece em comportamento observável e em verificação de tarefa.",
+      "text": "As reservas usam blocos de 1 hora."
+    },
+    {
+      "covered_by": [
+        "AC5",
+        "T2"
+      ],
+      "disposition": "COVERED",
+      "key": "O5",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C5"
+      ],
+      "quote": "O sócio reserva uma quadra livre em blocos de 1 hora, entre 7h e 22h.",
+      "rationale": "A janela diária está expressa sem acrescentar interpretação não declarada sobre seus limites.",
+      "text": "As reservas ocorrem entre 7h e 22h."
+    },
+    {
+      "covered_by": [
+        "AC6",
+        "T3"
+      ],
+      "disposition": "COVERED",
+      "key": "O6",
+      "locator": {
+        "line_start": 8,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C6"
+      ],
+      "quote": "Cada sócio pode ter no máximo 2 reservas futuras ao mesmo tempo.",
+      "rationale": "O limite possui cenário negativo e verificação específica.",
+      "text": "Cada sócio pode ter no máximo 2 reservas futuras simultaneamente."
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC7",
+        "T4"
+      ],
+      "disposition": "COVERED",
+      "key": "O7",
+      "locator": {
+        "line_start": 9,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C7"
+      ],
+      "quote": "O sócio pode cancelar uma reserva; a antecedência mínima para cancelar ainda será definida pela diretoria.",
+      "rationale": "A capacidade de cancelamento está coberta, e sua implementação está corretamente condicionada à política pendente.",
+      "text": "O sócio pode cancelar uma reserva."
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC8",
+        "T4"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O8",
+      "locator": {
+        "line_start": 9,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C8"
+      ],
+      "quote": "O sócio pode cancelar uma reserva; a antecedência mínima para cancelar ainda será definida pela diretoria.",
+      "rationale": "A regra está rastreada, mas o valor necessário à implementação permanece como pergunta bloqueante, sem suposição.",
+      "text": "O cancelamento deve respeitar antecedência mínima ainda não definida pela diretoria."
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC9",
+        "T6"
+      ],
+      "disposition": "COVERED",
+      "key": "O9",
+      "locator": {
+        "line_start": 10,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C9"
+      ],
+      "quote": "Ao chegar, o sócio entra pela catraca usando a reserva.",
+      "rationale": "O resultado de acesso com a reserva está especificado e seu bloqueio técnico está declarado.",
+      "text": "Ao chegar, o sócio entra pela catraca usando a reserva."
+    },
+    {
+      "covered_by": [
+        "EN1",
+        "US3",
+        "T5",
+        "T6"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O10",
+      "locator": {
+        "line_start": 10,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C10"
+      ],
+      "quote": "A integração com o sistema de catracas depende do fornecedor, que ainda não enviou a documentação da API.",
+      "rationale": "A dependência de integração está planejada, mas o contrato oficial ainda precisa ser obtido.",
+      "text": "A entrada pela catraca depende da integração com o sistema do fornecedor."
+    },
+    {
+      "covered_by": [
+        "EN1",
+        "T5"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O11",
+      "locator": {
+        "line_start": 10,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C11"
+      ],
+      "quote": "A integração com o sistema de catracas depende do fornecedor, que ainda não enviou a documentação da API.",
+      "rationale": "A ausência documental aparece como bloqueio explícito do trabalho de contrato e implementação.",
+      "text": "O fornecedor ainda não enviou a documentação da API das catracas."
+    },
+    {
+      "covered_by": [
+        "US4",
+        "AC10",
+        "T7"
+      ],
+      "disposition": "COVERED",
+      "key": "O12",
+      "locator": {
+        "line_start": 11,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C12"
+      ],
+      "quote": "A recepção vê a agenda do dia de cada quadra.",
+      "rationale": "A consulta por quadra e referente ao dia possui resultado observável e tarefa verificável.",
+      "text": "A recepção vê a agenda do dia de cada quadra."
+    },
+    {
+      "covered_by": [
+        "E1"
+      ],
+      "disposition": "OUT_OF_SCOPE",
+      "key": "O13",
+      "locator": {
+        "line_start": 14,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [],
+      "quote": "Cobrança de reservas.",
+      "rationale": "O limite de escopo está explicitamente preservado no épico e não gerou trabalho de cobrança.",
+      "text": "Cobrança de reservas está fora do escopo."
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "Consolida o objetivo e preserva cobrança como fora de escopo.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "Reúne a capacidade e todas as regras confirmadas da reserva.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "O PRD não traz contexto técnico ou dados da equipe para estimativa.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Não depende das decisões pendentes sobre cancelamento ou catracas.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Mantém foco no resultado e deixa a solução detalhada para as tarefas.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "É um fluxo coeso com regras delimitadas e tarefas específicas.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Possui critérios positivos, negativo e limites confirmados.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Entrega diretamente a reserva desejada pelo sócio.",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "Slice vertical verificável para as duas modalidades.",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "T1",
+      "notes": "Cobre modalidades e disponibilidade com verificação concreta.",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T2",
+      "notes": "Cobre duração e janela diária sem inventar novos limites.",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T3",
+      "notes": "Cobre o limite futuro com verificação da terceira solicitação.",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "notes": "Expõe corretamente a regra temporal ainda pendente.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "A regra temporal ainda não foi definida e não há dados da equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Depende apenas da decisão de política explicitamente isolada.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "A política permanece aberta à decisão da diretoria.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "O resultado funcional é delimitado ao cancelamento.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Os cenários só se tornam plenamente executáveis após a definição da antecedência mínima; o bloqueio está correto.",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "Libera um horário que o sócio não utilizará.",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "A história não presume o valor da antecedência e está bloqueada pela decisão correta.",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "T4",
+      "notes": "Planeja os caminhos permitido e recusado após decisão da diretoria.",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F3",
+      "notes": "Mantém visível a dependência do fornecedor e a ausência da documentação.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "EN1",
+      "notes": "Enabler justificado pela dependência externa declarada no PRD.",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T5",
+      "notes": "A análise começa somente após o recebimento da documentação oficial.",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem a documentação da API não há base técnica para estimativa.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "A entrega depende do contrato externo representado pelo predecessor EN1.",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "O resultado é fixo, enquanto o mecanismo aguarda o contrato oficial.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "O tamanho depende do contrato ainda não recebido.",
+          "rating": "unknown"
+        },
+        "testable": {
+          "note": "A demonstração é definida, mas os detalhes executáveis dependem do contrato do fornecedor.",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "Permite ao sócio entrar usando a reserva, como exige o PRD.",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "O resultado de acesso está preservado e a integração desconhecida não foi inventada.",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "T6",
+      "notes": "Implementação e verificação aguardam corretamente o contrato oficial.",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F4",
+      "notes": "Capacidade alinhada à consulta diária por quadra.",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Não há dados técnicos ou da equipe para estimativa.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Não depende das perguntas abertas de cancelamento ou integração.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Define o resultado sem prescrever solução técnica.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "A consulta está delimitada a uma quadra e ao dia.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "O resultado pode ser verificado em quadras distintas.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Dá à recepção a visibilidade operacional requerida.",
+          "rating": "supported"
+        }
+      },
+      "key": "US4",
+      "notes": "História pequena e observável para o ator declarado.",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "T7",
+      "notes": "Possui resultado e verificação específicos para a agenda por quadra.",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "independent_reviewer",
+    "independence": "separate_agent",
+    "model": "gpt-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+    }
+  ]
+}

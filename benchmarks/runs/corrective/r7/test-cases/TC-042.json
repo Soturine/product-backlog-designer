@@ -1,0 +1,86 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-042",
+  "title": "Sócio comum tentando abrir a agenda da recepção",
+  "status": "EXPLORATORY",
+  "priority": "MEDIUM",
+  "type": "SECURITY",
+  "objective": "Caracterizar se a agenda do dia, feita para a recepção, fica exposta a quem não é da recepção.",
+  "requirement_refs": [
+    "REQ-006"
+  ],
+  "scenario_refs": [
+    "SCN-006"
+  ],
+  "coverage_point_refs": [
+    "CP-017"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 5 (linha 11)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_C é sócio comum, sem perfil de recepção, com sessão aberta",
+    "Existem reservas de outros sócios no dia, como RESERVA_FUTURA_B",
+    "O PRD não define quem além da recepção pode ver a agenda"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_C",
+      "description": "sócio comum sem perfil de recepção"
+    },
+    {
+      "name": "RESERVA_FUTURA_B",
+      "description": "reserva ativa de outro sócio no dia"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_C tenta abrir a agenda do dia de cada quadra e registra o que o aplicativo mostra.",
+      "expected_result": "O resultado do acesso de SOCIO_C à agenda fica registrado.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "Um usuário da recepção abre a agenda do dia.",
+      "expected_result": "As reservas de outros sócios, como RESERVA_FUTURA_B, não foram alteradas pela tentativa e o resultado do acesso fica registrado.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "Reservas inalteradas"
+  ],
+  "cleanup": [],
+  "state_contract": "REQUIRES_FIXTURE_RESET",
+  "tags": [],
+  "notes": [
+    "UNRESOLVED_PERMISSION: Perfis com acesso à agenda não definidos.",
+    "MISSING_ORACLE: Política de acesso à agenda não definida."
+  ],
+  "test_basis": "EXPLORATORY",
+  "primary_type": "SECURITY",
+  "secondary_tags": [],
+  "execution_status": "EXPLORATORY",
+  "question_refs": [
+    "Q-009"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "NONE",
+  "deterministic": false,
+  "priority_reason": "A agenda expõe dados de outros sócios; a política de acesso é indefinida.",
+  "automation_suitability": "MEDIUM",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "UNRESOLVED_PERMISSION",
+    "MISSING_ORACLE"
+  ],
+  "failure_domain": "acesso de sócio à agenda da recepção",
+  "source_identifiers": [],
+  "expansion_dimension": "SECURITY"
+}

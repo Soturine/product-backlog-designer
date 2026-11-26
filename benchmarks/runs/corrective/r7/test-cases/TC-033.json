@@ -1,0 +1,102 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-033",
+  "title": "Confirmar duas vezes a mesma reserva gera uma só",
+  "status": "NEEDS_REVIEW",
+  "priority": "HIGH",
+  "type": "IDEMPOTENCY",
+  "objective": "Verificar que o pedido repetido do mesmo sócio não duplica a reserva nem o conta duas vezes no limite.",
+  "requirement_refs": [
+    "REQ-002"
+  ],
+  "scenario_refs": [
+    "SCN-001"
+  ],
+  "coverage_point_refs": [
+    "CP-005"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, itens 1 e 2 (linhas 7 e 8)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta e sem reservas futuras",
+    "QUADRA_TENIS_A está livre em BLOCO_10H de uma data futura"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio ativo sem reservas futuras"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis livre em BLOCO_10H"
+    },
+    {
+      "name": "BLOCO_10H",
+      "description": "bloco das 10h às 11h de uma data futura"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A seleciona BLOCO_10H em QUADRA_TENIS_A e confirma a reserva.",
+      "expected_result": "A reserva de BLOCO_10H é confirmada.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "Imediatamente, SOCIO_A repete o mesmo pedido de confirmação para o mesmo bloco.",
+      "expected_result": "O aplicativo responde ao segundo pedido sem criar outra reserva.",
+      "needs_clarification": false
+    },
+    {
+      "step": 3,
+      "action": "SOCIO_A abre a lista das suas reservas futuras.",
+      "expected_result": "Existe uma única reserva para o bloco e o sócio tem 1 reserva futura ativa.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "1 reserva ativa"
+  ],
+  "cleanup": [
+    "Cancelar a reserva"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "AMBIGUOUS_POLICY: A resposta ao pedido repetido não é definida.",
+    "MISSING_SELECTOR: Não se sabe se o aplicativo permite repetir a confirmação."
+  ],
+  "test_basis": "DERIVED",
+  "primary_type": "IDEMPOTENCY",
+  "secondary_tags": [],
+  "execution_status": "NEEDS_REVIEW",
+  "question_refs": [
+    "Q-004"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "NONE",
+  "deterministic": true,
+  "priority_reason": "Duplicar a reserva consumiria o limite do sócio e bloquearia um bloco só.",
+  "automation_suitability": "MEDIUM",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "AMBIGUOUS_POLICY",
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "duplicidade de pedido de reserva",
+  "source_identifiers": [],
+  "expansion_dimension": "IDEMPOTENCY",
+  "expansion_checklist_item": "REPEATED_ACTION"
+}

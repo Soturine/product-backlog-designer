@@ -1,0 +1,103 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-043",
+  "title": "Sócio tenta cancelar a reserva de outro sócio",
+  "status": "EXPLORATORY",
+  "priority": "CRITICAL",
+  "type": "AUTHORIZATION",
+  "objective": "Caracterizar a proteção da reserva alheia contra cancelamento por quem não é titular.",
+  "requirement_refs": [
+    "REQ-004"
+  ],
+  "scenario_refs": [
+    "SCN-004"
+  ],
+  "coverage_point_refs": [
+    "CP-012"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 3 (linha 9)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é titular de RESERVA_FUTURA_A, ativa e com grande antecedência",
+    "SOCIO_B é sócio ativo com sessão aberta e não é titular dessa reserva",
+    "O PRD não define se outros sócios podem cancelar a reserva alheia"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "titular da reserva"
+    },
+    {
+      "name": "SOCIO_B",
+      "description": "sócio que não é titular"
+    },
+    {
+      "name": "RESERVA_FUTURA_A",
+      "description": "reserva ativa de SOCIO_A em QUADRA_FUTSAL_A"
+    },
+    {
+      "name": "QUADRA_FUTSAL_A",
+      "description": "quadra de futsal da reserva"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_B tenta localizar RESERVA_FUTURA_A para cancelá-la e registra se encontra a opção.",
+      "expected_result": "O que SOCIO_B encontra sobre RESERVA_FUTURA_A fica registrado.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_B tenta cancelar RESERVA_FUTURA_A, se houver meio de fazê-lo.",
+      "expected_result": "A resposta do aplicativo à tentativa de SOCIO_B fica registrada.",
+      "needs_clarification": false
+    },
+    {
+      "step": 3,
+      "action": "SOCIO_A abre a lista das suas reservas e a disponibilidade de QUADRA_FUTSAL_A.",
+      "expected_result": "A reserva do titular continua ativa e o bloco continua ocupado.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "RESERVA_FUTURA_A ativa"
+  ],
+  "cleanup": [
+    "Cancelar RESERVA_FUTURA_A"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "UNRESOLVED_PERMISSION: Quem pode cancelar a reserva alheia não está definido.",
+    "MISSING_EXECUTION_SURFACE: Não se sabe se existe meio de um sócio acionar o cancelamento da reserva de outro."
+  ],
+  "test_basis": "EXPLORATORY",
+  "primary_type": "AUTHORIZATION",
+  "secondary_tags": [],
+  "execution_status": "EXPLORATORY",
+  "question_refs": [
+    "Q-006"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "NONE",
+  "deterministic": false,
+  "priority_reason": "Cancelar a reserva alheia tira o horário de outro sócio.",
+  "automation_suitability": "MEDIUM",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "UNRESOLVED_PERMISSION",
+    "MISSING_EXECUTION_SURFACE"
+  ],
+  "failure_domain": "cancelamento por quem não é titular",
+  "source_identifiers": [],
+  "expansion_dimension": "AUTHORIZATION",
+  "expansion_checklist_item": "WRONG_ACTOR"
+}

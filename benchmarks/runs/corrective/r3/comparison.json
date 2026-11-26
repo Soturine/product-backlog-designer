@@ -1,0 +1,691 @@
+{
+  "criterion_reviews": [
+    {
+      "key": "L-QL-2.AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "L-QL-2.AC2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "L-QL-3.AC1",
+      "notes": "24 horas inventado; PRD diz que a diretoria definirá.",
+      "source_support": "unsupported",
+      "verdict": "fail"
+    },
+    {
+      "key": "L-QL-4.AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "R-QR-11.AC1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "R-QR-11.AC2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "R-QR-12.AC1",
+      "notes": "QR code e API REST do fornecedor inventados.",
+      "source_support": "unsupported",
+      "verdict": "fail"
+    },
+    {
+      "key": "R-QR-13.AC1",
+      "notes": "Cobrança excluída do escopo.",
+      "source_support": "unsupported",
+      "verdict": "fail"
+    }
+  ],
+  "findings": [
+    {
+      "actual": "Ausente",
+      "affects": [
+        "L-QL-2"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "Critério de no máximo 2 reservas futuras por sócio",
+      "impact": "Sócios poderiam acumular reservas",
+      "recommendation": "Acrescentar critério à história de reserva",
+      "review_status": "confirmed",
+      "severity": "high",
+      "side": "left",
+      "why": "Regra de negócio do PRD sem cobertura"
+    },
+    {
+      "actual": "Critério fixa 24 horas",
+      "affects": [
+        "L-QL-3.AC1"
+      ],
+      "classification": "unsupported_assumption",
+      "expected": "Antecedência mínima indefinida, a ser decidida pela diretoria",
+      "impact": "Regra errada pode ser implementada",
+      "recommendation": "Trocar por pergunta aberta",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "side": "left",
+      "why": "Valor inventado"
+    },
+    {
+      "actual": "Ausente",
+      "affects": [
+        "R-QR-10"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "História da agenda do dia da recepção",
+      "impact": "Recepção sem funcionalidade",
+      "recommendation": "Acrescentar história",
+      "review_status": "confirmed",
+      "severity": "high",
+      "side": "right",
+      "why": "Requisito 5 sem cobertura"
+    },
+    {
+      "actual": "QR code e API REST do fornecedor afirmados",
+      "affects": [
+        "R-QR-12.AC1"
+      ],
+      "classification": "unsupported_assumption",
+      "expected": "Integração com catraca dependente da API ainda não documentada",
+      "impact": "Decisão técnica sem base",
+      "recommendation": "Remover o critério e registrar a dependência",
+      "review_status": "confirmed",
+      "severity": "high",
+      "side": "right",
+      "why": "Detalhes técnicos inventados"
+    },
+    {
+      "actual": "História de cobrança no cartão",
+      "affects": [
+        "R-QR-13",
+        "R-QR-13.AC1"
+      ],
+      "classification": "confirmed_divergence",
+      "expected": "Cobrança fora do escopo",
+      "impact": "Escopo ampliado",
+      "recommendation": "Remover a história",
+      "review_status": "confirmed",
+      "severity": "high",
+      "side": "right",
+      "why": "Contraria exclusão explícita"
+    },
+    {
+      "actual": "História sem critérios",
+      "affects": [
+        "R-QR-14"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "Cancelamento com a antecedência registrada como pergunta aberta",
+      "impact": "Cancelamento não testável",
+      "recommendation": "Adicionar critérios e a pergunta aberta",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "side": "right",
+      "why": "Requisito 3 pouco detalhado"
+    }
+  ],
+  "item_reviews": [
+    {
+      "key": "L-QL-1",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Sem dependência sobre outras histórias.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Detalhes negociáveis.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo pequeno.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Critérios verificáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Valor para o sócio ou recepção.",
+          "rating": "supported"
+        }
+      },
+      "key": "L-QL-2",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Sem dependência sobre outras histórias.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Detalhes negociáveis.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo pequeno.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Critérios verificáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Valor para o sócio ou recepção.",
+          "rating": "supported"
+        }
+      },
+      "key": "L-QL-3",
+      "notes": "Fixa 24 horas, não definido pelo PRD.",
+      "source_support": "unsupported",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Sem dependência sobre outras histórias.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Detalhes negociáveis.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo pequeno.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Critérios verificáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Valor para o sócio ou recepção.",
+          "rating": "supported"
+        }
+      },
+      "key": "L-QL-4",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Sem dependência sobre outras histórias.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Detalhes negociáveis.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo pequeno.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Sem critérios verificáveis.",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "Valor para o sócio ou recepção.",
+          "rating": "supported"
+        }
+      },
+      "key": "L-QL-5",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "R-QR-10",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Sem dependência sobre outras histórias.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Detalhes negociáveis.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo pequeno.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Critérios verificáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Valor para o sócio ou recepção.",
+          "rating": "supported"
+        }
+      },
+      "key": "R-QR-11",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Sem dependência sobre outras histórias.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Detalhes negociáveis.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo pequeno.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Critérios verificáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Valor para o sócio ou recepção.",
+          "rating": "supported"
+        }
+      },
+      "key": "R-QR-12",
+      "notes": "QR code e API REST não estão no PRD.",
+      "source_support": "unsupported",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Sem dependência sobre outras histórias.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Detalhes negociáveis.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo pequeno.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Critérios verificáveis.",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "Valor para o sócio ou recepção.",
+          "rating": "supported"
+        }
+      },
+      "key": "R-QR-13",
+      "notes": "Cobrança está fora do escopo no PRD.",
+      "source_support": "unsupported",
+      "verdict": "fail"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "Sem dados de equipe.",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "Sem dependência sobre outras histórias.",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "Detalhes negociáveis.",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "Escopo pequeno.",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "Sem critérios verificáveis.",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "Valor para o sócio ou recepção.",
+          "rating": "supported"
+        }
+      },
+      "key": "R-QR-14",
+      "notes": "Sem critérios nem pergunta sobre a antecedência.",
+      "source_support": "supported",
+      "verdict": "concern"
+    }
+  ],
+  "kind": "pbd.comparison",
+  "language": "pt-BR",
+  "limitations": [
+    "comparison ran as a sequential role in the same agent (reduced independence)"
+  ],
+  "mapping_cardinality": {
+    "1:1": 4
+  },
+  "mappings": [
+    {
+      "cardinality": "1:1",
+      "left": [
+        "L-QL-1"
+      ],
+      "rationale": "Épicos de contêiner.",
+      "relation": "equivalent",
+      "right": [
+        "R-QR-10"
+      ]
+    },
+    {
+      "cardinality": "1:1",
+      "differences": "Limite de 2 reservas só à direita.",
+      "left": [
+        "L-QL-2"
+      ],
+      "rationale": "Ambos reservam em blocos de 1h; só a direita inclui o limite de 2.",
+      "relation": "overlap",
+      "right": [
+        "R-QR-11"
+      ]
+    },
+    {
+      "cardinality": "1:1",
+      "left": [
+        "L-QL-3"
+      ],
+      "rationale": "Ambos cancelam; esquerda fixa 24h, direita sem critérios.",
+      "relation": "divergent",
+      "right": [
+        "R-QR-14"
+      ]
+    },
+    {
+      "cardinality": "1:1",
+      "left": [
+        "L-QL-5"
+      ],
+      "rationale": "Catraca: esquerda registra dependência; direita inventa QR code e API REST.",
+      "relation": "divergent",
+      "right": [
+        "R-QR-12"
+      ]
+    }
+  ],
+  "notes": [
+    "Neither baseline is treated as gold; coverage on both sides uses the same reviewer inventory.",
+    "Item counts are not a quality measure and no winner is computed.",
+    "Quality gates apply to a single backlog: audit each baseline to obtain its gates."
+  ],
+  "obligations": [
+    {
+      "agreement": "same",
+      "key": "O1",
+      "left": {
+        "covered_by": [
+          "L-QL-2.AC1",
+          "L-QL-2.AC2"
+        ],
+        "disposition": "COVERED",
+        "rationale": "Bloco de 1h e janela 7h-22h em dois critérios."
+      },
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "quote": "O sócio reserva uma quadra livre em blocos de 1 hora, entre 7h e 22h",
+      "right": {
+        "covered_by": [
+          "R-QR-11.AC1"
+        ],
+        "disposition": "COVERED",
+        "rationale": "Bloco de 1h e janela 7h-22h num critério."
+      },
+      "text": "Reservar quadra livre em blocos de 1 hora, entre 7h e 22h"
+    },
+    {
+      "agreement": "differs",
+      "key": "O2",
+      "left": {
+        "covered_by": [],
+        "disposition": "NOT_COVERED",
+        "rationale": "Nenhum item ou critério do lado esquerdo trata o limite."
+      },
+      "locator": {
+        "line_start": 8,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "quote": "no máximo 2 reservas futuras ao mesmo tempo",
+      "right": {
+        "covered_by": [
+          "R-QR-11.AC2"
+        ],
+        "disposition": "COVERED",
+        "rationale": "Critério explícito de no máximo 2 reservas futuras por sócio."
+      },
+      "text": "Máximo de 2 reservas futuras por sócio ao mesmo tempo"
+    },
+    {
+      "agreement": "same",
+      "key": "O3",
+      "left": {
+        "covered_by": [
+          "L-QL-3"
+        ],
+        "disposition": "PARTIALLY_COVERED",
+        "rationale": "A história existe, mas o critério fixa 24 horas, valor que o PRD deixa em aberto."
+      },
+      "locator": {
+        "line_start": 9,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "quote": "O sócio pode cancelar uma reserva; a antecedência mínima para cancelar ainda será definida pela diretoria",
+      "right": {
+        "covered_by": [
+          "R-QR-14"
+        ],
+        "disposition": "PARTIALLY_COVERED",
+        "rationale": "A história existe sem critérios e sem registrar a pergunta aberta sobre a antecedência."
+      },
+      "text": "Cancelar reserva; antecedência mínima ainda indefinida pela diretoria"
+    },
+    {
+      "agreement": "same",
+      "key": "O4",
+      "left": {
+        "covered_by": [
+          "L-QL-5"
+        ],
+        "disposition": "PARTIALLY_COVERED",
+        "rationale": "Registra a dependência da documentação do fornecedor na descrição, mas sem critério."
+      },
+      "locator": {
+        "line_start": 10,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "quote": "o sócio entra pela catraca usando a reserva",
+      "right": {
+        "covered_by": [
+          "R-QR-12",
+          "R-QR-12.AC1"
+        ],
+        "disposition": "PARTIALLY_COVERED",
+        "rationale": "Cobre a entrada, mas fixa QR code e API REST, que o PRD não define, e ignora a dependência."
+      },
+      "text": "Entrar pela catraca usando a reserva; API do fornecedor ainda sem documentação"
+    },
+    {
+      "agreement": "differs",
+      "key": "O5",
+      "left": {
+        "covered_by": [
+          "L-QL-4",
+          "L-QL-4.AC1"
+        ],
+        "disposition": "COVERED",
+        "rationale": "História e critério equivalentes."
+      },
+      "locator": {
+        "line_start": 11,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "quote": "A recepção vê a agenda do dia de cada quadra",
+      "right": {
+        "covered_by": [],
+        "disposition": "NOT_COVERED",
+        "rationale": "Nenhuma história de agenda da recepção."
+      },
+      "text": "Recepção vê a agenda do dia de cada quadra"
+    },
+    {
+      "agreement": "differs",
+      "key": "O6",
+      "left": {
+        "covered_by": [],
+        "disposition": "OUT_OF_SCOPE",
+        "rationale": "Não há item de cobrança."
+      },
+      "locator": {
+        "line_start": 14,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "quote": "Cobrança de reservas.",
+      "right": {
+        "covered_by": [
+          "R-QR-13",
+          "R-QR-13.AC1"
+        ],
+        "disposition": "CONFLICTING",
+        "rationale": "Inclui história de cobrança, contrariando a exclusão."
+      },
+      "text": "Cobrança de reservas está fora do escopo"
+    }
+  ],
+  "reviewer": {
+    "agent": "cmp-r3-reviewer",
+    "independence": "sequential_role",
+    "model": "claude-sonnet-5-5"
+  },
+  "run_id": "PBD-RUN-HKWDBGFZ3SE6",
+  "sides": {
+    "left": {
+      "baseline": {
+        "digest": "sha256:e07713b075830baf24cc836458ec25babe52b3b0001cead67cf1bbc783c14b78",
+        "format": "pbd.import",
+        "source_file": "left.json"
+      },
+      "coverage": {
+        "breakdown": {
+          "COVERED": 2,
+          "NOT_COVERED": 1,
+          "OUT_OF_SCOPE": 1,
+          "PARTIALLY_COVERED": 2
+        },
+        "covered": 2,
+        "denominator": 6,
+        "not_covered": 1,
+        "partially_covered": 2,
+        "provenance": "independent reviewer inventory (shared by both sides)"
+      },
+      "criteria": 4,
+      "items": {
+        "by_type": {
+          "epic": 1,
+          "story": 4
+        },
+        "total": 5
+      },
+      "structural_issues": [],
+      "unmatched_items": [
+        "L-QL-4"
+      ],
+      "unsupported": [
+        "L-QL-3",
+        "L-QL-3.AC1"
+      ]
+    },
+    "right": {
+      "baseline": {
+        "digest": "sha256:3e1c292e3cc2d889be6006917f22eaa4ef5f1019ab463bc8f67bb06a757590dd",
+        "format": "pbd.import",
+        "source_file": "right.json"
+      },
+      "coverage": {
+        "breakdown": {
+          "CONFLICTING": 1,
+          "COVERED": 2,
+          "NOT_COVERED": 1,
+          "PARTIALLY_COVERED": 2
+        },
+        "covered": 2,
+        "denominator": 6,
+        "not_covered": 1,
+        "partially_covered": 2,
+        "provenance": "independent reviewer inventory (shared by both sides)"
+      },
+      "criteria": 4,
+      "items": {
+        "by_type": {
+          "epic": 1,
+          "story": 4
+        },
+        "total": 5
+      },
+      "structural_issues": [],
+      "unmatched_items": [
+        "R-QR-13"
+      ],
+      "unsupported": [
+        "R-QR-12",
+        "R-QR-12.AC1",
+        "R-QR-13",
+        "R-QR-13.AC1"
+      ]
+    }
+  },
+  "validator_version": "0.1.0.dev0"
+}

@@ -1,0 +1,635 @@
+{
+  "criteria": [
+    {
+      "key": "AC1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC3",
+      "notes": "Limite do ultimo bloco indefinido (Q3).",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC4",
+      "notes": "Limite do ultimo bloco indefinido (Q3).",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC5",
+      "notes": "Recusa de horario quebrado/duracao e suposicao; texto sem gatilho/condicao.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC6",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC7",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC8",
+      "notes": "Fonte nao diz que cancelar libera vaga; suposicao a confirmar.",
+      "source_support": "unsupported",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC9",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC10",
+      "notes": "Resultado vago, sem valor verificavel; depende de Q1.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC11",
+      "notes": "",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC12",
+      "notes": "Mecanismo de identificacao depende da API desconhecida.",
+      "source_support": "proposal_justified",
+      "verdict": "concern"
+    },
+    {
+      "key": "AC13",
+      "notes": "",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC14",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "AC15",
+      "notes": "",
+      "source_support": "proposal_justified",
+      "verdict": "pass"
+    }
+  ],
+  "dependencies_reviewed": true,
+  "duplicates": [
+    {
+      "assessment": "distinct",
+      "items": [
+        "US1",
+        "US2"
+      ],
+      "rationale": "regras distintas"
+    }
+  ],
+  "findings": [
+    {
+      "actual": "US1 e T1 ready; Q3 marcada nao bloqueante",
+      "affects": [
+        "US1",
+        "T1",
+        "AC3",
+        "AC4"
+      ],
+      "classification": "confirmed_gap",
+      "expected": "Trabalho com janela 7h-22h indecidida nao deveria ser ready sem ressalva",
+      "gate": "G08",
+      "impact": "Retrabalho se a diretoria definir 22h-23h",
+      "recommendation": "Marcar US1/T1 partial com Q3 vinculada, ou tornar o limite parametro",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "A fonte nao define o ultimo bloco; AC3/AC4 e T1 fixam testes da janela"
+    },
+    {
+      "actual": "AC8 proposta e T2 inclui 'Considerar o cancelamento como liberacao de vaga' como atividade pronta",
+      "affects": [
+        "AC8",
+        "T2",
+        "US2"
+      ],
+      "classification": "unsupported_assumption",
+      "expected": "Fonte silente sobre liberacao de vaga no cancelamento",
+      "gate": "G06",
+      "impact": "T2 ready embute decisao nao confirmada",
+      "recommendation": "Abrir pergunta ou remover da atividade de T2",
+      "review_status": "confirmed",
+      "severity": "medium",
+      "why": "Resolve ambiguidade nao decidida"
+    },
+    {
+      "actual": "AC5 exige recusa de duracao diferente/horario quebrado",
+      "affects": [
+        "AC5"
+      ],
+      "classification": "unsupported_assumption",
+      "expected": "Fonte so exige blocos de 1 hora",
+      "gate": "G06",
+      "impact": "Criterio nao verificavel como escrito",
+      "recommendation": "Reescrever com condicao/gatilho ou marcar como pergunta",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "Regra nao declarada; sem gatilho"
+    },
+    {
+      "actual": "AC10 so diz que depende da diretoria",
+      "affects": [
+        "AC10"
+      ],
+      "classification": "candidate_concern",
+      "expected": "Criterio verificavel para cancelamento fora do prazo",
+      "gate": "G06",
+      "impact": "Criterio nao testavel",
+      "recommendation": "Manter bloqueado e referenciar Q1",
+      "review_status": "confirmed",
+      "severity": "low",
+      "why": "Resultado nao verificavel enquanto Q1 aberta"
+    }
+  ],
+  "independent_obligations": [
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "AC2",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O1",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C1"
+      ],
+      "quote": "Sócios reservam quadras de tênis e de futsal pelo aplicativo do clube.",
+      "rationale": "Reserva de quadra livre coberta.",
+      "text": "Sócios reservam quadras de tênis e de futsal pelo aplicativo"
+    },
+    {
+      "covered_by": [
+        "US1",
+        "AC1",
+        "AC2",
+        "AC3",
+        "T1"
+      ],
+      "disposition": "COVERED",
+      "key": "O2",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C1",
+        "C2"
+      ],
+      "quote": "O sócio reserva uma quadra livre em blocos de 1 hora, entre 7h e 22h.",
+      "rationale": "Cobertos em criterios e tarefa.",
+      "text": "Reserva de quadra livre em blocos de 1 hora"
+    },
+    {
+      "covered_by": [
+        "US1",
+        "AC3",
+        "AC4",
+        "T1"
+      ],
+      "disposition": "PARTIALLY_COVERED",
+      "key": "O3",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C3"
+      ],
+      "quote": "O sócio reserva uma quadra livre em blocos de 1 hora, entre 7h e 22h.",
+      "rationale": "A fonte nao define se o ultimo bloco comeca ou termina as 22h; Q3 existe mas US1/T1 sao ready e AC3/AC4 testam a janela como se estivesse decidida.",
+      "text": "Janela entre 7h e 22h"
+    },
+    {
+      "covered_by": [
+        "US2",
+        "AC6",
+        "AC7",
+        "T2"
+      ],
+      "disposition": "COVERED",
+      "key": "O4",
+      "locator": {
+        "line_start": 8,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C4"
+      ],
+      "quote": "Cada sócio pode ter no máximo 2 reservas futuras ao mesmo tempo.",
+      "rationale": "Coberto; liberacao de vaga apos cancelamento e proposta (AC8).",
+      "text": "Máximo de 2 reservas futuras simultâneas"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "AC9",
+        "T3"
+      ],
+      "disposition": "COVERED",
+      "key": "O5",
+      "locator": {
+        "line_start": 9,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C5"
+      ],
+      "quote": "O sócio pode cancelar uma reserva;",
+      "rationale": "Coberto.",
+      "text": "Sócio pode cancelar reserva"
+    },
+    {
+      "covered_by": [
+        "US3",
+        "T4",
+        "AC10"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O6",
+      "locator": {
+        "line_start": 9,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C6"
+      ],
+      "quote": "a antecedência mínima para cancelar ainda será definida pela diretoria.",
+      "rationale": "Bloqueado por Q1; correto.",
+      "text": "Antecedência mínima de cancelamento a definir"
+    },
+    {
+      "covered_by": [
+        "US4",
+        "AC12",
+        "T5"
+      ],
+      "disposition": "PARTIALLY_COVERED",
+      "key": "O7",
+      "locator": {
+        "line_start": 10,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C7"
+      ],
+      "quote": "Ao chegar, o sócio entra pela catraca usando a reserva.",
+      "rationale": "Desenhado, mas mecanismo depende da API desconhecida.",
+      "text": "Entrada pela catraca usando a reserva"
+    },
+    {
+      "covered_by": [
+        "US4",
+        "T5"
+      ],
+      "disposition": "QUESTION_REQUIRED",
+      "key": "O8",
+      "locator": {
+        "line_start": 10,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C8"
+      ],
+      "quote": "A integração com o sistema de catracas depende do fornecedor, que ainda não enviou a documentação da API.",
+      "rationale": "Bloqueado por Q2; correto.",
+      "text": "Integração depende do fornecedor sem documentação"
+    },
+    {
+      "covered_by": [
+        "US5",
+        "AC14",
+        "T6"
+      ],
+      "disposition": "COVERED",
+      "key": "O9",
+      "locator": {
+        "line_start": 11,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [
+        "C9"
+      ],
+      "quote": "A recepção vê a agenda do dia de cada quadra.",
+      "rationale": "Coberto.",
+      "text": "Recepção vê a agenda do dia de cada quadra"
+    },
+    {
+      "covered_by": [
+        "E1",
+        "E2"
+      ],
+      "disposition": "OUT_OF_SCOPE",
+      "key": "O10",
+      "locator": {
+        "line_start": 14,
+        "member": "prd.md",
+        "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+      },
+      "matched_claims": [],
+      "quote": "Cobrança de reservas.",
+      "rationale": "Registrado como fora de escopo nos epicos; nenhum item cobra.",
+      "text": "Cobrança fora do escopo"
+    }
+  ],
+  "items": [
+    {
+      "key": "E1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "E2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F1",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F2",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F3",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "F4",
+      "notes": "",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados do time",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "AC3/AC4 dependem do limite do ultimo bloco",
+          "rating": "concern"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US1",
+      "notes": "Janela 7h-22h: limite do ultimo bloco indefinido (Q3) mas historia marcada ready.",
+      "readiness_check": "dispute",
+      "readiness_notes": "O PRD diz 'entre 7h e 22h' sem definir se o ultimo bloco comeca ou termina as 22h; a regra de janela (AC3/AC4) esta indecidida mas a historia e apresentada como pronta e Q3 como nao bloqueante.",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados do time",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "depende de US1",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US2",
+      "notes": "AC8 (cancelamento libera vaga) e suposicao nao confirmada.",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "concern"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados do time",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US3",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados do time",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "depende de fornecedor",
+          "rating": "concern"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US4",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "invest": {
+        "estimable": {
+          "note": "sem dados do time",
+          "rating": "unknown"
+        },
+        "independent": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "negotiable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "small": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "testable": {
+          "note": "ok",
+          "rating": "supported"
+        },
+        "valuable": {
+          "note": "ok",
+          "rating": "supported"
+        }
+      },
+      "key": "US5",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "task_sufficiency": "sufficient",
+      "verdict": "pass"
+    },
+    {
+      "key": "T1",
+      "notes": "Implementa a janela de 7h a 22h sem decisao sobre o ultimo bloco.",
+      "readiness_check": "dispute",
+      "readiness_notes": "Codifica a validacao da janela cujo limite final (Q3) esta em aberto; nao esta totalmente pronta.",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "T2",
+      "notes": "Atividade 'Considerar o cancelamento como liberacao de vaga' resolve ambiguidade nao confirmada.",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "concern"
+    },
+    {
+      "key": "T3",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T4",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T5",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    },
+    {
+      "key": "T6",
+      "notes": "",
+      "readiness_check": "agree",
+      "source_support": "supported",
+      "verdict": "pass"
+    }
+  ],
+  "reviewer": {
+    "agent": "rev-h2-r2b",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "sources_reread": [
+    {
+      "complete": true,
+      "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-029",
+  "title": "Cancelamento devolve ao sócio uma vaga no limite de reservas",
+  "status": "NEEDS_REVIEW",
+  "priority": "HIGH",
+  "type": "STATE_TRANSITION",
+  "objective": "Verificar que a reserva cancelada deixa de contar entre as 2 futuras.",
+  "requirement_refs": [
+    "REQ-003",
+    "REQ-004"
+  ],
+  "scenario_refs": [
+    "SCN-003"
+  ],
+  "coverage_point_refs": [
+    "CP-011",
+    "CP-012"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 2 (linha 8)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 3 (linha 9)"
+    },
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, itens 2 e 3 (linhas 8 e 9)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta e exatamente 2 reservas futuras ativas, ambas com grande antecedência",
+    "QUADRA_TENIS_B está livre em BLOCO_16H de uma data futura"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio no limite de 2 reservas futuras"
+    },
+    {
+      "name": "RESERVA_FUTURA_A",
+      "description": "uma das 2 reservas ativas, a ser cancelada"
+    },
+    {
+      "name": "QUADRA_TENIS_B",
+      "description": "quadra de tênis livre em BLOCO_16H"
+    },
+    {
+      "name": "BLOCO_16H",
+      "description": "bloco das 16h às 17h de uma data futura"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A cancela RESERVA_FUTURA_A.",
+      "expected_result": "RESERVA_FUTURA_A deixa de estar ativa e SOCIO_A fica com 1 reserva futura.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A reserva QUADRA_TENIS_B em BLOCO_16H e confirma.",
+      "expected_result": "A reserva de BLOCO_16H é confirmada.",
+      "needs_clarification": false
+    },
+    {
+      "step": 3,
+      "action": "SOCIO_A abre a lista das suas reservas futuras.",
+      "expected_result": "A nova reserva é criada e o sócio fica novamente com 2 reservas futuras ativas.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "SOCIO_A com 2 reservas futuras"
+  ],
+  "cleanup": [
+    "Cancelar as 2 reservas"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "AMBIGUOUS_POLICY: O prazo mínimo de cancelamento não é definido; usa-se grande antecedência.",
+    "MISSING_SELECTOR: Telas e rótulos não constam do PRD."
+  ],
+  "test_basis": "DERIVED",
+  "primary_type": "STATE_TRANSITION",
+  "secondary_tags": [],
+  "execution_status": "NEEDS_REVIEW",
+  "question_refs": [
+    "Q-001"
+  ],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "PLAYWRIGHT",
+  "deterministic": true,
+  "priority_reason": "Sem a liberação, o sócio ficaria preso ao limite mesmo cancelando.",
+  "automation_suitability": "HIGH",
+  "automation_readiness": "NEEDS_POLICY",
+  "readiness_blockers": [
+    "AMBIGUOUS_POLICY",
+    "MISSING_SELECTOR",
+    "BLOCKING_QUESTION"
+  ],
+  "failure_domain": "liberação do limite após cancelar",
+  "source_identifiers": [],
+  "expansion_dimension": "STATE_TRANSITION"
+}

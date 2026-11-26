@@ -1,0 +1,123 @@
+{
+  "ambiguities": [
+    {
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md"
+      },
+      "quote": "deve ser rápido",
+      "text": "'rápido' não tem limiar mensurável nem define qual operação"
+    },
+    {
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md"
+      },
+      "quote": "gateway de pagamentos parceiro",
+      "text": "O gateway de pagamentos parceiro não é identificado; valor da taxa, meios de pagamento e contrato indefinidos"
+    },
+    {
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md"
+      },
+      "quote": "após a confirmação do pagamento",
+      "text": "Não há regra para pagamento recusado, expirado ou não confirmado"
+    },
+    {
+      "locator": {
+        "line_start": 3,
+        "member": "prd.md"
+      },
+      "quote": "tamanho de camiseta",
+      "text": "Valores válidos para tamanho de camiseta não definidos"
+    }
+  ],
+  "exclusions": [],
+  "members": [
+    {
+      "lines_read": [
+        [
+          1,
+          7
+        ]
+      ],
+      "path": "prd.md",
+      "reading": {
+        "limitations": [],
+        "method": "native",
+        "tool": "host file reader"
+      },
+      "status": "read"
+    }
+  ],
+  "obligations": [
+    {
+      "category": "functional",
+      "key": "R1",
+      "locator": {
+        "line_start": 3,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "O participante se inscreve em um mutirão informando nome e tamanho de camiseta",
+      "text": "O participante se inscreve em um mutirão informando nome e tamanho de camiseta",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "integration",
+      "key": "R2",
+      "locator": {
+        "line_start": 4,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "A taxa simbólica de inscrição é paga pelo gateway de pagamentos parceiro",
+      "text": "A taxa simbólica de inscrição é paga pelo gateway de pagamentos parceiro",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R3",
+      "locator": {
+        "line_start": 5,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "A inscrição só é confirmada após a confirmação do pagamento",
+      "text": "A inscrição só é confirmada após a confirmação do pagamento",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "functional",
+      "key": "R4",
+      "locator": {
+        "line_start": 6,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "O organizador vê a lista de inscritos confirmados por mutirão",
+      "text": "O organizador vê a lista de inscritos confirmados por mutirão",
+      "uncertainty": "confirmed"
+    },
+    {
+      "category": "nonfunctional",
+      "key": "R5",
+      "locator": {
+        "line_start": 7,
+        "member": "prd.md"
+      },
+      "modality": "must",
+      "quote": "O sistema deve ser rápido",
+      "text": "O sistema deve ser rápido",
+      "uncertainty": "ambiguous"
+    }
+  ],
+  "reader": {
+    "agent": "gen-c08-r1a-reader",
+    "independence": "sequential_role",
+    "model": "claude-sonnet-5-5"
+  },
+  "source_digest": "sha256:9a1c84f0e173a0586f698b28a712fdcbb7c87d481ba4ff3079da96fdb9f9e7c8",
+  "source_id": "PBD-SRC-0AW4Q3WGMK5A"
+}

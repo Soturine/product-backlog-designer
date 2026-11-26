@@ -1,0 +1,39 @@
+{
+  "ambiguities": [
+    {
+      "locator": {
+        "member": "fluxo-pedido.png",
+        "section": "image"
+      },
+      "quote": "Two small empty rectangles side by side joined by a short horizontal line",
+      "text": "O arquivo chamado fluxo-pedido mostra apenas duas caixas vazias ligadas por uma linha, sem rótulos; o fluxo de pedido não é recuperável e 'pedido' não aparece no PRD"
+    }
+  ],
+  "exclusions": [],
+  "members": [
+    {
+      "path": "fluxo-pedido.png",
+      "reading": {
+        "limitations": [
+          "Image is very small and contains no legible text or labels; no process steps, actors or decisions can be derived"
+        ],
+        "method": "native_vision",
+        "tool": "host file reader (Read) displaying the original image with vision"
+      },
+      "status": "read",
+      "visual_transcription": {
+        "method": "agent_vision",
+        "model": "claude-sonnet-5-5",
+        "text": "Two small empty rectangles side by side joined by a short horizontal line. No text, labels, arrows or other elements."
+      }
+    }
+  ],
+  "obligations": [],
+  "reader": {
+    "agent": "reader-r6",
+    "independence": "separate_agent",
+    "model": "claude-sonnet-5-5"
+  },
+  "source_digest": "sha256:e22b39575210e2e5f0ab24b8ac8eb0c8d166dba7da6157b704ad84dddb2b5867",
+  "source_id": "PBD-SRC-T5SMYSGS5EM2"
+}

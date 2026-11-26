@@ -1,0 +1,166 @@
+{
+  "kind": "pbd.publication-receipt",
+  "plan_digest": "sha256:15468306bae5894dfb53873b07b697e7544baf8f54a526cd63b4fb2eefa9f4a7",
+  "plan_id": "PBD-PLAN-7S2E3JSZ7RCJ",
+  "receipt_id": "PBD-RCPT-2ZVFM115JRMG",
+  "results": [
+    {
+      "external_ref": {
+        "namespace": "clube/quadras",
+        "native_id": "1000",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-PPV4085SEF50",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "clube/quadras",
+        "native_id": "1001",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-FHTYJT15RVTX",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "clube/quadras",
+        "native_id": "1002",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-B213BH4KFD7A",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "clube/quadras",
+        "native_id": "1003",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-HVZXESNDCRWC",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "clube/quadras",
+        "native_id": "1004",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-GWX02058837K",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "clube/quadras",
+        "native_id": "1005",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-J8XYFHQJEKMB",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "clube/quadras",
+        "native_id": "1006",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-26KZFYCTNJC0",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "clube/quadras",
+        "native_id": "1007",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-JDNN0XMNFG8B",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "clube/quadras",
+        "native_id": "1008",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-5Q3DX76NC06P",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "clube/quadras",
+        "native_id": "1009",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-RG4TEC93PD2D",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "clube/quadras",
+        "native_id": "1010",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-PHZ7H79239Z5",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "clube/quadras",
+        "native_id": "1011",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-1EVA4JHG2FYQ",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "clube/quadras",
+        "native_id": "1012",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-7F6NDPGJVMNC",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "clube/quadras",
+        "native_id": "1013",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-M1CJFCWZZ3PG",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "clube/quadras",
+        "native_id": "1014",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-WVT4WD1YQAVK",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "clube/quadras",
+        "native_id": "1015",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-71VAT98VB2S8",
+      "outcome": "APPLIED"
+    },
+    {
+      "external_ref": {
+        "namespace": "clube/quadras",
+        "native_id": "1016",
+        "system": "azure-devops"
+      },
+      "op_id": "PBD-OP-M4AHJBSQG5H7",
+      "outcome": "APPLIED"
+    }
+  ],
+  "schema_version": "1.2.0",
+  "transport": "mock",
+  "verification": {
+    "status": "NOT_RUN"
+  }
+}

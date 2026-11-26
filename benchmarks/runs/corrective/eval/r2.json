@@ -1,0 +1,132 @@
+{
+  "run": "R2",
+  "run_id": "PBD-RUN-WGHY17MPK92F",
+  "gold": "benchmarks/gold/h2-court-booking.json",
+  "evaluator": "eval-corrective-1",
+  "obligations": [
+    {
+      "id": "H01",
+      "critical": true,
+      "verdict": "covered",
+      "evidence": "PBD-STORY-4X88S366NF8G 'Reservar uma quadra livre em bloco de 1 hora' (ready); PBD-AC-X5YENZ9EPS0A CA-01 (block booked); PBD-TASK-9VA5GAQ2325G 'Implementar a criacao de reserva em bloco de 1 hora' (ready); PBD-TASK-MGTQV3XG91HS restricts to 7h-22h window (ready)."
+    },
+    {
+      "id": "H02",
+      "critical": true,
+      "verdict": "covered",
+      "evidence": "PBD-TASK-Z3N04AENGRMH 'Impedir a terceira reserva futura simultanea do socio' (ready); PBD-AC-CS1NSYW5WHZN CA-03 (third future booking refused)."
+    },
+    {
+      "id": "H03",
+      "critical": true,
+      "verdict": "covered",
+      "evidence": "Cancellation covered: PBD-STORY-BXMPBBR7YK7S 'Cancelar uma reserva' (partial), PBD-TASK-19PG31SNXTC6 'Implementar o cancelamento de reserva pelo socio' (ready), PBD-AC-AF2QYQNMBHC6 CA-01. Minimum notice handled as a blocked question: PBD-Q-G2KAAP9NXDEP (blocking) on PBD-TASK-RQMNRV5S88MB 'Validar a antecedencia minima para cancelar' (blocked). Counts as covered; notice is also handled as blocked. Verdict may be read either way."
+    },
+    {
+      "id": "H04",
+      "critical": true,
+      "verdict": "handled_as_blocked",
+      "evidence": "PBD-STORY-4EWDDBCKYQJW 'Entrar pela catraca usando a reserva' is blocked, blocked_by PBD-Q-C2JMP86KF60D (blocking: turnstile vendor API contract). PBD-TASK-5WXXY9D3SK6J 'Integrar a liberacao da catraca com a reserva do socio' is blocked by the same question. No vendor, protocol, QR/token or endpoint invented. PBD-CLM-YVGYGJ6YEZH2 is PARTIALLY_COVERED."
+    },
+    {
+      "id": "H05",
+      "critical": true,
+      "verdict": "covered",
+      "evidence": "PBD-STORY-Y4VZXDY0KX4H 'Consultar a agenda do dia de cada quadra' (ready); PBD-TASK-BA4TXN7R3R6H 'Implementar a visao diaria de agenda por quadra' (ready); PBD-AC-TTXHQ1P8CHGW CA-01 (one agenda per court)."
+    },
+    {
+      "id": "H06",
+      "critical": false,
+      "verdict": "covered",
+      "evidence": "PBD-CLM-Q5T29NXCTNCK OUT_OF_SCOPE 'Cobranca de reservas'; epic PBD-EPIC-XW0PE4TYAW98 out_scope lists it. No billing or payment work created."
+    }
+  ],
+  "critical_recall": {
+    "strict_covered": 4,
+    "handled": 1,
+    "total_critical": 5
+  },
+  "traps": [
+    {
+      "trap": "Must not invent a turnstile vendor, API, protocol, QR/token format or endpoint",
+      "verdict": "not_violated",
+      "evidence": "Items say only 'contrato da API do fornecedor' and 'conforme o contrato'. PBD-Q-C2JMP86KF60D asks for the contract. No vendor name, protocol, QR, token or endpoint in backlog text."
+    },
+    {
+      "trap": "Must not invent a cancellation notice period (e.g. 24 hours) as a confirmed rule",
+      "verdict": "not_violated",
+      "evidence": "No period stated. PBD-AC-NCR8Y4GZZD8N CA-02 (proposed) says the value and message do not yet exist. PBD-Q-G2KAAP9NXDEP asks for the value."
+    },
+    {
+      "trap": "Must not create billing or payment work",
+      "verdict": "not_violated",
+      "evidence": "Billing is only in out_scope (PBD-CLM-Q5T29NXCTNCK). No payment item."
+    }
+  ],
+  "readiness": {
+    "a_turnstile_dependent_work_ready": {
+      "violated": false,
+      "evidence": "PBD-STORY-4EWDDBCKYQJW and PBD-TASK-5WXXY9D3SK6J are blocked. PBD-AC-EZ92P756PSJB (entry behaviour) is proposed."
+    },
+    "b_unrelated_work_blocked_by_association": {
+      "violated": false,
+      "evidence": "Booking PBD-STORY-4X88S366NF8G, PBD-TASK-9VA5GAQ2325G and PBD-TASK-Z3N04AENGRMH are ready. Agenda PBD-STORY-Y4VZXDY0KX4H and PBD-TASK-BA4TXN7R3R6H are ready; Y4VZ carries independent_of for both PBD-Q-C2JMP86KF60D and PBD-Q-G2KAAP9NXDEP. PBD-TASK-19PG31SNXTC6 (cancel) is ready with independent_of PBD-Q-G2KAAP9NXDEP. Caveat, not association: reviewer G08 FAIL disputes readiness of PBD-STORY-4X88S366NF8G and PBD-TASK-MGTQV3XG91HS because non-blocking PBD-Q-H6J3CQVCFH9B (22h boundary) affects them. This is a readiness-quality dispute on a question outside the gold, not blocking by the turnstile or notice question."
+    },
+    "c_blocking_question_linked": {
+      "linked": true,
+      "evidence": "PBD-Q-C2JMP86KF60D has blocking=true; blocked_by on PBD-STORY-4EWDDBCKYQJW and PBD-TASK-5WXXY9D3SK6J. PBD-Q-G2KAAP9NXDEP has blocking=true; blocked_by on PBD-TASK-RQMNRV5S88MB."
+    }
+  },
+  "references": [
+    "Canonical backlog: bare labels 'Q1', 'Q2', 'Q3' cited in text (PBD-STORY-4X88S366NF8G rationale 'tratado na pergunta Q3'; PBD-TASK-MGTQV3XG91HS verification 'segue a resposta de Q3'; claim dispositions 'Q1 bloqueante', 'Q2 bloqueante'; criterion PBD-AC-NCR8Y4GZZD8N '(Q1)' and PBD-AC-EZ92P756PSJB '(Q2)'). Questions carry no visible label, so these are unresolved.",
+    "Canonical backlog: CA-04 PBD-AC-WKSEAYEFGBA2 refers to 'a pergunta sobre a fronteira de horario' without linking the question id.",
+    "Reviewer (stages/review.json): short keys US1, US2, US3, T1, T3, T6, AC4, AC8, Q1, Q2, Q3 used in findings and notes. Finding PBD-FND-HXQNHYQT62JM and gate G08 cite 'Q3' and 'US1 e T3'. Key T6 is unresolved (task is PBD-TASK-5WXXY9D3SK6J). Gate G02 BLOCKED and G17 BLOCKED have no short-key issue."
+  ],
+  "invented": [
+    {
+      "item": "PBD-AC-MPYKGV1A0B0M (CA-05)",
+      "severity": "low",
+      "reason": "Concurrent booking requests yield one reservation. Marked proposed; the PRD does not state it."
+    },
+    {
+      "item": "PBD-AC-WKSEAYEFGBA2 (CA-04)",
+      "severity": "low",
+      "reason": "Blocks before 7h are refused. Derived from the 7h-22h window, but the end-of-day boundary is open (Q-H6J3CQVCFH9B). Proposed."
+    },
+    {
+      "item": "PBD-TASK-5WXXY9D3SK6J",
+      "severity": "low",
+      "reason": "Verification 'sem reserva, a catraca nao libera' and handling integration unavailability are not in PRD. Reviewer flagged as T6 unsupported (PBD-FND-SAQXVBZSDYQT)."
+    },
+    {
+      "item": "PBD-EPIC-XW0PE4TYAW98 (context)",
+      "severity": "low",
+      "reason": "States 'Hoje a reserva depende do aplicativo do clube' as current-state fact. PRD only says members book through the club app."
+    },
+    {
+      "item": "PBD-REL-ESWYPDCKE4ZC",
+      "severity": "low",
+      "reason": "Says the turnstile uses the reservation as a credential. Inference, status proposed."
+    }
+  ],
+  "gates": {
+    "G01": "PASS",
+    "G02": "BLOCKED",
+    "G03": "PASS",
+    "G04": "PASS",
+    "G05": "PASS",
+    "G06": "PASS",
+    "G07": "PASS",
+    "G08": "FAIL",
+    "G09": "PASS",
+    "G10": "NOT_APPLICABLE",
+    "G11": "PASS",
+    "G12": "NOT_APPLICABLE",
+    "G13": "PASS",
+    "G14": "PASS",
+    "G15": "NOT_APPLICABLE",
+    "G16": "PASS",
+    "G17": "BLOCKED",
+    "G18": "NOT_RUN"
+  }
+}

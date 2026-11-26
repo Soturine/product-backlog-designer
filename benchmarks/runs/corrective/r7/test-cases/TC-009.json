@@ -1,0 +1,105 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-009",
+  "title": "Criar reserva quando o sócio tem menos de 2 futuras",
+  "status": "READY",
+  "priority": "HIGH",
+  "type": "BOUNDARY",
+  "objective": "Verificar que o limite de 2 reservas futuras não impede quem ainda está abaixo dele.",
+  "requirement_refs": [
+    "REQ-003"
+  ],
+  "scenario_refs": [
+    "SCN-003"
+  ],
+  "coverage_point_refs": [
+    "CP-010"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 2 (linha 8)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A é sócio ativo com sessão aberta",
+    "SOCIO_A tem exatamente 1 reserva futura ativa, em QUADRA_TENIS_A às 9h",
+    "QUADRA_FUTSAL_A está livre no bloco BLOCO_16H de uma data futura"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio ativo com 1 reserva futura ativa"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis onde SOCIO_A já tem a reserva das 9h"
+    },
+    {
+      "name": "QUADRA_FUTSAL_A",
+      "description": "quadra de futsal livre em BLOCO_16H"
+    },
+    {
+      "name": "BLOCO_16H",
+      "description": "bloco das 16h às 17h de uma data futura"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A reserva QUADRA_FUTSAL_A em BLOCO_16H e confirma.",
+      "expected_result": "A reserva de BLOCO_16H é confirmada.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A abre a lista das suas reservas futuras.",
+      "expected_result": "A nova reserva foi criada e SOCIO_A passa a ter 2 reservas futuras ativas.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "SOCIO_A com 2 reservas futuras ativas"
+  ],
+  "cleanup": [
+    "Cancelar as duas reservas de SOCIO_A"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "MISSING_SELECTOR: Telas e rótulos não constam do PRD."
+  ],
+  "test_basis": "ACCEPTANCE",
+  "primary_type": "BOUNDARY",
+  "secondary_tags": [],
+  "execution_status": "READY",
+  "question_refs": [],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "PLAYWRIGHT",
+  "deterministic": true,
+  "priority_reason": "Bloquear indevidamente quem está abaixo do limite impede o uso do serviço.",
+  "automation_suitability": "HIGH",
+  "automation_readiness": "NEEDS_SELECTOR",
+  "readiness_blockers": [
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "limite de reservas futuras abaixo do teto",
+  "source_identifiers": [],
+  "claim_exercise_map": [
+    {
+      "claim_id": "CLAIM-010",
+      "coverage_point_id": "CP-010",
+      "test_case_id": "TC-009",
+      "step_refs": [
+        2
+      ],
+      "assertion_refs": [
+        "expected"
+      ],
+      "primary_type": "BOUNDARY"
+    }
+  ]
+}

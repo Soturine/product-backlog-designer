@@ -1,0 +1,111 @@
+{
+  "schema_version": "2.2",
+  "id": "TC-003",
+  "title": "Reserva criada em nome do sócio que reservou",
+  "status": "READY",
+  "priority": "HIGH",
+  "type": "DATA_INTEGRITY",
+  "objective": "Verificar que o titular da reserva criada é o sócio que a solicitou, e não outro.",
+  "requirement_refs": [
+    "REQ-002"
+  ],
+  "scenario_refs": [
+    "SCN-001"
+  ],
+  "coverage_point_refs": [
+    "CP-003"
+  ],
+  "source_refs": [
+    {
+      "source": "sources/prd.md",
+      "reference": "Requisitos, item 1 (linha 7)"
+    }
+  ],
+  "preconditions": [
+    "SOCIO_A e SOCIO_B são sócios ativos; SOCIO_A tem sessão aberta no aplicativo",
+    "QUADRA_TENIS_A está livre no bloco BLOCO_11H de uma data futura",
+    "Nenhum dos dois sócios tem reservas futuras"
+  ],
+  "test_data": [
+    {
+      "name": "SOCIO_A",
+      "description": "sócio titular que fará a reserva, sem reservas futuras"
+    },
+    {
+      "name": "SOCIO_B",
+      "description": "outro sócio ativo, sem reservas futuras, usado para conferir que não recebe a reserva"
+    },
+    {
+      "name": "QUADRA_TENIS_A",
+      "description": "quadra de tênis livre em BLOCO_11H"
+    },
+    {
+      "name": "BLOCO_11H",
+      "description": "bloco das 11h às 12h de uma data futura"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "No aplicativo, SOCIO_A reserva QUADRA_TENIS_A em BLOCO_11H e confirma.",
+      "expected_result": "O aplicativo conclui a confirmação da reserva para SOCIO_A.",
+      "needs_clarification": false
+    },
+    {
+      "step": 2,
+      "action": "SOCIO_A abre a lista das suas reservas e observa a reserva criada.",
+      "expected_result": "A reserva está em nome de SOCIO_A, com QUADRA_TENIS_A e BLOCO_11H.",
+      "needs_clarification": false
+    },
+    {
+      "step": 3,
+      "action": "SOCIO_B abre a lista das suas próprias reservas no aplicativo.",
+      "expected_result": "A lista de SOCIO_B não contém a reserva de SOCIO_A; a reserva criada aparece em nome do sócio titular SOCIO_A, com a quadra e o bloco escolhidos, e não aparece para o outro sócio.",
+      "needs_clarification": false
+    }
+  ],
+  "postconditions": [
+    "Existe uma reserva ativa em nome de SOCIO_A"
+  ],
+  "cleanup": [
+    "Cancelar a reserva de SOCIO_A"
+  ],
+  "state_contract": "SELF_CLEANING",
+  "tags": [],
+  "notes": [
+    "MISSING_SELECTOR: Telas e rótulos do aplicativo não constam do PRD."
+  ],
+  "test_basis": "ACCEPTANCE",
+  "primary_type": "DATA_INTEGRITY",
+  "secondary_tags": [],
+  "execution_status": "READY",
+  "question_refs": [],
+  "finding_refs": [],
+  "composes": [],
+  "automation_candidate": true,
+  "automation_layer": "UI",
+  "automation_tool_hint": "PLAYWRIGHT",
+  "deterministic": true,
+  "priority_reason": "Titularidade errada corrompe o limite por sócio e o uso da catraca.",
+  "automation_suitability": "HIGH",
+  "automation_readiness": "NEEDS_SELECTOR",
+  "readiness_blockers": [
+    "MISSING_SELECTOR"
+  ],
+  "failure_domain": "titularidade da reserva",
+  "source_identifiers": [],
+  "claim_exercise_map": [
+    {
+      "claim_id": "CLAIM-003",
+      "coverage_point_id": "CP-003",
+      "test_case_id": "TC-003",
+      "step_refs": [
+        3
+      ],
+      "assertion_refs": [
+        "expected"
+      ],
+      "primary_type": "DATA_INTEGRITY"
+    }
+  ]
+}

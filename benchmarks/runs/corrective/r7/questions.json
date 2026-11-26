@@ -1,0 +1,224 @@
+{
+  "schema_version": "2.2",
+  "questions": [
+    {
+      "id": "Q-001",
+      "related_test_cases": [
+        "TC-011",
+        "TC-025",
+        "TC-029",
+        "TC-046",
+        "TC-047"
+      ],
+      "requirement_refs": [
+        "REQ-004"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 3 (linha 9)"
+        }
+      ],
+      "question": "Qual é a antecedência mínima para cancelar uma reserva (valor e unidade) definida pela diretoria, e o que acontece com um cancelamento fora desse prazo?",
+      "reason": "O PRD diz que o prazo ainda será definido; sem ele não há oráculo para aceitar ou recusar o cancelamento próximo do horário.",
+      "blocking": true,
+      "impact": "EXPECTED_RESULT"
+    },
+    {
+      "id": "Q-002",
+      "related_test_cases": [
+        "TC-013",
+        "TC-016",
+        "TC-035",
+        "TC-036",
+        "TC-038",
+        "TC-048"
+      ],
+      "requirement_refs": [
+        "REQ-005"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 4 (linha 10)"
+        }
+      ],
+      "question": "Qual é o fornecedor do sistema de catracas e quando a documentação da API será entregue?",
+      "reason": "Sem o contrato da API não é possível saber como executar nem observar a liberação da catraca.",
+      "blocking": true,
+      "impact": "ENVIRONMENT"
+    },
+    {
+      "id": "Q-003",
+      "related_test_cases": [
+        "TC-020"
+      ],
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 1 (linha 7)"
+        }
+      ],
+      "question": "O último bloco reservável começa às 21h (termina às 22h) ou pode começar às 22h?",
+      "reason": "A expressão entre 7h e 22h não deixa claro se o limite de 22h se refere ao início ou ao fim do último bloco.",
+      "blocking": false,
+      "impact": "REQUIREMENT_AMBIGUITY"
+    },
+    {
+      "id": "Q-004",
+      "related_test_cases": [
+        "TC-005",
+        "TC-008",
+        "TC-010",
+        "TC-015",
+        "TC-019",
+        "TC-026",
+        "TC-028",
+        "TC-030",
+        "TC-031",
+        "TC-032",
+        "TC-033"
+      ],
+      "requirement_refs": [
+        "REQ-002",
+        "REQ-003"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, itens 1 e 2 (linhas 7 e 8)"
+        }
+      ],
+      "question": "Como o aplicativo informa ao sócio que uma reserva foi recusada (bloco ocupado, fora da janela, limite de 2 reservas, duração inválida)?",
+      "reason": "O PRD não define mensagem nem indicação de recusa; o teste verifica apenas que a reserva não é criada.",
+      "blocking": false,
+      "impact": "EXPECTED_RESULT"
+    },
+    {
+      "id": "Q-005",
+      "related_test_cases": [
+        "TC-023"
+      ],
+      "requirement_refs": [
+        "REQ-002"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 1 (linha 7)"
+        }
+      ],
+      "question": "Os blocos de 1 hora devem começar sempre em hora cheia, ou o sócio pode escolher um início como 10h30?",
+      "reason": "O PRD fala em blocos de 1 hora entre 7h e 22h, mas não diz se o início precisa estar alinhado à hora cheia.",
+      "blocking": false,
+      "impact": "REQUIREMENT_AMBIGUITY"
+    },
+    {
+      "id": "Q-006",
+      "related_test_cases": [
+        "TC-043"
+      ],
+      "requirement_refs": [
+        "REQ-004"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 3 (linha 9)"
+        }
+      ],
+      "question": "Quem, além do titular, pode cancelar uma reserva (por exemplo, outro sócio ou a recepção) e como o aplicativo trata a tentativa de quem não pode?",
+      "reason": "O PRD só diz que o sócio pode cancelar uma reserva; não define titularidade nem outros perfis para cancelar.",
+      "blocking": false,
+      "impact": "ACTOR_PERMISSION"
+    },
+    {
+      "id": "Q-007",
+      "related_test_cases": [
+        "TC-034",
+        "TC-037",
+        "TC-040",
+        "TC-041"
+      ],
+      "requirement_refs": [
+        "REQ-002",
+        "REQ-004"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, itens 1 e 3 (linhas 7 e 9)"
+        }
+      ],
+      "question": "Como o aplicativo deve se comportar quando a mesma operação é repetida, interrompida ou feita sobre dados já alterados (confirmar reserva duas vezes, cancelar reserva já cancelada, perder a sessão ou a conexão no meio)?",
+      "reason": "O PRD não define política para operações repetidas, interrompidas ou obsoletas; os testes verificam apenas invariantes seguras de integridade.",
+      "blocking": false,
+      "impact": "EXPECTED_RESULT"
+    },
+    {
+      "id": "Q-008",
+      "related_test_cases": [
+        "TC-035"
+      ],
+      "requirement_refs": [
+        "REQ-005"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 4 (linha 10)"
+        }
+      ],
+      "question": "Em que janela de tempo, em relação ao bloco reservado, a catraca deve liberar a passagem (chegada antes do início, atraso) e cada quadra tem sua própria catraca?",
+      "reason": "O PRD só diz que o sócio entra pela catraca usando a reserva ao chegar, sem tolerância de horário nem relação entre catraca e quadra.",
+      "blocking": false,
+      "impact": "EXPECTED_RESULT"
+    },
+    {
+      "id": "Q-009",
+      "related_test_cases": [
+        "TC-014",
+        "TC-024",
+        "TC-042",
+        "TC-045",
+        "TC-046"
+      ],
+      "requirement_refs": [
+        "REQ-006"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 5 (linha 11)"
+        }
+      ],
+      "question": "Quem pode abrir a agenda do dia de cada quadra além da recepção, e o sócio comum tem acesso a ela?",
+      "reason": "O PRD diz que a recepção vê a agenda, sem dizer se outros perfis podem ou não vê-la.",
+      "blocking": false,
+      "impact": "ACTOR_PERMISSION"
+    },
+    {
+      "id": "Q-010",
+      "related_test_cases": [
+        "TC-038",
+        "TC-039"
+      ],
+      "requirement_refs": [
+        "REQ-005"
+      ],
+      "source_refs": [
+        {
+          "source": "sources/prd.md",
+          "reference": "Requisitos, item 4 (linha 10)"
+        }
+      ],
+      "question": "Qual é o comportamento esperado da catraca e das reservas quando a API do fornecedor ou o equipamento da catraca está indisponível, e como a operação se normaliza depois?",
+      "reason": "O PRD não define política de falha nem de recuperação para a integração com a catraca, que ainda não tem documentação.",
+      "blocking": false,
+      "impact": "EXPECTED_RESULT"
+    }
+  ]
+}
