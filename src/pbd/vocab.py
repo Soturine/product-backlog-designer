@@ -58,6 +58,8 @@ SOURCE_SUPPORT = frozenset({"supported", "proposal_justified", "unsupported"})
 INVEST_DIMENSIONS = ("independent", "negotiable", "valuable", "estimable", "small", "testable")
 INVEST_RATINGS = frozenset({"supported", "concern", "unknown", "not_applicable"})
 TASK_SUFFICIENCY = frozenset({"sufficient", "insufficient", "not_applicable"})
+# Reviewer judgment of the designer's declared readiness (schema 1.2.0, QL-019).
+READINESS_CHECK = frozenset({"agree", "dispute"})
 DUPLICATE_ASSESSMENTS = frozenset({"duplicate", "distinct", "overlap"})
 REVIEW_FINDING_STATUS = frozenset({"candidate", "confirmed"})
 # Reviewer obligation dispositions: the canonical claim dispositions minus UNASSESSED, plus BLOCKED.

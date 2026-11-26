@@ -193,6 +193,124 @@ def check_backlog(
                 issues.append(Issue(f["id"], f"affects unknown {ref}", "dangling_ref"))
 
     issues.extend(_reciprocity(claims, items, criteria, decisions, doc.get("relations", [])))
+    issues.extend(check_readiness(doc))
+    return issues
+
+
+READY_STATES = {"ready", "partial"}
+_CONTAINERS = {"epic", "feature"}
+
+
+def check_readiness(doc: dict[str, Any]) -> list[Issue]:
+    """Readiness contradictions (schema 1.2.0; regression QL-019, c08 gateway task 'ready to build').
+
+    Readiness is an agent judgment; the runtime only checks that the typed links it cites exist and
+    that the declared statuses do not contradict each other or the dependency graph. Items without a
+    ``readiness`` object are unassessed (artifacts before 1.2.0) and are not checked.
+    """
+    issues: list[Issue] = []
+    items = {i["id"]: i for i in doc.get("items", [])}
+    questions = {q["id"]: q for q in doc.get("questions", [])}
+    relations = {r["id"]: r for r in doc.get("relations", [])}
+    decisions = {d["id"] for d in doc.get("decisions", [])}
+    open_blocking = {qid for qid, q in questions.items() if q.get("blocking") and q.get("status") == "open"}
+
+    def status(iid: str) -> str | None:
+        return (items[iid].get("readiness") or {}).get("status")
+
+    blocks: dict[str, set[str]] = {}
+    for iid, item in items.items():
+        rd = item.get("readiness")
+        if not rd:
+            continue
+        links = [("blocked_by", link) for link in rd.get("blocked_by", [])]
+        links += [("independent_of", link) for link in rd.get("independent_of", [])]
+        for kind, link in links:
+            ref = link.get("ref")
+            if ref in questions:
+                q = questions[ref]
+                if kind == "blocked_by":
+                    if q.get("status") != "open":
+                        issues.append(
+                            Issue(
+                                iid,
+                                f"blocked by {ref}, which is {q.get('status')}: recompute readiness",
+                                "readiness",
+                            )
+                        )
+                    elif not q.get("blocking"):
+                        issues.append(
+                            Issue(
+                                iid,
+                                f"blocked by non-blocking question {ref}: mark it blocking or unlink",
+                                "readiness",
+                            )
+                        )
+                    blocks.setdefault(ref, set()).add(iid)
+                else:
+                    blocks.setdefault(ref, set()).add(iid)
+            elif ref in items or ref in relations or ref in decisions:
+                if kind == "independent_of":
+                    issues.append(Issue(iid, f"independent_of must cite a question, not {ref}", "readiness"))
+            else:
+                issues.append(Issue(iid, f"readiness cites unknown {ref}", "readiness"))
+        st = rd.get("status")
+        if st in READY_STATES and any(link.get("ref") in open_blocking for link in rd.get("blocked_by", [])):
+            issues.append(Issue(iid, f"declared {st} but blocked by an open blocking question", "readiness"))
+        if st == "ready":
+            pending = [
+                c
+                for c, child in items.items()
+                if child.get("parent") == iid and status(c) in ("blocked", "deferred")
+            ]
+            if pending:
+                issues.append(
+                    Issue(
+                        iid,
+                        f"declared ready but children are blocked/deferred {sorted(pending)}: use partial",
+                        "readiness",
+                    )
+                )
+    # A blocking question must name the work it blocks, and every work item it affects needs an
+    # explicit disposition (blocked by it, or independent of it with a reason). No silent omission.
+    declares = any(i.get("readiness") for i in items.values())
+    for qid in sorted(open_blocking if declares else ()):
+        q = questions[qid]
+        if not blocks.get(qid):
+            issues.append(
+                Issue(
+                    qid,
+                    "blocking question blocks no work: link blocked work via readiness.blocked_by, "
+                    "or mark it non-blocking",
+                    "readiness",
+                )
+            )
+        for ref in q.get("affects", []):
+            item = items.get(ref)
+            if item is None or item.get("type") in _CONTAINERS or not item.get("readiness"):
+                continue
+            if ref not in blocks.get(qid, set()):
+                issues.append(
+                    Issue(
+                        qid,
+                        f"affects {ref} but {ref} neither is blocked by it nor states why it is independent",
+                        "readiness",
+                    )
+                )
+    # Propagation through confirmed dependency edges only (never through hierarchy alone).
+    for rel in relations.values():
+        src, tgt = rel.get("source"), rel.get("target")
+        if rel.get("status") != "confirmed" or rel.get("type") != "predecessor":
+            continue
+        linked = src in items and isinstance(tgt, str) and tgt in items
+        if linked and status(tgt) == "ready" and status(src) in ("blocked", "deferred"):
+            issues.append(
+                Issue(
+                    tgt,
+                    f"declared ready but waits for {status(src)} predecessor {src} ({rel['id']})",
+                    "readiness",
+                )
+            )
     return issues
 
 

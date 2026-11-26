@@ -125,11 +125,36 @@
             "semantic_digest": {"$ref": "urn:pbd:schema:v1:defs#/$defs/digest"},
             "metadata_digest": {"$ref": "urn:pbd:schema:v1:defs#/$defs/digest"}
           }
-        }
+        },
+        "readiness": {"$ref": "#/$defs/readiness"}
       },
       "allOf": [
         {"if": {"properties": {"claim_refs": {"maxItems": 0}, "origin": {"not": {"const": "imported"}}}}, "then": {"required": ["technical_rationale"]}}
       ]
+    },
+    "readiness": {
+      "description": "Agent-judged implementation readiness (schema 1.2.0). Separate from source support, review verdict and tracker state: a confirmed requirement is not necessarily ready to build. Absent = unassessed (artifacts before 1.2.0).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "rationale"],
+      "properties": {
+        "status": {"enum": ["ready", "partial", "blocked", "deferred", "unassessed"]},
+        "rationale": {"$ref": "urn:pbd:schema:v1:defs#/$defs/nonEmpty"},
+        "blocked_by": {"type": "array", "items": {"$ref": "#/$defs/readinessLink"}},
+        "independent_of": {"type": "array", "items": {"$ref": "#/$defs/readinessLink"}, "description": "Blocking questions that touch this work but do not prevent it, each with why (e.g. a bounded spike or a mock contract)."}
+      },
+      "allOf": [
+        {"if": {"properties": {"status": {"const": "blocked"}}}, "then": {"required": ["blocked_by"], "properties": {"blocked_by": {"minItems": 1}}}}
+      ]
+    },
+    "readinessLink": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ref", "rationale"],
+      "properties": {
+        "ref": {"$ref": "urn:pbd:schema:v1:defs#/$defs/pbdId"},
+        "rationale": {"$ref": "urn:pbd:schema:v1:defs#/$defs/nonEmpty"}
+      }
     },
     "criterion": {
       "type": "object",

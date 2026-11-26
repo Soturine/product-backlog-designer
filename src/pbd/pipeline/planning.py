@@ -175,11 +175,16 @@ def _allocate(
     effort: dict[str, float | int | None],
     per_sprint: float,
     sprints: int | None,
+    not_ready: dict[str, str] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
     sprint_of: dict[str, int] = {}
     load: dict[int, float] = defaultdict(float)
     unplanned: list[dict[str, str]] = []
     for iid in order:
+        if iid in (not_ready or {}):
+            # QL-019: blocked or deferred work is never placed in a sprint, even as a proposal
+            unplanned.append({"item": iid, "reason": (not_ready or {})[iid]})
+            continue
         size = effort.get(iid)
         if size is None:
             unplanned.append({"item": iid, "reason": "estimate unknown"})
@@ -266,6 +271,7 @@ def plan(backlog: dict[str, Any], inp: dict[str, Any] | None = None) -> dict[str
         order.append(nxt)
         placed.add(nxt)
         pending.remove(nxt)
+    not_ready = _not_ready(items, backlog)
     teams = inp.get("teams") or {}
     cross = [
         {"item": i, "team": teams[i], "waits_for": d, "other_team": teams[d]}
@@ -296,6 +302,7 @@ def plan(backlog: dict[str, Any], inp: dict[str, Any] | None = None) -> dict[str
                 "provenance": provenance[i],
                 "score": scores.get(i),
                 "waits_for": sorted(deps[i]),
+                "readiness": (items[i].get("readiness") or {}).get("status", "unassessed"),
             }
             for i in order
         ],
@@ -307,6 +314,7 @@ def plan(backlog: dict[str, Any], inp: dict[str, Any] | None = None) -> dict[str
             "cross_team_dependencies": cross,
             "unknown_estimates": [i for i in order if effort.get(i) is None],
             "zero_estimates": [i for i in order if effort.get(i) == 0],
+            "not_ready": [{"item": i, "reason": r} for i, r in sorted(not_ready.items())],
         },
         "sprints": None,
         "unplanned": [],
@@ -319,7 +327,7 @@ def plan(backlog: dict[str, Any], inp: dict[str, Any] | None = None) -> dict[str
         )
     per = cap.get("per_sprint")
     if per:
-        sprints, unplanned = _allocate(order, deps, effort, float(per), cap.get("sprints"))
+        sprints, unplanned = _allocate(order, deps, effort, float(per), cap.get("sprints"), not_ready)
         result["sprints"] = sprints
         result["unplanned"] = unplanned
         cal = inp.get("calendar") or {}
@@ -336,7 +344,7 @@ def plan(backlog: dict[str, Any], inp: dict[str, Any] | None = None) -> dict[str
             if not isinstance(sc.get("per_sprint"), int | float) or sc["per_sprint"] <= 0:
                 continue
             s_sprints, s_unplanned = _allocate(
-                order, deps, effort, float(sc["per_sprint"]), sc.get("sprints")
+                order, deps, effort, float(sc["per_sprint"]), sc.get("sprints"), not_ready
             )
             result["scenarios"].append(
                 {
@@ -353,6 +361,18 @@ def plan(backlog: dict[str, Any], inp: dict[str, Any] | None = None) -> dict[str
             "give capacity per sprint to allocate"
         )
     return result
+
+
+def _not_ready(items: dict[str, dict[str, Any]], backlog: dict[str, Any]) -> dict[str, str]:
+    """Work the backlog itself declares blocked or deferred, with the typed blockers it cites."""
+    keys = backlog.get("keys") or {}
+    out = {}
+    for iid, item in items.items():
+        rd = item.get("readiness") or {}
+        if rd.get("status") in ("blocked", "deferred"):
+            refs = [keys.get(b["ref"], b["ref"]) for b in rd.get("blocked_by", [])]
+            out[iid] = f"{rd['status']}" + (f" by {refs}" if refs else "") + f": {rd.get('rationale', '')}"
+    return out
 
 
 def is_stale(plan_doc: dict[str, Any], backlog: dict[str, Any]) -> bool:

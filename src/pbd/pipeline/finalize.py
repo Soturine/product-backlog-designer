@@ -144,7 +144,7 @@ def _checks(
     deps = [
         str(i)
         for i in issues
-        if i.code in ("cycle", "self_loop", "duplicate_relation") and i.path != "$.items"
+        if i.code in ("cycle", "self_loop", "duplicate_relation", "readiness") and i.path != "$.items"
     ]
     change = [str(i) for i in issues if i.code in ("stale_scope", "supersession", "asymmetric_supersession")]
     crit_parents = {c["parent"] for c in backlog["criteria"]}

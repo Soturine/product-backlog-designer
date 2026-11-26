@@ -241,6 +241,7 @@ def design_payload() -> dict[str, Any]:
                         "rationale": "Proposta; estimativa pertence ao time.",
                     }
                 },
+                "readiness": {"status": "ready", "rationale": "Regras de reserva confirmadas pela fonte."},
             },
             {
                 "key": "US2",
@@ -254,6 +255,7 @@ def design_payload() -> dict[str, Any]:
                     "want": "ver minhas reservas",
                     "benefit": "acompanhar a temporada",
                 },
+                "readiness": {"status": "ready", "rationale": "Consulta depende só de reservas registradas."},
             },
             {
                 "key": "T1",
@@ -266,6 +268,7 @@ def design_payload() -> dict[str, Any]:
                     "summary": "Validar se o canteiro está livre.",
                     "verification": "Teste com canteiro ocupado.",
                 },
+                "readiness": {"status": "ready", "rationale": "Regra de ocupação confirmada."},
             },
         ],
         "criteria": [

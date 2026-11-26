@@ -53,6 +53,19 @@
     themeSel.addEventListener("change", function () { setTheme(themeSel.value); });
   }
 
+  /* ---------------------------------------------------------------- appearance (presentation only) */
+  var apSel = $("#appearance-sel");
+  function setAppearance(v) {
+    if (["generic", "azure", "jira"].indexOf(v) < 0) return;
+    root.setAttribute("data-appearance", v);
+    $$("use[data-ti]").forEach(function (u) { u.setAttribute("href", "#t-" + v + "-" + u.getAttribute("data-ti")); });
+    store("pbd-appearance", v);
+  }
+  if (apSel) {
+    var savedAp = store("pbd-appearance"); if (savedAp && savedAp !== apSel.value) { apSel.value = savedAp; setAppearance(savedAp); }
+    apSel.addEventListener("change", function () { setAppearance(apSel.value); });
+  }
+
   /* ---------------------------------------------------------------- toast */
   var toastEl = $("#toast"), toastTimer = 0;
   function toast(msg) {
@@ -199,8 +212,41 @@
       var v = b.getAttribute("data-xview");
       $$(".seg [data-xview]").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
       $("#tree-wrap").hidden = v !== "tree"; $("#table-wrap").hidden = v !== "table";
+      ex.classList.toggle("wide", v === "table"); store("pbd-xview", v);
     });
   });
+  /* table: sort by column (stable, from data-v), reset to backlog order, column visibility */
+  var itable = $("#itable");
+  function sortBy(col, dir, numeric) {
+    var tb = $("tbody", itable), list = $$("tr", tb);
+    list.sort(function (a, b) {
+      if (!col) return Number(a.getAttribute("data-pos")) - Number(b.getAttribute("data-pos"));
+      var ca = $("td[data-col='" + col + "']", a), cb = $("td[data-col='" + col + "']", b);
+      var va = ca ? ca.getAttribute("data-v") : "", vb = cb ? cb.getAttribute("data-v") : "";
+      var empty = (va === "") - (vb === ""); if (empty) return empty; /* unknown always last */
+      var r = numeric ? Number(va) - Number(vb) : va.localeCompare(vb, locale, { numeric: true, sensitivity: "base" });
+      if (r === 0) r = Number(a.getAttribute("data-pos")) - Number(b.getAttribute("data-pos"));
+      return dir === "descending" ? -r : r;
+    });
+    list.forEach(function (tr) { tb.appendChild(tr); });
+    $$("th[data-col]", itable).forEach(function (th) { th.setAttribute("aria-sort", th.getAttribute("data-col") === col ? dir : "none"); });
+  }
+  if (itable) {
+    $$("button.sort", itable).forEach(function (b) {
+      b.addEventListener("click", function () {
+        var th = b.closest("th"), cur = th.getAttribute("aria-sort");
+        sortBy(b.getAttribute("data-sort"), cur === "ascending" ? "descending" : "ascending", b.hasAttribute("data-num"));
+      });
+    });
+    var reset = $("#sort-reset"); if (reset) reset.addEventListener("click", function () { sortBy(null, "none", false); });
+    $$("[data-colvis]").forEach(function (cb) {
+      cb.addEventListener("change", function () {
+        var col = cb.getAttribute("data-colvis");
+        $$("[data-col='" + col + "']", itable).forEach(function (c) { c.classList.toggle("hide-col", !cb.checked); });
+      });
+    });
+  }
+  var savedView = store("pbd-xview"); if (savedView === "table") { var tb = $(".seg [data-xview='table']"); if (tb) tb.click(); }
   function selectItem(id, push) {
     if (!detail || !id) return;
     $$("article.item", detail).forEach(function (a) { a.classList.toggle("is-active", a.getAttribute("data-id") === id); });

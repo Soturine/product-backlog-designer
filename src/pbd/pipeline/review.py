@@ -12,6 +12,7 @@ from typing import Any
 
 from pbd import vocab
 from pbd.core.canonical import digest
+from pbd.pipeline.design import _VISIBLE_ID, BUILDABLE
 from pbd.pipeline.reading import normalize_for_match
 from pbd.pipeline.run import Run, RunError, require_stage
 
@@ -122,7 +123,7 @@ def _check_inventory(
     return errors
 
 
-def _check_entry(kind: str, e: dict[str, Any], item_type: str | None) -> list[str]:
+def _check_entry(kind: str, e: dict[str, Any], item_type: str | None, declared: bool = False) -> list[str]:
     key = e.get("key")
     errors = []
     if e.get("verdict") not in VERDICTS:
@@ -133,6 +134,15 @@ def _check_entry(kind: str, e: dict[str, Any], item_type: str | None) -> list[st
         errors.append(f"{kind} {key}: a concern or fail needs notes")
     if e.get("task_sufficiency") is not None and e.get("task_sufficiency") not in vocab.TASK_SUFFICIENCY:
         errors.append(f"{kind} {key}: task_sufficiency must be sufficient, insufficient or not_applicable")
+    if kind == "items" and item_type in BUILDABLE and declared:
+        check = e.get("readiness_check")
+        if check not in vocab.READINESS_CHECK:
+            errors.append(
+                f"{kind} {key}: readiness_check must be agree or dispute (is the declared readiness "
+                "right given the open questions and dependencies you read in the sources?)"
+            )
+        elif check == "dispute" and not str(e.get("readiness_notes", "")).strip():
+            errors.append(f"{kind} {key}: a readiness dispute needs readiness_notes")
     if kind == "items" and item_type == "story":
         invest = e.get("invest") or {}
         for dim in INVEST:
@@ -146,6 +156,7 @@ def _check_entry(kind: str, e: dict[str, Any], item_type: str | None) -> list[st
 def _check_entries(review: dict[str, Any], design: dict[str, Any]) -> list[str]:
     errors: list[str] = []
     types = {i["key"]: i["type"] for i in design.get("items", [])}
+    declared = {i["key"] for i in design.get("items", []) if i.get("readiness")}
     for kind, expected in (
         ("items", [i["key"] for i in design.get("items", [])]),
         ("criteria", [c["key"] for c in design.get("criteria", [])]),
@@ -161,7 +172,7 @@ def _check_entries(review: dict[str, Any], design: dict[str, Any]) -> list[str]:
                 f"(missing {missing}, unknown {extra}, duplicated {dupes})"
             )
         for e in entries:
-            errors += _check_entry(kind, e, types.get(e.get("key")))
+            errors += _check_entry(kind, e, types.get(e.get("key")), e.get("key") in declared)
     return errors
 
 
@@ -189,6 +200,32 @@ def _check_findings(review: dict[str, Any], known: set[str]) -> list[str]:
     return errors
 
 
+def _check_prose(review: dict[str, Any]) -> list[str]:
+    """Reviewer prose may cite design keys (resolved to links in the report) but never per-story visible
+    criterion IDs such as CA-02, which restart in every story and cannot be resolved (QL-004 residual,
+    c08 final run). Verbatim source quotes are not checked."""
+    texts: list[tuple[str, str]] = []
+    for kind in ("items", "criteria"):
+        for e in review.get(kind) or []:
+            for name in ("notes", "readiness_notes"):
+                if e.get(name):
+                    texts.append((f"{kind} {e.get('key')}.{name}", str(e[name])))
+    for i, f in enumerate(review.get("findings") or []):
+        for name in ("expected", "actual", "why", "impact", "recommendation", "decision_needed"):
+            if f.get(name):
+                texts.append((f"findings[{i}].{name}", str(f[name])))
+    for i, ob in enumerate(review.get("independent_obligations") or []):
+        if ob.get("rationale"):
+            texts.append((f"independent_obligations[{i}].rationale", str(ob["rationale"])))
+    return [
+        f"{where}: cites visible criterion ID {m.group(0)}, which repeats in every story; "
+        "use the criterion's design key or describe the behavior"
+        for where, text in texts
+        for m in [_VISIBLE_ID.search(text)]
+        if m
+    ]
+
+
 def validate_review(run: Run, review: Any) -> list[str]:
     if not isinstance(review, dict):
         return ["review must be an object"]
@@ -202,6 +239,7 @@ def validate_review(run: Run, review: Any) -> list[str]:
         *_check_inventory(run, review, claim_keys, design_keys),
         *_check_entries(review, design),
         *_check_findings(review, design_keys | claim_keys),
+        *(_check_prose(review) if run.request()["mode"] == "generate" else []),
     ]
 
 

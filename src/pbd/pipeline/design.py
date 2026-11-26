@@ -381,6 +381,7 @@ class _Ctx:
     claims_doc: dict[str, Any]
     keys: dict[str, str] = field(default_factory=dict)
     errors: list[str] = field(default_factory=list)
+    readiness_in: dict[str, Any] = field(default_factory=dict)
 
     @property
     def language(self) -> str:
@@ -489,7 +490,60 @@ def _compile_item(ctx: _Ctx, entry: dict[str, Any]) -> dict[str, Any] | None:
     fields = _compile_fields(ctx, key, entry.get("fields") or {})
     if fields:
         item["fields"] = fields
+    if entry.get("readiness") is not None or itype in BUILDABLE:
+        ctx.readiness_in[key] = entry.get("readiness")
     return item
+
+
+BUILDABLE = frozenset({"story", "enabler", "spike", "bug", "task"})
+READINESS = frozenset({"ready", "partial", "blocked", "deferred", "unassessed"})
+
+
+def _compile_readiness(ctx: _Ctx, items: list[dict[str, Any]], qkeys: dict[str, str]) -> None:
+    """Agent-declared readiness with typed links (QL-019). The agent judges; the runtime resolves.
+
+    Every buildable item states whether it can be built now. ``blocked_by`` cites the open blocking
+    question (or the item/relation) it waits for; ``independent_of`` names a blocking question that
+    touches the item without preventing it, with why. Contradictions are rejected by the invariants.
+    """
+    refs = {**ctx.keys, **qkeys}
+    by_key = {i["key"]: i for i in items}
+    for key, raw in ctx.readiness_in.items():
+        if key not in by_key:
+            continue
+        if not isinstance(raw, dict):
+            ctx.errors.append(
+                f"{key}: readiness is required for buildable work ({{status, rationale, blocked_by?, "
+                f"independent_of?}}); status one of {sorted(READINESS)}"
+            )
+            continue
+        extra = sorted(set(raw) - {"status", "rationale", "blocked_by", "independent_of"})
+        status = raw.get("status")
+        rationale = str(raw.get("rationale", "")).strip()
+        if extra:
+            ctx.errors.append(f"{key}: readiness has unknown fields {extra}")
+        if status not in READINESS:
+            ctx.errors.append(f"{key}: readiness.status must be one of {sorted(READINESS)}")
+            continue
+        if not rationale:
+            ctx.errors.append(f"{key}: readiness.rationale is required (why it can or cannot be built now)")
+        out: dict[str, Any] = {"status": status, "rationale": rationale or "-"}
+        for name in ("blocked_by", "independent_of"):
+            links = []
+            for n, link in enumerate(raw.get(name) or []):
+                ref = link.get("ref") if isinstance(link, dict) else None
+                why = str(link.get("rationale", "")).strip() if isinstance(link, dict) else ""
+                if ref not in refs:
+                    ctx.errors.append(f"{key}: readiness.{name}[{n}] must cite a question or item key")
+                    continue
+                if not why:
+                    ctx.errors.append(f"{key}: readiness.{name}[{n}] needs a rationale")
+                links.append({"ref": refs[ref], "rationale": why or "-"})
+            if links:
+                out[name] = links
+        if status == "blocked" and not out.get("blocked_by"):
+            ctx.errors.append(f"{key}: blocked work must cite what blocks it in readiness.blocked_by")
+        by_key[key]["readiness"] = out
 
 
 def _compile_criteria(ctx: _Ctx, crits_in: list[Any], item_ids: set[str]) -> list[dict[str, Any]]:
@@ -652,6 +706,7 @@ def compile_design(run: Run, payload: Any) -> tuple[list[str], dict[str, Any]]:
     relations = _compile_relations(ctx, payload.get("relations") or [])
     all_keys = {**ctx.keys, **{k: v["id"] for k, v in ctx.claim_by_key.items()}, **claims_doc.get("keys", {})}
     questions = _compile_questions(ctx, payload.get("questions") or [], all_keys)
+    _compile_readiness(ctx, items, {q["key"]: q["id"] for q in questions})
     _apply_dispositions(ctx, payload.get("dispositions") or [])
     texts = [
         (i["key"], " ".join(v if isinstance(v, str) else " ".join(v) for v in i["content"].values()))

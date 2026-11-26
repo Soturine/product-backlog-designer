@@ -21,6 +21,7 @@ import base64
 import hashlib
 import html
 import json
+import re
 from collections import Counter
 from functools import cache
 from importlib import resources
@@ -28,6 +29,8 @@ from typing import Any
 
 from pbd.render.exports import criteria_by_parent, tree_order
 from pbd.render.i18n import LOCALES, Translator, catalog, resolve_locale
+from pbd.render.icons import APPEARANCES, appearance_for_profile, type_icon
+from pbd.render.icons import sprite as type_sprite
 from pbd.render.richtext import criteria_html, criterion_sentence, inline, labels, strip_html
 from pbd.render.sanitize import sanitize_html
 
@@ -72,7 +75,24 @@ TONES = {
     },
     "rating": {"supported": "pass", "concern": "warn", "unknown": "neutral", "not_applicable": "neutral"},
     "task_suff": {"sufficient": "pass", "insufficient": "fail", "not_applicable": "neutral"},
+    "readiness": {
+        "ready": "pass",
+        "partial": "warn",
+        "blocked": "fail",
+        "deferred": "neutral",
+        "unassessed": "neutral",
+    },
+    "readiness_check": {"agree": "pass", "dispute": "fail"},
 }
+READINESS_ICON = {
+    "ready": "check",
+    "partial": "alert",
+    "blocked": "lock",
+    "deferred": "clock",
+    "unassessed": "dot",
+}
+READINESS_ORDER = ("ready", "partial", "blocked", "deferred", "unassessed")
+BUILDABLE = ("story", "enabler", "spike", "bug", "task")
 ICON_FOR_TONE = {
     "pass": "check",
     "fail": "x",
@@ -139,6 +159,31 @@ ICONS = {
 }
 
 
+_KEY_TOKEN = re.compile(r"(?<![\w.-])[A-Za-z][A-Za-z0-9_-]*(?:\.[A-Za-z0-9_-]+)*(?![\w-])")
+
+
+def _bind_links(r: R, backlog: dict[str, Any]) -> None:
+    """Design key -> anchor for prose links; criteria carry their story context (CA-01 repeats)."""
+    items = {i["id"]: i for i in backlog["items"]}
+    for i in backlog["items"]:
+        k = r.key(i["id"])
+        if k != i["id"]:
+            r.links[k] = (f"item-{i['id']}", i["title"])
+    for c in backlog["criteria"]:
+        k = r.key(c["id"])
+        parent = items.get(c["parent"], {})
+        if k != c["id"]:
+            r.links[k] = (f"crit-{c['id']}", f"{c.get('visible_id', '')} · {parent.get('title', '')}")
+    for q in backlog["questions"]:
+        k = r.key(q["id"])
+        if k != q["id"]:
+            r.links[k] = (f"q-{q['id']}", q["text"][:120])
+    for cl in backlog["claims"]:
+        k = r.key(cl["id"])
+        if k != cl["id"]:
+            r.links[k] = (f"claim-{k}", cl["text"][:120])
+
+
 @cache
 def _asset(name: str) -> str:
     return resources.files("pbd.render").joinpath("assets", name).read_text(encoding="utf-8")
@@ -192,11 +237,15 @@ def _sprite() -> str:
 class R:
     """Render context: translator, key maps and markup helpers bound to one report."""
 
-    def __init__(self, ui_locale: str, keys: dict[str, str] | None = None) -> None:
+    def __init__(
+        self, ui_locale: str, keys: dict[str, str] | None = None, appearance: str = "generic"
+    ) -> None:
         self.t = Translator(ui_locale)
         self.locale = ui_locale
         self.keys = keys or {}
+        self.appearance = appearance if appearance in APPEARANCES else "generic"
         self._tip = 0
+        self.links: dict[str, tuple[str, str]] = {}  # design key -> (anchor, accessible title)
 
     # ---- text with live i18n hooks
     def _resolve(self, params: dict[str, Any]) -> dict[str, Any]:
@@ -227,12 +276,39 @@ class R:
         name = (
             ico
             or (GATE_ICON if group == "gate_status" else {}).get(str(code))
+            or (READINESS_ICON if group == "readiness" else {}).get(str(code))
             or ICON_FOR_TONE.get(tone, "dot")
         )
         return f'<span class="pill tone-{tone}">{icon(name)}{self.E(group, code)}</span>'
 
     def type_tag(self, itype: str) -> str:
-        return f'<span class="type ty-{_e(itype)}">{self.E("type", itype)}</span>'
+        return f'<span class="type has-ti ty-{_e(itype)}">{type_icon(itype, self.appearance)}{self.E("type", itype)}</span>'
+
+    def type_mark(self, itype: str) -> str:
+        """Icon with the type as an accessible (visually hidden) name, for dense rows."""
+        return f'{type_icon(itype, self.appearance)}<span class="sr-only">{self.E("type", itype)}</span>'
+
+    def prose(self, text: Any) -> str:
+        """Escape reviewer/agent prose and turn exact design-key tokens into navigable links.
+
+        Only keys recorded in this backlog's key map are linked (deterministic lookup, no guessing);
+        everything else stays plain escaped text.
+        """
+        raw = "" if text is None else str(text)
+        if not self.links or not raw:
+            return _e(raw)
+        out, pos = [], 0
+        for m in _KEY_TOKEN.finditer(raw):
+            hit = self.links.get(m.group(0))
+            if hit is None:
+                continue
+            out.append(_e(raw[pos : m.start()]))
+            out.append(
+                f'<a href="#{_e(hit[0])}" class="mono keyref" title="{_e(hit[1])}">{_e(m.group(0))}</a>'
+            )
+            pos = m.end()
+        out.append(_e(raw[pos:]))
+        return "".join(out)
 
     def tip(self, key: str, **params: Any) -> str:
         self._tip += 1
@@ -399,6 +475,24 @@ def _overview(r: R, ctx: dict[str, Any], mode: str) -> str:
             f"{r.T(f'ov.ready.state.{state_code}')}</span></h4>{r.T(f'ov.ready.{key}.d', tag='p')}<p>{links}</p></div>"
         )
     readiness = f'<section class="block"><h3>{r.T("ov.readiness")}</h3><div class="ready">{"".join(ready_rows)}</div></section>'
+    # development readiness of buildable work (declared by the designer, checked by the reviewer)
+    buildable = [i for i in backlog["items"] if i["type"] in BUILDABLE]
+    if any(i.get("readiness") for i in buildable):
+        rc = Counter(_ready_code(i) for i in buildable)
+        cells = "".join(
+            f'<a href="#backlog" data-goto="backlog|f-readiness|{code}">{r.pill("readiness", code)}'
+            f"<strong>{_frac(rc[code], len(buildable))}</strong></a>"
+            for code in READINESS_ORDER
+            if rc[code]
+        )
+        readiness += (
+            f'<section class="block"><h3>{r.T("ov.dev_ready")}</h3><div class="panel pad">'
+            f'{r.T("ov.dev_ready.d", tag="p", cls="d", n=len(buildable))}<div class="rdy-grid">{cells}</div></div></section>'
+        )
+    blocked_by_q: dict[str, list[dict[str, Any]]] = {}
+    for i in backlog["items"]:
+        for link in (i.get("readiness") or {}).get("blocked_by", []):
+            blocked_by_q.setdefault(link["ref"], []).append(i)
     # metrics
     cov = metrics["coverage"]
     g02 = gates.get("G02", {}).get("denominator") or {}
@@ -470,8 +564,18 @@ def _overview(r: R, ctx: dict[str, Any], mode: str) -> str:
     decisions = []
     for q in backlog["questions"]:
         if q["status"] == "open" and q["blocking"]:
+            held = blocked_by_q.get(q["id"], [])
+            held_html = (
+                f'<br><span class="d">{r.T("ov.blocks", n=len(held))}</span> '
+                + ", ".join(
+                    f'<a href="#item-{_e(i["id"])}">{r.type_mark(i["type"])}<span lang="{_e(backlog["language"])}">{_e(i["title"])}</span></a>'
+                    for i in held
+                )
+                if held
+                else ""
+            )
             decisions.append(
-                f'<li>{r.pill("severity", "high", "fail", "flag")}<a href="#q-{_e(q["id"])}" lang="{_e(backlog["language"])}">{_e(q["text"])}</a></li>'
+                f'<li>{r.pill("severity", "high", "fail", "flag")}<span><a href="#q-{_e(q["id"])}" lang="{_e(backlog["language"])}">{_e(q["text"])}</a>{held_html}</span></li>'
             )
     for f in sorted(backlog["findings"], key=lambda f: SEV_ORDER.index(f["severity"])):
         if f["severity"] in ("critical", "high"):
@@ -538,6 +642,173 @@ def _item_text(item: dict[str, Any], key: str, crits: list[dict[str, Any]]) -> s
     return " ".join(p for p in parts if p)
 
 
+def _ready_code(item: dict[str, Any]) -> str:
+    """Declared readiness; containers and pre-1.2.0 items without one are unassessed (never 'ready')."""
+    return str((item.get("readiness") or {}).get("status", "unassessed"))
+
+
+def _ready_badge(r: R, item: dict[str, Any]) -> str:
+    code = _ready_code(item)
+    if code not in ("blocked", "partial", "deferred"):
+        return ""
+    tone = TONES["readiness"][code]
+    label = r.t.enum("readiness", code)
+    return (
+        f'<span class="rdb tone-{tone}" title="{_e(label)}">{icon(READINESS_ICON[code], "sm")}'
+        f'<span class="sr-only">{_e(label)}</span></span>'
+    )
+
+
+def _readiness_section(
+    r: R,
+    item: dict[str, Any],
+    rev: dict[str, Any],
+    lang: str,
+    items: dict[str, dict[str, Any]],
+    questions: dict[str, dict[str, Any]],
+) -> str:
+    rd = item.get("readiness") or {}
+
+    def target(ref: str) -> str:
+        if ref in questions:
+            q = questions[ref]
+            state = r.T("q.blocking") if q.get("blocking") else r.T("q.nonblocking")
+            return (
+                f'<a href="#q-{_e(ref)}">{icon("flag", "sm")}<span lang="{_e(lang)}">{_e(q["text"])}</span></a>'
+                f' <span class="d">({state})</span>'
+            )
+        if ref in items:
+            return (
+                f'<a href="#item-{_e(ref)}" data-select="{_e(ref)}">{r.type_mark(items[ref]["type"])}'
+                f'<span lang="{_e(lang)}">{_e(items[ref]["title"])}</span></a>'
+            )
+        return f"<code>{_e(r.key(ref))}</code>"
+
+    parts = []
+    if rd:
+        parts.append(
+            f'<p>{r.pill("readiness", rd["status"])} <span lang="{_e(lang)}">{r.prose(rd.get("rationale", ""))}</span></p>'
+        )
+    for name, label in (("blocked_by", "rd.blocked_by"), ("independent_of", "rd.independent_of")):
+        links = rd.get(name) or []
+        if links:
+            lis = "".join(
+                f'<li>{target(x["ref"])}<br><span class="d" lang="{_e(lang)}">{r.prose(x.get("rationale", ""))}</span></li>'
+                for x in links
+            )
+            parts.append(f'<h5>{r.T(label)}</h5><ul class="plain readiness-links">{lis}</ul>')
+    if rev.get("readiness_check"):
+        notes = (
+            f' <span lang="{_e(lang)}">{r.prose(rev.get("readiness_notes", ""))}</span>'
+            if rev.get("readiness_notes")
+            else ""
+        )
+        parts.append(f"<p>{r.T('rd.review')}: {r.pill('readiness_check', rev['readiness_check'])}{notes}</p>")
+    return f'<div class="sec" id="rd-{_e(item["id"])}"><h4>{r.T("rd.title")}</h4>{"".join(parts)}</div>'
+
+
+def _field_value(item: dict[str, Any], name: str) -> tuple[str, str]:
+    """(display, sort key) for a field; unknown stays distinct from zero, proposals are marked *."""
+    fv = (item.get("fields") or {}).get(name)
+    if not isinstance(fv, dict):
+        return "", ""
+    if "value" in fv:
+        unit = f" {fv['unit']}" if fv.get("unit") else ""
+        mark = "" if fv.get("state") == "confirmed" else "*"
+        return f"{fv['value']}{unit}{mark}", str(fv["value"])
+    return "?", ""
+
+
+TABLE_FIELDS = ("story_points", "original_estimate", "priority", "business_value")
+
+
+def _item_table(
+    r: R,
+    backlog: dict[str, Any],
+    order: list[dict[str, Any]],
+    rev_items: dict[str, dict[str, Any]],
+    by_parent: dict[str, list[dict[str, Any]]],
+    row_attrs: Any,
+    rels_by: dict[str, list[dict[str, Any]]],
+) -> str:
+    """Dense work-item table. Only columns with data are shown; the default row order is the backlog
+    tree order, never a tracker rank (PBD does not infer one)."""
+    lang = backlog["language"]
+    items = backlog["items"]
+    cols: list[tuple[str, str, bool]] = [  # (id, header html, numeric)
+        ("key", r.T("col.key"), False),
+        ("type", r.T("col.type"), False),
+        ("title", r.T("col.title"), False),
+        ("parent", r.T("col.parent"), False),
+    ]
+    if any(i.get("readiness") for i in items):
+        cols.append(("readiness", r.T("col.readiness"), False))
+    cols.append(("verdict", r.T("col.verdict"), False))
+    for f in TABLE_FIELDS:
+        if any(f in (i.get("fields") or {}) for i in items):
+            cols.append((f, r.E("field", f), True))
+    if backlog["relations"]:
+        cols.append(("deps", r.T("col.deps"), True))
+    cols.append(("criteria", r.T("col.criteria"), True))
+
+    def cell(i: dict[str, Any], col: str) -> tuple[str, str]:
+        k = r.key(i["id"])
+        if col == "key":
+            return f'<a href="#item-{_e(i["id"])}" data-select="{_e(i["id"])}" class="mono">{_e(k)}</a>', k
+        if col == "type":
+            return r.type_tag(i["type"]), i["type"]
+        if col == "title":
+            return f'<span lang="{_e(lang)}">{_e(i["title"])}</span>', i["title"]
+        if col == "parent":
+            pk = r.key(i["parent"]) if i["parent"] else ""
+            return (f'<span class="mono">{_e(pk)}</span>' if pk else "—"), pk
+        if col == "readiness":
+            if not i.get("readiness"):
+                return "—", ""
+            code = _ready_code(i)
+            return r.pill("readiness", code), str(READINESS_ORDER.index(code))
+        if col == "verdict":
+            v = rev_items.get(k, {}).get("verdict")
+            return (r.pill("verdict", v) if v else "—"), v or ""
+        if col in TABLE_FIELDS:
+            shown, key = _field_value(i, col)
+            return (_e(shown) if shown else "—"), key
+        if col == "deps":
+            n = sum(1 for x in rels_by.get(i["id"], []) if x["type"] in ("predecessor", "external_blocker"))
+            return (str(n) if n else "—"), str(n)
+        n = len(by_parent.get(i["id"], []))
+        return str(n), str(n)
+
+    head = "".join(
+        f'<th data-col="{c}" aria-sort="none"><button type="button" class="sort" data-sort="{c}"'
+        f"{' data-num' if num else ''}>{h}</button></th>"
+        for c, h, num in cols
+    )
+    body_rows = []
+    for pos, i in enumerate(order):
+        cells = []
+        for c, _, num in cols:
+            inner, key = cell(i, c)
+            cells.append(f'<td data-col="{c}" data-v="{_e(key)}"{" class=num" if num else ""}>{inner}</td>')
+        body_rows.append(f'<tr {row_attrs(i)} data-pos="{pos}">{"".join(cells)}</tr>')
+    picks = "".join(
+        f'<label><input type="checkbox" data-colvis="{c}" checked> {h}</label>'
+        for c, h, _ in cols
+        if c not in ("key", "title")
+    )
+    tools = (
+        f'<div class="resultbar"><details class="colpick"><summary class="ctl">{r.T("ex.columns")}</summary>'
+        f'<div class="menu">{picks}</div></details>'
+        f'<button type="button" class="ctl" id="sort-reset">{r.T("ex.sort_reset")}</button></div>'
+        f'<p class="tablenote">{r.T("ex.order_note")}</p>'
+    )
+    return (
+        f'<div id="table-wrap" hidden>{tools}<div class="tablewrap" tabindex="0" role="region" '
+        f'{r.attr(("aria-label", "ex.view.table"))}><table class="grid" id="itable"><thead><tr>{head}</tr></thead>'
+        f"<tbody>{''.join(body_rows)}</tbody></table></div></div>"
+    )
+
+
 def _explorer(r: R, ctx: dict[str, Any]) -> str:
     backlog, review = ctx["backlog"], ctx["review"]
     lang = backlog["language"]
@@ -550,6 +821,7 @@ def _explorer(r: R, ctx: dict[str, Any]) -> str:
     for item in order:
         children.setdefault(item["parent"], []).append(item)
     claims = {c["id"]: c for c in backlog["claims"]}
+    questions = {q["id"]: q for q in backlog["questions"]}
     findings_by: dict[str, list[dict[str, Any]]] = {}
     for f in backlog["findings"]:
         for a in f["affects"]:
@@ -573,6 +845,7 @@ def _explorer(r: R, ctx: dict[str, Any]) -> str:
         crits = by_parent.get(item["id"], [])
         return (
             f'data-id="{_e(item["id"])}" data-type="{_e(item["type"])}" data-verdict="{_e(rev.get("verdict", ""))}" '
+            f'data-readiness="{_e(_ready_code(item))}" '
             f'data-support="{_e(rev.get("source_support", ""))}" data-origin="{_e(item["origin"])}" '
             f'data-text="{_e(_item_text(item, k, crits))}"'
         )
@@ -597,26 +870,15 @@ def _explorer(r: R, ctx: dict[str, Any]) -> str:
         return (
             f'<li {row_attrs(item)} data-depth="{depth[item["id"]]}"><div class="row">{tw}'
             f'<a class="lbl" href="#item-{_e(item["id"])}" data-select="{_e(item["id"])}">'
-            f'<span class="type ty-{_e(item["type"])}" aria-hidden="true"></span><span class="k">{_e(k)}</span>'
+            f'{r.type_mark(item["type"])}<span class="k">{_e(k)}</span>'
             f'<span class="t" lang="{_e(lang)}">{_e(item["title"])}</span></a>'
+            + _ready_badge(r, item)
             + (f'<span class="ac">{n_ac}</span>' if n_ac else "")
             + f"{dot}</div>{sub}</li>"
         )
 
     tree = "".join(tree_li(i) for i in children.get(None, []))
-    trows = "".join(
-        f'<tr {row_attrs(i)}><td><a href="#item-{_e(i["id"])}" data-select="{_e(i["id"])}" class="mono">{_e(r.key(i["id"]))}</a></td>'
-        f'<td>{r.type_tag(i["type"])}</td><td lang="{_e(lang)}">{_e(i["title"])}</td>'
-        f'<td class="mono">{_e(r.key(i["parent"])) if i["parent"] else "—"}</td>'
-        f"<td>{r.pill('verdict', rev_items[r.key(i['id'])]['verdict']) if rev_items.get(r.key(i['id']), {}).get('verdict') else '—'}</td>"
-        f"<td>{len(by_parent.get(i['id'], []))}</td></tr>"
-        for i in order
-    )
-    table = (
-        f'<div class="tablewrap" id="table-wrap" hidden><table class="grid" id="itable"><thead><tr>'
-        f"<th>{r.T('col.key')}</th><th>{r.T('col.type')}</th><th>{r.T('col.title')}</th><th>{r.T('col.parent')}</th>"
-        f"<th>{r.T('col.verdict')}</th><th>{r.T('col.criteria')}</th></tr></thead><tbody>{trows}</tbody></table></div>"
-    )
+    table = _item_table(r, backlog, order, rev_items, by_parent, row_attrs, rels_by)
 
     def opts(group: str, values: list[str]) -> str:
         return "".join(f'<option value="{_e(v)}">{_e(r.t.enum(group, v))}</option>' for v in values)
@@ -625,6 +887,11 @@ def _explorer(r: R, ctx: dict[str, Any]) -> str:
     verdicts = sorted({e["verdict"] for e in review.get("items", [])})
     supports = sorted({e["source_support"] for e in review.get("items", [])})
     origins = sorted({i["origin"] for i in backlog["items"]})
+    readiness_vals = (
+        [c for c in READINESS_ORDER if any(_ready_code(i) == c for i in backlog["items"])]
+        if any(i.get("readiness") for i in backlog["items"])
+        else []
+    )
 
     def fsel(name: str, label_key: str, group: str, values: list[str], sid: str) -> str:
         if not values:
@@ -646,6 +913,7 @@ def _explorer(r: R, ctx: dict[str, Any]) -> str:
         f'<label class="sr-only" for="q">{r.T("ex.search")}</label>'
         f'<input id="q" type="search" autocomplete="off" {r.attr(("placeholder", "ex.search"))}></div>'
         f'<div class="filters">{fsel("type", "ex.filter.type", "type", types, "f-type")}'
+        f"{fsel('readiness', 'ex.filter.readiness', 'readiness', readiness_vals, 'f-readiness')}"
         f"{fsel('verdict', 'ex.filter.verdict', 'verdict', verdicts, 'f-verdict')}"
         f"{fsel('support', 'ex.filter.support', 'support', supports, 'f-support')}"
         f"{fsel('origin', 'ex.filter.origin', 'origin', origins, 'f-origin') if len(origins) > 1 else ''}"
@@ -696,6 +964,8 @@ def _explorer(r: R, ctx: dict[str, Any]) -> str:
             for a in reversed(anc)
         )
         meta = [r.type_tag(item["type"])]
+        if item.get("readiness"):
+            meta.append(r.pill("readiness", item["readiness"]["status"]))
         if rev.get("verdict"):
             meta.append(r.pill("verdict", rev["verdict"]))
         if rev.get("source_support"):
@@ -733,7 +1003,11 @@ def _explorer(r: R, ctx: dict[str, Any]) -> str:
                     cmeta.append(r.pill("verdict", cr["verdict"]))
                 if cr.get("source_support"):
                     cmeta.append(r.pill("support", cr["source_support"]))
-                notes = f'<span lang="{_e(lang)}">{_e(cr.get("notes", ""))}</span>' if cr.get("notes") else ""
+                notes = (
+                    f'<span lang="{_e(lang)}">{r.prose(cr.get("notes", ""))}</span>'
+                    if cr.get("notes")
+                    else ""
+                )
                 rationale = (
                     f'<span lang="{_e(lang)}">{_e(c.get("rationale", ""))}</span>'
                     if c.get("rationale") and not c["claim_refs"]
@@ -747,10 +1021,12 @@ def _explorer(r: R, ctx: dict[str, Any]) -> str:
             secs.append(
                 f'<div class="sec"><h4>{r.T("it.acceptance")}</h4><ol class="criteria">{"".join(lis)}</ol></div>'
             )
+        if item.get("readiness") or rev.get("readiness_check"):
+            secs.append(_readiness_section(r, item, rev, lang, items, questions))
         kids = children.get(item["id"], [])
         if kids:
             links = "".join(
-                f'<a href="#item-{_e(c["id"])}" data-select="{_e(c["id"])}"><span class="type ty-{_e(c["type"])}" aria-hidden="true"></span>'
+                f'<a href="#item-{_e(c["id"])}" data-select="{_e(c["id"])}">{r.type_mark(c["type"])}'
                 f'<span lang="{_e(lang)}">{_e(c["title"])}</span></a>'
                 for c in kids
             )
@@ -809,7 +1085,7 @@ def _explorer(r: R, ctx: dict[str, Any]) -> str:
                     f"<dt>{r.T('it.tasks_suff')}</dt><dd>{r.pill('task_suff', rev['task_sufficiency'])}</dd>"
                 )
             if rev.get("notes"):
-                kv.append(f'<dt>{r.T("col.notes")}</dt><dd lang="{_e(lang)}">{_e(rev["notes"])}</dd>')
+                kv.append(f'<dt>{r.T("col.notes")}</dt><dd lang="{_e(lang)}">{r.prose(rev["notes"])}</dd>')
             secs.append(
                 f'<div class="sec"><h4>{r.T("it.review")}</h4>'
                 + (f'<dl class="kv">{"".join(kv)}</dl>' if kv else "")
@@ -948,19 +1224,19 @@ def _finding_card(r: R, f: dict[str, Any], lang: str, affects_html: str, side: s
     gate = f'<a class="tag" href="#gate-{_e(f["gate"])}">{_e(f["gate"])}</a>' if f.get("gate") else ""
     side_tag = f'<span class="tag">{r.T("cmp.side." + side)}</span>' if side else ""
     more = (
-        f'<div><h5>{r.T("fd.why")}</h5><p lang="{_e(lang)}">{_e(f["why"])}</p></div>'
-        f'<div><h5>{r.T("fd.impact")}</h5><p lang="{_e(lang)}">{_e(f["impact"])}</p></div>'
-        f'<div><h5>{r.T("fd.recommendation")}</h5><p lang="{_e(lang)}">{_e(f["recommendation"])}</p></div>'
+        f'<div><h5>{r.T("fd.why")}</h5><p lang="{_e(lang)}">{r.prose(f["why"])}</p></div>'
+        f'<div><h5>{r.T("fd.impact")}</h5><p lang="{_e(lang)}">{r.prose(f["impact"])}</p></div>'
+        f'<div><h5>{r.T("fd.recommendation")}</h5><p lang="{_e(lang)}">{r.prose(f["recommendation"])}</p></div>'
     )
     if f.get("decision_needed"):
-        more += f'<div><h5>{r.T("fd.decision_needed")}</h5><p lang="{_e(lang)}">{_e(f["decision_needed"])}</p></div>'
+        more += f'<div><h5>{r.T("fd.decision_needed")}</h5><p lang="{_e(lang)}">{r.prose(f["decision_needed"])}</p></div>'
     fid = f.get("id") or ""
     return (
         f'<article class="panel finding tone-{tone}" data-row data-sev="{_e(f["severity"])}" id="f-{_e(fid)}">'
         f'<header>{r.pill("severity", f["severity"])}<span class="tag">{r.E("classification", f["classification"])}</span>'
         f'<span class="tag">{r.E("review_status", f.get("review_status", "confirmed"))}</span>{gate}{side_tag}</header>'
-        f'<div class="ea"><div><h5>{r.T("fd.expected")}</h5><p lang="{_e(lang)}">{_e(f["expected"])}</p></div>'
-        f'<div><h5>{r.T("fd.actual")}</h5><p lang="{_e(lang)}">{_e(f["actual"])}</p></div></div>'
+        f'<div class="ea"><div><h5>{r.T("fd.expected")}</h5><p lang="{_e(lang)}">{r.prose(f["expected"])}</p></div>'
+        f'<div><h5>{r.T("fd.actual")}</h5><p lang="{_e(lang)}">{r.prose(f["actual"])}</p></div></div>'
         f'<div class="more">{more}</div><footer><span class="d">{r.T("fd.affects")}:</span> {affects_html}</footer></article>'
     )
 
@@ -1020,8 +1296,110 @@ def _findings(r: R, ctx: dict[str, Any]) -> str:
 
 
 # ------------------------------------------------------------------------------------ quality
+GATE_KIND = {
+    "G01": "mixed",
+    "G02": "mixed",
+    "G03": "deterministic",
+    "G04": "mixed",
+    "G05": "semantic",
+    "G06": "semantic",
+    "G07": "semantic",
+    "G08": "mixed",
+    "G09": "semantic",
+    "G10": "mixed",
+    "G11": "deterministic",
+    "G12": "deterministic",
+    "G13": "semantic",
+    "G14": "semantic",
+    "G15": "mixed",
+    "G16": "deterministic",
+    "G17": "mixed",
+    "G18": "deterministic",
+}
+
+
+def _gate_affected(r: R, gid: str, ctx: dict[str, Any]) -> str:
+    """Work named by recorded evidence for a gate (review verdicts and gate-tagged findings).
+    Nothing is re-judged here: these are the reviewer's and runtime's recorded results."""
+    backlog, review = ctx["backlog"], ctx["review"]
+    by_key = {r.key(i["id"]): i for i in backlog["items"]}
+    crit_by_key = {r.key(c["id"]): c for c in backlog["criteria"]}
+    keys: list[str] = []
+    for e in review.get("items", []):
+        k = e.get("key")
+        if (
+            (gid == "G05" and e.get("verdict") == "fail" and by_key.get(k, {}).get("type") == "story")
+            or (gid == "G07" and e.get("task_sufficiency") == "insufficient")
+            or (gid == "G08" and e.get("readiness_check") == "dispute")
+            or (gid in ("G04", "G09") and e.get("source_support") == "unsupported")
+        ):
+            keys.append(k)
+    for e in review.get("criteria", []):
+        if (gid == "G06" and e.get("verdict") == "fail") or (
+            gid in ("G04", "G09") and e.get("source_support") == "unsupported"
+        ):
+            keys.append(e.get("key"))
+    ids = [
+        by_key[k]["id"] if k in by_key else crit_by_key[k]["id"]
+        for k in keys
+        if k in by_key or k in crit_by_key
+    ]
+    for f in backlog["findings"]:
+        if f.get("gate") == gid:
+            ids += [a for a in f["affects"] if a not in ids]
+    links = []
+    items = {i["id"]: i for i in backlog["items"]}
+    crits = {c["id"]: c for c in backlog["criteria"]}
+    for pid in dict.fromkeys(ids):
+        if pid in items:
+            links.append(
+                f'<a href="#item-{_e(pid)}">{r.type_mark(items[pid]["type"])}<span lang="{_e(backlog["language"])}">{_e(items[pid]["title"])}</span></a>'
+            )
+        elif pid in crits:
+            parent = items.get(crits[pid]["parent"], {})
+            links.append(
+                f'<a href="#crit-{_e(pid)}">{_e(crits[pid].get("visible_id", ""))} · <span lang="{_e(backlog["language"])}">{_e(parent.get("title", ""))}</span></a>'
+            )
+    return ", ".join(links)
+
+
+def _gate_summary(r: R, g: dict[str, Any], ctx: dict[str, Any]) -> str:
+    """Plain-language counts for gates whose denominators are easy to misread (recorded data only)."""
+    den = g.get("denominator") or {}
+    br = den.get("breakdown") or {}
+    if g["id"] == "G02" and den:
+        total = den["total"]
+        handled = total - sum(br.get(k, 0) for k in ("not_covered", "partially_covered", "blocked"))
+        pending = br.get("question_required", 0) + br.get("conflicting", 0)
+        return r.T(
+            "gate.g02.sum",
+            tag="p",
+            cls="gate-sum",
+            covered=br.get("covered", 0),
+            handled=handled,
+            total=total,
+            pending=pending,
+        )
+    if g["id"] == "G08":
+        buildable = [i for i in ctx["backlog"]["items"] if i["type"] in BUILDABLE]
+        if any(i.get("readiness") for i in buildable):
+            rc = Counter(_ready_code(i) for i in buildable)
+            return r.T(
+                "gate.g08.sum",
+                tag="p",
+                cls="gate-sum",
+                ready=rc["ready"],
+                partial=rc["partial"],
+                blocked=rc["blocked"] + rc["deferred"],
+                unassessed=rc["unassessed"],
+                n=len(buildable),
+            )
+    return ""
+
+
 def _quality(r: R, ctx: dict[str, Any]) -> str:
     gate_rows = ctx["gates"]["gates"]
+    lang = ctx["backlog"]["language"]
     statuses = [
         s
         for s in ("FAIL", "BLOCKED", "NOT_RUN", "PASS", "NOT_APPLICABLE")
@@ -1037,26 +1415,68 @@ def _quality(r: R, ctx: dict[str, Any]) -> str:
             f"{r.copy_btn(str(e.get('digest', '')))}</li>"
             for e in g.get("evidence", [])
         )
-        verified = r.T("qa.verified") if g.get("verification") == "verified" else r.T("qa.not_verified")
-        breakdown = ", ".join(f"{k}: {v}" for k, v in (den.get("breakdown") or {}).items())
-        rows.append(
-            f'<details class="gate" id="gate-{_e(g["id"])}" data-row data-status="{_e(g["status"])}"><summary>'
-            f'<span class="gid">{r.pill("gate_status", g["status"])}</span><code>{_e(g["id"])}</code>'
-            f'<span><span class="nm">{r.E("gate", g["id"])}</span><span class="ex">{r.T(_gate_explain_key(r, g))}</span></span>'
-            f'<span class="den">{_e(den_html)}</span>{icon("chev", "sm")}</summary><div>'
-            f'<dl class="kv"><dt>{r.T("col.verification")}</dt><dd>{verified}</dd>'
+        verified = (
+            r.T("qa.verified")
+            if g.get("verification") == "verified"
+            else r.T("qa.only_pass_verified")
+            if g["status"] != "PASS" and g.get("evidence")
+            else r.T("qa.not_verified")
+        )
+        breakdown = ", ".join(
+            f"{r.t.enum('disposition', k.upper()) if r.t.has('enum.disposition.' + k.upper()) else k}: {v}"
+            for k, v in (den.get("breakdown") or {}).items()
+        )
+        gid = g["id"]
+        affected = _gate_affected(r, gid, ctx)
+        nexts = [
+            f'<li lang="{_e(lang)}">{r.prose(f["recommendation"])}</li>'
+            for f in ctx["backlog"]["findings"]
+            if f.get("gate") == gid and f.get("recommendation")
+        ]
+        help_rows = (
+            f"<dt>{r.T('gate.purpose')}</dt><dd>{r.T('gp.' + gid + '.purpose')}</dd>"
+            f"<dt>{r.T('gate.why')}</dt><dd>{r.T('gp.' + gid + '.why')}</dd>"
+            f"<dt>{r.T('gate.kind')}</dt><dd>{r.T('gate.kind.' + GATE_KIND[gid])}</dd>"
+            f"<dt>{r.T('gate.status')}</dt><dd>{r.pill('gate_status', g['status'])} {r.T('gate.meaning.' + g['status'])}</dd>"
+            f"<dt>{r.T('gate.result')}</dt><dd>{_gate_summary(r, g, ctx)}{r.T(_gate_explain_key(r, g))}</dd>"
             + (
-                f'<dt>{r.T("col.denominator")}</dt><dd>{_e(den_html)} <span class="mono">{_e(den.get("provenance", ""))}</span><br><span class="mono">{_e(breakdown)}</span></dd>'
+                f"<dt>{r.T('col.denominator')}</dt><dd>{_e(den_html)} — {r.T('gate.prov.' + den.get('provenance', 'schema_count'))}"
+                + (f"<br><span class='d'>{_e(breakdown)}</span>" if breakdown else "")
+                + "</dd>"
                 if den
                 else ""
             )
-            + f'<dt>{r.T("qa.runtime_msg")}</dt><dd lang="en"><code>{_e(g["reason"])}</code></dd></dl>'
+            + f"<dt>{r.T('col.verification')}</dt><dd>{verified}</dd>"
+            + (f"<dt>{r.T('gate.affected')}</dt><dd>{affected}</dd>" if affected else "")
+            + (
+                f'<dt>{r.T("gate.next")}</dt><dd><ul class="plain">{"".join(nexts)}</ul></dd>'
+                if nexts
+                else ""
+            )
+        )
+        tech = (
+            f'<details class="tech-gate"><summary>{r.T("gate.technical")}</summary>'
+            f'<dl class="kv"><dt>{r.T("qa.runtime_msg")}</dt><dd lang="en"><code>{_e(g["reason"])}</code></dd>'
+            f"<dt>{r.T('gate.validator')}</dt><dd><code>{_e(g.get('validator_version', ''))}</code></dd>"
+            + (
+                f"<dt>{r.T('gate.provenance_code')}</dt><dd><code>{_e(den.get('provenance', ''))}</code></dd>"
+                if den
+                else ""
+            )
+            + "</dl>"
             + (f'<h4>{r.T("qa.evidence")}</h4><ul class="evidence">{ev}</ul>' if ev else "")
-            + "</div></details>"
+            + "</details>"
+        )
+        rows.append(
+            f'<details class="gate" id="gate-{_e(gid)}" data-row data-status="{_e(g["status"])}"><summary>'
+            f'<span class="gid">{r.pill("gate_status", g["status"])}</span><code>{_e(gid)}</code>'
+            f'<span><span class="nm">{r.E("gate", gid)}</span><span class="ex">{r.T("gp." + gid + ".purpose")}</span></span>'
+            f'<span class="den">{_e(den_html)}</span>{icon("chev", "sm")}</summary><div>'
+            f'<dl class="gate-help">{help_rows}</dl>{tech}</div></details>'
         )
     body = (
         f'<div class="panel"><div class="toolbar">{_filter_select(r, "gate-list", "status", "qa.filter", [(s, _e(_opt(r, "gate_status", s))) for s in statuses], "qa-status")}'
-        f'<span class="d"><span id="gate-list-n">{len(gate_rows)}</span>/{len(gate_rows)}</span></div>'
+        f'<span class="d">{r.T("qa.shown")} <span id="gate-list-n">{len(gate_rows)}</span>/{len(gate_rows)}</span></div>'
         f'<div class="gates" id="gate-list">{"".join(rows)}</div></div>'
     )
     lim = ctx.get("limitations", [])
@@ -1069,7 +1489,26 @@ def _quality(r: R, ctx: dict[str, Any]) -> str:
         )
         + "</div></section>"
     )
-    return _view("quality", r, "nav.quality", "qa.d", f'<section class="block">{body}</section>{lim_html}')
+    terms = (
+        "disposition",
+        "denominator",
+        "evidence",
+        "traceability",
+        "source_support",
+        "invest",
+        "readiness",
+        "round_trip",
+        "mock",
+        "independence",
+    )
+    glossary = (
+        f'<section class="block" id="glossary"><h3>{r.T("gl.title")}</h3><div class="panel pad"><dl class="glossary">'
+        + "".join(f"<dt>{r.T('gl.' + t)}</dt><dd>{r.T('gl.' + t + '.d')}</dd>" for t in terms)
+        + "</dl></div></section>"
+    )
+    return _view(
+        "quality", r, "nav.quality", "qa.d", f'<section class="block">{body}</section>{lim_html}{glossary}'
+    )
 
 
 def _sources(r: R, ctx: dict[str, Any]) -> str:
@@ -1160,6 +1599,7 @@ def _page(
     views: str,
     version: str,
     synthetic: bool,
+    target_profile: str | None = None,
 ) -> str:
     css = _asset("report.css")
     js = _asset("report.js")
@@ -1180,19 +1620,25 @@ def _page(
         if synthetic
         else ""
     )
+    ap_opts = "".join(
+        f'<option value="{ap}"{" selected" if ap == r.appearance else ""} data-i18n="appearance.{ap}">'
+        f"{_e(r.t('appearance.' + ap))}</option>"
+        for ap in APPEARANCES
+    )
     return f"""<!DOCTYPE html>
-<html lang="{_e(r.locale)}" class="no-js" data-ui-locale="{_e(r.locale)}" data-content-lang="{_e(content_lang)}">
+<html lang="{_e(r.locale)}" class="no-js" data-ui-locale="{_e(r.locale)}" data-content-lang="{_e(content_lang)}" data-appearance="{_e(r.appearance)}">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="{_e(csp)}">
 <meta name="generator" content="pbd {_e(version)}"><meta name="referrer" content="no-referrer">
 <title>{_e(title)} — PBD</title><style>{css}</style></head>
-<body>{_sprite()}<a class="skip" href="#main">{r.T("a11y.skip")}</a>
+<body>{_sprite()}{type_sprite()}<a class="skip" href="#main">{r.T("a11y.skip")}</a>
 <header class="top"><button type="button" class="ctl icon menu-btn" id="menu" aria-controls="side" aria-expanded="false" {r.attr(("aria-label", "a11y.open_nav"))}>{icon("menu")}</button>
 <button type="button" class="ctl icon collapse-btn hide-sm" id="collapse" aria-pressed="false" {r.attr(("aria-label", "a11y.collapse_nav"))}>{icon("sidebar")}</button>
 <span class="logo" aria-hidden="true">PB</span><div class="proj"><strong lang="{_e(content_lang)}">{_e(title)}</strong><span>{subtitle}</span></div>
 <span class="pill tone-accent">{r.T("mode." + mode)}</span>{synth}
 <span class="grow"></span><div class="tools">
 <label class="sr-only" for="lang-sel">{r.T("lang.label")}</label><select class="ctl lang" id="lang-sel">{lang_opts}</select>
+<label class="sr-only" for="appearance-sel">{r.T("appearance.label")}</label><select class="ctl hide-sm" id="appearance-sel" {r.attr(("title", "appearance.note"), profile=target_profile or r.t("appearance.no_profile"))}>{ap_opts}</select>
 <label class="sr-only" for="theme-sel">{r.T("theme.label")}</label><select class="ctl hide-sm" id="theme-sel">{theme_opts}</select>
 <button type="button" class="ctl icon hide-sm" id="print" {r.attr(("aria-label", "actions.print"))}>{icon("print")}</button></div></header>
 <div class="layout"><nav class="side" id="side" {r.attr(("aria-label", "a11y.nav"))}>{nav}
@@ -1213,7 +1659,8 @@ def render_report(ctx: dict[str, Any]) -> str:
     backlog = ctx["backlog"]
     mode = ctx.get("mode", "generate")
     ui = resolve_locale(ctx.get("ui_locale") or backlog["language"])
-    r = R(ui, ctx["keys"])
+    r = R(ui, ctx["keys"], ctx.get("appearance") or appearance_for_profile(backlog.get("profile")))
+    _bind_links(r, backlog)
     metrics = ctx["metrics"]
     views = [
         _overview(r, ctx, mode),
@@ -1248,6 +1695,7 @@ def render_report(ctx: dict[str, Any]) -> str:
         views="".join(views),
         version=str(ctx.get("version", "")),
         synthetic=bool(backlog.get("synthetic")),
+        target_profile=backlog.get("profile"),
     )
 
 

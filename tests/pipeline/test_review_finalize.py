@@ -84,9 +84,9 @@ def review_payload(run: Run, independence: str = "separate_agent", agent: str = 
         "items": [
             item("E1"),
             item("F1"),
-            item("US1", invest={**INVEST_OK}, task_sufficiency="sufficient"),
-            item("US2", invest={**INVEST_OK}, task_sufficiency="sufficient"),
-            item("T1"),
+            item("US1", invest={**INVEST_OK}, task_sufficiency="sufficient", readiness_check="agree"),
+            item("US2", invest={**INVEST_OK}, task_sufficiency="sufficient", readiness_check="agree"),
+            item("T1", readiness_check="agree"),
         ],
         "criteria": [item(k) for k in ("AC1", "AC2", "AC3", "AC4")],
         "duplicates": [],

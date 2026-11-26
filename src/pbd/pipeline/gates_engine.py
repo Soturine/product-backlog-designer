@@ -186,16 +186,43 @@ def compute_gates(
     else:
         put("G07", "NOT_APPLICABLE", "tasks not requested")
 
-    # G08 dependencies
-    if "dependencies" in levels:
-        if checks["G08"]:
-            put("G08", "FAIL", "; ".join(checks["G08"]), [det])
-        elif review.get("dependencies_reviewed") is True:
-            put("G08", "PASS", f"{len(backlog['relations'])} relations valid and reviewed", [det, rev])
-        else:
+    # G08 dependencies and blockers. Readiness (schema 1.2.0) is judged by the designer, checked
+    # for contradictions by the runtime and agreed or disputed by the reviewer (QL-019).
+    buildable = [i for i in backlog["items"] if i["type"] not in ("epic", "feature")]
+    assessed = [i for i in buildable if i.get("readiness")]
+    readiness = Counter((i.get("readiness") or {}).get("status", "unassessed") for i in buildable)
+    disputes = [k for k, e in rev_items.items() if e.get("readiness_check") == "dispute"]
+    unchecked = [
+        keys.get(i["id"], i["id"])
+        for i in assessed
+        if rev_items.get(keys.get(i["id"], i["id"]), {}).get("readiness_check") not in ("agree", "dispute")
+    ]
+    summary = "readiness " + ", ".join(f"{k}: {v}" for k, v in sorted(readiness.items()))
+    if "dependencies" in levels or assessed:
+        if checks["G08"] or disputes:
+            put(
+                "G08",
+                "FAIL",
+                "; ".join(
+                    [*checks["G08"], *([f"reviewer disputes readiness of {disputes}"] if disputes else [])]
+                ),
+                [det, rev],
+            )
+        elif "dependencies" in levels and review.get("dependencies_reviewed") is not True:
             put("G08", "NOT_RUN", "relations not confirmed by the reviewer")
+        elif unchecked:
+            put("G08", "NOT_RUN", f"declared readiness not checked by the reviewer for {unchecked}")
+        else:
+            what = (
+                f"{len(backlog['relations'])} relations valid and reviewed"
+                if "dependencies" in levels
+                else ""
+            )
+            if assessed:
+                what = "; ".join(filter(None, [what, f"{summary} (agreed by the reviewer)"]))
+            put("G08", "PASS", what, [det, rev])
     else:
-        put("G08", "NOT_APPLICABLE", "dependencies not requested")
+        put("G08", "NOT_APPLICABLE", "dependencies not requested and no readiness declared")
 
     # G09 scope
     scope_issues = [

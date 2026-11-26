@@ -5,7 +5,7 @@ You did not reconcile claims or design this backlog. Your review is the independ
 ## Order matters
 1. **Sources first.** Before opening the design, re-read every source member (`sources/text/...`). Build your own inventory of obligations, each with `locator` (`source_id`, `member`, `line_start`) and a verbatim `quote`. This is the coverage denominator; do not copy the generated claims.
 2. Then open `stages/claims.json` and `stages/design.json`. Map each of your obligations: COVERED / PARTIALLY_COVERED / NOT_COVERED / QUESTION_REQUIRED / CONFLICTING / OUT_OF_SCOPE / SUPERSEDED / DEFERRED / BLOCKED, with `covered_by` design keys and rationale.
-3. Judge **every** item and **every** criterion exactly once: `verdict` pass/concern/fail, `source_support` supported/proposal_justified/unsupported, notes for concerns and failures. Stories also get INVEST ratings (supported/concern/unknown/not_applicable, each with a note; missing team sizing data is `unknown`, not a defect) and `task_sufficiency` when tasks were requested.
+3. Judge **every** item and **every** criterion exactly once: `verdict` pass/concern/fail, `source_support` supported/proposal_justified/unsupported, notes for concerns and failures. Stories also get INVEST ratings (supported/concern/unknown/not_applicable, each with a note; missing team sizing data is `unknown`, not a defect) and `task_sufficiency` when tasks were requested. Every buildable item that declares `readiness` gets `readiness_check`: `agree` or `dispute` (with `readiness_notes`). Dispute when work the sources leave undecided is presented as ready, when a question that prevents work is marked non-blocking, or when unrelated work is blocked by association. A dispute fails G08.
 
 ## Detection passes (adapted from Spec Kit analyze; semantic, not keyword-based)
 Duplication · ambiguity (vague adjectives, missing thresholds) · underspecification (missing outcome, actor, error behavior) · alignment with sources and approved decisions · coverage gaps (both directions) · inconsistency (terminology, contradicting criteria, wrong state transitions). Sizing signals (adapted from HVE Core story quality) are *candidates*: a feature whose only child restates it, an epic without children, a task with beneficiary framing, a story whose criteria cannot be verified without splitting.
@@ -48,7 +48,9 @@ A conjunction is not automatically two stories; a valid nonstandard format need 
             "invest": {"independent": {"rating": "supported", "note": "..."}, "negotiable": {"rating": "supported", "note": "..."},
                        "valuable": {"rating": "supported", "note": "..."}, "estimable": {"rating": "unknown", "note": "no team data"},
                        "small": {"rating": "supported", "note": "..."}, "testable": {"rating": "supported", "note": "..."}},
-            "task_sufficiency": "sufficient"}],
+            "task_sufficiency": "sufficient", "readiness_check": "agree"},
+           {"key": "T3", "verdict": "concern", "source_support": "supported", "notes": "...",
+            "readiness_check": "dispute", "readiness_notes": "needs the provider the sources leave open"}],
  "criteria": [{"key": "AC1", "verdict": "pass", "source_support": "supported"}],
  "duplicates": [{"items": ["US2", "US5"], "assessment": "distinct", "rationale": "different rule"}],
  "dependencies_reviewed": true,
@@ -56,6 +58,6 @@ A conjunction is not automatically two stories; a valid nonstandard format need 
                "why": "...", "impact": "...", "recommendation": "...", "affects": ["US1"], "review_status": "confirmed"}]}
 ```
 
-Allowed values: `verdict` pass/concern/fail (concern and fail need `notes`); `source_support` supported/proposal_justified/unsupported; INVEST `rating` supported/concern/unknown/not_applicable; `task_sufficiency` sufficient/insufficient/not_applicable; `duplicates[].assessment` duplicate/distinct/overlap; finding `review_status` candidate/confirmed; `covered_by` lists only design item/criterion keys and `matched_claims` only claim keys.
+Allowed values: `verdict` pass/concern/fail (concern and fail need `notes`); `source_support` supported/proposal_justified/unsupported; INVEST `rating` supported/concern/unknown/not_applicable; `task_sufficiency` sufficient/insufficient/not_applicable; `readiness_check` agree/dispute (dispute needs `readiness_notes`); `duplicates[].assessment` duplicate/distinct/overlap; finding `review_status` candidate/confirmed; `covered_by` lists only design item/criterion keys and `matched_claims` only claim keys.
 
 Write every payload as UTF-8 (for example `open(path, 'w', encoding='utf-8')` or your file-writing tool); avoid shell heredocs for large JSON.
