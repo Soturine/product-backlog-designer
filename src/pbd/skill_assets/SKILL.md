@@ -10,7 +10,7 @@ The user asks once, in natural language or with `/pbd` ("Gere o backlog completo
 **Follow [procedures/orchestrator.md](procedures/orchestrator.md).** Roles: [reader](procedures/reader.md) (one logical reader per declared source; a directory or archive is one source), [designer](procedures/designer.md), [independent reviewer](procedures/reviewer.md).
 
 ## Runtime
-The deterministic runtime is the `pbd` command (Python 3.11+, dependency `jsonschema`). If `pbd` is not on PATH, use `python -m pbd` with `PYTHONPATH=<this skill folder>/src`, or install it once with `python -m pip install <this skill folder>`. Check with `pbd doctor`.
+The deterministic runtime is the `pbd` command (Python 3.11+, dependency `jsonschema`). This skill folder holds instructions only; the runtime is installed separately. If `pbd` is not on PATH, install it once from a release wheel (`python -m pip install product_backlog_designer-<version>-py3-none-any.whl`) or from a checkout of the repository (`python -m pip install <checkout>`), or call `python -m pbd` from an environment where it is installed. Check with `pbd doctor`.
 
 ```text
 pbd start --workspace <root> --source "<file|dir>=<authority>" ... --out <artifact-root> [--levels ...] [--formats ...] [--profile ...]

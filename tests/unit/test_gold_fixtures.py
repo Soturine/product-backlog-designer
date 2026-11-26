@@ -10,6 +10,11 @@ from tests.conftest import REPO_ROOT
 
 
 def test_every_gold_quote_resolves() -> None:
+    import pytest
+
+    pytest.importorskip(
+        "pypdf", reason="PDF gold quotes resolve against the optional 'pdf' extra (text layer)"
+    )
     assert check() == []
 
 

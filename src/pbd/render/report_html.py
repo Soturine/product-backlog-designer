@@ -1662,7 +1662,8 @@ def _page(
 <label class="sr-only" for="theme-sel">{r.T("theme.label")}</label><select class="ctl hide-sm" id="theme-sel">{theme_opts}</select>
 <button type="button" class="ctl icon hide-sm" id="print" {r.attr(("aria-label", "actions.print"))}>{icon("print")}</button></div></header>
 <div class="layout"><nav class="side" id="side" {r.attr(("aria-label", "a11y.nav"))}>{nav}
-<div class="foot"><p>{r.T("header.local_only")}</p><p>{r.T("header.generated_by", version=version)}</p>
+<div class="foot"><div class="mobile-prefs"><label for="appearance-sel-m">{r.T("appearance.label")}</label><select class="ctl" id="appearance-sel-m" data-mirror="appearance-sel">{ap_opts}</select>
+<label for="theme-sel-m">{r.T("theme.label")}</label><select class="ctl" id="theme-sel-m" data-mirror="theme-sel">{theme_opts}</select></div><p>{r.T("header.local_only")}</p><p>{r.T("header.generated_by", version=version)}</p>
 <label><input type="checkbox" id="print-tech"> {r.T("print.technical")}</label></div></nav>
 <div class="scrim" id="scrim"></div>
 <main id="main" tabindex="-1"><nav class="crumbs" {r.attr(("aria-label", "a11y.breadcrumb"))}><span lang="{_e(content_lang)}">{_e(title)}</span>{icon("chev", "sm")}<span id="crumb-view" aria-current="location">{r.T("nav.overview")}</span></nav>

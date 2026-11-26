@@ -70,3 +70,12 @@ def test_install_from_packaged_assets_without_checkout(
         and "procedures" in copied
         and (tmp_path / "skill" / "procedures" / "reader.md").is_file()
     )
+
+
+def test_installed_skill_never_points_to_a_bundled_source_tree() -> None:
+    """QL-015: an installed skill folder carries no src/ or pyproject; instructions must not assume one."""
+    from tools.sync_skill_assets import ROOT
+
+    text = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+    assert "<this skill folder>/src" not in text and "pip install <this skill folder>" not in text
+    assert "instructions only" in text

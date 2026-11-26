@@ -48,10 +48,11 @@ Exit codes: 0 ok, 1 invalid, 2 usage, 3 refusal. No command contacts a tracker; 
 | Host | Install | Status |
 |---|---|---|
 | Claude Code | `pbd skill install --scope project\|user` (`.claude/skills/product-backlog-designer`) | discovery verified in a new session (2026-11-24) |
-| Other agent hosts with a skills folder (for example Codex) | `pbd skill install --target <host skills folder>/product-backlog-designer` | not verified; the skill is plain Markdown + a Python CLI |
+| Codex CLI | `pbd skill install --target <project>/.agents/skills/product-backlog-designer` (or a user folder you point Codex to) | explicit use verified (2026-11-26, Codex CLI 0.170.0: one request naming the skill folder produced a full run); automatic discovery **not** verified |
+| Other agent hosts with a skills folder | `pbd skill install --target <host skills folder>/product-backlog-designer` | not verified; the skill is plain Markdown + a Python CLI |
 | Any agent without skill discovery | point the agent at `SKILL.md` in the installed folder or checkout | fallback; works wherever the agent can read files and run `pbd` |
 
-The runtime is pure Python 3.11+ with one dependency (`jsonschema`); wheel and sdist both install outside a checkout and carry the schemas, profiles, locales, report assets and skill assets (verified 2026-11-25 in clean virtual environments on Windows). Linux was not exercised on this host (see the [ledger](../benchmarks/qualification-ledger.json), QL-008).
+The runtime is pure Python 3.11+ with one dependency (`jsonschema`); wheel and sdist both install outside a checkout and carry the schemas, profiles, locales, report assets and skill assets (verified 2026-11-25 in clean virtual environments on Windows). Linux: the deterministic suite (all but browser tests) passes on WSL2 Ubuntu 24.04 with Python 3.12, including the symlink and archive safety tests that Windows skips (2026-11-26).
 
 ## Optional integrations
 - **Azure DevOps:** local snapshots and a mock-only publication workflow ([azure](azure.md)). A live adapter does not exist.
@@ -70,3 +71,12 @@ The runtime is pure Python 3.11+ with one dependency (`jsonschema`); wheel and s
 | `pbd plan` gives no sprints | no capacity was given; that is deliberate (no invented capacity) |
 | `pbd evolve apply` refuses `all` | some changes overwrite human edits and need their own keys |
 | Report opens without interactivity | JavaScript is disabled or blocked; all content is still shown |
+
+## Skill folder vs runtime
+`pbd skill install` copies instructions only (SKILL.md, procedures, entrypoints, docs). The `pbd` runtime must be installed in a Python 3.11+ environment the agent can call: from the release wheel, or from a checkout. After installing the skill, restart the agent host session so it can discover the folder. `pbd doctor` lists where it looked: project `.claude/skills`, user `~/.claude/skills` and user `~/.agents/skills`; a folder given with `--target` elsewhere is not checked by `doctor`. On Windows, quote paths that contain spaces.
+
+## Running the tests on Linux without pip (no administrator rights)
+Some minimal Linux images ship Python without `pip`/`ensurepip`. Without installing system packages:
+1. On any machine with pip, download Linux wheels: `python -m pip download --only-binary=:all: --platform manylinux2014_x86_64 --platform any --python-version 3.12 -d linux-wheels "jsonschema>=4.18" pytest hypothesis pypdf`.
+2. On Linux: `PBD_REPO=<checkout> PBD_WHEELS=<linux-wheels> sh tools/linux_check.sh tests -rs` — it creates a venv with `--without-pip`, unpacks the wheels into it and runs the suite except browser tests.
+

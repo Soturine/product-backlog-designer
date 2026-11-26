@@ -66,6 +66,14 @@
     apSel.addEventListener("change", function () { setAppearance(apSel.value); });
   }
 
+  /* mirrored controls in the mobile drawer drive the header ones (single source of behaviour) */
+  $$("[data-mirror]").forEach(function (m) {
+    var main = d.getElementById(m.getAttribute("data-mirror")); if (!main) return;
+    m.value = main.value;
+    m.addEventListener("change", function () { main.value = m.value; main.dispatchEvent(new Event("change")); });
+    main.addEventListener("change", function () { m.value = main.value; });
+  });
+
   /* ---------------------------------------------------------------- toast */
   var toastEl = $("#toast"), toastTimer = 0;
   function toast(msg) {

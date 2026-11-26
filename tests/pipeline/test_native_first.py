@@ -87,6 +87,7 @@ def test_reading_declaration_is_required(run: Run) -> None:
 
 
 def test_pdf_text_layer_alone_never_counts_as_read(run: Run) -> None:
+    pytest.importorskip("pypdf", reason="needs the optional 'pdf' extra (PDF text layer)")
     errors = validate_ledger(
         run, _ledger(run, [_member(run, "prd.pdf", "extracted_text"), *_rest(run, "prd.pdf")])
     )
@@ -123,6 +124,7 @@ def test_images_need_native_vision(run: Run) -> None:
 
 
 def test_transcribed_quotes_without_lines_are_accepted_and_classified(run: Run) -> None:
+    pytest.importorskip("pypdf", reason="needs the optional 'pdf' extra (PDF text layer)")
     from pbd.pipeline.reading import quote_verification
 
     n = _meta(run, "prd.pdf")["lines"]

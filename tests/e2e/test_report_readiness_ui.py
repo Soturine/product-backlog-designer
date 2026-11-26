@@ -133,3 +133,21 @@ def test_gate_explanation_shows_purpose_status_and_affected_work(browser: Any, l
     page.goto(path.as_uri() + "#gate-G02")
     assert "tratadas segundo G02" in g2.inner_text()
     assert errors == []
+
+
+def test_mobile_drawer_exposes_appearance_and_theme_by_keyboard(browser: Any, lib: Any) -> None:  # noqa: F811
+    path, _ = lib
+    page, external, errors = _open(browser, path, "#backlog", viewport={"width": 390, "height": 844})
+    assert not page.locator("#appearance-sel").is_visible()  # header control hidden on small screens
+    page.click("#menu")
+    m = page.locator("#appearance-sel-m")
+    assert m.is_visible() and page.locator("label[for='appearance-sel-m']").is_visible()
+    m.focus()
+    page.keyboard.press("End")  # keyboard-only choice of the last option (Jira)
+    page.wait_for_timeout(100)
+    assert page.get_attribute("html", "data-appearance") == "jira"
+    page.select_option("#theme-sel-m", "dark")
+    assert page.get_attribute("html", "data-theme") == "dark"
+    page.keyboard.press("Escape")  # drawer closes, focus returns to the menu button
+    assert page.evaluate("document.activeElement.id") == "menu"
+    assert external == [] and errors == []
