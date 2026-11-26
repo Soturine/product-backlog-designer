@@ -1,5 +1,43 @@
 # Changelog
 
+## [0.9.0] — 2026-11-26
+
+Initial release (0.x): usable for local backlog work, with conditional qualification. No live tracker access exists; tracker work is a local package and an in-memory mock.
+
+### Highlights
+- Agent-led generation, audit, comparison, refinement, planning and evolution of product backlogs from selected sources, checked by a deterministic runtime with 18 quality gates.
+- "Ready to build" as a first-class, typed fact: blocking questions linked to the work they block, reviewer disputes keep work out of sprints until resolved.
+- An offline report that works as a review tool: readiness, explained gates, sortable table, Generic / Azure DevOps / Jira appearance, PT/EN/ES interface, accessible (automated scan).
+- Team sprint plans with story owners, task assignees and per-person capacity; local Azure DevOps package and mock round trip; FTD handoff with a traceability map back to PBD IDs.
+
+### Added
+- Backlog schema 1.2.0 (additive): item readiness with `blocked_by` / `independent_of`; reviewer `readiness_check`.
+- Evolution operations `answer_question`, `set_readiness`, `resolve_finding`; `pbd azure package`; `pbd handoff ftd-map` and `ftd-instructions.md` (handoff 1.1).
+- Team planning input (team, sprints, responsibility modes, proposal, actual snapshot, user-stated estimates, assessments) with a plan-level G10.
+- Gate explanations and glossary, appearance selector with original pictograms, dense sortable table, readiness views; mobile drawer access to appearance and theme.
+- `tools/linux_check.sh` (Linux run without pip or sudo); axe-core browser test (`PBD_AXE_JS`); Apache-2.0 LICENSE and NOTICE.
+
+### Changed
+- Reviewer readiness disputes become confirmed G08 findings in the canonical backlog; disputed items are shown, exported and planned as not cleared for build.
+- Normalized Azure snapshots are re-validated before use (a digest proves integrity, not authenticity).
+- Report markup is smaller (6.57 MB → 6.32 MB on the 1,060-item fixture).
+- READMEs rewritten; SKILL.md routes all modes and no longer points to a bundled source tree.
+
+### Fixed
+- D1–D9 found by the agent-led corrective runs (partial blockers, native PDF reading, closing questions, unknown refine fields, blocked tasks in sprints, team plan in summaries, package from existing backlogs, normalized snapshots) — see the corrective entry below.
+- Accessibility issues found by axe-core (contrast, link distinction, focusable scroll regions, target size); PDF tests now declare their optional `pypdf` dependency.
+
+### Compatibility
+- Backlogs written with schema 1.1.x stay valid; items without readiness show as not assessed. Handoff 1.0 files are still read; seeds from them cannot be mapped to PBD IDs (reported as unresolved). Gate IDs and semantics unchanged except the documented G08 readiness extension.
+
+### Known limitations
+- QL-020 generator variance in classifying blocking questions; QL-017 DOCX/XLSX originals not natively readable on the Claude Code host; QL-015 automatic discovery on Codex unproven; QL-011 no manual screen-reader review; QL-021 FTD stores no PBD IDs natively (sidecar map only); QL-022 refactoring candidates. No live Azure DevOps or Jira; no new multi-agent qualification in this release.
+
+### Evidence
+- [v0.9.0](docs/evidence/v0.9.0.md), [corrective round](docs/evidence/corrective-round.md), [final qualification](docs/evidence/final-qualification.md), [ledger](benchmarks/qualification-ledger.json).
+
+## Development history (before 0.9.0)
+
 ## Unreleased — corrective round: readiness, report review tool, team planning
 - Backlog schema 1.2.0 (additive): agent-judged item readiness with typed `blocked_by`/`independent_of` links; runtime rejects readiness contradictions; reviewer `readiness_check`; G08 reflects readiness; planning never schedules blocked work (QL-019). Pre-1.2.0 artifacts stay valid and show as not assessed.
 - Reviewer prose may cite design keys (rendered as links) but not per-story visible criterion IDs (QL-004 residual); the designer procedure no longer suggests citing criterion keys in text; the orchestrator procedure routes audit/compare/refine/plan/evolve/mock publish.

@@ -106,12 +106,14 @@
    "milestone": "final",
    "severity": "low",
    "issue": "Linux symlink tests not executed: WSL Python lacks venv/pip.",
-   "evidence": "docs/evidence/M1.md",
+   "evidence": "docs/evidence/v0.9.0.md",
    "resolution": "Owner installs python3-venv in WSL, or another Linux host is provided.",
    "tests": [
-    "tests/security/test_scope.py"
+    "tests/security/test_scope.py",
+    "tools/linux_check.sh"
    ],
-   "state": "blocked_environment"
+   "state": "closed",
+   "closed_by": "v0.9.0 round: tools/linux_check.sh on WSL2 Ubuntu 24.04, Python 3.12.3 (venv without pip, unpacked wheels, no sudo): 489 passed, 6 skipped (browser, a git-repository check, a Windows-only junction test); the symlink and archive safety tests ran and passed. Browser tests were not run on Linux."
   },
   {
    "id": "QL-009",
@@ -145,10 +147,11 @@
    "milestone": "final",
    "severity": "medium",
    "issue": "No automated accessibility scanner (axe-core) on the host; WCAG 2.2 AA is a target, not verified.",
-   "evidence": "docs/evidence/corrective-round.md",
-   "resolution": "axe-core 4.10.2 scan (local tooling): 82 violation groups fixed, 0 remaining on every view of five example reports in light/dark at 1280/390 px; repeatable test tests/e2e/test_report_axe.py. Manual screen-reader and full keyboard review not performed, so WCAG 2.2 AA is not claimed.",
+   "evidence": "docs/evidence/v0.9.0.md",
+   "resolution": "axe-core 4.10.2: 0 violations on every view in light/dark at 1280/390 px under reduced and normal motion (after animations settle); keyboard-only use of the mobile drawer's appearance/theme controls and Escape focus return tested. Manual screen-reader review not performed (no screen reader in this environment), so WCAG 2.2 AA is not claimed.",
    "tests": [
     "tests/e2e/test_report_axe.py",
+    "tests/e2e/test_report_readiness_ui.py",
     "tests/e2e/test_report_browser.py"
    ],
    "state": "open"
@@ -201,8 +204,8 @@
    "milestone": "final",
    "severity": "medium",
    "issue": "Skill discovery verified only in Claude Code; other hosts (for example Codex) use --target and are not verified.",
-   "evidence": "docs/evidence/corrective-round.md",
-   "resolution": "R8: Codex CLI 0.170.0 ran the installed skill end to end from one request (report produced, separate collab agents, honest G17/G18). Not proven: automatic discovery (the prompt named the skill path); role payloads reported model 'gpt-5' while the session ran gpt-5.6-sol.",
+   "evidence": "docs/evidence/v0.9.0.md",
+   "resolution": "Installed-skill defect fixed: SKILL.md no longer points to a bundled src tree; install docs give the Codex location used in R8 and what doctor checks (test guards the wording). Explicit use on Codex verified earlier (R8); automatic discovery remains unproven (no model was started in this round).",
    "tests": [
     "tests/unit/test_skill_install.py"
    ],
@@ -230,8 +233,8 @@
    "milestone": "final",
    "severity": "high",
    "issue": "Native-first reading (originals primary, declared methods, transcription evidence) is enforced by contract and tests, but no agent has yet read real PDF/DOCX/XLSX/image members natively under it.",
-   "evidence": "docs/evidence/corrective-round.md",
-   "resolution": "PDF and image originals read natively: R6 (PNG native_vision), R6b after D3 (PDF native_vision, 7/7 critical obligations at reading stage). DOCX (and XLSX in the final qualification): the Claude Code host refuses binary originals, readers declare an extracted_text fallback with limitations.",
+   "evidence": "docs/evidence/v0.9.0.md",
+   "resolution": "PDF and images read natively (R6/R6b). DOCX/XLSX: the Claude Code Read tool refuses binary originals (re-checked directly on 2026-11-26 with the synthetic c03 .docx and c12 .xlsx), so readers declare the extracted-text fallback; extraction already reports hidden sheets, merged ranges and omitted drawings/charts per format. Native DOCX/XLSX reading stays unproven on this host.",
    "tests": [
     "tests/pipeline/test_native_first.py"
    ],
@@ -272,9 +275,12 @@
    "milestone": "next round",
    "severity": "medium",
    "issue": "Generator variance in classifying whether an open question blocks work: in both h2 generations the 22h boundary question was marked non-blocking and booking work ready; both independent reviewers disputed it (G08 FAIL). Not fixable by domain rules.",
-   "evidence": "docs/evidence/corrective-round.md",
-   "resolution": "Kept as an agent judgment; the reviewer readiness_check surfaces disagreements and fails G08. Measure across more domains before changing procedures.",
-   "tests": [],
+   "evidence": "docs/evidence/v0.9.0.md",
+   "resolution": "Safety gap fixed (v0.9.0): a reviewer readiness dispute becomes a confirmed G08 finding; disputed items are shown and exported as disputed and never scheduled in any responsibility mode; clearing requires resolve_finding plus reconciled blockers; plans flag work changed after review. Generic designer/reviewer guidance added for classifying blocking questions. Generator variance itself is not measured again in this round (main agent only) and remains the residual risk.",
+   "tests": [
+    "tests/pipeline/test_disputed_readiness.py",
+    "tests/pipeline/test_readiness.py"
+   ],
    "state": "open"
   },
   {
@@ -283,9 +289,12 @@
    "milestone": "next round",
    "severity": "low",
    "issue": "Functional Test Designer outputs carry no PBD IDs; the link from Test Cases back to PBD items/criteria exists only through instructions seed anchors and repeated question text.",
-   "evidence": "docs/evidence/corrective-round.md",
-   "resolution": "Cross-repository interface decision (FTD field or a documented mapping); not changed in this round.",
-   "tests": [],
+   "evidence": "docs/evidence/v0.9.0.md",
+   "resolution": "Implemented and tested: handoff 1.1 seeds carry the canonical criterion ID; pbd handoff ftd-map builds a sidecar from FTD test-cases.json by exact ID tokens (many-to-many, unresolved/dangling, duplicates, staleness, designed vs executed). The real R7 output (handoff 1.0) maps 0/15 seeds and is reported as unresolved. Not done: an FTD run on a 1.1 handoff (no new agent run in this round) and native PBD ID fields in FTD.",
+   "tests": [
+    "tests/pipeline/test_ftd_map.py",
+    "tests/pipeline/test_handoff.py"
+   ],
    "state": "open"
   },
   {
@@ -294,8 +303,8 @@
    "milestone": "next round",
    "severity": "low",
    "issue": "Maintainability drivers: compute_gates (96 decision paths) and _team_plan (95) are refactoring candidates (INFO hypotheses, no defect).",
-   "evidence": "benchmarks/runs/corrective/tooling/derivanta-inspect.json",
-   "resolution": "Refactor behind the existing tests and mutants when next touched.",
+   "evidence": "docs/evidence/v0.9.0.md",
+   "resolution": "Not refactored in v0.9.0: compute_gates and _team_plan are covered by the targeted mutant catalogue and fixtures, and a refactor was judged a release-stability risk for no behavior gain. Kept as explicit debt.",
    "tests": [],
    "state": "deferred_final_qualification"
   }
