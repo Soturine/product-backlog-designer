@@ -197,7 +197,9 @@ def check_backlog(
     return issues
 
 
-READY_STATES = {"ready", "partial"}
+# Only fully ready work contradicts an open blocker; a partial item cites the question that blocks
+# its remaining part in blocked_by (corrective qualification R1c, defect D1).
+READY_STATES = {"ready"}
 _CONTAINERS = {"epic", "feature"}
 
 

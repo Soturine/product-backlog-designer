@@ -156,3 +156,61 @@ def test_transcribed_quotes_without_lines_are_accepted_and_classified(run: Run) 
     quote = lines[page1[1]][:20] if len(lines) > page1[1] and len(lines[page1[1]]) >= 3 else lines[0][:20]
     loc = {"member": "prd.pdf", "line_start": 1, "line_end": n}
     assert quote_verification(run, src, pdf, loc, quote) == "mechanical"
+
+
+def test_pdf_without_text_layer_on_this_host_is_read_natively(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Defect D3 (corrective R6): a host without the optional pypdf extra used to refuse a PDF the
+    agent had read natively. The original stays primary: the PDF becomes a visual member that is
+    read with native vision and a recorded transcription; quotes are agent transcriptions."""
+    import builtins
+
+    from pbd.pipeline.reading import quote_verification
+
+    real_import = builtins.__import__
+
+    def no_pypdf(name: str, *args: Any, **kwargs: Any) -> Any:
+        if name == "pypdf":
+            raise ImportError("pypdf not installed")
+        return real_import(name, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "__import__", no_pypdf)
+    ws = tmp_path / "ws"
+    ws.mkdir()
+    make_pdf(ws / "prd.pdf", C11_PAGES)
+    run = start(tmp_path / "out", ws, [("prd.pdf", "functional")], normalize_request(synthetic=True))
+    meta = run.inventory()["sources"][0]["members_text"][0]
+    assert meta["visual"] is True and meta["readable"] is False and meta["format"] == "pdf"
+    assert "text_ref" not in meta  # nothing extracted: no text layer to certify from
+    vt = {"method": "agent_vision", "model": "m", "text": "Página 1: no máximo 10 animais por horário"}
+    src = run.inventory()["sources"][0]
+    ledger = {
+        "source_id": src["id"],
+        "source_digest": src["digest"],
+        "reader": {"agent": "r", "model": "m", "independence": "separate_agent"},
+        "members": [
+            {
+                "path": "prd.pdf",
+                "status": "read",
+                "visual_transcription": vt,
+                "reading": {"method": "native", "tool": "host PDF reader", "limitations": []},
+            }
+        ],
+        "obligations": [],
+    }
+    assert any("native_vision only" in e for e in validate_ledger(run, ledger))  # never 'native' text
+    ledger["members"][0]["reading"]["method"] = "native_vision"
+    ob = {
+        "key": "R1",
+        "text": "limite por horário",
+        "category": "constraint",
+        "locator": {"member": "prd.pdf", "page": 1},
+        "quote": "no máximo 10 animais por horário",
+    }
+    ledger["obligations"] = [ob]
+    assert validate_ledger(run, ledger) == []
+    assert (
+        quote_verification(run, src["id"], ledger["members"][0], ob["locator"], ob["quote"])
+        == "agent_transcription"
+    )

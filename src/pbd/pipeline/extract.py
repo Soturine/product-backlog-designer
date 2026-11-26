@@ -282,10 +282,20 @@ def _xlsx(data: bytes) -> Extraction:
 def _pdf(data: bytes) -> Extraction:
     try:
         from pypdf import PdfReader
-    except ImportError as exc:
-        raise ExtractionError(
-            "PDF support needs the optional 'pdf' extra (pypdf); provide a transcription"
-        ) from exc
+    except ImportError:
+        # Native-first (corrective qualification R6, defect D3): without a text layer on this host the
+        # original is still the primary input; it becomes a visual member that only an agent reading
+        # the rendered pages natively (with a recorded visual_transcription) can certify as read.
+        if not data.startswith(b"%PDF"):
+            raise ExtractionError("not a PDF document") from None
+        return Extraction(
+            "",
+            "pdf",
+            gaps=[
+                "no PDF text layer on this host (optional 'pdf' extra not installed): read the pages natively"
+            ],
+            visual=True,
+        )
     try:
         reader = PdfReader(io.BytesIO(data))
         if reader.is_encrypted:
@@ -315,6 +325,11 @@ def _pdf(data: bytes) -> Extraction:
         raise
     except Exception as exc:
         raise ExtractionError(f"PDF text extraction failed: {type(exc).__name__}") from exc
+    if not any(ln.strip() for ln in lines if not ln.startswith("--- página")):
+        # scanned PDF: no text anywhere, so the pages must be read natively (D3)
+        return Extraction(
+            "", "pdf", gaps=[*gaps, "no extractable text on any page: read the pages natively"], visual=True
+        )
     return Extraction("\n".join(lines), "pdf", gaps=gaps, pages=pages)
 
 

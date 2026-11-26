@@ -22,7 +22,7 @@ Being confirmed by a source is not the same as being ready to build. Every build
 - Work that needs the answer is `blocked` (or `deferred` when it is consciously postponed) and cites the question in `readiness.blocked_by` (`{"ref": "Q2", "rationale": "the gateway integration needs the provider and its contract"}`). Never present it as ready to build, and never encode the dependency in prose alone.
 - A bounded spike, a mock contract or an independent part of the work can stay `ready` when its outcome does not need the answer: list the question in `readiness.independent_of` with why. Do not disguise implementation as a spike.
 - Every work item a blocking question `affects` is either blocked by it or independent of it, with a reason. A blocking question must block at least one item.
-- A story whose tasks are partly blocked is `partial`, not `ready`. Blockers propagate through confirmed `predecessor` relations (an item that waits for blocked work is not ready), not through the hierarchy alone: siblings keep their own readiness.
+- A story whose tasks are partly blocked is `partial`, not `ready`, and cites the blocking question in its own `blocked_by` (with what part waits for it). Blockers propagate through confirmed `predecessor` relations (an item that waits for blocked work is not ready), not through the hierarchy alone: siblings keep their own readiness.
 - Closing a question needs an authoritative decision with provenance; until then the work stays blocked.
 
 ## Contract

@@ -251,7 +251,7 @@ def start(
                 entry.update(
                     readable=False,
                     visual=True,
-                    extractor="image",
+                    extractor=result.extractor,
                     reason="visual content: requires agent vision (visual_transcription) or a transcription",
                     gaps=result.gaps,
                 )

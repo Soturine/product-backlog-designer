@@ -285,3 +285,23 @@ def test_reviewer_must_check_declared_readiness(tmp_path: Path) -> None:
     review = review_payload(run)
     review["items"][-1]["readiness_check"] = "dispute"
     assert any("readiness dispute needs readiness_notes" in e for e in validate_review(run, review))
+
+
+def test_partial_item_cites_the_question_that_blocks_part_of_it(read_run: Run) -> None:
+    """Defect D1 (corrective R1c): a partial story must be able to name its blocker directly."""
+    p = design_payload()
+    _blocking(p, ["US1", "T1"])
+    items = _items(p)
+    items["T1"]["readiness"] = {
+        "status": "blocked",
+        "rationale": "x",
+        "blocked_by": [{"ref": "Q1", "rationale": "duração"}],
+    }
+    items["US1"]["readiness"] = {
+        "status": "partial",
+        "rationale": "o registro é construível; a verificação espera a duração",
+        "blocked_by": [{"ref": "Q1", "rationale": "a verificação de disponibilidade espera a duração"}],
+    }
+    assert _errors(read_run, p) == []
+    items["US1"]["readiness"]["status"] = "ready"
+    assert any("declared ready but blocked" in e for e in _errors(read_run, p))

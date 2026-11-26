@@ -49,3 +49,9 @@ F4 full generation of c01, c03, c07, c09, c10, c11 is **not run** in this phase 
 
 ## Correction policy
 At most one targeted fix and re-qualification cycle for a genuine new defect; initial runs are preserved and reported. No re-running until a run passes.
+
+## Correction cycle (recorded after R1a–c, R2 and R6; before any other run)
+Two genuine runtime defects were found by the runs on `c9c5634`; the initial runs are preserved unchanged and evaluated as recorded.
+- **D1** (R1c and R2 independently): a `partial` item could not cite the blocking question in `blocked_by`, which pushed one agent to describe a partly blocked story as independent of its blocker and another to drop the story from the question's `affects`. Fix: only `ready` contradicts an open blocker; a `partial` item cites the question that blocks its remaining part.
+- **D3** (R6): on a host without the optional `pypdf` extra, a PDF the agent had read natively (rendered pages) was refused as unreadable. Fix: a PDF without an extractable text layer is a visual member, certified only through native vision with a recorded transcription; quotes are agent transcriptions, never mechanical.
+The remaining runs (R3, R4+R5, R7, R8) and the targeted requalification (R2b on h2, R6b on the PDF) run on the commit that records this section. No threshold, case or gold changes.
