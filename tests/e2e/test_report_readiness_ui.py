@@ -76,7 +76,7 @@ def test_appearance_switch_is_presentation_only(browser: Any, lib: Any) -> None:
     for ap in ("jira", "generic", "azure"):
         page.select_option("#appearance-sel", ap)
         assert page.get_attribute("html", "data-appearance") == ap
-        hrefs = page.eval_on_selector_all("use[data-ti]", "els => els.map(e => e.getAttribute('href'))")
+        hrefs = page.eval_on_selector_all("svg.ti > use", "els => els.map(e => e.getAttribute('href'))")
         assert hrefs and all(h.startswith(f"#t-{ap}-") for h in hrefs)
     # filters, selection state and canonical data survive the switch; the target profile is unchanged
     assert page.input_value("#f-type") == "task"
@@ -98,13 +98,15 @@ def test_table_sort_reset_and_column_visibility(browser: Any, lib: Any) -> None:
     page, _, errors = _open(browser, path, "#backlog")
     page.click(".seg [data-xview='table']")
     keys = lambda: page.eval_on_selector_all(  # noqa: E731
-        "#itable tbody tr td[data-col='key']", "els => els.map(e => e.textContent)"
+        "#itable tbody tr td:first-child", "els => els.map(e => e.textContent)"
     )
     original = keys()
     page.click("button.sort[data-sort='readiness']")
     assert page.get_attribute("th[data-col='readiness']", "aria-sort") == "ascending"
     statuses = page.eval_on_selector_all(
-        "#itable tbody tr td[data-col='readiness']", "els => els.map(e => e.getAttribute('data-v'))"
+        "#itable tbody tr",
+        "rows => { const i = [...document.querySelectorAll('#itable thead th')]"
+        ".findIndex(th => th.dataset.col === 'readiness'); return rows.map(r => r.cells[i].dataset.v); }",
     )
     known = [s for s in statuses if s]
     assert known == sorted(known) and statuses[-1] == ""  # unknown (containers) always last

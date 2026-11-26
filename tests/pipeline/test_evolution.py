@@ -263,8 +263,10 @@ def test_noop_is_unchanged_and_replay_is_refused(base: dict[str, Any]) -> None:
     }
     p = refine.plan(b, rename)
     once = refine.apply(b, p, ["all"], p["plan_digest"])["backlog"]
+    snapshot = copy.deepcopy(once)
     with pytest.raises(refine.RefineError, match="conflict"):
         refine.apply(once, p, ["all"], p["plan_digest"])  # replay on the new version is refused
+    assert once == snapshot  # a refused replay leaves the backlog untouched (no partial write)
 
 
 def test_staleness_invalidates_plans_and_approvals(base: dict[str, Any], tmp_path: Path) -> None:

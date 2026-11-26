@@ -109,6 +109,13 @@ def _zip(path: Path, entries: list[tuple[str, bytes, int | None]]) -> None:
 
 
 def test_zip_inventory_rejects_unsafe_members(ws: Path) -> None:
+    # the duplicate member is deliberate (zipfile warns about it while writing the fixture)
+    with pytest.warns(UserWarning, match="Duplicate name"):
+        _make_unsafe_zip(ws)
+    _check_unsafe_zip(ws)
+
+
+def _make_unsafe_zip(ws: Path) -> None:
     _zip(
         ws / "pacote.zip",
         [
@@ -121,6 +128,9 @@ def test_zip_inventory_rejects_unsafe_members(ws: Path) -> None:
             ("inner.zip", b"PK", None),
         ],
     )
+
+
+def _check_unsafe_zip(ws: Path) -> None:
     inv = Scope(ws).inventory("pacote.zip")
     assert inv.kind == "archive"
     status = [(m.path, m.status, m.reason) for m in inv.members]

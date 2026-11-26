@@ -58,7 +58,7 @@
   function setAppearance(v) {
     if (["generic", "azure", "jira"].indexOf(v) < 0) return;
     root.setAttribute("data-appearance", v);
-    $$("use[data-ti]").forEach(function (u) { u.setAttribute("href", "#t-" + v + "-" + u.getAttribute("data-ti")); });
+    $$("svg.ti > use").forEach(function (u) { u.setAttribute("href", u.getAttribute("href").replace(/^#t-[a-z]+-/, "#t-" + v + "-")); });
     store("pbd-appearance", v);
   }
   if (apSel) {
@@ -225,11 +225,13 @@
   });
   /* table: sort by column (stable, from data-v), reset to backlog order, column visibility */
   var itable = $("#itable");
+  /* cells carry no column id: the header row defines the column order (smaller report) */
+  function colIndex(col) { var ths = $$("thead th", itable); for (var i = 0; i < ths.length; i++) { if (ths[i].getAttribute("data-col") === col) return i; } return -1; }
   function sortBy(col, dir, numeric) {
     var tb = $("tbody", itable), list = $$("tr", tb);
     list.sort(function (a, b) {
       if (!col) return Number(a.getAttribute("data-pos")) - Number(b.getAttribute("data-pos"));
-      var ca = $("td[data-col='" + col + "']", a), cb = $("td[data-col='" + col + "']", b);
+      var ca = a.cells[colIndex(col)], cb = b.cells[colIndex(col)];
       var va = ca ? ca.getAttribute("data-v") : "", vb = cb ? cb.getAttribute("data-v") : "";
       var empty = (va === "") - (vb === ""); if (empty) return empty; /* unknown always last */
       var r = numeric ? Number(va) - Number(vb) : va.localeCompare(vb, locale, { numeric: true, sensitivity: "base" });
@@ -250,7 +252,8 @@
     $$("[data-colvis]").forEach(function (cb) {
       cb.addEventListener("change", function () {
         var col = cb.getAttribute("data-colvis");
-        $$("[data-col='" + col + "']", itable).forEach(function (c) { c.classList.toggle("hide-col", !cb.checked); });
+        var i = colIndex(col);
+        $$("tr", itable).forEach(function (row) { if (row.cells[i]) row.cells[i].classList.toggle("hide-col", !cb.checked); });
       });
     });
   }

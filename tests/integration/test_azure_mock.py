@@ -322,6 +322,8 @@ def test_cli_mock_round_trip(artifacts: Any, tmp_path: Path, capsys: pytest.Capt
         main(["azure", "apply", "--plan", plan, "--mock-state", str(tmp_path / "m.json"), "--out", out]) != 0
     )
     assert "not approved" in capsys.readouterr().out
+    assert not (tmp_path / "m.json").exists()  # a refused apply writes no mock state
+    assert not Path(out, "publication-receipt.json").exists()  # and no receipt
     assert main(["azure", "approve", "--plan", plan, "--target", NS, "--by", "owner", "--out", out]) == 0
     approved = f"{out}/publication-plan.approved.json"
     assert (

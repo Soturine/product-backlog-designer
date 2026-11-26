@@ -98,7 +98,4 @@ def sprite() -> str:
 
 def type_icon(itype: str, appearance: str) -> str:
     key = icon_key(itype)
-    return (
-        f'<svg class="ti ty-{key}" aria-hidden="true" focusable="false">'
-        f'<use href="#t-{appearance}-{key}" data-ti="{key}"/></svg>'
-    )
+    return f'<svg class="ti ty-{key}" aria-hidden="true"><use href="#t-{appearance}-{key}"/></svg>'

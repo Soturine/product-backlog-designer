@@ -803,7 +803,7 @@ def _item_table(
         cells = []
         for c, _, num in cols:
             inner, key = cell(i, c)
-            cells.append(f'<td data-col="{c}" data-v="{_e(key)}"{" class=num" if num else ""}>{inner}</td>')
+            cells.append(f'<td data-v="{_e(key)}"{" class=num" if num else ""}>{inner}</td>')
         body_rows.append(f'<tr {row_attrs(i)} data-pos="{pos}">{"".join(cells)}</tr>')
     picks = "".join(
         f'<label><input type="checkbox" data-colvis="{c}" checked> {h}</label>'
