@@ -1947,6 +1947,160 @@ def _li(text: Any) -> str:
     return f"<li>{_e(text)}</li>"
 
 
+ASSIGN_TONE = {"proposed": "info", "actual": "pass", "derived_delegation": "warn", "none": "neutral"}
+
+
+def _team_plan_html(r: R, tp: dict[str, Any], seq: dict[str, dict[str, Any]], language: str) -> str:
+    """Sprints by owner and task assignee from a checked proposal; actual, proposed and derived kept apart."""
+
+    def name(iid: str) -> str:
+        x = seq.get(iid)
+        if not x:
+            return f"<code>{_e(iid)}</code>"
+        return f'{r.type_mark(x["type"])}<span lang="{_e(language)}">{_e(x["title"])}</span>'
+
+    def who(member: str | None, how: str) -> str:
+        if not member:
+            return f"{r.pill('assign', 'none', 'warn', 'alert')}"
+        return f"<code>{_e(member)}</code> {r.pill('assign', how, ASSIGN_TONE.get(how, 'neutral'))}"
+
+    def hours(v: Any) -> str:
+        return "—" if v is None else _e(f"{v:g}" if isinstance(v, float) else v)
+
+    g10 = tp["g10"]
+    head = (
+        f'<div class="panel pad"><p>{r.E("gate", "G10")} <code>G10</code> {r.pill("gate_status", g10["status"])} '
+        f"{r.T('plan.mode.' + tp['mode'])}</p>{r.T('plan.draft', tag='p', cls='d')}"
+        + (
+            f'<ul class="plain">{"".join(_en_li(v) for v in tp["violations"])}</ul>'
+            if tp["violations"]
+            else ""
+        )
+        + (f'<ul class="plain">{"".join(_en_li(n) for n in tp["notes"])}</ul>' if tp["notes"] else "")
+        + "</div>"
+    )
+    by_story = {row["story"]: row for row in tp["stories"]}
+    cols = []
+    for s in tp["sprints"]:
+        meta = []
+        if s.get("goal"):
+            meta.append(
+                f'<p><strong>{r.T("plan.goal")}:</strong> <span lang="{_e(language)}">{_e(s["goal"])}</span></p>'
+            )
+        if s.get("start") and s.get("end"):
+            meta.append(f'<p class="d">{_e(s["start"])} → {_e(s["end"])}</p>')
+        elif s.get("working_days"):
+            meta.append(f'<p class="d">{r.T("plan.days", n=s["working_days"])}</p>')
+        cards = []
+        for sid in s["stories"]:
+            row = by_story[sid]
+            tasks = "".join(
+                f"<li>{name(t['task'])} · {who(t['assignee'], t['assignee_provenance'])} · {hours(t['estimate_hours'])} h"
+                + (f" {r.pill('timing', t['timing'], 'warn')}" if t.get("timing") else "")
+                + "</li>"
+                for t in row["tasks"]
+                if t["sprint"] == s["index"]
+            )
+            cards.append(
+                f'<div class="card-item"><span>{name(sid)}</span><span class="meta">{r.T("plan.owner")}: '
+                f"{who(row['owner'], row['owner_provenance'])} · SP {hours(row['story_points'])}</span>"
+                + (f'<ul class="plain">{tasks}</ul>' if tasks else "")
+                + "</div>"
+            )
+        prep = [
+            t
+            for row in tp["stories"]
+            for t in row["tasks"]
+            if t["sprint"] == s["index"] and row["sprint"] != s["index"]
+        ]
+        if prep:
+            cards.append(
+                f'<div class="card-item"><span class="meta">{r.T("plan.outside")}</span><ul class="plain">'
+                + "".join(
+                    f"<li>{name(t['task'])} · {who(t['assignee'], t['assignee_provenance'])} · "
+                    f"{hours(t['estimate_hours'])} h {r.pill('timing', t.get('timing', 'preparation'), 'warn')}</li>"
+                    for t in prep
+                )
+                + "</ul></div>"
+            )
+        cols.append(
+            f'<section class="panel"><h4>{r.T("plan.sprint", n=s["index"])}</h4>{"".join(meta)}{"".join(cards)}</section>'
+        )
+    board = f'<section class="block"><h3>{r.T("plan.board")}</h3><div class="board">{"".join(cols)}</div></section>'
+    prow = "".join(
+        f"<tr><td><code>{_e(p['member'])}</code></td><td>{_e(p['sprint'])}</td><td>{_e(p['unit'] or '—')}</td>"
+        f'<td class="num">{hours(p["capacity"])}</td><td class="num">{hours(p["load"])}</td>'
+        f'<td class="num">{hours(p["remaining"])}</td><td>{len(p["unknown_estimates"]) or "—"}</td>'
+        f"<td>{len(p['unit_mismatch']) or '—'}</td></tr>"
+        for p in tp["people"]
+    )
+    people = (
+        f'<section class="block"><h3>{r.T("plan.people")}</h3><div class="panel tablewrap" tabindex="0" role="region" '
+        f'{r.attr(("aria-label", "plan.people"))}><table class="grid"><thead><tr><th>{r.T("plan.member")}</th>'
+        f"<th>{r.T('plan.sprint_col')}</th><th>{r.T('plan.unit')}</th><th>{r.T('plan.capacity')}</th>"
+        f"<th>{r.T('plan.allocated')}</th><th>{r.T('plan.remaining')}</th><th>{r.T('plan.unknown_est')}</th>"
+        f"<th>{r.T('plan.mismatch')}</th></tr></thead><tbody>{prow}</tbody></table></div></section>"
+    )
+    srow = []
+    for row in tp["stories"]:
+        for n, t in enumerate(row["tasks"] or [None]):
+            first = n == 0
+            srow.append(
+                "<tr>"
+                + (
+                    f'<td rowspan="{max(1, len(row["tasks"]))}">{name(row["story"])}</td>'
+                    f'<td rowspan="{max(1, len(row["tasks"]))}">{who(row["owner"], row["owner_provenance"])}'
+                    + (
+                        f'<br><span class="d">{r.T("plan.actual")}: <code>{_e(row["actual_owner"])}</code></span>'
+                        if row.get("actual_owner")
+                        else ""
+                    )
+                    + f'</td><td rowspan="{max(1, len(row["tasks"]))}">{hours(row["sprint"])}</td>'
+                    if first
+                    else ""
+                )
+                + (
+                    f"<td>{name(t['task'])}</td><td>{who(t['assignee'], t['assignee_provenance'])}"
+                    + (
+                        f'<br><span class="d">{r.T("plan.actual")}: <code>{_e(t["actual_assignee"])}</code></span>'
+                        if t.get("actual_assignee")
+                        else ""
+                    )
+                    + f'</td><td>{hours(t["sprint"])}</td><td class="num">{hours(t["estimate_hours"])}</td><td>'
+                    + (r.pill("timing", t["timing"], "warn") if t.get("timing") else "")
+                    + (f" {r.T('plan.collab')}" if t.get("collaborator") else "")
+                    + (f" {r.T('plan.discrepancy')}" if t.get("discrepancy") else "")
+                    + "</td>"
+                    if t
+                    else '<td colspan="5">—</td>'
+                )
+                + "</tr>"
+            )
+    stories = (
+        f'<section class="block"><h3>{r.T("plan.story_tasks")}</h3><div class="panel tablewrap" tabindex="0" role="region" '
+        f'{r.attr(("aria-label", "plan.story_tasks"))}><table class="grid"><thead><tr><th>{r.T("plan.story")}</th>'
+        f"<th>{r.T('plan.owner')}</th><th>{r.T('plan.sprint_col')}</th><th>{r.T('plan.task')}</th>"
+        f"<th>{r.T('plan.assignee')}</th><th>{r.T('plan.sprint_col')}</th><th>h</th><th>{r.T('col.notes')}</th>"
+        f"</tr></thead><tbody>{''.join(srow)}</tbody></table></div></section>"
+    )
+    extra = ""
+    if tp["unassigned_tasks"] or tp["unallocated"]:
+        lis = "".join(f"<li>{name(t)} — {r.T('plan.unassigned')}</li>" for t in tp["unassigned_tasks"])
+        lis += "".join(f"<li>{name(u['item'])} — {_en_p(u['reason'])}</li>" for u in tp["unallocated"])
+        extra += f'<section class="block"><h3>{r.T("plan.open_work")}</h3><div class="panel">{_ul(lis)}</div></section>'
+    if tp["assessments"]:
+        lis = "".join(
+            f"<li>{name(iid)} — {r.T('plan.complexity')}: {_e(a.get('complexity', '—'))}, {r.T('plan.risk')}: "
+            f"{_e(a.get('risk', '—'))}, {r.T('plan.confidence')}: {_e(a.get('confidence', '—'))}<br>"
+            f'<span class="d" lang="{_e(language)}">{_e(a.get("rationale", ""))}</span></li>'
+            for iid, a in tp["assessments"].items()
+        )
+        extra += f'<section class="block"><h3>{r.T("plan.assessments")}</h3><div class="panel">{_ul(lis)}</div></section>'
+    return (
+        f'<section class="block"><h3>{r.T("plan.team")}</h3>{head}</section>{board}{people}{stories}{extra}'
+    )
+
+
 def render_plan_report(
     doc: dict[str, Any], title: str | None, language: str, version: str, stale: bool = False
 ) -> str:
@@ -1973,7 +2127,13 @@ def render_plan_report(
         )
 
     banner = f'<div class="banner tone-fail">{icon("alert")}{r.T("plan.stale")}</div>' if stale else ""
-    capacity = _e(cap["per_sprint"]) if cap.get("per_sprint") else r.T("plan.unknown_capacity")
+    capacity = (
+        _e(cap["per_sprint"])
+        if cap.get("per_sprint")
+        else r.T("plan.capacity_team")
+        if doc.get("team_plan")
+        else r.T("plan.unknown_capacity")
+    )
     kv = (
         f'<dl class="kv"><dt>{r.T("plan.capacity")}</dt><dd>{capacity}</dd>'
         f"<dt>{r.T('plan.unit')}</dt><dd><code>{_e(inputs['unit'])}</code></dd>"
@@ -2004,15 +2164,20 @@ def render_plan_report(
                 + "</section>"
             )
         body += f'<section class="block"><h3>{r.T("plan.board")}</h3><div class="board">{"".join(cols)}</div></section>'
+    if doc.get("team_plan"):
+        body += _team_plan_html(r, doc["team_plan"], seq, language)
     rows = "".join(
-        f'<tr><td>{n + 1}</td><td>{r.type_tag(x["type"])}</td><td lang="{_e(language)}">{_e(x["title"])}</td>'
+        f"<tr><td>{n + 1}</td><td>{num(x.get('backlog_position'))}</td><td>{r.type_tag(x['type'])}</td>"
+        f'<td lang="{_e(language)}">{_e(x["title"])}</td><td>{r.pill("readiness", x.get("readiness", "unassessed"))}</td>'
         f'<td>{num(x["priority"])}</td><td>{num(x["effort"])} <span class="d">{prov(x)}</span></td>'
         f"<td>{num(x['score'])}</td><td>{len(x['waits_for']) or '—'}</td></tr>"
         for n, x in enumerate(doc["sequence"])
     )
     body += (
-        f'<section class="block"><h3>{r.T("plan.sequence")}</h3><div class="panel tablewrap"><table class="grid">'
-        f"<thead><tr><th>#</th><th>{r.T('col.type')}</th><th>{r.T('col.title')}</th><th>{r.E('field', 'priority')}</th>"
+        f'<section class="block"><h3>{r.T("plan.sequence")}</h3>{r.T("plan.order_note", tag="p", cls="d")}'
+        f'<div class="panel tablewrap" tabindex="0" role="region" {r.attr(("aria-label", "plan.sequence"))}><table class="grid">'
+        f"<thead><tr><th>{r.T('plan.build_pos')}</th><th>{r.T('plan.backlog_pos')}</th><th>{r.T('col.type')}</th>"
+        f"<th>{r.T('col.title')}</th><th>{r.T('col.readiness')}</th><th>{r.E('field', 'priority')}</th>"
         f"<th>{r.T('plan.effort')}</th><th>{r.T('plan.score')}</th><th>{r.T('plan.waits')}</th></tr></thead>"
         f"<tbody>{rows}</tbody></table></div></section>"
     )

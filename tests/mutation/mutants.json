@@ -120,6 +120,66 @@
    "file": "src/pbd/pipeline/design.py",
    "old": "        if extra:\n            errors.append(f\"{label} ({key}): uncertainty accepts only",
    "new": "        if False:\n            errors.append(f\"{label} ({key}): uncertainty accepts only"
+  },
+  {
+   "id": "blocked-declared-ready-accepted",
+   "file": "src/pbd/validation/invariants.py",
+   "old": "        if st in READY_STATES and any(link.get(\"ref\") in open_blocking",
+   "new": "        if False and any(link.get(\"ref\") in open_blocking"
+  },
+  {
+   "id": "blocking-question-blocks-nothing-accepted",
+   "file": "src/pbd/validation/invariants.py",
+   "old": "        if not blocks.get(qid):",
+   "new": "        if False:"
+  },
+  {
+   "id": "blocked-work-scheduled",
+   "file": "src/pbd/pipeline/planning.py",
+   "old": "        if iid in (not_ready or {}):",
+   "new": "        if False:"
+  },
+  {
+   "id": "reviewer-readiness-dispute-ignored",
+   "file": "src/pbd/pipeline/gates_engine.py",
+   "old": "    disputes = [k for k, e in rev_items.items() if e.get(\"readiness_check\") == \"dispute\"]",
+   "new": "    disputes: list[str] = []"
+  },
+  {
+   "id": "delegation-shown-as-actual",
+   "file": "src/pbd/pipeline/planning.py",
+   "old": "            return owners[parent], \"derived_delegation\"",
+   "new": "            return owners[parent], \"actual\""
+  },
+  {
+   "id": "unknown-estimate-counted-as-zero",
+   "file": "src/pbd/pipeline/planning.py",
+   "old": "                        if t[\"estimate_hours\"] is None:",
+   "new": "                        if False:"
+  },
+  {
+   "id": "over-capacity-accepted",
+   "file": "src/pbd/pipeline/planning.py",
+   "old": "            if cap is not None and load > cap:",
+   "new": "            if False:"
+  },
+  {
+   "id": "task-points-added-to-story",
+   "file": "src/pbd/pipeline/planning.py",
+   "old": "            and effort.get(item[\"parent\"] or \"\") is not None\n",
+   "new": "            and False\n"
+  },
+  {
+   "id": "visible-criterion-id-in-review-prose-accepted",
+   "file": "src/pbd/pipeline/review.py",
+   "old": "        *(_check_prose(review) if run.request()[\"mode\"] == \"generate\" else []),",
+   "new": "        *([]),"
+  },
+  {
+   "id": "appearance-icon-unknown-type-unescaped",
+   "file": "src/pbd/render/icons.py",
+   "old": "    return itype if itype in TYPES else \"unknown\"",
+   "new": "    return itype"
   }
  ]
 }
