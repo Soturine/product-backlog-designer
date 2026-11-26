@@ -1,6 +1,6 @@
 ---
 name: product-backlog-designer
-description: Generate evidence-backed product backlogs (Epics, Features, User Stories, acceptance criteria, Tasks, dependencies) from explicitly selected requirement sources such as a single PRD, with one reader per source, independent source-first review, verified quality gates, an offline HTML report, JSON/Markdown/CSV/XLSX exports and a local Azure DevOps package. Use when the user asks to create, generate or draft a backlog, user stories or acceptance criteria from documents. Never contacts a tracker.
+description: Generate, audit, compare, refine, plan and evolve evidence-backed product backlogs (Epics, Features, User Stories, acceptance criteria, Tasks, dependencies, readiness) from explicitly selected requirement sources such as a single PRD, with one reader per source, independent source-first review, verified quality gates, an offline HTML report, JSON/Markdown/CSV/XLSX exports, a local Azure DevOps package with mock-only publication and an FTD handoff. Use when the user asks to create, audit, compare, refine, plan or update a backlog, user stories or acceptance criteria from documents. Never contacts a tracker.
 ---
 
 # Product Backlog Designer

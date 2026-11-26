@@ -1,155 +1,114 @@
 # Product Backlog Designer (PBD)
 
-**From requirements to validated, traceable and actionable backlogs.**
+**From requirements to traceable, reviewable and actionable product backlogs.**
 
-[Português (Brasil)](README.pt-BR.md) · [Documentation](docs/README.md) · [Roadmap](docs/roadmap.md) · [Example reports](examples/reports/README.md) · [Research and code audit](docs/upstream-code-audit.md)
+![version 0.9.0](https://img.shields.io/badge/version-0.9.0-blue) ![python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue) ![license Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-green) ![trackers: local packages and mock only](https://img.shields.io/badge/trackers-local%20%2B%20mock%20only-lightgrey)
 
-> **Development status:** pre-alpha. Agent-led generation from zero was dogfooded on 12 synthetic cases ([M1 evidence](docs/evidence/M1.md)). Audit, comparison, refinement, check, clarify and profile modes work on local files and are covered by deterministic tests; their agent-led semantic qualification is deferred to the final integrated qualification ([ledger](benchmarks/qualification-ledger.json)). Planning, incremental evolution, a mock-only Azure publication flow and the FTD handoff are implemented with deterministic tests; the final integrated qualification ([results](docs/evidence/final-qualification.md)) ran a new-session dogfood from one request, re-ran the affected M1 cases and an audit holdout; one correction re-run missed its threshold and is reported. Nothing contacts a tracker.
+[Português (Brasil)](README.pt-BR.md) · [Documentation](docs/README.md) · [Example reports](examples/reports/README.md) · [Qualification ledger](benchmarks/qualification-ledger.json) · [Changelog](CHANGELOG.md)
 
-## Why PBD?
+> **Status — v0.9.0, initial release (0.x).** Usable for generating and reviewing backlogs locally; qualification is conditional, not complete. All 18 quality gates are implemented and every run reports what it could not prove. Live Azure DevOps or Jira access does not exist: tracker work is a local package plus an in-memory mock. Known limits are listed under [Quality and evidence](#quality-and-evidence).
 
-A requirements document is not yet a backlog. A backlog can look complete while missing a rule, exception, constraint or acceptance condition. PBD is designed to turn explicitly selected sources into a coherent plan, audit that plan independently, and publish approved work items without losing formatting, links or human decisions. It serves product owners, analysts, engineering teams, project managers and QA across domains.
+## What it does
 
-One skill owns functional and technical backlog planning. [Functional Test Designer](https://github.com/Soturine/functional-test-designer) remains independent for functional Test Cases. The original requirements remain authoritative for both.
+PBD is an agent skill plus a small deterministic Python runtime (`pbd`). You point your coding agent (Claude Code, or another host that can read a skill folder and run a command) at the requirement sources you choose and ask in plain language. The agent reads and reasons; the runtime checks.
 
-## The normal workflow
+- **Generate** Epics, Features, User Stories, acceptance criteria, Tasks and dependencies from one PRD or several sources (files, folders, archives, PDFs, images, DOCX, XLSX). An existing backlog, technical design or tracker account is optional.
+- **Audit, compare, refine** an existing backlog against the sources, align two backlogs over the same independent inventory (no "winner"), and apply only the changes you approve.
+- **Plan** a sprint proposal with your team's capacity, one accountable owner per story and task assignees, in each person's own unit; **evolve** the backlog when a PRD or ADR changes, keeping identities and human edits.
+- **Hand off** to [Functional Test Designer](https://github.com/Soturine/functional-test-designer) for functional Test Cases, and map FTD's results back to PBD IDs.
+- **Report**: one offline `report.html` (no server, no network) plus JSON, Markdown, CSV, XLSX and a local Azure DevOps package.
 
-1. Put the sources in a private working directory and tell the agent what to read, or write a short [instructions.md](docs/instructions.md).
-2. Ask the agent: **"Generate the complete backlog from these requirements and prepare a local Azure DevOps package."**
-3. Open the HTML report, inspect the complete work-item tree, criteria, questions, findings and coverage. Resolve only material ambiguities.
-4. If publication is desired, review the exact destination and proposed changes, then approve that plan. The runtime will apply and read back the results.
+How it stays honest: one logical reader per declared source; claims trace to quotes and locators; a reviewer re-reads the sources before looking at the design; when the host cannot run a separate reviewer, the run says so (G13 BLOCKED). Deterministic validity (identity, graph, traceability, rendering, safety) is checked by code; semantic quality is judged by the agents and surfaced, never assumed. Confirmed by a source is not the same as ready to build: work that depends on an open blocking question is marked blocked and linked to it, and a reviewer dispute keeps the item out of a sprint until resolved.
 
-A short walkthrough in one conversation: ask for the backlog; open the report and look at *Ready for development?* and *Needs a decision*; click a blocking question's item to see why it is blocked; switch the appearance to Azure DevOps or Jira and the interface to English; open *Quality & evidence* and expand G02 to read covered vs handled; then ask "plan two one-week sprints with two developers, one owner per story" for a local team plan, "the PRD changed, update the backlog" for an evolution, "prepare the Azure DevOps package and simulate the publication" for a local package and mock read-back (never a real tracker), and "hand this over to FTD" for the test-design handoff.
+**What PBD is not:** it does not execute tests, does not manage or write to a live tracker, and does not guarantee that every requirement is covered — it shows what was covered, handled as a question, blocked or not proven.
 
-No need to invoke separate commands for source analysis, story writing, tasks, quality checks and rendering. They are internal stages. The preferred future agent entrypoint is `/pbd`; ordinary language is equally valid. Existing specialized entrypoints remain optional power-user controls. See [interaction contract](docs/usage.md).
+## Quick start
 
-### Minimal private instructions
+Requirements: Python 3.11+ and an agent host. The runtime needs only `jsonschema`; no hosted API is required (your agent uses its own model provider).
 
-```md
-Read only docs/PRD.pdf and docs/TDD.pdf.
-Generate Epics, Features, User Stories, acceptance criteria and Tasks.
-Audit against the original requirements.
-Language: Portuguese (Brazil).
-Target: Azure DevOps Agile.
-Output: HTML, JSON and local Azure import package.
-Do not publish remotely.
+**Windows (PowerShell)**
+```powershell
+python -m venv $HOME\pbd-venv
+& $HOME\pbd-venv\Scripts\Activate.ps1
+python -m pip install https://github.com/Soturine/product-backlog-designer/releases/download/v0.9.0/product_backlog_designer-0.9.0-py3-none-any.whl
+pbd --version
+pbd doctor
+pbd skill install --scope user          # or: --scope project --project C:\path\to\your\project
 ```
 
-Generation from scratch is the primary mode: an existing backlog is optional, never a prerequisite. Sources, language and scope can be supplied directly in chat instead. Technical sources and tracker credentials are optional for local generation. The skill must not invent their contents.
+**macOS / Linux**
+```sh
+python3 -m venv ~/pbd-venv && . ~/pbd-venv/bin/activate
+python -m pip install https://github.com/Soturine/product-backlog-designer/releases/download/v0.9.0/product_backlog_designer-0.9.0-py3-none-any.whl
+pbd --version && pbd doctor
+pbd skill install --scope user
+```
 
-## Capabilities
+From a clone instead: `git clone https://github.com/Soturine/product-backlog-designer.git`, then `python -m pip install ./product-backlog-designer`. Optional extras: `pdf` (PDF text layer, `pypdf`) and `browser` (Playwright, for the report's own tests). The skill folder holds instructions only; the agent calls the `pbd` you installed.
 
-| Mode | Result |
+Then restart your agent session and ask, for example: *"Generate the complete backlog from docs/prd.md in Portuguese and prepare a local Azure DevOps package."* The agent prints where the report is: `<artifact root>/runs/<run id>/output/report.html`. Codex: `pbd skill install --target <project>/.agents/skills/product-backlog-designer` and name the skill in your request (explicit use is verified; automatic discovery is not). Details: [install](docs/install.md), [usage](docs/usage.md), [commands](docs/commands.md).
+
+### Example requests
+- *"Generate the backlog from these three sources: docs/prd.pdf (functional), adr/ (decisions), api.md (technical)."*
+- *"Audit the backlog in export/backlog.csv against docs/prd.md"* · *"Compare backlog-a.json and backlog-b.json with the PRD"* · *"Add the missing limit criterion; apply only that change."*
+- *"Plan two one-week sprints with two developers, one owner per story; our estimates are …"* · *"The PRD changed (docs/v2/prd.md); update the backlog without losing what exists."*
+
+## Modes and outputs
+
+| Mode | What you get |
 |---|---|
-| Generate | Epics, Features, Stories, criteria, Tasks, dependencies and suggested priorities |
-| Audit | Individual source/claim/item/criterion/task review, evidence, ambiguities, conflicts and unsupported additions |
-| Compare | Independent backlogs aligned by semantic obligations, not title or item count |
-| Refine | Targeted improvements, profile learning and change proposals |
-| Plan | Estimates, risk, value, capacity and sprint suggestions when inputs support them |
-| Evolve | PRD/ADR changes, impact, stable IDs, reconciliation and minimal updates |
-| Publish | Azure discovery, snapshot, validated package, approval, apply, read-back and receipt |
+| Generate | Epics → Features → Stories/Enablers/Spikes/Bugs → Tasks, acceptance criteria (list, table or Gherkin), dependencies, questions, readiness |
+| Audit | Findings per source obligation, item and criterion; failing gates describe the audited backlog |
+| Compare | Coverage of both sides over one independent inventory, many-to-many correspondences, differences; no winner or score |
+| Refine / Evolve | Reviewable plan, digest-bound approval, no deletion; decisions supersede claims and answer questions; stale plans detected |
+| Plan | Dependency-safe order; sprints only with known capacity; story owner vs task assignee, proposed vs actual vs derived; story points and hours never converted or added parent-to-child; unknown is never zero |
+| Package | Local Azure DevOps package (Agile, Scrum, Basic, CMMI profiles) → exact-plan approval → **mock** apply and read-back (`MOCK_VERIFIED`); never a live write |
+| Handoff | `ftd-handoff.json` + `ftd-instructions.md` for FTD; `pbd handoff ftd-map` links FTD Test Cases back to PBD IDs by exact ID only |
 
-Support Agile, Scrum, Basic, CMMI and custom process profiles; discover actual destination rules. GitHub and Jira are future adapters. Generate only selected levels when asked. Never fabricate dates, assignees, completed work or business values.
-
-## What work items look like
-
-**Epic:** objective, context, scope, exclusions and intended outcome.  
-**Feature:** meaningful capability, value, related rules and child stories.  
-**User Story:** **As a** library member, **I want** to reserve an available book, **so that** I can borrow it later.  
-**Acceptance criteria:** an available title can be reserved; a title without available copies cannot be reserved.  
-**Tasks:** implement reservation validation; implement persistence; verify both outcomes.
-
-The example assumes the behavior is in the fictional source. Unknown reservation duration becomes a question, not a fabricated rule. Portuguese stories use **Eu como**, **gostaria que**, **para**; native HTML preserves bold and lists. Acceptance can be rendered as a native HTML table (ID, criterion, expected outcome), list or Gherkin. Alternative formats and enablers are supported when suitable. See [work items](docs/work-items.md), [story engineering](docs/story-engineering.md), [acceptance engineering](docs/acceptance-engineering.md).
+The report can be shown with a Generic, Azure DevOps or Jira **appearance** (original pictograms and colors only). Jira has no adapter, mapping or export in PBD; the appearance does not change the hierarchy or the target profile. The interface switches between Portuguese, English and Spanish offline; backlog content keeps its own language. [Reporting](docs/reporting.md) · [Azure (mock)](docs/azure.md) · [Planning](docs/planning-engineering.md) · [Work items](docs/work-items.md)
 
 ## See the report
 
-`report.html` is a single offline file (double click, no server, no network) that opens on an executive overview and drills down into a master/detail backlog explorer, requirements traceability, findings and questions, quality gates with evidence, sources, the local integration package and the canonical data. The interface switches between Portuguese, English and Spanish offline; backlog content stays in the language it was written in.
+![Report demo: overview, blocked work, item detail, Azure DevOps and Jira appearance, gate explanation, language and theme](docs/images/report/report-demo.png)
 
-![Report demo: overview, blocked work, item detail, Azure DevOps and Jira appearance, gate explanation, language and theme switch](docs/images/report/report-demo.png)
-
-**Is it ready to build?** Confirmed by a source is not the same as ready: every buildable item says whether it can be built now, and work that needs an open blocking question is marked blocked and linked to that question (a bounded spike or a mock contract may stay actionable, with why). The overview counts ready / partial / blocked work and names what each blocking question holds up; the reviewer agrees or disputes every readiness and gate G08 shows it.
-
-| Development readiness and decisions (pt-BR) | A blocked task and the question it waits for |
+| Development readiness and decisions | A blocked task and the question it waits for |
 |---|---|
-| ![Readiness overview](docs/images/report/readiness-overview-1440-light-pt.png) | ![Blocked item](docs/images/report/readiness-blocked-item-1280-light-pt.png) |
-| **Azure DevOps appearance (presentation only)** | **Jira appearance, dark** |
-| ![Azure DevOps look](docs/images/report/readiness-tree-azure-1280-light-pt.png) | ![Jira look](docs/images/report/readiness-tree-jira-1280-dark-pt.png) |
-| **Every gate explained (G02: covered vs handled)** | **Sortable work-item table** |
-| ![Gate explanation](docs/images/report/gate-explained-1280-light-pt.png) | ![Table](docs/images/report/readiness-table-1280-light-en.png) |
-| **Team sprint plan: owner vs assignee, load per person** | **Mobile: blocked item (390 px)** |
-| ![Team plan](docs/images/report/plan-team-1280-light-pt.png) | ![Mobile blocked item](docs/images/report/readiness-blocked-item-390-light-pt.png) |
+| ![Overview with ready, partial and blocked counts and the blocking question](docs/images/report/readiness-overview-1440-light-pt.png) | ![Item detail showing it is blocked by a named open question](docs/images/report/readiness-blocked-item-1280-light-pt.png) |
+| **Every gate explained** | **Team sprint plan** |
+| ![Gate G02 expanded: what it checks, why it matters, covered vs handled](docs/images/report/gate-explained-1280-light-pt.png) | ![Sprint board with story owner, task assignee and load per person](docs/images/report/plan-team-1280-light-pt.png) |
+| **Azure DevOps appearance** | **Mobile (390 px)** |
+| ![Backlog tree with Azure DevOps-style original icons](docs/images/report/readiness-tree-azure-1280-light-pt.png) | ![Blocked item on a phone-sized screen](docs/images/report/readiness-blocked-item-390-light-pt.png) |
 
-The appearance selector (Generic / Azure DevOps / Jira) only changes original, license-clean pictograms and colors; it never changes the hierarchy, the target profile or any data, and it does not imply Jira support or affiliation with either vendor.
-
-| Overview (pt-BR, light) | Backlog explorer with item detail (es, dark) |
-|---|---|
-| ![Overview](docs/images/report/overview-1440-light-pt.png) | ![Item detail](docs/images/report/item-1280-dark-es.png) |
-| **Audit of an existing backlog** | **Comparison of two backlogs** |
-| ![Audit overview](docs/images/report/audit-overview-1440-light-pt.png) | ![Comparison overview](docs/images/report/compare-overview-1440-light-pt.png) |
-| **Quality gates with evidence** | **Mobile (390 px)** |
-| ![Quality gates](docs/images/report/quality-1280-light-pt.png) | ![Mobile explorer](docs/images/report/backlog-390-light-pt.png) |
-
-More captures (1440/1280/768/390/320 px, light/dark, PT/EN/ES) are in [docs/images/report](docs/images/report/); the M1 renderer is kept for comparison in [docs/images/before-m2](docs/images/before-m2/) and the report before this round in [docs/images/before-corrective](docs/images/before-corrective/). Open the synthetic examples yourself: [generation](examples/reports/generate/report.html), [audit](examples/reports/audit/report.html), [comparison](examples/reports/compare/report.html), [blocking question and readiness](examples/reports/readiness/report.html), [team sprint plan](examples/reports/plan/plan-report.html) (GitHub shows HTML as source: download or clone, then open in a browser). The 12 recorded M1 runs are re-rendered with the current renderer, clearly labelled, in [benchmarks/rerender/m1](benchmarks/rerender/m1/); the recorded originals in [benchmarks/runs/m1](benchmarks/runs/m1/) are unchanged.
-
-## Output
-
-```text
-pbd-output/
-  report.html                 # default human entry point, offline
-  backlog.json                # canonical backlog and field provenance
-  findings.json               # audit findings and evidence
-  questions.json              # unresolved decisions
-  traceability.json           # sources → claims → work items → criteria/tasks
-  metrics.json                # honest counts, denominators and gates
-  manifest.json               # versions, hashes, run status
-  azure/
-    azure-import.json         # local canonical package, not raw CLI input
-    azure-import.csv          # optional portal-compatible subset
-    publication-plan.json     # exact target-bound preview
-    publication-result.json   # actual receipt, only after apply
-```
-
-Markdown, CSV, XLSX, dependency diagrams, comparison, sprint report and FTD handoff are optional or mode-dependent. A generated local package is not a published backlog. [Output specification](docs/reporting.md) · [Azure integration](docs/azure.md) · [Synthetic example JSON](examples/demo/backlog.json).
+More captures (1440 to 320 px, light/dark, PT/EN/ES) are in [docs/images/report](docs/images/report/). Synthetic examples you can download and open: [generation](examples/reports/generate/report.html), [readiness](examples/reports/readiness/report.html), [audit](examples/reports/audit/report.html), [comparison](examples/reports/compare/report.html), [team plan](examples/reports/plan/plan-report.html) (GitHub shows HTML as source).
 
 ## Architecture
 
 ```mermaid
 flowchart LR
- A[Selected sources] --> B[Source inventory and readers]
- B --> C[Atomic claims and domain model]
- C --> D[Semantic planning]
+ A[Selected sources] --> B[One logical reader per source]
+ B --> C[Claims with quotes and locators]
+ C --> D[Design and readiness]
  D --> E[Independent review]
- E --> F[Canonical runtime and gates]
- F --> G[HTML and JSON]
+ E --> F[Runtime: invariants and gates G01-G18]
+ F --> G[report.html, JSON, CSV, XLSX]
  F --> H[Local Azure package]
- H --> I[Exact plan approval]
- I --> J[Apply and verify]
- F --> K[Independent FTD handoff]
+ H --> I[Exact-plan approval]
+ I --> J[Mock apply and read-back only]
+ F --> K[FTD handoff and map]
 ```
 
-Agent-first: agents interpret actual source content. Deterministic Python owns identity, contracts, graphs, validation, persistence, rendering and transport. Local-first: no mandatory external database, server, paid API or Docker. Domain-agnostic, tracker-agnostic and privacy-first. [Architecture](docs/architecture.md) · [Reuse strategy](docs/upstream-code-audit.md).
+Agent-first (agents read and judge), native-first (originals are read with the host's own tools; extraction is a declared fallback), runtime-verified (every PASS is re-checked against artifact hashes). Local-first: no database, server, Docker or paid service. [Architecture](docs/architecture.md) · [Agent/runtime boundaries](docs/agent-runtime-boundaries.md) · [Security](docs/security.md)
 
-## Assurance
+## Quality and evidence
 
-Eighteen planned quality gates (original thirteen plus five extensions) distinguish structural validity from semantic coverage. Each claim gets a disposition; each work item and criterion is checked in reverse against evidence. INVEST, QUS-inspired review, Example Mapping, EARS and Gherkin are tools, not rigid templates or scores. No fixed number of items or acceptance criteria. Unknowns remain visible. Benchmark comparisons with HVE Core, BMAD, Spec Kit, Task Master and bare agents require independent gold, equal conditions where feasible, holdouts, mutations and honest metrics. [Gates](docs/quality-gates.md) · [Benchmarks](benchmarks/README.md).
+- **Gates.** G01–G18 are implemented. Each reports PASS, FAIL, BLOCKED, NOT_RUN or NOT_APPLICABLE with evidence; a benchmark threshold is a separate thing from a gate PASS, and a threshold pass never turns a FAIL into PASS. G18 (live round-trip) is always NOT_RUN: there is no live tracker. [Quality gates](docs/quality-gates.md)
+- **v0.9.0 deterministic qualification** (main agent only, local, Windows 11, Python 3.11, system Edge): see [docs/evidence/v0.9.0.md](docs/evidence/v0.9.0.md) for the exact commit, test counts, branch coverage, the targeted mutation catalogue, Playwright and axe-core scans, packaging and a Linux run.
+- **Semantic evidence comes from earlier commits** and is not re-claimed here: agent-led runs of generation (c08 ×3, a new holdout), comparison, refinement, planning, evolution, mock publication, native PDF reading, a second host (Codex) and a real FTD run that designed 48 Test Cases (designed, not executed; 8/8 FTD gates) — [corrective round](docs/evidence/corrective-round.md), [final qualification](docs/evidence/final-qualification.md). On one small case, a bare agent with no skill matched PBD on the gold at a third of the tokens; PBD's measured difference there was verifiability, not coverage. No superiority claim is made.
+- **Accessibility.** An axe-core scan reports 0 violations on every report view (two themes, desktop and mobile); this is an automated scan, not a WCAG 2.2 AA conformance claim — manual screen-reader review was not done.
+- **Open limits** ([ledger](benchmarks/qualification-ledger.json)): variance in how generators classify blocking questions (surfaced by the reviewer, QL-020); DOCX/XLSX originals cannot be opened natively by the Claude Code host (declared fallback, QL-017); automatic skill discovery on Codex unproven (QL-015); no screen-reader review (QL-011); FTD stores no PBD field natively — the link is the `ftd-map` sidecar (QL-021); two large functions are refactoring candidates (QL-022).
 
-## Integration and safety
+## License, attribution and safety
 
-Azure CLI authentication with REST/JSON Patch for lossless writes; optional CLI and portal CSV paths. Always read and discover fields first, match stable identity, preview changes, require exact-plan approval, verify remote revisions and read back. No automatic deletion, rule bypass or silent overwrite. [Azure](docs/azure.md) · [Security](docs/security.md).
+Licensed under the [Apache License 2.0](LICENSE) ([NOTICE](NOTICE)). Third-party material actually adapted (the Assertiva report status-tone pattern, Apache-2.0; Azure DevOps link reference names from microsoft/azure-devops-mcp, MIT) is listed with pinned sources in [third_party/](third_party/README.md) and [ATTRIBUTION.md](ATTRIBUTION.md). Microsoft, Azure DevOps, Atlassian and Jira are trademarks of their owners; PBD is not affiliated with them, and its icons are original drawings.
 
-## Roadmap and development
-
-| Milestone | Scope | Status |
-|---|---|---|
-| M0 | foundation, schemas, runtime contracts, reuse decisions | runtime foundation done ([evidence](docs/evidence/M0.md)); profiles and gold fixtures moved to M1 |
-| M1 | generation and default report/package workflow | substantially complete ([evidence](docs/evidence/M1.md)); open: new-session end-to-end run, Linux symlink tests |
-| M2 | M1 fixes, audit, compare, refine, check, clarify, profile, report redesign with i18n | implemented; deterministic tests pass; semantic qualification deferred to the final qualification |
-| M3 | Azure local snapshots and mock-only publication workflow | implemented (mock); live NOT_RUN |
-| M4 | planning without invented capacity or dates | implemented; deterministic tests pass |
-| M5 | source diffs, decisions, lineage, staleness | implemented; deterministic tests pass |
-| M6 | FTD handoff, packaging, integrated flow, docs | implemented; final qualification run ([results](docs/evidence/final-qualification.md)) |
-
-See [roadmap](docs/roadmap.md), [skill](SKILL.md), [changelog](CHANGELOG.md), [attribution](ATTRIBUTION.md). Public examples must be synthetic; never commit private sources or credentials. Repository license selection is pending; no third-party implementation has been vendored. Contributions and runtime installation instructions will be qualified before release.
-
-## Implementation directive
-[Agent-led execution](docs/agent-led-execution.md) · [Evidence and backlog health](docs/evidence-and-backlog-health.md) · [Calibration protocol](benchmarks/calibration.md) · [Master directive](docs/PBD_AGENT_LED_MASTER_DIRECTIVE.md). All implementation and qualification work is offline; live tracker access remains unqualified and requires separate authorization.
+Public examples and benchmarks are synthetic. Never commit private sources or credentials. PBD never contacts a tracker; GitHub is only where this project is hosted. [Security](docs/security.md) · [Roadmap](docs/roadmap.md) · [Skill](SKILL.md)

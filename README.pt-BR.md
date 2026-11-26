@@ -1,87 +1,90 @@
 # Product Backlog Designer (PBD)
 
-**De requisitos a um backlog validado, rastreável e pronto para revisão.**
+**Dos requisitos a backlogs de produto rastreáveis, revisáveis e acionáveis.**
 
-[English](README.md) · [Documentação](docs/README.md) · [Roadmap](docs/roadmap.md) · [Relatórios de exemplo](examples/reports/README.md)
+![versão 0.9.0](https://img.shields.io/badge/versão-0.9.0-blue) ![python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue) ![licença Apache-2.0](https://img.shields.io/badge/licença-Apache--2.0-green) ![trackers: pacote local e mock](https://img.shields.io/badge/trackers-local%20%2B%20mock-lightgrey)
 
-> **Estado atual:** pré-alpha. A geração agent-led a partir do zero foi exercitada em 12 casos sintéticos ([evidência M1](docs/evidence/M1.md)). Os modos de auditoria, comparação, refinamento, check, clarify e profile funcionam sobre arquivos locais e têm testes determinísticos; a qualificação semântica agent-led desses modos fica para a qualificação integrada final ([ledger](benchmarks/qualification-ledger.json)). Planejamento, evolução incremental, fluxo de publicação Azure somente com mock e handoff para a FTD estão implementados com testes determinísticos; a qualificação semântica e o dogfood em sessão nova ficam para a qualificação integrada final. Nada contata um tracker.
+[English](README.md) · [Documentação](docs/README.md) · [Relatórios de exemplo](examples/reports/README.md) · [Ledger de qualificação](benchmarks/qualification-ledger.json) · [Changelog](CHANGELOG.md)
 
-## Para que serve?
+> **Status — v0.9.0, primeira versão (0.x).** Pronta para gerar e revisar backlogs localmente; a qualificação é condicional, não completa. Os 18 gates de qualidade estão implementados e cada execução informa o que não conseguiu comprovar. Não existe acesso real ao Azure DevOps nem ao Jira: o trabalho com trackers é um pacote local mais um mock em memória. Os limites conhecidos estão em [Qualidade e evidências](#qualidade-e-evidências).
 
-Uma única skill para interpretar PRDs, BRDs, TDDs, ADRs, atas, manuais, regras, código-fonte e backlogs existentes. A geração do zero é o modo principal; nenhum backlog existente, credencial ou TDD é obrigatório. Gera e audita a organização do trabalho, sem confundir planejamento com execução ou testes funcionais.
+## O que faz
 
-A [FTD](https://github.com/Soturine/functional-test-designer) continua independente: ela lê a autoridade funcional e elabora Test Cases. A PBD organiza o que precisa ser desenvolvido.
+A PBD é uma skill de agente com um runtime Python pequeno e determinístico (`pbd`). Você indica ao seu agente (Claude Code, ou outro host que leia uma pasta de skill e execute um comando) as fontes de requisitos escolhidas e pede em linguagem natural. O agente lê e raciocina; o runtime confere.
 
-## Como será o uso
+- **Gerar** épicos, features, histórias de usuário, critérios de aceite, tasks e dependências a partir de um PRD ou de várias fontes (arquivos, pastas, arquivos compactados, PDFs, imagens, DOCX, XLSX). Backlog existente, documento técnico ou conta em tracker são opcionais.
+- **Auditar, comparar e refinar** um backlog existente contra as fontes, alinhar dois backlogs sobre o mesmo inventário independente (sem "vencedor") e aplicar só as mudanças que você aprovar.
+- **Planejar** sprints com a capacidade do seu time, um responsável por história e executores por task, na unidade de cada pessoa; **evoluir** o backlog quando um PRD ou ADR muda, preservando identidades e edições humanas.
+- **Entregar** ao [Functional Test Designer](https://github.com/Soturine/functional-test-designer) para Test Cases funcionais e mapear os resultados do FTD de volta aos IDs da PBD.
+- **Relatório**: um `report.html` offline (sem servidor e sem rede), mais JSON, Markdown, CSV, XLSX e um pacote local para Azure DevOps.
 
-Forneça os arquivos diretamente ao agente ou use um [instructions.md](docs/instructions.md) simples:
+Como se mantém honesta: um leitor lógico por fonte declarada; cada claim aponta para citação e localização; um revisor relê as fontes antes de ver o design; quando o host não consegue rodar um revisor separado, a execução avisa (G13 BLOCKED). A validade determinística (identidade, grafo, rastreabilidade, renderização, segurança) é checada por código; a qualidade semântica é julgada pelos agentes e exposta, nunca presumida. Confirmado pela fonte não é o mesmo que pronto para construir: trabalho que depende de uma pergunta bloqueante em aberto fica bloqueado e ligado a ela, e uma contestação do revisor mantém o item fora da sprint até ser resolvida.
 
-```md
-Leia somente docs/PRD.pdf e docs/TDD.pdf.
-Gere épicos, features, user stories, critérios de aceite e tasks.
-Audite a cobertura e prepare o pacote local para Azure DevOps Agile.
-Idioma: português do Brasil.
-Saídas: HTML e JSON.
-Não publique nada.
+**O que a PBD não é:** não executa testes, não gerencia nem escreve em um tracker real e não garante que todo requisito esteja coberto — ela mostra o que foi coberto, tratado como pergunta, bloqueado ou não comprovado.
+
+## Início rápido
+
+Requisitos: Python 3.11+ e um host de agente. O runtime depende só de `jsonschema`; nenhuma API hospedada é obrigatória (o agente usa o próprio provedor de modelo).
+
+**Windows (PowerShell)**
+```powershell
+python -m venv $HOME\pbd-venv
+& $HOME\pbd-venv\Scripts\Activate.ps1
+python -m pip install https://github.com/Soturine/product-backlog-designer/releases/download/v0.9.0/product_backlog_designer-0.9.0-py3-none-any.whl
+pbd --version
+pbd doctor
+pbd skill install --scope user          # ou: --scope project --project C:\caminho\do\projeto
 ```
 
-Depois diga **"Use a Product Backlog Designer para gerar e validar meu backlog"**. A entrada proposta `/pbd` também poderá executar todo o fluxo. Não será necessário chamar separadamente 16 comandos. A skill interpreta a intenção, executa as etapas pertinentes e mostra as dúvidas e os resultados. A publicação remota sempre exige aprovação do plano exato. [Experiência de uso](docs/usage.md).
+**macOS / Linux**
+```sh
+python3 -m venv ~/pbd-venv && . ~/pbd-venv/bin/activate
+python -m pip install https://github.com/Soturine/product-backlog-designer/releases/download/v0.9.0/product_backlog_designer-0.9.0-py3-none-any.whl
+pbd --version && pbd doctor
+pbd skill install --scope user
+```
 
-## O que a PBD deverá fazer
+A partir de um clone: `git clone https://github.com/Soturine/product-backlog-designer.git` e `python -m pip install ./product-backlog-designer`. Extras opcionais: `pdf` (camada de texto de PDF, `pypdf`) e `browser` (Playwright, para os testes do próprio relatório). A pasta da skill contém só instruções; o agente chama o `pbd` que você instalou.
 
-| Modo | Resultado |
+Depois reinicie a sessão do agente e peça, por exemplo: *"Gere o backlog completo a partir de docs/prd.md e prepare um pacote local para Azure DevOps."* O agente informa onde está o relatório: `<raiz de artefatos>/runs/<id da execução>/output/report.html`. Codex: `pbd skill install --target <projeto>/.agents/skills/product-backlog-designer` e cite a skill no pedido (uso explícito verificado; descoberta automática não). Detalhes: [instalação](docs/install.md), [uso](docs/usage.md), [comandos](docs/commands.md).
+
+### Exemplos de pedidos
+- *"Gere o backlog a partir destas três fontes: docs/prd.pdf (funcional), adr/ (decisões), api.md (técnica)."*
+- *"Audite o backlog em export/backlog.csv contra docs/prd.md"* · *"Compare backlog-a.json e backlog-b.json com o PRD"* · *"Acrescente o critério de limite que falta; aplique só essa mudança."*
+- *"Planeje duas sprints de uma semana com dois desenvolvedores, um responsável por história; nossas estimativas são …"* · *"O PRD mudou (docs/v2/prd.md); atualize o backlog sem perder o que existe."*
+
+## Modos e saídas
+
+| Modo | O que você recebe |
 |---|---|
-| Gerar | Estrutura completa ou níveis selecionados |
-| Auditar | Revisão individual de requisitos, itens, critérios e tasks |
-| Comparar | Equivalências, lacunas e divergências entre backlogs |
-| Refinar | Melhorias localizadas e perfis de escrita |
-| Planejar | Prioridades, riscos, dependências, estimativas e sprints |
-| Evoluir | Alterações incrementais de PRD/ADR e análise de impacto |
-| Publicar | Exportar, preparar, aprovar, aplicar e verificar no Azure |
+| Gerar | Épicos → features → histórias/enablers/spikes/bugs → tasks, critérios de aceite (lista, tabela ou Gherkin), dependências, perguntas, prontidão |
+| Auditar | Achados por obrigação da fonte, item e critério; gates com falha descrevem o backlog auditado |
+| Comparar | Cobertura dos dois lados sobre um inventário independente, correspondências muitos-para-muitos, diferenças; sem vencedor nem nota |
+| Refinar / Evoluir | Plano revisável, aprovação ligada ao digest, sem exclusão; decisões substituem claims e respondem perguntas; planos obsoletos detectados |
+| Planejar | Ordem segura por dependências; sprints só com capacidade conhecida; responsável pela história x executor da task, proposto x atual x derivado; story points e horas nunca convertidos nem somados entre pai e filho; desconhecido nunca vira zero |
+| Pacote | Pacote local para Azure DevOps (perfis Agile, Scrum, Basic, CMMI) → aprovação do plano exato → aplicação e releitura no **mock** (`MOCK_VERIFIED`); nunca escrita real |
+| Handoff | `ftd-handoff.json` + `ftd-instructions.md` para o FTD; `pbd handoff ftd-map` liga os Test Cases do FTD aos IDs da PBD só por ID exato |
 
-## Padrão de escrita
+O relatório pode usar a **aparência** Genérica, Azure DevOps ou Jira (só ícones originais e cores). O Jira não tem adaptador, mapeamento nem exportação na PBD; a aparência não muda a hierarquia nem o perfil de destino. A interface alterna entre português, inglês e espanhol offline; o conteúdo do backlog mantém o próprio idioma. [Relatório](docs/reporting.md) · [Azure (mock)](docs/azure.md) · [Planejamento](docs/planning-engineering.md) · [Itens de trabalho](docs/work-items.md)
 
-**Epic:** objetivo, contexto, dentro e fora do escopo e resultado esperado.  
-**Feature:** capacidade do produto e valor esperado.  
-**User Story:** **Eu como** membro da biblioteca, **gostaria que** o sistema permitisse reservar um livro disponível, **para** retirá-lo posteriormente.  
-**Critérios de aceite:** lista, tabela nativa HTML (ID, condição, resultado esperado) ou Gherkin, em campo separado, com condições e resultados.  
-**Tasks:** atividades acionáveis, resultado, verificação e dependências conforme a complexidade.
-
-Negritos, listas, parágrafos, acentos e links são preservados nos campos nativos. Perfis Agile, Scrum, Basic, CMMI e personalizados respeitam a configuração real do destino. Campos não conhecidos permanecem em branco ou como propostas locais. [Padrões de Work Items](docs/work-items.md) · [Stories](docs/story-engineering.md) · [Aceite](docs/acceptance-engineering.md).
-
-## Resultados
-
-`report.html` é um único arquivo offline (duplo clique, sem servidor e sem rede). Abre numa visão geral executiva e aprofunda em um explorador de backlog mestre/detalhe, rastreabilidade de requisitos, achados e perguntas, gates de qualidade com evidências, fontes, o pacote de integração local e os dados canônicos. A interface alterna entre português, inglês e espanhol sem rede; o conteúdo do backlog permanece no idioma em que foi escrito.
+## Veja o relatório
 
 ![Demonstração: visão geral, trabalho bloqueado, detalhe do item, aparência Azure DevOps e Jira, explicação de gate, idioma e tema](docs/images/report/report-demo.png)
 
-**Está pronto para construir?** Confirmado pela fonte não é o mesmo que pronto: cada item construível diz se pode ser feito agora, e o trabalho que depende de uma pergunta bloqueante em aberto fica bloqueado e ligado a ela. A visão geral conta o que está pronto, parcial ou bloqueado e mostra o que cada pergunta bloqueante segura; o revisor concorda ou contesta e o gate G08 mostra o resultado. Cada gate tem explicação (o que verifica, por que importa, tipo de evidência, trabalho afetado). A aparência Genérica / Azure DevOps / Jira só muda ícones originais e cores, nunca a hierarquia, o destino ou os dados. O `pbd plan` mostra plano do time com responsável pela história, executor da task e carga por pessoa.
-
 | Prontidão e decisões | Plano do time |
 |---|---|
-| ![Prontidão](docs/images/report/readiness-overview-1440-light-pt.png) | ![Plano do time](docs/images/report/plan-team-1280-light-pt.png) |
+| ![Visão geral com contagens de pronto, parcial e bloqueado e a pergunta bloqueante](docs/images/report/readiness-overview-1440-light-pt.png) | ![Quadro de sprints com responsável pela história, executor da task e carga por pessoa](docs/images/report/plan-team-1280-light-pt.png) |
 
-| Visão geral | Explorador com detalhe do item |
-|---|---|
-| ![Visão geral](docs/images/report/overview-1440-light-pt.png) | ![Detalhe](docs/images/report/backlog-1280-light-pt.png) |
-| **Auditoria de backlog existente** | **Comparação de dois backlogs** |
-| ![Auditoria](docs/images/report/audit-overview-1440-light-pt.png) | ![Comparação](docs/images/report/compare-overview-1440-light-pt.png) |
+Mais capturas e exemplos sintéticos para baixar e abrir estão no [README em inglês](README.md#see-the-report) e em [docs/images/report](docs/images/report/).
 
-Mais capturas (1440/1280/768/390/320 px, claro/escuro, PT/EN/ES) em [docs/images/report](docs/images/report/); o renderizador do M1 fica em [docs/images/before-m2](docs/images/before-m2/) para comparação. Exemplos sintéticos: [geração](examples/reports/generate/report.html), [auditoria](examples/reports/audit/report.html), [comparação](examples/reports/compare/report.html). As 12 execuções do M1 foram re-renderizadas, identificadas como re-render, em [benchmarks/rerender/m1](benchmarks/rerender/m1/); os originais em [benchmarks/runs/m1](benchmarks/runs/m1/) não mudaram.
+## Qualidade e evidências
 
-`backlog.json` mantém a fonte canônica. O pacote `azure/azure-import.json` contém dados para o publicador, não um comando nativo do Azure CLI. CSV, Markdown, XLSX e integração FTD são opções. [Outputs](docs/reporting.md) · [Azure](docs/azure.md).
+- **Gates.** G01–G18 implementados, cada um com PASS, FAIL, BLOCKED, NOT_RUN ou NOT_APPLICABLE e evidência; o limiar de um benchmark é diferente de um PASS de gate. O G18 (ida e volta real) fica sempre NOT_RUN: não existe tracker real. [Gates de qualidade](docs/quality-gates.md)
+- **Qualificação determinística da v0.9.0** (só o agente principal, local): commit exato, testes, cobertura, catálogo de mutantes, Playwright, axe-core, empacotamento e execução em Linux em [docs/evidence/v0.9.0.md](docs/evidence/v0.9.0.md).
+- **As evidências semânticas são de commits anteriores** e não são reivindicadas para esta versão: [rodada corretiva](docs/evidence/corrective-round.md) e [qualificação final](docs/evidence/final-qualification.md), incluindo uma execução real do FTD que projetou 48 Test Cases (projetados, não executados). Num caso pequeno, um agente sem a skill igualou a PBD no gold com um terço dos tokens; a diferença medida foi a verificabilidade, não a cobertura.
+- **Acessibilidade.** O scan do axe-core reporta 0 violações em todas as visões; é um scan automático, não uma declaração de conformidade WCAG 2.2 AA.
+- **Limites em aberto** ([ledger](benchmarks/qualification-ledger.json)): variação dos geradores ao classificar perguntas bloqueantes (QL-020), leitura nativa de DOCX/XLSX indisponível no host Claude Code (QL-017), descoberta automática no Codex (QL-015), revisão com leitor de tela (QL-011), o FTD não grava IDs da PBD nativamente (QL-021).
 
-## Arquitetura e qualidade
+## Licença, atribuição e segurança
 
-Agentes leem as fontes autorizadas e fazem o raciocínio. Python valida contratos, grafos, identificadores, hashes, campos e publicação. Uma revisão independente confere o PRD original e cada item gerado. A PBD é local-first, sem servidor ou banco obrigatório, e não exige um provedor de IA próprio.
-
-Os 18 gates planejados (13 originais e cinco extensões) preservam escopo, integridade, cobertura, qualidade de Stories/aceites/Tasks, dependências e publicação segura. INVEST, 3Cs, QUS, Example Mapping, EARS, Gherkin e outras técnicas são aplicadas de acordo com o contexto. Sem regras de negócio inventadas, falsa cobertura, metas artificiais de volume ou estimativas oficiais atribuídas à IA.
-
-## Pesquisa e desenvolvimento
-
-A base de engenharia considera componentes da FTD, Assertiva, Derivanta, HVE Core, Azure Prototype, Spec Kit, BMAD, OpenSpec, PM Skills e outros. [Auditoria de código](docs/upstream-code-audit.md) · [Pesquisa de mercado](docs/market-research.md). Reutilização depende de licença, testes e adaptação; não há código externo incorporado nesta fase.
-
-M0 Fundação → M1 Geração → M2 Auditoria/comparação e relatório → M3 Azure (somente mock) → M4 Planejamento → M5 Evolução → M6 Integração. M0 e M1 concluídos com evidência ([M0](docs/evidence/M0.md), [M1](docs/evidence/M1.md)); M2–M6 implementados com testes determinísticos ([M2](docs/evidence/M2.md), [M3–M6](docs/evidence/M3-M6.md)); qualificação integrada final pendente. [Roadmap](docs/roadmap.md) · [Benchmarks](benchmarks/README.md) · [Segurança](docs/security.md).
-
-## Implementação
-[Contrato agent-led](docs/agent-led-execution.md) · [Evidências e saúde do backlog](docs/evidence-and-backlog-health.md) · [Calibração](benchmarks/calibration.md) · [Prompt mestre](docs/PBD_AGENT_LED_MASTER_DIRECTIVE.md). Desenvolvimento e benchmarks exclusivamente offline, com snapshots locais e mocks; nenhuma consulta ou alteração em tracker real nesta fase.
+Licenciada sob a [Apache License 2.0](LICENSE) ([NOTICE](NOTICE)). Material de terceiros efetivamente adaptado está em [third_party/](third_party/README.md) e [ATTRIBUTION.md](ATTRIBUTION.md). Microsoft, Azure DevOps, Atlassian e Jira são marcas de seus donos; a PBD não é afiliada a eles e seus ícones são desenhos originais. Exemplos e benchmarks públicos são sintéticos; nunca publique fontes privadas ou credenciais. A PBD nunca contata um tracker. [Segurança](docs/security.md) · [Roadmap](docs/roadmap.md)

@@ -11,7 +11,7 @@
 | Human edits since the last publication become CONFLICT | `published-state.json` | tested |
 | Live transport | — | **does not exist**; `LIVE_TRANSPORT_AVAILABLE = False`; G17/G18 remain BLOCKED/NOT_RUN |
 
-The rest of this page is the protocol a future, separately authorized live adapter must follow.
+**Design only below this line.** The rest of this page is the protocol a future, separately authorized live adapter would have to follow; none of it is implemented. What exists today: local snapshots, `pbd azure package`, prepare/approve and an in-memory mock apply/verify.
 
 
 Primary transport REST API; Azure CLI/Azure Identity for credentials, MCP as optional interactive adapter. Never embed tokens. Discover organization/project GUID, team, process, work item types, fields, required rules, allowed values, relation types, areas, iterations, dates, team capacity and backlog levels. See [official REST API](https://learn.microsoft.com/en-us/rest/api/azure/devops/) and [MCP](https://github.com/microsoft/azure-devops-mcp).

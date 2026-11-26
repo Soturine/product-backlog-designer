@@ -6,13 +6,13 @@ Status per milestone (owner policy for M2–M6: main agent only, deterministic q
 |---|---|---|---|---|
 | M0 Foundation | implemented | pass | not_applicable | [M0](evidence/M0.md) |
 | M1 Generation | implemented | pass | M1: 2 thresholds missed; final qualification: c04 and c06 met | [M1](evidence/M1.md), [final](evidence/final-qualification.md) |
-| M2 Audit, compare, report | implemented | pass | audit: pass (F3); compare/refine: not run agent-led | [M2](evidence/M2.md) |
+| M2 Audit, compare, report | implemented | pass | audit: pass (F3); compare and refine: agent-led runs met (corrective R3, R4b) | [M2](evidence/M2.md), [corrective](evidence/corrective-round.md) |
 | M3 Azure (mock only) | implemented (mock) | pass | not_applicable; live NOT_RUN | [M3–M6](evidence/M3-M6.md) |
-| M4 Planning | implemented | pass | deterministic on agent output only (QL-016) | [M3–M6](evidence/M3-M6.md) |
-| M5 Evolution | implemented | pass | not run agent-led (QL-016) | [M3–M6](evidence/M3-M6.md) |
-| M6 Ecosystem | implemented (FTD handoff, packaging, docs); GitHub/Jira not implemented | pass | new-session run from one request: pass (F1); other hosts unverified | [M3–M6](evidence/M3-M6.md) |
+| M4 Planning | implemented (+ team plans) | pass | agent-led team plan run (corrective R4) | [M3–M6](evidence/M3-M6.md), [corrective](evidence/corrective-round.md) |
+| M5 Evolution | implemented | pass | agent-led evolution with a decision answering a question (corrective R4b) | [M3–M6](evidence/M3-M6.md), [corrective](evidence/corrective-round.md) |
+| M6 Ecosystem | implemented (FTD handoff and map, packaging, docs); GitHub/Jira adapters not implemented | pass | F1 one-request run; real FTD consumption (R7, designed only); Codex explicit use (R8); automatic discovery unproven | [M3–M6](evidence/M3-M6.md), [corrective](evidence/corrective-round.md) |
 
-Open items live in one [qualification ledger](../benchmarks/qualification-ledger.json).
+Open items live in one [qualification ledger](../benchmarks/qualification-ledger.json). Release **v0.9.0** (initial 0.x release, conditional qualification): [v0.9.0 evidence](evidence/v0.9.0.md). No new milestone is opened by this release.
 
 | Milestone | Deliverables | Exit evidence |
 |---|---|---|

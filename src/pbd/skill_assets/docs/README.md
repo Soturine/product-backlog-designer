@@ -43,4 +43,5 @@
 - [Upstream research and adoption decisions](upstream-adoption.md)
 - [Agent procedures](../procedures/orchestrator.md)
 - [Third-party material](../third_party/README.md)
+- [v0.9.0 evidence](evidence/v0.9.0.md) · [corrective round](evidence/corrective-round.md) · [final qualification](evidence/final-qualification.md)
 - [M0 evidence](evidence/M0.md)
