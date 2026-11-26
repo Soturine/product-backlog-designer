@@ -274,5 +274,5 @@ def test_plan_report_shows_owners_assignees_and_counts_from_json() -> None:
     assert html.count("<tr><td><code>dev-") == len(tp["people"])
     assert html.count('data-i18n="enum.timing.preparation"') == 2  # sprint card + story table
     assert "proposta difere do snapshot" in html
-    assert "Desconhecida" not in html  # capacity is per person, not unknown
+    assert 'data-i18n="plan.unknown_capacity"' not in html  # capacity is per person, not unknown
     assert "<script>window" not in html
