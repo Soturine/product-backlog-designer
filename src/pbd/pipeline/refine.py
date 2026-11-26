@@ -38,6 +38,7 @@ OPS = {
     # corrective round (D4): close a question with a recorded decision and recompute readiness
     "answer_question",
     "set_readiness",
+    "resolve_finding",
 }
 EVOLUTION_OPS = {
     "split_item",
@@ -47,6 +48,7 @@ EVOLUTION_OPS = {
     "retrace",
     "answer_question",
     "set_readiness",
+    "resolve_finding",
 }
 READINESS_STATES = {"ready", "partial", "blocked", "deferred", "unassessed"}
 FORBIDDEN_FIELDS = {
@@ -243,9 +245,33 @@ def _evolution_op(
                 return [f"{label}: readiness.{name} links need a known ref and a rationale"], None, None, ""
             if links:
                 out[name] = [{"ref": x["ref"], "rationale": str(x["rationale"])} for x in links]
+        open_disputes = [
+            f["id"]
+            for f in work.get("findings", [])
+            if f.get("gate") == "G08"
+            and f.get("review_status") == "confirmed"
+            and item["id"] in f.get("affects", [])
+        ]
+        if out["status"] == "ready" and open_disputes:
+            return (
+                [f"{label}: readiness is disputed by the review ({open_disputes}); resolve_finding first"],
+                None,
+                None,
+                "",
+            )
         before = copy.deepcopy(item.get("readiness"))
         item["readiness"] = out
         return [], before, out, item["id"]
+    if op == "resolve_finding":
+        finding = next((f for f in work.get("findings", []) if f["id"] == str(ch.get("target"))), None)
+        if finding is None or finding.get("review_status") != "confirmed":
+            return [f"{label}: resolve_finding needs a confirmed finding target"], None, None, ""
+        before = copy.deepcopy(finding)
+        finding["review_status"] = "resolved"
+        finding.setdefault("evidence", []).append(
+            {"type": "user_statement", "summary": str(ch["rationale"])[:300]}
+        )
+        return [], before, finding, finding["id"]
     if op == "supersede_item":
         item = items.get(str(ch.get("target")))
         created = work.get("_created", {})

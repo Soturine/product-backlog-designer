@@ -19,6 +19,14 @@ Design only the requested levels from `stages/claims.json`. Write every item fro
 
 ## Readiness and blocking questions
 Being confirmed by a source is not the same as being ready to build. Every buildable item (story, enabler, spike, bug, task) declares `readiness` with `status` (`ready`, `partial`, `blocked`, `deferred`, `unassessed`) and a `rationale` that says why it can or cannot be built now.
+- Judge each open question against each affected item, and write the result into the question's `impact` (what it prevents, or why it prevents nothing). Classify, per item:
+  - **implementation ready**: everything the item must do and how it will be verified is stated by the sources;
+  - **independent preparatory work** (a mock contract, a configurable parameter, scaffolding) that stays valid whatever the answer: `ready`, with the question in `independent_of`;
+  - **partial deliverable**: part can be built and verified now, part cannot: `partial`, citing the question in `blocked_by`;
+  - **bounded spike**: an investigation whose outcome informs the answer: `ready`, `independent_of` the question;
+  - **missing acceptance oracle**: the work could be coded but its expected result is not stated (a limit, a boundary, a rule), so it cannot be verified or called done: the question is blocking for that item;
+  - **essential integration contract** missing (API, protocol, data format owned by someone else): blocking for the integration work.
+  Making a value configurable does not answer the question; the item is ready only if its acceptance can be verified without the answer.
 - Judge each open question: does the missing or conflicting information actually prevent a specific piece of work? Only then is it `blocking: true`. A question about wording, a threshold another item does not need, or an optional detail is non-blocking and must not block unrelated work.
 - Work that needs the answer is `blocked` (or `deferred` when it is consciously postponed) and cites the question in `readiness.blocked_by` (`{"ref": "Q2", "rationale": "the gateway integration needs the provider and its contract"}`). Never present it as ready to build, and never encode the dependency in prose alone.
 - A bounded spike, a mock contract or an independent part of the work can stay `ready` when its outcome does not need the answer: list the question in `readiness.independent_of` with why. Do not disguise implementation as a spike.

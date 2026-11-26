@@ -198,6 +198,36 @@
    "file": "src/pbd/pipeline/planning.py",
    "old": "        if tid in not_ready:\n            return None",
    "new": "        if False:\n            return None"
+  },
+  {
+   "id": "disputed-work-scheduled",
+   "file": "src/pbd/pipeline/planning.py",
+   "old": "    for iid, notes in disputed_items(backlog).items():",
+   "new": "    for iid, notes in {}.items():"
+  },
+  {
+   "id": "dispute-not-carried-to-backlog",
+   "file": "src/pbd/pipeline/finalize.py",
+   "old": "        if e.get(\"readiness_check\") != \"dispute\" or e.get(\"key\") not in by_key:",
+   "new": "        if True:"
+  },
+  {
+   "id": "set-readiness-bypasses-dispute",
+   "file": "src/pbd/pipeline/refine.py",
+   "old": "        if out[\"status\"] == \"ready\" and open_disputes:",
+   "new": "        if False:"
+  },
+  {
+   "id": "normalized-snapshot-not-revalidated",
+   "file": "src/pbd/integrations/azure/snapshot.py",
+   "old": "        _check_normalized(doc)\n",
+   "new": "        pass\n"
+  },
+  {
+   "id": "ftd-map-links-unknown-ids",
+   "file": "src/pbd/pipeline/ftd_map.py",
+   "old": "        found = [t for t in tokens if t in known]",
+   "new": "        found = tokens"
   }
  ]
 }

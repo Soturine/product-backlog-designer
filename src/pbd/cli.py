@@ -474,11 +474,36 @@ def cmd_evolve(args: argparse.Namespace) -> int:
 
 
 def cmd_handoff(args: argparse.Namespace) -> int:
-    from pbd.persistence.atomic import atomic_write_json
+    from pbd.persistence.atomic import atomic_write_bytes, atomic_write_json
+    from pbd.pipeline.ftd_map import build_map, instructions_markdown
     from pbd.pipeline.handoff import build_handoff
     from pbd.pipeline.modes import load_json_backlog
 
+    if args.target == "ftd-map":
+        try:
+            if not args.handoff or not args.ftd_test_cases:
+                raise ValueError("ftd-map needs --handoff and --ftd-test-cases")
+            backlog_doc = load_json_backlog(Path(args.backlog)) if args.backlog else None
+            if backlog_doc is not None:
+                backlog_doc.pop("_digest", None)
+            doc = build_map(
+                load_json_file(Path(args.handoff)), load_json_file(Path(args.ftd_test_cases)), backlog_doc
+            )
+        except (OSError, ValueError, CanonicalError, KeyError) as exc:
+            print(f"refused: {exc}", file=sys.stderr)
+            return EXIT_REFUSED
+        atomic_write_json(Path(args.out) / "ftd-map.json", doc)
+        _emit(
+            {
+                "map": str(Path(args.out) / "ftd-map.json"),
+                **doc["counts"],
+                "stale": doc["stale_against_backlog"],
+            }
+        )
+        return EXIT_OK
     try:
+        if not args.backlog:
+            raise ValueError("handoff ftd needs --backlog")
         backlog = load_json_backlog(Path(args.backlog))
         backlog.pop("_digest", None)
         keys = load_json_file(Path(args.keys)) if args.keys else backlog.pop("keys", None)
@@ -487,6 +512,7 @@ def cmd_handoff(args: argparse.Namespace) -> int:
         print(f"refused: {exc}", file=sys.stderr)
         return EXIT_REFUSED
     atomic_write_json(Path(args.out) / "ftd-handoff.json", doc)
+    atomic_write_bytes(Path(args.out) / "ftd-instructions.md", instructions_markdown(doc).encode("utf-8"))
     _emit(
         {
             "handoff": str(Path(args.out) / "ftd-handoff.json"),
@@ -655,8 +681,10 @@ def build_parser() -> argparse.ArgumentParser:
     p.set_defaults(func=cmd_evolve)
 
     p = sub.add_parser("handoff", help="versioned handoff to Functional Test Designer (no test cases)")
-    p.add_argument("target", choices=["ftd"])
-    p.add_argument("--backlog", required=True)
+    p.add_argument("target", choices=["ftd", "ftd-map"])
+    p.add_argument("--backlog", help="ftd: canonical backlog; ftd-map: optional, to detect a stale handoff")
+    p.add_argument("--handoff", help="ftd-map: the ftd-handoff.json given to FTD")
+    p.add_argument("--ftd-test-cases", help="ftd-map: FTD's output test-cases.json")
     p.add_argument("--keys", help="optional id->key map (traceability.json keys) to show design keys")
     p.add_argument("--out", default="pbd-handoff")
     p.set_defaults(func=cmd_handoff)

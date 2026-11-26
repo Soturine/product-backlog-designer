@@ -66,20 +66,50 @@ def _parent_id(relations: list[dict[str, Any]] | None) -> int | None:
     return int(tail) if tail.isdigit() else None
 
 
+def _check_normalized(doc: dict[str, Any]) -> None:
+    tgt = doc.get("target") or {}
+    org, project = tgt.get("organization"), tgt.get("project")
+    if (
+        not org
+        or not project
+        or tgt.get("namespace") != f"{org}/{project}"
+        or tgt.get("system") != "azure-devops"
+    ):
+        raise SnapshotError("normalized snapshot target must name organization, project and their namespace")
+    ids: set[int] = set()
+    for n, item in enumerate(doc["items"]):
+        wid = item.get("id") if isinstance(item, dict) else None
+        if not isinstance(wid, int) or isinstance(wid, bool):
+            raise SnapshotError(f"normalized snapshot item {n}: integer id required")
+        if wid in ids:
+            raise SnapshotError(f"normalized snapshot: work item {wid} appears twice")
+        ids.add(wid)
+        fields, rels = item.get("fields"), item.get("relations")
+        if (fields is None) != (item.get("fields_state") == "unavailable") or not (
+            fields is None or isinstance(fields, dict)
+        ):
+            raise SnapshotError(f"normalized snapshot item {wid}: fields and fields_state disagree")
+        if (rels is None) != (item.get("relations_state") == "unavailable") or not (
+            rels is None or isinstance(rels, list)
+        ):
+            raise SnapshotError(f"normalized snapshot item {wid}: relations and relations_state disagree")
+        if fields is not None and item.get("type") != fields.get("System.WorkItemType"):
+            raise SnapshotError(f"normalized snapshot item {wid}: type disagrees with its fields")
+
+
 def load_snapshot(path: Path, target: dict[str, str] | None = None) -> dict[str, Any]:
     data = Path(path).read_bytes()
     doc = loads_strict(data)
     if not isinstance(doc, dict):
         raise SnapshotError("snapshot must be a JSON object")
     if doc.get("kind") == "pbd.azure-snapshot-normalized":
-        # D9 (corrective R4b): the output of `pbd azure snapshot` is accepted as is by prepare,
-        # after re-checking that its items still match the recorded content digest.
+        # D9: the output of `pbd azure snapshot` is accepted by prepare. A digest proves integrity,
+        # not authenticity (anyone can recompute it), so the content is re-validated before use.
         if not isinstance(doc.get("items"), list) or doc.get("content_digest") != digest(doc["items"]):
             raise SnapshotError(
                 "normalized snapshot was altered after normalization (content digest mismatch)"
             )
-        if not (doc.get("target") or {}).get("namespace"):
-            raise SnapshotError("normalized snapshot has no target namespace")
+        _check_normalized(doc)
         return dict(doc)
     if doc.get("kind") == "pbd.azure-snapshot":
         pages = doc.get("pages")

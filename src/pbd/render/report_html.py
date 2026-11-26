@@ -33,6 +33,7 @@ from pbd.render.icons import APPEARANCES, appearance_for_profile, type_icon
 from pbd.render.icons import sprite as type_sprite
 from pbd.render.richtext import criteria_html, criterion_sentence, inline, labels, strip_html
 from pbd.render.sanitize import sanitize_html
+from pbd.validation.invariants import disputed_items
 
 TONES = {
     "gate_status": {
@@ -81,6 +82,7 @@ TONES = {
         "blocked": "fail",
         "deferred": "neutral",
         "unassessed": "neutral",
+        "disputed": "fail",
     },
     "readiness_check": {"agree": "pass", "dispute": "fail"},
 }
@@ -90,8 +92,9 @@ READINESS_ICON = {
     "blocked": "lock",
     "deferred": "clock",
     "unassessed": "dot",
+    "disputed": "x",
 }
-READINESS_ORDER = ("ready", "partial", "blocked", "deferred", "unassessed")
+READINESS_ORDER = ("ready", "partial", "disputed", "blocked", "deferred", "unassessed")
 BUILDABLE = ("story", "enabler", "spike", "bug", "task")
 ICON_FOR_TONE = {
     "pass": "check",
@@ -646,14 +649,21 @@ def _item_text(item: dict[str, Any], key: str, crits: list[dict[str, Any]]) -> s
     return " ".join(p for p in parts if p)
 
 
+_DISPUTED: dict[str, str] = {}
+
+
 def _ready_code(item: dict[str, Any]) -> str:
-    """Declared readiness; containers and pre-1.2.0 items without one are unassessed (never 'ready')."""
+    """Effective readiness for display: 'disputed' when an unresolved confirmed G08 finding (reviewer
+    dispute) affects the item (QL-020); otherwise the declared readiness. Containers and pre-1.2.0
+    items without one are unassessed (never 'ready'). The declared value stays in the item detail."""
+    if item["id"] in _DISPUTED:
+        return "disputed"
     return str((item.get("readiness") or {}).get("status", "unassessed"))
 
 
 def _ready_badge(r: R, item: dict[str, Any]) -> str:
     code = _ready_code(item)
-    if code not in ("blocked", "partial", "deferred"):
+    if code not in ("blocked", "partial", "deferred", "disputed"):
         return ""
     tone = TONES["readiness"][code]
     label = r.t.enum("readiness", code)
@@ -1395,6 +1405,7 @@ def _gate_summary(r: R, g: dict[str, Any], ctx: dict[str, Any]) -> str:
                 ready=rc["ready"],
                 partial=rc["partial"],
                 blocked=rc["blocked"] + rc["deferred"],
+                disputed=rc["disputed"],
                 unassessed=rc["unassessed"],
                 n=len(buildable),
             )
@@ -1670,6 +1681,8 @@ def render_report(ctx: dict[str, Any]) -> str:
     ui = resolve_locale(ctx.get("ui_locale") or backlog["language"])
     r = R(ui, ctx["keys"], ctx.get("appearance") or appearance_for_profile(backlog.get("profile")))
     _bind_links(r, backlog)
+    _DISPUTED.clear()
+    _DISPUTED.update(disputed_items(backlog))
     metrics = ctx["metrics"]
     views = [
         _overview(r, ctx, mode),

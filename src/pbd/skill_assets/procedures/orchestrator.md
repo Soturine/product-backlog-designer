@@ -47,6 +47,6 @@ Run the designer role ([designer.md](designer.md)) â€” yourself or a subagent â€
 Start a reviewer that did NOT design the backlog ([reviewer.md](reviewer.md)). It re-reads the original sources first, then the design. Submit: `pbd submit review --file review.json`. If no separate agent is available, record `independence: sequential_role`; gate G13 will be BLOCKED and the report says so.
 
 ## 7. Finalize and answer
-`pbd finalize --out <root>`, then tell the user: path of `output/report.html`, counts, what is ready to build and what is blocked by which open question, gates that FAIL/BLOCKED/NOT_RUN and why, open questions and limitations. Never claim publication, approval, live validation or a passing gate the report does not show.
+`pbd finalize --out <root>`, then tell the user: path of `output/report.html`, counts, what is ready to build, what is blocked by which open question and what the reviewer disputed (a disputed item is not cleared for build until the dispute is resolved), gates that FAIL/BLOCKED/NOT_RUN and why, open questions and limitations. Never claim publication, approval, live validation or a passing gate the report does not show.
 
 Write every payload as UTF-8 (for example `open(path, 'w', encoding='utf-8')` or your file-writing tool); avoid shell heredocs for large JSON.

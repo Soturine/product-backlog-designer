@@ -421,3 +421,16 @@ def test_normalized_snapshot_output_feeds_prepare(tmp_path: Path) -> None:
     norm_file.write_text(json.dumps(normalized), encoding="utf-8")
     with pytest.raises(SnapshotError, match="content digest mismatch"):
         load_snapshot(norm_file)
+    # recomputing the digest over forged content does not make it trusted: content is re-validated
+    from pbd.core.canonical import digest
+
+    for forged_item in ({"id": "1"}, {"id": 2, "fields": None, "fields_state": "present"}):
+        forged = dict(again, items=[forged_item])
+        forged["content_digest"] = digest(forged["items"])
+        norm_file.write_text(json.dumps(forged), encoding="utf-8")
+        with pytest.raises(SnapshotError):
+            load_snapshot(norm_file)
+    forged = dict(again, target={**again["target"], "namespace": "other/project"})
+    norm_file.write_text(json.dumps(forged), encoding="utf-8")
+    with pytest.raises(SnapshotError, match="namespace"):
+        load_snapshot(norm_file)

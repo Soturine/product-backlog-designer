@@ -16,7 +16,7 @@ from typing import Any
 from pbd import __version__
 from pbd.core.canonical import digest
 
-HANDOFF_VERSION = "1.0"
+HANDOFF_VERSION = "1.1"  # 1.1: seeds start with the canonical PBD ID and carry pbd_ids (QL-021)
 FTD_ROLE = {
     "functional": "FUNCTIONAL_AUTHORITY",
     "decision": "FUNCTIONAL_AUTHORITY",
@@ -76,8 +76,13 @@ def build_handoff(backlog: dict[str, Any], keys: dict[str, str] | None = None) -
                 if c["status"] in ACTIVE_CRITERIA:
                     parts = [c.get("condition"), c.get("trigger"), *c["expected_outcomes"]]
                     text = c.get("text") or " — ".join(p for p in parts if p)
+                    label = f"{c['id']} · {c['visible_id']}" if c.get("visible_id") else c["id"]
                     seeds.append(
-                        {"text": f"[{c.get('visible_id', '')}] {text}".strip(), "section": item["title"]}
+                        {
+                            "text": f"[{label}] {text}".strip(),
+                            "section": item["title"],
+                            "pbd_ids": [c["id"], item["id"]],
+                        }
                     )
     open_q = [q for q in backlog["questions"] if q["status"] == "open"]
     sources = [

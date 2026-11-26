@@ -200,6 +200,22 @@ def check_backlog(
 # Only fully ready work contradicts an open blocker; a partial item cites the question that blocks
 # its remaining part in blocked_by (corrective qualification R1c, defect D1).
 READY_STATES = {"ready"}
+
+
+def disputed_items(doc: dict[str, Any]) -> dict[str, str]:
+    """Items an unresolved, confirmed G08 finding affects (QL-020): readiness disputed by the review,
+    so not cleared for build. Resolved or candidate findings do not count; criteria map to nothing."""
+    items = {i["id"] for i in doc.get("items", [])}
+    out: dict[str, str] = {}
+    for f in doc.get("findings", []):
+        if f.get("gate") != "G08" or f.get("review_status") != "confirmed":
+            continue
+        for ref in f.get("affects", []):
+            if ref in items:
+                out.setdefault(ref, str(f.get("actual", "")))
+    return out
+
+
 _CONTAINERS = {"epic", "feature"}
 
 

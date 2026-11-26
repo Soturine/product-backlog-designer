@@ -27,7 +27,7 @@ def backlog_path(tmp_path_factory: pytest.TempPathFactory) -> Path:
 def test_roles_requirements_questions_and_seeds(backlog_path: Path) -> None:
     b = json.loads(backlog_path.read_text(encoding="utf-8"))
     doc = build_handoff(b)
-    assert doc["kind"] == "pbd.ftd-handoff" and doc["handoff_version"] == "1.0"
+    assert doc["kind"] == "pbd.ftd-handoff" and doc["handoff_version"] == "1.1"
     roles = {s["selector"]: s["ftd_role"] for s in doc["sources"]}
     assert roles == {"prd.md": "FUNCTIONAL_AUTHORITY", "decisoes": "FUNCTIONAL_AUTHORITY"}
     assert all(m["digest"] for s in doc["sources"] for m in s["members"])

@@ -197,8 +197,13 @@ def item_rows(backlog: dict[str, Any]) -> list[list[str]]:
         "acceptance_criteria",
         "claims",
         "origin",
+        "readiness",
+        "readiness_review",
     ]
     rows = [header]
+    from pbd.validation.invariants import disputed_items
+
+    disputed = disputed_items(backlog)
     for item in tree_order(backlog):
         crits = by_parent.get(item["id"], [])
         rows.append(
@@ -212,6 +217,8 @@ def item_rows(backlog: dict[str, Any]) -> list[list[str]]:
                 "\n".join(f"{c['visible_id']} {criterion_sentence(c)}" for c in crits),
                 " ".join(item.get("claim_refs", [])),
                 item["origin"],
+                (item.get("readiness") or {}).get("status", "unassessed"),
+                "disputed" if item["id"] in disputed else "",
             ]
         )
     return rows

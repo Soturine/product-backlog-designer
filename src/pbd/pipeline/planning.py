@@ -30,6 +30,7 @@ from typing import Any
 
 from pbd.core.canonical import digest
 from pbd.render.exports import tree_order
+from pbd.validation.invariants import disputed_items
 
 UNITS = {"story_points": "story_points", "hours": "original_estimate"}
 TECHNIQUES = {"none", "moscow", "rice", "wsjf"}
@@ -664,10 +665,17 @@ def _team_plan(
         if t["task"] in not_ready and t["sprint"] is None
     ]
     incomplete = [p for p in people if p["unknown_estimates"] or p["unit_mismatch"] or p["capacity"] is None]
+    # work changed after its review (evolution/refinement puts it back to draft) is not cleared
+    unreviewed = sorted(iid for iid in placement if items.get(iid, {}).get("status") == "draft")
     if violations:
         g10 = {"status": "FAIL", "reason": "; ".join(violations[:6])}
     elif not placement:
         g10 = {"status": "NOT_RUN", "reason": "no placement proposed: owners only, no sprint allocation"}
+    elif unreviewed:
+        g10 = {
+            "status": "BLOCKED",
+            "reason": f"placed work changed after its independent review (not re-reviewed): {unreviewed}",
+        }
     elif incomplete:
         g10 = {
             "status": "BLOCKED",
@@ -698,6 +706,7 @@ def _team_plan(
         "people": people,
         "unassigned_tasks": unassigned,
         "unallocated": unallocated,
+        "unreviewed": unreviewed,
         "assessments": inp.get("assessments") or {},
         "actual_source": actual.get("source"),
         "violations": violations,
@@ -715,6 +724,9 @@ def _not_ready(items: dict[str, dict[str, Any]], backlog: dict[str, Any]) -> dic
         if rd.get("status") in ("blocked", "deferred"):
             refs = [keys.get(b["ref"], b["ref"]) for b in rd.get("blocked_by", [])]
             out[iid] = f"{rd['status']}" + (f" by {refs}" if refs else "") + f": {rd.get('rationale', '')}"
+    for iid, notes in disputed_items(backlog).items():
+        # QL-020: the independent review disputes this readiness; never schedule it as cleared work
+        out.setdefault(iid, f"readiness disputed by the independent review (G08): {notes}")
     return out
 
 

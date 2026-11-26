@@ -61,6 +61,34 @@ def _final_backlog(run: Run) -> tuple[dict[str, Any], dict[str, str], dict[str, 
         if f.get("gate"):
             entry["gate"] = f["gate"]
         findings.append(entry)
+    # QL-020: a reviewer readiness dispute is carried into the canonical backlog as a confirmed G08
+    # finding, so plans, exports and the report treat the item as not cleared for build until the
+    # dispute is resolved (an evolution `resolve_finding` after the decision). The designer's
+    # declared readiness is kept unchanged as the recorded proposal.
+    for e in review.get("items") or []:
+        if e.get("readiness_check") != "dispute" or e.get("key") not in by_key:
+            continue
+        iid = by_key[e["key"]]
+        notes = str(e.get("readiness_notes") or e.get("notes") or "").strip() or "-"
+        anchor = digest(["readiness-dispute", iid, notes])
+        findings.append(
+            {
+                "id": derive("finding", {"run": run.run_id, "content": anchor}),
+                "gate": "G08",
+                "classification": "planning_gap",
+                "severity": "medium",
+                "expected": "readiness agreed by the independent reviewer",
+                "actual": notes,
+                "why": "the independent reviewer disputes the declared readiness",
+                "impact": "not cleared for build until the dispute is resolved",
+                "recommendation": "answer the blocking question or record why the work is independent",
+                "affects": [iid],
+                "evidence": [
+                    {"type": "review", "ref": "stages/review.json", "summary": "readiness_check: dispute"}
+                ],
+                "review_status": "confirmed",
+            }
+        )
     draft["findings"] = findings
     for item in draft["items"]:
         item["status"] = "reviewed"
