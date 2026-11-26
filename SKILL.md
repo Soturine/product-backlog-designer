@@ -30,3 +30,5 @@ Every submission is validated all-or-nothing and returns every problem at once. 
 - Development and qualification are offline. Never contact Azure DevOps or any tracker; a local package is not a publication. Audit, comparison, refinement, check, clarify and profile modes work on local files ([entrypoints](entrypoints/)); planning (`pbd plan`) and source/ADR evolution (`pbd evolve`) work on local files; publication exists only against a local mock (`pbd azure ...`) — say so instead of simulating anything else.
 
 Details: [usage](docs/usage.md), [install](docs/install.md), [quality gates](docs/quality-gates.md), [reporting](docs/reporting.md), [work items](docs/work-items.md).
+
+When reviewing source authority, risk-derived proposals or reused backlog, consult [selective QE lessons](docs/agent-runtime-boundaries.md#selective-qe-knowledge-transfer-2026-11-25).
