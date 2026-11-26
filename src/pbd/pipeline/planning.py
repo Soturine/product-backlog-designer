@@ -528,6 +528,8 @@ def _team_plan(
     def task_sprint(tid: str) -> int | None:
         if tid in placement:
             return placement[tid]
+        if tid in not_ready:
+            return None  # D6: blocked or deferred work never follows its story into a sprint
         parent = items[tid]["parent"]
         return placement.get(parent) if parent else None
 
@@ -654,6 +656,12 @@ def _team_plan(
         {"item": row["story"], "reason": not_ready.get(row["story"], "not placed by the proposal")}
         for row in story_rows
         if row["sprint"] is None
+    ] + [
+        {"item": t["task"], "reason": not_ready[t["task"]]}
+        for row in story_rows
+        if row["sprint"] is not None
+        for t in row["tasks"]
+        if t["task"] in not_ready and t["sprint"] is None
     ]
     incomplete = [p for p in people if p["unknown_estimates"] or p["unit_mismatch"] or p["capacity"] is None]
     if violations:
@@ -729,4 +737,26 @@ def plan_markdown(doc: dict[str, Any]) -> str:
         lines += ["", "## Sequence"] + [f"{n + 1}. {x['title']}" for n, x in enumerate(doc["sequence"])]
     if doc["unplanned"]:
         lines += ["", "## Not planned"] + [f"- {u['item']}: {u['reason']}" for u in doc["unplanned"]]
+    tp = doc.get("team_plan")
+    if tp:
+        lines += ["", f"## Team plan ({tp['mode']}) — G10 {tp['g10']['status']}: {tp['g10']['reason']}"]
+        for sp in tp["sprints"]:
+            lines += ["", f"### Sprint {sp['index']}" + (f" — {sp['goal']}" if sp.get("goal") else "")]
+            for row in tp["stories"]:
+                if row["sprint"] != sp["index"]:
+                    continue
+                lines.append(f"- {row['story']} — owner {row['owner'] or 'none'} ({row['owner_provenance']})")
+                for t in row["tasks"]:
+                    if t["sprint"] == sp["index"]:
+                        lines.append(
+                            f"  - {t['task']} — {t['assignee'] or 'unassigned'} "
+                            f"({t['assignee_provenance']}), "
+                            f"{'?' if t['estimate_hours'] is None else t['estimate_hours']} h"
+                        )
+        lines += ["", "### Load by person"] + [
+            f"- {p['member']} sprint {p['sprint']}: {p['load']} / {p['capacity']} {p['unit'] or ''}".rstrip()
+            for p in tp["people"]
+        ]
+        if tp["unallocated"]:
+            lines += ["", "### Not allocated"] + [f"- {u['item']}: {u['reason']}" for u in tp["unallocated"]]
     return "\n".join(lines) + "\n"

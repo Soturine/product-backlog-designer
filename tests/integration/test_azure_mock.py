@@ -369,3 +369,38 @@ def test_mock_publication_opens_no_socket(artifacts: Any, tmp_path: Path) -> Non
         with pytest.raises(ConnectionError):  # the guard refuses any connection
             socket.create_connection(("127.0.0.1", 9))
     assert receipt["verification"]["status"] == "MOCK_VERIFIED"
+
+
+def test_package_from_an_existing_backlog_then_mock_round_trip(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """D8 (corrective R5): an evolved or refined backlog.json gets the same local package finalize
+    writes, then follows the unchanged approval-gated mock workflow. Nothing reaches a tracker."""
+    from pbd.cli import main
+    from pbd.pipeline.finalize import finalize
+    from pbd.pipeline.review import submit_review
+    from tests.pipeline.library_fixture import designed_run, review_payload
+
+    run = designed_run(tmp_path / "lib", formats=["md"], title="Biblioteca")
+    submit_review(run, review_payload(run))
+    finalize(run)
+    backlog = str(run.path("output/backlog.json"))
+    out = str(tmp_path / "o")
+    assert main(["azure", "package", "--backlog", backlog, "--out", out]) != 0  # profile is required
+    assert main(["azure", "package", "--backlog", backlog, "--profile", "azure-agile", "--out", out]) == 0
+    package = f"{out}/azure-import.json"
+    pkg = json.loads(Path(package).read_text(encoding="utf-8"))
+    assert len(pkg["work_items"]) == len(json.loads(Path(backlog).read_text(encoding="utf-8"))["items"])
+    target = {"organization": "fabrikam-mock", "project": "backlog-mock"}
+    empty = {"kind": "pbd.azure-snapshot", "target": target, "pages": [{"value": []}]}
+    (tmp_path / "s.json").write_text(json.dumps(empty), encoding="utf-8")
+    assert main(["azure", "prepare", "--backlog", backlog, "--package", package, "--snapshot",
+                 str(tmp_path / "s.json"), "--target", NS, "--out", out]) == 0  # fmt: skip
+    plan = f"{out}/publication-plan.json"
+    assert main(["azure", "approve", "--plan", plan, "--target", NS, "--by", "owner", "--out", out]) == 0
+    approved = f"{out}/publication-plan.approved.json"
+    mock = str(tmp_path / "m.json")
+    assert main(["azure", "apply", "--plan", approved, "--mock-state", mock, "--out", out]) == 0
+    assert main(["azure", "verify", "--plan", approved, "--receipt", f"{out}/publication-receipt.json",
+                 "--package", package, "--mock-state", mock, "--out", out]) == 0  # fmt: skip
+    capsys.readouterr()

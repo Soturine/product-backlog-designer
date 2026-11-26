@@ -15,6 +15,7 @@ Design only the requested levels from `stages/claims.json`. Write every item fro
 - Fields: only proposals with rationale (`state: proposed`) or values confirmed by claims (`state: confirmed`, `claims: [...]`). Never assignee, dates, iteration, completed or remaining work.
 - Every effective claim gets one disposition: COVERED (covered_by items/criteria that trace back to it), PARTIALLY_COVERED, NOT_COVERED, QUESTION_REQUIRED, CONFLICTING, OUT_OF_SCOPE or DEFERRED, with rationale. Superseded claims are handled by their decision; active work must not trace to them.
 - Items without claims need `technical_rationale` (explicit proposal).
+- A criterion may trace only claims its parent item also traces (the runtime rejects others as `trace_scope`). In a `predecessor` relation the `source` finishes before the `target` starts.
 
 ## Readiness and blocking questions
 Being confirmed by a source is not the same as being ready to build. Every buildable item (story, enabler, spike, bug, task) declares `readiness` with `status` (`ready`, `partial`, `blocked`, `deferred`, `unassessed`) and a `rationale` that says why it can or cannot be built now.

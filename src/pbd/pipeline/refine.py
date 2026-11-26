@@ -35,8 +35,20 @@ OPS = {
     "add_decision",
     "supersede_item",
     "retrace",
+    # corrective round (D4): close a question with a recorded decision and recompute readiness
+    "answer_question",
+    "set_readiness",
 }
-EVOLUTION_OPS = {"split_item", "merge_items", "add_decision", "supersede_item", "retrace"}
+EVOLUTION_OPS = {
+    "split_item",
+    "merge_items",
+    "add_decision",
+    "supersede_item",
+    "retrace",
+    "answer_question",
+    "set_readiness",
+}
+READINESS_STATES = {"ready", "partial", "blocked", "deferred", "unassessed"}
 FORBIDDEN_FIELDS = {
     "assigned_to",
     "completed_work",
@@ -47,6 +59,9 @@ FORBIDDEN_FIELDS = {
     "target_date",
 }
 CRIT_STATUSES = {"confirmed", "proposed", "blocked", "out_of_scope", "superseded"}
+
+
+from pbd.pipeline.design import ALLOWED_FIELDS as DESIGN_FIELDS  # noqa: E402
 
 
 class RefineError(ValueError):
@@ -179,6 +194,58 @@ def _evolution_op(
             node["claim_refs"],
             node.get("parent", node["id"]) if "type" not in node else node["id"],
         )
+    if op == "answer_question":
+        questions = {q["id"]: q for q in work["questions"]}
+        q = questions.get(str(ch.get("target")))
+        created = work.get("_created", {})
+        dec_ref = str(ch.get("decision", ""))
+        dec_id = created.get(dec_ref[7:], dec_ref) if dec_ref.startswith("change:") else dec_ref
+        answered_by = next((d for d in work["decisions"] if d["id"] == dec_id), None)
+        if q is None or answered_by is None:
+            return (
+                [f"{label}: answer_question needs a question target and a recorded decision"],
+                None,
+                None,
+                "",
+            )
+        if answered_by["status"] != "approved":
+            return [f"{label}: only an approved decision answers a question"], None, None, ""
+        if q["status"] != "open":
+            return [f"{label}: question is already {q['status']}"], None, None, ""
+        before = copy.deepcopy(q)
+        answer_decision_id = answered_by["id"]
+        q["status"] = "answered"
+        q["answer_decision"] = answer_decision_id
+        q.setdefault("evidence", []).append(
+            {"type": "decision", "ref": answer_decision_id, "summary": answered_by["text"][:300]}
+        )
+        return [], before, q, q["id"]
+    if op == "set_readiness":
+        item = items.get(str(ch.get("target")))
+        rd = ch.get("readiness")
+        known = {q["id"] for q in work["questions"]} | set(items) | {d["id"] for d in work["decisions"]}
+        if item is None or not isinstance(rd, dict) or rd.get("status") not in READINESS_STATES:
+            return (
+                [f"{label}: set_readiness needs an item target and a valid readiness.status"],
+                None,
+                None,
+                "",
+            )
+        out: dict[str, Any] = {
+            "status": rd["status"],
+            "rationale": str(rd.get("rationale") or ch["rationale"]),
+        }
+        for name in ("blocked_by", "independent_of"):
+            links = rd.get(name) or []
+            if any(
+                not isinstance(x, dict) or x.get("ref") not in known or not x.get("rationale") for x in links
+            ):
+                return [f"{label}: readiness.{name} links need a known ref and a rationale"], None, None, ""
+            if links:
+                out[name] = [{"ref": x["ref"], "rationale": str(x["rationale"])} for x in links]
+        before = copy.deepcopy(item.get("readiness"))
+        item["readiness"] = out
+        return [], before, out, item["id"]
     if op == "supersede_item":
         item = items.get(str(ch.get("target")))
         created = work.get("_created", {})
@@ -273,6 +340,18 @@ def _apply_one(
             return [], before, value, item["id"]
         if op == "set_field":
             name = str(ch.get("field", ""))
+            if (
+                name not in DESIGN_FIELDS
+                and name not in (item.get("fields") or {})
+                and name not in FORBIDDEN_FIELDS
+            ):
+                # D5: an unknown name (e.g. "readiness") must not become a stray field
+                return (
+                    [f"{label}: unknown field {name!r}; fields are {sorted(DESIGN_FIELDS)}"],
+                    None,
+                    None,
+                    "",
+                )
             if name in FORBIDDEN_FIELDS:
                 return (
                     [f"{label}: field {name} is never set by PBD (no invented assignment, dates or effort)"],

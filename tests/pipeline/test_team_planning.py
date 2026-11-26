@@ -293,3 +293,24 @@ def test_user_stated_estimates_are_labelled_and_never_written_back() -> None:
     inp["estimates"] = {T[3]: {"unit": "days", "value": 1}}
     with pytest.raises(PlanningError):
         plan(backlog, inp)
+
+
+def test_blocked_task_never_follows_its_story_into_a_sprint() -> None:
+    """Defect D6 (corrective R4): a blocked task under a placed story is unallocated, not scheduled."""
+    from pbd.pipeline.planning import plan_markdown
+
+    backlog = _backlog()
+    for i in backlog["items"]:
+        if i["id"] == T[7]:
+            i["readiness"] = {
+                "status": "blocked",
+                "rationale": "x",
+                "blocked_by": [{"ref": Q, "rationale": "y"}],
+            }
+    tp = plan(backlog, _input())["team_plan"]
+    s2 = {t["task"]: t for r in tp["stories"] if r["story"] == S2 for t in r["tasks"]}
+    assert s2[T[7]]["sprint"] is None
+    assert any(u["item"] == T[7] and u["reason"].startswith("blocked") for u in tp["unallocated"])
+    assert T[7] not in tp["unassigned_tasks"]
+    md = plan_markdown(plan(backlog, _input()))
+    assert "## Team plan (story_owner)" in md and "### Load by person" in md

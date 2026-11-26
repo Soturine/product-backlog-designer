@@ -29,7 +29,8 @@ from pbd.persistence.state import utc_now
 
 def add_parser(sub: Any, func: Any) -> None:
     p = sub.add_parser("azure", help="local Azure DevOps snapshot, plan, approval and MOCK publication")
-    p.add_argument("action", choices=["snapshot", "prepare", "approve", "apply", "verify"])
+    p.add_argument("action", choices=["snapshot", "package", "prepare", "approve", "apply", "verify"])
+    p.add_argument("--profile", help="package: process profile of the local package (e.g. azure-agile)")
     p.add_argument("--file", help="snapshot: local export file")
     p.add_argument("--org")
     p.add_argument("--project")
@@ -72,6 +73,19 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         atomic_write_json(out / "azure-snapshot.normalized.json", snap)
         atomic_write_json(out / "azure-discovered-profile.json", discover_profile(snap))
         return {"items": len(snap["items"]), "target": snap["target"]["namespace"], "notes": snap["notes"]}
+    if args.action == "package":
+        # D8 (corrective R5): a local package from an existing, refined or evolved backlog.json,
+        # the same projection finalize writes; never an authorization to publish.
+        from pbd.persistence.atomic import atomic_write_bytes
+        from pbd.profiles import load_profile
+        from pbd.render import exports
+
+        _need(args, "backlog", "profile")
+        backlog = load_json_file(Path(args.backlog))
+        package, rows = exports.azure_package(backlog, load_profile(args.profile))
+        atomic_write_json(out / "azure-import.json", package)
+        atomic_write_bytes(out / "azure-import.csv", exports.csv_bytes(rows))
+        return {"work_items": len(package["work_items"]), "profile": args.profile, "local_only": True}
     if args.action == "prepare":
         _need(args, "backlog", "package", "snapshot", "target")
         published = load_json_file(Path(args.published)) if args.published else None

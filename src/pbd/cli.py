@@ -405,6 +405,19 @@ def cmd_plan(args: argparse.Namespace) -> int:
             "unplanned": len(doc["unplanned"]),
             "committed": False,
             "notes": doc["notes"],
+            **(
+                {
+                    "team_plan": {
+                        "sprints": len(doc["team_plan"]["sprints"]),
+                        "g10": doc["team_plan"]["g10"],
+                        "violations": len(doc["team_plan"]["violations"]),
+                        "unassigned_tasks": len(doc["team_plan"]["unassigned_tasks"]),
+                        "unallocated": len(doc["team_plan"]["unallocated"]),
+                    }
+                }
+                if doc.get("team_plan")
+                else {}
+            ),
         }
     )
     return EXIT_OK

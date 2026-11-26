@@ -180,6 +180,24 @@
    "file": "src/pbd/render/icons.py",
    "old": "    return itype if itype in TYPES else \"unknown\"",
    "new": "    return itype"
+  },
+  {
+   "id": "unapproved-decision-answers-question",
+   "file": "src/pbd/pipeline/refine.py",
+   "old": "        if answered_by[\"status\"] != \"approved\":",
+   "new": "        if False:"
+  },
+  {
+   "id": "unknown-field-name-accepted",
+   "file": "src/pbd/pipeline/refine.py",
+   "old": "                name not in DESIGN_FIELDS\n",
+   "new": "                False\n"
+  },
+  {
+   "id": "blocked-task-follows-story-sprint",
+   "file": "src/pbd/pipeline/planning.py",
+   "old": "        if tid in not_ready:\n            return None",
+   "new": "        if False:\n            return None"
   }
  ]
 }
