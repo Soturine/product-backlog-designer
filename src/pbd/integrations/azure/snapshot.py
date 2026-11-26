@@ -71,6 +71,16 @@ def load_snapshot(path: Path, target: dict[str, str] | None = None) -> dict[str,
     doc = loads_strict(data)
     if not isinstance(doc, dict):
         raise SnapshotError("snapshot must be a JSON object")
+    if doc.get("kind") == "pbd.azure-snapshot-normalized":
+        # D9 (corrective R4b): the output of `pbd azure snapshot` is accepted as is by prepare,
+        # after re-checking that its items still match the recorded content digest.
+        if not isinstance(doc.get("items"), list) or doc.get("content_digest") != digest(doc["items"]):
+            raise SnapshotError(
+                "normalized snapshot was altered after normalization (content digest mismatch)"
+            )
+        if not (doc.get("target") or {}).get("namespace"):
+            raise SnapshotError("normalized snapshot has no target namespace")
+        return dict(doc)
     if doc.get("kind") == "pbd.azure-snapshot":
         pages = doc.get("pages")
         tgt = doc.get("target") or target

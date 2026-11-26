@@ -4,9 +4,9 @@
       "category": "functional",
       "disposition": {
         "covered_by": [
-          "PBD-STORY-CFJG10WJE8TY",
-          "PBD-AC-7D8MFK0C79VJ",
-          "PBD-TASK-B03M89G4XBG0"
+          "PBD-STORY-FC41YFYWKJNM",
+          "PBD-AC-30MBEHH44ZVR",
+          "PBD-TASK-PGGNDMJX0VQG"
         ],
         "rationale": "Limite verificado.",
         "status": "COVERED"
@@ -26,7 +26,7 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-X6BDAS7PZ67G",
+      "id": "PBD-CLM-XHZ0168EZBAV",
       "temporal": {
         "status": "effective"
       },
@@ -39,9 +39,9 @@
       "category": "functional",
       "disposition": {
         "covered_by": [
-          "PBD-STORY-CFJG10WJE8TY",
-          "PBD-AC-Y2RRYMHXVVTE",
-          "PBD-TASK-9EFZCXJF6ET7"
+          "PBD-STORY-FC41YFYWKJNM",
+          "PBD-AC-W1BBTKTM7A2K",
+          "PBD-TASK-7J1F7DBVJFAY"
         ],
         "rationale": "Prazo verificado.",
         "status": "COVERED"
@@ -61,7 +61,7 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-38FK6BWZNBTN",
+      "id": "PBD-CLM-T2HJF2PNCDY0",
       "temporal": {
         "status": "effective"
       },
@@ -74,10 +74,10 @@
       "category": "functional",
       "disposition": {
         "covered_by": [
-          "PBD-STORY-2DVGB62J6NBB",
-          "PBD-AC-VXYW03KA02TZ",
-          "PBD-AC-HS73F7EVE714",
-          "PBD-TASK-G524XWR2WQBW"
+          "PBD-STORY-FXSEKWKGJGDZ",
+          "PBD-AC-NM9DK0288RGX",
+          "PBD-AC-5466VSZX8F82",
+          "PBD-TASK-KC1WV0Y38JK7"
         ],
         "rationale": "Renovação verificada.",
         "status": "COVERED"
@@ -97,7 +97,7 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-612R97A5W5ZP",
+      "id": "PBD-CLM-0V5GFQCAEEG7",
       "temporal": {
         "status": "effective"
       },
@@ -110,9 +110,9 @@
       "category": "functional",
       "disposition": {
         "covered_by": [
-          "PBD-STORY-68WXA0TWX6G6",
-          "PBD-AC-YYJA50NHRF5D",
-          "PBD-TASK-3V5TWDKK57WQ"
+          "PBD-STORY-D7NGBMMA56WA",
+          "PBD-AC-BXFPZT42ZVQH",
+          "PBD-TASK-G9WX7HETSHMR"
         ],
         "rationale": "Lista verificada.",
         "status": "COVERED"
@@ -132,7 +132,7 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-3T1ETZBPXBC6",
+      "id": "PBD-CLM-RN9ZK0DMNW0H",
       "temporal": {
         "status": "effective"
       },
@@ -145,9 +145,9 @@
       "category": "functional",
       "disposition": {
         "covered_by": [
-          "PBD-STORY-Y2G59AESDQYC",
-          "PBD-AC-T40V25CK58TH",
-          "PBD-TASK-2A8T8MYBTDWK"
+          "PBD-STORY-WVQ1N83DN287",
+          "PBD-AC-Q2RFJ0DSPHRP",
+          "PBD-TASK-Q15FSGX9V19A"
         ],
         "rationale": "Fluxo do quiosque.",
         "status": "COVERED"
@@ -167,7 +167,7 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-YZM4925E7NX5",
+      "id": "PBD-CLM-6CSJZYW4QBHS",
       "temporal": {
         "status": "effective"
       },
@@ -197,7 +197,7 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-BM1VH63GJGT7",
+      "id": "PBD-CLM-9YQKSJ44W6FD",
       "temporal": {
         "status": "effective"
       },
@@ -210,9 +210,9 @@
       "category": "functional",
       "disposition": {
         "covered_by": [
-          "PBD-STORY-6DWQ9Y1QNDVP",
-          "PBD-AC-Y372FH2GMKXC",
-          "PBD-TASK-XQ9RARSCVA8P"
+          "PBD-STORY-69QRZCN6V4RX",
+          "PBD-AC-SVKJDZSRKHVX",
+          "PBD-TASK-5MWVTZM0FRVJ"
         ],
         "rationale": "Antecedência em aberto.",
         "status": "PARTIALLY_COVERED"
@@ -232,7 +232,7 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-FMEVD0K6S75G",
+      "id": "PBD-CLM-7SQAQ6EKRRZ1",
       "temporal": {
         "status": "effective"
       },
@@ -262,7 +262,7 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-1ARG2BGF20EM",
+      "id": "PBD-CLM-SS6P9A90AMF4",
       "temporal": {
         "status": "effective"
       },
@@ -275,16 +275,16 @@
   "criteria": [
     {
       "claim_refs": [
-        "PBD-CLM-X6BDAS7PZ67G"
+        "PBD-CLM-XHZ0168EZBAV"
       ],
       "condition": "um leitor com 3 empréstimos ativos",
       "expected_outcomes": [
         "o empréstimo é recusado"
       ],
-      "id": "PBD-AC-7D8MFK0C79VJ",
+      "id": "PBD-AC-30MBEHH44ZVR",
       "order": 0,
       "origin": "generated",
-      "parent": "PBD-STORY-CFJG10WJE8TY",
+      "parent": "PBD-STORY-FC41YFYWKJNM",
       "status": "confirmed",
       "style": "list",
       "trigger": "ele tenta emprestar outro livro",
@@ -292,16 +292,16 @@
     },
     {
       "claim_refs": [
-        "PBD-CLM-38FK6BWZNBTN"
+        "PBD-CLM-T2HJF2PNCDY0"
       ],
       "condition": "um empréstimo registrado hoje",
       "expected_outcomes": [
         "a devolução fica em 14 dias"
       ],
-      "id": "PBD-AC-Y2RRYMHXVVTE",
+      "id": "PBD-AC-W1BBTKTM7A2K",
       "order": 1,
       "origin": "generated",
-      "parent": "PBD-STORY-CFJG10WJE8TY",
+      "parent": "PBD-STORY-FC41YFYWKJNM",
       "status": "confirmed",
       "style": "list",
       "trigger": "o sistema calcula a devolução",
@@ -309,16 +309,16 @@
     },
     {
       "claim_refs": [
-        "PBD-CLM-612R97A5W5ZP"
+        "PBD-CLM-0V5GFQCAEEG7"
       ],
       "condition": "um empréstimo sem reserva e sem renovação",
       "expected_outcomes": [
         "o empréstimo é renovado"
       ],
-      "id": "PBD-AC-VXYW03KA02TZ",
+      "id": "PBD-AC-NM9DK0288RGX",
       "order": 0,
       "origin": "generated",
-      "parent": "PBD-STORY-2DVGB62J6NBB",
+      "parent": "PBD-STORY-FXSEKWKGJGDZ",
       "status": "confirmed",
       "style": "list",
       "trigger": "o leitor pede a renovação",
@@ -326,16 +326,16 @@
     },
     {
       "claim_refs": [
-        "PBD-CLM-612R97A5W5ZP"
+        "PBD-CLM-0V5GFQCAEEG7"
       ],
       "condition": "um empréstimo já renovado",
       "expected_outcomes": [
         "a renovação é recusada"
       ],
-      "id": "PBD-AC-HS73F7EVE714",
+      "id": "PBD-AC-5466VSZX8F82",
       "order": 1,
       "origin": "generated",
-      "parent": "PBD-STORY-2DVGB62J6NBB",
+      "parent": "PBD-STORY-FXSEKWKGJGDZ",
       "status": "confirmed",
       "style": "list",
       "trigger": "o leitor pede outra renovação",
@@ -343,15 +343,15 @@
     },
     {
       "claim_refs": [
-        "PBD-CLM-3T1ETZBPXBC6"
+        "PBD-CLM-RN9ZK0DMNW0H"
       ],
       "expected_outcomes": [
         "livros e datas listados"
       ],
-      "id": "PBD-AC-YYJA50NHRF5D",
+      "id": "PBD-AC-BXFPZT42ZVQH",
       "order": 0,
       "origin": "generated",
-      "parent": "PBD-STORY-68WXA0TWX6G6",
+      "parent": "PBD-STORY-D7NGBMMA56WA",
       "status": "confirmed",
       "style": "list",
       "text": "A lista mostra cada livro emprestado com sua data de devolução.",
@@ -359,16 +359,16 @@
     },
     {
       "claim_refs": [
-        "PBD-CLM-YZM4925E7NX5"
+        "PBD-CLM-6CSJZYW4QBHS"
       ],
       "condition": "um cartão de leitor válido no quiosque",
       "expected_outcomes": [
         "o empréstimo é registrado para o leitor"
       ],
-      "id": "PBD-AC-T40V25CK58TH",
+      "id": "PBD-AC-Q2RFJ0DSPHRP",
       "order": 0,
       "origin": "generated",
-      "parent": "PBD-STORY-Y2G59AESDQYC",
+      "parent": "PBD-STORY-WVQ1N83DN287",
       "status": "confirmed",
       "style": "list",
       "trigger": "o cartão é lido",
@@ -376,15 +376,15 @@
     },
     {
       "claim_refs": [
-        "PBD-CLM-FMEVD0K6S75G"
+        "PBD-CLM-7SQAQ6EKRRZ1"
       ],
       "expected_outcomes": [
         "aviso enviado antes do vencimento"
       ],
-      "id": "PBD-AC-Y372FH2GMKXC",
+      "id": "PBD-AC-SVKJDZSRKHVX",
       "order": 0,
       "origin": "proposed",
-      "parent": "PBD-STORY-6DWQ9Y1QNDVP",
+      "parent": "PBD-STORY-69QRZCN6V4RX",
       "rationale": "A fonte não define quanto tempo antes é 'rápido'.",
       "status": "proposed",
       "style": "list",
@@ -397,8 +397,8 @@
     {
       "actual": "A fonte diz apenas 'rápido'.",
       "affects": [
-        "PBD-AC-Y372FH2GMKXC",
-        "PBD-STORY-6DWQ9Y1QNDVP"
+        "PBD-AC-SVKJDZSRKHVX",
+        "PBD-STORY-69QRZCN6V4RX"
       ],
       "classification": "ambiguous_source",
       "evidence": [
@@ -410,7 +410,7 @@
       ],
       "expected": "Antecedência do aviso definida pela fonte.",
       "gate": "G06",
-      "id": "PBD-FND-G9K1H2SAGBZ9",
+      "id": "PBD-FND-QB098SXZ0Z0H",
       "impact": "O aviso pode chegar tarde demais.",
       "recommendation": "Responder Q2 e atualizar AC7.",
       "review_status": "confirmed",
@@ -421,13 +421,13 @@
   "items": [
     {
       "claim_refs": [
-        "PBD-CLM-X6BDAS7PZ67G",
-        "PBD-CLM-38FK6BWZNBTN",
-        "PBD-CLM-612R97A5W5ZP",
-        "PBD-CLM-3T1ETZBPXBC6",
-        "PBD-CLM-YZM4925E7NX5",
-        "PBD-CLM-BM1VH63GJGT7",
-        "PBD-CLM-FMEVD0K6S75G"
+        "PBD-CLM-XHZ0168EZBAV",
+        "PBD-CLM-T2HJF2PNCDY0",
+        "PBD-CLM-0V5GFQCAEEG7",
+        "PBD-CLM-RN9ZK0DMNW0H",
+        "PBD-CLM-6CSJZYW4QBHS",
+        "PBD-CLM-9YQKSJ44W6FD",
+        "PBD-CLM-7SQAQ6EKRRZ1"
       ],
       "content": {
         "kind": "epic",
@@ -441,7 +441,7 @@
         "language": "pt-BR",
         "value": "<p><strong>Objetivo</strong>: Leitores emprestam, renovam e acompanham livros.</p><p><strong>Fora do escopo</strong></p><ul><li>Multas por atraso</li></ul>"
       },
-      "id": "PBD-EPIC-JJBBNJM0G3HW",
+      "id": "PBD-EPIC-QY976CEAC4DM",
       "origin": "generated",
       "parent": null,
       "status": "reviewed",
@@ -450,10 +450,10 @@
     },
     {
       "claim_refs": [
-        "PBD-CLM-X6BDAS7PZ67G",
-        "PBD-CLM-38FK6BWZNBTN",
-        "PBD-CLM-612R97A5W5ZP",
-        "PBD-CLM-3T1ETZBPXBC6"
+        "PBD-CLM-XHZ0168EZBAV",
+        "PBD-CLM-T2HJF2PNCDY0",
+        "PBD-CLM-0V5GFQCAEEG7",
+        "PBD-CLM-RN9ZK0DMNW0H"
       ],
       "content": {
         "capability": "Emprestar, renovar e consultar empréstimos no balcão.",
@@ -464,17 +464,17 @@
         "language": "pt-BR",
         "value": "<p><strong>Capacidade</strong>: Emprestar, renovar e consultar empréstimos no balcão.</p>"
       },
-      "id": "PBD-FEAT-BB1Q3N8BCTVS",
+      "id": "PBD-FEAT-PY2FQJZF0N83",
       "origin": "generated",
-      "parent": "PBD-EPIC-JJBBNJM0G3HW",
+      "parent": "PBD-EPIC-QY976CEAC4DM",
       "status": "reviewed",
       "title": "Empréstimo e renovação",
       "type": "feature"
     },
     {
       "claim_refs": [
-        "PBD-CLM-YZM4925E7NX5",
-        "PBD-CLM-BM1VH63GJGT7"
+        "PBD-CLM-6CSJZYW4QBHS",
+        "PBD-CLM-9YQKSJ44W6FD"
       ],
       "content": {
         "capability": "Emprestar sem atendente, lendo o cartão do leitor.",
@@ -485,16 +485,16 @@
         "language": "pt-BR",
         "value": "<p><strong>Capacidade</strong>: Emprestar sem atendente, lendo o cartão do leitor.</p>"
       },
-      "id": "PBD-FEAT-HDPFHDPRPJ8D",
+      "id": "PBD-FEAT-ZFAMEH6SWQJ6",
       "origin": "generated",
-      "parent": "PBD-EPIC-JJBBNJM0G3HW",
+      "parent": "PBD-EPIC-QY976CEAC4DM",
       "status": "reviewed",
       "title": "Quiosque de autoatendimento",
       "type": "feature"
     },
     {
       "claim_refs": [
-        "PBD-CLM-FMEVD0K6S75G"
+        "PBD-CLM-7SQAQ6EKRRZ1"
       ],
       "content": {
         "capability": "Avisar o leitor antes do vencimento.",
@@ -505,9 +505,9 @@
         "language": "pt-BR",
         "value": "<p><strong>Capacidade</strong>: Avisar o leitor antes do vencimento.</p>"
       },
-      "id": "PBD-FEAT-261409PP108H",
+      "id": "PBD-FEAT-KKJ4FMFPJN03",
       "origin": "generated",
-      "parent": "PBD-EPIC-JJBBNJM0G3HW",
+      "parent": "PBD-EPIC-QY976CEAC4DM",
       "status": "reviewed",
       "title": "Avisos de vencimento",
       "type": "feature"
@@ -515,8 +515,8 @@
     {
       "acceptance_style": "list",
       "claim_refs": [
-        "PBD-CLM-X6BDAS7PZ67G",
-        "PBD-CLM-38FK6BWZNBTN"
+        "PBD-CLM-XHZ0168EZBAV",
+        "PBD-CLM-T2HJF2PNCDY0"
       ],
       "content": {
         "actor": "leitor",
@@ -538,9 +538,9 @@
           "value": 3
         }
       },
-      "id": "PBD-STORY-CFJG10WJE8TY",
+      "id": "PBD-STORY-FC41YFYWKJNM",
       "origin": "generated",
-      "parent": "PBD-FEAT-BB1Q3N8BCTVS",
+      "parent": "PBD-FEAT-PY2FQJZF0N83",
       "readiness": {
         "rationale": "Limite e prazo estão definidos pela fonte.",
         "status": "ready"
@@ -553,7 +553,7 @@
     {
       "acceptance_style": "list",
       "claim_refs": [
-        "PBD-CLM-612R97A5W5ZP"
+        "PBD-CLM-0V5GFQCAEEG7"
       ],
       "content": {
         "actor": "leitor",
@@ -575,9 +575,9 @@
           "value": 2
         }
       },
-      "id": "PBD-STORY-2DVGB62J6NBB",
+      "id": "PBD-STORY-FXSEKWKGJGDZ",
       "origin": "generated",
-      "parent": "PBD-FEAT-BB1Q3N8BCTVS",
+      "parent": "PBD-FEAT-PY2FQJZF0N83",
       "readiness": {
         "rationale": "A regra de renovação está definida.",
         "status": "ready"
@@ -590,7 +590,7 @@
     {
       "acceptance_style": "list",
       "claim_refs": [
-        "PBD-CLM-3T1ETZBPXBC6"
+        "PBD-CLM-RN9ZK0DMNW0H"
       ],
       "content": {
         "actor": "leitor",
@@ -612,9 +612,9 @@
           "value": 2
         }
       },
-      "id": "PBD-STORY-68WXA0TWX6G6",
+      "id": "PBD-STORY-D7NGBMMA56WA",
       "origin": "generated",
-      "parent": "PBD-FEAT-BB1Q3N8BCTVS",
+      "parent": "PBD-FEAT-PY2FQJZF0N83",
       "readiness": {
         "rationale": "Depende só dos empréstimos registrados.",
         "status": "ready"
@@ -627,8 +627,8 @@
     {
       "acceptance_style": "list",
       "claim_refs": [
-        "PBD-CLM-YZM4925E7NX5",
-        "PBD-CLM-BM1VH63GJGT7"
+        "PBD-CLM-6CSJZYW4QBHS",
+        "PBD-CLM-9YQKSJ44W6FD"
       ],
       "content": {
         "actor": "leitor",
@@ -650,14 +650,14 @@
           "value": 5
         }
       },
-      "id": "PBD-STORY-Y2G59AESDQYC",
+      "id": "PBD-STORY-WVQ1N83DN287",
       "origin": "generated",
-      "parent": "PBD-FEAT-HDPFHDPRPJ8D",
+      "parent": "PBD-FEAT-ZFAMEH6SWQJ6",
       "readiness": {
         "independent_of": [
           {
             "rationale": "Só a tarefa do driver precisa do modelo escolhido.",
-            "ref": "PBD-Q-Z94KDZGK3HVT"
+            "ref": "PBD-Q-JDE8BQT80XS6"
           }
         ],
         "rationale": "O fluxo pode ser construído sobre um contrato simulado; o driver espera a escolha do leitor de cartões.",
@@ -671,7 +671,7 @@
     {
       "acceptance_style": "list",
       "claim_refs": [
-        "PBD-CLM-FMEVD0K6S75G"
+        "PBD-CLM-7SQAQ6EKRRZ1"
       ],
       "content": {
         "actor": "leitor",
@@ -693,9 +693,9 @@
           "value": 2
         }
       },
-      "id": "PBD-STORY-6DWQ9Y1QNDVP",
+      "id": "PBD-STORY-69QRZCN6V4RX",
       "origin": "generated",
-      "parent": "PBD-FEAT-261409PP108H",
+      "parent": "PBD-FEAT-KKJ4FMFPJN03",
       "readiness": {
         "rationale": "O agendamento do aviso independe do momento exato, que fica parametrizado até a resposta à pergunta sobre 'rápido'.",
         "status": "ready"
@@ -707,7 +707,7 @@
     },
     {
       "claim_refs": [
-        "PBD-CLM-X6BDAS7PZ67G"
+        "PBD-CLM-XHZ0168EZBAV"
       ],
       "content": {
         "kind": "task",
@@ -719,9 +719,9 @@
         "language": "pt-BR",
         "value": "<p><strong>Objetivo</strong>: Recusar um quarto empréstimo ativo.</p><p><strong>Verificação</strong>: Teste com leitor que já tem 3 empréstimos.</p>"
       },
-      "id": "PBD-TASK-B03M89G4XBG0",
+      "id": "PBD-TASK-PGGNDMJX0VQG",
       "origin": "generated",
-      "parent": "PBD-STORY-CFJG10WJE8TY",
+      "parent": "PBD-STORY-FC41YFYWKJNM",
       "readiness": {
         "rationale": "Regra confirmada.",
         "status": "ready"
@@ -732,7 +732,7 @@
     },
     {
       "claim_refs": [
-        "PBD-CLM-38FK6BWZNBTN"
+        "PBD-CLM-T2HJF2PNCDY0"
       ],
       "content": {
         "kind": "task",
@@ -744,9 +744,9 @@
         "language": "pt-BR",
         "value": "<p><strong>Objetivo</strong>: Calcular a data de devolução.</p><p><strong>Verificação</strong>: Teste da data calculada.</p>"
       },
-      "id": "PBD-TASK-9EFZCXJF6ET7",
+      "id": "PBD-TASK-7J1F7DBVJFAY",
       "origin": "generated",
-      "parent": "PBD-STORY-CFJG10WJE8TY",
+      "parent": "PBD-STORY-FC41YFYWKJNM",
       "readiness": {
         "rationale": "Prazo confirmado.",
         "status": "ready"
@@ -757,7 +757,7 @@
     },
     {
       "claim_refs": [
-        "PBD-CLM-612R97A5W5ZP"
+        "PBD-CLM-0V5GFQCAEEG7"
       ],
       "content": {
         "kind": "task",
@@ -769,9 +769,9 @@
         "language": "pt-BR",
         "value": "<p><strong>Objetivo</strong>: Permitir uma renovação e recusar livro reservado.</p><p><strong>Verificação</strong>: Testes de segunda renovação e de livro reservado.</p>"
       },
-      "id": "PBD-TASK-G524XWR2WQBW",
+      "id": "PBD-TASK-KC1WV0Y38JK7",
       "origin": "generated",
-      "parent": "PBD-STORY-2DVGB62J6NBB",
+      "parent": "PBD-STORY-FXSEKWKGJGDZ",
       "readiness": {
         "rationale": "Regra confirmada.",
         "status": "ready"
@@ -782,7 +782,7 @@
     },
     {
       "claim_refs": [
-        "PBD-CLM-3T1ETZBPXBC6"
+        "PBD-CLM-RN9ZK0DMNW0H"
       ],
       "content": {
         "kind": "task",
@@ -794,9 +794,9 @@
         "language": "pt-BR",
         "value": "<p><strong>Objetivo</strong>: Consultar empréstimos ativos do leitor.</p><p><strong>Verificação</strong>: Teste com dois empréstimos ativos.</p>"
       },
-      "id": "PBD-TASK-3V5TWDKK57WQ",
+      "id": "PBD-TASK-G9WX7HETSHMR",
       "origin": "generated",
-      "parent": "PBD-STORY-68WXA0TWX6G6",
+      "parent": "PBD-STORY-D7NGBMMA56WA",
       "readiness": {
         "rationale": "Depende só dos dados de empréstimo.",
         "status": "ready"
@@ -807,7 +807,7 @@
     },
     {
       "claim_refs": [
-        "PBD-CLM-BM1VH63GJGT7"
+        "PBD-CLM-9YQKSJ44W6FD"
       ],
       "content": {
         "kind": "task",
@@ -819,14 +819,14 @@
         "language": "pt-BR",
         "value": "<p><strong>Objetivo</strong>: Ler o cartão pelo driver do modelo escolhido.</p><p><strong>Verificação</strong>: Teste com o leitor físico escolhido.</p>"
       },
-      "id": "PBD-TASK-EYZQ67WBBK24",
+      "id": "PBD-TASK-19BSK3PQBHQP",
       "origin": "generated",
-      "parent": "PBD-STORY-Y2G59AESDQYC",
+      "parent": "PBD-STORY-WVQ1N83DN287",
       "readiness": {
         "blocked_by": [
           {
             "rationale": "O driver e o protocolo dependem do modelo escolhido.",
-            "ref": "PBD-Q-Z94KDZGK3HVT"
+            "ref": "PBD-Q-JDE8BQT80XS6"
           }
         ],
         "rationale": "Sem o modelo não há driver nem protocolo para integrar.",
@@ -838,7 +838,7 @@
     },
     {
       "claim_refs": [
-        "PBD-CLM-YZM4925E7NX5"
+        "PBD-CLM-6CSJZYW4QBHS"
       ],
       "content": {
         "kind": "task",
@@ -850,14 +850,14 @@
         "language": "pt-BR",
         "value": "<p><strong>Objetivo</strong>: Construir o fluxo sobre um contrato simulado do leitor.</p><p><strong>Verificação</strong>: Teste do fluxo com o simulador de cartão.</p>"
       },
-      "id": "PBD-TASK-2A8T8MYBTDWK",
+      "id": "PBD-TASK-Q15FSGX9V19A",
       "origin": "generated",
-      "parent": "PBD-STORY-Y2G59AESDQYC",
+      "parent": "PBD-STORY-WVQ1N83DN287",
       "readiness": {
         "independent_of": [
           {
             "rationale": "O fluxo usa o contrato simulado, não o driver real.",
-            "ref": "PBD-Q-Z94KDZGK3HVT"
+            "ref": "PBD-Q-JDE8BQT80XS6"
           }
         ],
         "rationale": "O contrato simulado separa o fluxo do hardware.",
@@ -870,7 +870,7 @@
     {
       "acceptance_style": "list",
       "claim_refs": [
-        "PBD-CLM-BM1VH63GJGT7"
+        "PBD-CLM-9YQKSJ44W6FD"
       ],
       "content": {
         "decision": "Recomendação para a escolha do modelo.",
@@ -882,14 +882,14 @@
         "language": "pt-BR",
         "value": "<p><strong>Pergunta a responder</strong>: Quais modelos atendem ao quiosque e com que protocolo?</p><p><strong>Decisão esperada</strong>: Recomendação para a escolha do modelo.</p>"
       },
-      "id": "PBD-SPIKE-948DDGYCFXHB",
+      "id": "PBD-SPIKE-WCFGNQ9WPT89",
       "origin": "generated",
-      "parent": "PBD-STORY-Y2G59AESDQYC",
+      "parent": "PBD-STORY-WVQ1N83DN287",
       "readiness": {
         "independent_of": [
           {
             "rationale": "O resultado alimenta a resposta, não depende dela.",
-            "ref": "PBD-Q-Z94KDZGK3HVT"
+            "ref": "PBD-Q-JDE8BQT80XS6"
           }
         ],
         "rationale": "Investigação limitada que informa a decisão.",
@@ -902,7 +902,7 @@
     },
     {
       "claim_refs": [
-        "PBD-CLM-FMEVD0K6S75G"
+        "PBD-CLM-7SQAQ6EKRRZ1"
       ],
       "content": {
         "kind": "task",
@@ -914,9 +914,9 @@
         "language": "pt-BR",
         "value": "<p><strong>Objetivo</strong>: Agendar o aviso com antecedência parametrizada.</p><p><strong>Verificação</strong>: Teste do agendamento com antecedência configurada.</p>"
       },
-      "id": "PBD-TASK-XQ9RARSCVA8P",
+      "id": "PBD-TASK-5MWVTZM0FRVJ",
       "origin": "generated",
-      "parent": "PBD-STORY-6DWQ9Y1QNDVP",
+      "parent": "PBD-STORY-69QRZCN6V4RX",
       "readiness": {
         "rationale": "A antecedência é um parâmetro até a resposta.",
         "status": "ready"
@@ -932,28 +932,28 @@
   "questions": [
     {
       "affects": [
-        "PBD-SPIKE-948DDGYCFXHB",
-        "PBD-STORY-Y2G59AESDQYC",
-        "PBD-TASK-2A8T8MYBTDWK",
-        "PBD-TASK-EYZQ67WBBK24"
+        "PBD-SPIKE-WCFGNQ9WPT89",
+        "PBD-STORY-WVQ1N83DN287",
+        "PBD-TASK-19BSK3PQBHQP",
+        "PBD-TASK-Q15FSGX9V19A"
       ],
       "alternatives": [
         "Escolher entre os modelos avaliados no spike"
       ],
       "blocking": true,
-      "id": "PBD-Q-Z94KDZGK3HVT",
+      "id": "PBD-Q-JDE8BQT80XS6",
       "impact": "Sem o modelo, o driver não pode ser integrado.",
       "status": "open",
       "text": "Qual modelo de leitor de cartões o quiosque usará?"
     },
     {
       "affects": [
-        "PBD-AC-Y372FH2GMKXC",
-        "PBD-STORY-6DWQ9Y1QNDVP"
+        "PBD-AC-SVKJDZSRKHVX",
+        "PBD-STORY-69QRZCN6V4RX"
       ],
       "alternatives": [],
       "blocking": false,
-      "id": "PBD-Q-19M033AKDNR6",
+      "id": "PBD-Q-3VDZX174TJBM",
       "impact": "Define a antecedência do aviso.",
       "status": "open",
       "text": "Quanto tempo antes do vencimento o aviso deve chegar?"
@@ -962,24 +962,24 @@
   "relations": [
     {
       "confidence": "medium",
-      "id": "PBD-REL-W8NP028JE7WW",
+      "id": "PBD-REL-0WJ00VYCT73T",
       "reason": "Só se renova um empréstimo existente.",
-      "source": "PBD-STORY-CFJG10WJE8TY",
+      "source": "PBD-STORY-FC41YFYWKJNM",
       "status": "confirmed",
-      "target": "PBD-STORY-2DVGB62J6NBB",
+      "target": "PBD-STORY-FXSEKWKGJGDZ",
       "type": "predecessor"
     },
     {
       "confidence": "medium",
-      "id": "PBD-REL-N23PYQ4NCS7R",
+      "id": "PBD-REL-PR6S882NBV5D",
       "reason": "O driver substitui o simulador no fluxo pronto.",
-      "source": "PBD-TASK-2A8T8MYBTDWK",
+      "source": "PBD-TASK-Q15FSGX9V19A",
       "status": "proposed",
-      "target": "PBD-TASK-EYZQ67WBBK24",
+      "target": "PBD-TASK-19BSK3PQBHQP",
       "type": "predecessor"
     }
   ],
-  "run_id": "PBD-RUN-R3C50QRRHV1P",
+  "run_id": "PBD-RUN-22SJ2ZKQY1JD",
   "schema_version": "1.2.0",
   "sources": [
     {

@@ -1607,6 +1607,10 @@ def _page(
 ) -> str:
     css = _asset("report.css")
     js = _asset("report.js")
+    # every horizontal scroll container is reachable by keyboard (axe scrollable-region-focusable)
+    views = re.sub(
+        r'class="((?:panel )?tablewrap|board)"(?![^>]*tabindex)', r'class="\1" tabindex="0"', views
+    )
     cats = {loc: catalog(loc) for loc in LOCALES}
     csp = (
         f"default-src 'none'; style-src 'sha256-{_hash(css)}'; script-src 'sha256-{_hash(js)}'; img-src data:; "

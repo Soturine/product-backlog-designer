@@ -4,8 +4,8 @@
       "category": "functional",
       "disposition": {
         "covered_by": [
-          "PBD-STORY-2Q2DG1M753MX",
-          "PBD-AC-N4QKR1HNR9KP"
+          "PBD-STORY-35FJXKSC6W0M",
+          "PBD-AC-HF9ZEFJJ18AF"
         ],
         "rationale": "AC1",
         "status": "COVERED"
@@ -25,7 +25,7 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-PJ9GVFD5M058",
+      "id": "PBD-CLM-AH3D7NWYB9KY",
       "temporal": {
         "status": "effective"
       },
@@ -38,8 +38,8 @@
       "category": "error",
       "disposition": {
         "covered_by": [
-          "PBD-AC-8709Q8MZJYGT",
-          "PBD-TASK-DG1DZWFGTN97"
+          "PBD-AC-QQ5H6R729JM8",
+          "PBD-TASK-3NXWJZE4MCHJ"
         ],
         "rationale": "AC2 e T1",
         "status": "COVERED"
@@ -59,7 +59,7 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-QFCD07SZ7PXK",
+      "id": "PBD-CLM-4DXZ717CK17R",
       "temporal": {
         "status": "effective"
       },
@@ -72,8 +72,8 @@
       "category": "functional",
       "disposition": {
         "covered_by": [
-          "PBD-STORY-JEJJG2ENRS9B",
-          "PBD-AC-YCRZ09AQNGPK"
+          "PBD-STORY-79579F7FEWHG",
+          "PBD-AC-TSTXTQFQ2RD5"
         ],
         "rationale": "AC4",
         "status": "COVERED"
@@ -93,7 +93,7 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-N2G7KS5Q3FCZ",
+      "id": "PBD-CLM-PAPX707T6B4A",
       "temporal": {
         "status": "effective"
       },
@@ -123,11 +123,11 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-EDG8WXKMR42K",
+      "id": "PBD-CLM-DA4GJWN2YSA3",
       "temporal": {
         "status": "superseded",
         "superseded_by": [
-          "PBD-DEC-99JTTSQ4YFFD"
+          "PBD-DEC-QNSBK5GXEFE2"
         ],
         "superseded_reason": "Confirmação automática substitui aprovação manual."
       },
@@ -140,7 +140,7 @@
       "category": "functional",
       "disposition": {
         "covered_by": [
-          "PBD-AC-7F32M3E7X5F3"
+          "PBD-AC-6ASF51B2NP6Y"
         ],
         "rationale": "AC3",
         "status": "COVERED"
@@ -160,7 +160,7 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-0P8HY1B00TK7",
+      "id": "PBD-CLM-Y51KHPXB54HB",
       "temporal": {
         "status": "effective"
       },
@@ -190,7 +190,7 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-37CKCTW3SR3K",
+      "id": "PBD-CLM-NAFS6QZXYPQB",
       "temporal": {
         "status": "effective"
       },
@@ -203,16 +203,16 @@
   "criteria": [
     {
       "claim_refs": [
-        "PBD-CLM-PJ9GVFD5M058"
+        "PBD-CLM-AH3D7NWYB9KY"
       ],
       "condition": "um canteiro livre na temporada",
       "expected_outcomes": [
         "a reserva é registrada"
       ],
-      "id": "PBD-AC-N4QKR1HNR9KP",
+      "id": "PBD-AC-HF9ZEFJJ18AF",
       "order": 0,
       "origin": "generated",
-      "parent": "PBD-STORY-2Q2DG1M753MX",
+      "parent": "PBD-STORY-35FJXKSC6W0M",
       "status": "confirmed",
       "style": "list",
       "trigger": "o membro solicita a reserva",
@@ -220,16 +220,16 @@
     },
     {
       "claim_refs": [
-        "PBD-CLM-QFCD07SZ7PXK"
+        "PBD-CLM-4DXZ717CK17R"
       ],
       "condition": "um canteiro já reservado na temporada",
       "expected_outcomes": [
         "nenhuma nova reserva é criada"
       ],
-      "id": "PBD-AC-8709Q8MZJYGT",
+      "id": "PBD-AC-QQ5H6R729JM8",
       "order": 1,
       "origin": "generated",
-      "parent": "PBD-STORY-2Q2DG1M753MX",
+      "parent": "PBD-STORY-35FJXKSC6W0M",
       "status": "confirmed",
       "style": "list",
       "trigger": "outro membro solicita a reserva",
@@ -237,15 +237,15 @@
     },
     {
       "claim_refs": [
-        "PBD-CLM-0P8HY1B00TK7"
+        "PBD-CLM-Y51KHPXB54HB"
       ],
       "expected_outcomes": [
         "reserva confirmada sem aprovação manual"
       ],
-      "id": "PBD-AC-7F32M3E7X5F3",
+      "id": "PBD-AC-6ASF51B2NP6Y",
       "order": 2,
       "origin": "generated",
-      "parent": "PBD-STORY-2Q2DG1M753MX",
+      "parent": "PBD-STORY-35FJXKSC6W0M",
       "status": "confirmed",
       "style": "list",
       "text": "Uma reserva válida é confirmada automaticamente.",
@@ -253,15 +253,15 @@
     },
     {
       "claim_refs": [
-        "PBD-CLM-N2G7KS5Q3FCZ"
+        "PBD-CLM-PAPX707T6B4A"
       ],
       "expected_outcomes": [
         "reserva listada"
       ],
-      "id": "PBD-AC-YCRZ09AQNGPK",
+      "id": "PBD-AC-TSTXTQFQ2RD5",
       "order": 0,
       "origin": "generated",
-      "parent": "PBD-STORY-JEJJG2ENRS9B",
+      "parent": "PBD-STORY-79579F7FEWHG",
       "status": "confirmed",
       "style": "list",
       "text": "A reserva registrada aparece em Minhas reservas.",
@@ -285,10 +285,10 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-DEC-99JTTSQ4YFFD",
+      "id": "PBD-DEC-QNSBK5GXEFE2",
       "status": "approved",
       "supersedes_claims": [
-        "PBD-CLM-EDG8WXKMR42K"
+        "PBD-CLM-DA4GJWN2YSA3"
       ],
       "text": "Confirmação automática substitui aprovação manual."
     }
@@ -297,7 +297,7 @@
     {
       "actual": "Fonte não define duração.",
       "affects": [
-        "PBD-STORY-2Q2DG1M753MX"
+        "PBD-STORY-35FJXKSC6W0M"
       ],
       "classification": "candidate_concern",
       "evidence": [
@@ -309,7 +309,7 @@
       ],
       "expected": "Duração da temporada definida.",
       "gate": "G06",
-      "id": "PBD-FND-SH3CY6AWPTXA",
+      "id": "PBD-FND-JQXBPJY09DND",
       "impact": "Critério pode ficar incompleto.",
       "recommendation": "Responder Q1.",
       "review_status": "confirmed",
@@ -320,9 +320,9 @@
   "items": [
     {
       "claim_refs": [
-        "PBD-CLM-PJ9GVFD5M058",
-        "PBD-CLM-QFCD07SZ7PXK",
-        "PBD-CLM-N2G7KS5Q3FCZ"
+        "PBD-CLM-AH3D7NWYB9KY",
+        "PBD-CLM-4DXZ717CK17R",
+        "PBD-CLM-PAPX707T6B4A"
       ],
       "content": {
         "kind": "epic",
@@ -336,7 +336,7 @@
         "language": "pt-BR",
         "value": "<p><strong>Objetivo</strong>: Organizar o uso dos canteiros por temporada.</p><p><strong>Fora do escopo</strong></p><ul><li>Pagamentos</li></ul>"
       },
-      "id": "PBD-EPIC-BDH3XTJJSB8N",
+      "id": "PBD-EPIC-CZ3FR06Y1GWF",
       "origin": "generated",
       "parent": null,
       "status": "reviewed",
@@ -345,10 +345,10 @@
     },
     {
       "claim_refs": [
-        "PBD-CLM-PJ9GVFD5M058",
-        "PBD-CLM-QFCD07SZ7PXK",
-        "PBD-CLM-N2G7KS5Q3FCZ",
-        "PBD-CLM-0P8HY1B00TK7"
+        "PBD-CLM-AH3D7NWYB9KY",
+        "PBD-CLM-4DXZ717CK17R",
+        "PBD-CLM-PAPX707T6B4A",
+        "PBD-CLM-Y51KHPXB54HB"
       ],
       "content": {
         "capability": "Membros reservam canteiros livres.",
@@ -359,9 +359,9 @@
         "language": "pt-BR",
         "value": "<p><strong>Capacidade</strong>: Membros reservam canteiros livres.</p>"
       },
-      "id": "PBD-FEAT-5807A6XR8DRB",
+      "id": "PBD-FEAT-G4TJW4S1ERWV",
       "origin": "generated",
-      "parent": "PBD-EPIC-BDH3XTJJSB8N",
+      "parent": "PBD-EPIC-CZ3FR06Y1GWF",
       "status": "reviewed",
       "title": "Reservar canteiro por temporada",
       "type": "feature"
@@ -369,9 +369,9 @@
     {
       "acceptance_style": "gherkin",
       "claim_refs": [
-        "PBD-CLM-PJ9GVFD5M058",
-        "PBD-CLM-QFCD07SZ7PXK",
-        "PBD-CLM-0P8HY1B00TK7"
+        "PBD-CLM-AH3D7NWYB9KY",
+        "PBD-CLM-4DXZ717CK17R",
+        "PBD-CLM-Y51KHPXB54HB"
       ],
       "content": {
         "actor": "membro",
@@ -393,9 +393,9 @@
           "value": 3
         }
       },
-      "id": "PBD-STORY-2Q2DG1M753MX",
+      "id": "PBD-STORY-35FJXKSC6W0M",
       "origin": "generated",
-      "parent": "PBD-FEAT-5807A6XR8DRB",
+      "parent": "PBD-FEAT-G4TJW4S1ERWV",
       "readiness": {
         "rationale": "Regras de reserva confirmadas pela fonte.",
         "status": "ready"
@@ -408,7 +408,7 @@
     {
       "acceptance_style": "list",
       "claim_refs": [
-        "PBD-CLM-N2G7KS5Q3FCZ"
+        "PBD-CLM-PAPX707T6B4A"
       ],
       "content": {
         "actor": "membro",
@@ -421,9 +421,9 @@
         "language": "pt-BR",
         "value": "<p><strong>Eu como</strong> membro, <strong>gostaria que</strong> ver minhas reservas, <strong>para</strong> acompanhar a temporada.</p>"
       },
-      "id": "PBD-STORY-JEJJG2ENRS9B",
+      "id": "PBD-STORY-79579F7FEWHG",
       "origin": "generated",
-      "parent": "PBD-FEAT-5807A6XR8DRB",
+      "parent": "PBD-FEAT-G4TJW4S1ERWV",
       "readiness": {
         "rationale": "Consulta depende só de reservas registradas.",
         "status": "ready"
@@ -435,7 +435,7 @@
     },
     {
       "claim_refs": [
-        "PBD-CLM-QFCD07SZ7PXK"
+        "PBD-CLM-4DXZ717CK17R"
       ],
       "content": {
         "kind": "task",
@@ -447,9 +447,9 @@
         "language": "pt-BR",
         "value": "<p><strong>Objetivo</strong>: Validar se o canteiro está livre.</p><p><strong>Verificação</strong>: Teste com canteiro ocupado.</p>"
       },
-      "id": "PBD-TASK-DG1DZWFGTN97",
+      "id": "PBD-TASK-3NXWJZE4MCHJ",
       "origin": "generated",
-      "parent": "PBD-STORY-2Q2DG1M753MX",
+      "parent": "PBD-STORY-35FJXKSC6W0M",
       "readiness": {
         "rationale": "Regra de ocupação confirmada.",
         "status": "ready"
@@ -465,18 +465,18 @@
   "questions": [
     {
       "affects": [
-        "PBD-STORY-2Q2DG1M753MX"
+        "PBD-STORY-35FJXKSC6W0M"
       ],
       "alternatives": [],
       "blocking": false,
-      "id": "PBD-Q-D0J57NQ4G7Y2",
+      "id": "PBD-Q-3RJS26T6TAZF",
       "impact": "Limites da reserva.",
       "status": "open",
       "text": "Por quanto tempo uma temporada dura?"
     }
   ],
   "relations": [],
-  "run_id": "PBD-RUN-6MXFR2V65JFW",
+  "run_id": "PBD-RUN-PCVSY8VJDPW9",
   "schema_version": "1.2.0",
   "sources": [
     {

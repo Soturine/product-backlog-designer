@@ -148,7 +148,13 @@ MOCK = RemoteAuthority(opted_in=True, transport="mock")
 
 
 def test_valid_mock_authorization_passes() -> None:
-    authorize_apply(_approved_plan(), MOCK, "fixture-project")
+    import copy
+
+    plan = _approved_plan()
+    before = copy.deepcopy(plan)
+    # success is the absence of AuthorizationDenied; authorizing must never alter the approved plan
+    assert authorize_apply(plan, MOCK, "fixture-project") is None  # type: ignore[func-returns-value]
+    assert plan == before
 
 
 @pytest.mark.parametrize(

@@ -1,24 +1,24 @@
 # Horta comunitária
 
-Run `PBD-RUN-6MXFR2V65JFW` · backlog digest `sha256:ad4642d2505b8461165b67399384558ac12863ca26405491e4b5bd6c95d0b595`
+Run `PBD-RUN-PCVSY8VJDPW9` · backlog digest `sha256:17af3714b6f771182a541ed55f63518a06628f038e6e9f42b0b5704ba47e3907`
 
 > Synthetic content.
 
-## [epic] Reserva de canteiros `PBD-EPIC-BDH3XTJJSB8N`
+## [epic] Reserva de canteiros `PBD-EPIC-CZ3FR06Y1GWF`
 
 Objetivo: Organizar o uso dos canteiros por temporada.
 Fora do escopo
 Pagamentos
 
-Trace: PBD-CLM-PJ9GVFD5M058 (prd.md:4); PBD-CLM-QFCD07SZ7PXK (prd.md:5); PBD-CLM-N2G7KS5Q3FCZ (prd.md:6)
+Trace: PBD-CLM-AH3D7NWYB9KY (prd.md:4); PBD-CLM-4DXZ717CK17R (prd.md:5); PBD-CLM-PAPX707T6B4A (prd.md:6)
 
-### [feature] Reservar canteiro por temporada `PBD-FEAT-5807A6XR8DRB`
+### [feature] Reservar canteiro por temporada `PBD-FEAT-G4TJW4S1ERWV`
 
 Capacidade: Membros reservam canteiros livres.
 
-Trace: PBD-CLM-PJ9GVFD5M058 (prd.md:4); PBD-CLM-QFCD07SZ7PXK (prd.md:5); PBD-CLM-N2G7KS5Q3FCZ (prd.md:6); PBD-CLM-0P8HY1B00TK7 (adr-001.md:2)
+Trace: PBD-CLM-AH3D7NWYB9KY (prd.md:4); PBD-CLM-4DXZ717CK17R (prd.md:5); PBD-CLM-PAPX707T6B4A (prd.md:6); PBD-CLM-Y51KHPXB54HB (adr-001.md:2)
 
-#### [story] Reservar um canteiro livre `PBD-STORY-2Q2DG1M753MX`
+#### [story] Reservar um canteiro livre `PBD-STORY-35FJXKSC6W0M`
 
 Eu como membro, gostaria que o sistema reservasse um canteiro livre, para cultivar durante a temporada.
 
@@ -28,16 +28,16 @@ Eu como membro, gostaria que o sistema reservasse um canteiro livre, para cultiv
 - **CA-02** um canteiro já reservado na temporada, outro membro solicita a reserva: nenhuma nova reserva é criada
 - **CA-03** Uma reserva válida é confirmada automaticamente. → reserva confirmada sem aprovação manual
 
-Trace: PBD-CLM-PJ9GVFD5M058 (prd.md:4); PBD-CLM-QFCD07SZ7PXK (prd.md:5); PBD-CLM-0P8HY1B00TK7 (adr-001.md:2)
+Trace: PBD-CLM-AH3D7NWYB9KY (prd.md:4); PBD-CLM-4DXZ717CK17R (prd.md:5); PBD-CLM-Y51KHPXB54HB (adr-001.md:2)
 
-##### [task] Implementar verificação de disponibilidade `PBD-TASK-DG1DZWFGTN97`
+##### [task] Implementar verificação de disponibilidade `PBD-TASK-3NXWJZE4MCHJ`
 
 Objetivo: Validar se o canteiro está livre.
 Verificação: Teste com canteiro ocupado.
 
-Trace: PBD-CLM-QFCD07SZ7PXK (prd.md:5)
+Trace: PBD-CLM-4DXZ717CK17R (prd.md:5)
 
-#### [story] Consultar minhas reservas `PBD-STORY-JEJJG2ENRS9B`
+#### [story] Consultar minhas reservas `PBD-STORY-79579F7FEWHG`
 
 Eu como membro, gostaria que ver minhas reservas, para acompanhar a temporada.
 
@@ -45,7 +45,7 @@ Eu como membro, gostaria que ver minhas reservas, para acompanhar a temporada.
 
 - **CA-01** A reserva registrada aparece em Minhas reservas. → reserva listada
 
-Trace: PBD-CLM-N2G7KS5Q3FCZ (prd.md:6)
+Trace: PBD-CLM-PAPX707T6B4A (prd.md:6)
 
 ## Questions
 

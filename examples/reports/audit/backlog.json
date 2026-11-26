@@ -20,7 +20,7 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-FGQXZN91WCJ1",
+      "id": "PBD-CLM-AAN2EQAYNBQM",
       "temporal": {
         "status": "effective"
       },
@@ -49,7 +49,7 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-1B748KS51HJC",
+      "id": "PBD-CLM-4T64PETYJA9M",
       "temporal": {
         "status": "effective"
       },
@@ -78,7 +78,7 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-Q87YJ42FSQRS",
+      "id": "PBD-CLM-DDKF2JP6TWXX",
       "temporal": {
         "status": "effective"
       },
@@ -108,11 +108,11 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-ZST1F3WDERH4",
+      "id": "PBD-CLM-C3N9N18XYZSC",
       "temporal": {
         "status": "superseded",
         "superseded_by": [
-          "PBD-DEC-QPXZF6E3K1XG"
+          "PBD-DEC-R5PS0Q9PAFB1"
         ],
         "superseded_reason": "Confirmação automática substitui aprovação manual."
       },
@@ -141,7 +141,7 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-XR9WBK354RQQ",
+      "id": "PBD-CLM-3QJM1C0C9BMY",
       "temporal": {
         "status": "effective"
       },
@@ -170,7 +170,7 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-CLM-JEMCGZV88SJY",
+      "id": "PBD-CLM-WCAGVVJ2VZST",
       "temporal": {
         "status": "effective"
       },
@@ -231,10 +231,10 @@
           "verification": "mechanical"
         }
       ],
-      "id": "PBD-DEC-QPXZF6E3K1XG",
+      "id": "PBD-DEC-R5PS0Q9PAFB1",
       "status": "approved",
       "supersedes_claims": [
-        "PBD-CLM-ZST1F3WDERH4"
+        "PBD-CLM-C3N9N18XYZSC"
       ],
       "text": "Confirmação automática substitui aprovação manual."
     }
@@ -244,7 +244,7 @@
       "actual": "Critério exige aprovação manual.",
       "affects": [
         "PBD-AC-DHQHTDGD6X40",
-        "PBD-CLM-XR9WBK354RQQ"
+        "PBD-CLM-3QJM1C0C9BMY"
       ],
       "classification": "confirmed_divergence",
       "evidence": [
@@ -256,7 +256,7 @@
       ],
       "expected": "Reservas válidas confirmadas automaticamente (ADR-001).",
       "gate": "G15",
-      "id": "PBD-FND-Z1VD48KK8358",
+      "id": "PBD-FND-T7TMTHS97Q66",
       "impact": "Fluxo implementado contraria a decisão vigente.",
       "recommendation": "Substituir o critério pela confirmação automática.",
       "review_status": "confirmed",
@@ -278,7 +278,7 @@
       ],
       "expected": "Pagamentos fora do escopo.",
       "gate": "G09",
-      "id": "PBD-FND-8SG45D4WZSSQ",
+      "id": "PBD-FND-DMWBYTVD6FEQ",
       "impact": "Escopo indevido.",
       "recommendation": "Remover ou mover para fora do escopo após decisão.",
       "review_status": "confirmed",
@@ -354,7 +354,7 @@
   "profile": "generic",
   "questions": [],
   "relations": [],
-  "run_id": "PBD-RUN-5EH49FGA6SBD",
+  "run_id": "PBD-RUN-MNKXA54GK3P9",
   "schema_version": "1.2.0",
   "sources": [
     {

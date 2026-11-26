@@ -404,3 +404,20 @@ def test_package_from_an_existing_backlog_then_mock_round_trip(
     assert main(["azure", "verify", "--plan", approved, "--receipt", f"{out}/publication-receipt.json",
                  "--package", package, "--mock-state", mock, "--out", out]) == 0  # fmt: skip
     capsys.readouterr()
+
+
+def test_normalized_snapshot_output_feeds_prepare(tmp_path: Path) -> None:
+    """D9 (corrective R4b): `azure snapshot` output must be usable by `prepare`; tampering is refused."""
+    from pbd.integrations.azure.snapshot import SnapshotError, load_snapshot
+
+    raw = tmp_path / "export.json"
+    raw.write_text(json.dumps({"count": 0, "value": []}), encoding="utf-8")
+    normalized = load_snapshot(raw, {"organization": "clube", "project": "quadras"})
+    norm_file = tmp_path / "azure-snapshot.normalized.json"
+    norm_file.write_text(json.dumps(normalized), encoding="utf-8")
+    again = load_snapshot(norm_file)
+    assert again["target"]["namespace"] == "clube/quadras" and again["items"] == []
+    normalized["items"].append({"id": 1})
+    norm_file.write_text(json.dumps(normalized), encoding="utf-8")
+    with pytest.raises(SnapshotError, match="content digest mismatch"):
+        load_snapshot(norm_file)
