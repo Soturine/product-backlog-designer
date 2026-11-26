@@ -9,7 +9,7 @@ description = "Agent-first toolkit for traceable product backlogs: generation, a
 readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0"
-license-files = ["LICENSE", "NOTICE"]
+license-files = ["LICENSE", "NOTICE", "third_party/assertiva/LICENSE", "third_party/azure-devops-mcp/LICENSE.md"]
 dependencies = ["jsonschema>=4.21,<5"]
 
 [project.optional-dependencies]
